@@ -12,5 +12,5 @@ var siteinfo = {
 
 function writeEmailAddress() {
     var email = siteinfo.addr.name + siteinfo.addr.at + siteinfo.addr.domain;
-    document.write("<a href='mailto:" + email + "'><em>" + email + "</em></a>");
+    document.write("<a class='emaddr' href='mailto:" + email + "'><em>" + email + "</em></a>");
 }

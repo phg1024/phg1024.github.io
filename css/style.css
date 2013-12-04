@@ -1,52 +1,59 @@
 body {
-  font: 16px/1.5 verdana, helvetica-neue, helvetica, arial, san-serif;
-  background: black;
-  color: #ececec;
-  padding: 0;
-  margin: 0;
+    font: 16px/1.5 verdana, helvetica-neue, helvetica, arial, san-serif;
+    background: black;
+    color: #ececec;
+    padding: 0;
+    margin: 0;
 }
 
 ul {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  color: #ccc;
-  text-decoration: none;
+    color: #ccc;
+    text-decoration: none;
 }
- 
+
 a:hover {
-  color: #ececec;
-  text-decoration: underline;
+    color: #ececec;
+    text-decoration: underline;
 }
- 
+
 #main {
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.4);
+    display: block;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.4);
 }
 
 header {
-  padding: 0 10px;
-  overflow: hidden;
+    padding: 0 10px;
+    overflow: hidden;
+    background: #aaaaaa;
+    color: #444444;
+}
+
+header a {
+    color: #444444;
 }
 
 h1 {
-  font-size: 18px;
-  margin: 0;
-  padding: 5px;
-  text-indent: 0;
+    font-size: 18px;
+    margin: 0;
+    padding: 5px;
+    text-indent: 0;
 }
 
 h2 {
-position: relative;
-display: block;
-	font-size: 16px;
-	margin: 0;
+    position: relative;
+    display: block;
+    font-size: 16px;
+    margin: 0;
     padding: 5px;
-    text-indent: 0;	
+    text-indent: 0;
 }
 
 p {
@@ -54,13 +61,15 @@ p {
 }
 
 nav {
-  display: block;
-  padding: 10px;
-  min-height: 32px;
+    background: #888888;
+    display: block;
+    padding: 10px;
+    min-height: 32px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.35);
 }
 
 nav ul, ul.entries {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 nav li a {
@@ -69,52 +78,75 @@ nav li a {
     min-height: 24px;
     padding: 5px;
     float: left;
-    margin: 5px;
 }
 
 nav li a:hover {
     text-decoration: none;
-    background: #555555;
+    background: #777777;
+    color: #ffffff;
+    text-shadow: 2px 1px rgba(0, 0, 0, 0.5);
 }
 
 .content {
-  position: relative;
-  left: 5%;
-  width: 90%;
-  min-height: 480px;
-  display: block;
-  padding: 10px;
+    position: relative;
+    left: 5%;
+    width: 90%;
+    min-height: 480px;
+    display: block;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
- 
+
 ul.entries li {
-  position: relative;
-  margin: 20px auto;
-  padding: 20px;
-  background: #ececec;
-  width: 600px;
+    position: relative;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ececec;
+    width: 600px;
 }
- 
+
 ul.entries img {
-  width: 600px;
+    width: 600px;
 }
- 
+
 ul.entries li h3 {
-  position: absolute;
-  bottom: -18px;
-  left: 17px;
-  font-size: 2em;
+    position: absolute;
+    bottom: -18px;
+    left: 17px;
+    font-size: 2em;
 }
 ul.entries a {
-  color: #ececec;
+    color: #ececec;
 }
 ul.entries a:hover {
-  color: #fff;
+    color: #fff;
 }
- 
+
 footer {
-  font-size: 0.65em;
-  text-align: center;
+    background: #999999;
+    padding: 10px;
+    font-size: 0.65em;
+    text-align: center;
 }
+
+.emaddr {
+    color: #99bbdd;
+    text-shadow: 1px 1px rgba(128, 128, 128, 0.75);
+}
+
+.projects, .posts{
+    position: relative;
+    margin-left: 2em;
+}
+
+/*****************************************************************************/
+/*
+/* Projects
+/*
+/*****************************************************************************/
+
 
 /*****************************************************************************/
 /*
@@ -124,8 +156,6 @@ footer {
 
 /* standard */
 .post {
-    left: 5%;
-    width: 90%;
     min-height: 400px;
 }
 
