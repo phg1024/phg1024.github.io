@@ -5,6 +5,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
 ul {
   margin: 0;
   padding: 0;
@@ -33,22 +34,23 @@ header {
 }
 
 h1 {
-  font-size: 16px;
+  font-size: 18px;
   margin: 0;
   padding: 5px;
   text-indent: 0;
 }
+
 h2 {
 position: relative;
 display: block;
-	font-size: 14px;
+	font-size: 16px;
 	margin: 0;
     padding: 5px;
     text-indent: 0;	
 }
 
 p {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 nav {
@@ -56,13 +58,25 @@ nav {
   padding: 10px;
   min-height: 32px;
 }
+
 nav ul, ul.entries {
   list-style-type: none;
 }
+
 nav li a {
-  float: left;
-  margin: 5px; 
+    text-align: center;
+    min-width: 80px;
+    min-height: 24px;
+    padding: 5px;
+    float: left;
+    margin: 5px;
 }
+
+nav li a:hover {
+    text-decoration: none;
+    background: #555555;
+}
+
 .content {
   position: relative;
   left: 5%;
@@ -100,4 +114,51 @@ ul.entries a:hover {
 footer {
   font-size: 0.65em;
   text-align: center;
+}
+
+/*****************************************************************************/
+/*
+/* Posts
+/*
+/*****************************************************************************/
+
+/* standard */
+.post {
+    left: 5%;
+    width: 90%;
+    min-height: 400px;
+}
+
+.post pre {
+    border: 1px solid #ddd;
+    background-color: #eef;
+    padding: 0 .4em;
+}
+
+.post ul, .post ol {
+    margin-left: 1.35em;
+}
+
+.post code {
+    text-indent: 0;
+    font-family: 'courier';
+    color: black;
+    border: 1px solid #ddd;
+    background-color: #eef;
+    padding: 0 .2em;
+}
+
+.post pre code {
+    border: none;
+}
+
+/* terminal */
+.post pre.terminal {
+    border: 1px solid #000;
+    background-color: #333;
+    color: #FFF;
+}
+
+.post pre.terminal code {
+    background-color: #333;
 }
