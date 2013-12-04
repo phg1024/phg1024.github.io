@@ -136,7 +136,7 @@ footer {
     text-shadow: 1px 1px rgba(128, 128, 128, 0.75);
 }
 
-.projects, .posts{
+.projects, .posts, .abouts{
     position: relative;
     margin-left: 2em;
 }
