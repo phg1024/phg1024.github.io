@@ -22,6 +22,9 @@
             });
         </script>
 
+        <!-- jQuery -->
+        <script type="text/javascript" src="/lib/jquery-1.10.2.min.js"></script>
+
         <!-- My own script -->
         <script type="text/javascript" src="/js/phgscript.js"></script>
     </head>
@@ -41,8 +44,20 @@
 		      </ul>
           </nav>
 
-          <div class="content">
+          <link rel='stylesheet' type='text/css' href='../projects.css' media="screen, print, projection">
+<link rel='stylesheet' type='text/css' href='./style.css' media="screen, print, projection">
+<div class="content">
+    <h2>Mine Sweeper</h2>
+		<div align=center id='board'>
+		</div>
+		<div align=center>
+			<button id='initButton'>Initialize</button>
+				<button id='revealButton'>Reveal</button><br>
+				Size: <input id='fieldsize' type='textfield' value=10><br>
+				Bombs: <input id='bombs' type='textfield' value=8>
+		</div>
 </div>
+<script type='text/javascript' src="minesweeper.js"></script>
 
           <footer>
           &copy 2009-2013 &nbsp Peihong Guo &nbsp 

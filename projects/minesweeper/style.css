@@ -1,0 +1,34 @@
+table{
+    border: solid 1;
+}
+.content{
+    text-align: center;
+}
+.piece {
+    font-family: 'Courier New';
+    font-size: 12px;
+    text-align: center;
+    boarder: 0;
+    padding: 0;
+    width:20px;
+    height:20px;
+}
+
+.raw, .expanded{
+    background: #AAAAAA;
+    font-family: 'Courier New';
+    font-size: 12px;
+    text-align: center;
+    boarder: 0;
+    padding: 0;
+    width:20px;
+    height:20px;
+}
+
+.raw:hover{
+    background: #AACCFF;
+}
+
+.expanded{
+    background: #CCCCCC;
+}
