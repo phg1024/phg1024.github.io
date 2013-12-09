@@ -1,4 +1,11 @@
-    button, select{
+   
+    div.upload input {
+        display: block;
+        opacity: 0;
+    }
+
+    div.upload, button, select{
+        display: inline-block;
         cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/
         padding:5px 10px; /*add some padding to the inside of the button*/
         background:#777777; /*the colour of the button*/
