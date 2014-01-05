@@ -137,9 +137,11 @@ RGBAImage.prototype.toImageData = function( ctx ) {
 
 /* render the image to the passed canvas */
 RGBAImage.prototype.render = function( cvs ) {
-	canvas.width = this.w;
-	canvas.height = this.h;
-	context.putImageData(this.toImageData(context), 0, 0);
+	cvs.width = this.w;
+	cvs.height = this.h;
+	
+	var ctx = cvs.getContext('2d');
+	ctx.putImageData(this.toImageData(ctx), 0, 0);
 };
 
 /* get RGBA image data from the passed image object */

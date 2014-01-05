@@ -188,12 +188,14 @@ footer {
 }
 
 .post ul, .post ol {
+    font-size: 14px;
     margin-left: 1.35em;
 }
 
 .post code {
     text-indent: 0;
     font-family: 'courier';
+    font-size: 14px;
     color: black;
     border: 1px solid #ddd;
     background-color: #eef;
