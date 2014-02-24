@@ -48,7 +48,10 @@
     <h2>JavaScript Image Processing (2) - The Image Class</h2>
     <p class="meta">05 Jan 2014</p>
     <div class="post">
-        <p>Images plays a central role in the image processing webapps, and there is no doubt we need a good design of an image class to facilitate our processing tasks.</p>
+        <p>The next essential thing we need for the image processing webapp is <em>the image class</em>. We need a handy class
+to facilitate all kinds of operations we are going to apply on the images.</p>
+
+<p>First and as always, the constructor. Nothing special, just specify the width and height, and maybe pass in the pixel map too.</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="kd">function</span> <span class="nx">RGBAImage</span><span class="p">(</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span>
 <span class="p">{</span>
@@ -58,8 +61,12 @@
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">w</span><span class="o">*</span><span class="nx">h</span><span class="o">*</span><span class="mi">4</span><span class="p">);</span>  
     <span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>  
 <span class="p">}</span>
+</code></pre></div>
 
-<span class="c1">// get a pixel from the image</span>
+<p>The most basic operation to alter an image is to do it pixel wise, and we need a way to access the pixels in the image.
+Here we go, the getter and setter.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// get a pixel from the image</span>
 <span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getPixel</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">idx</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span> <span class="o">+</span> <span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">;</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span>
@@ -70,28 +77,6 @@
     <span class="p">);</span>
 <span class="p">};</span>
 
-<span class="c1">// bilinear sample of the image</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sample</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">ty</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">dy</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
-
-    <span class="kd">var</span> <span class="nx">lx</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">rx</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-
-    <span class="kd">var</span> <span class="nx">fx</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">-</span> <span class="nx">lx</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">fy</span> <span class="o">=</span> <span class="nx">y</span> <span class="o">-</span> <span class="nx">ty</span><span class="p">;</span>
-
-    <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">lx</span><span class="p">,</span> <span class="nx">ty</span><span class="p">).</span><span class="nx">mul</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="nx">fy</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nx">fx</span><span class="p">))</span>
-        <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">lx</span><span class="p">,</span> <span class="nx">dy</span><span class="p">).</span><span class="nx">mul</span><span class="p">(</span><span class="nx">fy</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nx">fx</span><span class="p">)))</span>
-        <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">rx</span><span class="p">,</span> <span class="nx">ty</span><span class="p">).</span><span class="nx">mul</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="nx">fy</span><span class="p">)</span> <span class="o">*</span> <span class="nx">fx</span><span class="p">))</span>
-        <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">rx</span><span class="p">,</span> <span class="nx">dy</span><span class="p">).</span><span class="nx">mul</span><span class="p">(</span><span class="nx">fy</span> <span class="o">*</span> <span class="nx">fx</span><span class="p">));</span>
-
-    <span class="nx">c</span><span class="p">.</span><span class="nx">clamp</span><span class="p">();</span>
-
-    <span class="k">return</span> <span class="nx">c</span><span class="p">;</span>
-<span class="p">};</span>
-
 <span class="c1">// set a pixel value in the image</span>
 <span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">setPixel</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">idx</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span> <span class="o">+</span> <span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">;</span>
@@ -100,10 +85,49 @@
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
 <span class="p">};</span>
+</code></pre></div>
 
-<span class="c1">// utility function</span>
-<span class="c1">// per-pixel operation</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">apply</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">f</span> <span class="p">)</span> <span class="p">{</span>
+<p>For many operations, accessing single pixel does not meet our requirement. We probably need to go to sub-pixel level.
+Bilinear sampling allows us to obtain image data on subpixel level. Suppose we need to get the color information at position
+$(x, y)$, where $x$ and $y$ are floating point numbers. We are not going to hit exactly on a single pixel, but somewhere among
+4 adjacent pixels. Apparently the color we get should be a combination of the 4 neighboring pixels, and the color should be
+determined by the spatial relationship between the position and the 4 pixels. The closer the position is to a pixel, the closer should
+the color be to that pixel. This can be achieved with bilinear sampling - linearly interpolating the pixel value in both $x$ and $y$
+directions. Suppose the 4 neighbor pixels are $(x0, y0)$, $(x1, y0)$, $(x0, y1)$ and $(x1, y1)$ (where$x1=x0+1,y1=y0+1$), the color at $(x, y)$ is given by:
+$$c(x,y) = (1-r)(1-t)\times c(x0,y0) + r(1-t)\times c(x1,y0) + (1-r)t\times c(x0,y1) + rt\times c(x1,y1)$$
+Here $r$ and $t$ are interpolation weights given by:
+$$r = x - x0$$
+and
+$$t = y - y0$$</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// bilinear sample of the image</span>
+<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sample</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y0</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">y1</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">x0</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">x1</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">fx</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">fy</span> <span class="o">=</span> <span class="nx">y</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">x0</span><span class="p">,</span> <span class="nx">y0</span><span class="p">).</span><span class="nx">mul</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="nx">fy</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nx">fx</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">x0</span><span class="p">,</span> <span class="nx">y1</span><span class="p">).</span><span class="nx">mul</span><span class="p">(</span><span class="nx">fy</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nx">fx</span><span class="p">)))</span>
+        <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">y0</span><span class="p">).</span><span class="nx">mul</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="nx">fy</span><span class="p">)</span> <span class="o">*</span> <span class="nx">fx</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">).</span><span class="nx">mul</span><span class="p">(</span><span class="nx">fy</span> <span class="o">*</span> <span class="nx">fx</span><span class="p">));</span>
+
+    <span class="nx">c</span><span class="p">.</span><span class="nx">clamp</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nx">c</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>With the functions we have so far, we are ready to perform per-pixel operation with the following functions. The first
+one, <em>apply</em>, alters every single pixel in the image and stores the result back to the source image. The operation is
+unspecified - it is passed in as an argument which produce a new color given an input color.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">apply</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">f</span> <span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">y</span><span class="o">&lt;</span><span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span><span class="nx">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">x</span><span class="o">&lt;</span><span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span><span class="nx">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">setPixel</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">f</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getPixel</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)));</span>
@@ -111,10 +135,12 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 <span class="p">};</span>
+</code></pre></div>
 
-<span class="c1">// utility function</span>
-<span class="c1">// per-pixel operation</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">f</span> <span class="p">)</span> <span class="p">{</span>
+<p>The <em>map</em> function is very similar except the result is stored in a new image. It is also optimized a little bit to improve
+performance.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">f</span> <span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">dst</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RGBAImage</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
@@ -131,8 +157,11 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">dst</span><span class="p">;</span>
 <span class="p">};</span>
+</code></pre></div>
 
-<span class="c1">// utility function</span>
+<p>Other utility functions are the resizing function and rendering related functions.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// utility function</span>
 <span class="c1">// resize image</span>
 <span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">iw</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">,</span> <span class="nx">ih</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
@@ -165,8 +194,9 @@
     <span class="p">}</span>
     <span class="k">else</span> <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 <span class="p">};</span>
+</code></pre></div>
 
-<span class="c1">// for web-gl</span>
+<div class="highlight"><pre><code class="javascript"><span class="c1">// for web-gl</span>
 <span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">uploadTexture</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">texId</span> <span class="p">)</span>
 <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span>
