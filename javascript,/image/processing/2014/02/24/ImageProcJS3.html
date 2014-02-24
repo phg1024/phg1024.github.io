@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>JavaScript Image Processing (3) - Brightness/Contrast Adjustment</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        </script>
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="/lib/jquery-1.10.2.min.js"></script>
+
+        <!-- My own script -->
+        <script type="text/javascript" src="/js/phgscript.js"></script>
+    </head>
+    <body>
+        <div id="main">
+	        <header>
+	            <h1 class="title"><a href="/">Peihong's Infinite Dimensional Space</a></h1>
+	        </header>
+			
+          <nav role="navigation">
+			  <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="/projects">projects</a></li>
+            <li><a href="/blog.html">blog</a></li>
+            <li><a href="/about.html">about</a></li>
+            <li><a href="/contact.html">contact</a></li>
+		      </ul>
+          </nav>
+
+          <div class="content">
+    <h2>JavaScript Image Processing (3) - Brightness/Contrast Adjustment</h2>
+    <p class="meta">24 Feb 2014</p>
+    <div class="post">
+        <p>With the image class we created in previous posts, we are finally ready to have some fun with <em>image processing</em>.
+As a first step, let&#39;s try something simple.</p>
+
+<p>Something simple huh? What can be simpler than linear transformation? I guess that&#39;s what we are targeting here:
+$$c1 = \alpha \times c0 + \beta$$
+Simple as it is, we can still do something to make our images more appealing. Say we have somehow miscalculate the light
+ and take a dark picture. A quick fix to it would be adjust the brightness of the image.</p>
+
+<div align="center">
+<img src="/images/underconstruction.jpg">&nbsp;<img src="/images/underconstruction.jpg">
+</div>
+
+<p>The brightness filter:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">&#39;brightness&#39;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;RGBAImage&#39;</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">dc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">c</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">nc</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">dc</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nx">nc</span><span class="p">.</span><span class="nx">clamp</span><span class="p">();</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="s2">&quot;Not a RGBA image!&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>The contrast filter:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;contrast&#39;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;RGBAImage&#39;</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">factor</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">((</span><span class="mi">128</span> <span class="o">+</span> <span class="nx">val</span><span class="p">)</span> <span class="o">/</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">c0</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">c0</span><span class="p">.</span><span class="nx">mulc</span><span class="p">(</span><span class="nx">factor</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">clamp</span><span class="p">();</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="s2">&quot;Not a RGBA image!&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>Putting them together:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;brightnesscontrast&#39;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">alpha</span><span class="p">,</span> <span class="nx">beta</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;RGBAImage&#39;</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">factor</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">((</span><span class="mi">128</span> <span class="o">+</span> <span class="nx">val</span><span class="p">)</span> <span class="o">/</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">dc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="nx">beta</span><span class="p">,</span> <span class="nx">beta</span><span class="p">,</span> <span class="nx">beta</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">c0</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">c0</span><span class="p">.</span><span class="nx">mulc</span><span class="p">(</span><span class="nx">factor</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="nx">dc</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">clamp</span><span class="p">();</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="s2">&quot;Not a RGBA image!&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+    </div>
+</div>
+
+
+          <footer>
+          &copy 2009-2013 &nbsp Peihong Guo &nbsp 
+   	    <script type="text/javascript">
+   		    writeEmailAddress();
+           </script>
+           </footer>
+
+       </div>
+    </body>
+</html>
