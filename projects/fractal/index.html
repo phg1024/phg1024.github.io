@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        </script>
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="/lib/jquery-1.10.2.min.js"></script>
+
+        <!-- My own script -->
+        <script type="text/javascript" src="/js/phgscript.js"></script>
+    </head>
+    <body>
+        <div id="main">
+	        <header>
+	            <h1 class="title"><a href="/">Peihong's Infinite Dimensional Space</a></h1>
+	        </header>
+			
+          <nav role="navigation">
+			  <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="/projects">projects</a></li>
+            <li><a href="/blog.html">blog</a></li>
+            <li><a href="/about.html">about</a></li>
+            <li><a href="/contact.html">contact</a></li>
+		      </ul>
+          </nav>
+
+          <link rel='stylesheet' type='text/css' href='../projects.css' media="screen, print, projection">
+<link rel='stylesheet' type='text/css' href='./style.css' media="screen, print, projection">
+
+    <script type='text/javascript' src='shape.js'></script>
+    <script type='text/javascript' src='image.js'></script>
+    <script type='text/javascript' src='utils.js'></script>
+    <script type='text/javascript' src='point.js'></script>
+    <script type='text/javascript' src='vector.js'></script>
+    <script type='text/javascript' src='glmatrix.js'></script>
+    <script type='text/javascript' src='FileSaver.js'></script>
+    <script type='text/javascript' src='canvas-toBlob.js'></script>
+
+    <script id="shader-fs" type="x-shader/x-fragment">
+    precision mediump float;
+    varying vec2 vTex;
+    uniform sampler2D sampler0;
+
+    uniform vec2 viewport;
+    uniform vec2 c;
+    uniform vec3 c1, c2, c3, c4;
+    uniform int iters;
+    uniform int setIdx;
+    uniform float THRES;
+
+    vec2 mul(vec2 z1, vec2 z2) {
+        return vec2(z1.x*z2.x-z1.y*z2.y, z1.x*z2.y+z1.y*z2.x);
+    }
+
+    float mag(vec2 z) {
+        return z.x*z.x+z.y*z.y;
+    }
+
+    int julia_iteration(vec2 inz) {
+        vec2 z = inz;
+        vec2 cval;
+        if( setIdx == 0 ) cval = c;
+        else cval = inz;
+
+        float val = mag(z);
+        int counter = 0;
+        const int maxiters = 65536;
+        for(int i=0; i<maxiters; i++)
+        {
+            z = mul(z, z) + cval;
+            val = mag(z);
+            if( val >= THRES || i > iters ) break;
+            counter++;
+        }
+
+        return counter;
+    }
+
+    vec4 iterpolate(int i) {
+        float t = float(i) / float(iters);
+        t = pow(t, 0.25);
+        vec3 color;
+        if( t >= 0.75 )
+            color = mix(c1, c2, pow((t - 0.75) / 0.25, 1.0));
+        else if( t >= 0.5 )
+            color = mix(c2, c3, pow((t - 0.5) / 0.25, 0.25));
+        else
+            color = mix(c3, c4, pow(t / 0.5, 2.0));
+
+        return vec4(color, 1.0);
+
+    }
+
+    void main(void) {
+        vec2 coord = gl_FragCoord.xy;
+        float x = (coord.x - viewport.x*0.5) * 3.5 / viewport.x;
+        float y = (coord.y - viewport.y*0.5) * 3.5 / viewport.y;
+        int iters = julia_iteration(vec2(x, y));
+        gl_FragColor = iterpolate(iters);
+    }
+    </script>
+
+    <script id="shader-vs" type="x-shader/x-vertex">
+    varying vec2 vTex;
+    attribute vec2 aVertex;
+    attribute vec2 aUV;
+
+    uniform mat4 uMVMatrix;
+    uniform mat4 uPMatrix;
+    void main(void) {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertex, 0.0, 1.0);
+        vTex = aUV;
+    }
+    </script>
+
+    <script type='text/javascript'>
+        var gl;
+        function initGL(canvas) {
+            try {
+                gl = canvas.getContext("experimental-webgl");
+                gl.viewportWidth = canvas.width;
+                gl.viewportHeight = canvas.height;
+            } catch (e) {
+            }
+            if (!gl) {
+                alert("Could not initialise WebGL, sorry :-(");
+            }
+        }
+
+        function getShader(gl, id) {
+            var shaderScript = document.getElementById(id);
+            if (!shaderScript) {
+                return null;
+            }
+
+            var str = "";
+            var k = shaderScript.firstChild;
+            while (k) {
+                if (k.nodeType == 3) {
+                    str += k.textContent;
+                }
+                k = k.nextSibling;
+            }
+
+            var shader;
+            if (shaderScript.type == "x-shader/x-fragment") {
+                shader = gl.createShader(gl.FRAGMENT_SHADER);
+            } else if (shaderScript.type == "x-shader/x-vertex") {
+                shader = gl.createShader(gl.VERTEX_SHADER);
+            } else {
+                return null;
+            }
+
+            gl.shaderSource(shader, str);
+            gl.compileShader(shader);
+
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                alert(gl.getShaderInfoLog(shader));
+                return null;
+            }
+
+            return shader;
+        }
+
+        var shaderProgram;
+
+        function initShaders() {
+            var fragmentShader = getShader(gl, "shader-fs");
+            var vertexShader = getShader(gl, "shader-vs");
+
+            shaderProgram = gl.createProgram();
+            gl.attachShader(shaderProgram, vertexShader);
+            gl.attachShader(shaderProgram, fragmentShader);
+            gl.linkProgram(shaderProgram);
+
+            if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+                alert("Could not initialise shaders");
+            }
+
+            gl.useProgram(shaderProgram);
+
+            shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
+            shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
+
+            shaderProgram.viewport = gl.getUniformLocation(shaderProgram, 'viewport');
+            shaderProgram.c = gl.getUniformLocation(shaderProgram, 'c');
+
+            shaderProgram.iters = gl.getUniformLocation(shaderProgram, 'iters');
+            shaderProgram.setIdx = gl.getUniformLocation(shaderProgram, 'setIdx');
+            shaderProgram.thres = gl.getUniformLocation(shaderProgram, 'THRES');
+
+            shaderProgram.c1 = gl.getUniformLocation(shaderProgram, 'c1');
+            shaderProgram.c2 = gl.getUniformLocation(shaderProgram, 'c2');
+            shaderProgram.c3 = gl.getUniformLocation(shaderProgram, 'c3');
+            shaderProgram.c4 = gl.getUniformLocation(shaderProgram, 'c4');
+
+            vloc = gl.getAttribLocation(shaderProgram, 'aVertex');
+            tloc = gl.getAttribLocation(shaderProgram, 'aUV');
+        }
+
+        var mvMatrix = mat4.create();
+        var pMatrix = mat4.create();
+
+        function setMatrixUniforms() {
+            gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);
+            gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
+        }
+
+        var vertexBuffer;
+        var texBuffer;
+        var tex;
+        var texData;
+        var vloc, tloc;
+
+        function initBuffers() {
+            vertexBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+            vertices = [
+                -1.0,  1.0,  -2.0,
+                -1.0,  -1.0,  -2.0,
+                1.0, -1.0,  -2.0,
+                1.0, 1.0,  -2.0
+            ];
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+            vertexBuffer.itemSize = 3;
+            vertexBuffer.numItems = 4;
+
+            texBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 1, 0, 0, 1, 0, 1, 1]), gl.STATIC_DRAW);
+            texBuffer.itemSize = 2;
+            texBuffer.numItems = 4;
+
+            var w = gl.viewportWidth;
+            var h = gl.viewportHeight;
+            texData = new Uint8Array(w * h * 4);
+            tex = gl.createTexture();
+        }
+
+
+        function interpolate(c1, c2, t)
+        {
+            var c = {};
+            c.r = c1.r * t + c2.r * (1-t);
+            c.g = c1.g * t + c2.g * (1-t);
+            c.b = c1.b * t + c2.b * (1-t);
+            c.a = c1.a * t + c2.a * (1-t);
+            return c;
+        }
+
+        function fillTexture() {
+            var w = gl.viewportWidth;
+            var h = gl.viewportHeight;
+
+            // upload the texture
+            uploadTexture(texData);
+        }
+
+        function uploadTexture( data )
+        {
+            var w = gl.viewportWidth;
+            var h = gl.viewportHeight;
+
+            gl.bindTexture(gl.TEXTURE_2D, tex);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texImage2D(gl.TEXTURE_2D, 0,  gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, data);
+        }
+
+        function drawScene() {
+            gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
+            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+            //fillTexture();
+
+            mat4.ortho(pMatrix, -1.0, 1.0, -1.0, 1.0, 0.1, 100.0);
+            mat4.identity(mvMatrix);
+            mat4.translate(mvMatrix, mvMatrix, [0.0, 0.0, -7.0]);
+
+            setMatrixUniforms();
+
+            gl.uniform2f(shaderProgram.viewport, gl.viewportWidth, gl.viewportHeight);
+
+            gl.uniform2f(shaderProgram.c, $('#cvalr').val(), $('#cvali').val());
+            gl.uniform1i(shaderProgram.iters, $('#maxiters').val());
+            gl.uniform1i(shaderProgram.setIdx, $('#fractalSelect').val());
+            gl.uniform1f(shaderProgram.thres, $('#blackout').val());
+
+            gl.uniform3f(shaderProgram.c1, 0, 0.0, 0);
+            gl.uniform3f(shaderProgram.c2, 0.05, 0.10, 0.05);
+            gl.uniform3f(shaderProgram.c3, 0.075, 0.15, 0.175);
+            gl.uniform3f(shaderProgram.c4, 0.65, 0.75, 1.0);
+
+            // render the texture buffer
+            gl.enableVertexAttribArray(vloc);
+            gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+            gl.vertexAttribPointer(vloc, 3, gl.FLOAT, false, 0, 0);
+
+            gl.enableVertexAttribArray(tloc);
+            gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+            gl.bindTexture(gl.TEXTURE_2D, tex);
+            gl.vertexAttribPointer(tloc, 2, gl.FLOAT, false, 0, 0);
+
+            gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
+        }
+
+        function webGLStart() {
+            var canvas = document.getElementById("lesson01-canvas");
+
+            initGL(canvas);
+            initShaders();
+            initBuffers();
+
+            gl.clearColor(0.0, 0.0, 0.0, 1.0);
+            gl.enable(gl.DEPTH_TEST);
+
+            drawScene();
+        }
+
+        window.onload = function() {
+            webGLStart();
+
+            $('#cvalr').change(function(){drawScene();});
+            $('#cvali').change(function(){drawScene();});
+            $('#maxiters').change(function(){drawScene()});
+            $('#fractalSelect').change(function(){drawScene()});
+            $('#blackout').change(function(){drawScene()});
+        }
+    </script>
+
+    <div class="content">
+        <h2>Julia Set</h2>
+        <div>
+            <canvas id="lesson01-canvas" style="border: none;background:black;" width="640" height="480"></canvas>
+        </div>
+        Fractal Shape:<select id="fractalSelect">
+            <option value="0">Julia</option>
+            <option value="1">Mandelbrot</option>
+        </select><br>
+        c: <input id='cvalr' type='textfield' size="4" value=-0.8>+<input id='cvali' type='textfield' size="4" value=0.16>i
+        Maximum iterations: <input id='maxiters' type='textfield' size="4" value=8192>
+        Blackout threshold: <input id='blackout' type='textfield' size="4" value=65536>
+        <br>
+        <button id='saveButton' onclick='saveImage()'>Save</button>
+    </div>
+
+
+          <footer>
+          &copy 2009-2013 &nbsp Peihong Guo &nbsp 
+   	    <script type="text/javascript">
+   		    writeEmailAddress();
+           </script>
+           </footer>
+
+       </div>
+    </body>
+</html>
