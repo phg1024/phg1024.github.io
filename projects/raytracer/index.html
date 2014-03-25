@@ -98,21 +98,35 @@
             var nthreads = document.getElementById('threads').value;
             finishedCount = 0;
 
-            progress = [];
-            for(var tid=0;tid<nthreads;tid++)
-                progress.push(0);
+            var nextTask = 0;
+            var blockSizeX = 32, blockSizeY = 32;
+            var ntasksX = Math.ceil(w/blockSizeX);
+            var ntasksY = Math.ceil(h/blockSizeY);
+            var ntasks = ntasksX * ntasksY;
 
-            var yStep = Math.floor(h / nthreads);
-            var y1 = 0, y2 = yStep;
-            for( var i=0;i<nthreads;i++ )
-            {
-                if( i === nthreads - 1 )
-                {
-                    y2 = h;
+            var tasks = [];
+
+            // create a list of tasks
+            var y1 = 0, y2 = blockSizeY;
+            for(var i=0;i<ntasksY;i++) {
+                var x1 = 0, x2 = blockSizeX;
+                for(var j=0;j<ntasksX;j++) {
+
+                    var task = {x1: x1, x2: x2, y1: y1, y2: y2};
+                    tasks.push(task);
+
+                    x1 = x1 + blockSizeX;
+                    x2 = (j==ntasksX-1)?w:x2 + blockSizeX;
                 }
+                y1 = y1 + blockSizeY;
+                y2 = (i==ntasksY-1)?h:y2 + blockSizeY;
+            }
 
+            progress = [];
+            var workers = [];
+            for(var tid=0;tid<nthreads;tid++) {
                 var worker = new Worker('renderWorker.js');
-
+                worker.idx = tid;
                 worker.onmessage = function (e) {
                     var data = e.data;
                     switch (data.msg) {
@@ -126,38 +140,60 @@
                         case 'image':
                         {
                             // assemble the image and show it
-                            updateCanvas( data.y1, data.y2, data.value );
-                            this.terminate();
+                            updateCanvas( data.x1, data.x2, data.y1, data.y2, data.value );
+                            finishedCount++;
+
+                            document.getElementById("progress").innerHTML='Rendering in progress: ' + (finishedCount/ntasks*100.0).toFixed(2) + '%';
+
+                            // get next available task and process it
+                            if( nextTask < ntasks ) {
+                                var task = tasks[nextTask];
+                                console.log('thread ' + this.idx + ' got task #' + nextTask);
+                                nextTask = nextTask+1;
+
+                                this.postMessage({
+                                    cmd: 'start', tidx: this.idx, w: w, h: h,
+                                    x1: task.x1, x2: task.x2, y1: task.y1, y2: task.y2,
+                                    nsamples: nsamples, maxDepth: maxDepth});
+                            }
+                            else {
+                                endT = new Date();
+                                var diff = endT - startT;
+                                console.log( diff + 'ms' );
+                                document.getElementById("progress").innerHTML = 'Finished in ' + diff + ' ms.';
+                            }
+
                             break;
                         }
                     }
                 };
-                worker.postMessage({cmd: 'start', tidx: i, w: w, h: h, y1: y1, y2: y2, nsamples: nsamples, maxDepth: maxDepth});
-
-                y1 = y1 + yStep;
-                y2 = y2 + yStep;
+                workers.push(worker);
+                progress.push(0);
             }
+
+            // start the workers
+            for(var i=0;i<nthreads;i++) {
+                var task = tasks[nextTask];
+                console.log('thread ' + i + ' got task #' + nextTask);
+                nextTask = nextTask+1;
+                workers[i].postMessage({
+                    cmd: 'start', tidx: i, w: w, h: h,
+                    x1: task.x1, x2: task.x2, y1: task.y1, y2: task.y2,
+                    nsamples: nsamples, maxDepth: maxDepth});
+            }
+
         }
 
-        function updateCanvas(y1, y2, buffer) {
+        function updateCanvas(x1, x2, y1, y2, buffer) {
             var w = canvas.width;
             var h = canvas.height;
 
             var img = new RGBAImage(0, 0);
-            img.w = w;
+            img.w = x2-x1;
             img.h = y2-y1;
+            //console.log(img.w + ', ' + img.h);
             img.data = new Uint8Array(buffer);
-            ctx.putImageData(img.toImageData(ctx), 0, h-y2, 0, 0, img.w, img.h);
-
-            finishedCount++;
-
-            if( finishedCount == document.getElementById("threads").value )
-            {
-                endT = new Date();
-                var diff = endT - startT;
-                console.log( diff + 'ms' );
-                document.getElementById("progress").innerHTML = 'Finished in ' + diff + ' ms.';
-            }
+            ctx.putImageData(img.toImageData(ctx), x1, h-y2, 0, 0, img.w, img.h);
         }
 
         function saveImage() {
@@ -181,8 +217,8 @@
         Width: <input id='width' type='textfield' size="4" value=480>&nbsp
         Height: <input id='height' type='textfield' size="4" value=320><br>
         Number of samples: <input id='nsamples' type='textfield' size="4" value=4>&nbsp
-        Maximum depth: <input id='maxdepth' type='textfield' size="4" value=2>
-        Threads: <input id='threads' type='textfield' size="4" value=2><br>
+        Maximum depth: <input id='maxdepth' type='textfield' size="4" value=8>
+        Threads: <input id='threads' type='textfield' size="4" value=8><br>
 
         <p id="progress"></p>
     </div>

@@ -1,21 +1,5 @@
 var PI = 3.14159265;
 
-Array.prototype.max = function() {
-    return Math.max.apply(null, this);
-};
-
-Array.prototype.min = function() {
-    return Math.min.apply(null, this);
-};
-
-Array.prototype.mean = function() {
-    return this.sum() / this.length;
-}
-
-Array.prototype.sum = function() {
-    return this.reduce(function(a, b) { return a + b });
-}
-
 function clamp(val, lower, upper)
 {
     if( val < lower ) return lower;
@@ -33,6 +17,28 @@ function quadraticSolve(a, b, c) {
     {
         return [(-b+Math.sqrt(delta))/(2.0*a), (-b-Math.sqrt(delta))/(2.0*a)];
     }
+}
+
+function reflect(n, v) {
+    return v.sub(n.mul(v.dot(n)).mul(2)).normalized();
+}
+
+function refract(n, v, ior) {
+    if( v.dot(n) < 0 )
+    // entering ray
+        return refract_impl(v, n, 1.0/ior);
+    else
+    // leaving ray
+        return refract_impl(v, n.mul(-1), ior);
+}
+
+function refract_impl(I, N, ior) {
+    var NdotI = N.dot(I);
+    var k = 1.0 - ior * ior * (1.0 - NdotI*NdotI);
+    if (k < 0.0)
+        return new Vector3(0, 0, 0);
+    else
+        return I.mul(ior).sub(N.mul(ior * NdotI + Math.sqrt(k))).normalized();
 }
 
 /*

@@ -18,14 +18,19 @@ function Color(r, g, b, a)
 }
 
 Color.RED = new Color(255, 0, 0, 255);
+Color.LIGHTRED = new Color(200, 48, 48, 255);
 Color.GREEN = new Color(0, 255, 0, 255);
+Color.LIGHTGREEN = new Color(48, 200, 48, 255);
 Color.BLUE = new Color(0, 0, 255, 255);
+Color.LIGHTBLUE = new Color(48, 48, 200, 255);
 Color.YELLOW = new Color(255, 255, 0, 255);
+Color.DARKYELLOW = new Color(200, 200, 0, 255);
 Color.PURPLE = new Color(255, 0, 255, 255);
 Color.CYAN = new Color(0, 255, 255, 255);
 Color.WHITE = new Color(255, 255, 255, 255);
 Color.BLACK = new Color(0, 0, 0, 255);
 Color.GRAY = new Color(128, 128, 128, 255);
+Color.LIGHTGRAY = new Color(200, 200, 200, 255);
 
 Color.prototype.setColor = function(that)
 {

@@ -45,7 +45,7 @@ function Sphere(center, radius, color, material)
 		{
             var THRES = 1e-6;
 			
-			var r1 = roots.min(), r2 = roots.max();
+			var r1 = Math.min(roots[0], roots[1]), r2 = Math.max(roots[0], roots[1]);
 			if( r2 < THRES ) {
 				return undefined;
 			}
@@ -73,16 +73,24 @@ function Sphere(center, radius, color, material)
 			// hit at t
             var hitPos = ray.p.add(ray.v.mul(t));
             var n = Vector3.fromPoint3(this.center, hitPos).normalized();
-            var rv = ray.v.sub(n.mul(ray.v.dot(n)).mul(2)).normalized();
+
+            // reflected
+            var rv;
+            if( this.material.refractive ) {
+                rv = refract(n, ray.v.normalized(), this.material.ior);
+            }
+            else {
+                rv = reflect(n, ray.v);
+            }
 
             // add lighting
-            var c = phongShading( this, eyepos, hitPos, n, scene );
+            var c = shading( this, eyepos, hitPos, n, scene );
 
             return {
                 hit: true, t: t,
                 p: hitPos, color: c,
                 newRay : {v:rv, p: hitPos, depth: ray.depth - 1},
-                fr: this.material.fr
+                ior: this.material.refractive ?0.7:this.material.ior
             };
         }
     };

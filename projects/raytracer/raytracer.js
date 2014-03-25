@@ -11,12 +11,12 @@ function Scene() {
     this.addObject = function(obj) {
         this.objects.push(obj);
     };
-    this.bgColor = Color.BLACK;
+    this.bgColor = Color.LIGHTGRAY;
 	
 	this.isLightVisible = function( pos, lidx ) {
 		var light = this.lights[lidx];
 		
-		var v = Vector3.fromPoint3(pos, light.pos);
+		var v = Vector3.fromPoint3(pos, light.pos.add(new Vector3(Math.random(), Math.random(), Math.random()).mul(light.radius)));
 		var tRef = v.norm();
 		var tMin = Number.MAX_VALUE;
 		v = v.normalized();
@@ -31,7 +31,7 @@ function Scene() {
         }
 		
 		return (tMin > tRef);
-	}
+	};
 
     this.intersect = function( ray, eyepos ) {
         if( ray.depth === 0 )
@@ -55,9 +55,9 @@ function Scene() {
             //console.log(hit);
             var recursiveHit = this.intersect( hit.newRay, eyepos );
             if( recursiveHit.hit )
-                hit.color = Color.interpolate(recursiveHit.color, hit.color, hit.fr);
+                hit.color = Color.interpolate(recursiveHit.color, hit.color, hit.ior);
             else
-                hit.color = Color.interpolate(this.bgColor, hit.color, hit.fr);
+                hit.color = Color.interpolate(this.bgColor, hit.color, hit.ior);
         }
         else
         {
@@ -125,7 +125,7 @@ function Canvas(center, u, v, scale, w, h) {
     }
 }
 
-function phongShading( obj, epos, pos, normal, scene )
+function shading( obj, epos, pos, normal, scene )
 {
     var shadeSum = new Color();
     var intSum = 0;
@@ -137,35 +137,30 @@ function phongShading( obj, epos, pos, normal, scene )
     for( var i=0;i<lights.length;i++ )
     {
 		// test if this light is visible from the point
-		var visible = scene.isLightVisible(pos, i);
-		
-		if( visible )
-		{
-			var V = Vector3.fromPoint3(pos, epos).normalized();
-			var L = Vector3.fromPoint3(pos, lights[i].pos);
-			var factor = 1.0 / L.normSquared();
-			L = L.normalized();
-			var N = normal.normalized();
-			var LdotN = L.dot(N);
-			var R = N.mul(LdotN).mul(2.0).sub(L);
+        var nshadowrays = 32;
+        var lightingCount = 0;
+        for(var j=0;j<nshadowrays;j++) {
+		    if( scene.isLightVisible(pos, i) ) lightingCount++;
+        }
 
-			var diff = Math.max(0, LdotN);
-			var spec = Math.pow(Math.max(0, R.dot(V)), lights[i].specFactor);
+        var visibleRatio = lightingCount / nshadowrays;
+        var V = Vector3.fromPoint3(pos, epos).normalized();
+        var L = Vector3.fromPoint3(pos, lights[i].pos);
+        var factor = 1.0 / L.normSquared();
+        L = L.normalized();
+        var N = normal.normalized();
+        var LdotN = L.dot(N);
+        var R = N.mul(LdotN).mul(2.0).sub(L);
 
-			var shade = lights[i].ambient.mul(Ka)
-			.add(lights[i].diffuse.mul(diff).mul(Kd))
-			.add(lights[i].specular.mul(spec).mul(Ks));
-			
-			shadeSum = shadeSum.add(shade.mul(lights[i].intensity));//.mul(factor));
-			intSum += lights[i].intensity;
-		}
-		else
-		{
-	        var shade = lights[i].ambient.mul(Ka);
-			
-	        shadeSum = shadeSum.add(shade.mul(lights[i].intensity));//.mul(factor));
-	        intSum += lights[i].intensity;
-		}
+        var diff = Math.max(0, LdotN);
+        var spec = Math.pow(Math.max(0, R.dot(V)), lights[i].specFactor);
+
+        var shade = lights[i].ambient.mul(Ka)
+            .add(lights[i].diffuse.mul(diff).mul(Kd).mul(visibleRatio))
+            .add(lights[i].specular.mul(spec).mul(Ks));
+
+        shadeSum = shadeSum.add(shade.mul(lights[i].intensity));//.mul(factor));
+        intSum += lights[i].intensity;
     }
 
     shadeSum.mul(1.0 / intSum);
