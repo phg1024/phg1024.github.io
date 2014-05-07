@@ -84,7 +84,7 @@
 
         float val = mag(z);
         int counter = 0;
-        const int maxiters = 65536;
+        const int maxiters = 32767;
         for(int i=0; i<maxiters; i++)
         {
             z = mul(z, z) + cval;
@@ -108,15 +108,14 @@
             color = mix(c3, c4, pow(t / 0.5, 2.0));
 
         return vec4(color, 1.0);
-
     }
 
     void main(void) {
         vec2 coord = gl_FragCoord.xy;
         float x = (coord.x - viewport.x*0.5) * 3.5 / viewport.x;
         float y = (coord.y - viewport.y*0.5) * 3.5 / viewport.y;
-        int iters = julia_iteration(vec2(x, y));
-        gl_FragColor = iterpolate(iters);
+        int its = julia_iteration(vec2(x, y));
+        gl_FragColor = iterpolate(its);
     }
     </script>
 
@@ -185,8 +184,12 @@
         var shaderProgram;
 
         function initShaders() {
-            var fragmentShader = getShader(gl, "shader-fs");
+            console.log('loading vertex shader ...');
             var vertexShader = getShader(gl, "shader-vs");
+            console.log('vertex shader loaded.');
+            console.log('loading fragment shader ...');
+            var fragmentShader = getShader(gl, "shader-fs");
+            console.log('fragment shader loaded.');
 
             shaderProgram = gl.createProgram();
             gl.attachShader(shaderProgram, vertexShader);
