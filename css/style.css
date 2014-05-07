@@ -14,11 +14,13 @@ ul {
 a {
     color: #ccc;
     text-decoration: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
 
 a:hover {
-    color: #ececec;
-    text-decoration: underline;
+    color: #fefefe;
+    text-decoration: none;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
 }
 
 #main {
@@ -37,7 +39,7 @@ header {
 }
 
 header a {
-    color: #444444;
+    color: #ffffff;
 }
 
 h1 {
@@ -224,4 +226,10 @@ td {
 
 .post pre.terminal code {
     background-color: #333;
+}
+
+.post .exampleimg {
+    width: 100%;
+    max-height: 100%;
+    min-height: 10%;
 }
