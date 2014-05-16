@@ -45,6 +45,14 @@
           </nav>
 
           <div class="content">
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/01/05/ImageProcJS2.html">Previous Post</a>
+        
+        
+        <a class="nextpost" href="/image/processing/2014/02/26/ImageProcJS4.html">Next Post</a>
+        
+    </p><br><br>
     <h2>JavaScript Image Processing (3) - Brightness/Contrast Adjustment</h2>
     <p class="meta">24 Feb 2014</p>
     <div class="post">
@@ -52,7 +60,7 @@
 As a first step, let&#39;s try something simple.</p>
 
 <p>Something simple huh? What can be simpler than linear transformation? I guess that&#39;s what we are targeting here:
-$$c1 = \alpha \times c0 + \beta$$
+$$c_1 = \alpha \times c_0 + \beta$$
 Simple as it is, we can still do something to make our images more appealing. Say we have somehow miscalculate the light
  and take a dark picture. A quick fix to it would be adjust the brightness of the image.</p>
 
@@ -94,7 +102,8 @@ in every pixel.</p>
 
 The contrast filter shares a similar idea, while the difference is, in terms of the linear transformation equation,
 $\alpha\ne1$ and $\beta=0$. It is in fact a scaling of the pixel values. To set a boundary of the scaling, we take an input
-of contrast amount $C$ ranging from -128 to 128 and compute $\beta$ with this value $$\beta = \max(\frac{128+C}{128}, 0)$$
+of contrast amount $C$ ranging from -128 to 128 and compute $\beta$ with this value
+$$\beta = \max\left(\frac{128+C}{128}, 0\right)$$
 
 <div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;contrast&#39;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
@@ -157,6 +166,50 @@ of contrast amount $C$ ranging from -128 to 128 and compute $\beta$ with this va
 </table>
 </div>
 
+    </div>
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/01/05/ImageProcJS2.html">Previous Post</a>
+        
+        
+        <a class="nextpost" href="/image/processing/2014/02/26/ImageProcJS4.html">Next Post</a>
+        
+    </p><br><br>
+    <div>
+        <h3>Related Posts</h3>
+        <div class="relatedposts">
+            
+            <li>
+                <a href="/image/processing/2014/02/26/ImageProcJS4.html">
+                    JavaScript Image Processing (4) - Histogram Equalization
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/01/05/ImageProcJS2.html">
+                    JavaScript Image Processing (2) - The Image Class
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/01/04/ImageProcJS1.html">
+                    JavaScript Image Processing (1) - Getting Started
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/Migrating.html">
+                    Migrating to github.io
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/first.html">
+                    First
+                </a>
+            </li>
+            
+        </div>
     </div>
 </div>
 

@@ -45,6 +45,14 @@
           </nav>
 
           <div class="content">
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/01/04/ImageProcJS1.html">Previous Post</a>
+        
+        
+        <a class="nextpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Next Post</a>
+        
+    </p><br><br>
     <h2>JavaScript Image Processing (2) - The Image Class</h2>
     <p class="meta">05 Jan 2014</p>
     <div class="post">
@@ -93,12 +101,12 @@ $(x, y)$, where $x$ and $y$ are floating point numbers. We are not going to hit 
 4 adjacent pixels. Apparently the color we get should be a combination of the 4 neighboring pixels, and the color should be
 determined by the spatial relationship between the position and the 4 pixels. The closer the position is to a pixel, the closer should
 the color be to that pixel. This can be achieved with bilinear sampling - linearly interpolating the pixel value in both $x$ and $y$
-directions. Suppose the 4 neighbor pixels are $(x0, y0)$, $(x1, y0)$, $(x0, y1)$ and $(x1, y1)$ (where$x1=x0+1,y1=y0+1$), the color at $(x, y)$ is given by:
-$$c(x,y) = (1-r)(1-t)\times c(x0,y0) + r(1-t)\times c(x1,y0) + (1-r)t\times c(x0,y1) + rt\times c(x1,y1)$$
+directions. Suppose the 4 neighbor pixels are $(x_0, y_0)$, $(x_1, y_0)$, $(x_0, y_1)$ and $(x_1, y_1)$ (where$x_1=x_0+1,y_1=y_0+1$), the color at $(x, y)$ is given by:
+$$c(x,y) = (1-r)(1-t)\times c(x_0,y_0) + r(1-t)\times c(x_1,y_0) + (1-r)t\times c(x_0,y_1) + rt\times c(x_1,y_1)$$
 Here $r$ and $t$ are interpolation weights given by:
-$$r = x - x0$$
+$$r = x - x_0$$
 and
-$$t = y - y0$$</p>
+$$t = y - y_0$$</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="c1">// bilinear sample of the image</span>
 <span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sample</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
@@ -249,6 +257,50 @@ performance.</p>
 <p>With the image class established, we can now create <a href="/projects/imageprocjs/demo_showimage.html">a simple webpage</a> that loads an image from the server and displays
 it.</p>
 
+    </div>
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/01/04/ImageProcJS1.html">Previous Post</a>
+        
+        
+        <a class="nextpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Next Post</a>
+        
+    </p><br><br>
+    <div>
+        <h3>Related Posts</h3>
+        <div class="relatedposts">
+            
+            <li>
+                <a href="/image/processing/2014/02/26/ImageProcJS4.html">
+                    JavaScript Image Processing (4) - Histogram Equalization
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/02/24/ImageProcJS3.html">
+                    JavaScript Image Processing (3) - Brightness/Contrast Adjustment
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/01/04/ImageProcJS1.html">
+                    JavaScript Image Processing (1) - Getting Started
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/Migrating.html">
+                    Migrating to github.io
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/first.html">
+                    First
+                </a>
+            </li>
+            
+        </div>
     </div>
 </div>
 

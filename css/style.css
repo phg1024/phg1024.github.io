@@ -233,3 +233,24 @@ td {
     max-height: 100%;
     min-height: 10%;
 }
+
+/* related posts */
+.relatedposts {
+    display: block;
+    position: relative;
+    left: 2.5%;
+    width: 95%;
+    font-size: 14px;
+}
+
+.nextpost {
+    position: relative;
+    height: 32px;
+    float: right;
+}
+
+.prevpost {
+    position: relative;
+    height: 32px;
+    float: left;
+}

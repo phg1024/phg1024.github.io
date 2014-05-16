@@ -8,8 +8,8 @@ var HistogramTool = function() {
 
     // histogram
     var hist = [];
-
-    var svg, area;
+    var chist = [];
+    var svg, area, curve;
 
     this.bindImage = function( I ) {
         switch( mode ) {
@@ -35,21 +35,26 @@ var HistogramTool = function() {
         switch( mode ) {
             case 'brightness': {
                 hist = [];
+                var cumu = [];
                 var sum = 0;
                 var maxHist = 0;
                 for(var i=0;i< h.length;i++) {
                     hist[i] = {lev: i, cnt: h[i]};
-                    sum += h[i];
+                    sum = sum + h[i];
+                    chist[i] = {lev: i, cnt: sum};
                     maxHist = Math.max(maxHist, h[i]);
                 }
         
                 // normalize
                 var factor = 0.9 / maxHist;
+                var factor2 = 1.0 / sum;
                 for(var i=0;i< h.length;i++) {
                     hist[i].cnt *= factor;
+                    chist[i].cnt *= factor2;
                 }
         
-                console.log(hist);                
+                console.log(hist);
+                console.log(chist);
                 break;
             }
             case 'rgb': {
@@ -97,9 +102,13 @@ var HistogramTool = function() {
                 break;
             }
             case 'brightness': {
-                svg.selectAll("path").datum(hist)
+                svg.select("#hist").datum(hist)
                     .attr("class", "area")
-                    .attr("d", area);                
+                    .attr("d", area);
+
+                svg.select("#cumucurve").datum(chist)
+                    .attr("class", "curve")
+                    .attr("d", curve);
                 break;
             }
         }
@@ -153,10 +162,26 @@ var HistogramTool = function() {
                     .x(function(d) { return x(d.lev); })
                     .y0(height)
                     .y1(function(d) { return y(d.cnt); });
+
+                curve = d3.svg.line()
+                    .x(function(d) { return x(d.lev); })
+                    .y(function(d) { return y(d.cnt); })
+                    .interpolate('linear');
+
                 svg.append("path")
                     .datum(hist)
+                    .attr("id", 'hist')
                     .attr("class", "area")
                     .attr("d", area);
+
+                svg.append("path")
+                    .datum(chist)
+                    .attr("id", 'cumucurve')
+                    .attr("class", "curve")
+                    .attr("d", curve)
+                    .attr("stroke", "red")
+                    .attr("stroke-width", 2)
+                    .attr("fill", "none");
                 break;
             }
             case 'rgb': {

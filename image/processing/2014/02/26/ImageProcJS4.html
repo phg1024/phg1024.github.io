@@ -45,12 +45,186 @@
           </nav>
 
           <div class="content">
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Previous Post</a>
+        
+        
+    </p><br><br>
     <h2>JavaScript Image Processing (4) - Histogram Equalization</h2>
     <p class="meta">26 Feb 2014</p>
     <div class="post">
         <p>It is time we work on something more sophisticated. Well, not actually that sophisticated, but complex enough compared
-to what we have done so far. Histogram equalization.</p>
+to what we have done so far. Histogram equalization. It is a commonly used technique to save many many many poorly
+exposed images.</p>
 
+<h3>Histogram and Cumulative Distribution Function</h3>
+
+<p>First of all, what exactly is a <a href="http://en.wikipedia.org/wiki/Histogram">histogram</a>? Basically it is a statistics
+telling us about the distribution of the pixels values in a given image - how many pixels are bright, how many are dark, etc.</p>
+
+<p>Let&#39;s consider a grayscale image for the moment. We know that there are typically 256 gray scales (i.e. pixel values) in such images. It
+is not very hard to come up with a histogram for such kind of image - we can simply count the number of pixels having different
+pixels values. Say we find $n_0$ pixels have gray scale 0, $n_1$ pixels have value 1, ..., $n_i$ pixels have value $i$, and so on and so on.
+After counting the pixels of all 256 possible gray scales, we get ourselves a histogram! Easy huh?</p>
+
+<p>We can also think of the creation of a histogram as a classification of pixels according to their values, and the histogram
+is nothing more than a table recording the number of the pixels in each of the 256 groups (or more commonly, &#39;bins&#39;). Therefore,
+a histogram provides a description of the pixel value distribution in an image - how many pixels are bright, how many pixels are
+dark, and how many mid-tone pixels, etc. This is very useful for us to design image processing algorithms because we
+can use it as a compact representation of an image (think about 1 million pixels versus 256 numbers!). The downside is we
+can not get much out of a histogram if we have a complex problem to solve, since we only have a very high level (and also very vague)
+summary of brightness distribution over an image.</p>
+
+<p>Just a side note, we don&#39;t necessarily have to use 256 bins for the counting - any number of bins, as long as it is sufficient for the
+application at hand, can be used. One typical case using a very small number of bins for histogram computation is color
+reduction, where we try to reduce the number of colors in images while maintaining their original visual appearance as much as possible.</p>
+
+<p>For color images, say RGB images, things are just as straightforward. The only difference is that we have 3 channels, i.e. R, G, B channels,
+instead of just a single brightness channel. So what? We can just create 3 histograms for these channels and we are done! Of
+course, sometimes we are only interested in the brightness of an image. In those cases, we can convert the color image to
+  a grayscale one first, and compute the histogram for the grayscale image. How do we convert a color image to a grayscale one?
+Simple! We can use a rough estimation with <a href="http://en.wikipedia.org/wiki/Grayscale">the equation</a> below:
+$$ l = 0.299 \times r + 0.587 \times g + 0.114 \times b $$</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">grayscale</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span>
+            <span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">lev</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">r</span> <span class="o">*</span> <span class="mf">0.299</span> <span class="o">+</span> <span class="nx">g</span> <span class="o">*</span> <span class="mf">0.587</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">*</span> <span class="mf">0.114</span><span class="p">);</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="nx">lev</span><span class="p">,</span> <span class="nx">lev</span><span class="p">,</span> <span class="nx">lev</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+
+<div align="center">
+<table>
+<tr>
+<td><img class="post exampleimg" src="/projects/imageprocjs/seal.jpg"></td>
+<td><img class="post exampleimg" src="/projects/imageprocjs/images/grayscale.png"></td>
+</tr>
+<tr>
+<td>Source Image</td><td>Converted Grayscale Image</td>
+</tr>
+</table>
+</div>
+
+<p>A conversion using the above equation works just fine, and we are ready to get compute a histogram for any image!
+The computation of histogram is pretty straightforward:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// build histogram of specified image region</span>
+<span class="kd">function</span> <span class="nx">histogram</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">num_bins</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">num_bins</span> <span class="o">==</span> <span class="kc">undefined</span> <span class="p">)</span>
+        <span class="nx">num_bins</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">h</span><span class="p">,</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">hist</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">val</span><span class="p">;</span>
+
+    <span class="c1">// initialize the histogram</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">num_bins</span><span class="p">;</span><span class="o">++</span><span class="nx">i</span><span class="p">)</span>
+        <span class="nx">hist</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// loop over every single pixel</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">y</span><span class="o">=</span><span class="nx">y1</span><span class="p">,</span><span class="nx">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">y</span><span class="o">&lt;</span><span class="nx">y2</span><span class="p">;</span><span class="o">++</span><span class="nx">y</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="nx">x1</span><span class="p">;</span><span class="nx">x</span><span class="o">&lt;</span><span class="nx">x2</span><span class="p">;</span><span class="o">++</span><span class="nx">x</span><span class="p">,</span><span class="nx">idx</span><span class="o">+=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// figure out which bin it is in</span>
+            <span class="nx">val</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">img</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">num_bins</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+            <span class="o">++</span><span class="nx">hist</span><span class="p">[</span><span class="nx">val</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">hist</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div align="center">
+<table>
+<tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/hist0.png"></td></tr>
+<tr><td>Seal and its histogram</td></tr>
+</table>
+</div>
+
+<p>Yes, the jagged blue area is the histogram. The horizontal axis represents the pixel values, and the vertical axis is
+ their frequency. Not so shabby, right? You may ask what on earth is the red curve in the plot, we
+ will get to that in a bit.</p>
+
+<p>Let&#39;s first formalize the definition of the histogram. The histogram can be viewed as a function of pixel values $h(p): R \to R$.
+This function maps a given pixel value $p$ to its frequency, $\frac{n(p)}{N}$, in the entire image. Here we use
+$n(p)$ for as the number of pixels having a brightness value $p$, and $N$ as the total number of pixels in an image. Since
+the number of pixels in an image is a normalizing factor, we can also just use $n(p)$ as the frequency as well.</p>
+
+<p>Now what exactly is the red curve? It is the so-call <a href="http://en.wikipedia.org/wiki/Cumulative_distribution_function">cumulative distribution function</a>(CDF).
+Don&#39;t be scared away by its long name, it is just a partial sum of the histogram we just build:
+$$c(p) = \sum_{i=0}^p n(i)$$
+Yes, $c(p)$ means the number of pixels with a value smaller or equal than $p$. So $c(0)$ means the number of the pure black (0, 0, 0) pixels,
+ while $c(255)$ equals to the total number of pixels. If we are using a normalized version of histogram, we will have</p>
+
+<p>$$c(p) = \frac{1}{N} \sum_{i=0}^p n(i)$$</p>
+
+<p>In this case, we have $c(256)=1$. Now let&#39;s take a look at the histogram we just build. For display purpose the histogram
+ is scaled slightly differently, but the CDF is normalized with the total pixel number. The vertical axis has a range of [0, 1],
+ while the horizontal axis has a range of [0, 255]. Things looks just about right.</p>
+
+<h3>Histogram Equalization</h3>
+
+<div align="center">
+<table>
+<tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/histL0.png"></td></tr>
+<tr><td>Source Image</td></tr>
+<tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/histL1.png"></td></tr>
+<tr><td>Histogram Equalized Image</td></tr>
+</table>
+</div>
+
+    </div>
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Previous Post</a>
+        
+        
+    </p><br><br>
+    <div>
+        <h3>Related Posts</h3>
+        <div class="relatedposts">
+            
+            <li>
+                <a href="/image/processing/2014/02/24/ImageProcJS3.html">
+                    JavaScript Image Processing (3) - Brightness/Contrast Adjustment
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/01/05/ImageProcJS2.html">
+                    JavaScript Image Processing (2) - The Image Class
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/01/04/ImageProcJS1.html">
+                    JavaScript Image Processing (1) - Getting Started
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/Migrating.html">
+                    Migrating to github.io
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/first.html">
+                    First
+                </a>
+            </li>
+            
+        </div>
     </div>
 </div>
 

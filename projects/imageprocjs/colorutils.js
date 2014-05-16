@@ -129,19 +129,22 @@ function histogram(img, x1, y1, x2, y2, num_bins)
     if( num_bins == undefined )
         num_bins = 256;
 
-    var h = img.h;
-    var w = img.w;
+    var h = img.h, w = img.w;
     var hist = [];
-    for(var i=0;i<num_bins;++i)
+    var i, x, y, idx, val;
+
+    // initialize the histogram
+    for(i=0;i<num_bins;++i)
         hist[i] = 0;
 
-    for(var y=y1;y<y2;++y)
+    // loop over every single pixel
+    for(y=y1,idx=0;y<y2;++y)
     {
-        for(var x=x1;x<x2;++x)
+        for(x=x1;x<x2;++x,idx+=4)
         {
-            var idx = (y * w + x) * 4;
-            var val = Math.floor((img.data[idx] / 255.0) * (num_bins-1));
-            hist[val]++;
+            // figure out which bin it is in
+            val = Math.floor((img.data[idx] / 255.0) * (num_bins-1));
+            ++hist[val];
         }
     }
 

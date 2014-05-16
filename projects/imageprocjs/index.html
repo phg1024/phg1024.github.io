@@ -75,15 +75,15 @@
             context = canvas.getContext('2d');
             curvetool = new CurveTool();
             histtool = new HistogramTool();
-            histtool.init('#div_curvetool', 'rgb');
-            curvetool.init('#div_curvetool');
+            histtool.init('#div_curvetool', 'brightness');
+            //curvetool.init('#div_curvetool');
 
             var transformImage = function( func ) {
                 var I = loader.result;
                 benchmark(function(){I = func( I );});
                 I.render(canvas);
                 histtool.bindImage( I );
-            }
+            };
 
             $(document).on("curvechanged", function(evt) {
                 console.log('curve changed.');
