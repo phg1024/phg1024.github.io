@@ -22,7 +22,6 @@
             ga('create', 'UA-51049436-1', 'phg1024.github.io');
             ga('require', 'displayfeatures');
             ga('send', 'pageview');
-
         </script>
 
         <!-- MathJax -->
@@ -42,6 +41,16 @@
         <script type="text/javascript" src="/js/phgscript.js"></script>
     </head>
     <body>
+        <!-- Facebook like button -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
         <div id="main">
 	        <header>
 	            <h1 class="title"><a href="/">Peihong's Infinite Dimensional Space</a></h1>
@@ -61,11 +70,11 @@
     <p>
         
         
-        <a class="nextpost" href="/test/2013/12/04/Migrating.html">Next Post</a>
+        <a class="nextpost" href="/test/2013/12/03/Migrating.html">Next Post</a>
         
     </p><br><br>
     <h2>First</h2>
-    <p class="meta">04 Dec 2013</p>
+    <p class="meta">03 Dec 2013</p>
     <div class="post">
         <p>All right, this is the VERY FIRST post! Let&#39;s try something out:</p>
 
@@ -74,8 +83,7 @@
 <div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">fac</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">n</span> <span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span> <span class="nx">n</span> <span class="o">===</span> <span class="mi">1</span> <span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
     <span class="k">else</span> <span class="k">return</span> <span class="nx">fac</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">n</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 <p>Equation:
 $$E(\mathbf R, \mathbf t, \mathbf w) = \sum_{i=1}^N||\mathbf R\mathcal C\times\mathbf w^{(i)} + \mathbf t - \mathbf y^{(i)}||^2$$</p>
@@ -83,12 +91,21 @@ $$E(\mathbf R, \mathbf t, \mathbf w) = \sum_{i=1}^N||\mathbf R\mathcal C\times\m
 <p>That&#39;s it. The blog works like a charm!</p>
 
     </div>
-    <p>
-        
-        
-        <a class="nextpost" href="/test/2013/12/04/Migrating.html">Next Post</a>
-        
-    </p><br><br>
+    <div class="plugins">
+    <div class="social">
+        <span class="twitter">
+            <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://phg1024.github.io/test/2013/12/03/first.html">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </span>
+        <span class="google">
+            <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+            <g:plusone size="medium" href="http://phg1024.github.io/test/2013/12/03/first.html"></g:plusone>
+        </span>
+        <span class="Facebook">
+            <iframe src="https://www.facebook.com/plugins/like.php?href=http://phg1024.github.io/test/2013/12/03/first.html&amp;show_faces=false&amp;layout=button_count" scrolling="no" frameborder="0" style="height: 21px; width: 100px" allowTransparency="true"></iframe>
+        </span>
+    </div>
+    <!-- DisQus support -->
     <div>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
@@ -105,6 +122,13 @@ $$E(\mathbf R, \mathbf t, \mathbf w) = \sum_{i=1}^N||\mathbf R\mathcal C\times\m
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
+    </div>
+    <p>
+        
+        
+        <a class="nextpost" href="/test/2013/12/03/Migrating.html">Next Post</a>
+        
+    </p><br><br>
     <div>
         <h3>Related Posts</h3>
         <div class="relatedposts">
@@ -134,7 +158,7 @@ $$E(\mathbf R, \mathbf t, \mathbf w) = \sum_{i=1}^N||\mathbf R\mathcal C\times\m
             </li>
             
             <li>
-                <a href="/test/2013/12/04/Migrating.html">
+                <a href="/test/2013/12/03/Migrating.html">
                     Migrating to github.io
                 </a>
             </li>

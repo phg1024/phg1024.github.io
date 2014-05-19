@@ -22,7 +22,6 @@
             ga('create', 'UA-51049436-1', 'phg1024.github.io');
             ga('require', 'displayfeatures');
             ga('send', 'pageview');
-
         </script>
 
         <!-- MathJax -->
@@ -42,6 +41,16 @@
         <script type="text/javascript" src="/js/phgscript.js"></script>
     </head>
     <body>
+        <!-- Facebook like button -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
         <div id="main">
 	        <header>
 	            <h1 class="title"><a href="/">Peihong's Infinite Dimensional Space</a></h1>
@@ -60,7 +69,7 @@
           <div class="content">
     <p>
         
-        <a class="prevpost" href="/test/2013/12/04/Migrating.html">Previous Post</a>
+        <a class="prevpost" href="/test/2013/12/03/Migrating.html">Previous Post</a>
         
         
         <a class="nextpost" href="/image/processing/2014/01/05/ImageProcJS2.html">Next Post</a>
@@ -111,8 +120,7 @@
     <span class="p">}</span>
     <span class="k">else</span>
         <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
 <p>These two are constructors. Basic stuff.</p>
 
@@ -158,8 +166,7 @@
 <span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">divc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">invC</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="nx">c</span><span class="p">;</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">mulc</span><span class="p">(</span><span class="nx">invC</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
 <p>We will also use some other utility functions:</p>
 
@@ -195,8 +202,7 @@
     <span class="kd">var</span> <span class="nx">db</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">-</span> <span class="nx">that</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="nx">dr</span> <span class="o">*</span> <span class="nx">dr</span> <span class="o">+</span> <span class="nx">dg</span> <span class="o">*</span> <span class="nx">dg</span> <span class="o">+</span> <span class="nx">db</span> <span class="o">*</span> <span class="nx">db</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
 <p>The last thing is several special constructors, including interpolation, random color and frequently used colors:</p>
 
@@ -226,20 +232,26 @@
 <span class="nx">Color</span><span class="p">.</span><span class="nx">CYAN</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
 <span class="nx">Color</span><span class="p">.</span><span class="nx">WHITE</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
 <span class="nx">Color</span><span class="p">.</span><span class="nx">BLACK</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<span class="nx">Color</span><span class="p">.</span><span class="nx">GRAY</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-</code></pre></div>
+<span class="nx">Color</span><span class="p">.</span><span class="nx">GRAY</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span></code></pre></div>
 
 <p>What&#39;s next? The image class! We&#39;ll get to that in the <a href="/image/processing/2014/01/05/ImageProcJS2.html">next post</a>.</p>
 
     </div>
-    <p>
-        
-        <a class="prevpost" href="/test/2013/12/04/Migrating.html">Previous Post</a>
-        
-        
-        <a class="nextpost" href="/image/processing/2014/01/05/ImageProcJS2.html">Next Post</a>
-        
-    </p><br><br>
+    <div class="plugins">
+    <div class="social">
+        <span class="twitter">
+            <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://phg1024.github.io/image/processing/2014/01/04/ImageProcJS1.html">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </span>
+        <span class="google">
+            <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+            <g:plusone size="medium" href="http://phg1024.github.io/image/processing/2014/01/04/ImageProcJS1.html"></g:plusone>
+        </span>
+        <span class="Facebook">
+            <iframe src="https://www.facebook.com/plugins/like.php?href=http://phg1024.github.io/image/processing/2014/01/04/ImageProcJS1.html&amp;show_faces=false&amp;layout=button_count" scrolling="no" frameborder="0" style="height: 21px; width: 100px" allowTransparency="true"></iframe>
+        </span>
+    </div>
+    <!-- DisQus support -->
     <div>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
@@ -256,6 +268,15 @@
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
+    </div>
+    <p>
+        
+        <a class="prevpost" href="/test/2013/12/03/Migrating.html">Previous Post</a>
+        
+        
+        <a class="nextpost" href="/image/processing/2014/01/05/ImageProcJS2.html">Next Post</a>
+        
+    </p><br><br>
     <div>
         <h3>Related Posts</h3>
         <div class="relatedposts">
@@ -279,13 +300,13 @@
             </li>
             
             <li>
-                <a href="/test/2013/12/04/Migrating.html">
+                <a href="/test/2013/12/03/Migrating.html">
                     Migrating to github.io
                 </a>
             </li>
             
             <li>
-                <a href="/test/2013/12/04/first.html">
+                <a href="/test/2013/12/03/first.html">
                     First
                 </a>
             </li>

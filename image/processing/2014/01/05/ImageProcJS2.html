@@ -22,7 +22,6 @@
             ga('create', 'UA-51049436-1', 'phg1024.github.io');
             ga('require', 'displayfeatures');
             ga('send', 'pageview');
-
         </script>
 
         <!-- MathJax -->
@@ -42,6 +41,16 @@
         <script type="text/javascript" src="/js/phgscript.js"></script>
     </head>
     <body>
+        <!-- Facebook like button -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
         <div id="main">
 	        <header>
 	            <h1 class="title"><a href="/">Peihong's Infinite Dimensional Space</a></h1>
@@ -81,8 +90,7 @@ to facilitate all kinds of operations we are going to apply on the images.</p>
     <span class="k">this</span><span class="p">.</span><span class="nx">h</span> <span class="o">=</span> <span class="nx">h</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">w</span><span class="o">*</span><span class="nx">h</span><span class="o">*</span><span class="mi">4</span><span class="p">);</span>  
     <span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>  
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 <p>The most basic operation to alter an image is to do it pixel wise, and we need a way to access the pixels in the image.
 Here we go, the getter and setter.</p>
@@ -105,8 +113,7 @@ Here we go, the getter and setter.</p>
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">g</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
 <p>For many operations, accessing single pixel does not meet our requirement. We probably need to go to sub-pixel level.
 Bilinear sampling allows us to obtain image data on subpixel level. Suppose we need to get the color information at position
@@ -141,8 +148,7 @@ $$t = y - y_0$$</p>
     <span class="nx">c</span><span class="p">.</span><span class="nx">clamp</span><span class="p">();</span>
 
     <span class="k">return</span> <span class="nx">c</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
 <p>With the functions we have so far, we are ready to perform per-pixel operation with the following functions. The first
 one, <em>apply</em>, alters every single pixel in the image and stores the result back to the source image. The operation is
@@ -155,8 +161,7 @@ unspecified - it is passed in as an argument which produce a new color given an 
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
 <p>The <em>map</em> function is very similar except the result is stored in a new image. It is also optimized a little bit to improve
 performance.</p>
@@ -177,8 +182,7 @@ performance.</p>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">dst</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
 <p>Other utility functions are the resizing function and rendering related functions.</p>
 
@@ -214,8 +218,7 @@ performance.</p>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">resize</span><span class="p">(</span><span class="nx">nw</span><span class="p">,</span> <span class="nx">nh</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
 <div class="highlight"><pre><code class="javascript"><span class="c1">// for web-gl</span>
 <span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">uploadTexture</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">texId</span> <span class="p">)</span>
@@ -264,21 +267,27 @@ performance.</p>
     <span class="c1">// clear up the canvas</span>
     <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">newImage</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 
-<p>With the image class established, we can now create <a href="/projects/imageprocjs/demo_showimage.html">a simple webpage</a> that loads an image from the server and displays
+<p>With the image class established, we can now create <a href="http://phg1024.github.io/projects/imageprocjs/demo_showimage.html">a simple webpage</a> that loads an image from the server and displays
 it.</p>
 
     </div>
-    <p>
-        
-        <a class="prevpost" href="/image/processing/2014/01/04/ImageProcJS1.html">Previous Post</a>
-        
-        
-        <a class="nextpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Next Post</a>
-        
-    </p><br><br>
+    <div class="plugins">
+    <div class="social">
+        <span class="twitter">
+            <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://phg1024.github.io/image/processing/2014/01/05/ImageProcJS2.html">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </span>
+        <span class="google">
+            <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+            <g:plusone size="medium" href="http://phg1024.github.io/image/processing/2014/01/05/ImageProcJS2.html"></g:plusone>
+        </span>
+        <span class="Facebook">
+            <iframe src="https://www.facebook.com/plugins/like.php?href=http://phg1024.github.io/image/processing/2014/01/05/ImageProcJS2.html&amp;show_faces=false&amp;layout=button_count" scrolling="no" frameborder="0" style="height: 21px; width: 100px" allowTransparency="true"></iframe>
+        </span>
+    </div>
+    <!-- DisQus support -->
     <div>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
@@ -295,6 +304,15 @@ it.</p>
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
+    </div>
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/01/04/ImageProcJS1.html">Previous Post</a>
+        
+        
+        <a class="nextpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Next Post</a>
+        
+    </p><br><br>
     <div>
         <h3>Related Posts</h3>
         <div class="relatedposts">
@@ -318,13 +336,13 @@ it.</p>
             </li>
             
             <li>
-                <a href="/test/2013/12/04/Migrating.html">
+                <a href="/test/2013/12/03/Migrating.html">
                     Migrating to github.io
                 </a>
             </li>
             
             <li>
-                <a href="/test/2013/12/04/first.html">
+                <a href="/test/2013/12/03/first.html">
                     First
                 </a>
             </li>
