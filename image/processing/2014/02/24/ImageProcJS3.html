@@ -105,9 +105,9 @@ every pixel values directly. This corresponds to having $\alpha=1$ and $\beta\ne
 To maintain the color consistency, the amount of change must be the same for every channel
 in every pixel.</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
-<span class="s1">&#39;brightness&#39;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;RGBAImage&#39;</span> <span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">'brightness'</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'RGBAImage'</span> <span class="p">)</span> <span class="p">{</span>
             <span class="kd">var</span> <span class="nx">dc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
             <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">c</span> <span class="p">)</span> <span class="p">{</span>
                 <span class="kd">var</span> <span class="nx">nc</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">dc</span><span class="p">);</span>
@@ -115,7 +115,7 @@ in every pixel.</p>
             <span class="p">});</span>
         <span class="p">}</span>
         <span class="k">else</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="s2">&quot;Not a RGBA image!&quot;</span><span class="p">;</span>
+            <span class="k">throw</span> <span class="s2">"Not a RGBA image!"</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span></code></pre></div>
@@ -126,9 +126,9 @@ $\alpha\ne1$ and $\beta=0$. It is in fact a scaling of the pixel values. To set 
 of contrast amount $C$ ranging from -128 to 128 and compute $\beta$ with this value
 $$\beta = \max\left(\frac{128+C}{128}, 0\right)$$
 
-<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;contrast&#39;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;RGBAImage&#39;</span> <span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'contrast'</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'RGBAImage'</span> <span class="p">)</span> <span class="p">{</span>
             <span class="kd">var</span> <span class="nx">factor</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">((</span><span class="mi">128</span> <span class="o">+</span> <span class="nx">val</span><span class="p">)</span> <span class="o">/</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
             <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">c0</span> <span class="p">)</span> <span class="p">{</span>
                 <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">c0</span><span class="p">.</span><span class="nx">mulc</span><span class="p">(</span><span class="nx">factor</span><span class="p">);</span>
@@ -136,7 +136,7 @@ $$\beta = \max\left(\frac{128+C}{128}, 0\right)$$
             <span class="p">});</span>
         <span class="p">}</span>
         <span class="k">else</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="s2">&quot;Not a RGBA image!&quot;</span><span class="p">;</span>
+            <span class="k">throw</span> <span class="s2">"Not a RGBA image!"</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span></code></pre></div>
@@ -156,9 +156,9 @@ $$\beta = \max\left(\frac{128+C}{128}, 0\right)$$
 
 <p>Putting them together, we arrive at the brightness/contrast filter:</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;brightnesscontrast&#39;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">alpha</span><span class="p">,</span> <span class="nx">beta</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;RGBAImage&#39;</span> <span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'brightnesscontrast'</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">alpha</span><span class="p">,</span> <span class="nx">beta</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span> <span class="nx">src</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'RGBAImage'</span> <span class="p">)</span> <span class="p">{</span>
             <span class="kd">var</span> <span class="nx">factor</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">((</span><span class="mi">128</span> <span class="o">+</span> <span class="nx">val</span><span class="p">)</span> <span class="o">/</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
             <span class="kd">var</span> <span class="nx">dc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="nx">beta</span><span class="p">,</span> <span class="nx">beta</span><span class="p">,</span> <span class="nx">beta</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
             <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">c0</span> <span class="p">)</span> <span class="p">{</span>
@@ -167,7 +167,7 @@ $$\beta = \max\left(\frac{128+C}{128}, 0\right)$$
             <span class="p">});</span>
         <span class="p">}</span>
         <span class="k">else</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="s2">&quot;Not a RGBA image!&quot;</span><span class="p">;</span>
+            <span class="k">throw</span> <span class="s2">"Not a RGBA image!"</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span></code></pre></div>

@@ -106,7 +106,7 @@
 
 <p>Let&#39;s first build up the color/pixel class:</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="kd">function</span> <span class="nx">Color</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Color</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">=</span> <span class="nx">r</span><span class="p">;</span> <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">=</span> <span class="nx">g</span><span class="p">;</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="nx">b</span><span class="p">;</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
 <span class="p">}</span>
@@ -126,7 +126,7 @@
 
 <p>Next, we add the most frequently used functions to the set, the arithmetic operators.</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">equal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">that</span> <span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">equal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">that</span> <span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">==</span> <span class="nx">that</span><span class="p">.</span><span class="nx">r</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">==</span> <span class="nx">that</span><span class="p">.</span><span class="nx">g</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">==</span> <span class="nx">that</span><span class="p">.</span><span class="nx">b</span><span class="p">);</span>
 <span class="p">};</span>
 
@@ -170,7 +170,7 @@
 
 <p>We will also use some other utility functions:</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">normalize</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">normalize</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">invA</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">*=</span> <span class="nx">invA</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">*=</span> <span class="nx">invA</span><span class="p">;</span>
@@ -206,7 +206,7 @@
 
 <p>The last thing is several special constructors, including interpolation, random color and frequently used colors:</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">Color</span><span class="p">.</span><span class="nx">interpolate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="nx">c2</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Color</span><span class="p">.</span><span class="nx">interpolate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="nx">c2</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="nx">c1</span><span class="p">.</span><span class="nx">mul</span><span class="p">(</span><span class="nx">t</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="nx">c2</span><span class="p">.</span><span class="nx">mul</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nx">t</span><span class="p">));</span>
 <span class="p">};</span>

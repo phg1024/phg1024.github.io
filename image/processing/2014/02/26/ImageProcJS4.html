@@ -109,8 +109,8 @@ course, sometimes we are only interested in the brightness of an image. In those
 Simple! We can use a rough estimation with <a href="http://en.wikipedia.org/wiki/Grayscale">the equation</a> below:
 $$ l = 0.299 \times r + 0.587 \times g + 0.114 \times b $$</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">grayscale</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span> <span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">grayscale</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span> <span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span>
             <span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
                 <span class="kd">var</span> <span class="nx">lev</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">r</span> <span class="o">*</span> <span class="mf">0.299</span> <span class="o">+</span> <span class="nx">g</span> <span class="o">*</span> <span class="mf">0.587</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">*</span> <span class="mf">0.114</span><span class="p">);</span>
@@ -136,35 +136,28 @@ $$ l = 0.299 \times r + 0.587 \times g + 0.114 \times b $$</p>
 <p>A conversion using the above equation works just fine, and we are ready to get compute a histogram for any image!
 The computation of histogram is pretty straightforward:</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="c1">// build histogram of specified image region</span>
-<span class="kd">function</span> <span class="nx">histogram</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">num_bins</span><span class="p">)</span>
-<span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// build histogram of specified image region</span>
+<span class="kd">function</span> <span class="nx">histogram</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">num_bins</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span> <span class="nx">num_bins</span> <span class="o">==</span> <span class="kc">undefined</span> <span class="p">)</span>
         <span class="nx">num_bins</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
-
     <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">h</span><span class="p">,</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">hist</span> <span class="o">=</span> <span class="p">[];</span>
     <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">val</span><span class="p">;</span>
-
     <span class="c1">// initialize the histogram</span>
     <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">num_bins</span><span class="p">;</span><span class="o">++</span><span class="nx">i</span><span class="p">)</span>
         <span class="nx">hist</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
     <span class="c1">// loop over every single pixel</span>
-    <span class="k">for</span><span class="p">(</span><span class="nx">y</span><span class="o">=</span><span class="nx">y1</span><span class="p">,</span><span class="nx">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">y</span><span class="o">&lt;</span><span class="nx">y2</span><span class="p">;</span><span class="o">++</span><span class="nx">y</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">for</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="nx">x1</span><span class="p">;</span><span class="nx">x</span><span class="o">&lt;</span><span class="nx">x2</span><span class="p">;</span><span class="o">++</span><span class="nx">x</span><span class="p">,</span><span class="nx">idx</span><span class="o">+=</span><span class="mi">4</span><span class="p">)</span>
-        <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">y</span><span class="o">=</span><span class="nx">y1</span><span class="p">,</span><span class="nx">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">y</span><span class="o">&lt;</span><span class="nx">y2</span><span class="p">;</span><span class="o">++</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="nx">x1</span><span class="p">;</span><span class="nx">x</span><span class="o">&lt;</span><span class="nx">x2</span><span class="p">;</span><span class="o">++</span><span class="nx">x</span><span class="p">,</span><span class="nx">idx</span><span class="o">+=</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// figure out which bin it is in</span>
             <span class="nx">val</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">img</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">num_bins</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
             <span class="o">++</span><span class="nx">hist</span><span class="p">[</span><span class="nx">val</span><span class="p">];</span>
         <span class="p">}</span>
     <span class="p">}</span>
-
     <span class="k">return</span> <span class="nx">hist</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
-<div align="center">
+<div id="histimg" align="center">
 <table>
 <tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/hist0.png"></td></tr>
 <tr><td>Seal and its histogram</td></tr>
@@ -186,22 +179,41 @@ $$c(p) = \sum_{i=0}^p n(i)$$
 Yes, $c(p)$ means the number of pixels with a value smaller or equal than $p$. So $c(0)$ means the number of the pure black (0, 0, 0) pixels,
  while $c(255)$ equals to the total number of pixels. If we are using a normalized version of histogram, we will have</p>
 
-<p>$$c(p) = \frac{1}{N} \sum_{i=0}^p n(i)$$</p>
+<p>$$c(p) = \frac{1}{N} \sum_{i=0}^p n(i) = \sum_{i=0}^p h(i)$$</p>
 
-<p>In this case, we have $c(256)=1$. Now let&#39;s take a look at the histogram we just build. For display purpose the histogram
+<p>In this case, we have $c(256)=1$. Now let&#39;s take a look at the <a href="#histimg">histogram</a> we just build. For display purpose the histogram
  is scaled slightly differently, but the CDF is normalized with the total pixel number. The vertical axis has a range of [0, 1],
- while the horizontal axis has a range of [0, 255]. Things looks just about right.</p>
+ while the horizontal axis has a range of [0, 255]. Things look just about right.</p>
 
 <h3>Histogram Equalization</h3>
 
+<p>Now that we have the histogram built and displayed, what then? What can all these vertical bins do? Let&#39;s consider the badly exposed image below.
 <div align="center">
 <table>
 <tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/histL0.png"></td></tr>
-<tr><td>Source Image</td></tr>
+<tr><td>Badly Exposed Image</td></tr>
+</table></p>
+
+<p>Not cool. Everything just look so washed. We&#39;ve got to do something to rescue it.</p>
+
+<p>And here comes histogram equalization. The histogram of the image above is totally skewed. All the interesting pixel values are well above 128 roughly -- this means about we wasted roughly half of the useful pixel values! That&#39;s exactly the reason this image looks so bad. And the way to make it better seems obvious: just distribute the pixel values better, or even better, distribute them evenly across all available levels. That&#39;s right, make use of all available levels so that the differences among pixels values are better presented and the details of the image are better visible.</p>
+
+<p>This is the so called histogram equalization - to make the pixels distributed &quot;equally&quot; to different brightness levels while maintaining the visual appearance of the image. The key to histogram equalization is to maintain visual appearance. We can easily make the histogram any shape we want, but that would not work because the visual appearance of the image would also be completely changed. To preserve visual appearance, we need to keep the relative relationship among pixels unchanged. That is, if a pixel $p<em>i$ has a larger value than $p</em>j$, it should still have a large value after histogram equalization.</p>
+
+<p>To achieve this, we need to scale each pixel value by some factor. The factor can be determined by applying the equalization condition: after equalization, the total number of pixels with value smaller or equal to $p$ should have a new value $p&#39;$ such that
+$$\frac{p&#39;}{255} = c(p)$$
+The meaning of this equation is apparent: if the fraction of pixels with value smaller or equal to $p$ is $c(p)$, then all value $p$ pixels should have a new value $p&#39;$ that is proportional to $c(p)$. That is, $p&#39; = const \cdot c(p)$. Considering there are in total 256 levels of brightness and the minimum brightness is 0, the constant must be 255.</p>
+
+<p>This is a very intuitive solution, because we do want to assign a smaller value to low brightness pixels and larger values to high brightness pixels. This is guaranteed with the equation above since $c(p)$ is monotonic increasing with $p$. The equation also guarantees that the pixel values distribution in the new image is equalized. The reason is that the CDF of the new image satisfies
+$$c(p&#39;) = c(p) = 255\cdot p&#39;$$
+$c(p&#39;) = c(p)$ because the ratio of pixels smaller or equal than $p&#39;$ in the new image is exactly the same as the ratio of pixels smaller or equal than $p$ in the original image.</p>
+
+<p>A linear relation! We&#39;ve got an even distribution of pixel values! Well, not exactly even distribution due to the discrete nature of the pixel values, but it is close enough to even distribution. The image below verifies this.
+<table>
 <tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/histL1.png"></td></tr>
 <tr><td>Histogram Equalized Image</td></tr>
 </table>
-</div>
+</div></p>
 
     </div>
     <div class="plugins">
