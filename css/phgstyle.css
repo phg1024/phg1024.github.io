@@ -104,10 +104,21 @@ html, body {
     background-color: #333;
 }
 
+.post td {
+	text-align: center;
+}
+
 .post .exampleimg {
+	position: relative;
     width: 100%;
     max-height: 100%;
     min-height: 10%;
+	border-radius: 15px;
+	padding: 5px;
+}
+
+.post  .caption{
+	font-weight: bold;
 }
 
 /* related posts */

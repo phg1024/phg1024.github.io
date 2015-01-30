@@ -153,7 +153,7 @@ $$ l = 0.299 \times r + 0.587 \times g + 0.114 \times b $$</p>
 <td><img class="post exampleimg" src="/projects/imageprocjs/images/grayscale.png"></td>
 </tr>
 <tr>
-<td>Source Image</td><td>Converted Grayscale Image</td>
+<td class="post caption">Source Image</td><td class="post caption">Converted Grayscale Image</td>
 </tr>
 </table>
 </div>
@@ -185,7 +185,7 @@ The computation of histogram is pretty straightforward:</p>
 <div id="histimg" align="center">
 <table>
 <tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/hist0.png"></td></tr>
-<tr><td>Seal and its histogram</td></tr>
+<tr><td class="post caption">Seal and its histogram</td></tr>
 </table>
 </div>
 
@@ -216,8 +216,9 @@ Yes, $c(p)$ means the number of pixels with a value smaller or equal than $p$. S
 <div align="center">
 <table>
 <tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/histL0.png"></td></tr>
-<tr><td>Badly Exposed Image</td></tr>
-</table></p>
+<tr><td class="post caption">Badly Exposed Image</td></tr>
+</table>
+</div></p>
 
 <p>Not cool. Everything just look so washed. We&#39;ve got to do something to rescue it.</p>
 
@@ -234,9 +235,10 @@ $$c(p&#39;) = c(p) = 255\cdot p&#39;$$
 $c(p&#39;) = c(p)$ because the ratio of pixels smaller or equal than $p&#39;$ in the new image is exactly the same as the ratio of pixels smaller or equal than $p$ in the original image.</p>
 
 <p>A linear relation! We&#39;ve got an even distribution of pixel values! Well, not exactly even distribution due to the discrete nature of the pixel values, but it is close enough to even distribution. The image below verifies this.
+<div align="center">
 <table>
 <tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/histL1.png"></td></tr>
-<tr><td>Histogram Equalized Image</td></tr>
+<tr><td class="post caption">Histogram Equalized Image</td></tr>
 </table>
 </div></p>
 
