@@ -263,8 +263,8 @@
 
     <div class="content">
         <h2>ImageProcJS - Image Processing with JavaScript</h2>
-        <button id="show_btn">Show Remote Image</button>
-        <button id="upload_btn">Upload</button>
+        <button id="show_btn" class='btn btn-xs btn-default' type='button'>Show Remote Image</button>
+        <button id="upload_btn" class='btn btn-xs btn-default' type='button'>Upload</button>
         <input type="file" id="files" name="files[]" />
         <output id="list"></output>
         <div>
@@ -272,16 +272,16 @@
             <div id="div_filters">
             <table>
                 <tr>
-                    <td><button id="gs_btn">Show Grayscale</button></td>
+                    <td><button id="gs_btn" class='btn btn-xs btn-default' type='button'>Show Grayscale</button></td>
                 </tr>
                 <tr>
-                    <td><button id="invert_btn">Invert</button></td>
+                    <td><button id="invert_btn" class='btn btn-xs btn-default' type='button'>Invert</button></td>
                 </tr>
                 <tr>
-                    <td><button id="hist_btn">Histogram Equalization</button></td>
+                    <td><button id="hist_btn" class='btn btn-xs btn-default' type='button'>Histogram Equalization</button></td>
                 </tr>
                 <tr>
-                    <td><button id="ahe_btn">Adaptive Histogram Equalization</button></td>
+                    <td><button id="ahe_btn" class='btn btn-xs btn-default' type='button'>Adaptive Histogram Equalization</button></td>
                 </tr>
                 <tr>
                     <td><input type="checkbox" id="brightnesscontrast">Brightness & Contrast</td>
@@ -293,7 +293,7 @@
                     <td><input type="range" id="contrastbar" min="-128" max="128" value="0">Contrast</td><td><p id="contrastval"></p></td>
                 </tr>
                 <tr>
-                    <td><button id="reduction_btn">Color Reduction</button></td>
+                    <td><button id="reduction_btn" class='btn btn-xs btn-default' type='button'>Color Reduction</button></td>
                     <td>Method:<select id="reduction_method">
                         <option value="uniform">Uniform</option>
                         <option value="population">Population</option>
@@ -304,7 +304,7 @@
                     <td>Colors&nbsp<input type="text" id="reduction_colors" value="4"></td>
                 </tr>
                 <tr>
-                    <td><button id="filter_btn">Spatial Filter</button></td>
+                    <td><button id="filter_btn" class='btn btn-xs btn-default' type='button'>Spatial Filter</button></td>
                     <td>
                         Filter:
                         <select id="filter_select">
@@ -324,8 +324,8 @@
             </div>
             <div id="div_effects">
             <table>
-                <tr><td><button id="sepia_btn" class="effect_btn" value="sepia">Sepia</button></td></tr>
-                <tr><td><button id="autumn_btn" class="effect_btn" value="autumn">Autumn</button></td></tr>
+                <tr><td><button id="sepia_btn" class='effect_btn btn btn-xs btn-default' type='button' value="sepia">Sepia</button></td></tr>
+                <tr><td><button id="autumn_btn" class='effect_btn btn btn-xs btn-default' type='button' value="autumn">Autumn</button></td></tr>
             </table>
             </div>
         </div>
@@ -336,7 +336,7 @@
             </div>
             <div id='div_curvetool'>
                 <div>
-                    <button id="resetcurve_btn">Reset Curve</button>
+                    <button id="resetcurve_btn" class='btn btn-xs btn-default' type='button'>Reset Curve</button>
                     <select id="channelselect">
                         <option value="brightness">Brightness</option>
                         <option value="red">Red</option>

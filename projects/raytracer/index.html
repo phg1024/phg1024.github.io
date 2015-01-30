@@ -254,13 +254,13 @@
     </script>
 
     <div class="content">
-        <h2>JavaScript Ray Tracer</h2>
+        <h3>JavaScript Ray Tracer</h3>
         <div>
             <canvas id='canvas' width='480px' height='320px'></canvas>
         </div>
-        <button id='renderButton' onclick='render()'>Render</button>
-        <button id='saveButton' onclick='saveImage()'>Save</button>
-        <button id='resizeButton' onclick='resize()'>Resize</button>
+        <button id='renderButton' class='btn btn-xs btn-default' type='button' onclick='render()'>Render</button>
+        <button id='saveButton' class='btn btn-xs btn-default' type='button' onclick='saveImage()'>Save</button>
+        <button id='resizeButton' class='btn btn-xs btn-default' type='button' onclick='resize()'>Resize</button>
         Width: <input id='width' type='textfield' size="4" value=480>&nbsp
         Height: <input id='height' type='textfield' size="4" value=320><br>
         Number of samples: <input id='nsamples' type='textfield' size="4" value=4>&nbsp

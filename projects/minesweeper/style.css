@@ -1,6 +1,16 @@
 table{
-    border: solid 1;
+    border: solid 1px black;
+	padding: 10px;
 }
+
+td {
+	border: solid 1px black;
+}
+
+#board {
+	padding: 10px;
+}
+
 .content{
     text-align: center;
 }
