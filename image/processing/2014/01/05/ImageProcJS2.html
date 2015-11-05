@@ -120,8 +120,8 @@ to facilitate all kinds of operations we are going to apply on the images.</p>
 <p>The most basic operation to alter an image is to do it pixel wise, and we need a way to access the pixels in the image.
 Here we go, the getter and setter.</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// get a pixel from the image</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getPixel</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// get a pixel from the image
+</span><span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getPixel</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">idx</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span> <span class="o">+</span> <span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">;</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="o">+</span><span class="mi">0</span><span class="p">],</span>
@@ -131,8 +131,8 @@ Here we go, the getter and setter.</p>
     <span class="p">);</span>
 <span class="p">};</span>
 
-<span class="c1">// set a pixel value in the image</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">setPixel</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// set a pixel value in the image
+</span><span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">setPixel</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">idx</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span> <span class="o">+</span> <span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">r</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">g</span><span class="p">;</span>
@@ -153,8 +153,8 @@ $$r = x - x_0$$
 and
 $$t = y - y_0$$</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// bilinear sample of the image</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sample</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// bilinear sample of the image
+</span><span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sample</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">y0</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">y1</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
@@ -211,12 +211,12 @@ performance.</p>
 
 <p>Other utility functions are the resizing function and rendering related functions.</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// utility function</span>
-<span class="c1">// resize image</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// utility function
+// resize image
+</span><span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">iw</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">,</span> <span class="nx">ih</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
-    <span class="c1">// bilinear interpolation</span>
-    <span class="kd">var</span> <span class="nx">dst</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RGBAImage</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+    <span class="c1">// bilinear interpolation
+</span>    <span class="kd">var</span> <span class="nx">dst</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RGBAImage</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
 
     <span class="kd">var</span> <span class="nx">ystep</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="nx">h</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">xstep</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="nx">w</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
@@ -245,8 +245,8 @@ performance.</p>
     <span class="k">else</span> <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 <span class="p">};</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// for web-gl</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">uploadTexture</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">texId</span> <span class="p">)</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// for web-gl
+</span><span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">uploadTexture</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">texId</span> <span class="p">)</span>
 <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
@@ -259,8 +259,8 @@ performance.</p>
     <span class="nx">ctx</span><span class="p">.</span><span class="nx">texImage2D</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">TEXTURE_2D</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="nx">ctx</span><span class="p">.</span><span class="nx">RGBA</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">RGBA</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">UNSIGNED_BYTE</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="c1">// for html canvas</span>
-<span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toImageData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">ctx</span> <span class="p">)</span> <span class="p">{</span>
+<span class="c1">// for html canvas
+</span><span class="nx">RGBAImage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toImageData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">ctx</span> <span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">imgData</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">createImageData</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">w</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">h</span><span class="p">);</span>
     <span class="nx">imgData</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">imgData</span><span class="p">;</span>
@@ -278,19 +278,19 @@ performance.</p>
     <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
 
-    <span class="c1">// resize the canvas for drawing</span>
-    <span class="nx">cvs</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">w</span><span class="p">;</span>
+    <span class="c1">// resize the canvas for drawing
+</span>    <span class="nx">cvs</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">w</span><span class="p">;</span>
     <span class="nx">cvs</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">h</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">cvs</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">'2d'</span><span class="p">);</span>
 
-    <span class="c1">// render the image to the canvas in order to obtain image data</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="c1">// render the image to the canvas in order to obtain image data
+</span>    <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">imgData</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">getImageData</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">newImage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RGBAImage</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">imgData</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
     <span class="nx">imgData</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 
-    <span class="c1">// clear up the canvas</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+    <span class="c1">// clear up the canvas
+</span>    <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">newImage</span><span class="p">;</span>
 <span class="p">};</span></code></pre></div>
 
@@ -343,6 +343,12 @@ it.</p>
         <div class="relatedposts">
             
             <li>
+                <a href="/boost/2015/11/05/BoostGraph.html">
+                    Boost Graph Library - A Primer
+                </a>
+            </li>
+            
+            <li>
                 <a href="/image/processing/2014/02/26/ImageProcJS4.html">
                     JavaScript Image Processing (4) - Histogram Equalization
                 </a>
@@ -361,13 +367,13 @@ it.</p>
             </li>
             
             <li>
-                <a href="/test/2013/12/03/Migrating.html">
+                <a href="/test/2013/12/04/Migrating.html">
                     Migrating to github.io
                 </a>
             </li>
             
             <li>
-                <a href="/test/2013/12/03/first.html">
+                <a href="/test/2013/12/04/first.html">
                     First
                 </a>
             </li>

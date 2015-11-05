@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">		
-        <title>Migrating to github.io</title>
+        <title>Boost Graph Library - A Primer</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -94,42 +94,126 @@
 				<div class="content">
     <p>
         
-        <a class="prevpost" href="/test/2013/12/03/first.html">Previous Post</a>
+        <a class="prevpost" href="/image/processing/2014/02/26/ImageProcJS4.html">Previous Post</a>
         
-        
-        <a class="nextpost" href="/image/processing/2014/01/04/ImageProcJS1.html">Next Post</a>
         
     </p><br><br>
-    <h3>Migrating to github.io</h3>
-    <p class="meta">03 Dec 2013</p>
+    <h3>Boost Graph Library - A Primer</h3>
+    <p class="meta">05 Nov 2015</p>
     <div class="post">
-        <p>The website is slowly shaping into the one I&#39;ve always wanted to build: static(but also interactive),
-  simple, and most importantly, easy to maintain. Because I have had enough with my previous website. Written
-  from scratch surely gives me total control over the pages, but that wasn&#39;t exactly what I needed. Updating
-  the website became a pain in the ass for me soon enough, and I just didn&#39;t bother to switch to a different
-  way -- actually the right way of doing it.</p>
+        <p>So I have been taking a course on generic programming lately. It&#39;s pretty fun, 
+and I have got a chance to refresh my knowledge in C++ as well as learn some 
+new stuff. Boost graph library (BGL) is one of the cool things I came across 
+recently. I have heard about it long time ago, although I don&#39;t remember why. 
+However, I never really get a chance to try it out. Well, I got the chance finally.</p>
 
-<p>It first occurred to me that I could actually put my site on <a href="http://github.io">github.io</a> and save a few
-  bucks for coffee after visiting some really cool pages hosted on <a href="http://github.io">github.io</a>. Too bad
-  I could not recovery those links from my memory :( But the good part is I knew what I wanted and I had just
-  found it!</p>
+<h4>Graph Data Structure</h4>
 
-<p>There is not much to talk about for rest of the story: I simply went through the tutorial of <a href="http://jekyllrb.com/">Jekyll</a>
-  and started building my version 5 website, feeling excited!</p>
+<p>BGL supports two graph data structures: <code>adjacency_list</code> and <code>adjacency_matrix</code>, 
+where <code>adjacency_list</code> graph is intended as a <em>panacea</em> for application involving 
+graphs and <code>adjacency_matrix</code> is more about pushing the performance limit for small 
+dense graphs. </p>
+
+<p>These two data structures are pretty easy to use. For example, the use of <code>adjacency_list</code> can be as simple as</p>
+<div class="highlight"><pre><code class="language-" data-lang="">#include &lt;boost/graph/adjacency_list.hpp&gt;
+using namespace boost;
+
+using Graph = adjacency_list&lt;listS, vecS&gt;;
+
+Graph g;
+</code></pre></div>
+<p>That&#39;s it. Three lines of code and you just create an adjacency list graph using list 
+as the container for per-vertex adjacency relationship and vector for the outer container 
+of all adjacency lists. By default, the graph is a directed graph, but you can make it 
+undirected by specifying it with a template parameter</p>
+<div class="highlight"><pre><code class="language-" data-lang="">using Graph = adjacency_list&lt;listS, vecS, undirectedS&gt;;
+</code></pre></div>
+<p>In the examples below, we will stick to directed graphs though.</p>
+
+<h4>Graph Manipulation</h4>
+
+<p>Alright, I have to admit the empty graph created in the three lines of code is not that 
+interesting. Let&#39;s add some vertices and edges to the graph to make it a bit more exciting.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">auto v0 = add_vertex(g);
+auto v1 = add_vertex(g);
+auto v2 = add_vertex(g);
+
+add_edge(v0, v1, g);
+add_edge(v0, v2, g);
+add_edge(v1, v2, g);
+</code></pre></div>
+<p>Very straightforward, right? Let&#39;s see if the graph is exactly what we want:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">for(auto vp = vertices(g); vp.first != vp.second; ++vp.first) {
+  cout &lt;&lt; *vp.first &lt;&lt; endl;
+}
+
+for(auto ep = edges(g); ep.first != ep.second; ++ep.first) {
+  cout &lt;&lt; source(*ep.first, g) &lt;&lt; " -&gt; " &lt;&lt; target(*ep.first, g) &lt;&lt; endl;
+}
+</code></pre></div>
+<p>And the output looks like:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">0
+1
+2
+0 -&gt; 1
+0 -&gt; 2
+1 -&gt; 2
+</code></pre></div>
+<p>That&#39;s right, we&#39;ve made a (very simple) graph!</p>
+
+<p>What about remove vertices or edges? Well, BGL has those for you already:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">clear_vertex(v2, g);
+remove_vertex(v2, g);
+</code></pre></div>
+<p>After this, the graph looks like:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">0
+1
+0 -&gt; 1
+</code></pre></div>
+<h4>Graph Traversal</h4>
+
+<p>Traversing a graph with BGL is just a matter of writing a visitor class to 
+perform the desired operations at several control points during the traversal.
+For example, if we want to print out the graph in DFS visiting order, we can 
+define a visitor like:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">class DFSVisitor : public default_dfs_visitor {
+public:
+  template &lt;typename Vertex, typename Graph&gt;
+  void discover_vertex(Vertex u, const Graph&amp; g) {
+    cout &lt;&lt; "discover vertex " &lt;&lt;  get(vertex_index, g, u) &lt;&lt; endl;
+  }
+}
+</code></pre></div>
+<p>Then use it in the DFS algorithm:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">depth_first_search(g, visitor(DFSVisitor()));
+</code></pre></div>
+<p>And we will have the nice output below:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">discover vertex 0
+discover vertex 1
+discover vertex 2
+</code></pre></div>
+<p>How awesome is that! </p>
+
+<h4>Final Word</h4>
+
+<p>Well, this is really a 5 minutes <em>primer</em> for BGL. Anyway, these are pretty much 
+everything one needs to get started with BGL. Have fun exploring the scary world!
+Just remember, whenever you need to handle a graph, <a href="http://www.boost.org/doc/libs/1_59_0/libs/graph">BGL</a> 
+is always there for you ;)</p>
 
     </div>
     <div class="plugins">
     <div class="social">
         <span class="twitter">
-            <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://phg1024.github.io/test/2013/12/03/Migrating.html">Tweet</a>
+            <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://phg1024.github.io/boost/2015/11/05/BoostGraph.html">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         </span>
         <span class="google">
             <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-            <g:plusone size="medium" href="http://phg1024.github.io/test/2013/12/03/Migrating.html"></g:plusone>
+            <g:plusone size="medium" href="http://phg1024.github.io/boost/2015/11/05/BoostGraph.html"></g:plusone>
         </span>
         <span class="Facebook">
-            <iframe src="https://www.facebook.com/plugins/like.php?href=http://phg1024.github.io/test/2013/12/03/Migrating.html&amp;show_faces=false&amp;layout=button_count" scrolling="no" frameborder="0" style="height: 21px; width: 100px" allowTransparency="true"></iframe>
+            <iframe src="https://www.facebook.com/plugins/like.php?href=http://phg1024.github.io/boost/2015/11/05/BoostGraph.html&amp;show_faces=false&amp;layout=button_count" scrolling="no" frameborder="0" style="height: 21px; width: 100px" allowTransparency="true"></iframe>
         </span>
     </div>
     <!-- DisQus support -->
@@ -152,10 +236,8 @@
     </div>
     <p>
         
-        <a class="prevpost" href="/test/2013/12/03/first.html">Previous Post</a>
+        <a class="prevpost" href="/image/processing/2014/02/26/ImageProcJS4.html">Previous Post</a>
         
-        
-        <a class="nextpost" href="/image/processing/2014/01/04/ImageProcJS1.html">Next Post</a>
         
     </p><br><br>
     <div>
@@ -187,7 +269,13 @@
             </li>
             
             <li>
-                <a href="/test/2013/12/03/first.html">
+                <a href="/test/2013/12/04/Migrating.html">
+                    Migrating to github.io
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/first.html">
                     First
                 </a>
             </li>

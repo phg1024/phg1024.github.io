@@ -97,6 +97,8 @@
         <a class="prevpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Previous Post</a>
         
         
+        <a class="nextpost" href="/boost/2015/11/05/BoostGraph.html">Next Post</a>
+        
     </p><br><br>
     <h3>JavaScript Image Processing (4) - Histogram Equalization</h3>
     <p class="meta">26 Feb 2014</p>
@@ -161,21 +163,21 @@ $$ l = 0.299 \times r + 0.587 \times g + 0.114 \times b $$</p>
 <p>A conversion using the above equation works just fine, and we are ready to get compute a histogram for any image!
 The computation of histogram is pretty straightforward:</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// build histogram of specified image region</span>
-<span class="kd">function</span> <span class="nx">histogram</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">num_bins</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// build histogram of specified image region
+</span><span class="kd">function</span> <span class="nx">histogram</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">num_bins</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span> <span class="nx">num_bins</span> <span class="o">==</span> <span class="kc">undefined</span> <span class="p">)</span>
         <span class="nx">num_bins</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">h</span><span class="p">,</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">hist</span> <span class="o">=</span> <span class="p">[];</span>
     <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">val</span><span class="p">;</span>
-    <span class="c1">// initialize the histogram</span>
-    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">num_bins</span><span class="p">;</span><span class="o">++</span><span class="nx">i</span><span class="p">)</span>
+    <span class="c1">// initialize the histogram
+</span>    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">num_bins</span><span class="p">;</span><span class="o">++</span><span class="nx">i</span><span class="p">)</span>
         <span class="nx">hist</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="c1">// loop over every single pixel</span>
-    <span class="k">for</span><span class="p">(</span><span class="nx">y</span><span class="o">=</span><span class="nx">y1</span><span class="p">,</span><span class="nx">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">y</span><span class="o">&lt;</span><span class="nx">y2</span><span class="p">;</span><span class="o">++</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// loop over every single pixel
+</span>    <span class="k">for</span><span class="p">(</span><span class="nx">y</span><span class="o">=</span><span class="nx">y1</span><span class="p">,</span><span class="nx">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">y</span><span class="o">&lt;</span><span class="nx">y2</span><span class="p">;</span><span class="o">++</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="nx">x1</span><span class="p">;</span><span class="nx">x</span><span class="o">&lt;</span><span class="nx">x2</span><span class="p">;</span><span class="o">++</span><span class="nx">x</span><span class="p">,</span><span class="nx">idx</span><span class="o">+=</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// figure out which bin it is in</span>
-            <span class="nx">val</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">img</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">num_bins</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+            <span class="c1">// figure out which bin it is in
+</span>            <span class="nx">val</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">img</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">num_bins</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
             <span class="o">++</span><span class="nx">hist</span><span class="p">[</span><span class="nx">val</span><span class="p">];</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -204,7 +206,7 @@ $$c(p) = \sum_{i=0}^p n(i)$$
 Yes, $c(p)$ means the number of pixels with a value smaller or equal than $p$. So $c(0)$ means the number of the pure black (0, 0, 0) pixels,
  while $c(255)$ equals to the total number of pixels. If we are using a normalized version of histogram, we will have</p>
 
-<p>$$c(p) = \frac{1}{N} \sum_{i=0}^p n(i) = \sum_{i=0}^p h(i)$$</p>
+<p>$$c(p) = \frac{1}{N} \sum<em>{i=0}^p n(i) = \sum\</em>{i=0}^p h(i)$$</p>
 
 <p>In this case, we have $c(256)=1$. Now let&#39;s take a look at the <a href="#histimg">histogram</a> we just build. For display purpose the histogram
  is scaled slightly differently, but the CDF is normalized with the total pixel number. The vertical axis has a range of [0, 1],
@@ -280,10 +282,18 @@ $c(p&#39;) = c(p)$ because the ratio of pixels smaller or equal than $p&#39;$ in
         <a class="prevpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Previous Post</a>
         
         
+        <a class="nextpost" href="/boost/2015/11/05/BoostGraph.html">Next Post</a>
+        
     </p><br><br>
     <div>
         <h3>Related Posts</h3>
         <div class="relatedposts">
+            
+            <li>
+                <a href="/boost/2015/11/05/BoostGraph.html">
+                    Boost Graph Library - A Primer
+                </a>
+            </li>
             
             <li>
                 <a href="/image/processing/2014/02/24/ImageProcJS3.html">
@@ -304,13 +314,13 @@ $c(p&#39;) = c(p)$ because the ratio of pixels smaller or equal than $p&#39;$ in
             </li>
             
             <li>
-                <a href="/test/2013/12/03/Migrating.html">
+                <a href="/test/2013/12/04/Migrating.html">
                     Migrating to github.io
                 </a>
             </li>
             
             <li>
-                <a href="/test/2013/12/03/first.html">
+                <a href="/test/2013/12/04/first.html">
                     First
                 </a>
             </li>

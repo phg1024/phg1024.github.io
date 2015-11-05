@@ -94,7 +94,7 @@
 				<div class="content">
     <p>
         
-        <a class="prevpost" href="/test/2013/12/03/Migrating.html">Previous Post</a>
+        <a class="prevpost" href="/test/2013/12/04/Migrating.html">Previous Post</a>
         
         
         <a class="nextpost" href="/image/processing/2014/01/05/ImageProcJS2.html">Next Post</a>
@@ -159,8 +159,8 @@
     <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">+</span> <span class="nx">that</span><span class="p">.</span><span class="nx">r</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">+</span> <span class="nx">that</span><span class="p">.</span><span class="nx">g</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">+</span> <span class="nx">that</span><span class="p">.</span><span class="nx">b</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">that</span><span class="p">.</span><span class="nx">a</span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="c1">// only r, g, b channels are modified</span>
-<span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">addc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">that</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// only r, g, b channels are modified
+</span><span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">addc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">that</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">+</span> <span class="nx">that</span><span class="p">.</span><span class="nx">r</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">+</span> <span class="nx">that</span><span class="p">.</span><span class="nx">g</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">+</span> <span class="nx">that</span><span class="p">.</span><span class="nx">b</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">);</span>
 <span class="p">};</span>
 
@@ -168,8 +168,8 @@
     <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">-</span> <span class="nx">that</span><span class="p">.</span><span class="nx">r</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">-</span> <span class="nx">that</span><span class="p">.</span><span class="nx">g</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">-</span> <span class="nx">that</span><span class="p">.</span><span class="nx">b</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">that</span><span class="p">.</span><span class="nx">a</span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="c1">// only r, g, b channels are modified</span>
-<span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">subc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">that</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// only r, g, b channels are modified
+</span><span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">subc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">that</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">-</span> <span class="nx">that</span><span class="p">.</span><span class="nx">r</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">-</span> <span class="nx">that</span><span class="p">.</span><span class="nx">g</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">-</span> <span class="nx">that</span><span class="p">.</span><span class="nx">b</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">);</span>
 <span class="p">};</span>
 
@@ -178,8 +178,8 @@
     <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">*</span> <span class="nx">c</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">*</span> <span class="nx">c</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">*</span> <span class="nx">c</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">*</span> <span class="nx">c</span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="c1">// only r, g, b channels are modified</span>
-<span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">mulc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// only r, g, b channels are modified
+</span><span class="nx">Color</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">mulc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">r</span> <span class="o">*</span> <span class="nx">c</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">g</span> <span class="o">*</span> <span class="nx">c</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">*</span> <span class="nx">c</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">);</span>
 <span class="p">};</span>
 
@@ -296,7 +296,7 @@
     </div>
     <p>
         
-        <a class="prevpost" href="/test/2013/12/03/Migrating.html">Previous Post</a>
+        <a class="prevpost" href="/test/2013/12/04/Migrating.html">Previous Post</a>
         
         
         <a class="nextpost" href="/image/processing/2014/01/05/ImageProcJS2.html">Next Post</a>
@@ -305,6 +305,12 @@
     <div>
         <h3>Related Posts</h3>
         <div class="relatedposts">
+            
+            <li>
+                <a href="/boost/2015/11/05/BoostGraph.html">
+                    Boost Graph Library - A Primer
+                </a>
+            </li>
             
             <li>
                 <a href="/image/processing/2014/02/26/ImageProcJS4.html">
@@ -325,13 +331,13 @@
             </li>
             
             <li>
-                <a href="/test/2013/12/03/Migrating.html">
+                <a href="/test/2013/12/04/Migrating.html">
                     Migrating to github.io
                 </a>
             </li>
             
             <li>
-                <a href="/test/2013/12/03/first.html">
+                <a href="/test/2013/12/04/first.html">
                     First
                 </a>
             </li>
