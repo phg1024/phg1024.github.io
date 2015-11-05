@@ -115,18 +115,18 @@ graphs and <code>adjacency_matrix</code> is more about pushing the performance l
 dense graphs. </p>
 
 <p>These two data structures are pretty easy to use. For example, the use of <code>adjacency_list</code> can be as simple as</p>
-<div class="highlight"><pre><code class="language-" data-lang="">#include &lt;boost/graph/adjacency_list.hpp&gt;
-using namespace boost;
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="cp">#include &lt;boost/graph/adjacency_list.hpp&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">boost</span><span class="p">;</span>
 
-using Graph = adjacency_list&lt;listS, vecS&gt;;
+<span class="k">using</span> <span class="n">Graph</span> <span class="o">=</span> <span class="n">adjacency_list</span><span class="o">&lt;</span><span class="n">listS</span><span class="p">,</span> <span class="n">vecS</span><span class="o">&gt;</span><span class="p">;</span>
 
-Graph g;
+<span class="n">Graph</span> <span class="n">g</span><span class="p">;</span>
 </code></pre></div>
 <p>That&#39;s it. Three lines of code and you just create an adjacency list graph using list 
 as the container for per-vertex adjacency relationship and vector for the outer container 
 of all adjacency lists. By default, the graph is a directed graph, but you can make it 
 undirected by specifying it with a template parameter</p>
-<div class="highlight"><pre><code class="language-" data-lang="">using Graph = adjacency_list&lt;listS, vecS, undirectedS&gt;;
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">using</span> <span class="n">Graph</span> <span class="o">=</span> <span class="n">adjacency_list</span><span class="o">&lt;</span><span class="n">listS</span><span class="p">,</span> <span class="n">vecS</span><span class="p">,</span> <span class="n">undirectedS</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p>In the examples below, we will stick to directed graphs though.</p>
 
@@ -134,22 +134,22 @@ undirected by specifying it with a template parameter</p>
 
 <p>Alright, I have to admit the empty graph created in the three lines of code is not that 
 interesting. Let&#39;s add some vertices and edges to the graph to make it a bit more exciting.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">auto v0 = add_vertex(g);
-auto v1 = add_vertex(g);
-auto v2 = add_vertex(g);
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">auto</span> <span class="n">v0</span> <span class="o">=</span> <span class="n">add_vertex</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">add_vertex</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">add_vertex</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
 
-add_edge(v0, v1, g);
-add_edge(v0, v2, g);
-add_edge(v1, v2, g);
+<span class="n">add_edge</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span>
+<span class="n">add_edge</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span>
+<span class="n">add_edge</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span>
 </code></pre></div>
 <p>Very straightforward, right? Let&#39;s see if the graph is exactly what we want:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">for(auto vp = vertices(g); vp.first != vp.second; ++vp.first) {
-  cout &lt;&lt; *vp.first &lt;&lt; endl;
-}
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">vp</span> <span class="o">=</span> <span class="n">vertices</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">vp</span><span class="p">.</span><span class="n">first</span> <span class="o">!=</span> <span class="n">vp</span><span class="p">.</span><span class="n">second</span><span class="p">;</span> <span class="o">++</span><span class="n">vp</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">vp</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
 
-for(auto ep = edges(g); ep.first != ep.second; ++ep.first) {
-  cout &lt;&lt; source(*ep.first, g) &lt;&lt; " -&gt; " &lt;&lt; target(*ep.first, g) &lt;&lt; endl;
-}
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">ep</span> <span class="o">=</span> <span class="n">edges</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">ep</span><span class="p">.</span><span class="n">first</span> <span class="o">!=</span> <span class="n">ep</span><span class="p">.</span><span class="n">second</span><span class="p">;</span> <span class="o">++</span><span class="n">ep</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">source</span><span class="p">(</span><span class="o">*</span><span class="n">ep</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">" -&gt; "</span> <span class="o">&lt;&lt;</span> <span class="n">target</span><span class="p">(</span><span class="o">*</span><span class="n">ep</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>And the output looks like:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">0
@@ -162,8 +162,8 @@ for(auto ep = edges(g); ep.first != ep.second; ++ep.first) {
 <p>That&#39;s right, we&#39;ve made a (very simple) graph!</p>
 
 <p>What about remove vertices or edges? Well, BGL has those for you already:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">clear_vertex(v2, g);
-remove_vertex(v2, g);
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">clear_vertex</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span>
+<span class="n">remove_vertex</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span>
 </code></pre></div>
 <p>After this, the graph looks like:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">0
@@ -176,16 +176,16 @@ remove_vertex(v2, g);
 perform the desired operations at several control points during the traversal.
 For example, if we want to print out the graph in DFS visiting order, we can 
 define a visitor like:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">class DFSVisitor : public default_dfs_visitor {
-public:
-  template &lt;typename Vertex, typename Graph&gt;
-  void discover_vertex(Vertex u, const Graph&amp; g) {
-    cout &lt;&lt; "discover vertex " &lt;&lt;  get(vertex_index, g, u) &lt;&lt; endl;
-  }
-}
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">DFSVisitor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">default_dfs_visitor</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Vertex</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Graph</span><span class="o">&gt;</span>
+  <span class="kt">void</span> <span class="n">discover_vertex</span><span class="p">(</span><span class="n">Vertex</span> <span class="n">u</span><span class="p">,</span> <span class="k">const</span> <span class="n">Graph</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"discover vertex "</span> <span class="o">&lt;&lt;</span>  <span class="n">get</span><span class="p">(</span><span class="n">vertex_index</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Then use it in the DFS algorithm:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">depth_first_search(g, visitor(DFSVisitor()));
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">depth_first_search</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">visitor</span><span class="p">(</span><span class="n">DFSVisitor</span><span class="p">()));</span>
 </code></pre></div>
 <p>And we will have the nice output below:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">discover vertex 0
@@ -194,7 +194,7 @@ discover vertex 2
 </code></pre></div>
 <p>How awesome is that! </p>
 
-<h4>Final Word</h4>
+<h4>Final Words</h4>
 
 <p>Well, this is really a 5 minutes <em>primer</em> for BGL. Anyway, these are pretty much 
 everything one needs to get started with BGL. Have fun exploring the scary world!
