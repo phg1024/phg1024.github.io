@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">		
+        <title>JavaScript Image Processing (4) - Histogram Equalization</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/phgstyle.css">
+		
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-51049436-1', 'phg1024.github.io');
+            ga('require', 'displayfeatures');
+            ga('send', 'pageview');
+        </script>
+
+        <!-- MathJax -->
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        </script>
+
+		<!-- boostrap stuff -->
+		<!-- Bootstrap core CSS -->
+		<link href="/lib/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Bootstrap theme -->
+		<link href="/lib/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="/css/theme.css" rel="stylesheet">		
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	
+        <!-- My own script -->
+        <script type="text/javascript" src="/js/phgscript.js"></script>
+    </head>
+    <body role="document">
+        <!-- Facebook like button -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+			<!-- Fixed navbar -->
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+			  <div class="container">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="/">Peihong's $\infty$ Dimensional Space</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+				  <ul class="nav navbar-nav">
+					<li><a href="/">Home</a></li>
+					<li><a href="/projects">Projects</a></li>
+					<li><a href="/blog.html">Blog</a></li>
+					<li><a href="/about.html">About</a></li>
+					<li><a href="/contact.html">Contact</a></li>
+				  </ul>
+				</div><!--/.nav-collapse -->
+			  </div>
+			</nav>		  
+
+        <div id="wrap">
+				<div id="main" class="container theme-showcase" role="main">
+				<div class="content">
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Previous Post</a>
+        
+        
+        <a class="nextpost" href="/boost/2015/11/05/BoostGraph.html">Next Post</a>
+        
+    </p><br><br>
+    <h3>JavaScript Image Processing (4) - Histogram Equalization</h3>
+    <p class="meta">26 Feb 2014</p>
+    <div class="post">
+        <p>It is time we work on something more sophisticated. Well, not actually that sophisticated, but complex enough compared
+to what we have done so far. Histogram equalization. It is a commonly used technique to save many many many poorly
+exposed images.</p>
+
+<h3>Histogram and Cumulative Distribution Function</h3>
+
+<p>First of all, what exactly is a <a href="http://en.wikipedia.org/wiki/Histogram">histogram</a>? Basically it is a statistics
+telling us about the distribution of the pixels values in a given image - how many pixels are bright, how many are dark, etc.</p>
+
+<p>Let&#39;s consider a grayscale image for the moment. We know that there are typically 256 gray scales (i.e. pixel values) in such images. It
+is not very hard to come up with a histogram for such kind of image - we can simply count the number of pixels having different
+pixels values. Say we find $n_0$ pixels have gray scale 0, $n_1$ pixels have value 1, ..., $n_i$ pixels have value $i$, and so on and so on.
+After counting the pixels of all 256 possible gray scales, we get ourselves a histogram! Easy huh?</p>
+
+<p>We can also think of the creation of a histogram as a classification of pixels according to their values, and the histogram
+is nothing more than a table recording the number of the pixels in each of the 256 groups (or more commonly, &#39;bins&#39;). Therefore,
+a histogram provides a description of the pixel value distribution in an image - how many pixels are bright, how many pixels are
+dark, and how many mid-tone pixels, etc. This is very useful for us to design image processing algorithms because we
+can use it as a compact representation of an image (think about 1 million pixels versus 256 numbers!). The downside is we
+can not get much out of a histogram if we have a complex problem to solve, since we only have a very high level (and also very vague)
+summary of brightness distribution over an image.</p>
+
+<p>Just a side note, we don&#39;t necessarily have to use 256 bins for the counting - any number of bins, as long as it is sufficient for the
+application at hand, can be used. One typical case using a very small number of bins for histogram computation is color
+reduction, where we try to reduce the number of colors in images while maintaining their original visual appearance as much as possible.</p>
+
+<p>For color images, say RGB images, things are just as straightforward. The only difference is that we have 3 channels, i.e. R, G, B channels,
+instead of just a single brightness channel. So what? We can just create 3 histograms for these channels and we are done! Of
+course, sometimes we are only interested in the brightness of an image. In those cases, we can convert the color image to
+  a grayscale one first, and compute the histogram for the grayscale image. How do we convert a color image to a grayscale one?
+Simple! We can use a rough estimation with <a href="http://en.wikipedia.org/wiki/Grayscale">the equation</a> below:
+$$ l = 0.299 \times r + 0.587 \times g + 0.114 \times b $$</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">grayscale</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">src</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span>
+            <span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">lev</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">r</span> <span class="o">*</span> <span class="mf">0.299</span> <span class="o">+</span> <span class="nx">g</span> <span class="o">*</span> <span class="mf">0.587</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">*</span> <span class="mf">0.114</span><span class="p">);</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="nx">lev</span><span class="p">,</span> <span class="nx">lev</span><span class="p">,</span> <span class="nx">lev</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></div>
+
+
+<div align="center">
+<table>
+<tr>
+<td><img class="post exampleimg" src="/projects/imageprocjs/seal.jpg"></td>
+<td><img class="post exampleimg" src="/projects/imageprocjs/images/grayscale.png"></td>
+</tr>
+<tr>
+<td class="post caption">Source Image</td><td class="post caption">Converted Grayscale Image</td>
+</tr>
+</table>
+</div>
+
+<p>A conversion using the above equation works just fine, and we are ready to get compute a histogram for any image!
+The computation of histogram is pretty straightforward:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// build histogram of specified image region
+</span><span class="kd">function</span> <span class="nx">histogram</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">num_bins</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">num_bins</span> <span class="o">==</span> <span class="kc">undefined</span> <span class="p">)</span>
+        <span class="nx">num_bins</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">h</span><span class="p">,</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">hist</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">val</span><span class="p">;</span>
+    <span class="c1">// initialize the histogram
+</span>    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">num_bins</span><span class="p">;</span><span class="o">++</span><span class="nx">i</span><span class="p">)</span>
+        <span class="nx">hist</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// loop over every single pixel
+</span>    <span class="k">for</span><span class="p">(</span><span class="nx">y</span><span class="o">=</span><span class="nx">y1</span><span class="p">,</span><span class="nx">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">y</span><span class="o">&lt;</span><span class="nx">y2</span><span class="p">;</span><span class="o">++</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="nx">x1</span><span class="p">;</span><span class="nx">x</span><span class="o">&lt;</span><span class="nx">x2</span><span class="p">;</span><span class="o">++</span><span class="nx">x</span><span class="p">,</span><span class="nx">idx</span><span class="o">+=</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// figure out which bin it is in
+</span>            <span class="nx">val</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">img</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">num_bins</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+            <span class="o">++</span><span class="nx">hist</span><span class="p">[</span><span class="nx">val</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">hist</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<div id="histimg" align="center">
+<table>
+<tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/hist0.png"></td></tr>
+<tr><td class="post caption">Seal and its histogram</td></tr>
+</table>
+</div>
+
+<p>Yes, the jagged blue area is the histogram. The horizontal axis represents the pixel values, and the vertical axis is
+ their frequency. Not so shabby, right? You may ask what on earth is the red curve in the plot, we
+ will get to that in a bit.</p>
+
+<p>Let&#39;s first formalize the definition of the histogram. The histogram can be viewed as a function of pixel values $h(p): R \to R$.
+This function maps a given pixel value $p$ to its frequency, $\frac{n(p)}{N}$, in the entire image. Here we use
+$n(p)$ for as the number of pixels having a brightness value $p$, and $N$ as the total number of pixels in an image. Since
+the number of pixels in an image is a normalizing factor, we can also just use $n(p)$ as the frequency as well.</p>
+
+<p>Now what exactly is the red curve? It is the so-call <a href="http://en.wikipedia.org/wiki/Cumulative_distribution_function">cumulative distribution function</a>(CDF).
+Don&#39;t be scared away by its long name, it is just a partial sum of the histogram we just build:
+$$c(p) = \sum_{i=0}^p n(i)$$
+Yes, $c(p)$ means the number of pixels with a value smaller or equal than $p$. So $c(0)$ means the number of the pure black (0, 0, 0) pixels,
+ while $c(255)$ equals to the total number of pixels. If we are using a normalized version of histogram, we will have</p>
+
+<p>$$c(p) = \frac{1}{N} \sum<em>{i=0}^p n(i) = \sum\</em>{i=0}^p h(i)$$</p>
+
+<p>In this case, we have $c(256)=1$. Now let&#39;s take a look at the <a href="#histimg">histogram</a> we just build. For display purpose the histogram
+ is scaled slightly differently, but the CDF is normalized with the total pixel number. The vertical axis has a range of [0, 1],
+ while the horizontal axis has a range of [0, 255]. Things look just about right.</p>
+
+<h3>Histogram Equalization</h3>
+
+<p>Now that we have the histogram built and displayed, what then? What can all these vertical bins do? Let&#39;s consider the badly exposed image below.
+<div align="center">
+<table>
+<tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/histL0.png"></td></tr>
+<tr><td class="post caption">Badly Exposed Image</td></tr>
+</table>
+</div></p>
+
+<p>Not cool. Everything just look so washed. We&#39;ve got to do something to rescue it.</p>
+
+<p>And here comes histogram equalization. The histogram of the image above is totally skewed. All the interesting pixel values are well above 128 roughly -- this means about we wasted roughly half of the useful pixel values! That&#39;s exactly the reason this image looks so bad. And the way to make it better seems obvious: just distribute the pixel values better, or even better, distribute them evenly across all available levels. That&#39;s right, make use of all available levels so that the differences among pixels values are better presented and the details of the image are better visible.</p>
+
+<p>This is the so called histogram equalization - to make the pixels distributed &quot;equally&quot; to different brightness levels while maintaining the visual appearance of the image. The key to histogram equalization is to maintain visual appearance. We can easily make the histogram any shape we want, but that would not work because the visual appearance of the image would also be completely changed. To preserve visual appearance, we need to keep the relative relationship among pixels unchanged. That is, if a pixel $p<em>i$ has a larger value than $p</em>j$, it should still have a large value after histogram equalization.</p>
+
+<p>To achieve this, we need to scale each pixel value by some factor. The factor can be determined by applying the equalization condition: after equalization, the total number of pixels with value smaller or equal to $p$ should have a new value $p&#39;$ such that
+$$\frac{p&#39;}{255} = c(p)$$
+The meaning of this equation is apparent: if the fraction of pixels with value smaller or equal to $p$ is $c(p)$, then all value $p$ pixels should have a new value $p&#39;$ that is proportional to $c(p)$. That is, $p&#39; = const \cdot c(p)$. Considering there are in total 256 levels of brightness and the minimum brightness is 0, the constant must be 255.</p>
+
+<p>This is a very intuitive solution, because we do want to assign a smaller value to low brightness pixels and larger values to high brightness pixels. This is guaranteed with the equation above since $c(p)$ is monotonic increasing with $p$. The equation also guarantees that the pixel values distribution in the new image is equalized. The reason is that the CDF of the new image satisfies
+$$c(p&#39;) = c(p) = 255\cdot p&#39;$$
+$c(p&#39;) = c(p)$ because the ratio of pixels smaller or equal than $p&#39;$ in the new image is exactly the same as the ratio of pixels smaller or equal than $p$ in the original image.</p>
+
+<p>A linear relation! We&#39;ve got an even distribution of pixel values! Well, not exactly even distribution due to the discrete nature of the pixel values, but it is close enough to even distribution. The image below verifies this.
+<div align="center">
+<table>
+<tr><td><img class="post exampleimg" src="/projects/imageprocjs/images/histL1.png"></td></tr>
+<tr><td class="post caption">Histogram Equalized Image</td></tr>
+</table>
+</div></p>
+
+    </div>
+    <div class="plugins">
+    <div class="social">
+        <span class="twitter">
+            <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://phg1024.github.io/image/processing/2014/02/26/ImageProcJS4.html">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </span>
+        <span class="google">
+            <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+            <g:plusone size="medium" href="http://phg1024.github.io/image/processing/2014/02/26/ImageProcJS4.html"></g:plusone>
+        </span>
+        <span class="Facebook">
+            <iframe src="https://www.facebook.com/plugins/like.php?href=http://phg1024.github.io/image/processing/2014/02/26/ImageProcJS4.html&amp;show_faces=false&amp;layout=button_count" scrolling="no" frameborder="0" style="height: 21px; width: 100px" allowTransparency="true"></iframe>
+        </span>
+    </div>
+    <!-- DisQus support -->
+    <div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'pgh1024'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+    <p>
+        
+        <a class="prevpost" href="/image/processing/2014/02/24/ImageProcJS3.html">Previous Post</a>
+        
+        
+        <a class="nextpost" href="/boost/2015/11/05/BoostGraph.html">Next Post</a>
+        
+    </p><br><br>
+    <div>
+        <h3>Related Posts</h3>
+        <div class="relatedposts">
+            
+            <li>
+                <a href="/boost/2015/11/05/BoostGraph.html">
+                    Boost Graph Library - A Primer
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/02/24/ImageProcJS3.html">
+                    JavaScript Image Processing (3) - Brightness/Contrast Adjustment
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/01/05/ImageProcJS2.html">
+                    JavaScript Image Processing (2) - The Image Class
+                </a>
+            </li>
+            
+            <li>
+                <a href="/image/processing/2014/01/04/ImageProcJS1.html">
+                    JavaScript Image Processing (1) - Getting Started
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/Migrating.html">
+                    Migrating to github.io
+                </a>
+            </li>
+            
+            <li>
+                <a href="/test/2013/12/04/first.html">
+                    First
+                </a>
+            </li>
+            
+        </div>
+    </div>
+</div>
+
+				</div>
+        </div>
+
+          <footer class="footer">
+          &copy 2009-2015 &nbsp Peihong Guo &nbsp
+   	    <script type="text/javascript">
+   		    writeEmailAddress();
+           </script>
+           </footer>
+		   
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->	  
+        <!-- jQuery -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="/lib/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+		<!--<script src="/lib/bootstrap-3.3.2-dist/assets/js/docs.min.js"></script>-->
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="/lib/bootstrap-3.3.2-dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
+</html>
