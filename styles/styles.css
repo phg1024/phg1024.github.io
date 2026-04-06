@@ -50,6 +50,34 @@
   --theme-card-border-width: 1px;
 }
 
+[data-theme="starwars"] {
+  --site-bg: #02040c;
+  --site-text: #f6e27a;
+  --site-muted: #c7b67b;
+  --surface-bg: rgba(8, 12, 28, 0.88);
+  --surface-panel-bg: rgba(9, 12, 24, 0.94);
+  --surface-alt: rgba(18, 26, 54, 0.9);
+  --surface-border: rgba(246, 226, 122, 0.4);
+  --overlay-bg: rgba(6, 10, 24, 0.58);
+  --overlay-text: #ffeaa3;
+  --link-color: #8dc8ff;
+  --link-hover: #fff0a6;
+  --navbar-bg: rgba(2, 4, 12, 0.94);
+  --navbar-text: #f6e27a;
+  --footer-bg: rgba(2, 4, 12, 0.94);
+  --footer-text: #c7b67b;
+  --theme-font: "Trebuchet MS", "Verdana", sans-serif;
+  --theme-heading-font: "Arial Black", "Impact", sans-serif;
+  --theme-shadow: 0 0 24px rgba(113, 174, 255, 0.12), 0 0 44px rgba(246, 226, 122, 0.08);
+  --theme-bg-image:
+    radial-gradient(circle at 18% 20%, rgba(52, 90, 180, 0.18), transparent 24%),
+    radial-gradient(circle at 78% 16%, rgba(255, 188, 80, 0.12), transparent 18%),
+    radial-gradient(circle at center, rgba(33, 60, 112, 0.1), transparent 45%),
+    linear-gradient(#02040c, #030714 48%, #040914);
+  --theme-border-radius: 0.2rem;
+  --theme-card-border-width: 1px;
+}
+
 [data-theme="win31"] {
   --site-bg: #008080;
   --site-text: #000000;
@@ -118,6 +146,7 @@ body {
 }
 
 #cyberpunk-backdrop,
+#starwars-backdrop,
 #matrix-backdrop {
   position: fixed;
   inset: 0;
@@ -129,6 +158,7 @@ body {
 }
 
 #cyberpunk-grid,
+#starwars-space,
 #matrix-rain {
   width: 100%;
   height: 100%;
@@ -139,12 +169,18 @@ body {
   opacity: 1;
 }
 
+[data-theme="starwars"] #starwars-backdrop {
+  opacity: 1;
+}
+
 [data-theme="matrix"] #matrix-backdrop {
   opacity: 1;
 }
 
 [data-theme="cyberpunk"] main.container,
 [data-theme="cyberpunk"] .footer,
+[data-theme="starwars"] main.container,
+[data-theme="starwars"] .footer,
 [data-theme="matrix"] main.container,
 [data-theme="matrix"] .footer {
   position: relative;
@@ -712,6 +748,98 @@ My stuff
   background: linear-gradient(90deg, rgba(0, 245, 212, 0.16), rgba(255, 79, 216, 0.18));
   color: #ffffff;
   text-shadow: 0 0 8px rgba(0, 245, 212, 0.3);
+}
+
+[data-theme="starwars"] body {
+  letter-spacing: 0.015em;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+[data-theme="starwars"] .navbar-brand,
+[data-theme="starwars"] h1,
+[data-theme="starwars"] h2,
+[data-theme="starwars"] h3,
+[data-theme="starwars"] h4,
+[data-theme="starwars"] h5 {
+  color: #ffe89a;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(246, 226, 122, 0.28);
+}
+
+[data-theme="starwars"] .navbar {
+  border-bottom: 1px solid rgba(246, 226, 122, 0.25);
+}
+
+[data-theme="starwars"] .navbar-brand,
+[data-theme="starwars"] .nav-link {
+  display: inline-block;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+[data-theme="starwars"] .nav-item.active > .nav-link,
+[data-theme="starwars"] .nav-item.show > .nav-link {
+  color: #fff1b4 !important;
+  background-color: rgba(246, 226, 122, 0.08);
+  border-color: rgba(246, 226, 122, 0.25);
+  box-shadow: 0 0 18px rgba(246, 226, 122, 0.08);
+}
+
+[data-theme="starwars"] .navbar-brand:hover,
+[data-theme="starwars"] .navbar-brand:focus,
+[data-theme="starwars"] .nav-link:hover,
+[data-theme="starwars"] .nav-link:focus {
+  color: #ffffff !important;
+  background-color: rgba(141, 200, 255, 0.08);
+  border-color: rgba(141, 200, 255, 0.3);
+  box-shadow: 0 0 20px rgba(141, 200, 255, 0.12);
+}
+
+[data-theme="starwars"] .card,
+[data-theme="starwars"] .tab-content,
+[data-theme="starwars"] .dropdown-menu,
+[data-theme="starwars"] .alert-secondary,
+[data-theme="starwars"] .carousel-caption,
+[data-theme="starwars"] .about-panel {
+  border-color: rgba(246, 226, 122, 0.32);
+  box-shadow: 0 0 0 1px rgba(246, 226, 122, 0.08), 0 0 28px rgba(38, 72, 130, 0.14);
+}
+
+[data-theme="starwars"] .blog-content {
+  background-color: rgba(8, 11, 20, 0.74);
+  border-color: rgba(246, 226, 122, 0.28);
+  box-shadow: 0 0 0 1px rgba(246, 226, 122, 0.06), 0 0 24px rgba(35, 68, 128, 0.12);
+}
+
+[data-theme="starwars"] .dropdown-item {
+  color: #fbeaa1;
+}
+
+[data-theme="starwars"] .dropdown-item:hover,
+[data-theme="starwars"] .dropdown-item:focus,
+[data-theme="starwars"] .dropdown-item.active,
+[data-theme="starwars"] .dropdown-item:active {
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(53, 111, 201, 0.18), rgba(246, 226, 122, 0.12));
+  text-shadow: 0 0 6px rgba(141, 200, 255, 0.2);
+}
+
+[data-theme="starwars"] .theme-switcher,
+[data-theme="starwars"] input,
+[data-theme="starwars"] select,
+[data-theme="starwars"] textarea,
+[data-theme="starwars"] .btn {
+  border-color: rgba(246, 226, 122, 0.28);
+  box-shadow: none;
+}
+
+[data-theme="starwars"] .text-muted,
+[data-theme="starwars"] .blog-entry-brief,
+[data-theme="starwars"] .footer .text-muted {
+  color: #c7b67b !important;
 }
 
 body.mobile-device .blog-entry-line {

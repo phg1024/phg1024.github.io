@@ -4,8 +4,10 @@ $(document).ready(function () {
         || (window.matchMedia && window.matchMedia("(pointer: coarse)").matches && window.innerWidth <= 1024);
     const themeSwitcher = document.getElementById('theme-switcher');
     const cyberpunkCanvas = document.getElementById('cyberpunk-grid');
+    const starWarsCanvas = document.getElementById('starwars-space');
     const matrixCanvas = document.getElementById('matrix-rain');
     let cyberpunkController = null;
+    let starWarsController = null;
     let matrixController = null;
 
     const createCyberpunkBackdrop = function (canvas) {
@@ -182,6 +184,196 @@ $(document).ready(function () {
             }
 
             context.shadowBlur = 0;
+            animationFrameId = window.requestAnimationFrame(draw);
+        };
+
+        const start = function () {
+            if (isRunning) {
+                return;
+            }
+            isRunning = true;
+            resize();
+            animationFrameId = window.requestAnimationFrame(draw);
+        };
+
+        const stop = function () {
+            isRunning = false;
+            if (animationFrameId) {
+                window.cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            context.clearRect(0, 0, width, height);
+        };
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        return {
+            start: start,
+            stop: stop
+        };
+    };
+
+    const createStarWarsBackdrop = function (canvas) {
+        if (!canvas) {
+            return null;
+        }
+
+        const context = canvas.getContext('2d');
+        let animationFrameId = null;
+        let isRunning = false;
+        let width = 0;
+        let height = 0;
+        let time = 0;
+        let stars = [];
+        let streaks = [];
+
+        const createStars = function () {
+            const count = Math.max(120, Math.floor((width * height) / 9500));
+            return Array.from({ length: count }, function () {
+                const depth = 0.35 + Math.random() * 1.4;
+                return {
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: 0.4 + Math.random() * 1.9,
+                    twinkle: Math.random() * Math.PI * 2,
+                    drift: 0.04 + Math.random() * 0.22,
+                    hue: Math.random() < 0.14 ? '141, 200, 255' : '246, 226, 122',
+                    depth: depth
+                };
+            });
+        };
+
+        const createStreaks = function () {
+            const count = Math.max(7, Math.floor(width / 240));
+            return Array.from({ length: count }, function () {
+                return {
+                    x: Math.random() * width,
+                    y: Math.random() * height * 0.8,
+                    length: 90 + Math.random() * 220,
+                    speed: 4 + Math.random() * 8,
+                    alpha: 0.06 + Math.random() * 0.1
+                };
+            });
+        };
+
+        const resize = function () {
+            const ratio = window.devicePixelRatio || 1;
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = Math.floor(width * ratio);
+            canvas.height = Math.floor(height * ratio);
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            context.setTransform(ratio, 0, 0, ratio, 0, 0);
+            stars = createStars();
+            streaks = createStreaks();
+        };
+
+        const draw = function () {
+            if (!isRunning) {
+                return;
+            }
+
+            time += 1;
+            context.clearRect(0, 0, width, height);
+
+            const background = context.createRadialGradient(width * 0.5, height * 0.45, width * 0.02, width * 0.5, height * 0.45, width * 0.75);
+            background.addColorStop(0, 'rgba(18, 32, 76, 0.16)');
+            background.addColorStop(0.45, 'rgba(8, 16, 42, 0.08)');
+            background.addColorStop(1, 'rgba(2, 4, 12, 0)');
+            context.fillStyle = background;
+            context.fillRect(0, 0, width, height);
+
+            const nebulaLeft = context.createRadialGradient(width * 0.18, height * 0.24, width * 0.01, width * 0.18, height * 0.24, width * 0.24);
+            nebulaLeft.addColorStop(0, 'rgba(82, 126, 255, 0.12)');
+            nebulaLeft.addColorStop(1, 'rgba(82, 126, 255, 0)');
+            context.fillStyle = nebulaLeft;
+            context.fillRect(0, 0, width, height);
+
+            const nebulaRight = context.createRadialGradient(width * 0.82, height * 0.18, width * 0.01, width * 0.82, height * 0.18, width * 0.2);
+            nebulaRight.addColorStop(0, 'rgba(255, 192, 92, 0.08)');
+            nebulaRight.addColorStop(1, 'rgba(255, 192, 92, 0)');
+            context.fillStyle = nebulaRight;
+            context.fillRect(0, 0, width, height);
+
+            stars.forEach(function (star) {
+                star.y += star.drift * star.depth;
+                if (star.y > height + 4) {
+                    star.y = -4;
+                    star.x = Math.random() * width;
+                }
+
+                const pulse = 0.4 + ((Math.sin((time * 0.015 * star.depth) + star.twinkle) + 1) * 0.35);
+                context.fillStyle = 'rgba(' + star.hue + ', ' + (0.2 + pulse * 0.55).toFixed(2) + ')';
+                context.shadowBlur = 6 + (pulse * 7);
+                context.shadowColor = 'rgba(' + star.hue + ', ' + (0.12 + pulse * 0.25).toFixed(2) + ')';
+                context.beginPath();
+                context.arc(star.x, star.y, star.size * (0.85 + pulse * 0.4), 0, Math.PI * 2);
+                context.fill();
+            });
+
+            context.shadowBlur = 0;
+            streaks.forEach(function (streak) {
+                streak.x -= streak.speed;
+                streak.y += streak.speed * 0.18;
+                if (streak.x + streak.length < 0 || streak.y - streak.length * 0.18 > height) {
+                    streak.x = width + Math.random() * width * 0.3;
+                    streak.y = Math.random() * height * 0.45;
+                    streak.length = 90 + Math.random() * 220;
+                    streak.speed = 4 + Math.random() * 8;
+                    streak.alpha = 0.05 + Math.random() * 0.09;
+                }
+
+                const streakGradient = context.createLinearGradient(streak.x, streak.y, streak.x + streak.length, streak.y - (streak.length * 0.18));
+                streakGradient.addColorStop(0, 'rgba(255, 232, 154, 0)');
+                streakGradient.addColorStop(0.55, 'rgba(141, 200, 255, ' + streak.alpha.toFixed(2) + ')');
+                streakGradient.addColorStop(1, 'rgba(255, 232, 154, 0)');
+                context.strokeStyle = streakGradient;
+                context.lineWidth = 1.1;
+                context.beginPath();
+                context.moveTo(streak.x, streak.y);
+                context.lineTo(streak.x + streak.length, streak.y - (streak.length * 0.18));
+                context.stroke();
+            });
+
+            const planetX = width * 0.82;
+            const planetY = height * 0.24;
+            const planetRadius = Math.min(width, height) * 0.09;
+            const planet = context.createRadialGradient(planetX - planetRadius * 0.25, planetY - planetRadius * 0.35, planetRadius * 0.1, planetX, planetY, planetRadius);
+            planet.addColorStop(0, 'rgba(255, 232, 154, 0.28)');
+            planet.addColorStop(0.45, 'rgba(229, 184, 88, 0.18)');
+            planet.addColorStop(1, 'rgba(229, 184, 88, 0)');
+            context.fillStyle = planet;
+            context.beginPath();
+            context.arc(planetX, planetY, planetRadius, 0, Math.PI * 2);
+            context.fill();
+
+            const horizon = height * 0.83;
+            const horizonGlow = context.createLinearGradient(0, horizon - 50, 0, horizon + 90);
+            horizonGlow.addColorStop(0, 'rgba(92, 136, 255, 0)');
+            horizonGlow.addColorStop(0.45, 'rgba(92, 136, 255, 0.06)');
+            horizonGlow.addColorStop(1, 'rgba(8, 16, 42, 0)');
+            context.fillStyle = horizonGlow;
+            context.fillRect(0, horizon - 50, width, 140);
+
+            const silhouette = context.createLinearGradient(0, horizon - 20, 0, height);
+            silhouette.addColorStop(0, 'rgba(6, 10, 22, 0.2)');
+            silhouette.addColorStop(1, 'rgba(2, 4, 12, 0.7)');
+            context.fillStyle = silhouette;
+            context.beginPath();
+            context.moveTo(0, height);
+            context.lineTo(0, horizon);
+            for (let x = 0; x <= width; x += 60) {
+                const peak = horizon - (12 + Math.random() * 24);
+                context.lineTo(x + 12, peak);
+                context.lineTo(x + 28, horizon - (6 + Math.random() * 14));
+                context.lineTo(Math.min(width, x + 60), horizon);
+            }
+            context.lineTo(width, height);
+            context.closePath();
+            context.fill();
+
             animationFrameId = window.requestAnimationFrame(draw);
         };
 
@@ -482,6 +674,10 @@ $(document).ready(function () {
         cyberpunkController = createCyberpunkBackdrop(cyberpunkCanvas);
     }
 
+    if (starWarsCanvas) {
+        starWarsController = createStarWarsBackdrop(starWarsCanvas);
+    }
+
     if (matrixCanvas) {
         matrixController = createMatrixRain(matrixCanvas);
     }
@@ -498,6 +694,13 @@ $(document).ready(function () {
                 cyberpunkController.start();
             } else {
                 cyberpunkController.stop();
+            }
+        }
+        if (starWarsController) {
+            if (theme === 'starwars') {
+                starWarsController.start();
+            } else {
+                starWarsController.stop();
             }
         }
         if (matrixController) {
