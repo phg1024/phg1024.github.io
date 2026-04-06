@@ -10,7 +10,7 @@ svg{
 }
 
 .back {
-    background: #ffffff;
+    background: var(--surface-bg);
 }
 
 #div_canvas, #div_curvetool {
@@ -46,12 +46,12 @@ rect {
 
 circle, .line {
     fill: none;
-    stroke: black;
+    stroke: var(--site-text);
     stroke-width: 1.5px;
 }
 
 circle {
-    fill: #fff;
+    fill: var(--surface-bg);
     fill-opacity: .2;
     cursor: move;
 }

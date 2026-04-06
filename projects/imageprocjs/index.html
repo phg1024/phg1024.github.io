@@ -1,318 +1,671 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>ImageProcJS | Peihong's Personal Page</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/styles/styles.css">
-        <link rel='stylesheet' type='text/css' href='../projects.css' media="screen, print, projection">
-        <link rel='stylesheet' type='text/css' href='./css/style.css' media="screen, print, projection">
-        <style>
-            .project-shell canvas,
-            .project-shell img {
-                max-width: 100%;
-                height: auto;
-            }
-            .btn-xs {
-                padding: .25rem .5rem;
-                font-size: .875rem;
-                line-height: 1.5;
-                border-radius: .2rem;
-            }
-        </style>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="project_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Projects</a>
-                        <div class="dropdown-menu" aria-labelledby="project_dropdown" id="projects-menu">
-                            <a class="dropdown-item" href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a>
-                            <a class="dropdown-item" href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a>
-                            <a class="dropdown-item" href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a>
-                            <a class="dropdown-item" href="/project/personal_projects/">Personal Projects</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/blog" id="blog_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Blog</a>
-                        <div class="dropdown-menu" aria-labelledby="blog_dropdown" id="blog-menu">
-                            <a class="dropdown-item" href="/blog">ALL</a>
-                            <a class="dropdown-item" href="/blog/category/cooking">Cooking</a>
-                            <a class="dropdown-item" href="/blog/category/programming">Programming</a>
-                            <a class="dropdown-item" href="/blog/category/ai">AI</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <main role="main" class="container">
-            <div class="starter-template project-shell">
-
-    <!-- External libraries -->
-    <script type="text/javascript" src="lib/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="lib/d3.v3.min.js"></script>
-    <script type="text/javascript" src="lib/require.js"></script>
-
-    <!-- Peihong's library -->
-    <script type="text/javascript" src="algorithms.js"></script>
-    <script type="text/javascript" src="benchmark.js"></script>
-    <script type="text/javascript" src="colorutils.js"></script>
-    <script type="text/javascript" src="color.js"></script>
-    <script type="text/javascript" src="image.js"></script>
-    <script type="text/javascript" src="filter.js"></script>
-    <script type="text/javascript" src="effects.js"></script>
-    <script type="text/javascript" src="curve.js"></script>
-    <script type="text/javascript" src="tools/curvetool.js"></script>
-    <script type="text/javascript" src="tools/histogramtool.js"></script>
-    <script type="text/javascript" src="imageloader.js"></script>
-    <script type="text/javascript" src="utils.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Peihong's Personal Page</title>
+    <link rel="stylesheet" href="/styles/styles.css">
     <script>
-        var context, canvas;
-        var curvetool, histtool;
-        var loader;
-        window.onload = function() {
-            loader = new ImageLoader();
-            canvas = document.getElementById('cvs');
-            context = canvas.getContext('2d');
-            curvetool = new CurveTool();
-            histtool = new HistogramTool();
-            histtool.init('#div_curvetool', 'brightness');
-            curvetool.init('#div_curvetool');
-
-            var transformImage = function( func ) {
-                var I = loader.result;
-                benchmark(function(){I = func( I );});
-                I.render(canvas);
-                histtool.bindImage( I );
-            };
-
-            $(document).on("curvechanged", function(evt) {
-                console.log('curve changed.');
-                transformImage(function(I) { return filters.curve(I, curvetool.getLUT(), $('#channelselect').val()); });
-            });
-
-            $(document).on('imageloaded', function() {
-                transformImage(function(I) { return I; });
-            });
-
-            $('#resetcurve_btn').click(function() {
-                curvetool.resetCurveTool();
-                transformImage(function(I) { return I; });
-            });
-
-            $('#show_btn').click( function() {
-                loader.loadImage('seal.jpg', canvas);
-            });
-
-            $('#gs_btn').click( function() {
-                transformImage(function(I) {
-                    return filters.grayscale(I);
-                });
-            });
-
-            $('#invert_btn').click( function() {
-                transformImage(function(I) {
-                    return filters.invert(I);
-                });
-            });
-
-            $('#hist_btn').click(function() {
-                transformImage(function(I) {
-                    return filters.histogram(I);
-                });
-            });
-
-            $('#ahe_btn').click(function() {
-                transformImage(function(I) {
-                    return filters.ahe(I);
-                });
-            });
-
-            $('#reduction_btn').click(function() {
-                transformImage(function(I) {
-                    return filters.reduction(I, $('#reduction_method').val(), parseFloat($('#reduction_colors').val()));
-                });
-            });
-
-            $('#filter_btn').click(function() {
-                transformImage(function(I) {
-                    return filters.spatialfilter(I, algorithms.createfilter(
-                            {
-                                name: $('#filter_select').val(),
-                                size: parseFloat($('#filter_size').val()),
-                                sigma: parseFloat($('#filter_sigma').val())
-                            }
-                    ));
-                });
-            });
-
-            $('#brightnessbar').change( function() {
-                var beta = parseInt($('#brightnessbar').val());
-                $('#brightnessval').html(beta);
-                var I = loader.result;
-
-                if( $('#brightnesscontrast').is(':checked') ){
-                    var alpha = parseInt($('#contrastbar').val());
-                    I = filters.brightnesscontrast(I, alpha, beta);
-                }else {
-                    I = filters.brightness(I, beta);
-                }
-                I.render(canvas);
-                histtool.bindImage( I );
-            });
-
-            $('#contrastbar').change( function() {
-                var alpha = parseInt($('#contrastbar').val());
-                $('#contrastval').html(alpha);
-                var I = loader.result;
-                if( $('#brightnesscontrast').is(':checked') ){
-                    var beta = parseInt($('#brightnessbar').val());
-                    I = filters.brightnesscontrast(I, alpha, beta);
-                }else{
-                    I = filters.contrast(I, alpha);
-                }
-                I.render(canvas);
-                histtool.bindImage( I );
-            });
-
-            $('#files').hide();
-            $('#files').change( function( e ){
-                handleFileSelect(e, loader, canvas);
-            });
-            $('#upload_btn').click(function()
-            {
-                $('#files').click();
-            });
-
-            $('#sepia_btn').click(function(e) {
-                transformImage(function(I){
-                    return effects.sepia(I);
-                });
-            });
-
-            $('#autumn_btn').click(function(e) {
-                transformImage(function(I){
-                    return effects.autumn(I);
-                });
-            });
-
-            $('#div_effects').hide();
-            $("input[name='opradio']").change(function(){
-                console.log($("input[name='opradio']:checked").val());
-                switch ( $("input[name='opradio']:checked").val() ) {
-                    case 'filters': {
-                        $('#div_filters').show();
-                        $('#div_effects').hide();
-                        break;
-                    }
-                    case 'effects': {
-                        $('#div_filters').hide();
-                        $('#div_effects').show();
-                        break;
-                    }
-                }
-            });
-        }
+        (function() {
+            var savedTheme = localStorage.getItem('site-theme') || 'matrix';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
     </script>
+</head>
+<body>
+<div id="matrix-backdrop" aria-hidden="true">
+    <canvas id="matrix-rain"></canvas>
+</div>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="project_dropdown" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Projects</a>
+                <div class="dropdown-menu" aria-labelledby="project_dropdown" id="projects-menu">
+                    
+                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a>
+                    
+                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a>
+                    
+                    <a class="dropdown-item" href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a>
+                    
+                    <a class="dropdown-item" href="/project/personal_projects/">Personal Projects</a>
+                    
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/blog" id="blog_dropdown" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Blog</a>
+                <div class="dropdown-menu" aria-labelledby="blog_dropdown" id="blog-menu">
+                    <a class="dropdown-item" href="/blog">ALL</a>
+                    <a class="dropdown-item" href="/blog/category/cooking">Cooking</a>
+                    <a class="dropdown-item" href="/blog/category/programming">Programming</a>
+                    <a class="dropdown-item" href="/blog/category/ai">AI</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <label class="theme-switcher-label mr-2 mb-0" for="theme-switcher">Style</label>
+            <select id="theme-switcher" class="custom-select custom-select-sm theme-switcher">
+                <option value="classic">Classic</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="win31">Windows 3.1</option>
+                <option value="matrix">Matrix</option>
+            </select>
+        </form>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    <div class="starter-template">
+        
+<link rel="stylesheet" href="/projects/imageprocjs/css/style.css">
+<style>
+    .project-shell {
+        background-color: var(--surface-bg);
+        color: var(--site-text);
+        border: var(--theme-card-border-width) solid var(--surface-border);
+        border-radius: var(--theme-border-radius);
+        box-shadow: var(--theme-shadow);
+        padding: 2rem;
+        text-align: left;
+    }
+    .project-shell .project-intro {
+        max-width: 44rem;
+        margin: 0 auto 1.5rem;
+        color: var(--muted-text);
+    }
+    .project-shell .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: .75rem;
+        margin-bottom: 1rem;
+    }
+    .project-shell .mode-picker {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: .75rem;
+        margin: 0 auto 1.5rem;
+        padding: .75rem 1rem;
+        background: var(--surface-alt);
+        border: 1px solid var(--surface-border);
+        border-radius: calc(var(--theme-border-radius) * 0.75);
+    }
+    .project-shell .mode-picker label {
+        margin: 0;
+        font-weight: 600;
+    }
+    .project-shell h2,
+    .project-shell p,
+    .project-shell td,
+    .project-shell label {
+        color: var(--site-text);
+    }
+    .project-shell canvas,
+    .project-shell img {
+        max-width: 100%;
+        height: auto;
+    }
+    .project-shell svg {
+        background-color: var(--surface-alt);
+        border-color: var(--surface-border);
+    }
+    .project-shell select,
+    .project-shell input[type="text"] {
+        background-color: var(--surface-bg);
+        color: var(--site-text);
+        border: 1px solid var(--surface-border);
+    }
+    .project-shell input[type="range"] {
+        width: 100%;
+        max-width: 260px;
+        appearance: none;
+        -webkit-appearance: none;
+        background: transparent;
+        height: 1.5rem;
+        margin: 0;
+    }
+    .project-shell input[type="range"]:focus {
+        outline: none;
+    }
+    .project-shell input[type="range"]::-webkit-slider-runnable-track {
+        height: .45rem;
+        background: linear-gradient(90deg, var(--link-color), var(--link-hover));
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--link-color) 70%, var(--surface-border) 30%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+    .project-shell input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 1rem;
+        height: 1rem;
+        margin-top: calc((.45rem - 1rem) / 2);
+        border-radius: 50%;
+        background: var(--surface-bg);
+        border: 2px solid var(--link-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .project-shell input[type="range"]::-moz-range-track {
+        height: .45rem;
+        background: linear-gradient(90deg, var(--link-color), var(--link-hover));
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--link-color) 70%, var(--surface-border) 30%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+    .project-shell input[type="range"]::-moz-range-thumb {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: var(--surface-bg);
+        border: 2px solid var(--link-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .project-shell input[type="range"]::-moz-range-progress {
+        height: .45rem;
+        border-radius: 999px;
+        background: var(--link-color);
+    }
+    .project-shell input[type="checkbox"],
+    .project-shell input[type="radio"] {
+        margin-right: .4rem;
+    }
+    .project-shell .btn,
+    .project-shell button,
+    .project-shell div.upload {
+        background: linear-gradient(135deg, var(--link-color), var(--link-hover));
+        border: 1px solid var(--link-color);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+        color: #fff;
+        text-shadow: none;
+        font-weight: 600;
+        letter-spacing: .01em;
+        transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+    .project-shell .btn:hover,
+    .project-shell .btn:focus,
+    .project-shell button:hover,
+    .project-shell button:focus,
+    .project-shell div.upload:hover,
+    .project-shell div.upload:focus {
+        background: linear-gradient(135deg, var(--link-hover), var(--link-color));
+        border-color: var(--link-hover);
+        color: #fff;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+        filter: saturate(1.08);
+        transform: translateY(-1px);
+    }
+    .project-shell .btn:active,
+    .project-shell button:active {
+        transform: translateY(0);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    }
+    .project-shell table td,
+    .project-shell table th {
+        background: transparent;
+        border-color: var(--surface-border);
+        padding: .55rem .75rem;
+        vertical-align: middle;
+    }
+    .project-shell .controls-table {
+        width: min(100%, 56rem);
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+        border: 1px solid var(--surface-border);
+        border-radius: calc(var(--theme-border-radius) * 0.75);
+        background: var(--surface-bg);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+    .project-shell .controls-table tr + tr td {
+        border-top: 1px solid var(--surface-border);
+    }
+    .project-shell .controls-table td:first-child {
+        width: 15rem;
+        font-weight: 600;
+    }
+    .project-shell .controls-table td {
+        text-align: left;
+    }
+    .project-shell .controls-table tr td {
+        background: transparent;
+    }
+    .project-shell .controls-table .setting-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        flex-wrap: wrap;
+    }
+    .project-shell .controls-table input[type="text"],
+    .project-shell .controls-table select {
+        min-height: 2.35rem;
+        padding: .35rem .6rem;
+        border-radius: .5rem;
+    }
+    .project-shell .content {
+        text-align: center;
+    }
+    .project-shell .btn-xs {
+        padding: .5rem .9rem;
+        font-size: .9rem;
+        line-height: 1.5;
+        border-radius: 999px;
+    }
+    .project-shell .primary-action {
+        min-width: 11rem;
+    }
+    .project-shell .secondary-action {
+        background: var(--surface-alt);
+        border-color: var(--surface-border);
+        color: var(--site-text);
+    }
+    .project-shell .secondary-action:hover,
+    .project-shell .secondary-action:focus {
+        background: var(--surface-bg);
+        color: var(--site-text);
+    }
+    .project-shell .controls-panel {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: var(--surface-alt);
+        border: 1px solid var(--surface-border);
+        border-radius: calc(var(--theme-border-radius) * 0.75);
+    }
+    .project-shell .controls-panel table {
+        margin: 0 auto;
+    }
+    .project-shell #brightnessval,
+    .project-shell #contrastval {
+        min-width: 2rem;
+        margin: 0;
+        font-weight: 600;
+    }
+    .project-shell #imageinfo {
+        margin: 1rem 0 1.5rem;
+        color: var(--muted-text);
+    }
+    .project-shell #div_curvetool > div:first-child {
+        margin-bottom: .75rem;
+        padding: .75rem 1rem;
+        background: var(--surface-alt);
+        border: 1px solid var(--surface-border);
+        border-radius: calc(var(--theme-border-radius) * 0.75);
+    }
+    .project-shell #channelselect {
+        margin-left: .5rem;
+    }
+    [data-theme="win31"] .project-shell .btn,
+    [data-theme="win31"] .project-shell button,
+    [data-theme="win31"] .project-shell div.upload {
+        background: #c0c0c0;
+        color: #000;
+        border-color: #808080 #000 #000 #808080;
+        border-style: solid;
+        border-width: 2px;
+        box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+        border-radius: 0;
+    }
+    [data-theme="win31"] .project-shell .btn:hover,
+    [data-theme="win31"] .project-shell .btn:focus,
+    [data-theme="win31"] .project-shell button:hover,
+    [data-theme="win31"] .project-shell button:focus {
+        background: #d9d9d9;
+        color: #000;
+        box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+        transform: none;
+    }
+    [data-theme="win31"] .project-shell input[type="range"]::-webkit-slider-runnable-track,
+    [data-theme="win31"] .project-shell input[type="range"]::-moz-range-track {
+        background: #c0c0c0;
+        border: 2px solid;
+        border-color: #808080 #fff #fff #808080;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    [data-theme="win31"] .project-shell input[type="range"]::-webkit-slider-thumb,
+    [data-theme="win31"] .project-shell input[type="range"]::-moz-range-thumb {
+        background: #c0c0c0;
+        border: 2px solid;
+        border-color: #fff #808080 #808080 #fff;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    [data-theme="matrix"] .project-shell .btn,
+    [data-theme="matrix"] .project-shell button {
+        box-shadow: 0 0 0 1px rgba(139, 255, 139, 0.2), 0 0 18px rgba(139, 255, 139, 0.22);
+    }
+    [data-theme="win31"] .project-shell .controls-table,
+    [data-theme="win31"] .project-shell .controls-panel,
+    [data-theme="win31"] .project-shell #div_curvetool > div:first-child {
+        border-radius: 0;
+        box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+    }
+    @media (max-width: 767.98px) {
+        .project-shell {
+            padding: 1.25rem;
+        }
+        .project-shell .controls-panel table,
+        .project-shell .controls-panel tbody,
+        .project-shell .controls-panel tr,
+        .project-shell .controls-panel td {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .project-shell .controls-table td:first-child {
+            width: 100%;
+        }
+        .project-shell .controls-table .setting-inline {
+            justify-content: center;
+        }
+        .project-shell #div_canvas,
+        .project-shell #div_curvetool {
+            float: none;
+            min-width: 0;
+            width: 100%;
+        }
+        .project-shell #channelselect {
+            margin: .5rem 0 0;
+        }
+    }
+</style>
+
+<script src="/projects/imageprocjs/lib/d3.v3.min.js"></script>
+<script src="/projects/imageprocjs/lib/require.js"></script>
+<script src="/projects/imageprocjs/algorithms.js"></script>
+<script src="/projects/imageprocjs/benchmark.js"></script>
+<script src="/projects/imageprocjs/colorutils.js"></script>
+<script src="/projects/imageprocjs/color.js"></script>
+<script src="/projects/imageprocjs/image.js"></script>
+<script src="/projects/imageprocjs/filter.js"></script>
+<script src="/projects/imageprocjs/effects.js"></script>
+<script src="/projects/imageprocjs/curve.js"></script>
+<script src="/projects/imageprocjs/tools/curvetool.js"></script>
+<script src="/projects/imageprocjs/tools/histogramtool.js"></script>
+<script src="/projects/imageprocjs/imageloader.js"></script>
+<script src="/projects/imageprocjs/utils.js"></script>
+<script>
+    var context, canvas;
+    var curvetool, histtool;
+    var loader;
+    window.addEventListener('load', function() {
+        loader = new ImageLoader();
+        canvas = document.getElementById('cvs');
+        context = canvas.getContext('2d');
+        curvetool = new CurveTool();
+        histtool = new HistogramTool();
+        histtool.init('#div_curvetool', 'brightness');
+        curvetool.init('#div_curvetool');
+
+        var transformImage = function(func) {
+            var I = loader.result;
+            benchmark(function(){ I = func(I); });
+            I.render(canvas);
+            histtool.bindImage(I);
+        };
+
+        $(document).on('curvechanged', function() {
+            transformImage(function(I) {
+                return filters.curve(I, curvetool.getLUT(), $('#channelselect').val());
+            });
+        });
+
+        $(document).on('imageloaded', function() {
+            transformImage(function(I) { return I; });
+        });
+
+        $('#resetcurve_btn').click(function() {
+            curvetool.resetCurveTool();
+            transformImage(function(I) { return I; });
+        });
+
+        $('#show_btn').click(function() {
+            loader.loadImage('/projects/imageprocjs/seal.jpg', canvas);
+        });
+
+        $('#gs_btn').click(function() {
+            transformImage(function(I) { return filters.grayscale(I); });
+        });
+
+        $('#invert_btn').click(function() {
+            transformImage(function(I) { return filters.invert(I); });
+        });
+
+        $('#hist_btn').click(function() {
+            transformImage(function(I) { return filters.histogram(I); });
+        });
+
+        $('#ahe_btn').click(function() {
+            transformImage(function(I) { return filters.ahe(I); });
+        });
+
+        $('#reduction_btn').click(function() {
+            transformImage(function(I) {
+                return filters.reduction(I, $('#reduction_method').val(), parseFloat($('#reduction_colors').val()));
+            });
+        });
+
+        $('#filter_btn').click(function() {
+            transformImage(function(I) {
+                return filters.spatialfilter(I, algorithms.createfilter({
+                    name: $('#filter_select').val(),
+                    size: parseFloat($('#filter_size').val()),
+                    sigma: parseFloat($('#filter_sigma').val())
+                }));
+            });
+        });
+
+        $('#brightnessbar').change(function() {
+            var beta = parseInt($('#brightnessbar').val(), 10);
+            $('#brightnessval').html(beta);
+            var I = loader.result;
+
+            if ($('#brightnesscontrast').is(':checked')) {
+                var alpha = parseInt($('#contrastbar').val(), 10);
+                I = filters.brightnesscontrast(I, alpha, beta);
+            } else {
+                I = filters.brightness(I, beta);
+            }
+            I.render(canvas);
+            histtool.bindImage(I);
+        });
+
+        $('#contrastbar').change(function() {
+            var alpha = parseInt($('#contrastbar').val(), 10);
+            $('#contrastval').html(alpha);
+            var I = loader.result;
+            if ($('#brightnesscontrast').is(':checked')) {
+                var beta = parseInt($('#brightnessbar').val(), 10);
+                I = filters.brightnesscontrast(I, alpha, beta);
+            } else {
+                I = filters.contrast(I, alpha);
+            }
+            I.render(canvas);
+            histtool.bindImage(I);
+        });
+
+        $('#files').hide();
+        $('#files').change(function(e) {
+            handleFileSelect(e, loader, canvas);
+        });
+        $('#upload_btn').click(function() {
+            $('#files').click();
+        });
+
+        $('#sepia_btn').click(function() {
+            transformImage(function(I) { return effects.sepia(I); });
+        });
+
+        $('#autumn_btn').click(function() {
+            transformImage(function(I) { return effects.autumn(I); });
+        });
+
+        $('#div_effects').hide();
+        $("input[name='opradio']").change(function() {
+            switch ($("input[name='opradio']:checked").val()) {
+                case 'filters':
+                    $('#div_filters').show();
+                    $('#div_effects').hide();
+                    break;
+                case 'effects':
+                    $('#div_filters').hide();
+                    $('#div_effects').show();
+                    break;
+            }
+        });
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+        var dropdownToggles = document.querySelectorAll('.navbar .dropdown-toggle');
+        var closeMenus = function() {
+            document.querySelectorAll('.navbar .dropdown.show').forEach(function(dropdown) {
+                dropdown.classList.remove('show');
+            });
+            document.querySelectorAll('.navbar .dropdown-menu.show').forEach(function(menu) {
+                menu.classList.remove('show');
+            });
+            dropdownToggles.forEach(function(toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        };
+
+        dropdownToggles.forEach(function(toggle) {
+            toggle.addEventListener('click', function(event) {
+                var parent = toggle.closest('.dropdown');
+                var menu = parent ? parent.querySelector('.dropdown-menu') : null;
+                if (!parent || !menu) {
+                    return;
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                var isOpen = parent.classList.contains('show');
+                closeMenus();
+
+                if (!isOpen) {
+                    parent.classList.add('show');
+                    menu.classList.add('show');
+                    toggle.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.navbar .dropdown')) {
+                closeMenus();
+            }
+        });
+    });
+</script>
+
+<div class="project-shell">
     <div class="content">
         <h2>ImageProcJS - Image Processing with JavaScript</h2>
-        <button id="show_btn" class='btn btn-xs btn-default' type='button'>Show Remote Image</button>
-        <button id="upload_btn" class='btn btn-xs btn-default' type='button'>Upload</button>
-        <input type="file" id="files" name="files[]" />
+        <p class="project-intro">A browser-based image processing playground with interactive filters, curve adjustments, and lightweight effects. Load the sample image or upload your own, then experiment directly in the page.</p>
+        <div class="hero-actions">
+            <button id="show_btn" class="btn btn-xs primary-action" type="button">Show Remote Image</button>
+            <button id="upload_btn" class="btn btn-xs secondary-action" type="button">Upload Image</button>
+        </div>
+        <input type="file" id="files" name="files[]">
         <output id="list"></output>
-        <div>
-            <input name="opradio" type="radio" value="filters" checked="checked">Filters<input name="opradio" type="radio" value="effects">Effects
+        <div class="mode-picker">
+            <label><input name="opradio" type="radio" value="filters" checked="checked">Filters</label>
+            <label><input name="opradio" type="radio" value="effects">Effects</label>
+        </div>
+        <div class="controls-panel">
             <div id="div_filters">
-            <table>
-                <tr>
-                    <td><button id="gs_btn" class='btn btn-xs btn-default' type='button'>Show Grayscale</button></td>
-                </tr>
-                <tr>
-                    <td><button id="invert_btn" class='btn btn-xs btn-default' type='button'>Invert</button></td>
-                </tr>
-                <tr>
-                    <td><button id="hist_btn" class='btn btn-xs btn-default' type='button'>Histogram Equalization</button></td>
-                </tr>
-                <tr>
-                    <td><button id="ahe_btn" class='btn btn-xs btn-default' type='button'>Adaptive Histogram Equalization</button></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" id="brightnesscontrast">Brightness & Contrast</td>
-                </tr>
-                <tr>
-                    <td><input type="range" id="brightnessbar" min="-128" max="128" value="0">Brightness</td><td><p id="brightnessval"></p></td>
-                </tr>
-                <tr>
-                    <td><input type="range" id="contrastbar" min="-128" max="128" value="0">Contrast</td><td><p id="contrastval"></p></td>
-                </tr>
-                <tr>
-                    <td><button id="reduction_btn" class='btn btn-xs btn-default' type='button'>Color Reduction</button></td>
-                    <td>Method:<select id="reduction_method">
-                        <option value="uniform">Uniform</option>
-                        <option value="population">Population</option>
-                        <option value="mediancut">Median-Cut</option>
-                        <option value="knn">kNN</option>
-                        <option value="ann">ANN</option>
-                    </select></td>
-                    <td>Colors&nbsp<input type="text" id="reduction_colors" value="4"></td>
-                </tr>
-                <tr>
-                    <td><button id="filter_btn" class='btn btn-xs btn-default' type='button'>Spatial Filter</button></td>
-                    <td>
-                        Filter:
-                        <select id="filter_select">
-                            <option value="gaussian">Gaussian</option>
-                            <option value="sharpen">Sharpen</option>
-                            <option value="vsobel">Sobel (Vertical)</option>
-                            <option value="hsobel">Sobel (Horizontal)</option>
-                            <option value="laplacian">Laplacian</option>
-                        </select>
-                    </td>
-                    <td>
-                        Size&nbsp<input type="text" id="filter_size" value="3">
-                        Sigma&nbsp<input type="text" id="filter_sigma" value="1">
-                    </td>
-                </tr>
-            </table>
+                <table class="controls-table">
+                    <tr>
+                        <td><button id="gs_btn" class="btn btn-xs secondary-action" type="button">Show Grayscale</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="invert_btn" class="btn btn-xs secondary-action" type="button">Invert</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="hist_btn" class="btn btn-xs secondary-action" type="button">Histogram Equalization</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="ahe_btn" class="btn btn-xs secondary-action" type="button">Adaptive Histogram Equalization</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="brightnesscontrast">Brightness & Contrast</td>
+                    </tr>
+                    <tr>
+                        <td><span class="setting-inline"><input type="range" id="brightnessbar" min="-128" max="128" value="0"><span>Brightness</span></span></td>
+                        <td><p id="brightnessval"></p></td>
+                    </tr>
+                    <tr>
+                        <td><span class="setting-inline"><input type="range" id="contrastbar" min="-128" max="128" value="0"><span>Contrast</span></span></td>
+                        <td><p id="contrastval"></p></td>
+                    </tr>
+                    <tr>
+                        <td><button id="reduction_btn" class="btn btn-xs secondary-action" type="button">Color Reduction</button></td>
+                        <td><span class="setting-inline"><span>Method:</span><select id="reduction_method">
+                            <option value="uniform">Uniform</option>
+                            <option value="population">Population</option>
+                            <option value="mediancut">Median-Cut</option>
+                            <option value="knn">kNN</option>
+                            <option value="ann">ANN</option>
+                        </select></span></td>
+                        <td><span class="setting-inline"><span>Colors</span><input type="text" id="reduction_colors" value="4"></span></td>
+                    </tr>
+                    <tr>
+                        <td><button id="filter_btn" class="btn btn-xs secondary-action" type="button">Spatial Filter</button></td>
+                        <td><span class="setting-inline"><span>Filter:</span>
+                            <select id="filter_select">
+                                <option value="gaussian">Gaussian</option>
+                                <option value="sharpen">Sharpen</option>
+                                <option value="vsobel">Sobel (Vertical)</option>
+                                <option value="hsobel">Sobel (Horizontal)</option>
+                                <option value="laplacian">Laplacian</option>
+                            </select>
+                        </span></td>
+                        <td><span class="setting-inline"><span>Size</span><input type="text" id="filter_size" value="3">
+                            <span>Sigma</span><input type="text" id="filter_sigma" value="1"></span></td>
+                    </tr>
+                </table>
             </div>
             <div id="div_effects">
-            <table>
-                <tr><td><button id="sepia_btn" class='effect_btn btn btn-xs btn-default' type='button' value="sepia">Sepia</button></td></tr>
-                <tr><td><button id="autumn_btn" class='effect_btn btn btn-xs btn-default' type='button' value="autumn">Autumn</button></td></tr>
-            </table>
+                <table class="controls-table">
+                    <tr><td><button id="sepia_btn" class="effect_btn btn btn-xs secondary-action" type="button" value="sepia">Sepia</button></td></tr>
+                    <tr><td><button id="autumn_btn" class="effect_btn btn btn-xs secondary-action" type="button" value="autumn">Autumn</button></td></tr>
+                </table>
             </div>
         </div>
-        <p id='imageinfo'></p>
+        <p id="imageinfo"></p>
         <div>
-            <div id='div_canvas'>
+            <div id="div_canvas">
                 <canvas id="cvs"></canvas>
             </div>
-            <div id='div_curvetool'>
+            <div id="div_curvetool">
                 <div>
-                    <button id="resetcurve_btn" class='btn btn-xs btn-default' type='button'>Reset Curve</button>
+                    <button id="resetcurve_btn" class="btn btn-xs secondary-action" type="button">Reset Curve</button>
                     <select id="channelselect">
                         <option value="brightness">Brightness</option>
                         <option value="red">Red</option>
@@ -323,54 +676,28 @@
             </div>
         </div>
     </div>
+</div>
 
-            </div>
-        </main>
+    </div>
+</main>
 
-        <footer class="footer">
-            <div class="container">
-                <span class="text-muted text-sm-center">
-                  &copy 2009-<script>document.write( new Date().getFullYear() );</script> &nbsp Peihong Guo &nbsp <a href="mailto:admin@phg1024.net">admin@phg1024.net</a>
-                </span>
-            </div>
-        </footer>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted text-sm-center">
+          &copy 2009-<script>document.write( new Date().getFullYear() );</script> &nbsp Peihong Guo &nbsp <span id="em"></span>
+        </span>
+    </div>
+</footer>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                function wireDropdown(toggleId) {
-                    var toggle = document.getElementById(toggleId);
-                    if (!toggle) {
-                        return;
-                    }
-
-                    var menu = toggle.nextElementSibling;
-                    if (!menu) {
-                        return;
-                    }
-
-                    toggle.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        menu.classList.toggle('show');
-                    });
-                }
-
-                wireDropdown('project_dropdown');
-                wireDropdown('blog_dropdown');
-
-                document.addEventListener('click', function () {
-                    document.querySelectorAll('.dropdown-menu.show').forEach(function (menu) {
-                        menu.classList.remove('show');
-                    });
-                });
-            });
-        </script>
-    </body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
 </html>

@@ -12,8 +12,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Peihong's Personal Page</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    <script>
+        (function() {
+            var savedTheme = localStorage.getItem('site-theme') || 'matrix';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
+<div id="matrix-backdrop" aria-hidden="true">
+    <canvas id="matrix-rain"></canvas>
+</div>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -58,13 +67,22 @@
                 <a class="nav-link" href="/about">About</a>
             </li>
         </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <label class="theme-switcher-label mr-2 mb-0" for="theme-switcher">Style</label>
+            <select id="theme-switcher" class="custom-select custom-select-sm theme-switcher">
+                <option value="classic">Classic</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="win31">Windows 3.1</option>
+                <option value="matrix">Matrix</option>
+            </select>
+        </form>
     </div>
 </nav>
 
 <main role="main" class="container">
     <div class="starter-template">
         
-<div class="container">
+<div class="content-page text-left">
     <h2>Programming</h2>
 
     

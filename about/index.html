@@ -12,8 +12,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Peihong's Personal Page</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    <script>
+        (function() {
+            var savedTheme = localStorage.getItem('site-theme') || 'matrix';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
+<div id="matrix-backdrop" aria-hidden="true">
+    <canvas id="matrix-rain"></canvas>
+</div>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -58,6 +67,15 @@
                 <a class="nav-link" href="/about">About</a>
             </li>
         </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <label class="theme-switcher-label mr-2 mb-0" for="theme-switcher">Style</label>
+            <select id="theme-switcher" class="custom-select custom-select-sm theme-switcher">
+                <option value="classic">Classic</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="win31">Windows 3.1</option>
+                <option value="matrix">Matrix</option>
+            </select>
+        </form>
     </div>
 </nav>
 
@@ -65,21 +83,28 @@
     <div class="starter-template">
         
 <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-<div class="jumbotron">
-    <h1 class="display-4">Peihong GUO</h1>
-    <img src="/images/profile.jpg" alt="..." class="img-thumbnail rounded" width="200">
-    <br>
-    <p class="lead">
-        Peihong is current a Software Engineer in the AR/VR department at
-        <a href="https://www.meta.com">Meta</a>. <br>
-        Before joining Meta, he completed his PhD in Computer Science at <a href="https://www.tamu.edu/">Texas A&M
-            University</a>. <br> He obtained his B.S. degree in Physics from <a href="https://www.pku.edu.cn">Peking
-            University</a> in 2010.
-    </p>
-    <hr class="my-4">
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="https://www.linkedin.com/in/peihongguo" role="button">Learn more</a>
-    </p>
+<div class="about-panel text-left">
+    <div class="row align-items-center">
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+            <img src="/images/profile.jpg" alt="Portrait of Peihong Guo" class="img-thumbnail rounded about-portrait">
+        </div>
+        <div class="col-md-8">
+            <h1 class="display-4">Peihong GUO</h1>
+            <p class="lead">
+                Peihong is current a Software Engineer in the AR/VR department at
+                <a href="https://www.meta.com">Meta</a>.
+            </p>
+            <p class="lead">
+                Before joining Meta, he completed his PhD in Computer Science at
+                <a href="https://www.tamu.edu/">Texas A&amp;M University</a>.
+            </p>
+            <p class="lead mb-4">
+                He obtained his B.S. degree in Physics from
+                <a href="https://www.pku.edu.cn">Peking University</a> in 2010.
+            </p>
+            <a class="btn btn-primary btn-lg about-cta" href="https://www.linkedin.com/in/peihongguo" role="button">Learn more</a>
+        </div>
+    </div>
 </div>
 
     </div>
