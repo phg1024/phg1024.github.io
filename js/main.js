@@ -23,18 +23,57 @@ $(document).ready(function () {
         let time = 0;
         let shards = [];
         let towers = [];
+        let sparks = [];
+        let scanBands = [];
+        let beamDrift = {
+            magenta: 0,
+            cyan: 0
+        };
+        let pointer = {
+            x: 0,
+            y: 0,
+            strength: 0,
+            active: false
+        };
 
         const createShards = function () {
-            return Array.from({ length: 22 }, function (_, index) {
+            return Array.from({ length: 34 }, function (_, index) {
                 return {
                     x: Math.random() * width,
                     y: Math.random() * height * 0.7,
-                    w: 70 + Math.random() * 220,
+                    w: 50 + Math.random() * 260,
                     h: 1 + Math.random() * 4,
-                    speed: 0.35 + Math.random() * 1.3,
-                    drift: (Math.random() - 0.5) * 0.8,
+                    speed: 0.45 + Math.random() * 1.8,
+                    drift: (Math.random() - 0.5) * 1.2,
                     hue: index % 2 === 0 ? '0, 245, 212' : '255, 79, 216',
-                    alpha: 0.08 + Math.random() * 0.22
+                    alpha: 0.06 + Math.random() * 0.24
+                };
+            });
+        };
+
+        const createSparks = function () {
+            return Array.from({ length: Math.max(18, Math.floor(width / 70)) }, function (_, index) {
+                return {
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: 0.7 + Math.random() * 2.2,
+                    speed: 0.2 + Math.random() * 1.1,
+                    drift: -0.2 + Math.random() * 0.4,
+                    alpha: 0.08 + Math.random() * 0.18,
+                    hue: index % 3 === 0 ? '255, 79, 216' : '0, 245, 212',
+                    phase: Math.random() * Math.PI * 2
+                };
+            });
+        };
+
+        const createScanBands = function () {
+            return Array.from({ length: 3 }, function (_, index) {
+                return {
+                    y: Math.random() * height,
+                    h: 60 + Math.random() * 140,
+                    speed: 0.35 + (index * 0.18) + Math.random() * 0.4,
+                    alpha: 0.02 + Math.random() * 0.04,
+                    wobble: Math.random() * Math.PI * 2
                 };
             });
         };
@@ -51,7 +90,8 @@ $(document).ready(function () {
                     w: towerWidth,
                     h: towerHeight,
                     glow: Math.random() * Math.PI * 2,
-                    accent: index % 3 === 0 ? '255, 79, 216' : '0, 245, 212'
+                    accent: index % 3 === 0 ? '255, 79, 216' : '0, 245, 212',
+                    flicker: 0.78 + Math.random() * 0.55
                 };
             });
         };
@@ -67,6 +107,21 @@ $(document).ready(function () {
             context.setTransform(ratio, 0, 0, ratio, 0, 0);
             shards = createShards();
             towers = createTowers();
+            sparks = createSparks();
+            scanBands = createScanBands();
+            beamDrift.magenta = Math.random() * Math.PI * 2;
+            beamDrift.cyan = Math.random() * Math.PI * 2;
+        };
+
+        const updatePointer = function (event) {
+            pointer.x = event.clientX;
+            pointer.y = event.clientY;
+            pointer.strength = 1;
+            pointer.active = true;
+        };
+
+        const fadePointer = function () {
+            pointer.active = false;
         };
 
         const draw = function () {
@@ -74,11 +129,17 @@ $(document).ready(function () {
                 return;
             }
 
-            time += 1;
+            time += 0.94 + Math.sin(time * 0.019) * 0.035;
             context.clearRect(0, 0, width, height);
+
+            if (!pointer.active) {
+                pointer.strength = Math.max(0, pointer.strength - 0.025);
+            }
 
             const horizon = height * 0.34;
             const gridColor = 'rgba(0, 245, 212, 0.18)';
+            const pointerInfluenceX = pointer.strength > 0 ? ((pointer.x / Math.max(1, width)) - 0.5) * 140 * pointer.strength : 0;
+            const pointerInfluenceY = pointer.strength > 0 ? ((pointer.y / Math.max(1, height)) - 0.5) * 70 * pointer.strength : 0;
 
             const background = context.createLinearGradient(0, 0, 0, height);
             background.addColorStop(0, 'rgba(13, 2, 24, 0.24)');
@@ -88,7 +149,14 @@ $(document).ready(function () {
             context.fillStyle = background;
             context.fillRect(0, 0, width, height);
 
-            const beamX = (time * 4.5) % (width + 260) - 260;
+            const vignette = context.createRadialGradient(width * 0.5, height * 0.42, width * 0.08, width * 0.5, height * 0.42, width * 0.72);
+            vignette.addColorStop(0, 'rgba(255, 79, 216, 0.02)');
+            vignette.addColorStop(0.55, 'rgba(0, 245, 212, 0.03)');
+            vignette.addColorStop(1, 'rgba(3, 0, 8, 0.28)');
+            context.fillStyle = vignette;
+            context.fillRect(0, 0, width, height);
+
+            const beamX = (time * (4.2 + Math.sin(time * 0.012 + beamDrift.magenta) * 0.24)) % (width + 260) - 260 + pointerInfluenceX * 0.35;
             const beam = context.createLinearGradient(beamX, 0, beamX + 180, 0);
             beam.addColorStop(0, 'rgba(255, 79, 216, 0)');
             beam.addColorStop(0.5, 'rgba(255, 79, 216, 0.13)');
@@ -96,26 +164,56 @@ $(document).ready(function () {
             context.fillStyle = beam;
             context.fillRect(0, 0, width, height);
 
-            const cyanSweep = context.createLinearGradient(0, horizon - 40, 0, horizon + 160);
+            const beamX2 = width - (((time * (3.05 + Math.cos(time * 0.016 + beamDrift.cyan) * 0.22)) % (width + 320)) - 320) - pointerInfluenceX * 0.28;
+            const beam2 = context.createLinearGradient(beamX2, 0, beamX2 + 140, 0);
+            beam2.addColorStop(0, 'rgba(0, 245, 212, 0)');
+            beam2.addColorStop(0.45, 'rgba(0, 245, 212, 0.09)');
+            beam2.addColorStop(1, 'rgba(0, 245, 212, 0)');
+            context.fillStyle = beam2;
+            context.fillRect(0, 0, width, height);
+
+            scanBands.forEach(function (band) {
+                band.y += band.speed + Math.sin((time * 0.017) + band.wobble) * 0.14 + (pointerInfluenceY * 0.002);
+                if (band.y - band.h > height) {
+                    band.y = -band.h;
+                }
+                const bandGradient = context.createLinearGradient(0, band.y, 0, band.y + band.h);
+                bandGradient.addColorStop(0, 'rgba(255, 79, 216, 0)');
+                bandGradient.addColorStop(0.5, 'rgba(255, 79, 216, ' + band.alpha.toFixed(3) + ')');
+                bandGradient.addColorStop(1, 'rgba(255, 79, 216, 0)');
+                context.fillStyle = bandGradient;
+                context.fillRect(0, band.y, width, band.h);
+            });
+
+            const cyanSweep = context.createLinearGradient(0, horizon - 40 + pointerInfluenceY * 0.2, 0, horizon + 160 + pointerInfluenceY * 0.35);
             cyanSweep.addColorStop(0, 'rgba(0, 245, 212, 0)');
             cyanSweep.addColorStop(0.45, 'rgba(0, 245, 212, 0.08)');
             cyanSweep.addColorStop(1, 'rgba(0, 245, 212, 0)');
             context.fillStyle = cyanSweep;
             context.fillRect(0, horizon - 40, width, height - horizon + 40);
 
+            const magentaFog = context.createLinearGradient(0, horizon - 10, 0, height);
+            magentaFog.addColorStop(0, 'rgba(255, 79, 216, 0)');
+            magentaFog.addColorStop(0.28, 'rgba(255, 79, 216, 0.035)');
+            magentaFog.addColorStop(1, 'rgba(10, 3, 18, 0)');
+            context.fillStyle = magentaFog;
+            context.fillRect(0, horizon - 10, width, height - horizon + 10);
+
             towers.forEach(function (tower, index) {
                 const towerTop = horizon + 18 - tower.h;
-                const pulse = 0.55 + ((Math.sin(time * 0.03 + tower.glow) + 1) * 0.18);
+                const pulse = (0.52 + ((Math.sin(time * 0.03 + tower.glow) + 1) * 0.18)) * tower.flicker;
+                const towerDistance = Math.abs((tower.x + tower.w * 0.5) - pointer.x);
+                const towerBoost = pointer.strength > 0 ? Math.max(0, 1 - (towerDistance / 220)) * 0.16 * pointer.strength : 0;
                 context.fillStyle = 'rgba(9, 4, 20, 0.7)';
                 context.fillRect(tower.x, towerTop, tower.w, tower.h);
 
-                context.fillStyle = 'rgba(' + tower.accent + ', ' + (0.06 + pulse * 0.08).toFixed(2) + ')';
+                context.fillStyle = 'rgba(' + tower.accent + ', ' + (0.06 + pulse * 0.08 + towerBoost).toFixed(2) + ')';
                 context.shadowBlur = 16;
                 context.shadowColor = 'rgba(' + tower.accent + ', 0.22)';
                 context.fillRect(tower.x, towerTop, tower.w, 2);
 
                 for (let row = towerTop + 12; row < towerTop + tower.h - 8; row += 12) {
-                    if ((row + index * 3) % 24 !== 0) {
+                    if ((row + index * 3 + Math.floor(time * 0.14)) % 24 !== 0) {
                         continue;
                     }
                     context.fillStyle = 'rgba(' + tower.accent + ', ' + (0.08 + Math.random() * 0.1).toFixed(2) + ')';
@@ -137,7 +235,7 @@ $(document).ready(function () {
             context.stroke();
 
             context.beginPath();
-            const vanishingX = width * 0.5;
+            const vanishingX = (width * 0.5) + pointerInfluenceX * 0.22;
             for (let x = -width * 0.2; x <= width * 1.2; x += 42) {
                 context.moveTo(x + ((time * 0.35) % 42), height);
                 context.lineTo(vanishingX, horizon);
@@ -146,10 +244,29 @@ $(document).ready(function () {
             context.lineWidth = 1;
             context.stroke();
 
+            context.beginPath();
+            for (let x = -width * 0.1; x <= width * 1.1; x += 84) {
+                context.moveTo(x - ((time * 0.5) % 84), height);
+                context.lineTo(vanishingX, horizon + 22);
+            }
+            context.strokeStyle = 'rgba(255, 79, 216, 0.08)';
+            context.lineWidth = 1;
+            context.stroke();
+
             context.shadowBlur = 0;
             shards.forEach(function (shard) {
-                shard.x += shard.speed;
-                shard.y += shard.drift;
+                shard.x += shard.speed * (0.94 + Math.sin(time * 0.011 + shard.alpha * 10) * 0.08);
+                shard.y += shard.drift + Math.cos(time * 0.013 + shard.x * 0.002) * 0.06;
+                if (pointer.strength > 0) {
+                    const shardDx = shard.x - pointer.x;
+                    const shardDy = shard.y - pointer.y;
+                    const shardDistance = Math.sqrt((shardDx * shardDx) + (shardDy * shardDy));
+                    if (shardDistance < 180 && shardDistance > 0.001) {
+                        const repel = (1 - (shardDistance / 180)) * 0.8 * pointer.strength;
+                        shard.x += (shardDx / shardDistance) * repel;
+                        shard.y += (shardDy / shardDistance) * repel;
+                    }
+                }
                 if (shard.x - shard.w > width) {
                     shard.x = -shard.w;
                     shard.y = Math.random() * height * 0.75;
@@ -161,9 +278,40 @@ $(document).ready(function () {
                 context.fillRect(shard.x, shard.y, shard.w, shard.h);
             });
 
+            sparks.forEach(function (spark) {
+                spark.x += spark.drift + Math.sin(time * 0.018 + spark.phase) * 0.08;
+                spark.y += spark.speed * (0.97 + Math.cos(time * 0.021 + spark.phase) * 0.05);
+                if (pointer.strength > 0) {
+                    const sparkDx = spark.x - pointer.x;
+                    const sparkDy = spark.y - pointer.y;
+                    const sparkDistance = Math.sqrt((sparkDx * sparkDx) + (sparkDy * sparkDy));
+                    if (sparkDistance < 140 && sparkDistance > 0.001) {
+                        const shove = (1 - (sparkDistance / 140)) * 0.9 * pointer.strength;
+                        spark.x += (sparkDx / sparkDistance) * shove;
+                        spark.y += (sparkDy / sparkDistance) * shove;
+                    }
+                }
+                if (spark.y > height + 4) {
+                    spark.y = -4;
+                    spark.x = Math.random() * width;
+                }
+                if (spark.x < -6) {
+                    spark.x = width + 6;
+                } else if (spark.x > width + 6) {
+                    spark.x = -6;
+                }
+                const pulse = 0.55 + ((Math.sin((time * 0.03) + spark.phase) + 1) * 0.25);
+                context.fillStyle = 'rgba(' + spark.hue + ', ' + (spark.alpha * pulse).toFixed(2) + ')';
+                context.shadowBlur = 8;
+                context.shadowColor = 'rgba(' + spark.hue + ', 0.18)';
+                context.beginPath();
+                context.arc(spark.x, spark.y, spark.r, 0, Math.PI * 2);
+                context.fill();
+            });
+
             const sunRadius = Math.min(width, height) * 0.12;
-            const sunX = width * 0.76;
-            const sunY = height * 0.22;
+            const sunX = (width * 0.76) + pointerInfluenceX * 0.08;
+            const sunY = (height * 0.22) + pointerInfluenceY * 0.05;
             const sun = context.createRadialGradient(sunX, sunY, sunRadius * 0.1, sunX, sunY, sunRadius);
             sun.addColorStop(0, 'rgba(255, 79, 216, 0.34)');
             sun.addColorStop(0.55, 'rgba(255, 79, 216, 0.14)');
@@ -171,6 +319,15 @@ $(document).ready(function () {
             context.fillStyle = sun;
             context.beginPath();
             context.arc(sunX, sunY, sunRadius, 0, Math.PI * 2);
+            context.fill();
+
+            const halo = context.createRadialGradient(sunX, sunY, sunRadius * 0.8, sunX, sunY, sunRadius * 1.9);
+            halo.addColorStop(0, 'rgba(255, 79, 216, 0.06)');
+            halo.addColorStop(0.5, 'rgba(0, 245, 212, 0.04)');
+            halo.addColorStop(1, 'rgba(0, 245, 212, 0)');
+            context.fillStyle = halo;
+            context.beginPath();
+            context.arc(sunX, sunY, sunRadius * 1.9, 0, Math.PI * 2);
             context.fill();
 
             context.strokeStyle = 'rgba(255, 79, 216, 0.2)';
@@ -182,6 +339,12 @@ $(document).ready(function () {
                 context.lineTo(sunX + sunRadius * 0.68, lineY);
                 context.stroke();
             }
+
+            context.strokeStyle = 'rgba(0, 245, 212, 0.12)';
+            context.lineWidth = 1.2;
+            context.beginPath();
+            context.arc(sunX, sunY, sunRadius * 1.18, Math.PI * 1.06, Math.PI * 1.95);
+            context.stroke();
 
             context.shadowBlur = 0;
             animationFrameId = window.requestAnimationFrame(draw);
@@ -206,6 +369,8 @@ $(document).ready(function () {
         };
 
         window.addEventListener('resize', resize);
+        window.addEventListener('pointermove', updatePointer);
+        window.addEventListener('pointerleave', fadePointer);
         resize();
 
         return {
