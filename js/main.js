@@ -12,15 +12,58 @@ $(document).ready(function () {
         }
 
         const context = canvas.getContext('2d');
-        const glyphs = '01<>[]{}()$#@*+-=<>|/\\\\ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const glyphs = '天地玄黃宇宙洪荒日月盈昃辰宿列張寒來暑往秋收冬藏閏餘成歲律呂調陽雲騰致雨露結為霜金生麗水玉出崑岡劍號巨闕珠稱夜光果珍李柰菜重芥薑海鹹河淡鱗潛羽翔龍師火帝鳥官人皇始制文字乃服衣裳推位讓國有虞陶唐';
         let columns = [];
         let animationFrameId = null;
         let lastFrame = 0;
+        let frameCount = 0;
         let isRunning = false;
         let width = 0;
         let height = 0;
         let fontSize = 18;
         let columnWidth = fontSize;
+        let glyphStep = fontSize * 1.3;
+        let sparks = [];
+        let pointer = {
+            x: 0,
+            y: 0,
+            strength: 0,
+            active: false
+        };
+
+        const randomGlyph = function () {
+            return glyphs.charAt(Math.floor(Math.random() * glyphs.length));
+        };
+
+        const createOffsets = function (length, size) {
+            let total = 0;
+            return Array.from({ length: length }, function (_, index) {
+                if (index === 0) {
+                    return 0;
+                }
+                total += size * (1.2 + Math.random() * 0.9);
+                return Math.round(total);
+            });
+        };
+
+        const createColumn = function (x) {
+            const length = 3 + Math.floor(Math.random() * 8);
+            const size = fontSize * (0.7 + Math.random() * 0.7);
+            const sizeRatio = size / fontSize;
+            const speedMagnitude = ((0.8 + Math.random() * 2.2) + (sizeRatio * (0.6 + Math.random() * 1.6))) * 0.75;
+            return {
+                x: x,
+                y: Math.random() * -height,
+                speed: (Math.random() < 0.28 ? -1 : 1) * speedMagnitude,
+                length: length,
+                chars: Array.from({ length: length }, randomGlyph),
+                size: size,
+                offsets: createOffsets(length, size),
+                brightness: 0.78 + Math.random() * 0.35,
+                pulsePhase: Math.random() * Math.PI * 2,
+                pulseSpeed: 0.012 + Math.random() * 0.02
+            };
+        };
 
         const resize = function () {
             const ratio = window.devicePixelRatio || 1;
@@ -34,20 +77,40 @@ $(document).ready(function () {
 
             fontSize = width < 768 ? 15 : 18;
             columnWidth = fontSize;
+            glyphStep = Math.round(fontSize * 1.6);
             const columnCount = Math.max(12, Math.floor(width / columnWidth));
-            columns = Array.from({ length: columnCount }, function () {
-                return {
-                    x: 0,
-                    y: Math.random() * -height,
-                    speed: 1.5 + Math.random() * 3.5,
-                    length: 6 + Math.floor(Math.random() * 18)
-                };
-            }).map(function (column, index) {
-                column.x = index * columnWidth;
-                return column;
+            columns = Array.from({ length: columnCount }, function (_, index) {
+                return createColumn(index * columnWidth);
             });
             context.font = fontSize + 'px "Courier New", monospace';
             context.textBaseline = 'top';
+        };
+
+        const updatePointer = function (event) {
+            pointer.x = event.clientX;
+            pointer.y = event.clientY;
+            pointer.strength = 1;
+            pointer.active = true;
+        };
+
+        const fadePointer = function () {
+            pointer.active = false;
+        };
+
+        const spawnSpark = function (x, y, glyph, size) {
+            const baseAngle = Math.atan2(y - pointer.y, x - pointer.x);
+            const scatter = (Math.random() - 0.5) * 1.3;
+            const speed = 2.4 + Math.random() * 3.8;
+            sparks.push({
+                x: x,
+                y: y,
+                vx: Math.cos(baseAngle + scatter) * speed,
+                vy: Math.sin(baseAngle + scatter) * speed,
+                glyph: glyph,
+                alpha: 1,
+                size: size * (0.9 + Math.random() * 0.25),
+                trail: []
+            });
         };
 
         const draw = function (timestamp) {
@@ -65,40 +128,112 @@ $(document).ready(function () {
                 return;
             }
             lastFrame = timestamp;
+            frameCount += 1;
 
             context.fillStyle = 'rgba(3, 8, 5, 0.12)';
             context.fillRect(0, 0, width, height);
 
+            if (!pointer.active) {
+                pointer.strength = Math.max(0, pointer.strength - 0.02);
+            }
+
+            sparks = sparks.filter(function (spark) {
+                spark.trail.unshift({ x: spark.x, y: spark.y, alpha: spark.alpha });
+                if (spark.trail.length > 4) {
+                    spark.trail.length = 4;
+                }
+                spark.x += spark.vx * (elapsed / 16);
+                spark.y += spark.vy * (elapsed / 16);
+                spark.vx *= 0.987;
+                spark.vy = (spark.vy * 0.987) + 0.015;
+                spark.alpha -= 0.04;
+
+                if (spark.alpha <= 0 || spark.x < -fontSize || spark.x > width + fontSize || spark.y < -fontSize || spark.y > height + fontSize) {
+                    return false;
+                }
+
+                context.font = spark.size + 'px "Courier New", monospace';
+                spark.trail.forEach(function (trailPoint, index) {
+                    const trailAlpha = Math.max(0, spark.alpha * (0.18 - index * 0.035));
+                    if (trailAlpha <= 0) {
+                        return;
+                    }
+                    context.fillStyle = 'rgba(120, 220, 120, ' + trailAlpha.toFixed(2) + ')';
+                    context.shadowBlur = 0;
+                    context.fillText(spark.glyph, trailPoint.x, trailPoint.y);
+                });
+                context.fillStyle = 'rgba(180, 255, 180, ' + spark.alpha.toFixed(2) + ')';
+                context.shadowBlur = 7;
+                context.shadowColor = 'rgba(139, 255, 139, ' + Math.max(0.16, spark.alpha * 0.45).toFixed(2) + ')';
+                context.fillText(spark.glyph, spark.x, spark.y);
+                return true;
+            });
+
+            context.font = fontSize + 'px "Courier New", monospace';
+
             columns.forEach(function (column) {
+                if (frameCount % 10 === 0) {
+                    column.chars = column.chars.map(randomGlyph);
+                }
+                const influenceRadius = Math.max(56, column.size * 3.5);
+                const pulse = 0.62 + ((Math.sin((frameCount * column.pulseSpeed) + column.pulsePhase) + 1) * 0.42);
+                const brightness = column.brightness * pulse;
+                context.font = column.size + 'px "Courier New", monospace';
+
                 for (let step = 0; step < column.length; step += 1) {
-                    const y = column.y - (step * fontSize);
-                    if (y < -fontSize || y > height + fontSize) {
+                    const x = column.x;
+                    const y = column.y - column.offsets[step];
+                    if (y < -column.size || y > height + column.size) {
                         continue;
                     }
 
-                    const glyph = glyphs.charAt(Math.floor(Math.random() * glyphs.length));
+                    const glyph = column.chars[step];
+                    const dx = x - pointer.x;
+                    const dy = y - pointer.y;
+                    const distance = Math.sqrt((dx * dx) + (dy * dy));
+                    const hitPointer = pointer.strength > 0.2 && distance < influenceRadius;
+
+                    if (hitPointer && Math.random() > 0.78) {
+                        spawnSpark(x, y, glyph, column.size);
+                        continue;
+                    }
+
                     if (step === 0) {
-                        context.fillStyle = 'rgba(224, 255, 224, 0.95)';
-                        context.shadowBlur = 14;
-                        context.shadowColor = 'rgba(139, 255, 139, 0.65)';
+                        const headAlpha = Math.min(1, 0.58 + brightness * 0.42);
+                        context.fillStyle = 'rgba(139, 255, 139, ' + headAlpha.toFixed(2) + ')';
+                        context.shadowBlur = 7 + (brightness * 10);
+                        context.shadowColor = 'rgba(139, 255, 139, ' + Math.min(0.95, 0.24 + brightness * 0.42).toFixed(2) + ')';
                     } else if (step < 4) {
-                        context.fillStyle = 'rgba(139, 255, 139, 0.82)';
-                        context.shadowBlur = 9;
-                        context.shadowColor = 'rgba(80, 255, 140, 0.45)';
+                        const midAlpha = Math.min(0.98, 0.28 + brightness * 0.5);
+                        context.fillStyle = 'rgba(139, 255, 139, ' + midAlpha.toFixed(2) + ')';
+                        context.shadowBlur = 2 + (brightness * 6);
+                        context.shadowColor = 'rgba(139, 255, 139, ' + Math.min(0.78, 0.1 + brightness * 0.26).toFixed(2) + ')';
                     } else {
-                        const alpha = Math.max(0.08, 0.45 - (step / column.length) * 0.4);
-                        context.fillStyle = 'rgba(70, 210, 90, ' + alpha.toFixed(2) + ')';
+                        const alpha = Math.max(0.04, (0.28 - (step / column.length) * 0.2) * brightness);
+                        context.fillStyle = 'rgba(139, 255, 139, ' + alpha.toFixed(2) + ')';
                         context.shadowBlur = 0;
                     }
-                    context.fillText(glyph, column.x, y);
+                    context.fillText(glyph, x, y);
                 }
 
                 context.shadowBlur = 0;
                 column.y += column.speed * (elapsed / 16);
-                if (column.y - column.length * fontSize > height && Math.random() > 0.975) {
-                    column.y = -Math.random() * height * 0.6;
-                    column.speed = 1.5 + Math.random() * 3.5;
-                    column.length = 6 + Math.floor(Math.random() * 18);
+                const tailOffset = column.offsets[column.length - 1];
+                const movedPastBottom = column.speed > 0 && column.y - tailOffset > height && Math.random() > 0.975;
+                const movedPastTop = column.speed < 0 && column.y < -column.size && Math.random() > 0.975;
+
+                if (movedPastBottom || movedPastTop) {
+                    const refreshed = createColumn(column.x);
+                    column.y = refreshed.speed > 0
+                        ? -Math.random() * height * 0.6
+                        : height + tailOffset + Math.random() * (height * 0.35);
+                    column.speed = refreshed.speed;
+                    column.length = refreshed.length;
+                    column.chars = refreshed.chars;
+                    column.offsets = refreshed.offsets;
+                    column.brightness = refreshed.brightness;
+                    column.pulsePhase = refreshed.pulsePhase;
+                    column.pulseSpeed = refreshed.pulseSpeed;
                 }
             });
 
@@ -127,6 +262,8 @@ $(document).ready(function () {
         };
 
         window.addEventListener('resize', resize);
+        window.addEventListener('pointermove', updatePointer);
+        window.addEventListener('pointerleave', fadePointer);
         resize();
 
         return {
