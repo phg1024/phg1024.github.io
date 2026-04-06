@@ -116,6 +116,12 @@ My stuff
   object-fit: contain;
 }
 
+.mobile-project-caption {
+  margin-top: 0.75rem;
+  color: #212529;
+  text-align: center;
+}
+
 tr:nth-child(even) {
   background: #ccc;
 }
