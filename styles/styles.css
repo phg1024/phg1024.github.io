@@ -60,6 +60,40 @@ My stuff
   text-align: left;
 }
 
+.blog-list {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-entry-line {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #e5e5e5;
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  column-gap: 0.75rem;
+  align-items: baseline;
+}
+
+.blog-entry-line:first-child {
+  border-top: 0;
+}
+
+.blog-entry-date,
+.blog-entry-title h5 {
+  margin-bottom: 0.5rem !important;
+}
+
+.blog-entry-title {
+  display: block;
+}
+
+.blog-entry-brief {
+  grid-column: 2;
+  color: #6c757d;
+  text-align: left;
+}
+
 .blog-content img {
   left: 10%;
   width: 80%;
