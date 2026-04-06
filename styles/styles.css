@@ -122,7 +122,7 @@ My stuff
   text-align: center;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .blog-entry-line {
     grid-template-columns: 1fr;
     row-gap: 0.15rem;
