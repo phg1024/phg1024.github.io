@@ -109,7 +109,9 @@ My stuff
 }
 
 .project_image {
-  height: 480px;
+  max-width: 100%;
+  height: auto;
+  max-height: 480px;
 }
 
 tr:nth-child(even) {
