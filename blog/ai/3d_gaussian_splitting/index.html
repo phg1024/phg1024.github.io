@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Peihong's Personal Page</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="project_dropdown" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Projects</a>
+                <div class="dropdown-menu" aria-labelledby="project_dropdown" id="projects-menu">
+                    
+                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a>
+                    
+                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a>
+                    
+                    <a class="dropdown-item" href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a>
+                    
+                    <a class="dropdown-item" href="/project/personal_projects/">Personal Projects</a>
+                    
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/blog" id="blog_dropdown" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Blog</a>
+                <div class="dropdown-menu" aria-labelledby="blog_dropdown" id="blog-menu">
+                    <a class="dropdown-item" href="/blog">ALL</a>
+                    <a class="dropdown-item" href="/blog/category/cooking">Cooking</a>
+                    <a class="dropdown-item" href="/blog/category/programming">Programming</a>
+                    <a class="dropdown-item" href="/blog/category/ai">AI</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    <div class="starter-template">
+        
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+
+<div class="container text-left blog-content">
+    <h1>Paper Reading Notes (1): 3D Gaussian Splatting for Real-Time Radiance Field Rendering</h1>
+<p><a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">Link to paper</a></p>
+<h2>Main Achievements</h2>
+<ul>
+<li>30fps novel view synthesis at 1080p</li>
+</ul>
+<h2>Key Elements</h2>
+<ul>
+<li>3D Gaussians for scene representation</li>
+<li>Anisotropic covariance optimization for accurate scene representation</li>
+<li>Fast, visibility-aware splatting algorithm, using a tile-based and sorting renderer</li>
+</ul>
+<h2>Core Algorithm</h2>
+<h3>Differentiable 3D Gaussian Splatting</h3>
+<p>3D Guassians are defined as ellipsoids at $ \mathbf x $ with full covariance matrix $ \Sigma $:</p>
+<p>$$
+G(\mathbf x) = e^{-\frac{1}{2}\mathbf x^T \Sigma^-1 \mathbf x}
+$$
+and this can be alternatively represented with an epplisoid with rotation:
+$$
+\Sigma = \mathbf R \mathbf S \mathbf S^T \mathbf R^T
+$$
+so it can be efficiently represented with a 7-element vector (3 for scaling and 4 for quaternion). Each 3D Gaussian also uess sphereical harmonics to represent its color component, which can be written as the SH coefficient vector $ \mathbf c $. To summerize, each 3D Gaussian can be represented with the tuple $ (\mathbf x, \mathbf r, \mathbf q, \mathbf c, \alpha) $ where $ \alpha $ is the opacity and $ \mathbf r $ is the rotation vector.</p>
+<h3>Adaptive Density Control</h3>
+<ul>
+<li>Initial 3D Gaussians are formed with SfM points;</li>
+<li>Adaptive control focuses on &quot;under reconstruction&quot; (not enough 3D Gaussians for the detailed geometric features) and &quot;over reconstructions&quot; (Gaussians cover too much area?) regions;</li>
+<li>Densify Gaussians based on view-space gradients: clone in &quot;under-reconstruction&quot; regions and split in over reconstruction regions;</li>
+</ul>
+<h3>Fast Differentiable Rasterization</h3>
+<p>Tile-based rendering and pre-sorting all primitives for the entire image:</p>
+<ul>
+<li>Split the screen into 16x16 tiles</li>
+<li>Cull 3D Gaussians against view frustum and tiles</li>
+<li>Instantiate Gaussians and assign them to tiles using depth and tile ID as key</li>
+<li>Sort Gaussians using fast GPU Radix sort</li>
+<li>For each tile, create a list of Gaussians and rasterize each tile independently</li>
+<li>Warm up the computation at low resolution then upsample twice</li>
+<li>Gradual optimization for SH bands: start from zero-th order and then add more bands</li>
+</ul>
+<h2>Unsorted Thoughts</h2>
+<ul>
+<li>Very efficient choice for scene representation is key to enabling real-time rendering at 1080p; at the same time the representation may not be the most suitable for digital humans.</li>
+<li>How do we enable it for motion? One recent attempt is <a href="https://dynamic3dgaussians.github.io/">this work</a>.</li>
+<li>The Guassians placement/generation algorithm is still quite empirical. Could we derive that from image features automatically? Maybe even make it trainable?</li>
+</ul>
+<h2>References</h2>
+<ul>
+<li><a href="https://light.princeton.edu/publication/point-based-radiance-fields/">Differentiable Point-Based Radiance Fields for Efficient View Synthesis</a></li>
+<li><a href="https://xharlie.github.io/projects/project_sites/pointnerf/">Point-NeRF: Point-based Neural Radiance Fields</a></li>
+<li><a href="https://github.com/Angtian/VoGE">VoGE: A Differentiable Volume Renderer using Neural Gaussian Ellipsoids for Analysis-by-Synthesis</a></li>
+<li><a href="https://cgl.ethz.ch/research/past_projects/surfels/ewavolumesplatting/index.html">EWA volume splatting</a></li>
+<li><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Lassner_Pulsar_Efficient_Sphere-Based_Neural_Rendering_CVPR_2021_paper.pdf">Pulsar: Efficient Sphere-based Neural Rendering</a></li>
+<li><a href="https://repo-sam.inria.fr/fungraph/differentiable-multi-view/">Point-Based Neural Rendering with Per-View Optimization</a></li>
+<li><a href="https://cseweb.ucsd.edu/~ravir/nerficbs.pdf">NeRFs: The Search for the best 3D Representation</a></li>
+<li><a href="https://dynamic3dgaussians.github.io/">Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis</a></li>
+</ul>
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
+     *  PLATFORM OR CMS.
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+     *  https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_config = function () {
+        // Replace PAGE_URL with your page's canonical URL variable
+        // this.page.url = 'pgh1024.disqus.com';
+
+        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = "/blog/ai/3d_gaussian_splitting/";
+    };
+
+    (function () {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+        var d = document, s = d.createElement('script');
+
+        // IMPORTANT: Replace EXAMPLE with your forum shortname!
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+    </a>
+</noscript>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted text-sm-center">
+          &copy 2009-<script>document.write( new Date().getFullYear() );</script> &nbsp Peihong Guo &nbsp <span id="em"></span>
+        </span>
+    </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

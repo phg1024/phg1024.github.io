@@ -1,0 +1,106 @@
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  line-height: 40px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+  text-align: center;
+  font-size: 80%;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+/*
+My stuff
+ */
+
+.caption-overlay {
+  color: black;
+  text-shadow: 1px 1px #aaaaaa;
+  background-color: rgba(180, 180, 180, 0.5);
+}
+
+.blog-entry {
+  margin: 10px;
+  text-align: left;
+}
+
+.blog-content img {
+  left: 10%;
+  width: 80%;
+  text-align: center;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 5px rgba(0.5, 0.5, 0.5, 0.25);
+}
+
+.blog-group {
+  padding: 20px;
+}
+
+.project_image {
+  height: 480px;
+}
+
+tr:nth-child(even) {
+  background: #ccc;
+}
+tr:nth-child(odd) {
+  background: #fff;
+}
+td {
+  border: solid 1px black;
+}
+th {
+  border: solid 1px black;
+}
+
+.blog-content table {
+  table-layout: auto;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.image_info {
+  left: 10%;
+  width: 80%;
+  display: block;
+  position: relative;
+}

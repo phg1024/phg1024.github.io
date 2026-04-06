@@ -1,0 +1,26 @@
+[
+  {
+    "name": "CSCE647 Image Synthesis",
+    "image": "foggy_bunny.png",
+    "description": "A foggy scene showing participating medium with the path tracer developed in CSCE 647 course.",
+    "url":"http://phg1024.github.io/CSCE647/index.html"
+  },
+  {
+    "name": "CSCE646 Digital Image",
+    "image": "ahe75.png",
+    "description": "Adaptive histogram equalization effect.",
+    "url": "http://phg1024.github.io/CSCE646/index.html"
+  },
+  {
+    "name": "CSCE625 Aritificial Intelligence",
+    "image": "kpts.png",
+    "description": "Facial keypoint detection.",
+    "url": "https://phg1024.github.io/CSCE625/index.html"
+  },
+  {
+    "name": "Personal Projects",
+    "image": "ray_tracing.png",
+    "description": "Some personal projects for fun over the years.",
+    "url": "project/personal_projects"
+  }
+]
