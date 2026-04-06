@@ -3,7 +3,7 @@ $(document).ready(function () {
     $.get('/project/get', function (data) {
         data.forEach(item => {
             $('#projects-menu').append(
-                `<a class="dropdown-item" href="project?id=${item.id}">${item.name}</a>`
+                `<a class="dropdown-item" href="/project?id=${item.id}">${item.name}</a>`
             )
         })
     });
@@ -11,7 +11,7 @@ $(document).ready(function () {
     $.get('/blog/get', function (data) {
         data.forEach(item => {
             $('#blog-menu').append(
-                `<a class="dropdown-item" href="blog?category=${item.category}">${item.category}</a>`
+                `<a class="dropdown-item" href="/blog?category=${item.category}">${item.category}</a>`
             )
         })
     });
