@@ -52,23 +52,23 @@
 
 [data-theme="starwars"] {
   --site-bg: #02040c;
-  --site-text: #f6e27a;
-  --site-muted: #c7b67b;
+  --site-text: #f7e8a6;
+  --site-muted: #cdbb83;
   --surface-bg: rgba(8, 12, 28, 0.88);
-  --surface-panel-bg: rgba(9, 12, 24, 0.94);
-  --surface-alt: rgba(18, 26, 54, 0.9);
-  --surface-border: rgba(246, 226, 122, 0.4);
+  --surface-panel-bg: rgba(8, 10, 20, 0.92);
+  --surface-alt: rgba(18, 26, 54, 0.92);
+  --surface-border: rgba(246, 226, 122, 0.34);
   --overlay-bg: rgba(6, 10, 24, 0.58);
   --overlay-text: #ffeaa3;
-  --link-color: #8dc8ff;
-  --link-hover: #fff0a6;
+  --link-color: #9fd2ff;
+  --link-hover: #fff1b8;
   --navbar-bg: rgba(2, 4, 12, 0.94);
   --navbar-text: #f6e27a;
   --footer-bg: rgba(2, 4, 12, 0.94);
   --footer-text: #c7b67b;
   --theme-font: "Trebuchet MS", "Verdana", sans-serif;
   --theme-heading-font: "Arial Black", "Impact", sans-serif;
-  --theme-shadow: 0 0 24px rgba(113, 174, 255, 0.12), 0 0 44px rgba(246, 226, 122, 0.08);
+  --theme-shadow: 0 0 24px rgba(113, 174, 255, 0.12), 0 0 44px rgba(246, 226, 122, 0.1);
   --theme-bg-image:
     radial-gradient(circle at 18% 20%, rgba(52, 90, 180, 0.18), transparent 24%),
     radial-gradient(circle at 78% 16%, rgba(255, 188, 80, 0.12), transparent 18%),
@@ -763,13 +763,14 @@ My stuff
 [data-theme="starwars"] h4,
 [data-theme="starwars"] h5 {
   color: #ffe89a;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(246, 226, 122, 0.28);
+  text-shadow: 0 0 10px rgba(246, 226, 122, 0.3), 0 0 22px rgba(106, 156, 255, 0.08);
 }
 
 [data-theme="starwars"] .navbar {
   border-bottom: 1px solid rgba(246, 226, 122, 0.25);
+  background-image: linear-gradient(180deg, rgba(21, 30, 68, 0.26), rgba(2, 4, 12, 0));
 }
 
 [data-theme="starwars"] .navbar-brand,
@@ -777,13 +778,13 @@ My stuff
   display: inline-block;
   padding: 0.28rem 0.55rem;
   border: 1px solid transparent;
-  transition: color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  transition: color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
 }
 
 [data-theme="starwars"] .nav-item.active > .nav-link,
 [data-theme="starwars"] .nav-item.show > .nav-link {
   color: #fff1b4 !important;
-  background-color: rgba(246, 226, 122, 0.08);
+  background: linear-gradient(180deg, rgba(246, 226, 122, 0.12), rgba(246, 226, 122, 0.03));
   border-color: rgba(246, 226, 122, 0.25);
   box-shadow: 0 0 18px rgba(246, 226, 122, 0.08);
 }
@@ -793,9 +794,10 @@ My stuff
 [data-theme="starwars"] .nav-link:hover,
 [data-theme="starwars"] .nav-link:focus {
   color: #ffffff !important;
-  background-color: rgba(141, 200, 255, 0.08);
+  background: linear-gradient(180deg, rgba(141, 200, 255, 0.16), rgba(141, 200, 255, 0.03));
   border-color: rgba(141, 200, 255, 0.3);
-  box-shadow: 0 0 20px rgba(141, 200, 255, 0.12);
+  box-shadow: 0 0 20px rgba(141, 200, 255, 0.16);
+  transform: translateY(-1px);
 }
 
 [data-theme="starwars"] .card,
@@ -805,12 +807,14 @@ My stuff
 [data-theme="starwars"] .carousel-caption,
 [data-theme="starwars"] .about-panel {
   border-color: rgba(246, 226, 122, 0.32);
+  background-image: linear-gradient(180deg, rgba(26, 37, 76, 0.12), rgba(8, 10, 20, 0));
   box-shadow: 0 0 0 1px rgba(246, 226, 122, 0.08), 0 0 28px rgba(38, 72, 130, 0.14);
 }
 
 [data-theme="starwars"] .blog-content {
-  background-color: rgba(8, 11, 20, 0.74);
+  background-color: rgba(8, 11, 20, 0.78);
   border-color: rgba(246, 226, 122, 0.28);
+  background-image: linear-gradient(180deg, rgba(27, 38, 82, 0.12), rgba(8, 11, 20, 0));
   box-shadow: 0 0 0 1px rgba(246, 226, 122, 0.06), 0 0 24px rgba(35, 68, 128, 0.12);
 }
 
@@ -834,6 +838,17 @@ My stuff
 [data-theme="starwars"] .btn {
   border-color: rgba(246, 226, 122, 0.28);
   box-shadow: none;
+}
+
+[data-theme="starwars"] .btn {
+  background: linear-gradient(180deg, rgba(47, 78, 156, 0.32), rgba(18, 28, 60, 0.7));
+  color: #fff1b4;
+}
+
+[data-theme="starwars"] .btn:hover,
+[data-theme="starwars"] .btn:focus {
+  background: linear-gradient(180deg, rgba(76, 116, 214, 0.42), rgba(22, 36, 78, 0.78));
+  color: #ffffff;
 }
 
 [data-theme="starwars"] .text-muted,

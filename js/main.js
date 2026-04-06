@@ -227,6 +227,7 @@ $(document).ready(function () {
         let time = 0;
         let stars = [];
         let streaks = [];
+        let ships = [];
 
         const createStars = function () {
             const count = Math.max(120, Math.floor((width * height) / 9500));
@@ -257,6 +258,21 @@ $(document).ready(function () {
             });
         };
 
+        const createShips = function () {
+            const count = Math.max(3, Math.floor(width / 520));
+            return Array.from({ length: count }, function (_, index) {
+                return {
+                    x: width + Math.random() * width,
+                    y: height * (0.22 + Math.random() * 0.5),
+                    speed: 1 + Math.random() * 2.2,
+                    size: 16 + Math.random() * 28,
+                    hue: index % 2 === 0 ? '141, 200, 255' : '246, 226, 122',
+                    tilt: -0.35 + Math.random() * 0.12,
+                    alpha: 0.08 + Math.random() * 0.1
+                };
+            });
+        };
+
         const resize = function () {
             const ratio = window.devicePixelRatio || 1;
             width = window.innerWidth;
@@ -268,6 +284,7 @@ $(document).ready(function () {
             context.setTransform(ratio, 0, 0, ratio, 0, 0);
             stars = createStars();
             streaks = createStreaks();
+            ships = createShips();
         };
 
         const draw = function () {
@@ -337,6 +354,34 @@ $(document).ready(function () {
                 context.stroke();
             });
 
+            ships.forEach(function (ship) {
+                ship.x -= ship.speed;
+                ship.y += Math.sin((time * 0.015) + ship.x * 0.002) * 0.15;
+                if (ship.x < -ship.size * 3) {
+                    ship.x = width + Math.random() * width * 0.5;
+                    ship.y = height * (0.18 + Math.random() * 0.56);
+                    ship.speed = 1 + Math.random() * 2.2;
+                    ship.size = 16 + Math.random() * 28;
+                    ship.alpha = 0.08 + Math.random() * 0.1;
+                }
+
+                context.save();
+                context.translate(ship.x, ship.y);
+                context.rotate(ship.tilt);
+                context.strokeStyle = 'rgba(' + ship.hue + ', ' + ship.alpha.toFixed(2) + ')';
+                context.lineWidth = 1.2;
+                context.shadowBlur = 10;
+                context.shadowColor = 'rgba(' + ship.hue + ', 0.14)';
+                context.beginPath();
+                context.moveTo(-ship.size * 0.8, 0);
+                context.lineTo(ship.size * 0.7, 0);
+                context.moveTo(-ship.size * 0.15, -ship.size * 0.18);
+                context.lineTo(ship.size * 0.16, 0);
+                context.lineTo(-ship.size * 0.15, ship.size * 0.18);
+                context.stroke();
+                context.restore();
+            });
+
             const planetX = width * 0.82;
             const planetY = height * 0.24;
             const planetRadius = Math.min(width, height) * 0.09;
@@ -348,6 +393,16 @@ $(document).ready(function () {
             context.beginPath();
             context.arc(planetX, planetY, planetRadius, 0, Math.PI * 2);
             context.fill();
+
+            const planetRim = context.createLinearGradient(planetX - planetRadius, planetY, planetX + planetRadius, planetY - planetRadius * 0.15);
+            planetRim.addColorStop(0, 'rgba(255, 232, 154, 0)');
+            planetRim.addColorStop(0.55, 'rgba(255, 232, 154, 0.2)');
+            planetRim.addColorStop(1, 'rgba(141, 200, 255, 0.08)');
+            context.strokeStyle = planetRim;
+            context.lineWidth = 2;
+            context.beginPath();
+            context.arc(planetX, planetY, planetRadius * 0.98, Math.PI * 1.15, Math.PI * 1.98);
+            context.stroke();
 
             const horizon = height * 0.83;
             const horizonGlow = context.createLinearGradient(0, horizon - 50, 0, horizon + 90);
@@ -373,6 +428,17 @@ $(document).ready(function () {
             context.lineTo(width, height);
             context.closePath();
             context.fill();
+
+            const crawlGlow = context.createLinearGradient(width * 0.25, height * 0.92, width * 0.75, height * 0.55);
+            crawlGlow.addColorStop(0, 'rgba(246, 226, 122, 0.02)');
+            crawlGlow.addColorStop(0.5, 'rgba(246, 226, 122, 0.08)');
+            crawlGlow.addColorStop(1, 'rgba(246, 226, 122, 0)');
+            context.save();
+            context.translate(width * 0.5, height * 0.87);
+            context.rotate(-0.32);
+            context.fillStyle = crawlGlow;
+            context.fillRect(-width * 0.16, -8, width * 0.32, 16);
+            context.restore();
 
             animationFrameId = window.requestAnimationFrame(draw);
         };
@@ -410,7 +476,24 @@ $(document).ready(function () {
         }
 
         const context = canvas.getContext('2d');
-        const glyphs = '天地玄黃宇宙洪荒日月盈昃辰宿列張寒來暑往秋收冬藏閏餘成歲律呂調陽雲騰致雨露結為霜金生麗水玉出崑岡劍號巨闕珠稱夜光果珍李柰菜重芥薑海鹹河淡鱗潛羽翔龍師火帝鳥官人皇始制文字乃服衣裳推位讓國有虞陶唐';
+        const haskellSource = [
+            'qsortTR :: Ord a => [a] -> [a]',
+            'qsortTR xs = go [xs] []',
+            '  where',
+            '    go [] acc = acc',
+            '    go ([]:rest) acc = go rest acc',
+            '    go ([x]:rest) acc = go rest (x : acc)',
+            '    go ((p:ys):rest) acc =',
+            '      let smaller = revFilter (<= p) ys []',
+            '          larger  = revFilter (>  p) ys []',
+            '      in go (larger : [p] : smaller : rest) acc',
+            '',
+            '    revFilter _ [] acc = acc',
+            '    revFilter f (z:zs) acc',
+            '      | f z       = revFilter f zs (z : acc)',
+            '      | otherwise = revFilter f zs acc'
+        ].join('');
+        const glyphs = haskellSource.replace(/\s+/g, '');
         let columns = [];
         let animationFrameId = null;
         let lastFrame = 0;
@@ -433,33 +516,43 @@ $(document).ready(function () {
             return glyphs.charAt(Math.floor(Math.random() * glyphs.length));
         };
 
+        const randomGlyphPair = function () {
+            return {
+                main: randomGlyph(),
+                echo: randomGlyph()
+            };
+        };
+
         const createOffsets = function (length, size) {
             let total = 0;
             return Array.from({ length: length }, function (_, index) {
                 if (index === 0) {
                     return 0;
                 }
-                total += size * (1.2 + Math.random() * 0.9);
+                total += size * (1.15 + Math.random() * 1.45);
                 return Math.round(total);
             });
         };
 
         const createColumn = function (x) {
-            const length = 3 + Math.floor(Math.random() * 8);
+            const length = 3 + Math.floor(Math.random() * 48);
             const size = fontSize * (0.7 + Math.random() * 0.7);
             const sizeRatio = size / fontSize;
-            const speedMagnitude = ((0.8 + Math.random() * 2.2) + (sizeRatio * (0.6 + Math.random() * 1.6))) * 0.75;
+            const sizeInfluence = Math.pow(sizeRatio, 1.35) * (0.95 + Math.random() * 1.25);
+            const baseDrift = 0.45 + Math.random() * 0.95;
+            const speedMagnitude = (baseDrift + sizeInfluence) * 0.5625;
             return {
                 x: x,
                 y: Math.random() * -height,
                 speed: (Math.random() < 0.28 ? -1 : 1) * speedMagnitude,
                 length: length,
-                chars: Array.from({ length: length }, randomGlyph),
+                chars: Array.from({ length: length }, randomGlyphPair),
                 size: size,
                 offsets: createOffsets(length, size),
                 brightness: 0.78 + Math.random() * 0.35,
                 pulsePhase: Math.random() * Math.PI * 2,
-                pulseSpeed: 0.012 + Math.random() * 0.02
+                pulseSpeed: 0.012 + Math.random() * 0.02,
+                sparkTimestamps: []
             };
         };
 
@@ -495,17 +588,18 @@ $(document).ready(function () {
             pointer.active = false;
         };
 
-        const spawnSpark = function (x, y, glyph, size) {
+        const spawnSpark = function (x, y, glyphPair, size) {
             const baseAngle = Math.atan2(y - pointer.y, x - pointer.x);
             const scatter = (Math.random() - 0.5) * 1.3;
-            const speed = 2.4 + Math.random() * 3.8;
+            const speed = (2.4 + Math.random() * 3.8) * 3;
             sparks.push({
                 x: x,
                 y: y,
                 vx: Math.cos(baseAngle + scatter) * speed,
                 vy: Math.sin(baseAngle + scatter) * speed,
-                glyph: glyph,
+                glyph: glyphPair,
                 alpha: 1,
+                heat: 1,
                 size: size * (0.9 + Math.random() * 0.25),
                 trail: []
             });
@@ -537,33 +631,52 @@ $(document).ready(function () {
 
             sparks = sparks.filter(function (spark) {
                 spark.trail.unshift({ x: spark.x, y: spark.y, alpha: spark.alpha });
-                if (spark.trail.length > 4) {
-                    spark.trail.length = 4;
+                if (spark.trail.length > 3) {
+                    spark.trail.length = 3;
                 }
                 spark.x += spark.vx * (elapsed / 16);
                 spark.y += spark.vy * (elapsed / 16);
                 spark.vx *= 0.987;
                 spark.vy = (spark.vy * 0.987) + 0.015;
-                spark.alpha -= 0.04;
+                if (spark.x < 0 || spark.x > width) {
+                    spark.x = Math.min(width, Math.max(0, spark.x));
+                    spark.vx *= -0.82;
+                }
+                if (spark.y < 0 || spark.y > height) {
+                    spark.y = Math.min(height, Math.max(0, spark.y));
+                    spark.vy *= -0.82;
+                }
+                spark.alpha -= 0.0044;
+                spark.heat = Math.max(0, spark.heat - 0.01);
 
-                if (spark.alpha <= 0 || spark.x < -fontSize || spark.x > width + fontSize || spark.y < -fontSize || spark.y > height + fontSize) {
+                if (spark.alpha <= 0) {
                     return false;
                 }
 
                 context.font = spark.size + 'px "Courier New", monospace';
                 spark.trail.forEach(function (trailPoint, index) {
-                    const trailAlpha = Math.max(0, spark.alpha * (0.18 - index * 0.035));
+                    const trailAlpha = Math.max(0, spark.alpha * (0.11 - index * 0.028));
                     if (trailAlpha <= 0) {
                         return;
                     }
-                    context.fillStyle = 'rgba(120, 220, 120, ' + trailAlpha.toFixed(2) + ')';
+                    const trailRed = Math.round(120 + (135 * spark.heat));
+                    const trailGreen = Math.round(220 - (70 * spark.heat));
+                    const trailBlue = Math.round(120 - (110 * spark.heat));
+                    context.fillStyle = 'rgba(' + trailRed + ', ' + trailGreen + ', ' + trailBlue + ', ' + trailAlpha.toFixed(2) + ')';
                     context.shadowBlur = 0;
-                    context.fillText(spark.glyph, trailPoint.x, trailPoint.y);
+                    context.fillText(spark.glyph.main, trailPoint.x, trailPoint.y);
+                    context.fillStyle = 'rgba(' + trailRed + ', ' + trailGreen + ', ' + trailBlue + ', ' + Math.max(0, trailAlpha * 0.72).toFixed(2) + ')';
+                    context.fillText(spark.glyph.echo, trailPoint.x + (spark.size * 0.16), trailPoint.y + (spark.size * 0.08));
                 });
-                context.fillStyle = 'rgba(180, 255, 180, ' + spark.alpha.toFixed(2) + ')';
-                context.shadowBlur = 7;
-                context.shadowColor = 'rgba(139, 255, 139, ' + Math.max(0.16, spark.alpha * 0.45).toFixed(2) + ')';
-                context.fillText(spark.glyph, spark.x, spark.y);
+                const headRed = Math.round(180 + (75 * spark.heat));
+                const headGreen = Math.round(255 - (95 * spark.heat));
+                const headBlue = Math.round(180 - (165 * spark.heat));
+                context.fillStyle = 'rgba(' + headRed + ', ' + headGreen + ', ' + headBlue + ', ' + spark.alpha.toFixed(2) + ')';
+                context.shadowBlur = 5;
+                context.shadowColor = 'rgba(' + headRed + ', ' + headGreen + ', ' + headBlue + ', ' + Math.max(0.16, spark.alpha * 0.45).toFixed(2) + ')';
+                context.fillText(spark.glyph.main, spark.x, spark.y);
+                context.fillStyle = 'rgba(' + headRed + ', ' + headGreen + ', ' + headBlue + ', ' + Math.max(0.04, spark.alpha * 0.78).toFixed(2) + ')';
+                context.fillText(spark.glyph.echo, spark.x + (spark.size * 0.16), spark.y + (spark.size * 0.08));
                 return true;
             });
 
@@ -571,9 +684,12 @@ $(document).ready(function () {
 
             columns.forEach(function (column) {
                 if (frameCount % 10 === 0) {
-                    column.chars = column.chars.map(randomGlyph);
+                    column.chars = column.chars.map(randomGlyphPair);
                 }
-                const influenceRadius = Math.max(56, column.size * 3.5);
+                column.sparkTimestamps = column.sparkTimestamps.filter(function (sparkTimestamp) {
+                    return timestamp - sparkTimestamp < 1000;
+                });
+                const influenceRadius = Math.max(16, column.size * 1.05);
                 const pulse = 0.62 + ((Math.sin((frameCount * column.pulseSpeed) + column.pulsePhase) + 1) * 0.42);
                 const brightness = column.brightness * pulse;
                 context.font = column.size + 'px "Courier New", monospace';
@@ -591,7 +707,8 @@ $(document).ready(function () {
                     const distance = Math.sqrt((dx * dx) + (dy * dy));
                     const hitPointer = pointer.strength > 0.2 && distance < influenceRadius;
 
-                    if (hitPointer && Math.random() > 0.78) {
+                    if (hitPointer && column.sparkTimestamps.length < 5 && Math.random() < 0.1) {
+                        column.sparkTimestamps.push(timestamp);
                         spawnSpark(x, y, glyph, column.size);
                         continue;
                     }
@@ -611,7 +728,11 @@ $(document).ready(function () {
                         context.fillStyle = 'rgba(139, 255, 139, ' + alpha.toFixed(2) + ')';
                         context.shadowBlur = 0;
                     }
-                    context.fillText(glyph, x, y);
+                    context.fillText(glyph.main, x, y);
+                    const echoAlpha = Math.max(0.03, Math.min(0.55, 0.72 * brightness * (step === 0 ? 0.75 : 0.55)));
+                    context.fillStyle = 'rgba(139, 255, 139, ' + echoAlpha.toFixed(2) + ')';
+                    context.shadowBlur = Math.max(0, context.shadowBlur * 0.5);
+                    context.fillText(glyph.echo, x + (column.size * 0.16), y + (column.size * 0.08));
                 }
 
                 context.shadowBlur = 0;
@@ -632,6 +753,7 @@ $(document).ready(function () {
                     column.brightness = refreshed.brightness;
                     column.pulsePhase = refreshed.pulsePhase;
                     column.pulseSpeed = refreshed.pulseSpeed;
+                    column.sparkTimestamps = refreshed.sparkTimestamps;
                 }
             });
 
