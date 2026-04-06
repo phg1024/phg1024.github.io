@@ -122,6 +122,15 @@ My stuff
   text-align: center;
 }
 
+body.mobile-device .blog-entry-line {
+  grid-template-columns: 1fr;
+  row-gap: 0.15rem;
+}
+
+body.mobile-device .blog-entry-brief {
+  grid-column: 1;
+}
+
 @media (max-width: 991.98px) {
   .blog-entry-line {
     grid-template-columns: 1fr;

@@ -1,5 +1,10 @@
 // Get all the projects
 $(document).ready(function () {
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        || (window.matchMedia && window.matchMedia("(pointer: coarse)").matches && window.innerWidth <= 1024);
+
+    document.body.classList.toggle('mobile-device', isMobileDevice);
+
     $.get('/project/get', function (data) {
         data.forEach(item => {
             $('#projects-menu').append(
