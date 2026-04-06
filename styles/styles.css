@@ -422,6 +422,19 @@ My stuff
   text-align: center;
 }
 
+.personal-project-image-link {
+  display: block;
+  background-color: color-mix(in srgb, var(--surface-alt) 82%, transparent);
+}
+
+.personal-project-image {
+  height: 240px;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 0.75rem;
+}
+
 .theme-switcher-label {
   color: var(--navbar-text);
   font-size: 0.875rem;
