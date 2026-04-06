@@ -3,8 +3,214 @@ $(document).ready(function () {
     const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
         || (window.matchMedia && window.matchMedia("(pointer: coarse)").matches && window.innerWidth <= 1024);
     const themeSwitcher = document.getElementById('theme-switcher');
+    const cyberpunkCanvas = document.getElementById('cyberpunk-grid');
     const matrixCanvas = document.getElementById('matrix-rain');
+    let cyberpunkController = null;
     let matrixController = null;
+
+    const createCyberpunkBackdrop = function (canvas) {
+        if (!canvas) {
+            return null;
+        }
+
+        const context = canvas.getContext('2d');
+        let animationFrameId = null;
+        let isRunning = false;
+        let width = 0;
+        let height = 0;
+        let time = 0;
+        let shards = [];
+        let towers = [];
+
+        const createShards = function () {
+            return Array.from({ length: 22 }, function (_, index) {
+                return {
+                    x: Math.random() * width,
+                    y: Math.random() * height * 0.7,
+                    w: 70 + Math.random() * 220,
+                    h: 1 + Math.random() * 4,
+                    speed: 0.35 + Math.random() * 1.3,
+                    drift: (Math.random() - 0.5) * 0.8,
+                    hue: index % 2 === 0 ? '0, 245, 212' : '255, 79, 216',
+                    alpha: 0.08 + Math.random() * 0.22
+                };
+            });
+        };
+
+        const createTowers = function () {
+            const towerCount = Math.max(8, Math.floor(width / 160));
+            return Array.from({ length: towerCount }, function (_, index) {
+                const span = width / towerCount;
+                const baseX = index * span;
+                const towerWidth = 36 + Math.random() * 90;
+                const towerHeight = height * (0.12 + Math.random() * 0.3);
+                return {
+                    x: baseX + Math.random() * Math.max(12, span - towerWidth),
+                    w: towerWidth,
+                    h: towerHeight,
+                    glow: Math.random() * Math.PI * 2,
+                    accent: index % 3 === 0 ? '255, 79, 216' : '0, 245, 212'
+                };
+            });
+        };
+
+        const resize = function () {
+            const ratio = window.devicePixelRatio || 1;
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = Math.floor(width * ratio);
+            canvas.height = Math.floor(height * ratio);
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            context.setTransform(ratio, 0, 0, ratio, 0, 0);
+            shards = createShards();
+            towers = createTowers();
+        };
+
+        const draw = function () {
+            if (!isRunning) {
+                return;
+            }
+
+            time += 1;
+            context.clearRect(0, 0, width, height);
+
+            const horizon = height * 0.34;
+            const gridColor = 'rgba(0, 245, 212, 0.18)';
+
+            const background = context.createLinearGradient(0, 0, 0, height);
+            background.addColorStop(0, 'rgba(13, 2, 24, 0.24)');
+            background.addColorStop(0.3, 'rgba(33, 8, 50, 0.12)');
+            background.addColorStop(0.55, 'rgba(20, 5, 34, 0.06)');
+            background.addColorStop(1, 'rgba(7, 1, 15, 0)');
+            context.fillStyle = background;
+            context.fillRect(0, 0, width, height);
+
+            const beamX = (time * 4.5) % (width + 260) - 260;
+            const beam = context.createLinearGradient(beamX, 0, beamX + 180, 0);
+            beam.addColorStop(0, 'rgba(255, 79, 216, 0)');
+            beam.addColorStop(0.5, 'rgba(255, 79, 216, 0.13)');
+            beam.addColorStop(1, 'rgba(255, 79, 216, 0)');
+            context.fillStyle = beam;
+            context.fillRect(0, 0, width, height);
+
+            const cyanSweep = context.createLinearGradient(0, horizon - 40, 0, horizon + 160);
+            cyanSweep.addColorStop(0, 'rgba(0, 245, 212, 0)');
+            cyanSweep.addColorStop(0.45, 'rgba(0, 245, 212, 0.08)');
+            cyanSweep.addColorStop(1, 'rgba(0, 245, 212, 0)');
+            context.fillStyle = cyanSweep;
+            context.fillRect(0, horizon - 40, width, height - horizon + 40);
+
+            towers.forEach(function (tower, index) {
+                const towerTop = horizon + 18 - tower.h;
+                const pulse = 0.55 + ((Math.sin(time * 0.03 + tower.glow) + 1) * 0.18);
+                context.fillStyle = 'rgba(9, 4, 20, 0.7)';
+                context.fillRect(tower.x, towerTop, tower.w, tower.h);
+
+                context.fillStyle = 'rgba(' + tower.accent + ', ' + (0.06 + pulse * 0.08).toFixed(2) + ')';
+                context.shadowBlur = 16;
+                context.shadowColor = 'rgba(' + tower.accent + ', 0.22)';
+                context.fillRect(tower.x, towerTop, tower.w, 2);
+
+                for (let row = towerTop + 12; row < towerTop + tower.h - 8; row += 12) {
+                    if ((row + index * 3) % 24 !== 0) {
+                        continue;
+                    }
+                    context.fillStyle = 'rgba(' + tower.accent + ', ' + (0.08 + Math.random() * 0.1).toFixed(2) + ')';
+                    context.fillRect(tower.x + 6, row, Math.max(10, tower.w - 12), 1.5);
+                }
+            });
+
+            context.beginPath();
+            for (let y = horizon; y < height; y += 28) {
+                const perspective = (y - horizon) / (height - horizon + 1);
+                const inset = width * 0.5 * perspective * 0.92;
+                context.moveTo(inset, y);
+                context.lineTo(width - inset, y);
+            }
+            context.strokeStyle = gridColor;
+            context.lineWidth = 1;
+            context.shadowBlur = 14;
+            context.shadowColor = 'rgba(0, 245, 212, 0.28)';
+            context.stroke();
+
+            context.beginPath();
+            const vanishingX = width * 0.5;
+            for (let x = -width * 0.2; x <= width * 1.2; x += 42) {
+                context.moveTo(x + ((time * 0.35) % 42), height);
+                context.lineTo(vanishingX, horizon);
+            }
+            context.strokeStyle = 'rgba(0, 245, 212, 0.13)';
+            context.lineWidth = 1;
+            context.stroke();
+
+            context.shadowBlur = 0;
+            shards.forEach(function (shard) {
+                shard.x += shard.speed;
+                shard.y += shard.drift;
+                if (shard.x - shard.w > width) {
+                    shard.x = -shard.w;
+                    shard.y = Math.random() * height * 0.75;
+                }
+
+                context.fillStyle = 'rgba(' + shard.hue + ', ' + shard.alpha.toFixed(2) + ')';
+                context.shadowBlur = 12;
+                context.shadowColor = 'rgba(' + shard.hue + ', 0.28)';
+                context.fillRect(shard.x, shard.y, shard.w, shard.h);
+            });
+
+            const sunRadius = Math.min(width, height) * 0.12;
+            const sunX = width * 0.76;
+            const sunY = height * 0.22;
+            const sun = context.createRadialGradient(sunX, sunY, sunRadius * 0.1, sunX, sunY, sunRadius);
+            sun.addColorStop(0, 'rgba(255, 79, 216, 0.34)');
+            sun.addColorStop(0.55, 'rgba(255, 79, 216, 0.14)');
+            sun.addColorStop(1, 'rgba(255, 79, 216, 0)');
+            context.fillStyle = sun;
+            context.beginPath();
+            context.arc(sunX, sunY, sunRadius, 0, Math.PI * 2);
+            context.fill();
+
+            context.strokeStyle = 'rgba(255, 79, 216, 0.2)';
+            context.lineWidth = 2;
+            for (let i = 0; i < 6; i += 1) {
+                const lineY = sunY - sunRadius * 0.45 + i * (sunRadius * 0.16);
+                context.beginPath();
+                context.moveTo(sunX - sunRadius * 0.68, lineY);
+                context.lineTo(sunX + sunRadius * 0.68, lineY);
+                context.stroke();
+            }
+
+            context.shadowBlur = 0;
+            animationFrameId = window.requestAnimationFrame(draw);
+        };
+
+        const start = function () {
+            if (isRunning) {
+                return;
+            }
+            isRunning = true;
+            resize();
+            animationFrameId = window.requestAnimationFrame(draw);
+        };
+
+        const stop = function () {
+            isRunning = false;
+            if (animationFrameId) {
+                window.cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            context.clearRect(0, 0, width, height);
+        };
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        return {
+            start: start,
+            stop: stop
+        };
+    };
 
     const createMatrixRain = function (canvas) {
         if (!canvas) {
@@ -272,6 +478,10 @@ $(document).ready(function () {
         };
     };
 
+    if (cyberpunkCanvas) {
+        cyberpunkController = createCyberpunkBackdrop(cyberpunkCanvas);
+    }
+
     if (matrixCanvas) {
         matrixController = createMatrixRain(matrixCanvas);
     }
@@ -282,6 +492,13 @@ $(document).ready(function () {
         localStorage.setItem('site-theme', theme);
         if (themeSwitcher) {
             themeSwitcher.value = theme;
+        }
+        if (cyberpunkController) {
+            if (theme === 'cyberpunk') {
+                cyberpunkController.start();
+            } else {
+                cyberpunkController.stop();
+            }
         }
         if (matrixController) {
             if (theme === 'matrix') {

@@ -3,6 +3,7 @@
   --site-text: #212529;
   --site-muted: #6c757d;
   --surface-bg: #ffffff;
+  --surface-panel-bg: #ffffff;
   --surface-alt: #f5f5f5;
   --surface-border: #e5e5e5;
   --overlay-bg: rgba(180, 180, 180, 0.5);
@@ -26,6 +27,7 @@
   --site-text: #f7f26b;
   --site-muted: #ff8ad8;
   --surface-bg: rgba(31, 11, 47, 0.92);
+  --surface-panel-bg: rgba(31, 11, 47, 0.97);
   --surface-alt: #180a27;
   --surface-border: #00f5d4;
   --overlay-bg: rgba(17, 240, 210, 0.28);
@@ -53,6 +55,7 @@
   --site-text: #000000;
   --site-muted: #333333;
   --surface-bg: #c0c0c0;
+  --surface-panel-bg: #c0c0c0;
   --surface-alt: #d6d6d6;
   --surface-border: #7b7b7b;
   --overlay-bg: rgba(192, 192, 192, 0.92);
@@ -79,6 +82,7 @@
   --site-text: #8bff8b;
   --site-muted: #58c558;
   --surface-bg: #08140a;
+  --surface-panel-bg: rgba(4, 12, 6, 0.992);
   --surface-alt: #050f07;
   --surface-border: #1f8f1f;
   --overlay-bg: rgba(3, 20, 5, 0.78);
@@ -113,6 +117,7 @@ body {
   flex-direction: column;
 }
 
+#cyberpunk-backdrop,
 #matrix-backdrop {
   position: fixed;
   inset: 0;
@@ -123,16 +128,23 @@ body {
   overflow: hidden;
 }
 
+#cyberpunk-grid,
 #matrix-rain {
   width: 100%;
   height: 100%;
   display: block;
 }
 
+[data-theme="cyberpunk"] #cyberpunk-backdrop {
+  opacity: 1;
+}
+
 [data-theme="matrix"] #matrix-backdrop {
   opacity: 1;
 }
 
+[data-theme="cyberpunk"] main.container,
+[data-theme="cyberpunk"] .footer,
 [data-theme="matrix"] main.container,
 [data-theme="matrix"] .footer {
   position: relative;
@@ -216,7 +228,7 @@ a:hover {
 .tab-content,
 .carousel-caption,
 .alert-secondary {
-  background-color: var(--surface-bg);
+  background-color: var(--surface-panel-bg);
   color: var(--site-text);
   border-color: var(--surface-border);
   border-width: var(--theme-card-border-width);
@@ -314,8 +326,17 @@ My stuff
   box-shadow: var(--theme-shadow);
 }
 
+.blog-content {
+  background-color: color-mix(in srgb, var(--surface-panel-bg) 80%, transparent);
+  color: var(--site-text);
+  border: var(--theme-card-border-width) solid var(--surface-border);
+  border-radius: var(--theme-border-radius);
+  box-shadow: var(--theme-shadow);
+  padding: 2rem;
+}
+
 .about-panel {
-  background-color: var(--surface-bg);
+  background-color: var(--surface-panel-bg);
   color: var(--site-text);
   border: var(--theme-card-border-width) solid var(--surface-border);
   border-radius: var(--theme-border-radius);
@@ -615,6 +636,21 @@ My stuff
   box-shadow: 0 0 0 1px rgba(139, 255, 139, 0.16), 0 0 14px rgba(139, 255, 139, 0.08);
 }
 
+[data-theme="matrix"] .blog-content,
+[data-theme="matrix"] .about-panel,
+[data-theme="matrix"] .card,
+[data-theme="matrix"] .tab-content,
+[data-theme="matrix"] .alert-secondary,
+[data-theme="matrix"] .carousel-caption {
+  background-color: var(--surface-panel-bg);
+  border-color: rgba(139, 255, 139, 0.28);
+  box-shadow: 0 0 0 1px rgba(139, 255, 139, 0.18), 0 0 18px rgba(10, 40, 12, 0.22);
+}
+
+[data-theme="matrix"] .blog-content {
+  background-color: rgba(4, 12, 6, 0.84);
+}
+
 [data-theme="matrix"] .dropdown-item:hover,
 [data-theme="matrix"] .dropdown-item:focus,
 [data-theme="matrix"] .dropdown-item.active,
@@ -657,6 +693,12 @@ My stuff
 [data-theme="cyberpunk"] .tab-content,
 [data-theme="cyberpunk"] .dropdown-menu {
   border: 1px solid var(--surface-border);
+}
+
+[data-theme="cyberpunk"] .blog-content {
+  background-color: rgba(31, 11, 47, 0.72);
+  border-color: rgba(0, 245, 212, 0.32);
+  box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.12), 0 0 22px rgba(255, 79, 216, 0.1);
 }
 
 [data-theme="cyberpunk"] .dropdown-item {
