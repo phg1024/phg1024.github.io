@@ -33,6 +33,9 @@ $(document).ready(function () {
     let backdropHeight = 0;
     let backdropRatio = 1;
     let matrixColumns = [];
+    let industrialPaths = [];
+    let industrialSegments = [];
+    let industrialPulses = [];
 
     const getTheme = function () {
         return root.getAttribute('data-theme') || 'cyberpunk';
@@ -42,8 +45,9 @@ $(document).ready(function () {
         return getTheme() !== 'win31' && getTheme() !== 'minimalist';
     };
 
-    const hasMatrixBackdrop = function () {
-        return getTheme() === 'matrix';
+    const hasDynamicBackdrop = function () {
+        const theme = getTheme();
+        return theme === 'matrix' || theme === 'industrial';
     };
 
     const getThemeParticlePalette = function () {
@@ -62,8 +66,8 @@ $(document).ready(function () {
         }
         if (theme === 'industrial') {
             return {
-                core: ['188, 202, 214', '232, 238, 243'],
-                sparks: ['188, 202, 214', '146, 162, 176']
+                core: ['156, 206, 250', '234, 246, 255'],
+                sparks: ['156, 206, 250', '110, 182, 242']
             };
         }
         if (theme === 'win31') {
@@ -95,12 +99,15 @@ $(document).ready(function () {
             particles = [];
         }
 
-        if (!hasMatrixBackdrop() && backdropContext) {
+        if (!hasDynamicBackdrop() && backdropContext) {
             backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
         }
 
-        if (hasMatrixBackdrop()) {
+        if (getTheme() === 'matrix') {
             initializeMatrixColumns();
+            queueBackdrop();
+        } else if (getTheme() === 'industrial') {
+            initializeIndustrialCircuits();
             queueBackdrop();
         }
     };
@@ -157,10 +164,11 @@ $(document).ready(function () {
         backdropContext = backdrop.getContext('2d');
         backdropContext.setTransform(backdropRatio, 0, 0, backdropRatio, 0, 0);
         initializeMatrixColumns();
+        initializeIndustrialCircuits();
     };
 
     const initializeMatrixColumns = function () {
-        if (!backdropContext || !hasMatrixBackdrop()) {
+        if (!backdropContext || getTheme() !== 'matrix') {
             matrixColumns = [];
             return;
         }
@@ -178,6 +186,129 @@ $(document).ready(function () {
         });
     };
 
+    const distanceToSegment = function (pointX, pointY, startX, startY, endX, endY) {
+        const segmentX = endX - startX;
+        const segmentY = endY - startY;
+        const segmentLengthSquared = (segmentX * segmentX) + (segmentY * segmentY);
+        if (segmentLengthSquared === 0) {
+            return {
+                distance: Math.hypot(pointX - startX, pointY - startY),
+                t: 0,
+                x: startX,
+                y: startY
+            };
+        }
+
+        const projected = ((pointX - startX) * segmentX + (pointY - startY) * segmentY) / segmentLengthSquared;
+        const t = Math.max(0, Math.min(1, projected));
+        const closestX = startX + (segmentX * t);
+        const closestY = startY + (segmentY * t);
+        return {
+            distance: Math.hypot(pointX - closestX, pointY - closestY),
+            t: t,
+            x: closestX,
+            y: closestY
+        };
+    };
+
+    const pointAlongPath = function (path, distance) {
+        const clampedDistance = Math.max(0, Math.min(path.totalLength, distance));
+        let traversed = 0;
+
+        for (let index = 0; index < path.segmentData.length; index += 1) {
+            const segment = path.segmentData[index];
+            if (traversed + segment.length >= clampedDistance) {
+                const localDistance = clampedDistance - traversed;
+                const ratio = segment.length > 0 ? (localDistance / segment.length) : 0;
+                return {
+                    x: segment.start.x + ((segment.end.x - segment.start.x) * ratio),
+                    y: segment.start.y + ((segment.end.y - segment.start.y) * ratio)
+                };
+            }
+            traversed += segment.length;
+        }
+
+        return path.points[path.points.length - 1];
+    };
+
+    const initializeIndustrialCircuits = function () {
+        if (!backdropContext || getTheme() !== 'industrial') {
+            industrialPaths = [];
+            industrialSegments = [];
+            industrialPulses = [];
+            return;
+        }
+
+        const grid = Math.max(42, Math.round(Math.min(backdropWidth, backdropHeight) / 18));
+        const columns = Math.max(8, Math.floor(backdropWidth / grid));
+        const rows = Math.max(6, Math.floor(backdropHeight / grid));
+        const marginX = Math.max(28, (backdropWidth - (columns * grid)) / 2);
+        const marginY = Math.max(28, (backdropHeight - (rows * grid)) / 2);
+        const node = function (column, row) {
+            return {
+                x: marginX + (column * grid),
+                y: marginY + (row * grid)
+            };
+        };
+
+        const pathSpecs = [
+            [[0, 1], [2, 1], [2, 3], [5, 3], [5, 5], [8, 5], [8, 2], [columns - 1, 2]],
+            [[1, rows - 2], [1, rows - 4], [4, rows - 4], [4, rows - 1], [7, rows - 1], [7, rows - 3], [columns - 2, rows - 3]],
+            [[0, Math.floor(rows * 0.35)], [3, Math.floor(rows * 0.35)], [3, Math.floor(rows * 0.6)], [6, Math.floor(rows * 0.6)], [6, 1], [columns - 3, 1], [columns - 3, 4]],
+            [[2, 0], [2, 2], [5, 2], [5, 4], [9, 4], [9, rows - 2]],
+            [[Math.floor(columns * 0.45), 0], [Math.floor(columns * 0.45), 2], [Math.floor(columns * 0.7), 2], [Math.floor(columns * 0.7), rows - 2]],
+            [[columns - 2, 0], [columns - 2, 3], [columns - 5, 3], [columns - 5, 5], [columns - 8, 5], [columns - 8, rows - 1]],
+            [[0, rows - 5], [3, rows - 5], [3, rows - 2], [Math.floor(columns * 0.5), rows - 2], [Math.floor(columns * 0.5), rows - 4], [columns - 1, rows - 4]],
+            [[Math.floor(columns * 0.2), 0], [Math.floor(columns * 0.2), 1], [Math.floor(columns * 0.3), 1], [Math.floor(columns * 0.3), rows - 3], [Math.floor(columns * 0.85), rows - 3]]
+        ];
+
+        industrialPaths = pathSpecs.map(function (spec, pathIndex) {
+            const points = spec.map(function (pair) {
+                return node(
+                    Math.max(0, Math.min(columns, pair[0])),
+                    Math.max(0, Math.min(rows, pair[1]))
+                );
+            });
+            const segmentData = [];
+            let totalLength = 0;
+
+            for (let index = 0; index < points.length - 1; index += 1) {
+                const start = points[index];
+                const end = points[index + 1];
+                const length = Math.hypot(end.x - start.x, end.y - start.y);
+                segmentData.push({
+                    start: start,
+                    end: end,
+                    length: length,
+                    accumulated: totalLength
+                });
+                totalLength += length;
+            }
+
+            return {
+                id: pathIndex,
+                points: points,
+                segmentData: segmentData,
+                totalLength: totalLength
+            };
+        });
+
+        industrialSegments = [];
+        industrialPaths.forEach(function (path) {
+            path.segmentData.forEach(function (segment, segmentIndex) {
+                industrialSegments.push({
+                    pathId: path.id,
+                    segmentIndex: segmentIndex,
+                    start: segment.start,
+                    end: segment.end,
+                    accumulated: segment.accumulated,
+                    length: segment.length
+                });
+            });
+        });
+        industrialPulses = [];
+    };
+
     const spawnBurst = function (x, y, strength) {
         const count = Math.max(3, Math.min(8, Math.round(3 + strength * 6)));
         const palette = getThemeParticlePalette();
@@ -186,23 +317,22 @@ $(document).ready(function () {
         for (let index = 0; index < count; index += 1) {
             const angle = Math.random() * Math.PI * 2;
             const speed = 0.6 + Math.random() * (1.5 + strength * 2.2);
-            const industrialDirection = [[1,0],[-1,0],[0,1],[0,-1]][Math.floor(Math.random() * 4)];
             particles.push({
                 x: x,
                 y: y,
                 vx: Math.cos(angle) * speed,
                 vy: Math.sin(angle) * speed,
-                life: theme === 'industrial' ? 48 + Math.random() * 26 : 12 + Math.random() * 16,
-                maxLife: theme === 'industrial' ? 48 + Math.random() * 26 : 12 + Math.random() * 16,
+                life: 12 + Math.random() * 16,
+                maxLife: 12 + Math.random() * 16,
                 size: 1.25 + Math.random() * 2.1,
                 hue: index % 2 === 0 ? palette.sparks[0] : palette.sparks[1],
                 glyph: theme === 'matrix' ? randomGlyph() : '',
                 isGlyph: theme === 'matrix',
                 isPixel: theme === 'win31',
-                isIndustrialLine: theme === 'industrial',
-                direction: theme === 'industrial' ? industrialDirection : null,
-                length: theme === 'industrial' ? 16 + Math.random() * (14 + strength * 18) : 0,
-                speed: theme === 'industrial' ? 1.4 + Math.random() * (1.5 + strength * 1.2) : speed
+                isIndustrialLine: false,
+                direction: null,
+                length: 0,
+                speed: speed
             });
         }
 
@@ -211,8 +341,64 @@ $(document).ready(function () {
         }
     };
 
+    const triggerIndustrialCircuit = function (x, y, strength) {
+        if (getTheme() !== 'industrial' || industrialSegments.length === 0) {
+            return;
+        }
+
+        let bestHit = null;
+        industrialSegments.forEach(function (segment) {
+            const hit = distanceToSegment(x, y, segment.start.x, segment.start.y, segment.end.x, segment.end.y);
+            if (!bestHit || hit.distance < bestHit.distance) {
+                bestHit = {
+                    distance: hit.distance,
+                    segment: segment,
+                    localT: hit.t,
+                    x: hit.x,
+                    y: hit.y
+                };
+            }
+        });
+
+        if (!bestHit || bestHit.distance > 24) {
+            return;
+        }
+
+        const path = industrialPaths.find(function (entry) {
+            return entry.id === bestHit.segment.pathId;
+        });
+        if (!path) {
+            return;
+        }
+
+        const hasNearbyActivePulse = industrialPulses.some(function (pulse) {
+            const dx = pulse.glowX - bestHit.x;
+            const dy = pulse.glowY - bestHit.y;
+            return pulse.life > 0 && Math.hypot(dx, dy) <= 15;
+        });
+
+        if (hasNearbyActivePulse) {
+            return;
+        }
+
+        industrialPulses.push({
+            pathId: path.id,
+            originDistance: bestHit.segment.accumulated + (bestHit.segment.length * bestHit.localT),
+            progress: 0,
+            speed: 2.6 + (strength * 3.4),
+            life: 132,
+            maxLife: 132,
+            glowX: bestHit.x,
+            glowY: bestHit.y
+        });
+
+        if (industrialPulses.length > 12) {
+            industrialPulses = industrialPulses.slice(industrialPulses.length - 12);
+        }
+    };
+
     const drawMatrixBackdrop = function (timestamp) {
-        if (!backdropContext || media.matches || !hasMatrixBackdrop()) {
+        if (!backdropContext || media.matches || getTheme() !== 'matrix') {
             if (backdropContext) {
                 backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
             }
@@ -269,6 +455,131 @@ $(document).ready(function () {
         backdropFrame = window.requestAnimationFrame(drawMatrixBackdrop);
     };
 
+    const drawIndustrialBackdrop = function (timestamp) {
+        if (!backdropContext || media.matches || getTheme() !== 'industrial') {
+            if (backdropContext) {
+                backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
+            }
+            backdropFrame = null;
+            return;
+        }
+
+        if (timestamp && (timestamp - lastBackdropTimestamp) < (1000 / MAX_BACKDROP_FPS)) {
+            backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
+            return;
+        }
+        lastBackdropTimestamp = timestamp || 0;
+
+        backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
+        backdropContext.lineCap = 'round';
+        backdropContext.lineJoin = 'round';
+
+        industrialPaths.forEach(function (path) {
+            backdropContext.beginPath();
+            path.points.forEach(function (point, index) {
+                if (index === 0) {
+                    backdropContext.moveTo(point.x, point.y);
+                } else {
+                    backdropContext.lineTo(point.x, point.y);
+                }
+            });
+            backdropContext.strokeStyle = 'rgba(134, 152, 168, 0.18)';
+            backdropContext.lineWidth = 10;
+            backdropContext.stroke();
+
+            backdropContext.strokeStyle = 'rgba(205, 218, 229, 0.35)';
+            backdropContext.lineWidth = 3;
+            backdropContext.shadowBlur = 0;
+            backdropContext.stroke();
+
+            path.points.forEach(function (point) {
+                backdropContext.fillStyle = 'rgba(216, 227, 236, 0.55)';
+                backdropContext.beginPath();
+                backdropContext.arc(point.x, point.y, 3.2, 0, Math.PI * 2);
+                backdropContext.fill();
+            });
+        });
+
+        backdropContext.fillStyle = 'rgba(26, 32, 38, 0.96)';
+        [
+            { x: backdropWidth * 0.15, y: backdropHeight * 0.18, w: 110, h: 64 },
+            { x: backdropWidth * 0.58, y: backdropHeight * 0.28, w: 136, h: 72 },
+            { x: backdropWidth * 0.32, y: backdropHeight * 0.66, w: 120, h: 68 }
+        ].forEach(function (chip) {
+            backdropContext.fillRect(chip.x, chip.y, chip.w, chip.h);
+            backdropContext.strokeStyle = 'rgba(190, 204, 216, 0.24)';
+            backdropContext.lineWidth = 1;
+            backdropContext.strokeRect(chip.x + 0.5, chip.y + 0.5, chip.w - 1, chip.h - 1);
+            for (let pin = 0; pin < 7; pin += 1) {
+                const pinOffset = 10 + (pin * 14);
+                backdropContext.fillStyle = 'rgba(204, 216, 225, 0.42)';
+                backdropContext.fillRect(chip.x - 7, chip.y + pinOffset, 7, 2);
+                backdropContext.fillRect(chip.x + chip.w, chip.y + pinOffset, 7, 2);
+            }
+        });
+
+        industrialPulses = industrialPulses.filter(function (pulse) {
+            const path = industrialPaths.find(function (entry) {
+                return entry.id === pulse.pathId;
+            });
+            if (!path) {
+                return false;
+            }
+
+            pulse.progress += pulse.speed;
+            pulse.life -= 1;
+            const alpha = Math.max(0, pulse.life / pulse.maxLife);
+            const headDistanceA = pulse.originDistance + pulse.progress;
+            const tailDistanceA = Math.max(pulse.originDistance, headDistanceA - 58);
+            const headDistanceB = pulse.originDistance - pulse.progress;
+            const tailDistanceB = Math.min(pulse.originDistance, headDistanceB + 58);
+
+            backdropContext.strokeStyle = 'rgba(232, 246, 255, ' + (alpha * 0.98).toFixed(3) + ')';
+            backdropContext.lineWidth = 3.2;
+            backdropContext.shadowBlur = 18;
+            backdropContext.shadowColor = 'rgba(132, 196, 248, ' + (alpha * 0.92).toFixed(3) + ')';
+
+            const drawPulseSegment = function (fromDistance, toDistance) {
+                const clampedStart = Math.max(0, Math.min(path.totalLength, fromDistance));
+                const clampedEnd = Math.max(0, Math.min(path.totalLength, toDistance));
+                if (Math.abs(clampedEnd - clampedStart) < 2) {
+                    return;
+                }
+
+                const segmentCount = Math.max(2, Math.ceil(Math.abs(clampedEnd - clampedStart) / 18));
+                backdropContext.beginPath();
+                for (let step = 0; step <= segmentCount; step += 1) {
+                    const ratio = step / segmentCount;
+                    const distance = clampedStart + ((clampedEnd - clampedStart) * ratio);
+                    const point = pointAlongPath(path, distance);
+                    const jitter = (Math.sin((step * 1.7) + (timestamp || 0) * 0.03) * 1.6) * alpha;
+                    if (step === 0) {
+                        backdropContext.moveTo(point.x + jitter, point.y - jitter);
+                    } else {
+                        backdropContext.lineTo(point.x + jitter, point.y - jitter);
+                    }
+                }
+                backdropContext.stroke();
+                backdropContext.strokeStyle = 'rgba(132, 196, 248, ' + (alpha * 0.72).toFixed(3) + ')';
+                backdropContext.lineWidth = 1.4;
+                backdropContext.stroke();
+            };
+
+            drawPulseSegment(tailDistanceA, headDistanceA);
+            drawPulseSegment(tailDistanceB, headDistanceB);
+
+            backdropContext.beginPath();
+            backdropContext.fillStyle = 'rgba(238, 248, 255, ' + (alpha * 0.98).toFixed(3) + ')';
+            backdropContext.arc(pulse.glowX, pulse.glowY, 4.5 + ((1 - alpha) * 5), 0, Math.PI * 2);
+            backdropContext.fill();
+
+            return pulse.life > 0 && (headDistanceA < path.totalLength + 72 || headDistanceB > -72);
+        });
+
+        backdropContext.shadowBlur = 0;
+        backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
+    };
+
     const drawOverlay = function (timestamp) {
         if (!overlayContext || media.matches || !hasReactiveOverlay()) {
             if (overlayContext) {
@@ -323,27 +634,25 @@ $(document).ready(function () {
             overlayContext.strokeStyle = 'rgba(0, 0, 128, 0.55)';
             overlayContext.strokeRect(Math.round(currentX - 3) + 0.5, Math.round(currentY - 3) + 0.5, 6, 6);
         } else if (theme === 'industrial') {
-            overlayContext.strokeStyle = 'rgba(216, 227, 236, 0.16)';
-            overlayContext.lineWidth = 1;
+            overlayContext.strokeStyle = 'rgba(156, 206, 250, 0.42)';
+            overlayContext.lineWidth = 1.4;
             overlayContext.beginPath();
-            overlayContext.moveTo(currentX - 12, currentY);
-            overlayContext.lineTo(currentX + 12, currentY);
-            overlayContext.moveTo(currentX, currentY - 12);
-            overlayContext.lineTo(currentX, currentY + 12);
+            overlayContext.moveTo(currentX - 16, currentY);
+            overlayContext.lineTo(currentX + 16, currentY);
+            overlayContext.moveTo(currentX, currentY - 16);
+            overlayContext.lineTo(currentX, currentY + 16);
             overlayContext.stroke();
+            overlayContext.beginPath();
+            overlayContext.fillStyle = 'rgba(232, 246, 255, 0.48)';
+            overlayContext.arc(currentX, currentY, 3.2, 0, Math.PI * 2);
+            overlayContext.fill();
         }
 
         particles = particles.filter(function (particle) {
-            if (particle.isIndustrialLine) {
-                particle.x += particle.direction[0] * particle.speed;
-                particle.y += particle.direction[1] * particle.speed;
-                particle.speed *= 0.989;
-            } else {
-                particle.x += particle.vx;
-                particle.y += particle.vy;
-                particle.vx *= particle.isGlyph ? 0.978 : 0.985;
-                particle.vy *= particle.isGlyph ? 0.978 : 0.985;
-            }
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.vx *= particle.isGlyph ? 0.978 : 0.985;
+            particle.vy *= particle.isGlyph ? 0.978 : 0.985;
             particle.life -= 1;
             const alpha = Math.max(0, particle.life / particle.maxLife);
 
@@ -362,22 +671,6 @@ $(document).ready(function () {
                 overlayContext.fillStyle = 'rgba(' + particle.hue + ', ' + (alpha * 0.92).toFixed(3) + ')';
                 const size = Math.max(2, Math.round(particle.size * alpha * 1.4));
                 overlayContext.fillRect(Math.round(particle.x), Math.round(particle.y), size, size);
-            } else if (particle.isIndustrialLine) {
-                const directionX = particle.direction[0];
-                const directionY = particle.direction[1];
-                const halfLength = particle.length * alpha;
-                overlayContext.strokeStyle = 'rgba(' + particle.hue + ', ' + (alpha * 0.88).toFixed(3) + ')';
-                overlayContext.lineWidth = 1;
-                overlayContext.beginPath();
-                overlayContext.moveTo(
-                    particle.x,
-                    particle.y
-                );
-                overlayContext.lineTo(
-                    particle.x + directionX * halfLength,
-                    particle.y + directionY * halfLength
-                );
-                overlayContext.stroke();
             } else {
                 overlayContext.beginPath();
                 overlayContext.fillStyle = 'rgba(' + particle.hue + ', ' + (alpha * 0.95).toFixed(3) + ')';
@@ -404,7 +697,13 @@ $(document).ready(function () {
     };
 
     const queueBackdrop = function () {
-        if (!backdropFrame && !media.matches && hasMatrixBackdrop()) {
+        if (backdropFrame || media.matches || !hasDynamicBackdrop()) {
+            return;
+        }
+
+        if (getTheme() === 'industrial') {
+            backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
+        } else {
             backdropFrame = window.requestAnimationFrame(drawMatrixBackdrop);
         }
     };
@@ -417,7 +716,7 @@ $(document).ready(function () {
         if (hasReactiveOverlay()) {
             queueOverlay();
         }
-        if (hasMatrixBackdrop()) {
+        if (hasDynamicBackdrop()) {
             queueBackdrop();
         }
 
@@ -441,7 +740,9 @@ $(document).ready(function () {
         targetX = event.clientX;
         targetY = event.clientY;
 
-        if (hasReactiveOverlay()) {
+        if (getTheme() === 'industrial') {
+            triggerIndustrialCircuit(event.clientX, event.clientY, velocity);
+        } else if (hasReactiveOverlay()) {
             spawnBurst(event.clientX, event.clientY, velocity);
         }
 
@@ -449,7 +750,7 @@ $(document).ready(function () {
         if (hasReactiveOverlay()) {
             queueOverlay();
         }
-        if (hasMatrixBackdrop()) {
+        if (hasDynamicBackdrop()) {
             queueBackdrop();
         }
     };
@@ -460,6 +761,9 @@ $(document).ready(function () {
         queueAnimation();
         if (hasReactiveOverlay()) {
             queueOverlay();
+        }
+        if (hasDynamicBackdrop()) {
+            queueBackdrop();
         }
     };
 
@@ -491,7 +795,7 @@ $(document).ready(function () {
         if (hasReactiveOverlay()) {
             queueOverlay();
         }
-        if (hasMatrixBackdrop()) {
+        if (hasDynamicBackdrop()) {
             queueBackdrop();
         }
     }

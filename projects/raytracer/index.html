@@ -1,292 +1,250 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Ray Tracer | Peihong's Personal Page</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            (function () {
+                var savedTheme = localStorage.getItem('site-theme') || 'cyberpunk';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            })();
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <title>Ray Tracer | Peihong Guo</title>
         <link rel="stylesheet" href="/styles/styles.css">
-        <link rel='stylesheet' type='text/css' href='../projects.css' media="screen, print, projection">
-        <link rel='stylesheet' type='text/css' href='./style.css' media="screen, print, projection">
-        <style>
-            .project-shell canvas {
-                max-width: 100%;
-                height: auto;
-            }
-            .btn-xs {
-                padding: .25rem .5rem;
-                font-size: .875rem;
-                line-height: 1.5;
-                border-radius: .2rem;
-            }
-            .progress {
-                display: flex;
-                overflow: hidden;
-                height: 1.5rem;
-                background-color: #e9ecef;
-                border-radius: .25rem;
-            }
-            .progress-bar {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                color: #fff;
-                text-align: center;
-                white-space: nowrap;
-                background-color: #17a2b8;
-                transition: width .6s ease;
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <canvas class="theme-backdrop" aria-hidden="true"></canvas>
+        <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+        <div class="site-shell">
+            <header class="site-header">
+                <div class="site-header__inner">
+                    <a class="site-brand" href="/">
+                        <span class="site-brand__name">Peihong Guo</span>
+                    </a>
+                    <nav class="site-nav" aria-label="Primary navigation">
+                        <a class="site-nav__link" href="/">Home</a>
+                        <a class="site-nav__link is-active" href="/project/personal_projects/">Projects</a>
+                        <a class="site-nav__link" href="/blog/">Blog</a>
+                        <a class="site-nav__link" href="/gallery">Gallery</a>
+                        <a class="site-nav__link" href="/about">About</a>
+                    </nav>
+                </div>
+            </header>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="project_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Projects</a>
-                        <div class="dropdown-menu" aria-labelledby="project_dropdown" id="projects-menu">
-                            <a class="dropdown-item" href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a>
-                            <a class="dropdown-item" href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a>
-                            <a class="dropdown-item" href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a>
-                            <a class="dropdown-item" href="/project/personal_projects/">Personal Projects</a>
+            <main class="site-main" role="main">
+                <section class="content-page project-page">
+                    <div class="section-heading">
+                        <p class="section-heading__eyebrow">Interactive Project</p>
+                        <h1 class="section-heading__title">JavaScript Ray Tracer</h1>
+                    </div>
+
+                    <div class="project-app-shell">
+                        <p class="project-app-intro">
+                            Render a scene in the browser with configurable resolution, sampling, depth, and worker count.
+                        </p>
+
+                        <div class="project-canvas-frame">
+                            <canvas id="canvas" width="480" height="320"></canvas>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/blog" id="blog_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Blog</a>
-                        <div class="dropdown-menu" aria-labelledby="blog_dropdown" id="blog-menu">
-                            <a class="dropdown-item" href="/blog">ALL</a>
-                            <a class="dropdown-item" href="/blog/category/cooking">Cooking</a>
-                            <a class="dropdown-item" href="/blog/category/programming">Programming</a>
-                            <a class="dropdown-item" href="/blog/category/ai">AI</a>
+
+                        <div class="project-controls-grid">
+                            <label class="project-field project-field--compact">
+                                <span>Width</span>
+                                <input id="width" type="text" value="480" inputmode="numeric">
+                            </label>
+                            <label class="project-field project-field--compact">
+                                <span>Height</span>
+                                <input id="height" type="text" value="320" inputmode="numeric">
+                            </label>
+                            <label class="project-field project-field--compact">
+                                <span>Samples</span>
+                                <input id="nsamples" type="text" value="4" inputmode="numeric">
+                            </label>
+                            <label class="project-field project-field--compact">
+                                <span>Max Depth</span>
+                                <input id="maxdepth" type="text" value="8" inputmode="numeric">
+                            </label>
+                            <label class="project-field project-field--compact">
+                                <span>Threads</span>
+                                <input id="threads" type="text" value="8" inputmode="numeric">
+                            </label>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
 
-        <main role="main" class="container">
-            <div class="starter-template project-shell">
-	
-	<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.2.min.js'></script>
-	
-    <script type='text/javascript' src='shape.js'></script>
-    <script type='text/javascript' src='image.js'></script>
-    <script type='text/javascript' src='utils.js'></script>
-    <script type='text/javascript' src='point.js'></script>
-    <script type='text/javascript' src='vector.js'></script>
-    <script type='text/javascript' src='mesh.js'></script>
-    <script type='text/javascript' src='raytracer.js'></script>
-    <script type='text/javascript' src='FileSaver.js'></script>
-    <script type='text/javascript' src='canvas-toBlob.js'></script>
-    <script type='text/javascript'>
-        function resize()
-        {
-            var w = document.getElementById('width').value;
-            var h = document.getElementById('height').value;
-            canvas.setAttribute('width', w);
-            canvas.setAttribute('height', h);
-        }
+                        <div class="project-actions">
+                            <button id="renderButton" class="project-button" type="button" onclick="render()">Render</button>
+                            <button id="saveButton" class="project-button project-button--secondary" type="button" onclick="saveImage()">Save</button>
+                            <button id="resizeButton" class="project-button project-button--secondary" type="button" onclick="resize()">Resize</button>
+                        </div>
 
-        var canvas;
-        var ctx;
-        var finishedCount;
-        var startT, endT;
-        var progress;
+                        <div class="project-progress-shell" aria-live="polite">
+                            <div class="project-progress-bar">
+                                <div id="pbar" class="project-progress-fill" style="width: 0%;">
+                                    <span id="pbarvalue">0% Complete</span>
+                                </div>
+                            </div>
+                            <p id="progress" class="project-progress-text"></p>
+                        </div>
+                    </div>
+                </section>
+            </main>
 
-        function init()
-        {
-            canvas = document.getElementById('canvas');
-            ctx = canvas.getContext('2d');
-        }
-
-        function render() {
-
-//            if (typeof window.FileReader !== 'function') {
-//                write("The file API isn't supported on this browser yet.");
-//                return;
-//            }
-
-            //var m = new Mesh('cube.obj', Color.BLUE, {Ka:0.1, Kd:0.6, Ks:0.3, fr: 0.25});
-            //console.log(m);
-
-			$('#pbar').width(0 + '%');
-            startT = new Date();
-
-            var w = canvas.width;
-            var h = canvas.height;
-            ctx.clearRect ( 0, 0, w, h );
-
-            var nsamples = document.getElementById('nsamples').value;
-            var maxDepth = document.getElementById('maxdepth').value;
-            var nthreads = document.getElementById('threads').value;
-            finishedCount = 0;
-
-            var nextTask = 0;
-            var blockSizeX = 32, blockSizeY = 32;
-            var ntasksX = Math.ceil(w/blockSizeX);
-            var ntasksY = Math.ceil(h/blockSizeY);
-            var ntasks = ntasksX * ntasksY;
-
-            var tasks = [];
-
-            // create a list of tasks
-            var y1 = 0, y2 = blockSizeY;
-            for(var i=0;i<ntasksY;i++) {
-                var x1 = 0, x2 = blockSizeX;
-                for(var j=0;j<ntasksX;j++) {
-
-                    var task = {x1: x1, x2: x2, y1: y1, y2: y2};
-                    tasks.push(task);
-
-                    x1 = x1 + blockSizeX;
-                    x2 = (j==ntasksX-1)?w:x2 + blockSizeX;
-                }
-                y1 = y1 + blockSizeY;
-                y2 = (i==ntasksY-1)?h:y2 + blockSizeY;
-            }
-
-            progress = [];
-            var workers = [];
-            for(var tid=0;tid<nthreads;tid++) {
-                var worker = new Worker('renderWorker.js');
-                worker.idx = tid;
-                worker.onmessage = function (e) {
-                    var data = e.data;
-                    switch (data.msg) {
-                        case 'progress':
-                        {
-                            progress[data.tidx] = data.value;
-
-                            document.getElementById("progress").innerHTML='Rendering in progress: ' + progress.mean().toFixed(2) + '%';
-                            break;
-                        }
-                        case 'image':
-                        {
-                            // assemble the image and show it
-                            updateCanvas( data.x1, data.x2, data.y1, data.y2, data.value );
-                            finishedCount++;
-
-							$('#pbar').width((finishedCount/ntasks*100.0).toFixed(2) + '%');
-							$('#pbarvalue').html((finishedCount/ntasks*100.0).toFixed(2) + '% Completed');
-							
-                            // get next available task and process it
-                            if( nextTask < ntasks ) {
-                                var task = tasks[nextTask];
-                                console.log('thread ' + this.idx + ' got task #' + nextTask);
-                                nextTask = nextTask+1;
-
-                                this.postMessage({
-                                    cmd: 'start', tidx: this.idx, w: w, h: h,
-                                    x1: task.x1, x2: task.x2, y1: task.y1, y2: task.y2,
-                                    nsamples: nsamples, maxDepth: maxDepth});
-                            }
-                            else {
-                                endT = new Date();
-                                var diff = endT - startT;
-                                console.log( diff + 'ms' );
-                                document.getElementById("progress").innerHTML = 'Finished in ' + diff + ' ms.';
-                            }
-
-                            break;
-                        }
-                    }
-                };
-                workers.push(worker);
-                progress.push(0);
-            }
-
-            // start the workers
-            for(var i=0;i<nthreads;i++) {
-                var task = tasks[nextTask];
-                console.log('thread ' + i + ' got task #' + nextTask);
-                nextTask = nextTask+1;
-                workers[i].postMessage({
-                    cmd: 'start', tidx: i, w: w, h: h,
-                    x1: task.x1, x2: task.x2, y1: task.y1, y2: task.y2,
-                    nsamples: nsamples, maxDepth: maxDepth});
-            }
-
-        }
-
-        function updateCanvas(x1, x2, y1, y2, buffer) {
-            var w = canvas.width;
-            var h = canvas.height;
-
-            var img = new RGBAImage(0, 0);
-            img.w = x2-x1;
-            img.h = y2-y1;
-            //console.log(img.w + ', ' + img.h);
-            img.data = new Uint8Array(buffer);
-            ctx.putImageData(img.toImageData(ctx), x1, h-y2, 0, 0, img.w, img.h);
-        }
-
-        function saveImage() {
-            // save the image
-            canvas.toBlob(function(blob) {
-                saveAs(blob, "renderedImage.png");
-            });
-        }
-
-        window.onload = init;
-    </script>
-
-    <div class="content">
-        <h3>JavaScript Ray Tracer</h3>
-        <div>
-            <canvas id='canvas' width='480px' height='320px'></canvas>
+            <footer class="site-footer">
+                <div class="site-footer__inner">
+                    <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
+                    <label class="theme-toggle" for="theme-toggle">
+                        <span class="theme-toggle__label">Theme</span>
+                        <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+                            <option value="minimalist">Minimalist</option>
+                            <option value="cyberpunk">Cyberpunk</option>
+                            <option value="matrix">Matrix</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="win31">Windows 3.1</option>
+                        </select>
+                    </label>
+                    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+                </div>
+            </footer>
         </div>
-        <button id='renderButton' class='btn btn-xs btn-default' type='button' onclick='render()'>Render</button>
-        <button id='saveButton' class='btn btn-xs btn-default' type='button' onclick='saveImage()'>Save</button>
-        <button id='resizeButton' class='btn btn-xs btn-default' type='button' onclick='resize()'>Resize</button>
-        Width: <input id='width' type='textfield' size="4" value=480>&nbsp
-        Height: <input id='height' type='textfield' size="4" value=320><br>
-        Number of samples: <input id='nsamples' type='textfield' size="4" value=4>&nbsp
-        Maximum depth: <input id='maxdepth' type='textfield' size="4" value=8>
-        Threads: <input id='threads' type='textfield' size="4" value=8><br>
 
-		  <div class="progress" style="position: relative; left: 20%; width: 60%;">
-			<div id="pbar" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"><span id="pbarvalue">0% Complete</span></div>
-		  </div>			
-        <p id="progress">			
-		</p>
-    </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="shape.js"></script>
+        <script type="text/javascript" src="image.js"></script>
+        <script type="text/javascript" src="utils.js"></script>
+        <script type="text/javascript" src="point.js"></script>
+        <script type="text/javascript" src="vector.js"></script>
+        <script type="text/javascript" src="mesh.js"></script>
+        <script type="text/javascript" src="raytracer.js"></script>
+        <script type="text/javascript" src="FileSaver.js"></script>
+        <script type="text/javascript" src="canvas-toBlob.js"></script>
+        <script type="text/javascript">
+            function resize() {
+                var w = document.getElementById('width').value;
+                var h = document.getElementById('height').value;
+                canvas.setAttribute('width', w);
+                canvas.setAttribute('height', h);
+            }
 
-            </div>
-        </main>
+            var canvas;
+            var ctx;
+            var finishedCount;
+            var startT, endT;
+            var progress;
 
-        <footer class="footer">
-            <div class="container">
-                <span class="text-muted text-sm-center">
-                  &copy 2009-<script>document.write( new Date().getFullYear() );</script> &nbsp Peihong Guo &nbsp <span id="em"></span>
-                </span>
-            </div>
-        </footer>
+            function init() {
+                canvas = document.getElementById('canvas');
+                ctx = canvas.getContext('2d');
+            }
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>
+            function render() {
+                $('#pbar').width(0 + '%');
+                startT = new Date();
+
+                var w = canvas.width;
+                var h = canvas.height;
+                ctx.clearRect(0, 0, w, h);
+
+                var nsamples = document.getElementById('nsamples').value;
+                var maxDepth = document.getElementById('maxdepth').value;
+                var nthreads = document.getElementById('threads').value;
+                finishedCount = 0;
+
+                var nextTask = 0;
+                var blockSizeX = 32, blockSizeY = 32;
+                var ntasksX = Math.ceil(w / blockSizeX);
+                var ntasksY = Math.ceil(h / blockSizeY);
+                var ntasks = ntasksX * ntasksY;
+
+                var tasks = [];
+
+                var y1 = 0, y2 = blockSizeY;
+                for (var i = 0; i < ntasksY; i++) {
+                    var x1 = 0, x2 = blockSizeX;
+                    for (var j = 0; j < ntasksX; j++) {
+                        var task = { x1: x1, x2: x2, y1: y1, y2: y2 };
+                        tasks.push(task);
+
+                        x1 = x1 + blockSizeX;
+                        x2 = (j == ntasksX - 1) ? w : x2 + blockSizeX;
+                    }
+                    y1 = y1 + blockSizeY;
+                    y2 = (i == ntasksY - 1) ? h : y2 + blockSizeY;
+                }
+
+                progress = [];
+                var workers = [];
+                for (var tid = 0; tid < nthreads; tid++) {
+                    var worker = new Worker('renderWorker.js');
+                    worker.idx = tid;
+                    worker.onmessage = function (e) {
+                        var data = e.data;
+                        switch (data.msg) {
+                            case 'progress':
+                                progress[data.tidx] = data.value;
+                                document.getElementById("progress").innerHTML = 'Rendering in progress: ' + progress.mean().toFixed(2) + '%';
+                                break;
+                            case 'image':
+                                updateCanvas(data.x1, data.x2, data.y1, data.y2, data.value);
+                                finishedCount++;
+
+                                $('#pbar').width((finishedCount / ntasks * 100.0).toFixed(2) + '%');
+                                $('#pbarvalue').html((finishedCount / ntasks * 100.0).toFixed(2) + '% Completed');
+
+                                if (nextTask < ntasks) {
+                                    var task = tasks[nextTask];
+                                    nextTask = nextTask + 1;
+
+                                    this.postMessage({
+                                        cmd: 'start', tidx: this.idx, w: w, h: h,
+                                        x1: task.x1, x2: task.x2, y1: task.y1, y2: task.y2,
+                                        nsamples: nsamples, maxDepth: maxDepth
+                                    });
+                                } else {
+                                    endT = new Date();
+                                    var diff = endT - startT;
+                                    document.getElementById("progress").innerHTML = 'Finished in ' + diff + ' ms.';
+                                }
+
+                                break;
+                        }
+                    };
+                    workers.push(worker);
+                    progress.push(0);
+                }
+
+                for (var index = 0; index < nthreads; index++) {
+                    var seedTask = tasks[nextTask];
+                    nextTask = nextTask + 1;
+                    workers[index].postMessage({
+                        cmd: 'start', tidx: index, w: w, h: h,
+                        x1: seedTask.x1, x2: seedTask.x2, y1: seedTask.y1, y2: seedTask.y2,
+                        nsamples: nsamples, maxDepth: maxDepth
+                    });
+                }
+            }
+
+            function updateCanvas(x1, x2, y1, y2, buffer) {
+                var w = canvas.width;
+                var h = canvas.height;
+
+                var img = new RGBAImage(0, 0);
+                img.w = x2 - x1;
+                img.h = y2 - y1;
+                img.data = new Uint8Array(buffer);
+                ctx.putImageData(img.toImageData(ctx), x1, h - y2, 0, 0, img.w, img.h);
+            }
+
+            function saveImage() {
+                canvas.toBlob(function (blob) {
+                    saveAs(blob, "renderedImage.png");
+                });
+            }
+
+            window.onload = init;
+        </script>
         <script src="/js/main.js"></script>
     </body>
 </html>

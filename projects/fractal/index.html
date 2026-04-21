@@ -1,84 +1,118 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Fractal | Peihong's Personal Page</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            (function () {
+                var savedTheme = localStorage.getItem('site-theme') || 'cyberpunk';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            })();
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <title>Fractal | Peihong Guo</title>
         <link rel="stylesheet" href="/styles/styles.css">
-        <link rel='stylesheet' type='text/css' href='../projects.css' media="screen, print, projection">
-        <link rel='stylesheet' type='text/css' href='./style.css' media="screen, print, projection">
-        <style>
-            .project-shell canvas {
-                max-width: 100%;
-                height: auto;
-            }
-            .btn-xs {
-                padding: .25rem .5rem;
-                font-size: .875rem;
-                line-height: 1.5;
-                border-radius: .2rem;
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <canvas class="theme-backdrop" aria-hidden="true"></canvas>
+        <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+        <div class="site-shell">
+            <header class="site-header">
+                <div class="site-header__inner">
+                    <a class="site-brand" href="/">
+                        <span class="site-brand__name">Peihong Guo</span>
+                    </a>
+                    <nav class="site-nav" aria-label="Primary navigation">
+                        <a class="site-nav__link" href="/">Home</a>
+                        <a class="site-nav__link is-active" href="/project/personal_projects/">Projects</a>
+                        <a class="site-nav__link" href="/blog/">Blog</a>
+                        <a class="site-nav__link" href="/gallery">Gallery</a>
+                        <a class="site-nav__link" href="/about">About</a>
+                    </nav>
+                </div>
+            </header>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="project_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Projects</a>
-                        <div class="dropdown-menu" aria-labelledby="project_dropdown" id="projects-menu">
-                            <a class="dropdown-item" href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a>
-                            <a class="dropdown-item" href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a>
-                            <a class="dropdown-item" href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a>
-                            <a class="dropdown-item" href="/project/personal_projects/">Personal Projects</a>
+            <main class="site-main" role="main">
+                <section class="content-page project-page">
+                    <div class="section-heading">
+                        <p class="section-heading__eyebrow">Interactive Project</p>
+                        <h1 class="section-heading__title">Fractal</h1>
+                    </div>
+
+                    <div class="project-app-shell">
+                        <p class="project-app-intro">
+                            Explore Julia and Mandelbrot sets directly in the browser with adjustable parameters.
+                        </p>
+
+                        <div class="project-canvas-frame">
+                            <canvas id="lesson01-canvas" width="640" height="480"></canvas>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/blog" id="blog_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Blog</a>
-                        <div class="dropdown-menu" aria-labelledby="blog_dropdown" id="blog-menu">
-                            <a class="dropdown-item" href="/blog">ALL</a>
-                            <a class="dropdown-item" href="/blog/category/cooking">Cooking</a>
-                            <a class="dropdown-item" href="/blog/category/programming">Programming</a>
-                            <a class="dropdown-item" href="/blog/category/ai">AI</a>
+
+                        <div class="project-controls-grid">
+                            <label class="project-field">
+                                <span>Fractal Shape</span>
+                                <select id="fractalSelect">
+                                    <option value="0">Julia</option>
+                                    <option value="1">Mandelbrot</option>
+                                </select>
+                            </label>
+                            <label class="project-field project-field--compact">
+                                <span>c Real</span>
+                                <input id="cvalr" type="text" value="-0.8" inputmode="decimal">
+                            </label>
+                            <label class="project-field project-field--compact">
+                                <span>c Imaginary</span>
+                                <input id="cvali" type="text" value="0.16" inputmode="decimal">
+                            </label>
+                            <label class="project-field project-field--compact">
+                                <span>Iterations</span>
+                                <input id="maxiters" type="text" value="8192" inputmode="numeric">
+                            </label>
+                            <label class="project-field project-field--compact">
+                                <span>Blackout</span>
+                                <input id="blackout" type="text" value="65536" inputmode="numeric">
+                            </label>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
 
-        <main role="main" class="container">
-            <div class="starter-template project-shell">
+                        <div class="project-actions">
+                            <button id="saveButton" class="project-button" type="button" onclick="saveImage()">Save</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
 
-    <script type='text/javascript' src='shape.js'></script>
-    <script type='text/javascript' src='image.js'></script>
-    <script type='text/javascript' src='utils.js'></script>
-    <script type='text/javascript' src='point.js'></script>
-    <script type='text/javascript' src='vector.js'></script>
-    <script type='text/javascript' src='glmatrix.js'></script>
-    <script type='text/javascript' src='FileSaver.js'></script>
-    <script type='text/javascript' src='canvas-toBlob.js'></script>
+            <footer class="site-footer">
+                <div class="site-footer__inner">
+                    <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
+                    <label class="theme-toggle" for="theme-toggle">
+                        <span class="theme-toggle__label">Theme</span>
+                        <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+                            <option value="minimalist">Minimalist</option>
+                            <option value="cyberpunk">Cyberpunk</option>
+                            <option value="matrix">Matrix</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="win31">Windows 3.1</option>
+                        </select>
+                    </label>
+                    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+                </div>
+            </footer>
+        </div>
 
-    <script id="shader-fs" type="x-shader/x-fragment">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="shape.js"></script>
+        <script type="text/javascript" src="image.js"></script>
+        <script type="text/javascript" src="utils.js"></script>
+        <script type="text/javascript" src="point.js"></script>
+        <script type="text/javascript" src="vector.js"></script>
+        <script type="text/javascript" src="glmatrix.js"></script>
+        <script type="text/javascript" src="FileSaver.js"></script>
+        <script type="text/javascript" src="canvas-toBlob.js"></script>
+
+        <script id="shader-fs" type="x-shader/x-fragment">
     precision mediump float;
     varying vec2 vTex;
     uniform sampler2D sampler0;
@@ -91,7 +125,7 @@
     uniform float THRES;
 
     vec2 mul(vec2 z1, vec2 z2) {
-        return vec2(z1.x*z2.x-z1.y*z2.y, z1.x*z2.y+z1.y*z2.x);
+        return vec2(z1.x*z2.x-z1.y*z2.y,z1.x*z2.y+z1.y*z2.x);
     }
 
     float mag(vec2 z) {
@@ -107,8 +141,7 @@
         float val = mag(z);
         int counter = 0;
         const int maxiters = 32767;
-        for(int i=0; i<maxiters; i++)
-        {
+        for(int i=0; i<maxiters; i++) {
             z = mul(z, z) + cval;
             val = mag(z);
             if( val >= THRES || i > iters ) break;
@@ -139,9 +172,9 @@
         int its = julia_iteration(vec2(x, y));
         gl_FragColor = iterpolate(its);
     }
-    </script>
+        </script>
 
-    <script id="shader-vs" type="x-shader/x-vertex">
+        <script id="shader-vs" type="x-shader/x-vertex">
     varying vec2 vTex;
     attribute vec2 aVertex;
     attribute vec2 aUV;
@@ -152,263 +185,208 @@
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertex, 0.0, 1.0);
         vTex = aUV;
     }
-    </script>
+        </script>
 
-    <script type='text/javascript'>
-        var gl;
-        function initGL(canvas) {
-            try {
-                gl = canvas.getContext("experimental-webgl");
-                gl.viewportWidth = canvas.width;
-                gl.viewportHeight = canvas.height;
-            } catch (e) {
-            }
-            if (!gl) {
-                alert("Could not initialise WebGL, sorry :-(");
-            }
-        }
-
-        function getShader(gl, id) {
-            var shaderScript = document.getElementById(id);
-            if (!shaderScript) {
-                return null;
-            }
-
-            var str = "";
-            var k = shaderScript.firstChild;
-            while (k) {
-                if (k.nodeType == 3) {
-                    str += k.textContent;
+        <script type="text/javascript">
+            var gl;
+            function initGL(canvas) {
+                try {
+                    gl = canvas.getContext("experimental-webgl");
+                    gl.viewportWidth = canvas.width;
+                    gl.viewportHeight = canvas.height;
+                } catch (e) {
                 }
-                k = k.nextSibling;
+                if (!gl) {
+                    alert("Could not initialise WebGL, sorry :-(");
+                }
             }
 
-            var shader;
-            if (shaderScript.type == "x-shader/x-fragment") {
-                shader = gl.createShader(gl.FRAGMENT_SHADER);
-            } else if (shaderScript.type == "x-shader/x-vertex") {
-                shader = gl.createShader(gl.VERTEX_SHADER);
-            } else {
-                return null;
+            function getShader(gl, id) {
+                var shaderScript = document.getElementById(id);
+                if (!shaderScript) {
+                    return null;
+                }
+
+                var str = "";
+                var k = shaderScript.firstChild;
+                while (k) {
+                    if (k.nodeType == 3) {
+                        str += k.textContent;
+                    }
+                    k = k.nextSibling;
+                }
+
+                var shader;
+                if (shaderScript.type == "x-shader/x-fragment") {
+                    shader = gl.createShader(gl.FRAGMENT_SHADER);
+                } else if (shaderScript.type == "x-shader/x-vertex") {
+                    shader = gl.createShader(gl.VERTEX_SHADER);
+                } else {
+                    return null;
+                }
+
+                gl.shaderSource(shader, str);
+                gl.compileShader(shader);
+
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                    alert(gl.getShaderInfoLog(shader));
+                    return null;
+                }
+
+                return shader;
             }
 
-            gl.shaderSource(shader, str);
-            gl.compileShader(shader);
+            var shaderProgram;
 
-            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-                alert(gl.getShaderInfoLog(shader));
-                return null;
+            function initShaders() {
+                var vertexShader = getShader(gl, "shader-vs");
+                var fragmentShader = getShader(gl, "shader-fs");
+
+                shaderProgram = gl.createProgram();
+                gl.attachShader(shaderProgram, vertexShader);
+                gl.attachShader(shaderProgram, fragmentShader);
+                gl.linkProgram(shaderProgram);
+
+                if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+                    alert("Could not initialise shaders");
+                }
+
+                gl.useProgram(shaderProgram);
+
+                shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
+                shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
+
+                shaderProgram.viewport = gl.getUniformLocation(shaderProgram, 'viewport');
+                shaderProgram.c = gl.getUniformLocation(shaderProgram, 'c');
+
+                shaderProgram.iters = gl.getUniformLocation(shaderProgram, 'iters');
+                shaderProgram.setIdx = gl.getUniformLocation(shaderProgram, 'setIdx');
+                shaderProgram.thres = gl.getUniformLocation(shaderProgram, 'THRES');
+
+                shaderProgram.c1 = gl.getUniformLocation(shaderProgram, 'c1');
+                shaderProgram.c2 = gl.getUniformLocation(shaderProgram, 'c2');
+                shaderProgram.c3 = gl.getUniformLocation(shaderProgram, 'c3');
+                shaderProgram.c4 = gl.getUniformLocation(shaderProgram, 'c4');
+
+                vloc = gl.getAttribLocation(shaderProgram, 'aVertex');
+                tloc = gl.getAttribLocation(shaderProgram, 'aUV');
             }
 
-            return shader;
-        }
+            var mvMatrix = mat4.create();
+            var pMatrix = mat4.create();
 
-        var shaderProgram;
-
-        function initShaders() {
-            console.log('loading vertex shader ...');
-            var vertexShader = getShader(gl, "shader-vs");
-            console.log('vertex shader loaded.');
-            console.log('loading fragment shader ...');
-            var fragmentShader = getShader(gl, "shader-fs");
-            console.log('fragment shader loaded.');
-
-            shaderProgram = gl.createProgram();
-            gl.attachShader(shaderProgram, vertexShader);
-            gl.attachShader(shaderProgram, fragmentShader);
-            gl.linkProgram(shaderProgram);
-
-            if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-                alert("Could not initialise shaders");
+            function setMatrixUniforms() {
+                gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);
+                gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
             }
 
-            gl.useProgram(shaderProgram);
+            var vertexBuffer;
+            var texBuffer;
+            var tex;
+            var texData;
+            var vloc, tloc;
 
-            shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
-            shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
+            function initBuffers() {
+                vertexBuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+                vertices = [
+                    -1.0,  1.0,  -2.0,
+                    -1.0,  -1.0,  -2.0,
+                    1.0, -1.0,  -2.0,
+                    1.0, 1.0,  -2.0
+                ];
+                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+                vertexBuffer.itemSize = 3;
+                vertexBuffer.numItems = 4;
 
-            shaderProgram.viewport = gl.getUniformLocation(shaderProgram, 'viewport');
-            shaderProgram.c = gl.getUniformLocation(shaderProgram, 'c');
+                texBuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 1, 0, 0, 1, 0, 1, 1]), gl.STATIC_DRAW);
+                texBuffer.itemSize = 2;
+                texBuffer.numItems = 4;
 
-            shaderProgram.iters = gl.getUniformLocation(shaderProgram, 'iters');
-            shaderProgram.setIdx = gl.getUniformLocation(shaderProgram, 'setIdx');
-            shaderProgram.thres = gl.getUniformLocation(shaderProgram, 'THRES');
+                var w = gl.viewportWidth;
+                var h = gl.viewportHeight;
+                texData = new Uint8Array(w * h * 4);
+                tex = gl.createTexture();
+            }
 
-            shaderProgram.c1 = gl.getUniformLocation(shaderProgram, 'c1');
-            shaderProgram.c2 = gl.getUniformLocation(shaderProgram, 'c2');
-            shaderProgram.c3 = gl.getUniformLocation(shaderProgram, 'c3');
-            shaderProgram.c4 = gl.getUniformLocation(shaderProgram, 'c4');
+            function uploadTexture(data) {
+                var w = gl.viewportWidth;
+                var h = gl.viewportHeight;
 
-            vloc = gl.getAttribLocation(shaderProgram, 'aVertex');
-            tloc = gl.getAttribLocation(shaderProgram, 'aUV');
-        }
+                gl.bindTexture(gl.TEXTURE_2D, tex);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, data);
+            }
 
-        var mvMatrix = mat4.create();
-        var pMatrix = mat4.create();
+            function drawScene() {
+                gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
+                gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-        function setMatrixUniforms() {
-            gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);
-            gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
-        }
+                mat4.ortho(pMatrix, -1.0, 1.0, -1.0, 1.0, 0.1, 100.0);
+                mat4.identity(mvMatrix);
+                mat4.translate(mvMatrix, mvMatrix, [0.0, 0.0, -7.0]);
 
-        var vertexBuffer;
-        var texBuffer;
-        var tex;
-        var texData;
-        var vloc, tloc;
+                setMatrixUniforms();
 
-        function initBuffers() {
-            vertexBuffer = gl.createBuffer();
-            gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-            vertices = [
-                -1.0,  1.0,  -2.0,
-                -1.0,  -1.0,  -2.0,
-                1.0, -1.0,  -2.0,
-                1.0, 1.0,  -2.0
-            ];
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-            vertexBuffer.itemSize = 3;
-            vertexBuffer.numItems = 4;
+                gl.uniform2f(shaderProgram.viewport, gl.viewportWidth, gl.viewportHeight);
 
-            texBuffer = gl.createBuffer();
-            gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 1, 0, 0, 1, 0, 1, 1]), gl.STATIC_DRAW);
-            texBuffer.itemSize = 2;
-            texBuffer.numItems = 4;
+                gl.uniform2f(shaderProgram.c, $('#cvalr').val(), $('#cvali').val());
+                gl.uniform1i(shaderProgram.iters, $('#maxiters').val());
+                gl.uniform1i(shaderProgram.setIdx, $('#fractalSelect').val());
+                gl.uniform1f(shaderProgram.thres, $('#blackout').val());
 
-            var w = gl.viewportWidth;
-            var h = gl.viewportHeight;
-            texData = new Uint8Array(w * h * 4);
-            tex = gl.createTexture();
-        }
+                gl.uniform3f(shaderProgram.c1, 0, 0.0, 0);
+                gl.uniform3f(shaderProgram.c2, 0.05, 0.10, 0.05);
+                gl.uniform3f(shaderProgram.c3, 0.075, 0.15, 0.175);
+                gl.uniform3f(shaderProgram.c4, 0.65, 0.75, 1.0);
 
+                gl.enableVertexAttribArray(vloc);
+                gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+                gl.vertexAttribPointer(vloc, 3, gl.FLOAT, false, 0, 0);
 
-        function interpolate(c1, c2, t)
-        {
-            var c = {};
-            c.r = c1.r * t + c2.r * (1-t);
-            c.g = c1.g * t + c2.g * (1-t);
-            c.b = c1.b * t + c2.b * (1-t);
-            c.a = c1.a * t + c2.a * (1-t);
-            return c;
-        }
+                gl.enableVertexAttribArray(tloc);
+                gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+                gl.bindTexture(gl.TEXTURE_2D, tex);
+                gl.vertexAttribPointer(tloc, 2, gl.FLOAT, false, 0, 0);
 
-        function fillTexture() {
-            var w = gl.viewportWidth;
-            var h = gl.viewportHeight;
+                gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
+            }
 
-            // upload the texture
-            uploadTexture(texData);
-        }
+            function webGLStart() {
+                var canvas = document.getElementById("lesson01-canvas");
 
-        function uploadTexture( data )
-        {
-            var w = gl.viewportWidth;
-            var h = gl.viewportHeight;
+                initGL(canvas);
+                initShaders();
+                initBuffers();
 
-            gl.bindTexture(gl.TEXTURE_2D, tex);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-            gl.texImage2D(gl.TEXTURE_2D, 0,  gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, data);
-        }
+                gl.clearColor(0.0, 0.0, 0.0, 1.0);
+                gl.enable(gl.DEPTH_TEST);
 
-        function drawScene() {
-            gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
-            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+                drawScene();
+            }
 
-            //fillTexture();
+            function saveImage() {
+                var canvas = document.getElementById("lesson01-canvas");
+                canvas.toBlob(function (blob) {
+                    saveAs(blob, "fractal.png");
+                });
+            }
 
-            mat4.ortho(pMatrix, -1.0, 1.0, -1.0, 1.0, 0.1, 100.0);
-            mat4.identity(mvMatrix);
-            mat4.translate(mvMatrix, mvMatrix, [0.0, 0.0, -7.0]);
+            window.onload = function () {
+                webGLStart();
 
-            setMatrixUniforms();
-
-            gl.uniform2f(shaderProgram.viewport, gl.viewportWidth, gl.viewportHeight);
-
-            gl.uniform2f(shaderProgram.c, $('#cvalr').val(), $('#cvali').val());
-            gl.uniform1i(shaderProgram.iters, $('#maxiters').val());
-            gl.uniform1i(shaderProgram.setIdx, $('#fractalSelect').val());
-            gl.uniform1f(shaderProgram.thres, $('#blackout').val());
-
-            gl.uniform3f(shaderProgram.c1, 0, 0.0, 0);
-            gl.uniform3f(shaderProgram.c2, 0.05, 0.10, 0.05);
-            gl.uniform3f(shaderProgram.c3, 0.075, 0.15, 0.175);
-            gl.uniform3f(shaderProgram.c4, 0.65, 0.75, 1.0);
-
-            // render the texture buffer
-            gl.enableVertexAttribArray(vloc);
-            gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-            gl.vertexAttribPointer(vloc, 3, gl.FLOAT, false, 0, 0);
-
-            gl.enableVertexAttribArray(tloc);
-            gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
-            gl.bindTexture(gl.TEXTURE_2D, tex);
-            gl.vertexAttribPointer(tloc, 2, gl.FLOAT, false, 0, 0);
-
-            gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
-        }
-
-        function webGLStart() {
-            var canvas = document.getElementById("lesson01-canvas");
-
-            initGL(canvas);
-            initShaders();
-            initBuffers();
-
-            gl.clearColor(0.0, 0.0, 0.0, 1.0);
-            gl.enable(gl.DEPTH_TEST);
-
-            drawScene();
-        }
-
-        window.onload = function() {
-            webGLStart();
-
-            $('#cvalr').change(function(){drawScene();});
-            $('#cvali').change(function(){drawScene();});
-            $('#maxiters').change(function(){drawScene()});
-            $('#fractalSelect').change(function(){drawScene()});
-            $('#blackout').change(function(){drawScene()});
-        }
-    </script>
-
-    <div class="content">
-        <h2>Fractal</h2>
-        <div>
-            <canvas id="lesson01-canvas" style="border: none;background:black;" width="640" height="480"></canvas>
-        </div>
-        Fractal Shape:<select id="fractalSelect">
-            <option value="0">Julia</option>
-            <option value="1">Mandelbrot</option>
-        </select><br>
-        c: <input id='cvalr' type='textfield' size="4" value=-0.8>+<input id='cvali' type='textfield' size="4" value=0.16>i
-        Maximum iterations: <input id='maxiters' type='textfield' size="4" value=8192>
-        Blackout threshold: <input id='blackout' type='textfield' size="4" value=65536>
-        <br>
-        <button id='saveButton' class='btn btn-xs btn-default' type='button' onclick='saveImage()'>Save</button>
-    </div>
-
-            </div>
-        </main>
-
-        <footer class="footer">
-            <div class="container">
-                <span class="text-muted text-sm-center">
-                  &copy 2009-<script>document.write( new Date().getFullYear() );</script> &nbsp Peihong Guo &nbsp <span id="em"></span>
-                </span>
-            </div>
-        </footer>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>
+                $('#cvalr').change(function () { drawScene(); });
+                $('#cvali').change(function () { drawScene(); });
+                $('#maxiters').change(function () { drawScene(); });
+                $('#fractalSelect').change(function () { drawScene(); });
+                $('#blackout').change(function () { drawScene(); });
+            };
+        </script>
         <script src="/js/main.js"></script>
     </body>
 </html>

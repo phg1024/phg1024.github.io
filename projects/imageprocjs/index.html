@@ -156,6 +156,7 @@
     .project-shell div.upload {
         background: linear-gradient(135deg, var(--link-color), var(--link-hover));
         border: 1px solid var(--link-color);
+        border-radius: var(--button-radius);
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
         color: #fff;
         text-shadow: none;
@@ -230,7 +231,7 @@
         padding: .5rem .9rem;
         font-size: .9rem;
         line-height: 1.5;
-        border-radius: 999px;
+        border-radius: var(--button-radius);
     }
     .project-shell .primary-action {
         min-width: 11rem;
@@ -312,8 +313,23 @@
         box-shadow: none;
     }
     [data-theme="matrix"] .project-shell .btn,
-    [data-theme="matrix"] .project-shell button {
+    [data-theme="matrix"] .project-shell button,
+    [data-theme="matrix"] .project-shell div.upload {
         box-shadow: 0 0 0 1px rgba(139, 255, 139, 0.2), 0 0 18px rgba(139, 255, 139, 0.22);
+    }
+    [data-theme="industrial"] .project-shell .btn,
+    [data-theme="industrial"] .project-shell button,
+    [data-theme="industrial"] .project-shell div.upload {
+        border-radius: var(--button-radius);
+        background: linear-gradient(135deg, #f3f6f8, #d9e1e8);
+        border-color: rgba(97, 113, 127, 0.24);
+        color: #202831;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42), 0 10px 24px rgba(80, 92, 104, 0.14);
+    }
+    [data-theme="minimalist"] .project-shell .btn,
+    [data-theme="minimalist"] .project-shell button,
+    [data-theme="minimalist"] .project-shell div.upload {
+        border-radius: var(--button-radius);
     }
     [data-theme="win31"] .project-shell .controls-table,
     [data-theme="win31"] .project-shell .controls-panel,
