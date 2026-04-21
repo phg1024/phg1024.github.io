@@ -1,254 +1,242 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Peihong's Personal Page</title>
-    <link rel="stylesheet" href="/styles/styles.css">
     <script>
-        (function() {
-            var savedTheme = localStorage.getItem('site-theme') || 'matrix';
+        (function () {
+            var savedTheme = localStorage.getItem('site-theme') || 'cyberpunk';
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Peihong Guo</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-<div id="cyberpunk-backdrop" aria-hidden="true">
-    <canvas id="cyberpunk-grid"></canvas>
-</div>
-<div id="starwars-backdrop" aria-hidden="true">
-    <canvas id="starwars-space"></canvas>
-</div>
-<div id="matrix-backdrop" aria-hidden="true">
-    <canvas id="matrix-rain"></canvas>
-</div>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<div class="site-shell">
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-brand" href="/">
+                <span class="site-brand__name">Peihong Guo</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a class="site-nav__link" href="/">Home</a>
+                <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+                <a class="site-nav__link is-active" href="/blog/">Blog</a>
+                <a class="site-nav__link" href="/gallery">Gallery</a>
+                <a class="site-nav__link" href="/about">About</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="project_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Projects</a>
-                <div class="dropdown-menu" aria-labelledby="project_dropdown" id="projects-menu">
-                    
-                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a>
-                    
-                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a>
-                    
-                    <a class="dropdown-item" href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a>
-                    
-                    <a class="dropdown-item" href="/project/personal_projects/">Personal Projects</a>
-                    
-                </div>
-            </li>
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="/blog" id="blog_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Blog</a>
-                <div class="dropdown-menu" aria-labelledby="blog_dropdown" id="blog-menu">
-                    <a class="dropdown-item" href="/blog">ALL</a>
-                    <a class="dropdown-item" href="/blog/category/cooking">Cooking</a>
-                    <a class="dropdown-item" href="/blog/category/programming">Programming</a>
-                    <a class="dropdown-item" href="/blog/category/ai">AI</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/gallery">Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-            </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-            <label class="theme-switcher-label mr-2 mb-0" for="theme-switcher">Style</label>
-            <select id="theme-switcher" class="custom-select custom-select-sm theme-switcher">
-                <option value="classic">Classic</option>
-                <option value="cyberpunk">Cyberpunk</option>
-                <option value="starwars">Star Wars</option>
-                <option value="win31">Windows 3.1</option>
-                <option value="matrix">Matrix</option>
-            </select>
-        </form>
-    </div>
-</nav>
-
-<main role="main" class="container">
-    <div class="starter-template">
+    <main class="site-main" role="main">
         
-<div class="content-page text-left">
-    <h2>Blog</h2>
-
-    <div class="text-left">
-        <div class="mb-4">
-            <div class="card h-100">
-                <div class="card-body p-0">
-                    <div class="blog-group h-100">
-                        <h3>AI</h3>
-                
-                <ul class="list-unstyled blog-list mb-0">
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 15, 2024</p>
-                        <a class="blog-entry-title" href="/blog/ai/3d_gaussian_splitting/"><h5 class="mb-2">Paper Reading Notes (1): 3D Gaussian Splatting for Real-Time Radiance Field Rendering</h5></a>
-                        <p class="blog-entry-brief mb-0">Reading notes for the SIGGRAPH 2023 paper: 3D Gaussian Splatting for Real-Time Radiance Field Rendering.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 20, 2024</p>
-                        <a class="blog-entry-title" href="/blog/ai/dreamfusion/"><h5 class="mb-2">Paper Reading Notes (2): DreamFusion: Text-to-3D using 2D Diffusion</h5></a>
-                        <p class="blog-entry-brief mb-0">Reading notes for the ICLR 2023 paper: DreamFusion: Text-to-3D using 2D Diffusion.</p>
-                    </li>
-                    
-                </ul>
-                
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-4">
-            <div class="card h-100">
-                <div class="card-body p-0">
-                    <div class="blog-group h-100">
-                        <h3>PROGRAMMING</h3>
-                
-                <ul class="list-unstyled blog-list mb-0">
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Dec 4, 2013</p>
-                        <a class="blog-entry-title" href="/test/2013/12/04/first.html"><h5 class="mb-2">First</h5></a>
-                        <p class="blog-entry-brief mb-0">The very first post on the old site, with a small code and math test.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Dec 4, 2013</p>
-                        <a class="blog-entry-title" href="/test/2013/12/04/Migrating.html"><h5 class="mb-2">Migrating to github.io</h5></a>
-                        <p class="blog-entry-brief mb-0">Notes from moving the original site to GitHub Pages and Jekyll.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 4, 2014</p>
-                        <a class="blog-entry-title" href="/image/processing/2014/01/04/ImageProcJS1.html"><h5 class="mb-2">JavaScript Image Processing (1) - Getting Started</h5></a>
-                        <p class="blog-entry-brief mb-0">Getting started with image processing in JavaScript, from pixels to image loaders.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 5, 2014</p>
-                        <a class="blog-entry-title" href="/image/processing/2014/01/05/ImageProcJS2.html"><h5 class="mb-2">JavaScript Image Processing (2) - The Image Class</h5></a>
-                        <p class="blog-entry-brief mb-0">Building the core image class for pixel access, sampling, and image operations.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Feb 24, 2014</p>
-                        <a class="blog-entry-title" href="/image/processing/2014/02/24/ImageProcJS3.html"><h5 class="mb-2">JavaScript Image Processing (3) - Brightness/Contrast Adjustment</h5></a>
-                        <p class="blog-entry-brief mb-0">Applying basic brightness and contrast filters with the ImageProcJS toolkit.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Feb 26, 2014</p>
-                        <a class="blog-entry-title" href="/image/processing/2014/02/26/ImageProcJS4.html"><h5 class="mb-2">JavaScript Image Processing (4) - Histogram Equalization</h5></a>
-                        <p class="blog-entry-brief mb-0">A walkthrough of histograms, cumulative distributions, and histogram equalization.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Nov 5, 2015</p>
-                        <a class="blog-entry-title" href="/boost/2015/11/05/BoostGraph.html"><h5 class="mb-2">Boost Graph Library - A Primer</h5></a>
-                        <p class="blog-entry-brief mb-0">A quick introduction to BGL data structures, graph operations, and traversal.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 10, 2024</p>
-                        <a class="blog-entry-title" href="/blog/programming/async/"><h5 class="mb-2">Programming Async (1): Wrapping Functions with Callbacks as Promises</h5></a>
-                        <p class="blog-entry-brief mb-0">Some notes on writing async programs.</p>
-                    </li>
-                    
-                </ul>
-                
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-4">
-            <div class="card h-100">
-                <div class="card-body p-0">
-                    <div class="blog-group h-100">
-                        <h3>COOKING</h3>
-                
-                <ul class="list-unstyled blog-list mb-0">
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 1, 2024</p>
-                        <a class="blog-entry-title" href="/blog/cooking/basic_bread/"><h5 class="mb-2">Making Bread (1): Basic Bread</h5></a>
-                        <p class="blog-entry-brief mb-0">Making some basic bread following the guide by 小高姐的 Magic Ingredients.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 2, 2024</p>
-                        <a class="blog-entry-title" href="/blog/cooking/potato_bread/"><h5 class="mb-2">Making Bread (2): Potato Bread</h5></a>
-                        <p class="blog-entry-brief mb-0">Making potato bread following the guide by 小高姐的 Magic Ingredients.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 3, 2024</p>
-                        <a class="blog-entry-title" href="/blog/cooking/banana_bread/"><h5 class="mb-2">Making Bread (3): Banana Bread</h5></a>
-                        <p class="blog-entry-brief mb-0">Making banana bread following the guide by 小高姐的 Magic Ingredients.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 4, 2024</p>
-                        <a class="blog-entry-title" href="/blog/cooking/toast_bread/"><h5 class="mb-2">Making Bread (4): Easy Handmade Bread</h5></a>
-                        <p class="blog-entry-brief mb-0">Making easy handmade bread following the guide by 小高姐的 Magic Ingredients.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 5, 2024</p>
-                        <a class="blog-entry-title" href="/blog/cooking/rye_bread/"><h5 class="mb-2">Making Bread (5): Rye Bread</h5></a>
-                        <p class="blog-entry-brief mb-0">Making rye bread using King Arthus Rye Flour&#39;s recipe.</p>
-                    </li>
-                    
-                    <li class="blog-entry blog-entry-line">
-                        <p class="blog-entry-date text-muted mb-2">Jan 6, 2024</p>
-                        <a class="blog-entry-title" href="/blog/cooking/banana_bun/"><h5 class="mb-2">Making Bread (6): Banana Bun</h5></a>
-                        <p class="blog-entry-brief mb-0">Making banana bun using a youtube recipe.</p>
-                    </li>
-                    
-                </ul>
-                
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="content-page">
+    <div class="section-heading">
+        <p class="section-heading__eyebrow">Writing</p>
+        <h1 class="section-heading__title">Blog</h1>
     </div>
+
+    <div class="journal-stack">
+        <details class="journal-section" open>
+            <summary class="journal-section__header">
+                <div>
+                    <p class="journal-section__eyebrow">Category</p>
+                    <h2 class="journal-section__title">AI</h2>
+                </div>
+            </summary>
+            
+            <ul class="blog-list">
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 15, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/ai/3d_gaussian_splitting/"><h3>Paper Reading Notes (1): 3D Gaussian Splatting for Real-Time Radiance Field Rendering</h3></a>
+                        <p class="blog-entry-brief">Reading notes for the SIGGRAPH 2023 paper: 3D Gaussian Splatting for Real-Time Radiance Field Rendering.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 20, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/ai/dreamfusion/"><h3>Paper Reading Notes (2): DreamFusion: Text-to-3D using 2D Diffusion</h3></a>
+                        <p class="blog-entry-brief">Reading notes for the ICLR 2023 paper: DreamFusion: Text-to-3D using 2D Diffusion.</p>
+                    </div>
+                </li>
+                
+            </ul>
+            
+        </details>
+
+        <details class="journal-section" open>
+            <summary class="journal-section__header">
+                <div>
+                    <p class="journal-section__eyebrow">Category</p>
+                    <h2 class="journal-section__title">Programming</h2>
+                </div>
+            </summary>
+            
+            <ul class="blog-list">
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Dec 4, 2013</p>
+                    <div>
+                        <a class="blog-entry-title" href="/test/2013/12/04/first.html"><h3>First</h3></a>
+                        <p class="blog-entry-brief">The very first post on the old site, with a small code and math test.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Dec 4, 2013</p>
+                    <div>
+                        <a class="blog-entry-title" href="/test/2013/12/04/Migrating.html"><h3>Migrating to github.io</h3></a>
+                        <p class="blog-entry-brief">Notes from moving the original site to GitHub Pages and Jekyll.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 4, 2014</p>
+                    <div>
+                        <a class="blog-entry-title" href="/image/processing/2014/01/04/ImageProcJS1.html"><h3>JavaScript Image Processing (1) - Getting Started</h3></a>
+                        <p class="blog-entry-brief">Getting started with image processing in JavaScript, from pixels to image loaders.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 5, 2014</p>
+                    <div>
+                        <a class="blog-entry-title" href="/image/processing/2014/01/05/ImageProcJS2.html"><h3>JavaScript Image Processing (2) - The Image Class</h3></a>
+                        <p class="blog-entry-brief">Building the core image class for pixel access, sampling, and image operations.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Feb 24, 2014</p>
+                    <div>
+                        <a class="blog-entry-title" href="/image/processing/2014/02/24/ImageProcJS3.html"><h3>JavaScript Image Processing (3) - Brightness/Contrast Adjustment</h3></a>
+                        <p class="blog-entry-brief">Applying basic brightness and contrast filters with the ImageProcJS toolkit.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Feb 26, 2014</p>
+                    <div>
+                        <a class="blog-entry-title" href="/image/processing/2014/02/26/ImageProcJS4.html"><h3>JavaScript Image Processing (4) - Histogram Equalization</h3></a>
+                        <p class="blog-entry-brief">A walkthrough of histograms, cumulative distributions, and histogram equalization.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Nov 5, 2015</p>
+                    <div>
+                        <a class="blog-entry-title" href="/boost/2015/11/05/BoostGraph.html"><h3>Boost Graph Library - A Primer</h3></a>
+                        <p class="blog-entry-brief">A quick introduction to BGL data structures, graph operations, and traversal.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 10, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/programming/async/"><h3>Programming Async (1): Wrapping Functions with Callbacks as Promises</h3></a>
+                        <p class="blog-entry-brief">Some notes on writing async programs.</p>
+                    </div>
+                </li>
+                
+            </ul>
+            
+        </details>
+
+        <details class="journal-section" open>
+            <summary class="journal-section__header">
+                <div>
+                    <p class="journal-section__eyebrow">Category</p>
+                    <h2 class="journal-section__title">Cooking</h2>
+                </div>
+            </summary>
+            
+            <ul class="blog-list">
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 1, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/cooking/basic_bread/"><h3>Making Bread (1): Basic Bread</h3></a>
+                        <p class="blog-entry-brief">Making some basic bread following the guide by 小高姐的 Magic Ingredients.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 2, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/cooking/potato_bread/"><h3>Making Bread (2): Potato Bread</h3></a>
+                        <p class="blog-entry-brief">Making potato bread following the guide by 小高姐的 Magic Ingredients.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 3, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/cooking/banana_bread/"><h3>Making Bread (3): Banana Bread</h3></a>
+                        <p class="blog-entry-brief">Making banana bread following the guide by 小高姐的 Magic Ingredients.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 4, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/cooking/toast_bread/"><h3>Making Bread (4): Easy Handmade Bread</h3></a>
+                        <p class="blog-entry-brief">Making easy handmade bread following the guide by 小高姐的 Magic Ingredients.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 5, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/cooking/rye_bread/"><h3>Making Bread (5): Rye Bread</h3></a>
+                        <p class="blog-entry-brief">Making rye bread using King Arthus Rye Flour&#39;s recipe.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Jan 6, 2024</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/cooking/banana_bun/"><h3>Making Bread (6): Banana Bun</h3></a>
+                        <p class="blog-entry-brief">Making banana bun using a youtube recipe.</p>
+                    </div>
+                </li>
+                
+            </ul>
+            
+        </details>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
+            <label class="theme-toggle" for="theme-toggle">
+                <span class="theme-toggle__label">Theme</span>
+                <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+                    <option value="minimalist">Minimalist</option>
+                    <option value="cyberpunk">Cyberpunk</option>
+                    <option value="matrix">Matrix</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="win31">Windows 3.1</option>
+                </select>
+            </label>
+            <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+        </div>
+    </footer>
 </div>
 
-    </div>
-</main>
-
-<footer class="footer">
-    <div class="container">
-        <span class="text-muted text-sm-center">
-          &copy 2009-<script>document.write( new Date().getFullYear() );</script> &nbsp Peihong Guo &nbsp <span id="em"></span>
-        </span>
-    </div>
-</footer>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

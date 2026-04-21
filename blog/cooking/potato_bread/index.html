@@ -1,93 +1,42 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Peihong's Personal Page</title>
-    <link rel="stylesheet" href="/styles/styles.css">
     <script>
-        (function() {
-            var savedTheme = localStorage.getItem('site-theme') || 'matrix';
+        (function () {
+            var savedTheme = localStorage.getItem('site-theme') || 'cyberpunk';
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Peihong Guo</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-<div id="cyberpunk-backdrop" aria-hidden="true">
-    <canvas id="cyberpunk-grid"></canvas>
-</div>
-<div id="starwars-backdrop" aria-hidden="true">
-    <canvas id="starwars-space"></canvas>
-</div>
-<div id="matrix-backdrop" aria-hidden="true">
-    <canvas id="matrix-rain"></canvas>
-</div>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<div class="site-shell">
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-brand" href="/">
+                <span class="site-brand__name">Peihong Guo</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a class="site-nav__link" href="/">Home</a>
+                <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+                <a class="site-nav__link is-active" href="/blog/">Blog</a>
+                <a class="site-nav__link" href="/gallery">Gallery</a>
+                <a class="site-nav__link" href="/about">About</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="project_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Projects</a>
-                <div class="dropdown-menu" aria-labelledby="project_dropdown" id="projects-menu">
-                    
-                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a>
-                    
-                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a>
-                    
-                    <a class="dropdown-item" href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a>
-                    
-                    <a class="dropdown-item" href="/project/personal_projects/">Personal Projects</a>
-                    
-                </div>
-            </li>
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="/blog" id="blog_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Blog</a>
-                <div class="dropdown-menu" aria-labelledby="blog_dropdown" id="blog-menu">
-                    <a class="dropdown-item" href="/blog">ALL</a>
-                    <a class="dropdown-item" href="/blog/category/cooking">Cooking</a>
-                    <a class="dropdown-item" href="/blog/category/programming">Programming</a>
-                    <a class="dropdown-item" href="/blog/category/ai">AI</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/gallery">Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-            </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-            <label class="theme-switcher-label mr-2 mb-0" for="theme-switcher">Style</label>
-            <select id="theme-switcher" class="custom-select custom-select-sm theme-switcher">
-                <option value="classic">Classic</option>
-                <option value="cyberpunk">Cyberpunk</option>
-                <option value="starwars">Star Wars</option>
-                <option value="win31">Windows 3.1</option>
-                <option value="matrix">Matrix</option>
-            </select>
-        </form>
-    </div>
-</nav>
-
-<main role="main" class="container">
-    <div class="starter-template">
+    <main class="site-main" role="main">
         
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
 
@@ -224,19 +173,26 @@
 </script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-    </div>
-</main>
+    </main>
 
-<footer class="footer">
-    <div class="container">
-        <span class="text-muted text-sm-center">
-          &copy 2009-<script>document.write( new Date().getFullYear() );</script> &nbsp Peihong Guo &nbsp <span id="em"></span>
-        </span>
-    </div>
-</footer>
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
+            <label class="theme-toggle" for="theme-toggle">
+                <span class="theme-toggle__label">Theme</span>
+                <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+                    <option value="minimalist">Minimalist</option>
+                    <option value="cyberpunk">Cyberpunk</option>
+                    <option value="matrix">Matrix</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="win31">Windows 3.1</option>
+                </select>
+            </label>
+            <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+        </div>
+    </footer>
+</div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

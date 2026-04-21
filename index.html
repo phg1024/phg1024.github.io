@@ -1,190 +1,200 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Peihong's Personal Page</title>
-    <link rel="stylesheet" href="/styles/styles.css">
     <script>
-        (function() {
-            var savedTheme = localStorage.getItem('site-theme') || 'matrix';
+        (function () {
+            var savedTheme = localStorage.getItem('site-theme') || 'cyberpunk';
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Peihong Guo</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-<div id="cyberpunk-backdrop" aria-hidden="true">
-    <canvas id="cyberpunk-grid"></canvas>
-</div>
-<div id="starwars-backdrop" aria-hidden="true">
-    <canvas id="starwars-space"></canvas>
-</div>
-<div id="matrix-backdrop" aria-hidden="true">
-    <canvas id="matrix-rain"></canvas>
-</div>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/">Peihong's <span>&#8734;</span> Dimensional Space</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<div class="site-shell">
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-brand" href="/">
+                <span class="site-brand__name">Peihong Guo</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a class="site-nav__link is-active" href="/">Home</a>
+                <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+                <a class="site-nav__link" href="/blog/">Blog</a>
+                <a class="site-nav__link" href="/gallery">Gallery</a>
+                <a class="site-nav__link" href="/about">About</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="project_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Projects</a>
-                <div class="dropdown-menu" aria-labelledby="project_dropdown" id="projects-menu">
-                    
-                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a>
-                    
-                    <a class="dropdown-item" href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a>
-                    
-                    <a class="dropdown-item" href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a>
-                    
-                    <a class="dropdown-item" href="/project/personal_projects/">Personal Projects</a>
-                    
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/blog" id="blog_dropdown" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Blog</a>
-                <div class="dropdown-menu" aria-labelledby="blog_dropdown" id="blog-menu">
-                    <a class="dropdown-item" href="/blog">ALL</a>
-                    <a class="dropdown-item" href="/blog/category/cooking">Cooking</a>
-                    <a class="dropdown-item" href="/blog/category/programming">Programming</a>
-                    <a class="dropdown-item" href="/blog/category/ai">AI</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/gallery">Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-            </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-            <label class="theme-switcher-label mr-2 mb-0" for="theme-switcher">Style</label>
-            <select id="theme-switcher" class="custom-select custom-select-sm theme-switcher">
-                <option value="classic">Classic</option>
-                <option value="cyberpunk">Cyberpunk</option>
-                <option value="starwars">Star Wars</option>
-                <option value="win31">Windows 3.1</option>
-                <option value="matrix">Matrix</option>
-            </select>
-        </form>
-    </div>
-</nav>
-
-<main role="main" class="container">
-    <div class="starter-template">
+    <main class="site-main" role="main">
         
-<div class="container">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            
-            <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
-            
-            <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
-            
-            <li data-target="#carouselExampleIndicators" data-slide-to="3" class=""></li>
-            
-        </ol>
-        <div class="carousel-inner">
-            
-            <div class="carousel-item active">
-                <a href="http://phg1024.github.io/CSCE647/index.html">
-                    <img class="d-block mx-auto project_image rounded"
-                        src="/projects/0/foggy_bunny.png" alt="CSCE647 Image Synthesis">
-                    <div class="d-block d-md-none mobile-project-caption">
-                        <h5 class="mb-0">CSCE647 Image Synthesis</h5>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block caption-overlay rounded">
-                        <h5>CSCE647 Image Synthesis</h5>
-                        <p>A foggy scene showing participating medium with the path tracer developed in CSCE 647 course.</p>
-                    </div>
-                </a>
+<div class="home-stack">
+    <section class="hero">
+        <div class="hero__grid">
+            <div>
+                <h1 class="hero__title">Research, images, and thoughtful experiments.</h1>
+                <p class="hero__lede">
+                    Peihong Guo is a research engineer working across graphics, AI, and visual computing.
+                    This site gathers selected projects, blog posts, and photographic studies in a
+                    stripped-back editorial frame.
+                </p>
             </div>
-            
-            <div class="carousel-item ">
-                <a href="http://phg1024.github.io/CSCE646/index.html">
-                    <img class="d-block mx-auto project_image rounded"
-                        src="/projects/1/ahe75.png" alt="CSCE646 Digital Image">
-                    <div class="d-block d-md-none mobile-project-caption">
-                        <h5 class="mb-0">CSCE646 Digital Image</h5>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block caption-overlay rounded">
-                        <h5>CSCE646 Digital Image</h5>
-                        <p>Adaptive histogram equalization effect.</p>
-                    </div>
-                </a>
+            <div class="hero__note">
+                <p>Current focus</p>
+                <p>Building computer vision and graphics systems, then documenting the interesting pieces with clarity.</p>
             </div>
+        </div>
+    </section>
+
+    <section class="editorial-section">
+        <div class="section-heading">
+            <p class="section-heading__eyebrow">Selected work</p>
+            <h2 class="section-heading__title">Featured projects</h2>
+        </div>
+        <div class="feature-grid">
             
-            <div class="carousel-item ">
-                <a href="https://phg1024.github.io/CSCE625/index.html">
-                    <img class="d-block mx-auto project_image rounded"
-                        src="/projects/2/kpts.png" alt="CSCE625 Aritificial Intelligence">
-                    <div class="d-block d-md-none mobile-project-caption">
-                        <h5 class="mb-0">CSCE625 Aritificial Intelligence</h5>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block caption-overlay rounded">
-                        <h5>CSCE625 Aritificial Intelligence</h5>
-                        <p>Facial keypoint detection.</p>
-                    </div>
+            <article class="feature-card feature-card--compact">
+                <a class="feature-card__image-link" href="http://phg1024.github.io/CSCE647/index.html">
+                    <img class="feature-card__image" src="/projects/0/foggy_bunny.png" alt="CSCE647 Image Synthesis">
                 </a>
-            </div>
+                <div class="feature-card__body">
+                    <p class="feature-card__meta">Project 01</p>
+                    <h3 class="feature-card__title"><a href="http://phg1024.github.io/CSCE647/index.html">CSCE647 Image Synthesis</a></h3>
+                    <p class="feature-card__copy">A foggy scene showing participating medium with the path tracer developed in CSCE 647 course.</p>
+                </div>
+            </article>
             
-            <div class="carousel-item ">
-                <a href="/project/personal_projects/">
-                    <img class="d-block mx-auto project_image rounded"
-                        src="/projects/3/ray_tracing.png" alt="Personal Projects">
-                    <div class="d-block d-md-none mobile-project-caption">
-                        <h5 class="mb-0">Personal Projects</h5>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block caption-overlay rounded">
-                        <h5>Personal Projects</h5>
-                        <p>Some personal projects for fun over the years.</p>
-                    </div>
+            <article class="feature-card">
+                <a class="feature-card__image-link" href="http://phg1024.github.io/CSCE646/index.html">
+                    <img class="feature-card__image" src="/projects/1/ahe75.png" alt="CSCE646 Digital Image">
                 </a>
-            </div>
+                <div class="feature-card__body">
+                    <p class="feature-card__meta">Project 02</p>
+                    <h3 class="feature-card__title"><a href="http://phg1024.github.io/CSCE646/index.html">CSCE646 Digital Image</a></h3>
+                    <p class="feature-card__copy">Adaptive histogram equalization effect.</p>
+                </div>
+            </article>
+            
+            <article class="feature-card">
+                <a class="feature-card__image-link" href="https://phg1024.github.io/CSCE625/index.html">
+                    <img class="feature-card__image" src="/projects/2/kpts.png" alt="CSCE625 Aritificial Intelligence">
+                </a>
+                <div class="feature-card__body">
+                    <p class="feature-card__meta">Project 03</p>
+                    <h3 class="feature-card__title"><a href="https://phg1024.github.io/CSCE625/index.html">CSCE625 Aritificial Intelligence</a></h3>
+                    <p class="feature-card__copy">Facial keypoint detection.</p>
+                </div>
+            </article>
+            
+            <article class="feature-card">
+                <a class="feature-card__image-link" href="/project/personal_projects/">
+                    <img class="feature-card__image" src="/projects/3/ray_tracing.png" alt="Personal Projects">
+                </a>
+                <div class="feature-card__body">
+                    <p class="feature-card__meta">Project 04</p>
+                    <h3 class="feature-card__title"><a href="/project/personal_projects/">Personal Projects</a></h3>
+                    <p class="feature-card__copy">Some personal projects for fun over the years.</p>
+                </div>
+            </article>
             
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+    </section>
+
+    <section class="editorial-section editorial-section--split">
+        <div class="section-heading">
+            <p class="section-heading__eyebrow">Recent writing</p>
+            <h2 class="section-heading__title">Blog highlights</h2>
+        </div>
+        <div class="journal-grid">
+            
+            
+            <article class="journal-card">
+                <p class="journal-card__meta">Jan 20, 2024</p>
+                <h3 class="journal-card__title"><a href="/blog/ai/dreamfusion/">Paper Reading Notes (2): DreamFusion: Text-to-3D using 2D Diffusion</a></h3>
+                <p class="journal-card__copy">Reading notes for the ICLR 2023 paper: DreamFusion: Text-to-3D using 2D Diffusion.</p>
+            </article>
+            
+            
+            
+            <article class="journal-card">
+                <p class="journal-card__meta">Jan 15, 2024</p>
+                <h3 class="journal-card__title"><a href="/blog/ai/3d_gaussian_splitting/">Paper Reading Notes (1): 3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></h3>
+                <p class="journal-card__copy">Reading notes for the SIGGRAPH 2023 paper: 3D Gaussian Splatting for Real-Time Radiance Field Rendering.</p>
+            </article>
+            
+            
+            
+            <article class="journal-card">
+                <p class="journal-card__meta">Jan 10, 2024</p>
+                <h3 class="journal-card__title"><a href="/blog/programming/async/">Programming Async (1): Wrapping Functions with Callbacks as Promises</a></h3>
+                <p class="journal-card__copy">Some notes on writing async programs.</p>
+            </article>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+    </section>
 </div>
 
-    </div>
-</main>
+    </main>
 
-<footer class="footer">
-    <div class="container">
-        <span class="text-muted text-sm-center">
-          &copy 2009-<script>document.write( new Date().getFullYear() );</script> &nbsp Peihong Guo &nbsp <span id="em"></span>
-        </span>
-    </div>
-</footer>
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
+            <label class="theme-toggle" for="theme-toggle">
+                <span class="theme-toggle__label">Theme</span>
+                <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+                    <option value="minimalist">Minimalist</option>
+                    <option value="cyberpunk">Cyberpunk</option>
+                    <option value="matrix">Matrix</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="win31">Windows 3.1</option>
+                </select>
+            </label>
+            <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+        </div>
+    </footer>
+</div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
