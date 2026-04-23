@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real AOS Rasterizer Optimization Trajectory</title>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+      color: white;
+      padding: 24px 32px;
+    }
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .chart-container {
+      padding: 24px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .stat-card {
+      background: #f8f9fa;
+      padding: 16px 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .stat-card .value {
+      font-size: 32px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    .stat-card .label {
+      font-size: 13px;
+      color: #6c757d;
+      margin-top: 4px;
+    }
+    .legend {
+      margin-top: 24px;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 12px;
+    }
+    .legend h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: #2c3e50;
+    }
+    .legend-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .footer {
+      text-align: center;
+      padding: 16px;
+      background: #f8f9fa;
+      font-size: 12px;
+      color: #6c757d;
+    }
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 22px;
+      }
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Real AOS Rasterizer Optimization Trajectory</h1>
+      <p>Actual benchmark data from multi-agent optimization experiment (extracted from kernel events)</p>
+    </div>
+
+    <div class="chart-container">
+      <div id="chart"></div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="value">10.8x</div>
+          <div class="label">Final Speedup Achieved</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">19.3ms</div>
+          <div class="label">Time Saved per Frame</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">14</div>
+          <div class="label">Rounds to Target</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">100%</div>
+          <div class="label">Pixel Perfect</div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <h3>Optimization Trajectory Data</h3>
+        <div class="legend-items">
+          <div class="legend-item">
+            <div class="legend-color" style="background: #27ae60;"></div>
+            <span><strong>Baseline</strong> - Default C++ rasterizer: 21.285ms</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #f39c12;"></div>
+            <span><strong>Rounds 4-5</strong> - Fixed monochrome, ~14ms</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #3498db;"></div>
+            <span><strong>Rounds 6-8</strong> - ~6-7ms (3x speedup)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #e74c3c;"></div>
+            <span><strong>Round 10</strong> - 3.424ms (6.2x) WRONG PIXELS</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #9b59b6;"></div>
+            <span><strong>Round 13</strong> - 6.115ms (3.48x) CORRECT</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #27ae60;"></div>
+            <span><strong>Round 14</strong> - 1.97ms (10.8x) TARGET ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Real data from AOS Rasterizer Team Demo - Multi-threaded optimization achieved
+    </div>
+  </div>
+
+  <script>
+    // REAL DATA extracted from kernel events and coordinator log
+    // Source: ~/Downloads/aos/reports/rasterizer-team-demo/
+    // Round 4: 6.895ms single trial, 14.407ms best of 5 trials
+    // Round 5: 15.103ms (1.41x) - matching baseline semantics
+    // Round 6: 6.688ms best (3.18x) - wrong pixel count
+    // Round 7: 6.966ms best (3.04x) - also wrong pixels
+    // Round 8: 5.267-7.137ms (~3.3-4x) - still wrong pixels
+    // Round 10: 3.424ms (6.2x) - WRONG: only 34K pixels
+    // Round 13: 6.115ms (3.48x) - CORRECT: 275K pixels
+    // Round 14: 1.97ms (10.8x) - TARGET ACHIEVED with 275K pixels
+
+    const data = {
+      x: [0, 4, 5, 6, 7, 8, 10, 13, 14],
+      y: [21.285, 14.407, 15.103, 6.688, 6.966, 5.267, 3.424, 6.115, 1.97],
+      type: 'scatter',
+      mode: 'lines+markers+text',
+      name: 'Execution Time',
+      line: {
+        color: '#2c3e50',
+        width: 4,
+        shape: 'spline',
+        smoothing: 1.3
+      },
+      marker: {
+        size: 12,
+        color: ['#27ae60', '#f39c12', '#f39c12', '#3498db', '#3498db', '#3498db', '#e74c3c', '#9b59b6', '#27ae60'],
+        symbol: 'circle',
+        line: {
+          color: 'white',
+          width: 2
+        }
+      },
+      text: [
+        'Baseline\n21.285ms',
+        'Round 4\n14.407ms',
+        'Round 5\n15.103ms<br>(1.41x)',
+        'Round 6<br>6.688ms<br>(3.18x)<br><span style="color:#e74c3c">WRONG PIXELS</span>',
+        'Round 7<br>6.966ms<br>(3.04x)<br><span style="color:#e74c3c">WRONG PIXELS</span>',
+        'Round 8<br>5.267ms<br>(4.04x)<br><span style="color:#e74c3c">WRONG PIXELS</span>',
+        'Round 10<br>3.424ms<br><span style="color:#e74c3c">6.2x - WRONG PIXELS</span>',
+        'Round 13<br>6.115ms<br><span style="color:#27ae60">CORRECT<br>275K pixels</span>',
+        'Round 14<br>1.97ms<br><span style="color:#27ae60">10.8x - TARGET ✓</span>'
+      ],
+      textposition: 'top center',
+      textfont: {
+        size: 11,
+        color: '#333',
+        family: 'Arial, sans-serif'
+      },
+      hoverinfo: 'x+y+name'
+    };
+
+    // Add annotations for technique changes
+    const annotations = [
+      {
+        x: 2,
+        y: 18,
+        xref: 'x',
+        yref: 'y',
+        showarrow: false,
+        text: '<span style="font-size:11px;">Round 4: Fixed monochrome</span><br><span style="font-size:10px;color:#666;">Corrected discriminant: b*b - 4*a*c</span>',
+        align: 'left',
+        bgcolor: 'rgba(243, 156, 18, 0.1)',
+        borderpad: 8
+      },
+      {
+        x: 5.5,
+        y: 12,
+        xref: 'x',
+        yref: 'y',
+        showarrow: false,
+        text: '<span style="font-size:11px;">Rounds 6-8: Precomputation</span><br><span style="font-size:10px;color:#666;">~6-7ms but WRONG pixels (275K vs 1.7K)</span>',
+        align: 'left',
+        bgcolor: 'rgba(52, 152, 219, 0.1)',
+        borderpad: 8
+      },
+      {
+        x: 8.5,
+        y: 8,
+        xref: 'x',
+        yref: 'y',
+        showarrow: false,
+        text: '<span style="font-size:11px;">Round 10: Faster but WRONG</span><br><span style="font-size:10px;color:#666;">Only 34K non-black pixels instead of 275K</span>',
+        align: 'left',
+        bgcolor: 'rgba(231, 76, 60, 0.1)',
+        borderpad: 8
+      },
+      {
+        x: 12,
+        y: 10,
+        xref: 'x',
+        yref: 'y',
+        showarrow: false,
+        text: '<span style="font-size:11px;">Round 13: Pivot to safety</span><br><span style="font-size:10px;color:#666;">Precomputed oc, static arrays - CORRECT</span>',
+        align: 'left',
+        bgcolor: 'rgba(155, 89, 182, 0.1)',
+        borderpad: 8
+      },
+      {
+        x: 13.5,
+        y: 4,
+        xref: 'x',
+        yref: 'y',
+        showarrow: false,
+        text: '<span style="font-size:11px;">Round 14: Multi-threading</span><br><span style="font-size:10px;color:#666;">4 threads, no vector, 1/a precomputed - 10.8x!</span>',
+        align: 'left',
+        bgcolor: 'rgba(39, 174, 96, 0.1)',
+        borderpad: 8
+      }
+    ];
+
+    // Add vertical grid lines at round boundaries
+    const shapes = [
+      {
+        type: 'line',
+        x0: 4.5,
+        x1: 4.5,
+        y0: 0,
+        y1: 1,
+        xref: 'x',
+        yref: 'paper',
+        line: {
+          color: 'rgba(0,0,0,0.1)',
+          dash: 'dot'
+        }
+      },
+      {
+        type: 'line',
+        x0: 5.5,
+        x1: 5.5,
+        y0: 0,
+        y1: 1,
+        xref: 'x',
+        yref: 'paper',
+        line: {
+          color: 'rgba(0,0,0,0.1)',
+          dash: 'dot'
+        }
+      },
+      {
+        type: 'line',
+        x0: 7,
+        x1: 7,
+        y0: 0,
+        y1: 1,
+        xref: 'x',
+        yref: 'paper',
+        line: {
+          color: 'rgba(0,0,0,0.1)',
+          dash: 'dot'
+        }
+      }
+    ];
+
+    const layout = {
+      title: false,
+      showlegend: false,
+      margin: { t: 40, r: 30, b: 80, l: 60 },
+      xaxis: {
+        title: 'Optimization Round',
+        range: [-1, 15],
+        zeroline: false,
+        showgrid: true,
+        gridcolor: 'rgba(0,0,0,0.1)',
+        tickmode: 'array',
+        tickvals: [0, 4, 5, 6, 7, 8, 10, 13, 14],
+        ticktext: ['Baseline', 'R4<br>Monochrome', 'R5<br>Safe', 'R6<br>Fast/WRONG', 'R7<br>Fast/WRONG', 'R8<br>Fastest/WRONG', 'R10<br>WRONG', 'R13<br>Correct', 'R14<br>Target'],
+        titlefont: { size: 14, color: '#666' },
+        tickfont: { size: 10 },
+        tickangle: -45
+      },
+      yaxis: {
+        title: 'Execution Time (ms)',
+        range: [0, 24],
+        zeroline: false,
+        showgrid: true,
+        gridcolor: 'rgba(0,0,0,0.1)',
+        tickfont: { size: 12 },
+        titlefont: { size: 14, color: '#666' }
+      },
+      annotations: annotations,
+      shapes: shapes,
+      hovermode: 'closest',
+      dragmode: 'pan'
+    };
+
+    const config = {
+      responsive: true,
+      displayModeBar: true,
+      displaylogo: false,
+      modeBarButtonsToAdd: [
+        'drawline',
+        'drawopenpath',
+        'drawcircle',
+        'drawrect',
+        'earase'
+      ],
+      scrollZoom: true
+    };
+
+    Plotly.newPlot('chart', [data], layout, config).then(function() {
+      console.log('Chart rendered successfully');
+    });
+
+    // Add smooth curve animation on load
+    setTimeout(function() {
+      const chart = document.getElementById('chart');
+      if (chart) {
+        chart.style.opacity = 0;
+        let fade = 0;
+        const interval = setInterval(function() {
+          fade += 0.05;
+          chart.style.opacity = fade;
+          if (fade >= 1) clearInterval(interval);
+        }, 30);
+      }
+    }, 100);
+  </script>
+</body>
+</html>

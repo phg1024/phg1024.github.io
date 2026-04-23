@@ -37,8 +37,8 @@
 
  <main class="site-main" id="main-content" role="main">
   
-<div class="container-custom text-left blog-content">
-     <h1>Programming Async (1): Wrapping Functions with Callbacks as Promises</h1>
+<div class="blog-content">
+     <div class="blog-content__inner"><h1>Programming Async (1): Wrapping Functions with Callbacks as Promises</h1>
 <p>TL;DR This is a series of unsorted notes to record my learnings when writing async programs.</p>
 <p>Many functions in JavaScript take callbacks to &quot;pass&quot; the outputs to the consumers. In fact, people could easily encounter <a href="http://callbackhell.com/">callback hell</a> if they are not careful enough. There are several ways to work around it, but still in some cases we may want to simply treat such functions as async function and have the consumers <code>await</code> them instead of passing in callbacks.</p>
 <p>For example, the <code>readFile</code> function in the <a href="https://nodejs.org/api/fs.html"><code>fs</code></a> module takes a callback to handle the file reading results:</p>
@@ -85,8 +85,10 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This version doesn't seem very different from the callback-based version, but it has a major advantage: the return value of the <code>then</code> part is yet another <code>Promise</code> that can be easily passed around by binding it to a variable or passed out of the local scope with a <code>return</code>, and we can perform further computation on top of it using another <code>then</code> where needed - all without involving more callbacks! Yay! We seem to have found a way to break the callback hell whenever we want!</p>
 <p>Well, there is still a catch with the <code>Promise</code> trick tho, as mentioned in <a href="https://blog.avenuecode.com/callback-hell-promises-and-async/await">this post</a>. To put it in a simple way: chaining operations with <code>then</code> could still create callback hell if not used carefully/correctly.</p>
-
 </div>
+</div>
+
+<p class="blog-post__date">Jan 10, 2024</p>
 
 <div id="disqus_thread"></div>
 <script>
@@ -140,6 +142,8 @@
  </footer>
 </div>
 
+
 <script src="/js/main.js"></script>
+
 </body>
 </html>

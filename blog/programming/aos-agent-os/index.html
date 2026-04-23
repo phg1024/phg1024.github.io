@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>Peihong Guo</title>
+ <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+     <div class="blog-content__inner"><h1>AOS: An Agent Operating System</h1>
+<p>I've been working on <strong>AOS</strong> (Agent Operating System), a research prototype that treats multi-agent collaboration as a <strong>runtime systems problem</strong>, not a prompt choreography problem.</p>
+<h2>The Core Idea</h2>
+<p>Most agent systems model collaboration by giving multiple agents the same conversation history and asking them to &quot;coordinate&quot; through prompts. That approach creates hidden shared state, weak task ownership, and race conditions around files.</p>
+<p><strong>AOS takes a different approach:</strong></p>
+<blockquote>
+<p><strong>Agents should share artifacts and protocols, not context windows.</strong></p>
+</blockquote>
+<p>The system looks like a tiny agent microkernel with five core subsystems:</p>
+<ol>
+<li><strong>Kernel</strong> - Owns the global event loop, process table, capability table, scheduler, and audit log</li>
+<li><strong>Agent Processes</strong> - Each agent is isolated with <code>pid</code>, role/spec, inbox/outbox, mounted workspace views, capability set, and lifecycle state</li>
+<li><strong>IPC Layer</strong> - Mailboxes for point-to-point messages, channels for pub/sub events, shared artifacts, locks and leases for coordination</li>
+<li><strong>Workspace VFS</strong> - Each agent gets a mounted view: private scratch space, shared project mounts, read-only reference mounts, per-task overlays</li>
+<li><strong>Supervisor Tree</strong> - Parent agents spawn child agents, monitor them, aggregate results, and recover from failures</li>
+</ol>
+<pre class="language-text"><code class="language-text">User / API
+   |
+Agent Kernel
+   |- Scheduler
+   |- Capability Manager
+   |- Process Table
+   |- IPC Bus
+   |- Artifact Store
+   |- Audit Log
+   |- Inference Adapter Registry
+   |
+   |- Supervisor Agent
+   |   |- Research Agent
+   |   |- Coding Agent
+   |   |- Test Agent
+   |   `- Review Agent
+   |
+   |- Tool Workers / Sandboxes
+   `- Model Backends
+       |- Local vLLM
+       |- Anthropic-compatible
+       `- OpenAI-compatible</code></pre>
+<h2>Guiding Principles</h2>
+<h3>1. Make the Runtime Deterministic Where Possible</h3>
+<p>The kernel should be more like an operating system than an agent. Core semantics should be deterministic:</p>
+<ul>
+<li>process lifecycle</li>
+<li>message routing</li>
+<li>artifact creation</li>
+<li>lock acquisition</li>
+<li>lease expiration</li>
+<li>scheduling policy</li>
+<li>retry policy</li>
+<li>audit logging</li>
+</ul>
+<p><strong>Models are allowed to be probabilistic. The runtime should not be.</strong></p>
+<p>This is the main way to keep the system debuggable.</p>
+<h3>2. Keep Memory Outside the Model</h3>
+<p>Persistent memory should live outside the current model context:</p>
+<ul>
+<li>the event log</li>
+<li>task state</li>
+<li>artifact store</li>
+<li>checkpoints</li>
+<li>source control metadata</li>
+</ul>
+<p>An agent should be able to die, restart, or hand off work without losing the system's actual state.</p>
+<h3>3. Prefer Structured Handoffs Over Long Shared Context</h3>
+<p>Long-running work should be partitioned. Handoffs should be artifact-based. Agents should receive a fresh working context whenever that improves reliability.</p>
+<p>The right handoff artifact includes:</p>
+<ul>
+<li>what was attempted</li>
+<li>what changed</li>
+<li>what remains</li>
+<li>what failed</li>
+<li>what should happen next</li>
+</ul>
+<h3>4. Separate Planning, Doing, and Judging</h3>
+<p>Self-evaluation is weak. AOS separates:</p>
+<ul>
+<li><strong>Planner</strong> - Defines scope, contracts, and dependencies</li>
+<li><strong>Worker / Generator</strong> - Produces code, documents, analyses, or patches</li>
+<li><strong>Evaluator / Verifier</strong> - Checks whether outputs satisfy contracts</li>
+<li><strong>Reviewer</strong> - Applies critical judgment where subjective quality matters</li>
+</ul>
+<p>These do not all need to be present in every flow. But the architecture makes them easy to compose.</p>
+<h3>5. Verification Must Be Externalized</h3>
+<p>A worker saying &quot;I think this is done&quot; is not verification.</p>
+<p>Verification should come from something external to the producing agent:</p>
+<ul>
+<li>unit tests</li>
+<li>integration tests</li>
+<li>browser checks</li>
+<li>schema validation</li>
+<li>diff review</li>
+<li>contract-based evaluation</li>
+<li>separate evaluator agents</li>
+</ul>
+<p>A task should become complete only when the required verification artifacts exist.</p>
+<h3>6. Treat the Inference Backend as a Driver</h3>
+<p>The AOS kernel should not be built around one provider contract. The model backend should be replaceable without changing core runtime semantics.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">InferenceBackend</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token function">supportsTools</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+  <span class="token function">supportsStreaming</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+  <span class="token function">supportsJsonMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+  <span class="token function">generate</span><span class="token punctuation">(</span>request<span class="token operator">:</span> GenerateRequest<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>GenerateResult<span class="token operator">></span><span class="token punctuation">;</span>
+  stream<span class="token operator">?</span><span class="token punctuation">(</span>request<span class="token operator">:</span> GenerateRequest<span class="token punctuation">)</span><span class="token operator">:</span> AsyncIterable<span class="token operator">&lt;</span>GenerateEvent<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This lets us prototype quickly with local <code>vllm</code> while preserving long-term portability.</p>
+<h2>The Suggested Process API</h2>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">type</span> <span class="token class-name">Pid</span> <span class="token operator">=</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> <span class="token class-name">ArtifactId</span> <span class="token operator">=</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+<span class="token function">spawn</span><span class="token punctuation">(</span>spec<span class="token punctuation">,</span> mounts<span class="token punctuation">,</span> caps<span class="token punctuation">,</span> budget<span class="token punctuation">)</span><span class="token operator">:</span> Pid
+<span class="token function">send</span><span class="token punctuation">(</span>pid<span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token function">publish</span><span class="token punctuation">(</span>topic<span class="token punctuation">,</span> event<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token function">subscribe</span><span class="token punctuation">(</span>pid<span class="token punctuation">,</span> topic<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token keyword">await</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token operator">:</span> ExitStatus
+<span class="token function">signal</span><span class="token punctuation">(</span>pid<span class="token punctuation">,</span> op<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token function">checkpoint</span><span class="token punctuation">(</span>pid<span class="token punctuation">)</span><span class="token operator">:</span> ArtifactId
+<span class="token function">acquire</span><span class="token punctuation">(</span>resource<span class="token punctuation">,</span> pid<span class="token punctuation">)</span><span class="token operator">:</span> Lease
+<span class="token function">release</span><span class="token punctuation">(</span>resource<span class="token punctuation">,</span> pid<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token function">attachArtifact</span><span class="token punctuation">(</span>pid<span class="token punctuation">,</span> artifactId<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span></code></pre>
+<h2>Testing Principles</h2>
+<p>The system has two very different kinds of correctness:</p>
+<ol>
+<li><strong>Runtime correctness</strong> - lifecycle transitions, IPC delivery, scheduling fairness, lock safety, artifact lineage, recovery behavior</li>
+<li><strong>Model-mediated task quality</strong> - plan usefulness, output correctness, evaluator reliability, multi-agent collaboration quality under real inference</li>
+</ol>
+<p>These should not be collapsed into one test suite. Runtime behavior should mostly be tested with deterministic fakes.</p>
+<h2>Multi-Agent Mini Projects</h2>
+<p>To verify real collaboration, I've built a suite of mini-projects that run against local <code>vllm</code>:</p>
+<h3>Project 1: Live Docs Merge</h3>
+<p>A simple collaborative publishing flow with three agents:</p>
+<ol>
+<li><strong>coordinator</strong> agent delegates reading and synthesis</li>
+<li><strong>synthesizer</strong> reads multiple input files and returns merged HTML content</li>
+<li><strong>writer</strong> writes the final output file</li>
+</ol>
+<h3>Project 2: Live Fact Sheet</h3>
+<p>A structured extraction workflow:</p>
+<ol>
+<li><strong>router</strong> agent delegates extraction</li>
+<li><strong>extractor</strong> reads plain-text notes and returns a markdown fact sheet</li>
+<li><strong>writer</strong> writes the markdown output</li>
+</ol>
+<h3>Project 3: Live Reviewed Merge</h3>
+<p>Showing that review is a workflow choice rather than a built-in AOS rule:</p>
+<ol>
+<li><strong>lead</strong> agent delegates merge work</li>
+<li><strong>merger</strong> agent reads source files and produces final HTML</li>
+<li><strong>writer</strong> agent writes the output file</li>
+<li><strong>review partner</strong> reads the produced output and returns a review note</li>
+<li><strong>lead</strong> agent decides how to finish using that review note</li>
+</ol>
+<p>Each live project produces:</p>
+<ul>
+<li>final output file</li>
+<li>workflow state directory for inspection</li>
+<li>completion report</li>
+</ul>
+<h2>Current Status</h2>
+<ul>
+<li><strong>Research prototype</strong>, not a polished product release</li>
+<li>Core Go packages test cleanly</li>
+<li>Active areas include workflow tooling, skills, local TUI ergonomics, and evaluation/demo workflows</li>
+<li>Uses backend-agnostic env vars for live model selection: <code>AOS_LLM_BACKEND</code>, <code>AOS_LLM_BASE_URL</code>, <code>AOS_LLM_MODEL</code>, <code>AOS_LLM_API_KEY</code></li>
+</ul>
+<h2>Try It Out</h2>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># Run tests</span>
+<span class="token function">make</span> <span class="token builtin class-name">test</span>
+
+<span class="token comment"># Run the CLI</span>
+go run ./cmd/aos
+
+<span class="token comment"># Run the TUI</span>
+go run ./cmd/aos-tui <span class="token parameter variable">--workdir</span> <span class="token builtin class-name">.</span>
+
+<span class="token comment"># Run a workflow with local vllm</span>
+<span class="token assign-left variable">AOS_LLM_BACKEND</span><span class="token operator">=</span>ollama <span class="token punctuation">\</span>
+<span class="token assign-left variable">AOS_LLM_BASE_URL</span><span class="token operator">=</span>http://localhost:11434 <span class="token punctuation">\</span>
+<span class="token assign-left variable">AOS_LLM_MODEL</span><span class="token operator">=</span>qwen3.6:35b <span class="token punctuation">\</span>
+go run ./cmd/aos run <span class="token parameter variable">--workflow</span> ./workflows/rasterizer-optimized-tail.json</code></pre>
+<h2>Related Work</h2>
+<p>This design draws inspiration from:</p>
+<ul>
+<li><strong>Ralph</strong> - fresh-context autonomous coding loop with explicit memory artifacts</li>
+<li><strong>Anthropic's harness engineering principles</strong> - planner/generator/evaluator separation, external verification, simplicity through measured need</li>
+</ul>
+<p>The key insight: <strong>every harness component encodes an assumption about model weakness</strong>. Each major AOS feature should answer:</p>
+<ul>
+<li>what failure mode does this address?</li>
+<li>how do we know it helps?</li>
+<li>when should it be removed or simplified?</li>
+</ul>
+<h2>What's Next</h2>
+<p>The roadmap includes:</p>
+<ol>
+<li><strong>Workflow specs</strong> - declarative workflow definitions with validation</li>
+<li><strong>Multi-round agent runtime</strong> - agents can emit messages, use tools, delegate to other agents, continue after results return</li>
+<li><strong>Inspectable reports</strong> - HTML reports showing processes, artifacts, events, decisions, issues, and tests</li>
+<li><strong>Recovery and resume</strong> - interrupted workflows can be resumed from durable state</li>
+</ol>
+<h2>The Non-Negotiables</h2>
+<p>If I had to reduce this to a few rules:</p>
+<ol>
+<li><strong>State lives outside the model.</strong></li>
+<li><strong>Tasks must be small, explicit, and verifiable.</strong></li>
+<li><strong>Workers do not verify themselves.</strong></li>
+<li><strong>Artifacts and event logs are first-class system outputs.</strong></li>
+<li><strong>Most runtime behavior must be testable without a live LLM.</strong></li>
+<li><strong>Any harness complexity must justify itself with measured improvement.</strong></li>
+</ol>
+<hr>
+<h2>Featured Example: Rasterizer Optimization Team</h2>
+<p>A core example of AOS in action is a <strong>four-agent team</strong> tasked with optimizing a C++ sphere rasterizer. This demonstrates what multi-agent collaboration looks like when agents share artifacts and protocols rather than context windows.</p>
+<h3>The Setup</h3>
+<p>AOS orchestrates four specialized agents through an IPC bus:</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Coordinator</strong></td>
+<td>Owns the experiment loop, maintains a disciplined log, decides when to iterate</td>
+</tr>
+<tr>
+<td><strong>Writer</strong></td>
+<td>Writes and optimizes C++17 rasterizer code</td>
+</tr>
+<tr>
+<td><strong>Benchmarker</strong></td>
+<td>Compiles with <code>g++ -O2 -std=c++17</code>, runs timing trials, collects profiling data</td>
+</tr>
+<tr>
+<td><strong>Verifier</strong></td>
+<td>Validates correctness with pixel-wise comparisons across multiple scene configs</td>
+</tr>
+</tbody>
+</table>
+<h3>The Workflow</h3>
+<p><strong>Phase 1: Baseline</strong></p>
+<ul>
+<li>Writer creates a correct sphere rasterizer at 640x480</li>
+<li>Benchmarker compiles and times baseline performance</li>
+<li>Verifier checks pixel correctness across multiple scene configurations</li>
+</ul>
+<p><strong>Phase 2: Optimization Loop</strong></p>
+<ul>
+<li>Writer proposes optimizations, saving versioned candidates (<code>optimized_rasterizer_round_01.cpp</code>, etc.)</li>
+<li>Benchmarker runs 5+ timed trials, uses profiling tools to identify hotspots</li>
+<li>Verifier performs pixel-wise comparisons against reference implementations</li>
+<li>Coordinator logs each round, tracks approaches attempted, decides next strategy</li>
+<li>Loop continues until <strong>10x speedup target</strong> achieved or real blockers emerge</li>
+</ul>
+<h3>Actual Techniques Discovered</h3>
+<p>The AOS multi-agent team discovered these optimizations through iteration:</p>
+<ul>
+<li><strong>Multi-threading</strong> (horizontal strips) - Parallel rendering across 4 threads</li>
+<li><strong>Static arrays</strong> - Removed <code>std::vector</code> overhead</li>
+<li><strong>Precomputed values</strong> - Calculated <code>1/a</code> outside loops</li>
+<li><strong>Function inlining</strong> and <code>__restrict</code> hints - Compiler optimization guidance</li>
+<li><strong>Safe precomputations</strong> - Precomputed <code>oc</code> (origin-center) vectors</li>
+</ul>
+<h3>What It Proves</h3>
+<p>This workflow demonstrates:</p>
+<ul>
+<li><strong>Delegation</strong> - Agents delegate work to specialized peers via <code>spawn_agent</code></li>
+<li><strong>Artifact handoffs</strong> - Each agent reads/writes structured artifacts (benchmark JSON, logs, PPM images)</li>
+<li><strong>Persistent memory</strong> - Coordinator log tracks experiment history across rounds</li>
+<li><strong>External verification</strong> - Pixel-wise checks, not self-checks</li>
+<li><strong>Inspectable state</strong> - All artifacts preserved for review</li>
+<li><strong>Correctness + performance</strong> - Both verification and benchmarking required</li>
+</ul>
+<h3>Optimization Trajectory</h3>
+<p>Here's an interactive visualization of the <strong>actual</strong> optimization experiment. The data was extracted from kernel event logs:</p>
+<div id="chart-embed" style="width:100%;height:520px;margin:0 auto;"></div>
+<h3>The Full Story: Rounds 4-14</h3>
+<p><strong>Round 4: Fixed Monochrome Output</strong><br>
+After discovering the discriminant formula was wrong (<code>b*b - 4*c</code> instead of <code>b*b - 4*a*c</code>), the writer corrected it. The rasterizer now shows proper color variation with rendered times around <strong>14ms</strong>.</p>
+<p><strong>Rounds 5: Safety First</strong><br>
+The agent produced a version that matched the baseline output exactly—99.5% black with 1,687 colored pixels. Performance: <strong>15.103ms</strong> (1.41x speedup). The team was now on the right track: correct, but not yet fast.</p>
+<p><strong>Rounds 6-8: The Fast-but-Wrong Phase</strong><br>
+The writer made bold optimizations that slashed runtime to <strong>5-7ms</strong> but broke correctness:</p>
+<ul>
+<li>Round 6: <strong>6.688ms</strong> (3.18x) — but produced <strong>275,939 non-black pixels</strong> instead of 1,687</li>
+<li>Round 7: <strong>6.966ms</strong> (3.04x) — same wrong pixel count</li>
+<li>Round 8: <strong>5.267ms</strong> (4.04x) — fastest yet, but still wrong</li>
+</ul>
+<p>The verifier caught all of them. The team had speed, but lost the image.</p>
+<p><strong>Round 10: Too Fast, Too Wrong</strong><br>
+By Round 10, the agents discovered even more aggressive optimizations:</p>
+<ul>
+<li>Timing: <strong>3.424ms</strong> (6.2x speedup!)</li>
+<li>Pixel count: <strong>34,307</strong> non-black (still wrong)</li>
+<li>Expected: ~1,687 non-black pixels</li>
+<li><strong>Result</strong>: The verifier caught it again.</li>
+</ul>
+<p><strong>Round 11-12: Failed Unrolling</strong></p>
+<ul>
+<li>Strategy: Unroll sphere loop, precompute constants</li>
+<li>Result: <strong>5.267ms</strong>, <strong>WRONG</strong> pixels again</li>
+<li>The verifier prevented acceptance</li>
+</ul>
+<p><strong>Round 13: Pivot to Safety</strong><br>
+The coordinator realized: the fastest optimizations weren't worth it. The pivot to safe optimizations:</p>
+<ul>
+<li>Strategy: Precomputed <code>oc</code> (origin-center), static arrays</li>
+<li>Result: <strong>6.115ms</strong> (3.48x), <strong>CORRECT</strong> with 275,652 pixels (the right count for the scene)</li>
+<li><strong>Lesson</strong>: Don't build on wrong code, even if it's fast</li>
+</ul>
+<p><strong>Round 14: The Winning Formula</strong><br>
+Building on the correct foundation with targeted performance improvements:</p>
+<ul>
+<li>Multi-threading (4 threads, horizontal strips)</li>
+<li>Removed <code>std::vector</code> (raw arrays)</li>
+<li>Precomputed <code>1/a</code> (avoided divisions in loops)</li>
+<li>Function inlining and <code>__restrict</code> hints</li>
+<li>Result: <strong>1.97ms</strong> — <strong>10.8x speedup</strong> ✓ <strong>TARGET ACHIEVED</strong></li>
+</ul>
+<p>Each round builds on the previous one. Failed ideas are remembered. The verifier ensures correctness is maintained throughout.</p>
+<h3>What Each Technique Brings</h3>
+<table>
+<thead>
+<tr>
+<th>Round</th>
+<th>Technique</th>
+<th>What Changed</th>
+<th style="text-align:right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Baseline</strong></td>
+<td>Default</td>
+<td>C++ with sphere loop</td>
+<td style="text-align:right">21.285ms</td>
+</tr>
+<tr>
+<td><strong>Round 4</strong></td>
+<td>Fixed discriminant</td>
+<td><code>b*b - 4*a*c</code> formula</td>
+<td style="text-align:right">14.4ms</td>
+</tr>
+<tr>
+<td><strong>Round 5</strong></td>
+<td>Safe baseline match</td>
+<td>Verified 1,687 colored pixels</td>
+<td style="text-align:right">15.1ms (1.41x)</td>
+</tr>
+<tr>
+<td><strong>Rounds 6-8</strong></td>
+<td>Precomputation</td>
+<td>Precomputed values, removed vectors</td>
+<td style="text-align:right">5.3-6.7ms — <strong>WRONG</strong></td>
+</tr>
+<tr>
+<td><strong>Round 10</strong></td>
+<td>Aggressive opts</td>
+<td>Faster but 34K pixels wrong</td>
+<td style="text-align:right">3.42ms (6.2x) <strong>WRONG</strong></td>
+</tr>
+<tr>
+<td><strong>Round 13</strong></td>
+<td>Safe precomputation</td>
+<td>Precomputed <code>oc</code>, static arrays</td>
+<td style="text-align:right">6.115ms (3.48x) <strong>CORRECT</strong></td>
+</tr>
+<tr>
+<td><strong>Round 14</strong></td>
+<td>Multi-threading</td>
+<td>4 threads, no vector, <code>1/a</code> precomputed</td>
+<td style="text-align:right"><strong>1.97ms (10.8x)</strong> ✓</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical insight from Rounds 6-10</strong>: The agents found optimizations that were faster but produced <strong>wrong pixel counts</strong> (275K vs expected 1.7K or 34K). The verifier system worked — it caught all of them. Only after Round 13, when the team pivoted back to safety, did they discover that building on correct code is essential.</p>
+<p><strong>What made Round 14 succeed</strong>: The winning formula combined:</p>
+<ol>
+<li><strong>Multi-threading</strong> (horizontal strip parallelization)</li>
+<li><strong>Raw arrays</strong> (removed <code>std::vector</code> overhead)</li>
+<li><strong>Precomputed <code>1/a</code></strong> (avoided divisions in loops)</li>
+<li><strong>Function inlining</strong> and <code>__restrict</code> hints for the compiler</li>
+</ol>
+<h3>Why This Matters</h3>
+<p>This is what multi-agent collaboration looks like when it's <strong>not just prompt-based</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Prompt-Based</th>
+<th>AOS Runtime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shared context window</td>
+<td>Explicit artifacts and IPC</td>
+</tr>
+<tr>
+<td>Implicit coordination</td>
+<td>Delegation via <code>spawn_agent</code></td>
+</tr>
+<tr>
+<td>Self-verification</td>
+<td>External pixel-wise checks</td>
+</tr>
+<tr>
+<td>One-shot attempts</td>
+<td>Iterative experiment loop</td>
+</tr>
+<tr>
+<td>Hard to audit</td>
+<td>Full event log and state preserved</td>
+</tr>
+</tbody>
+</table>
+<p>The full code and documentation is at <a href="https://github.com/phg1024/aos">github.com/phg1024/aos</a>.</p>
+</div>
+</div>
+
+<p class="blog-post__date">Apr 23, 2026</p>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/programming/aos-agent-os/";
+     };
+
+     (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+     })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+    </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"></span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/blog/aos-agent-os.js"></script>
+
+
+</body>
+</html>

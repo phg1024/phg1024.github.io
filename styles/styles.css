@@ -902,6 +902,10 @@ img {
   width: min(100%, 920px);
   margin: 0 auto 1.5rem;
   border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.blog-content__inner {
   padding: clamp(1.75rem, 4vw, 3rem);
 }
 
@@ -947,6 +951,14 @@ img {
   padding: 1rem 1.2rem;
   overflow-x: auto;
   border: 1px solid rgba(78, 246, 255, 0.12);
+}
+
+.blog-post__date {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  margin: 0 0 2rem;
 }
 
 /* Override highlight.js default light-theme colors for dark themes */
