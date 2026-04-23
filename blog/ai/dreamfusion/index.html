@@ -1,47 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script>
-        (function () {
-            var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Peihong Guo</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>Peihong Guo</title>
+ <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
 <canvas class="theme-backdrop" aria-hidden="true"></canvas>
 <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
 <div class="site-shell">
-    <header class="site-header">
-        <div class="site-header__inner">
-            <a class="site-brand" href="/">
-                <span class="site-brand__name">Peihong Guo</span>
-            </a>
-            <nav class="site-nav" aria-label="Primary navigation">
-                <a class="site-nav__link" href="/">Home</a>
-                <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
-                <a class="site-nav__link is-active" href="/blog/">Blog</a>
-                <a class="site-nav__link" href="/gallery">Gallery</a>
-                <a class="site-nav__link" href="/about">About</a>
-            </nav>
-        </div>
-    </header>
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
 
-    <main class="site-main" role="main">
-        
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
-
-<div class="container text-left blog-content">
-    <h1>Paper Reading Notes (2): DreamFusion: Text-to-3D using 2D Diffusion</h1>
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="container-custom text-left blog-content">
+     <h1>Paper Reading Notes (2): DreamFusion: Text-to-3D using 2D Diffusion</h1>
 <p><a href="https://dreamfusion3d.github.io/">Link to paper</a></p>
 <div style="text-align:center">
 <h5>Check back later</h5>
@@ -52,31 +49,16 @@
 
 <div id="disqus_thread"></div>
 <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
-     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
-     *  PLATFORM OR CMS.
-     *
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
-     *  https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    var disqus_config = function () {
-        // Replace PAGE_URL with your page's canonical URL variable
-        // this.page.url = 'pgh1024.disqus.com';
-
-        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+     var disqus_config = function () {
         this.page.identifier = "/blog/ai/dreamfusion/";
-    };
+     };
 
-    (function () {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+     (function () {
         var d = document, s = d.createElement('script');
-
-        // IMPORTANT: Replace EXAMPLE with your forum shortname!
         s.src = 'https://pgh1024.disqus.com/embed.js';
-
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
-    })();
+     })();
 </script>
 <noscript>
     Please enable JavaScript to view the
@@ -85,9 +67,7 @@
     </a>
 </noscript>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
 <script>
     MathJax = {
         tex: {
@@ -98,35 +78,27 @@
         }
     };
 </script>
-<script>hljs.initHighlightingOnLoad();</script>
 
-    </main>
+ </main>
 
-    <footer class="site-footer">
-        <div class="site-footer__inner">
-            <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
-            <label class="theme-toggle" for="theme-toggle">
-                <span class="theme-toggle__label">Theme</span>
-                <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
-                    <option value="minimalist">Minimalist</option>
-                    <option value="cyberpunk">Cyberpunk</option>
-                    <option value="matrix">Matrix</option>
-                    <option value="industrial">Industrial</option>
-                    <option value="win31">Windows 3.1</option>
-                </select>
-            </label>
-            <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
-        </div>
-    </footer>
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"></span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+  </div>
+ </footer>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 <script src="/js/main.js"></script>
 </body>
 </html>
