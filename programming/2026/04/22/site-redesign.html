@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>
+        (function () {
+            var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Peihong Guo</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<div class="site-shell">
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-brand" href="/">
+                <span class="site-brand__name">Peihong Guo</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a class="site-nav__link" href="/">Home</a>
+                <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+                <a class="site-nav__link" href="/blog/">Blog</a>
+                <a class="site-nav__link" href="/gallery">Gallery</a>
+                <a class="site-nav__link" href="/about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main" role="main">
+        
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+
+<div class="container text-left blog-content">
+    <h1>Refactoring My Personal Site</h1>
+<p>I spent the last month refactoring my personal site. What started as &quot;make it faster&quot; turned into a month-long spree that replaced the Express + SQLite backend with a fully static Eleventy build, added five visual themes, and set up a GitHub Actions deploy pipeline. All of it, naturally, vibe-coded.</p>
+<p>My old site was built on Express with Handlebars templates and SQLite3 for blog content. It worked for years, but the architecture had grown stale: dynamic server rendering pages on every request, Bootstrap 3.3.2, jQuery 1.10.2, SQLite queries for content that rarely changed. The tipping point was realizing I didn't have to do all the grunt work to overhaul the site — no caching, no CDN, no reason to be dynamic.</p>
+<p>I migrated everything to Eleventy. Handlebars to Nunjucks, SQLite to Markdown files with YAML frontmatter. Ported over 15+ years of blog posts across three categories — programming, cooking, and AI — plus all the legacy project pages (imageprocjs, raytracer, minesweeper, fractal). The Eleventy config is minimal: three collections, one plugin (syntax highlighting), and a passthrough copy for static assets. The build outputs to <code>_site/</code>, and a GitHub Action rsyncs the result to <code>phg1024.github.io</code>.</p>
+<pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">eleventyConfig</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>syntaxHighlight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+     <span class="token string-property property">"public/css"</span><span class="token operator">:</span> <span class="token string">"css"</span><span class="token punctuation">,</span>
+     <span class="token string-property property">"public/images"</span><span class="token operator">:</span> <span class="token string">"images"</span><span class="token punctuation">,</span>
+     <span class="token string-property property">"public/projects"</span><span class="token operator">:</span> <span class="token string">"projects"</span><span class="token punctuation">,</span>
+   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">dir</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">input</span><span class="token operator">:</span> <span class="token string">"src"</span><span class="token punctuation">,</span> <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token string">"_site"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>That's it. The entire build config.</p>
+<p>The fun part was replacing the single visual identity with five complete themes, each defined entirely through CSS custom properties:</p>
+<ul>
+<li><strong>Minimalist</strong> — Clean, muted earthy tones with soft shadows</li>
+<li><strong>Cyberpunk</strong> — Neon gradients, glow effects, mouse-tracking backdrop</li>
+<li><strong>Matrix</strong> — Green-on-dark with terminal-style aesthetics</li>
+<li><strong>Industrial</strong> — Steel blue-gray palette with subtle grid textures</li>
+<li><strong>Windows 3.1</strong> — Teal background, 3D beveled borders, MS Sans Serif</li>
+</ul>
+<p>Each theme redefines ~30 CSS variables (backgrounds, surfaces, borders, text colors, accents, shadows, font families). The template structure stays the same; only the variable values change.</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Each theme is ~30 CSS variables. Example: */</span>
+<span class="token selector">[data-theme="matrix"]</span> <span class="token punctuation">{</span>
+   <span class="token property">--bg</span><span class="token punctuation">:</span> #020703<span class="token punctuation">;</span>
+   <span class="token property">--surface</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>6<span class="token punctuation">,</span> 18<span class="token punctuation">,</span> 9<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token property">--border</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>96<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 128<span class="token punctuation">,</span> 0.22<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token property">--text</span><span class="token punctuation">:</span> #d8ffd8<span class="token punctuation">;</span>
+   <span class="token property">--accent</span><span class="token punctuation">:</span> #7cff9d<span class="token punctuation">;</span>
+   <span class="token property">--accent-glow</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>124<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 157<span class="token punctuation">,</span> 0.34<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token property">--sans</span><span class="token punctuation">:</span> <span class="token string">"Courier New"</span><span class="token punctuation">,</span> <span class="token string">"Lucida Console"</span><span class="token punctuation">,</span> monospace<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The theme selector lives in the footer. The chosen theme is saved to <code>localStorage</code> and applied via an inline script before the page even paints.</p>
+<p>The cyberpunk and Matrix themes both feature a canvas-based backdrop that reacts to mouse movement. It uses CSS custom properties driven by mouse position — <code>--pointer-x</code>, <code>--pointer-y</code>, <code>--pointer-glow</code> — with radial gradients that follow the cursor. There's also a <code>pointer-reactive-overlay</code> layer with <code>mix-blend-mode: screen</code> for additional atmospheric lighting.</p>
+<p>The deploy pipeline is simple but effective: push to <code>master</code> triggers the workflow, <code>npm run build</code> generates <code>_site/</code>, <code>rsync -av --delete</code> syncs to the deploy repo, auto-commit and push. The whole thing runs on <code>ubuntu-latest</code> with Node 20. No Docker, no caching layers, no artifact uploads. Just <code>npm run build</code> and <code>rsync</code>.</p>
+<p>Looking at the commit history, most of the work falls into four buckets: migration (Express → Eleventy), layout polish (responsive grids, mobile carousels, image sizing), the theme system (CSS variable architecture, five visual identities, backdrop animations), and infrastructure (GitHub Actions deploy, jQuery upgrade, Gaussian fitting plan — still TODO).</p>
+<p>The most time-consuming part wasn't the migration itself — it was the pixel-pushing. Getting the cyberpunk reading surfaces to have the right contrast, making the Matrix backdrop animations feel smooth, ensuring the Windows 3.1 theme actually looks like Windows 3.1 and not just &quot;gray with rounded corners.&quot;</p>
+<p>This was entirely vibe-coded. No PRs, no code reviews, no architecture documents. Just me, a theme selector dropdown, and way too many iterations on <code>box-shadow</code> values.</p>
+<p>The site went from a dated Express app to a static site with five distinct visual identities, mouse-tracking canvas backdrops, and a fully automated deploy pipeline. All in about 25 commits over a month.</p>
+<p>If you want to see the result, it's at <a href="https://phg1024.github.io">phg1024.github.io</a>. Try switching themes — the default is now the minimalist one, but the cyberpunk theme is my favorite.</p>
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
+     *  PLATFORM OR CMS.
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+     *  https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_config = function () {
+        // Replace PAGE_URL with your page's canonical URL variable
+        // this.page.url = 'pgh1024.disqus.com';
+
+        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = "/programming/2026/04/22/site-redesign.html";
+    };
+
+    (function () {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+        var d = document, s = d.createElement('script');
+
+        // IMPORTANT: Replace EXAMPLE with your forum shortname!
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+    </a>
+</noscript>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
+            <label class="theme-toggle" for="theme-toggle">
+                <span class="theme-toggle__label">Theme</span>
+                <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+                    <option value="minimalist">Minimalist</option>
+                    <option value="cyberpunk">Cyberpunk</option>
+                    <option value="matrix">Matrix</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="win31">Windows 3.1</option>
+                </select>
+            </label>
+            <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+        </div>
+    </footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
