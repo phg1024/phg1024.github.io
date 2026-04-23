@@ -38,7 +38,7 @@
  <main class="site-main" id="main-content" role="main">
   
 <div class="blog-content">
-     <div class="blog-content__inner"><h1>Refactoring My Personal Site</h1>
+     <div class="blog-content__inner"><h1>Refactoring My Personal Site</h1><p class="blog-post__date">Apr 22, 2026</p>
 <p>I spent the last month refactoring my personal site. What started as &quot;make it faster&quot; turned into a month-long spree that replaced the Express + SQLite backend with a fully static Eleventy build, added five visual themes, and set up a GitHub Actions deploy pipeline. All of it, naturally, vibe-coded.</p>
 <p>My old site was built on Express with Handlebars templates and SQLite3 for blog content. It worked for years, but the architecture had grown stale: dynamic server rendering pages on every request, Bootstrap 3.3.2, jQuery 1.10.2, SQLite queries for content that rarely changed. The tipping point was realizing I didn't have to do all the grunt work to overhaul the site — no caching, no CDN, no reason to be dynamic.</p>
 <p>I migrated everything to Eleventy. Handlebars to Nunjucks, SQLite to Markdown files with YAML frontmatter. Ported over 15+ years of blog posts across three categories — programming, cooking, and AI — plus all the legacy project pages (imageprocjs, raytracer, minesweeper, fractal). The Eleventy config is minimal: three collections, one plugin (syntax highlighting), and a passthrough copy for static assets. The build outputs to <code>_site/</code>, and a GitHub Action rsyncs the result to <code>phg1024.github.io</code>.</p>
@@ -81,8 +81,6 @@
 <p>If you want to see the result, it's at <a href="https://phg1024.github.io">phg1024.github.io</a>. Try switching themes — the default is now the minimalist one, but the cyberpunk theme is my favorite.</p>
 </div>
 </div>
-
-<p class="blog-post__date">Apr 22, 2026</p>
 
 <div id="disqus_thread"></div>
 <script>

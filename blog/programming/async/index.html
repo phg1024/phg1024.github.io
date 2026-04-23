@@ -38,7 +38,7 @@
  <main class="site-main" id="main-content" role="main">
   
 <div class="blog-content">
-     <div class="blog-content__inner"><h1>Programming Async (1): Wrapping Functions with Callbacks as Promises</h1>
+     <div class="blog-content__inner"><h1>Programming Async (1): Wrapping Functions with Callbacks as Promises</h1><p class="blog-post__date">Jan 10, 2024</p>
 <p>TL;DR This is a series of unsorted notes to record my learnings when writing async programs.</p>
 <p>Many functions in JavaScript take callbacks to &quot;pass&quot; the outputs to the consumers. In fact, people could easily encounter <a href="http://callbackhell.com/">callback hell</a> if they are not careful enough. There are several ways to work around it, but still in some cases we may want to simply treat such functions as async function and have the consumers <code>await</code> them instead of passing in callbacks.</p>
 <p>For example, the <code>readFile</code> function in the <a href="https://nodejs.org/api/fs.html"><code>fs</code></a> module takes a callback to handle the file reading results:</p>
@@ -87,8 +87,6 @@
 <p>Well, there is still a catch with the <code>Promise</code> trick tho, as mentioned in <a href="https://blog.avenuecode.com/callback-hell-promises-and-async/await">this post</a>. To put it in a simple way: chaining operations with <code>then</code> could still create callback hell if not used carefully/correctly.</p>
 </div>
 </div>
-
-<p class="blog-post__date">Jan 10, 2024</p>
 
 <div id="disqus_thread"></div>
 <script>
