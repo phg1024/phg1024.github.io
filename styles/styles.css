@@ -932,9 +932,13 @@ img {
   box-shadow: var(--shadow);
 }
 
-.blog-content pre,
 .blog-content code {
-  font-family: "SFMono-Regular", Menlo, Monaco, monospace;
+  background: rgba(78, 246, 255, 0.08);
+  color: var(--accent-secondary);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  border: 1px solid rgba(78, 246, 255, 0.15);
 }
 
 .blog-content pre {
@@ -943,6 +947,74 @@ img {
   padding: 1rem 1.2rem;
   overflow-x: auto;
   border: 1px solid rgba(78, 246, 255, 0.12);
+}
+
+/* Override highlight.js default light-theme colors for dark themes */
+.blog-content pre code .hljs-keyword,
+.blog-content pre code .hljs-keyword-title {
+  color: #ff4fd8;
+  font-weight: bold;
+}
+
+.blog-content pre code .hljs-built_in,
+.blog-content pre code .hljs-type {
+  color: #4ef6ff;
+}
+
+.blog-content pre code .hljs-string,
+.blog-content pre code .hljs-literal,
+.blog-content pre code .hljs-number,
+.blog-content pre code .hljs-atom {
+  color: #d7ffd7;
+}
+
+.blog-content pre code .hljs-comment,
+.blog-content pre code .hljs-quote {
+  color: #8474c0;
+}
+
+.blog-content pre code .hljs-name,
+.blog-content pre code .hljs-title,
+.blog-content pre code .hljs-section {
+  color: #f2fff2;
+}
+
+.blog-content pre code .hljs-tag {
+  color: #ff4fd8;
+}
+
+.blog-content pre code .hljs-regexp,
+.blog-content pre code .hljs-link {
+  color: #7cff9d;
+}
+
+.blog-content pre code .hljs-symbol,
+.blog-content pre code .hljs-variable {
+  color: #ffb86c;
+}
+
+.blog-content pre code .hljs-string,
+.blog-content pre code .hljs-template-variable,
+.blog-content pre code .hljs-addition {
+  color: #a5d6ff;
+}
+
+.blog-content pre code .hljs-attr,
+.blog-content pre code .hljs-property {
+  color: #c9b6f7;
+}
+
+.blog-content pre code .hljs-punctuation,
+.blog-content pre code .hljs-meta {
+  color: #8f82b3;
+}
+
+.blog-content pre code {
+  background: none;
+  color: #f7f4ff;
+  padding: 0;
+  border: none;
+  font-size: inherit;
 }
 
 .gallery-page,
@@ -1300,6 +1372,83 @@ img {
   box-shadow: 0 10px 24px rgba(184, 194, 202, 0.14);
 }
 
+[data-theme="minimalist"] .blog-content pre {
+  background: var(--bg-accent);
+  border-color: var(--border);
+  color: var(--text);
+  border-radius: 0.5rem;
+}
+
+[data-theme="minimalist"] .blog-content code {
+  background: rgba(106, 124, 140, 0.1);
+  color: var(--soft);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  border: 1px solid rgba(106, 124, 140, 0.2);
+}
+
+/* Override highlight.js default colors for minimalist theme */
+[data-theme="minimalist"] .blog-content pre code .hljs-keyword,
+[data-theme="minimalist"] .blog-content pre code .hljs-keyword-title {
+  color: #5a6577;
+  font-weight: 700;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-built_in,
+[data-theme="minimalist"] .blog-content pre code .hljs-type {
+  color: #6b5a77;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-string,
+[data-theme="minimalist"] .blog-content pre code .hljs-literal,
+[data-theme="minimalist"] .blog-content pre code .hljs-number {
+  color: #7a6b5a;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-comment,
+[data-theme="minimalist"] .blog-content pre code .hljs-quote {
+  color: #9ca3af;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-name,
+[data-theme="minimalist"] .blog-content pre code .hljs-title,
+[data-theme="minimalist"] .blog-content pre code .hljs-section {
+  color: #2a2e35;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-tag {
+  color: #7a5a65;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-symbol,
+[data-theme="minimalist"] .blog-content pre code .hljs-variable {
+  color: #8b6b3a;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-template-variable,
+[data-theme="minimalist"] .blog-content pre code .hljs-addition {
+  color: #7a6b5a;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-attr,
+[data-theme="minimalist"] .blog-content pre code .hljs-property {
+  color: #5a6577;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-punctuation,
+[data-theme="minimalist"] .blog-content pre code .hljs-meta {
+  color: #9ca3af;
+}
+
+[data-theme="minimalist"] .blog-content pre code {
+  background: none;
+  color: #2a2e35;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+}
+
 [data-theme="win31"] {
   --bg: #008080;
   --bg-accent: #008080;
@@ -1574,6 +1723,79 @@ img {
   background: #ffffff;
   border: 2px solid #7b7b7b;
   box-shadow: inset -1px -1px 0 #7b7b7b, inset 1px 1px 0 #ffffff;
+  border-radius: 0;
+}
+
+[data-theme="win31"] .blog-content code {
+  background: #c0c0c0;
+  color: #000000;
+  padding: 0.1rem 0.3rem;
+  border: 1px solid #000000;
+  border-radius: 0;
+  font-size: 0.9em;
+  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #7b7b7b;
+}
+
+/* Override highlight.js default colors for win31 theme */
+[data-theme="win31"] .blog-content pre code .hljs-keyword,
+[data-theme="win31"] .blog-content pre code .hljs-keyword-title {
+  color: #000080;
+  font-weight: 700;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-built_in,
+[data-theme="win31"] .blog-content pre code .hljs-type {
+  color: #008080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-string,
+[data-theme="win31"] .blog-content pre code .hljs-literal,
+[data-theme="win31"] .blog-content pre code .hljs-number {
+  color: #800080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-comment,
+[data-theme="win31"] .blog-content pre code .hljs-quote {
+  color: #808080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-name,
+[data-theme="win31"] .blog-content pre code .hljs-title,
+[data-theme="win31"] .blog-content pre code .hljs-section {
+  color: #000000;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-tag {
+  color: #000080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-symbol,
+[data-theme="win31"] .blog-content pre code .hljs-variable {
+  color: #800000;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-template-variable,
+[data-theme="win31"] .blog-content pre code .hljs-addition {
+  color: #800080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-attr,
+[data-theme="win31"] .blog-content pre code .hljs-property {
+  color: #000080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-punctuation,
+[data-theme="win31"] .blog-content pre code .hljs-meta {
+  color: #808080;
+}
+
+[data-theme="win31"] .blog-content pre code {
+  background: none;
+  color: #000000;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+  box-shadow: none;
 }
 
 [data-theme="win31"] .feature-card:hover,
@@ -1713,6 +1935,91 @@ img {
   background: rgba(14, 34, 16, 0.94);
   border-color: rgba(200, 255, 200, 0.3);
   box-shadow: 0 0 22px rgba(124, 255, 157, 0.14);
+}
+
+[data-theme="matrix"] .blog-content pre {
+  background: #020a02;
+  border: 1px solid rgba(96, 255, 128, 0.25);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 12px rgba(124, 255, 157, 0.08);
+}
+
+[data-theme="matrix"] .blog-content code {
+  background: rgba(124, 255, 157, 0.1);
+  color: #7cff9d;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  border: 1px solid rgba(124, 255, 157, 0.2);
+  text-shadow: 0 0 4px rgba(124, 255, 157, 0.3);
+}
+
+/* Override highlight.js default light-theme colors for matrix */
+[data-theme="matrix"] .blog-content pre code .hljs-keyword,
+[data-theme="matrix"] .blog-content pre code .hljs-keyword-title {
+  color: #39ff14;
+  font-weight: bold;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-built_in,
+[data-theme="matrix"] .blog-content pre code .hljs-type {
+  color: #00ff40;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-string,
+[data-theme="matrix"] .blog-content pre code .hljs-literal,
+[data-theme="matrix"] .blog-content pre code .hljs-number,
+[data-theme="matrix"] .blog-content pre code .hljs-atom {
+  color: #aaffaa;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-comment,
+[data-theme="matrix"] .blog-content pre code .hljs-quote {
+  color: #2d8e46;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-name,
+[data-theme="matrix"] .blog-content pre code .hljs-title,
+[data-theme="matrix"] .blog-content pre code .hljs-section {
+  color: #d8ffd8;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-tag {
+  color: #ff3333;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-regexp,
+[data-theme="matrix"] .blog-content pre code .hljs-link {
+  color: #7cff9d;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-symbol,
+[data-theme="matrix"] .blog-content pre code .hljs-variable {
+  color: #ffaa33;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-template-variable,
+[data-theme="matrix"] .blog-content pre code .hljs-addition {
+  color: #aaffaa;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-attr,
+[data-theme="matrix"] .blog-content pre code .hljs-property {
+  color: #cc99ff;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-punctuation,
+[data-theme="matrix"] .blog-content pre code .hljs-meta {
+  color: #58a658;
+}
+
+[data-theme="matrix"] .blog-content pre code {
+  background: none;
+  color: #d8ffd8;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+  text-shadow: none;
 }
 
 [data-theme="matrix"] .image_info .media-body {
@@ -1910,6 +2217,83 @@ img {
 
 [data-theme="industrial"] .project-canvas-frame canvas {
   background: #e6ebef;
+}
+
+[data-theme="industrial"] .blog-content pre {
+  background: #e4e8ec;
+  border: 1px solid rgba(97, 113, 127, 0.3);
+  border-radius: 0.3rem;
+  box-shadow: 0 1px 3px rgba(80, 92, 104, 0.15);
+}
+
+[data-theme="industrial"] .blog-content code {
+  background: rgba(216, 221, 230, 0.8);
+  color: #202831;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  border: 1px solid rgba(97, 113, 127, 0.25);
+}
+
+/* Override highlight.js default colors for industrial theme */
+[data-theme="industrial"] .blog-content pre code .hljs-keyword,
+[data-theme="industrial"] .blog-content pre code .hljs-keyword-title {
+  color: #4a5568;
+  font-weight: 700;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-built_in,
+[data-theme="industrial"] .blog-content pre code .hljs-type {
+  color: #566474;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-string,
+[data-theme="industrial"] .blog-content pre code .hljs-literal,
+[data-theme="industrial"] .blog-content pre code .hljs-number {
+  color: #6b7a8a;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-comment,
+[data-theme="industrial"] .blog-content pre code .hljs-quote {
+  color: #8b95a1;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-name,
+[data-theme="industrial"] .blog-content pre code .hljs-title,
+[data-theme="industrial"] .blog-content pre code .hljs-section {
+  color: #202831;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-tag {
+  color: #5a6a7a;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-symbol,
+[data-theme="industrial"] .blog-content pre code .hljs-variable {
+  color: #7a6a4a;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-template-variable,
+[data-theme="industrial"] .blog-content pre code .hljs-addition {
+  color: #6b7a8a;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-attr,
+[data-theme="industrial"] .blog-content pre code .hljs-property {
+  color: #4a5568;
+}
+
+[data-theme="industrial"] .blog-content pre code .hljs-punctuation,
+[data-theme="industrial"] .blog-content pre code .hljs-meta {
+  color: #8b95a1;
+}
+
+[data-theme="industrial"] .blog-content pre code {
+  background: none;
+  color: #202831;
+  padding: 0;
+  border: none;
+  font-size: inherit;
 }
 
 [data-theme="industrial"] .pointer-reactive-overlay {
