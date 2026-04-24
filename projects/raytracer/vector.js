@@ -72,7 +72,7 @@ Vector3.prototype.dot = function (that) {
 Vector3.prototype.cross = function( that ) {
     return new Vector3(
         this.y * that.z - this.z * that.y,
-        this.z + that.x - this.x * that.z,
+        this.z * that.x - this.x * that.z,
         this.x * that.y - this.y * that.x
     );
 };
