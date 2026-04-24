@@ -100,3 +100,94 @@ Complex.prototype.equals = function(that) {
 Complex.ZERO = new Complex(0, 0);
 Complex.ONE = new Complex(1, 0);
 Complex.I = new Complex(0, 1);
+// ========================================
+// Random number generator (Mulberry32)
+// ========================================
+function createRNG(seed) {
+    return function() {
+        seed |= 0;
+        seed = seed + 0x6D2B79F5 | 0;
+        var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+}
+
+// ========================================
+// Cosine-weighted hemisphere sampling
+// ========================================
+function cosineHemisphere(normal, u, v) {
+    var r1 = Math.random();
+    var r2 = Math.random();
+    var theta = 2 * Math.PI * r1;
+    var phi = Math.acos(Math.sqrt(r2));
+    
+    var x = Math.cos(theta) * Math.sin(phi);
+    var y = Math.sin(theta) * Math.sin(phi);
+    var z = Math.cos(phi);
+    
+    // Reconstruct orthonormal basis
+    var N = normal;
+    var B = u;
+    var A = N.cross(B).normalize();
+    B = A.cross(N).normalize();
+    
+    return new Vector3(
+        N.x + x * A.x + y * B.x + z * N.x,
+        N.y + x * A.y + y * B.y + z * N.y,
+        N.z + x * A.z + y * B.z + z * N.z
+    ).normalize();
+}
+
+// ========================================
+// Hemisphere sampling (uniform)
+// ========================================
+function hemisphereSample(normal, u, v) {
+    var r1 = Math.random();
+    var r2 = Math.random();
+    var theta = 2 * Math.PI * r1;
+    var phi = Math.acos(1 - 2 * r2);
+    
+    var x = Math.sin(phi) * Math.cos(theta);
+    var y = Math.sin(phi) * Math.sin(theta);
+    var z = Math.cos(phi);
+    
+    var N = normal;
+    var B = u;
+    var A = N.cross(B).normalize();
+    B = A.cross(N).normalize();
+    
+    return new Vector3(
+        N.x + x * A.x + y * B.x + z * N.x,
+        N.y + x * A.y + y * B.y + z * N.y,
+        N.z + x * A.z + y * B.z + z * N.z
+    ).normalize();
+}
+
+// ========================================
+// Sample point on unit sphere
+// ========================================
+function sphereSample() {
+    var r1 = Math.random();
+    var r2 = Math.random();
+    var theta = 2 * Math.PI * r1;
+    var phi = Math.acos(2 * r2 - 1);
+    
+    var x = Math.sin(phi) * Math.cos(theta);
+    var y = Math.sin(phi) * Math.sin(theta);
+    var z = Math.cos(phi);
+    
+    return new Vector3(x, y, z);
+}
+
+// ========================================
+// Russian Roulette
+// ========================================
+function russianRoulette(color, rng) {
+    var max = Math.max(color.r, color.g, color.b) / 255.0;
+    if (max < 0.01) return { survive: false, color: new Color(0, 0, 0, 255) };
+    if (rng() < max) {
+        return { survive: true, color: color.mul(1.0 / max) };
+    }
+    return { survive: false, color: new Color(0, 0, 0, 255) };
+}

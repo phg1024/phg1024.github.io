@@ -1,5 +1,6 @@
 /**
  * Created by Peihong Guo on 10/11/13.
+ * Updated to support path tracing mode.
  */
 importScripts('raytracer.js', 'image.js', 'point.js', 'vector.js', 'utils.js', 'shape.js', 'mesh.js');
 
@@ -18,10 +19,10 @@ self.addEventListener('message', function(e) {
                 y2: data.y2,
                 nsamples : data.nsamples,
                 maxDepth : data.maxDepth,
-                tidx: data.tidx
-            }
-
-            //self.postMessage({w: data.w, h:data.h, nsamples:data.nsamples, maxDepth:data.maxDepth});
+                tidx: data.tidx,
+                pathTrace: data.pathTrace || false,
+                seed: data.seed || 42
+            };
 
             run();
 
@@ -40,28 +41,23 @@ function run()
     scene.addObject(new Sphere(new Point3(1.0, 2.0, 2.0), 2.0, Color.LIGHTGREEN, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 3.5, refractive: true}));
     scene.addObject(new Sphere(new Point3(-2.0, 2.0, 3.0), 1.5, Color.DARKYELLOW, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 0.15}));
     scene.addObject(new Sphere(new Point3(2.0, 4.0, 8.0), 4.0, Color.LIGHTRED, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 0.1}));
-    scene.addObject(new Sphere(new Point3(-4.0, 4.0, 6.0), 2.0, Color.LIGHTBLUE, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 0.75}));
+    scene.addObject(new Sphere(new Point3(-4.0, 4.0, 6.0), 2.0, Color.LIGHTBLUE, {Ka:0.1, Kd:0.9, Ks:0.0, ior: 0.75}));
     scene.addObject(new Sphere(new Point3(0, -1e6, 0), 1e6, Color.GRAY, {Ka:0.1, Kd:0.3, Ks:0.1, ior: 0.25}));
-
-    //scene.addObject(new Mesh('cube.obj'));
-
-    scene.addLight( {
-            pos: new Point3(-40.0, 80.0, -40.0),
-            radius: 20.0,
-            ambient: new Color(10, 10, 10, 255),
-            diffuse: Color.WHITE,
-            specular: Color.WHITE,
-            specFactor: 40.0,
-            intensity: 1.0}
-    );
+    scene.addAreaLight(makeAreaLight(
+        new Point3(-6.0, 14.0, -8.0),
+        new Vector3(10.0, 0.0, 0.0),
+        new Vector3(0.0, 0.0, 10.0),
+        Color.WHITE,
+        3.0
+    ));
 
     // setup camera
     var cam = new Camera(
-        new Point3(0, 7.0, -36.0),   // origin
-        new Vector3(0, -0.1, 1),              // dir
-        new Vector3(0, 1, 0),       // up,
-        6.0,                        // f,
-        22.5,                       // fovy
+        new Point3(0, 7.0, -36.0),    // origin
+        new Vector3(0, -0.1, 1),               // dir
+        new Vector3(0, 1, 0),         // up,
+        6.0,                          // f,
+        22.5,                         // fovy
         rayTracingInfo.w,
         rayTracingInfo.h
     );
@@ -78,23 +74,45 @@ function run()
 
     var nsamples = rayTracingInfo.nsamples;
     var maxDepth = rayTracingInfo.maxDepth;
+    var pathTraceMode = rayTracingInfo.pathTrace;
+    var baseSeed = rayTracingInfo.seed || 42;
     var progress = 0;
     var progressStep = 1.0 / h;
+
     for(var i=y1;i<y2;i++)
     {
         for(var j=x1;j<x2;j++)
         {
-            var rays = cam.getRays(j, i, nsamples, maxDepth);
-            var pixel = new Color(0, 0, 0, 0);
-            for(var k=0;k<rays.length;k++)
-            {
-                var hit = scene.intersect(rays[k], cam.origin);
-                pixel = pixel.add(hit.color);
+            var rng = createRNG(baseSeed + i * 1000 + j + rayTracingInfo.tidx);
+            var pixel;
+
+            if (pathTraceMode) {
+                // ── Path Tracing Mode ──
+                pixel = new Color(0, 0, 0, 0);
+                for (var s = 0; s < nsamples; s++) {
+                    var jitterX = rng() - 0.5;
+                    var jitterY = rng() - 0.5;
+                    var rayDir = cam.getRays(j + jitterX, i + jitterY, 1, maxDepth)[0].v;
+                    var color = scene.pathTrace(cam.origin, rayDir, maxDepth, rng);
+                    pixel = pixel.add(color);
+                }
+                img.setPixel(j-x1, y2-1-i, pixel.mul(1.0 / nsamples));
+            } else {
+                 // ── Traditional Ray Tracing Mode ──
+                pixel = new Color(0, 0, 0, 0);
+                for(var k=0;k<nsamples;k++) {
+                    var jitterX = rng() - 0.5;
+                    var jitterY = rng() - 0.5;
+                    var rays = cam.getRays(j + jitterX,
+                                           i + jitterY,
+                                           1, maxDepth);
+                    var hit = scene.intersect(rays[0], cam.origin);
+                    pixel = pixel.add(hit.color);
+                }
+                img.setPixel(j-x1, y2-1-i, pixel.mul(1.0 / nsamples));
             }
-            img.setPixel(j-x1, y2-1-i, pixel.mul(1.0/nsamples));
-        }
+         }
         progress += progressStep;
-        //self.postMessage({msg: 'progress', tidx: rayTracingInfo.tidx, value: (progress * 100)});
     }
 
     // post the image data to the main thread

@@ -71,10 +71,10 @@ function RGBAImage( w, h )
     this.setPixel = function( x, y, c )
     {
         var idx = (y * this.w + x) * this.channels;
-        this.data[idx] = c.r;
-        this.data[idx+1] = c.g;
-        this.data[idx+2] = c.b;
-        this.data[idx+3] = c.a;
+        this.data[idx] = clamp(c.r, 0, 255);
+        this.data[idx+1] = clamp(c.g, 0, 255);
+        this.data[idx+2] = clamp(c.b, 0, 255);
+        this.data[idx+3] = clamp(c.a, 0, 255);
     }
 }
 

@@ -86,11 +86,13 @@ function Sphere(center, radius, color, material)
             // add lighting
             var c = shading( this, eyepos, hitPos, n, scene );
 
+            var reflectivity = this.material.refractive ? 0.7 : materialValue(this.material.Ks, this.material.ior);
+
             return {
                 hit: true, t: t,
                 p: hitPos, color: c,
                 newRay : {v:rv, p: hitPos, depth: ray.depth - 1},
-                ior: this.material.refractive ?0.7:this.material.ior
+                ior: reflectivity
             };
         }
     };
