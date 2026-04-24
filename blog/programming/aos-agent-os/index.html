@@ -54,28 +54,7 @@
 <li><strong>Workspace VFS</strong> - Each agent gets a mounted view: private scratch space, shared project mounts, read-only reference mounts, per-task overlays</li>
 <li><strong>Supervisor Tree</strong> - Parent agents spawn child agents, monitor them, aggregate results, and recover from failures</li>
 </ol>
-<pre class="language-text"><code class="language-text">User / API
-   |
-Agent Kernel
-   |- Scheduler
-   |- Capability Manager
-   |- Process Table
-   |- IPC Bus
-   |- Artifact Store
-   |- Audit Log
-   |- Inference Adapter Registry
-   |
-   |- Supervisor Agent
-   |   |- Research Agent
-   |   |- Coding Agent
-   |   |- Test Agent
-   |   `- Review Agent
-   |
-   |- Tool Workers / Sandboxes
-   `- Model Backends
-       |- Local vLLM
-       |- Anthropic-compatible
-       `- OpenAI-compatible</code></pre>
+<p><img src="/images/blog/aos-agent-os/aos-architecture.png" alt="AOS architecture overview"></p>
 <h2>Guiding Principles</h2>
 <h3>1. Make the Runtime Deterministic Where Possible</h3>
 <p>The kernel should be more like an operating system than an agent. Core semantics should be deterministic:</p>
