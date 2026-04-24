@@ -72,6 +72,13 @@
                                  <span>Threads</span>
                                  <input id="threads" type="text" value="8" inputmode="numeric">
                              </label>
+                             <label class="project-field project-field--compact">
+                                 <span>Backend</span>
+                                 <select id="backend">
+                                     <option value="cpu">CPU Workers</option>
+                                     <option value="webgpu" selected>WebGPU</option>
+                                 </select>
+                             </label>
                          </div>
 
                          <div class="project-pathtrace-toggle">
@@ -122,6 +129,7 @@
          <script type="text/javascript" src="vector.js"></script>
          <script type="text/javascript" src="mesh.js"></script>
          <script type="text/javascript" src="raytracer.js"></script>
+         <script type="text/javascript" src="webgpuRenderer.js"></script>
          <script type="text/javascript" src="FileSaver.js"></script>
          <script type="text/javascript" src="canvas-toBlob.js"></script>
          <script type="text/javascript">
@@ -130,12 +138,32 @@
 
             function init() {
                 canvas = document.getElementById('canvas');
-                ctx = canvas.getContext('2d');
+                ensureCanvasBackend('2d');
                 finishedCount = 0;
                 setProgressBar(0);
 
                 var pathTraceToggle = document.getElementById('pathTraceToggle');
                 pathTraceToggle.addEventListener('change', setDefaultSamplesForMode);
+
+                var backend = document.getElementById('backend');
+                if (!navigator.gpu) {
+                    backend.value = 'cpu';
+                    backend.querySelector('option[value="webgpu"]').disabled = true;
+                }
+             }
+
+            function ensureCanvasBackend(nextBackend) {
+                if (canvasBackend === nextBackend && canvas) return;
+
+                var currentCanvas = document.getElementById('canvas');
+                var replacement = currentCanvas.cloneNode(false);
+                replacement.width = currentCanvas.width;
+                replacement.height = currentCanvas.height;
+                currentCanvas.parentNode.replaceChild(replacement, currentCanvas);
+
+                canvas = replacement;
+                canvasBackend = nextBackend;
+                ctx = nextBackend === '2d' ? canvas.getContext('2d') : null;
              }
 
             function setDefaultSamplesForMode() {
@@ -224,25 +252,35 @@
 
             var canvas;
             var ctx;
+            var canvasBackend;
             var finishedCount;
             var startT, endT;
             var progress;
 
-            function render() {
-                if (!canvas || !ctx) init();
+            async function render() {
+                if (!canvas) init();
                 setProgressBar(0);
                 finishedCount = 0;
                 startT = new Date();
 
+                var backend = document.getElementById('backend').value;
+                ensureCanvasBackend(backend === 'webgpu' ? 'webgpu' : '2d');
+
                 var w = canvas.width;
                 var h = canvas.height;
-                ctx.clearRect(0, 0, w, h);
+                if (ctx) ctx.clearRect(0, 0, w, h);
 
                 var pathTraceMode = document.getElementById('pathTraceToggle').checked;
                 var defaultSamples = pathTraceMode ? PATH_TRACE_DEFAULT_SAMPLES : RAY_TRACE_DEFAULT_SAMPLES;
                 var nsamples = parseInt(document.getElementById('nsamples').value, 10) || defaultSamples;
                 var maxDepth = parseInt(document.getElementById('maxdepth').value, 10) || 8;
                 var nthreads = parseInt(document.getElementById('threads').value, 10) || 8;
+                var seed = Math.random() * 999999 | 0;
+
+                if (backend === 'webgpu') {
+                    await renderWithWebGPU(w, h, nsamples, maxDepth, pathTraceMode, seed);
+                    return;
+                }
 
                 var nextTask = 0;
                 var blockSizeX = 32, blockSizeY = 32;
@@ -255,7 +293,6 @@
 
                 progress = [];
                 var workers = [];
-                var seed = Math.random() * 999999 | 0;
                 for (var tid = 0; tid < nthreads; tid++) {
                     var worker = new Worker('renderWorker.js');
                     worker.idx = tid;
@@ -305,6 +342,37 @@
                         pathTrace: pathTraceMode, seed: seed
                      });
                  }
+             }
+
+            async function renderWithWebGPU(width, height, samples, maxDepth, pathTraceMode, seed) {
+                document.getElementById("progress").textContent = 'Rendering with WebGPU...';
+                try {
+                    var blockSizeX = 32;
+                    var blockSizeY = 32;
+                    var tasks = createHilbertTasks(width, height, blockSizeX, blockSizeY);
+                    await window.renderWebGPU({
+                        canvas: canvas,
+                        width: width,
+                        height: height,
+                        samples: samples,
+                        maxDepth: maxDepth,
+                        pathTrace: pathTraceMode,
+                        seed: seed,
+                        tasks: tasks,
+                        onProgress: function (done, total) {
+                            setProgressBar(done / total * 100);
+                            document.getElementById("progress").textContent = 'Rendering with WebGPU: ' + done + ' / ' + total + ' patches';
+                        }
+                    });
+                    setProgressBar(100);
+                    endT = new Date();
+                    document.getElementById("progress").textContent = 'Finished in ' + (endT - startT) + ' ms.';
+                } catch (error) {
+                    document.getElementById('backend').value = 'cpu';
+                    document.getElementById("progress").textContent = error.message + ' Falling back to CPU workers.';
+                    await new Promise(function (resolve) { setTimeout(resolve, 50); });
+                    return render();
+                }
              }
 
             function updateCanvas(x1, x2, y1, y2, buffer) {

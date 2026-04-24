@@ -42,7 +42,7 @@ function run()
     scene.addObject(new Sphere(new Point3(-2.0, 2.0, 3.0), 1.5, Color.DARKYELLOW, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 0.15}));
     scene.addObject(new Sphere(new Point3(2.0, 4.0, 8.0), 4.0, Color.LIGHTRED, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 0.1}));
     scene.addObject(new Sphere(new Point3(-4.0, 4.0, 6.0), 2.0, Color.LIGHTBLUE, {Ka:0.1, Kd:0.9, Ks:0.0, ior: 0.75}));
-    scene.addObject(new Sphere(new Point3(0, -1e6, 0), 1e6, Color.GRAY, {Ka:0.1, Kd:0.3, Ks:0.1, ior: 0.25}));
+    scene.addObject(new Sphere(new Point3(0, -1e3, 0), 1e3, Color.GRAY, {Ka:0.1, Kd:0.3, Ks:0.1, ior: 0.25}));
     scene.addAreaLight(makeAreaLight(
         new Point3(-6.0, 14.0, -8.0),
         new Vector3(10.0, 0.0, 0.0),
