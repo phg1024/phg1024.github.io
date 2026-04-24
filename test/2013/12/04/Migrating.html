@@ -38,7 +38,37 @@
  <main class="site-main" id="main-content" role="main">
   
 <div class="blog-content">
-     <div class="blog-content__inner"><h1>Migrating to github.io</h1><p class="blog-post__date">Dec 4, 2013</p>
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Migrating to github.io</h1><p class="blog-post__date">Dec 4, 2013</p>
 <p>The website is slowly shaping into the one I've always wanted to build: static(but also interactive), simple, and most importantly, easy to maintain. Because I have had enough with my previous website. Written from scratch surely gives me total control over the pages, but that wasn't exactly what I needed. Updating the website became a pain in the ass for me soon enough, and I just didn't bother to switch to a different way -- actually the right way of doing it.</p>
 <p>It first occurred to me that I could actually put my site on <a href="http://github.io">github.io</a> and save a few bucks for coffee after visiting some really cool pages hosted on <a href="http://github.io">github.io</a>. Too bad I could not recovery those links from my memory :( But the good part is I knew what I wanted and I had just found it!</p>
 <p>There is not much to talk about for rest of the story: I simply went through the tutorial of <a href="http://jekyllrb.com/">Jekyll</a> and started building my version 5 website, feeling excited!</p>
@@ -49,20 +79,20 @@
 <script>
      var disqus_config = function () {
         this.page.identifier = "/test/2013/12/04/Migrating.html";
-     };
+      };
 
-     (function () {
+      (function () {
         var d = document, s = d.createElement('script');
         s.src = 'https://pgh1024.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-     })();
+         (d.head || d.body).appendChild(s);
+      })();
 </script>
 <noscript>
     Please enable JavaScript to view the
-    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
         comments powered by Disqus.
-    </a>
+     </a>
 </noscript>
 
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -70,11 +100,11 @@
     MathJax = {
         tex: {
             inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
+         },
         svg: {
             fontCache: 'global'
-        }
-    };
+         }
+     };
 </script>
 
  </main>

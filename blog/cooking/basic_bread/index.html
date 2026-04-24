@@ -38,7 +38,37 @@
  <main class="site-main" id="main-content" role="main">
   
 <div class="blog-content">
-     <div class="blog-content__inner"><h1>Making Bread (1): Basic Bread</h1><p class="blog-post__date">Jan 1, 2024</p>
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Making Bread (1): Basic Bread</h1><p class="blog-post__date">Jan 1, 2024</p>
 <h2>材料</h2>
 <table>
 <thead>
@@ -136,20 +166,20 @@
 <script>
      var disqus_config = function () {
         this.page.identifier = "/blog/cooking/basic_bread/";
-     };
+      };
 
-     (function () {
+      (function () {
         var d = document, s = d.createElement('script');
         s.src = 'https://pgh1024.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-     })();
+         (d.head || d.body).appendChild(s);
+      })();
 </script>
 <noscript>
     Please enable JavaScript to view the
-    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
         comments powered by Disqus.
-    </a>
+     </a>
 </noscript>
 
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -157,11 +187,11 @@
     MathJax = {
         tex: {
             inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
+         },
         svg: {
             fontCache: 'global'
-        }
-    };
+         }
+     };
 </script>
 
  </main>

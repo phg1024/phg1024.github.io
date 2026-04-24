@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>Peihong Guo</title>
+ <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Refactoring My Ray Tracer: From Broken to WebGPU Path Tracing</h1><p class="blog-post__date">Apr 24, 2026</p>
+<blockquote>
+<p><strong>Note</strong>: <em>This entire refactoring was done by Codex. I just asked it to fix one bug and ended up with a complete path tracer with WebGPU acceleration. Worth documenting the journey.</em></p>
+</blockquote>
+<p>I spent a Friday fixing a single-character typo in my old JavaScript ray tracer. What started as &quot;oh this should be easy&quot; became a full rewrite into a Monte Carlo path tracer with a WebGPU compute shader backend — and it's now 20x faster than the CPU worker version.</p>
+<p>Here's how it went.</p>
+<h2>The Bug</h2>
+<p>The project uses a <code>Vector3</code> class for all 3D math, and there was a single-character typo in the cross product:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// The bug</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>z <span class="token operator">+</span> that<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">*</span> that<span class="token punctuation">.</span>z   <span class="token comment">// y-component</span>
+<span class="token comment">//                 ^</span>
+<span class="token comment">//               missing *</span></code></pre>
+<p>Should have been:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// The fix</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>z <span class="token operator">*</span> that<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">*</span> that<span class="token punctuation">.</span>z   <span class="token comment">// y-component</span></code></pre>
+<p>One character. And because the cross product feeds into normal computation, reflection, and refraction — every light calculation in the entire scene was producing garbage. It explains why the rendered images never looked right, even when the ray geometry was technically &quot;correct.&quot;</p>
+<h2>The Refactoring</h2>
+<p>Codex rewrote <code>raytracer.js</code> from scratch with a <strong>Monte Carlo path tracer</strong>. Here's the architecture:</p>
+<h3>Scene-level intersection</h3>
+<p>The old <code>Scene.intersect()</code> was recursive and deeply coupled to shading. The new <code>Scene.intersectSingle()</code> is a <strong>non-recursive, single-bounce</strong> hit query:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token class-name">Scene</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">intersectSingle</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">ray<span class="token punctuation">,</span> eyepos</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> hit <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">hit</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token literal-property property">t</span><span class="token operator">:</span> Number<span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">,</span> <span class="token literal-property property">object</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>objects<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>objects<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span>intersectT<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             <span class="token keyword">var</span> t <span class="token operator">=</span> obj<span class="token punctuation">.</span><span class="token function">intersectT</span><span class="token punctuation">(</span>ray<span class="token punctuation">.</span>p<span class="token punctuation">,</span> ray<span class="token punctuation">.</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">!==</span> <span class="token keyword">undefined</span> <span class="token operator">&amp;&amp;</span> t <span class="token operator">&lt;</span> hit<span class="token punctuation">.</span>t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                 <span class="token keyword">var</span> hitPos <span class="token operator">=</span> ray<span class="token punctuation">.</span>p<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>ray<span class="token punctuation">.</span>v<span class="token punctuation">.</span><span class="token function">mul</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 hit <span class="token operator">=</span> <span class="token punctuation">{</span>
+                     <span class="token literal-property property">hit</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">t</span><span class="token operator">:</span> t<span class="token punctuation">,</span> <span class="token literal-property property">p</span><span class="token operator">:</span> hitPos<span class="token punctuation">,</span>
+                     <span class="token literal-property property">normal</span><span class="token operator">:</span> obj<span class="token punctuation">.</span>center
+                          <span class="token operator">?</span> Vector3<span class="token punctuation">.</span><span class="token function">fromPoint3</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>center<span class="token punctuation">,</span> hitPos<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">normalized</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                          <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Vector3</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     <span class="token literal-property property">object</span><span class="token operator">:</span> obj
+                  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+             <span class="token punctuation">}</span>
+         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+             <span class="token keyword">var</span> h <span class="token operator">=</span> obj<span class="token punctuation">.</span><span class="token function">intersect</span><span class="token punctuation">(</span>ray<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> eyepos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token keyword">if</span> <span class="token punctuation">(</span>h<span class="token punctuation">.</span>hit <span class="token operator">&amp;&amp;</span> h<span class="token punctuation">.</span>t <span class="token operator">&lt;</span> hit<span class="token punctuation">.</span>t<span class="token punctuation">)</span> <span class="token punctuation">{</span> hit <span class="token operator">=</span> h<span class="token punctuation">;</span> hit<span class="token punctuation">.</span>object <span class="token operator">=</span> obj<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+         <span class="token punctuation">}</span>
+     <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> hit<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>This works with both the new-style <code>Sphere</code> objects and legacy shapes. The key difference: <strong>it never calls <code>shading()</code></strong>. That's now the path tracer's job.</p>
+<h3>Throughput-based path tracing</h3>
+<p>The new <code>Scene.pathTrace()</code> tracks a <strong>throughput vector</strong> — the cumulative radiance throughput as the path bounces through the scene:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token class-name">Scene</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">pathTrace</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">origin<span class="token punctuation">,</span> direction<span class="token punctuation">,</span> maxDepth<span class="token punctuation">,</span> rng</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> rayOrigin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point3</span><span class="token punctuation">(</span>origin<span class="token punctuation">.</span>x<span class="token punctuation">,</span> origin<span class="token punctuation">.</span>y<span class="token punctuation">,</span> origin<span class="token punctuation">.</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> rayDir <span class="token operator">=</span> direction<span class="token punctuation">.</span><span class="token function">normalized</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> throughput <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Color</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> surfaceColor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Color</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> radiance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Color</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> depth <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> depth <span class="token operator">&lt;</span> maxDepth<span class="token punctuation">;</span> depth<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> hit <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">intersectSingle</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>hit<span class="token punctuation">.</span>hit <span class="token operator">||</span> hit<span class="token punctuation">.</span>t <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">addColor</span><span class="token punctuation">(</span>radiance<span class="token punctuation">,</span> <span class="token function">applyThroughput</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>bgColor<span class="token punctuation">,</span> throughput<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+         <span class="token comment">// sample material BRDF, update throughput</span>
+     <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token function">addColor</span><span class="token punctuation">(</span>radiance<span class="token punctuation">,</span> <span class="token function">applyThroughput</span><span class="token punctuation">(</span>surfaceColor<span class="token punctuation">,</span> throughput<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Each bounce updates the throughput via <strong>BRDF-weighted sampling</strong>. The material's diffuse and specular components are sampled proportionally to their weights — a classic <strong>multiple importance sampling</strong> approach:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">var</span> diffuseProbability <span class="token operator">=</span> Kd <span class="token operator">/</span> total<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">rng</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> diffuseProbability<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> newDir <span class="token operator">=</span> <span class="token function">sampleDiffuseDirection</span><span class="token punctuation">(</span><span class="token constant">N</span><span class="token punctuation">,</span> rng<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    throughput <span class="token operator">=</span> <span class="token function">attenuateColor</span><span class="token punctuation">(</span>throughput<span class="token punctuation">,</span> surfaceColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    throughput <span class="token operator">=</span> <span class="token function">scaleThroughput</span><span class="token punctuation">(</span>throughput<span class="token punctuation">,</span> Kd <span class="token operator">/</span> diffuseProbability<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> specularProbability <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token operator">-</span> diffuseProbability<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> reflected <span class="token operator">=</span> <span class="token function">reflect</span><span class="token punctuation">(</span><span class="token constant">N</span><span class="token punctuation">,</span> rayDir<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    throughput <span class="token operator">=</span> <span class="token function">scaleThroughput</span><span class="token punctuation">(</span>throughput<span class="token punctuation">,</span> Ks <span class="token operator">/</span> specularProbability<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3>Schlick's Fresnel</h3>
+<p>For refractive materials, Codex replaced the hardcoded 0.7ior fallback with <strong>Schlick's approximation</strong> for Fresnel coefficients:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">fresnelSchiek</span><span class="token punctuation">(</span><span class="token parameter">cosTheta<span class="token punctuation">,</span> ior</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> r0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">-</span> ior<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">+</span> ior<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    r0 <span class="token operator">=</span> r0 <span class="token operator">*</span> r0<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> r0 <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">-</span> r0<span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">-</span> cosTheta<span class="token punctuation">,</span> <span class="token number">5.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This gives the correct <strong>angle-dependent reflectance</strong>: glass reflects more at grazing angles, less at normal incidence. Combined with properIOR handling (entering vs. exiting surfaces), it enables <strong>total internal reflection</strong> for the first time.</p>
+<h3>Area Lights and Soft Shadows</h3>
+<p>The old scene had a single point light. The new renderer supports <strong>area lights</strong> — finite surfaces with a position, orientation, color, and intensity:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">makeAreaLight</span><span class="token punctuation">(</span><span class="token parameter">center<span class="token punctuation">,</span> u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> color<span class="token punctuation">,</span> intensity</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">center</span><span class="token operator">:</span> center<span class="token punctuation">,</span> <span class="token literal-property property">u</span><span class="token operator">:</span> u<span class="token punctuation">,</span> <span class="token literal-property property">v</span><span class="token operator">:</span> v<span class="token punctuation">,</span>
+        <span class="token literal-property property">color</span><span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token literal-property property">intensity</span><span class="token operator">:</span> intensity<span class="token punctuation">,</span>
+        <span class="token literal-property property">area</span><span class="token operator">:</span> u<span class="token punctuation">.</span><span class="token function">cross</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">norm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">normal</span><span class="token operator">:</span> u<span class="token punctuation">.</span><span class="token function">cross</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">normalized</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+     <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Light contribution is estimated via <strong>cosine-weighted area sampling</strong> with a shadow test against all scene objects. Soft shadows appear naturally — objects cast softer shadows when they're closer to the light source.</p>
+<h3>Russian Roulette Termination</h3>
+<p>Instead of a hard <code>maxDepth</code> cutoff (which creates banding artifacts), Codex added <strong>Russian Roulette</strong> for path termination:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">var</span> rrResult <span class="token operator">=</span> <span class="token function">russianRoulette</span><span class="token punctuation">(</span>surfaceColor<span class="token punctuation">,</span> rng<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>rrResult<span class="token punctuation">.</span>survive<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">addColor</span><span class="token punctuation">(</span>radiance<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>bgColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+throughput <span class="token operator">=</span> <span class="token function">attenuateColor</span><span class="token punctuation">(</span>throughput<span class="token punctuation">,</span> rrResult<span class="token punctuation">.</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>When the throughput falls below a threshold, the path is terminated probabilistically — but with higher surviving colors to compensate. This gives <strong>unbiased, smooth convergence</strong> without hard cutoff banding.</p>
+<h3>Cosine-Weighted Diffuse Sampling</h3>
+<p>For diffuse bounces, Codex used a <strong>cosine-weighted hemisphere sample</strong> (not uniform):</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">sampleDiffuseDirection</span><span class="token punctuation">(</span><span class="token parameter">normal<span class="token punctuation">,</span> rng</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> tangent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vector3</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> r1 <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token function">rng</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> r2 <span class="token operator">=</span> <span class="token function">rng</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> r2s <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>r2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> local <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vector3</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>r1<span class="token punctuation">)</span><span class="token operator">*</span>r2s<span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>r1<span class="token punctuation">)</span><span class="token operator">*</span>r2s<span class="token punctuation">,</span>
+                            Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">-</span>r2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment">// transform to world space via orthonormal basis</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Vector3</span><span class="token punctuation">(</span>
+        local<span class="token punctuation">.</span>x <span class="token operator">*</span> tangent<span class="token punctuation">.</span>x <span class="token operator">+</span> local<span class="token punctuation">.</span>y <span class="token operator">*</span> bitangent<span class="token punctuation">.</span>x <span class="token operator">+</span> local<span class="token punctuation">.</span>z <span class="token operator">*</span> normal<span class="token punctuation">.</span>x<span class="token punctuation">,</span>
+        local<span class="token punctuation">.</span>x <span class="token operator">*</span> tangent<span class="token punctuation">.</span>y <span class="token operator">+</span> local<span class="token punctuation">.</span>y <span class="token operator">*</span> bitangent<span class="token punctuation">.</span>y <span class="token operator">+</span> local<span class="token punctuation">.</span>z <span class="token operator">*</span> normal<span class="token punctuation">.</span>y<span class="token punctuation">,</span>
+        local<span class="token punctuation">.</span>x <span class="token operator">*</span> tangent<span class="token punctuation">.</span>z <span class="token operator">+</span> local<span class="token punctuation">.</span>y <span class="token operator">*</span> bitangent<span class="token punctuation">.</span>z <span class="token operator">+</span> local<span class="token punctuation">.</span>z <span class="token operator">*</span> normal<span class="token punctuation">.</span>z
+     <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">normalized</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This is the physically correct sampling distribution for a Lambertian surface — samples are weighted toward the surface normal, reducing variance dramatically.</p>
+<h2>Before and After</h2>
+<p>Here's a side-by-side comparison of the same scene (320×240, same camera position) before and after the refactoring:</p>
+<div class="comparison-container">
+    <div class="comparison-item">
+        <img src="/images/blog/raytracer-refactor/before.png" alt="Before: traditional ray tracer" class="comparison-image">
+        <p class="comparison-label">Before: traditional ray tracer</p>
+    </div>
+    <div class="comparison-item">
+        <img src="/images/blog/raytracer-refactor/after.png" alt="After: Monte Carlo path tracer" class="comparison-image">
+        <p class="comparison-label">After: Monte Carlo path tracer</p>
+    </div>
+</div>
+<p>The difference is night and day. Notice:</p>
+<ul>
+<li><strong>Softer, more natural shadows</strong> from the area light</li>
+<li><strong>Glossy specular highlights</strong> on the refractive spheres</li>
+<li><strong>Proper refraction</strong> with angle-dependent Fresnel reflection</li>
+<li><strong>Energy conservation</strong> through BRDF-weighted sampling</li>
+<li><strong>No banding</strong> from Russian Roulette termination</li>
+</ul>
+<p>The rendering is now <strong>physically plausible</strong> — not just &quot;looks kind of right.&quot;</p>
+<h2>The WebGPU Backend</h2>
+<p>This is the part that really surprised me. Codex also wrote a <strong>WebGPU compute shader</strong> that runs the entire path tracer on the GPU.</p>
+<p>The shader is written in <strong>WGSL</strong> (WebGPU Shading Language) and contains the full path tracing logic:</p>
+<pre class="language-wgsl"><code class="language-wgsl"><span class="token keyword">struct</span> <span class="token class-name">Params</span> <span class="token punctuation">{</span>
+    width<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span> height<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span> samples<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span>
+    maxDepth<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span> pathTrace<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span> seed<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span>
+    tileX<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span> tileY<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span> tileWidth<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span> tileHeight<span class="token punctuation">:</span> <span class="token builtin">u32</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">@</span><span class="token attributes attr-name">group</span><span class="token punctuation">(</span><span class="token int-literal number">0</span><span class="token punctuation">)</span> <span class="token punctuation">@</span><span class="token attributes attr-name">binding</span><span class="token punctuation">(</span><span class="token int-literal number">0</span><span class="token punctuation">)</span> <span class="token keyword">var</span> outputTexture<span class="token punctuation">:</span> <span class="token builtin">texture_storage_2d</span><span class="token punctuation">&lt;</span>rgba16float<span class="token punctuation">,</span> write<span class="token punctuation">></span><span class="token punctuation">;</span>
+<span class="token punctuation">@</span><span class="token attributes attr-name">group</span><span class="token punctuation">(</span><span class="token int-literal number">0</span><span class="token punctuation">)</span> <span class="token punctuation">@</span><span class="token attributes attr-name">binding</span><span class="token punctuation">(</span><span class="token int-literal number">1</span><span class="token punctuation">)</span> <span class="token keyword">var</span><span class="token punctuation">&lt;</span><span class="token keyword">uniform</span><span class="token punctuation">></span> params<span class="token punctuation">:</span> <span class="token class-name">Params</span><span class="token punctuation">;</span></code></pre>
+<p>The compute shader implements:</p>
+<ul>
+<li><strong>Sphere intersection</strong> with analytic quadratic solve</li>
+<li><strong>Schlick's Fresnel</strong> for dielectric materials</li>
+<li><strong>Total internal reflection</strong> when the refracted direction doesn't exist</li>
+<li><strong>Cosine-weighted diffuse sampling</strong> for Lambertian surfaces</li>
+<li><strong>Area light sampling</strong> with visibility testing</li>
+<li><strong>Russian Roulette</strong> termination with throughput scaling</li>
+</ul>
+<p>And the best part? It's <strong>~20x faster</strong> than the CPU worker version.</p>
+<p>Here's a comparison:</p>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>320×240, 512 samples, path trace</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU Workers (8 threads)</td>
+<td>~2000ms</td>
+<td>Hilbert curve tiling, Web Workers</td>
+</tr>
+<tr>
+<td><strong>WebGPU</strong></td>
+<td><strong>~100ms</strong></td>
+<td>Compute shader, workgroup-based tiling</td>
+</tr>
+</tbody>
+</table>
+<p>The WebGPU version runs the entire path trace on the GPU, with each workgroup responsible for a tile of the image. The results are written directly to a <code>rgba16float</code> storage texture, which is then presented to the canvas.</p>
+<p>It even includes automatic fallback — if WebGPU isn't available (older browsers, no GPU), it falls back to the CPU worker version with a progress message.</p>
+<h2>A 10-Year Benchmark</h2>
+<p>Here's a fun fact: I've been using this ray tracer as a <strong>quick CPU benchmark</strong> for over 10 years. Back when I first wrote it in 2013, rendering a 320×240 scene with a few hundred samples took a few seconds on my laptop. Fast forward to today, and the same workload runs in the 500ms range — not because the code changed, but because the CPUs got faster.</p>
+<p>It's a pretty honest benchmark: compute-bound, no I/O, no network latency. Just pure floating-point math. You can see processor generations separated by the time it takes to render a single frame.</p>
+<p>The WebGPU backend pushes it even further: the same scene renders in ~100ms on a discrete GPU, thanks to parallel compute shaders running the path trace on the GPU. But the CPU version still gets my heart — it's been my &quot;hello world&quot; for hardware comparisons since college.</p>
+<hr>
+<h2>Why Bother?</h2>
+<p>Honestly? Because it's fun. I wrote this ray tracer back in 2013 as a way to learn about 3D math and rendering. Eight years later, it's a surprisingly capable little educational renderer — running entirely in the browser, with WebGPU acceleration.</p>
+<p>But the real win is that the codebase is now something I'm actually proud of. The bug that broke everything was a single character. The fix took a weekend. And the result is a renderer that I can build on — not just a toy, but a real Monte Carlo path tracer with WebGPU support.</p>
+<hr>
+<p><em><a href="/projects/raytracer/index.html">Try the ray tracer live</a> if you want to poke around the code. Try toggling between CPU Workers and WebGPU backends, and experiment with different sample counts — the convergence is satisfying to watch.</em></p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/programming/raytracer-refactor/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"></span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
