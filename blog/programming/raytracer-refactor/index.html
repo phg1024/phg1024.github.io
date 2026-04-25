@@ -72,7 +72,7 @@
 <blockquote>
 <p><strong>Note</strong>: <em>This entire refactoring was done by Codex. I just asked it to fix one bug and ended up with a complete path tracer with WebGPU acceleration. Worth documenting the journey.</em></p>
 </blockquote>
-<p>I spent a Friday fixing a single-character typo in my old JavaScript ray tracer. What started as &quot;oh this should be easy&quot; became a full rewrite into a Monte Carlo path tracer with a WebGPU compute shader backend — and it's now 20x faster than the CPU worker version.</p>
+<p>I spent a Friday fixing a single-character typo in my old JavaScript ray tracer. What started as &quot;oh this should be easy&quot; became a full rewrite into a Monte Carlo path tracer with a WebGPU compute shader backend — and on my M5 Pro, it's now roughly 10x faster than the CPU worker version.</p>
 <p>Here's how it went.</p>
 <h2>The Bug</h2>
 <p>The project uses a <code>Vector3</code> class for all 3D math, and there was a single-character typo in the cross product:</p>
@@ -245,25 +245,25 @@ throughput <span class="token operator">=</span> <span class="token function">at
 <li><strong>Area light sampling</strong> with visibility testing</li>
 <li><strong>Russian Roulette</strong> termination with throughput scaling</li>
 </ul>
-<p>And the best part? It's <strong>~20x faster</strong> than the CPU worker version.</p>
+<p>And the best part? On my M5 Pro, it's <strong>roughly 10x faster</strong> than the CPU worker version.</p>
 <p>Here's a comparison:</p>
 <table>
 <thead>
 <tr>
 <th>Backend</th>
-<th>320×240, 512 samples, path trace</th>
+<th>640×480, 1024 samples, 8 depth</th>
 <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>CPU Workers (8 threads)</td>
-<td>~2000ms</td>
+<td>~17s</td>
 <td>Hilbert curve tiling, Web Workers</td>
 </tr>
 <tr>
 <td><strong>WebGPU</strong></td>
-<td><strong>~100ms</strong></td>
+<td><strong>~1.7s</strong></td>
 <td>Compute shader, workgroup-based tiling</td>
 </tr>
 </tbody>
@@ -273,7 +273,7 @@ throughput <span class="token operator">=</span> <span class="token function">at
 <h2>A 10-Year Benchmark</h2>
 <p>Here's a fun fact: I've been using this ray tracer as a <strong>quick CPU benchmark</strong> for over 10 years. Back when I first wrote it in 2013, rendering a 320×240 scene with a few hundred samples took a few seconds on my laptop. Fast forward to today, and the same workload runs in the 500ms range — not because the code changed, but because the CPUs got faster.</p>
 <p>It's a pretty honest benchmark: compute-bound, no I/O, no network latency. Just pure floating-point math. You can see processor generations separated by the time it takes to render a single frame.</p>
-<p>The WebGPU backend pushes it even further: the same scene renders in ~100ms on a discrete GPU, thanks to parallel compute shaders running the path trace on the GPU. But the CPU version still gets my heart — it's been my &quot;hello world&quot; for hardware comparisons since college.</p>
+<p>The WebGPU backend pushes it even further: on my M5 Pro, a 640×480 render at 1024 samples and 8 depth comes in around 1.7 seconds, versus about 17 seconds on the CPU worker path with 8 threads. But the CPU version still gets my heart — it's been my &quot;hello world&quot; for hardware comparisons since college.</p>
 <hr>
 <h2>Why Bother?</h2>
 <p>Honestly? Because it's fun. I wrote this ray tracer back in 2013 as a way to learn about 3D math and rendering. Eight years later, it's a surprisingly capable little educational renderer — running entirely in the browser, with WebGPU acceleration.</p>
