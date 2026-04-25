@@ -85,7 +85,8 @@ function Camera(origin, dir, up, f, fovy, w, h) {
     );
 
     this.getRays = function(x, y, n, maxDepth) {
-		var nx = ny = Math.floor(Math.sqrt(n));
+		var nx = Math.floor(Math.sqrt(n));
+		var ny = nx;
 		var h = 1.0 / nx;
 		var rays = [];
 		for(var yy=0;yy<ny;yy++)
@@ -101,8 +102,8 @@ function Camera(origin, dir, up, f, fovy, w, h) {
 
 function Canvas(center, u, v, scale, w, h) {
     this.center = center;
-    this.width =  w;//document.getElementById('width').value;
-    this.height = h;//document.getElementById('height').value;
+    this.width = w;
+    this.height = h;
     this.u = u;
     this.v = v;
     this.scale = scale;
@@ -143,7 +144,6 @@ function phongShading( obj, epos, pos, normal, scene )
 		{
 			var V = Vector3.fromPoint3(pos, epos).normalized();
 			var L = Vector3.fromPoint3(pos, lights[i].pos);
-			var factor = 1.0 / L.normSquared();
 			L = L.normalized();
 			var N = normal.normalized();
 			var LdotN = L.dot(N);

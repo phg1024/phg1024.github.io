@@ -17,9 +17,6 @@ Point2.prototype.add = function( that ) {
     return new Point2(this.x + that.x, this.y + that.y);
 };
 
-Point2.prototype.sub = function( that ) {
-    return new Point2(this.x - that.x, this.y - that.y);
-}
 Point2.prototype.mul = function( factor ) {
     return new Point2(this.x * factor, this.y * factor);
 };
@@ -43,12 +40,4 @@ Point3.prototype.distanceTo = function( that ) {
 
 Point3.prototype.add = function( that ) {
     return new Point3(this.x + that.x, this.y + that.y, this.z + that.z);
-};
-
-Point3.prototype.sub = function( that ) {
-    return new Point3(this.x - that.x, this.y - that.y, this.z - that.z);
-};
-
-Point3.prototype.mul = function( factor ) {
-    return new Point3(this.x * factor, this.y * factor, this.z * factor);
 };

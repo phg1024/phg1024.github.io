@@ -1,8 +1,7 @@
 /**
  * Created by Peihong Guo on 10/11/13.
  */
-importScripts('raytracer.js', 'image.js', 'point.js', 'vector.js', 'utils.js', 'shape.js', 'mesh.js');
-
+importScripts('raytracer.js', 'image.js', 'point.js', 'vector.js', 'utils.js', 'shape.js');
 
 var rayTracingInfo;
 self.addEventListener('message', function(e) {
@@ -18,8 +17,6 @@ self.addEventListener('message', function(e) {
                 maxDepth : data.maxDepth,
                 tidx: data.tidx
             }
-
-            //self.postMessage({w: data.w, h:data.h, nsamples:data.nsamples, maxDepth:data.maxDepth});
 
             run();
 
@@ -40,8 +37,6 @@ function run()
     scene.addObject(new Sphere(new Point3(2.0, 4.0, 8.0), 4.0, Color.RED, {Ka:0.1, Kd:0.6, Ks:0.3, fr: 0.1}));
     scene.addObject(new Sphere(new Point3(-4.0, 4.0, 6.0), 2.0, Color.GREEN, {Ka:0.1, Kd:0.6, Ks:0.3, fr: 0.25}));
     scene.addObject(new Sphere(new Point3(0, -1e6, 0), 1e6, Color.GRAY, {Ka:0.1, Kd:0.3, Ks:0.1, fr: 0.25}));
-
-    //scene.addObject(new Mesh('cube.obj'));
 
     scene.addLight( {
             pos: new Point3(-40.0, 80.0, -40.0),
@@ -67,8 +62,6 @@ function run()
     var y2 = rayTracingInfo.y2;
 
     var w = rayTracingInfo.w;
-    var h = y2 - y1;
-
     var img = new RGBAImage(w, y2-y1);
 
     var nsamples = rayTracingInfo.nsamples;

@@ -7,38 +7,8 @@ function Vector2(x, y) {
     }
 }
 
-Vector2.prototype.add = function( that ) {
-    return new Vector2(this.x + that.x, this.y + that.y);
-};
-
-Vector2.prototype.mul = function( factor ) {
-    return new Vector2(this.x * factor, this.y * factor);
-};
-
 Vector2.prototype.dot = function (that) {
     return this.x * that.x + this.y * that.y;
-};
-
-Vector2.prototype.cross = function( that ) {
-    return this.x * that.y - this.y * that.x;
-};
-
-Vector2.prototype.normSquared = function() {
-    return this.x * this.x + this.y * this.y;
-};
-
-Vector2.prototype.norm = function() {
-    return Math.sqrt( this.x * this.x + this.y * this.y );
-};
-
-Vector2.prototype.normalize = function() {
-    var L = this.norm();
-    var THRES = 1e-16;
-    if( L > THRES ) {
-        this.x /= L;
-        this.y /= L;
-    }
-    return this;
 };
 
 function Vector3(x, y, z) {
