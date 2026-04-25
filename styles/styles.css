@@ -1,7 +1,7 @@
-@import "./_variables.css";
-@import "./_base.css";
-@import "./_layout.css";
-@import "./_components.css";
-@import "./_themes.css";
-@import "./_utilities.css";
-@import "./_syntax.css";
+@import "./variables.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./themes.css";
+@import "./utilities.css";
+@import "./syntax.css";
