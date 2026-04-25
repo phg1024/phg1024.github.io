@@ -1,4 +1,4 @@
-function Point2(x, y) {
+export function Point2(x, y) {
     if( arguments.length != 2 ) {
         this.x = this.y = 0;
     }
@@ -24,7 +24,7 @@ Point2.prototype.mul = function( factor ) {
     return new Point2(this.x * factor, this.y * factor);
 };
 
-function Point3(x, y, z) {
+export function Point3(x, y, z) {
     if( arguments.length != 3 ){
         this.x = this.y = 0;
     }

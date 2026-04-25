@@ -1,4 +1,4 @@
-function Vector2(x, y) {
+export function Vector2(x, y) {
     if (arguments.length != 2) {
         this.x = this.y = 0;
     } else {
@@ -41,7 +41,7 @@ Vector2.prototype.normalize = function() {
     return this;
 };
 
-function Vector3(x, y, z) {
+export function Vector3(x, y, z) {
     if (arguments.length != 3) {
         this.x = this.y = this.z = 0;
     } else {

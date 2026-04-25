@@ -1,13 +1,16 @@
-var PI = 3.14159265;
+import { Vector3 } from './vector.js';
+import { Color } from './image.js';
 
-function clamp(val, lower, upper)
+export var PI = 3.14159265;
+
+export function clamp(val, lower, upper)
 {
     if( val < lower ) return lower;
     else if( val > upper ) return upper;
     return val;
 }
 
-function quadraticSolve(a, b, c) {
+export function quadraticSolve(a, b, c) {
     var delta = b*b - 4*a*c;
     if( delta < 0 )
     {
@@ -19,11 +22,11 @@ function quadraticSolve(a, b, c) {
     }
 }
 
-function reflect(n, v) {
+export function reflect(n, v) {
     return v.sub(n.mul(v.dot(n)).mul(2)).normalized();
 }
 
-function refract(n, v, ior) {
+export function refract(n, v, ior) {
     if( v.dot(n) < 0 )
     // entering ray
         return refract_impl(v, n, 1.0/ior);
@@ -32,7 +35,7 @@ function refract(n, v, ior) {
         return refract_impl(v, n.mul(-1), ior);
 }
 
-function refract_impl(I, N, ior) {
+export function refract_impl(I, N, ior) {
     var NdotI = N.dot(I);
     var k = 1.0 - ior * ior * (1.0 - NdotI*NdotI);
     if (k < 0.0)
@@ -44,7 +47,7 @@ function refract_impl(I, N, ior) {
 /*
     Constructor for complex number
  */
-function Complex(real, imaginary){
+export function Complex(real, imaginary){
     if( isNaN(real) || isNaN(imaginary) )
         throw new TypeError();
 
@@ -103,7 +106,7 @@ Complex.I = new Complex(0, 1);
 // ========================================
 // Random number generator (Mulberry32)
 // ========================================
-function createRNG(seed) {
+export function createRNG(seed) {
     return function() {
         seed |= 0;
         seed = seed + 0x6D2B79F5 | 0;
@@ -116,7 +119,7 @@ function createRNG(seed) {
 // ========================================
 // Cosine-weighted hemisphere sampling
 // ========================================
-function cosineHemisphere(normal, u, v) {
+export function cosineHemisphere(normal, u, v) {
     var r1 = Math.random();
     var r2 = Math.random();
     var theta = 2 * Math.PI * r1;
@@ -142,7 +145,7 @@ function cosineHemisphere(normal, u, v) {
 // ========================================
 // Hemisphere sampling (uniform)
 // ========================================
-function hemisphereSample(normal, u, v) {
+export function hemisphereSample(normal, u, v) {
     var r1 = Math.random();
     var r2 = Math.random();
     var theta = 2 * Math.PI * r1;
@@ -167,7 +170,7 @@ function hemisphereSample(normal, u, v) {
 // ========================================
 // Sample point on unit sphere
 // ========================================
-function sphereSample() {
+export function sphereSample() {
     var r1 = Math.random();
     var r2 = Math.random();
     var theta = 2 * Math.PI * r1;
@@ -183,7 +186,7 @@ function sphereSample() {
 // ========================================
 // Russian Roulette
 // ========================================
-function russianRoulette(color, rng) {
+export function russianRoulette(color, rng) {
     var max = Math.max(color.r, color.g, color.b) / 255.0;
     if (max < 0.01) return { survive: false, color: new Color(0, 0, 0, 255) };
     if (rng() < max) {

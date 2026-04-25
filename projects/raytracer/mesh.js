@@ -1,14 +1,19 @@
+import { Point3 } from './point.js';
+import { Vector3 } from './vector.js';
+import { Shape } from './shape.js';
+import { Color } from './image.js';
+
 /**
  * Created by peihongguo on 10/14/13.
  */
 
-function intersectTriangle( p, dir, v1, v2, v3 ) {
+export function intersectTriangle( p, dir, v1, v2, v3 ) {
     var t;
 
     return t;
 }
 
-function Mesh( filename, color, material ) {
+export function Mesh( filename, color, material ) {
     var that = new Shape();
     that.color = color;
     that.material = material;

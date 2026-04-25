@@ -1,8 +1,13 @@
+import { Point3 } from './point.js';
+import { Vector3 } from './vector.js';
+import { PI, clamp, reflect, russianRoulette } from './utils.js';
+import { Color } from './image.js';
+
 /*
  Ray tracer 
 */
 
-function Scene() {
+export function Scene() {
     this.lights = [];
     this.addLight = function( l ) {
         this.lights.push(l);
@@ -72,7 +77,7 @@ function Scene() {
     }
 }
 
-function Camera(origin, dir, up, f, fovy, w, h) {
+export function Camera(origin, dir, up, f, fovy, w, h) {
     this.origin = origin;
     this.direction = dir.normalized();
     this.up = up.normalized();
@@ -89,7 +94,7 @@ function Camera(origin, dir, up, f, fovy, w, h) {
     );
 
     this.getRays = function(x, y, n, maxDepth) {
-		var nx = ny = Math.floor(Math.sqrt(n));
+		var nx = Math.floor(Math.sqrt(n)), ny = nx;
 		var h = 1.0 / nx;
 		var rays = [];
 		for(var yy=0;yy<ny;yy++)
@@ -103,7 +108,7 @@ function Camera(origin, dir, up, f, fovy, w, h) {
     }
 }
 
-function Canvas(center, u, v, scale, w, h) {
+export function Canvas(center, u, v, scale, w, h) {
     this.center = center;
     this.width =  w;//document.getElementById('width').value;
     this.height = h;//document.getElementById('height').value;
@@ -129,7 +134,7 @@ function Canvas(center, u, v, scale, w, h) {
     }
 }
 
-function shading( obj, epos, pos, normal, scene )
+export function shading( obj, epos, pos, normal, scene )
 {
     var shadeSum = new Color();
     var intSum = 0;
@@ -225,13 +230,13 @@ function shading( obj, epos, pos, normal, scene )
 */
 
 // ── Schlick's approximation for Fresnel ──
-function fresnelSchiek(cosTheta, ior) {
+export function fresnelSchiek(cosTheta, ior) {
     var r0 = (1.0 - ior) / (1.0 + ior);
     r0 = r0 * r0;
     return r0 + (1.0 - r0) * Math.pow(1.0 - cosTheta, 5.0);
 }
 
-function attenuateColor(throughput, color) {
+export function attenuateColor(throughput, color) {
     return new Color(
         throughput.r * color.r / 255.0,
         throughput.g * color.g / 255.0,
@@ -240,7 +245,7 @@ function attenuateColor(throughput, color) {
     );
 }
 
-function scaleThroughput(throughput, factor) {
+export function scaleThroughput(throughput, factor) {
     return new Color(
         throughput.r * factor,
         throughput.g * factor,
@@ -249,7 +254,7 @@ function scaleThroughput(throughput, factor) {
     );
 }
 
-function applyThroughput(color, throughput) {
+export function applyThroughput(color, throughput) {
     return new Color(
         clamp(color.r * throughput.r, 0, 255),
         clamp(color.g * throughput.g, 0, 255),
@@ -258,20 +263,20 @@ function applyThroughput(color, throughput) {
     );
 }
 
-function addColor(a, b) {
+export function addColor(a, b) {
     return new Color(a.r + b.r, a.g + b.g, a.b + b.b, 255);
 }
 
-function materialValue(value, fallback) {
+export function materialValue(value, fallback) {
     return value === undefined ? fallback : value;
 }
 
-function offsetPathOrigin(point, normal, direction) {
+export function offsetPathOrigin(point, normal, direction) {
     var sign = direction.dot(normal) < 0 ? -1 : 1;
     return point.add(normal.mul(sign * 1e-4));
 }
 
-function sampleDiffuseDirection(normal, rng) {
+export function sampleDiffuseDirection(normal, rng) {
     var tangent = new Vector3(1, 0, 0);
     if (Math.abs(normal.dot(tangent)) > 0.9) tangent = new Vector3(0, 1, 0);
     tangent = normal.cross(tangent).normalize();
@@ -293,7 +298,7 @@ function sampleDiffuseDirection(normal, rng) {
     ).normalized();
 }
 
-function makeAreaLight(center, u, v, color, intensity) {
+export function makeAreaLight(center, u, v, color, intensity) {
     return {
         center: center,
         u: u,
@@ -305,13 +310,13 @@ function makeAreaLight(center, u, v, color, intensity) {
     };
 }
 
-function sampleAreaLight(light, rng) {
+export function sampleAreaLight(light, rng) {
     var su = rng() - 0.5;
     var sv = rng() - 0.5;
     return light.center.add(light.u.mul(su)).add(light.v.mul(sv));
 }
 
-function isPathToLightClear(scene, origin, direction, maxDistance) {
+export function isPathToLightClear(scene, origin, direction, maxDistance) {
     for (var i = 0; i < scene.objects.length; i++) {
         var obj = scene.objects[i];
         if (!obj.intersectT) continue;
@@ -323,7 +328,7 @@ function isPathToLightClear(scene, origin, direction, maxDistance) {
     return true;
 }
 
-function estimateAreaLighting(scene, hit, normal, mat, throughput, rng) {
+export function estimateAreaLighting(scene, hit, normal, mat, throughput, rng) {
     var result = new Color(0, 0, 0, 255);
     var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
     if (Kd === 0) return result;

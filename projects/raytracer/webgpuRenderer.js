@@ -1,7 +1,6 @@
-(function () {
-    'use strict';
+import { createDefaultScene, packSceneForWebGPU } from './sceneDef.js';
 
-    var computeShaderCode = `
+var computeShaderCode = `
 struct Params {
     width: u32,
     height: u32,
@@ -26,8 +25,32 @@ struct Material {
     ks: f32,
     ior: f32,
     refractive: f32,
-    _pad: f32,
+    ka: f32,
 };
+
+struct Sphere {
+    center: vec3<f32>,
+    radius: f32,
+    materialIdx: f32,
+    _pad1: f32,
+    _pad2: f32,
+    _pad3: f32,
+};
+
+struct AreaLight {
+    center: vec3<f32>,
+    intensity: f32,
+    u: vec3<f32>,
+    _pad1: f32,
+    v: vec3<f32>,
+    _pad2: f32,
+    color: vec3<f32>,
+    _pad3: f32,
+};
+
+@group(0) @binding(2) var<storage, read> spheres: array<Sphere>;
+@group(0) @binding(3) var<storage, read> materials: array<Material>;
+@group(0) @binding(4) var<storage, read> lights: array<AreaLight>;
 
 struct Hit {
     hit: bool,
@@ -38,6 +61,7 @@ struct Hit {
 };
 
 fn clamp01(v: vec3<f32>) -> vec3<f32> {
+
     return clamp(v, vec3<f32>(0.0), vec3<f32>(1.0));
 }
 
@@ -67,10 +91,10 @@ fn sphereIntersect(center: vec3<f32>, radius: f32, ro: vec3<f32>, rd: vec3<f32>)
     let s = sqrt(disc);
     let t1 = -b - s;
     let t2 = -b + s;
-    if (t1 > 0.0001) {
+    if (t1 > 0.000001) {
         return t1;
     }
-    if (t2 > 0.0001) {
+    if (t2 > 0.000001) {
         return t2;
     }
     return -1.0;
@@ -81,36 +105,19 @@ fn makeMaterial(color: vec3<f32>, kd: f32, ks: f32, ior: f32, refractive: f32) -
 }
 
 fn intersectScene(ro: vec3<f32>, rd: vec3<f32>) -> Hit {
-    var hit = Hit(false, 1.0e20, vec3<f32>(0.0), vec3<f32>(0.0, 1.0, 0.0), makeMaterial(vec3<f32>(1.0), 0.6, 0.3, 1.5, 0.0));
-
-    let centers = array<vec3<f32>, 5>(
-        vec3<f32>(1.0, 2.0, 2.0),
-        vec3<f32>(-2.0, 2.0, 3.0),
-        vec3<f32>(2.0, 4.0, 8.0),
-        vec3<f32>(-4.0, 4.0, 6.0),
-        vec3<f32>(0.0, -1000.0, 0.0)
-    );
-    let radii = array<f32, 5>(2.0, 1.5, 4.0, 2.0, 1000.0);
-    let materials = array<Material, 5>(
-        makeMaterial(vec3<f32>(48.0, 200.0, 48.0) / 255.0, 0.6, 0.3, 3.5, 1.0),
-        makeMaterial(vec3<f32>(200.0, 200.0, 0.0) / 255.0, 0.6, 0.3, 1.15, 0.0),
-        makeMaterial(vec3<f32>(200.0, 48.0, 48.0) / 255.0, 0.6, 0.3, 1.1, 0.0),
-        makeMaterial(vec3<f32>(48.0, 48.0, 200.0) / 255.0, 0.9, 0.0, 1.5, 0.0),
-        makeMaterial(vec3<f32>(128.0, 128.0, 128.0) / 255.0, 0.3, 0.1, 1.25, 0.0)
-    );
-
-    for (var i = 0u; i < 5u; i++) {
-        let t = sphereIntersect(centers[i], radii[i], ro, rd);
+    var hit = Hit(false, 1.0e20, vec3<f32>(0.0), vec3<f32>(0.0, 1.0, 0.0), materials[0]);
+    let numSpheres = arrayLength(&spheres);
+    for (var i = 0u; i < numSpheres; i++) {
+        let t = sphereIntersect(spheres[i].center, spheres[i].radius, ro, rd);
         if (t > 0.0 && t < hit.t) {
             let p = ro + rd * t;
             hit.hit = true;
             hit.t = t;
             hit.p = p;
-            hit.n = normalize(p - centers[i]);
-            hit.material = materials[i];
+            hit.n = normalize(p - spheres[i].center);
+            hit.material = materials[u32(spheres[i].materialIdx)];
         }
     }
-
     return hit;
 }
 
@@ -127,12 +134,12 @@ fn refractDir(n: vec3<f32>, v: vec3<f32>, ior: f32) -> vec3<f32> {
     let entering = dot(v, n) < 0.0;
     let eta = select(ior, 1.0 / ior, entering);
     let normal = select(-n, n, entering);
-    let cosTheta = -dot(v, normal);
-    let k = 1.0 - eta * eta * (1.0 - cosTheta * cosTheta);
+    let nDotI = dot(normal, v);
+    let k = 1.0 - eta * eta * (1.0 - nDotI * nDotI);
     if (k < 0.0) {
-        return reflectDir(normal, v);
+        return vec3<f32>(0.0);
     }
-    return normalize(v * eta - normal * (eta * cosTheta + sqrt(k)));
+    return normalize(v * eta - normal * (eta * nDotI + sqrt(k)));
 }
 
 fn fresnel(cosTheta: f32, ior: f32) -> f32 {
@@ -160,57 +167,54 @@ fn offsetOrigin(p: vec3<f32>, n: vec3<f32>, dir: vec3<f32>) -> vec3<f32> {
     return p + n * sign * 0.0001;
 }
 
-fn sampleAreaLight(p: vec3<f32>, n: vec3<f32>, albedo: vec3<f32>, throughput: vec3<f32>, kd: f32, state: ptr<function, u32>) -> vec3<f32> {
-    let center = vec3<f32>(-6.0, 14.0, -8.0);
-    let u = vec3<f32>(10.0, 0.0, 0.0);
-    let v = vec3<f32>(0.0, 0.0, 10.0);
-    let lightNormal = normalize(cross(u, v));
-    let area = length(cross(u, v));
-    let lightPoint = center + u * (rand(state) - 0.5) + v * (rand(state) - 0.5);
-    let toLight = lightPoint - p;
-    let dist2 = dot(toLight, toLight);
-    let dist = sqrt(dist2);
-    let l = toLight / dist;
-    let surfaceCos = max(0.0, dot(n, l));
-    let lightCos = max(0.0, dot(-lightNormal, l));
-    if (surfaceCos <= 0.0 || lightCos <= 0.0) {
-        return vec3<f32>(0.0);
+fn evaluateAreaLight(p: vec3<f32>, n: vec3<f32>, viewDir: vec3<f32>, mat: Material, pathTrace: u32, state: ptr<function, u32>) -> vec3<f32> {
+    let numLights = arrayLength(&lights);
+    if (numLights == 0u) { return vec3<f32>(0.0); }
+    
+    var totalShade = vec3<f32>(0.0);
+    let sampleCount = select(16u, 1u, pathTrace == 1u);
+
+    for (var lIdx = 0u; lIdx < numLights; lIdx++) {
+        let light = lights[lIdx];
+        let lightNormal = normalize(cross(light.u, light.v));
+        let area = length(cross(light.u, light.v));
+        var shade = vec3<f32>(0.0);
+
+        for (var sample = 0u; sample < sampleCount; sample++) {
+            let lightPoint = light.center + light.u * (rand(state) - 0.5) + light.v * (rand(state) - 0.5);
+            let toLight = lightPoint - p;
+            let dist2 = dot(toLight, toLight);
+            let dist = sqrt(dist2);
+            let l = toLight / dist;
+            let surfaceCos = max(0.0, dot(n, l));
+            let lightCos = max(0.0, dot(-lightNormal, l));
+
+            if (surfaceCos > 0.0 && lightCos > 0.0) {
+                if (visibleToLight(offsetOrigin(p, n, l), l, dist)) {
+                    let factor = light.intensity * area * lightCos / max(dist2, 0.000001);
+                    if (pathTrace == 1u) {
+                        shade += light.color * factor * surfaceCos * mat.kd;
+                    } else {
+                        let rDir = normalize(n * 2.0 * surfaceCos - l);
+                        let specArea = pow(max(0.0, dot(rDir, viewDir)), 40.0);
+                        shade += light.color * factor * (surfaceCos * mat.kd + specArea * mat.ks);
+                    }
+                }
+            }
+        }
+        totalShade += shade / f32(sampleCount);
     }
-    if (!visibleToLight(offsetOrigin(p, n, l), l, dist)) {
-        return vec3<f32>(0.0);
-    }
-    let intensity = 3.0;
-    let factor = kd * intensity * area * surfaceCos * lightCos / max(dist2, 0.000001);
-    return throughput * albedo * factor;
-}
-
-fn sampleAreaLightPhong(p: vec3<f32>, n: vec3<f32>, viewDir: vec3<f32>, mat: Material, state: ptr<function, u32>) -> vec3<f32> {
-    let center = vec3<f32>(-6.0, 14.0, -8.0);
-    let u = vec3<f32>(10.0, 0.0, 0.0);
-    let v = vec3<f32>(0.0, 0.0, 10.0);
-    let lightNormal = normalize(cross(u, v));
-    let area = length(cross(u, v));
-    var shade = vec3<f32>(0.0);
-    let sampleCount = 8u;
-
-    for (var sample = 0u; sample < sampleCount; sample++) {
-        let lightPoint = center + u * (rand(state) - 0.5) + v * (rand(state) - 0.5);
-        let toLight = lightPoint - p;
-        let dist2 = dot(toLight, toLight);
-        let dist = sqrt(dist2);
-        let l = toLight / dist;
-        let surfaceCos = max(0.0, dot(n, l));
-        let lightCos = max(0.0, dot(-lightNormal, l));
-
-        if (surfaceCos > 0.0 && lightCos > 0.0 && visibleToLight(offsetOrigin(p, n, l), l, dist)) {
-            let areaFactor = 3.0 * area * lightCos / max(dist2, 0.000001);
-            let r = normalize(n * (2.0 * surfaceCos) - l);
-            let spec = pow(max(0.0, dot(r, viewDir)), 40.0);
-            shade += vec3<f32>(areaFactor * (surfaceCos * mat.kd + spec * mat.ks));
+    
+    if (pathTrace == 0u) {
+        var totalIntensity = 0.0;
+        for (var i = 0u; i < numLights; i++) {
+            totalIntensity += lights[i].intensity;
+        }
+        if (totalIntensity > 0.0) {
+            totalShade = totalShade / totalIntensity;
         }
     }
-
-    return max(mat.color + shade / f32(sampleCount), vec3<f32>(0.0));
+    return totalShade;
 }
 
 fn pathTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<f32> {
@@ -250,7 +254,7 @@ fn pathTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<
                 }
             }
         } else {
-            radiance += sampleAreaLight(h.p, h.n, mat.color, throughput, mat.kd, state);
+            radiance += throughput * mat.color * evaluateAreaLight(h.p, h.n, vec3<f32>(0.0), mat, 1u, state);
             let total = mat.kd + mat.ks;
             if (total <= 0.0) {
                 return radiance + throughput * bg;
@@ -269,7 +273,15 @@ fn pathTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<
         }
     }
 
-    return radiance + throughput * lastColor;
+    let rrMax = max(max(lastColor.r, lastColor.g), lastColor.b);
+    if (rrMax < 0.01) {
+        return radiance + bg;
+    }
+    if (rand(state) < rrMax) {
+        throughput *= lastColor / rrMax;
+        return radiance + throughput * lastColor;
+    }
+    return radiance + bg;
 }
 
 fn rayTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<f32> {
@@ -288,7 +300,7 @@ fn rayTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<f
 
         let mat = h.material;
         let viewDir = normalize(-rd);
-        let localColor = sampleAreaLightPhong(h.p, h.n, viewDir, mat, state);
+        let localColor = max(mat.color + evaluateAreaLight(h.p, h.n, viewDir, mat, 0u, state), vec3<f32>(0.0));
         let reflectivity = select(mat.ks, 0.7, mat.refractive > 0.5);
         color += weight * localColor * (1.0 - reflectivity);
         weight *= reflectivity;
@@ -315,7 +327,7 @@ fn cameraRay(pixel: vec2<f32>) -> vec3<f32> {
     let up = normalize(vec3<f32>(0.0, 1.0, 0.0));
     let right = cross(up, direction);
     let center = origin + direction * 6.0;
-    let scale = 6.0 * tan(22.5 / 180.0 * 3.14159265359);
+    let scale = 6.0 * atan(22.5 / 180.0 * 3.14159265359);
     let aspect = f32(params.width) / f32(params.height);
     let dx = (pixel.x / f32(params.width) - 0.5) * scale;
     let dy = (pixel.y / f32(params.height) - 0.5) * scale;
@@ -371,25 +383,6 @@ struct Params {
 @group(0) @binding(0) var renderTexture: texture_2d<f32>;
 @group(0) @binding(1) var<uniform> params: Params;
 
-fn hash(value: u32) -> u32 {
-    var x = value;
-    x ^= x >> 16u;
-    x *= 0x7feb352du;
-    x ^= x >> 15u;
-    x *= 0x846ca68bu;
-    x ^= x >> 16u;
-    return x;
-}
-
-fn dither(coord: vec2<u32>) -> vec3<f32> {
-    let base = hash((coord.x * 1973u) ^ (coord.y * 9277u) ^ params.frameSeed);
-    return vec3<f32>(
-        f32(hash(base + 1u) & 255u) / 255.0 - 0.5,
-        f32(hash(base + 2u) & 255u) / 255.0 - 0.5,
-        f32(hash(base + 3u) & 255u) / 255.0 - 0.5
-    ) / 255.0;
-}
-
 struct VertexOut {
     @builtin(position) position: vec4<f32>,
 };
@@ -412,7 +405,7 @@ fn fs(@builtin(position) position: vec4<f32>) -> @location(0) vec4<f32> {
         clamp(i32(position.x), 0, i32(params.width) - 1),
         clamp(i32(position.y), 0, i32(params.height) - 1)
     );
-    let color = textureLoad(renderTexture, coord, 0).rgb + dither(vec2<u32>(coord));
+    let color = textureLoad(renderTexture, coord, 0).rgb;
     return vec4<f32>(clamp(color, vec3<f32>(0.0), vec3<f32>(1.0)), 1.0);
 }
 `;
@@ -428,7 +421,7 @@ fn fs(@builtin(position) position: vec4<f32>) -> @location(0) vec4<f32> {
         return adapter.requestDevice();
     }
 
-    async function renderWebGPU(options) {
+    export async function renderWebGPU(options) {
         var device = await createDevice();
         var width = options.width;
         var height = options.height;
@@ -467,12 +460,38 @@ fn fs(@builtin(position) position: vec4<f32>) -> @location(0) vec4<f32> {
             usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST
         });
 
+        var scene = createDefaultScene();
+        var packed = packSceneForWebGPU(scene);
+
+        var sphereBuffer = device.createBuffer({
+            size: packed.spheres.byteLength,
+            usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST,
+        });
+        device.queue.writeBuffer(sphereBuffer, 0, packed.spheres);
+
+        var materialBuffer = device.createBuffer({
+            size: packed.materials.byteLength,
+            usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST,
+        });
+        device.queue.writeBuffer(materialBuffer, 0, packed.materials);
+
+        var lightBuffer = device.createBuffer({
+            size: packed.lights.byteLength,
+            usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST,
+        });
+        if (packed.numLights > 0) {
+            device.queue.writeBuffer(lightBuffer, 0, packed.lights);
+        }
+
         var renderTextureView = renderTexture.createView();
         var computeBindGroup = device.createBindGroup({
             layout: computePipeline.getBindGroupLayout(0),
             entries: [
                 { binding: 0, resource: renderTextureView },
-                { binding: 1, resource: { buffer: uniformBuffer } }
+                { binding: 1, resource: { buffer: uniformBuffer } },
+                { binding: 2, resource: { buffer: sphereBuffer } },
+                { binding: 3, resource: { buffer: materialBuffer } },
+                { binding: 4, resource: { buffer: lightBuffer } }
             ]
         });
         var presentBindGroup = device.createBindGroup({
@@ -545,6 +564,3 @@ fn fs(@builtin(position) position: vec4<f32>) -> @location(0) vec4<f32> {
             }
         }
     }
-
-    window.renderWebGPU = renderWebGPU;
-})();

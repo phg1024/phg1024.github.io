@@ -1,9 +1,9 @@
-/**
- * Created by Peihong Guo on 10/11/13.
- * Updated to support path tracing mode.
- */
-importScripts('raytracer.js', 'image.js', 'point.js', 'vector.js', 'utils.js', 'shape.js', 'mesh.js');
-
+import { RGBAImage, Color } from './image.js';
+import { Point3 } from './point.js';
+import { Vector3 } from './vector.js';
+import { createRNG } from './utils.js';
+import { Camera } from './raytracer.js';
+import { createDefaultScene } from './sceneDef.js';
 
 var rayTracingInfo;
 self.addEventListener('message', function(e) {
@@ -33,23 +33,10 @@ self.addEventListener('message', function(e) {
     };
 }, false);
 
-
 function run()
 {
-    // construct scene
-    var scene = new Scene();
-    scene.addObject(new Sphere(new Point3(1.0, 2.0, 2.0), 2.0, Color.LIGHTGREEN, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 3.5, refractive: true}));
-    scene.addObject(new Sphere(new Point3(-2.0, 2.0, 3.0), 1.5, Color.DARKYELLOW, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 0.15}));
-    scene.addObject(new Sphere(new Point3(2.0, 4.0, 8.0), 4.0, Color.LIGHTRED, {Ka:0.1, Kd:0.6, Ks:0.3, ior: 0.1}));
-    scene.addObject(new Sphere(new Point3(-4.0, 4.0, 6.0), 2.0, Color.LIGHTBLUE, {Ka:0.1, Kd:0.9, Ks:0.0, ior: 0.75}));
-    scene.addObject(new Sphere(new Point3(0, -1e3, 0), 1e3, Color.GRAY, {Ka:0.1, Kd:0.3, Ks:0.1, ior: 0.25}));
-    scene.addAreaLight(makeAreaLight(
-        new Point3(-6.0, 14.0, -8.0),
-        new Vector3(10.0, 0.0, 0.0),
-        new Vector3(0.0, 0.0, 10.0),
-        Color.WHITE,
-        3.0
-    ));
+    // load scene from centralized definition
+    var scene = createDefaultScene();
 
     // setup camera
     var cam = new Camera(

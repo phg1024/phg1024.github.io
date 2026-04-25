@@ -1,8 +1,10 @@
+import { clamp } from './utils.js';
+
 /**
  * Created by peihongguo on 10/5/13.
  */
 
-function Color(r, g, b, a)
+export function Color(r, g, b, a)
 {
     if( arguments.length !== 4 )
     {
@@ -62,7 +64,7 @@ Color.interpolate = function(c1, c2, t)
     return c1.mul(t).add(c2.mul(1-t));
 };
 
-function RGBAImage( w, h )
+export function RGBAImage( w, h )
 {
     this.channels = 4;
     this.w = w;

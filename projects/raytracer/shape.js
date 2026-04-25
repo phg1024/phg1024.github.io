@@ -1,7 +1,13 @@
+import { Point2, Point3 } from './point.js';
+import { Vector2, Vector3 } from './vector.js';
+import { PI, quadraticSolve, reflect, refract } from './utils.js';
+import { Color } from './image.js';
+import { materialValue, shading } from './raytracer.js';
+
 /*
  Shape base class
  */
-function Shape()
+export function Shape()
 {
     this.distanceTo = function(x, y)
     {
@@ -20,7 +26,7 @@ function Shape()
 // ================================================================
 //  3D shapes
 // ================================================================
-function Sphere(center, radius, color, material)
+export function Sphere(center, radius, color, material)
 {
     var that = new Shape();
     that.center = center;
@@ -106,7 +112,7 @@ function Sphere(center, radius, color, material)
 /*
  Edge
  */
-function Edge(p, n, dir)
+export function Edge(p, n, dir)
 {
     var that = new Shape();
     that.p = p;
@@ -121,7 +127,7 @@ function Edge(p, n, dir)
 /*
  Polygon
  */
-function Polygon( isConcave )
+export function Polygon( isConcave )
 {
     var that = new Shape();
 
@@ -193,7 +199,7 @@ function Polygon( isConcave )
 /*
  Circle
  */
-function Circle(x, y, r) {
+export function Circle(x, y, r) {
     var that = new Shape();
     that.r = r;
     that.x = x;
@@ -213,7 +219,7 @@ function Circle(x, y, r) {
 /*
  Star
  */
-function Star(x, y, r, corners) {
+export function Star(x, y, r, corners) {
     var that = new Shape();
 
     that.x = x;
@@ -247,7 +253,7 @@ function Star(x, y, r, corners) {
 /*
  Blobby
  */
-function Blobby() {
+export function Blobby() {
     var that = new Shape();
 
     that.circles = [];
@@ -273,7 +279,7 @@ function Blobby() {
     return that;
 }
 
-function FunctionShape( fun ) {
+export function FunctionShape( fun ) {
     var that = new Shape();
 
     that.distanceTo = function( x, y ) {
