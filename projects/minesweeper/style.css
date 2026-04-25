@@ -1,19 +1,50 @@
 .minesweeper-shell {
-    gap: 1rem;
+    gap: 1.25rem;
+}
+
+.minesweeper-intro {
+    max-width: 44rem;
 }
 
 .minesweeper-controls {
-    grid-template-columns: repeat(auto-fit, minmax(7rem, max-content));
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, max-content));
     align-items: end;
+    gap: 0.85rem;
 }
 
 .minesweeper-field {
-    min-width: 7rem;
+    min-width: 8.5rem;
+}
+
+.minesweeper-field span {
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+}
+
+.minesweeper-field input {
+    min-height: 2.35rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.84rem;
+    line-height: 1.2;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-glow) 8%, transparent);
+}
+
+.minesweeper-controls .project-button {
+    min-height: 2.2rem;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    font-weight: 600;
 }
 
 .minesweeper-board {
     overflow: auto;
-    padding: 0.2rem;
+    padding: 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface-strong) 40%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-glow) 10%, transparent);
 }
 
 .minesweeper-board table {
@@ -72,6 +103,12 @@
     box-shadow: none;
 }
 
+[data-theme="minimalist"] .minesweeper-controls .project-button,
+[data-theme="minimalist"] .minesweeper-field input,
+[data-theme="minimalist"] .minesweeper-board {
+    border-radius: 6px;
+}
+
 [data-theme="minimalist"] .raw {
     background: rgba(255, 252, 248, 0.94);
 }
@@ -94,6 +131,13 @@
 [data-theme="win31"] .raw {
     background: #c0c0c0;
     color: #000000;
+}
+
+[data-theme="win31"] .minesweeper-board {
+    background: #c0c0c0;
+    border-color: #808080;
+    border-radius: 0;
+    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
 }
 
 [data-theme="win31"] .raw:hover {
@@ -121,6 +165,11 @@
     color: #d8ffd8;
 }
 
+[data-theme="matrix"] .minesweeper-board {
+    background: rgba(7, 18, 8, 0.72);
+    border-color: rgba(57, 255, 20, 0.25);
+}
+
 [data-theme="industrial"] .raw {
     background: rgba(244, 247, 250, 0.96);
     color: #202831;
@@ -133,6 +182,12 @@
 [data-theme="industrial"] .expanded {
     background: rgba(214, 221, 227, 0.9);
     color: #202831;
+}
+
+[data-theme="industrial"] .minesweeper-board {
+    background: rgba(245, 247, 249, 0.72);
+    border-color: rgba(97, 113, 127, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* Popup window for alerts */
