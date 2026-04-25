@@ -1,0 +1,33 @@
+:root {
+  --bg: #05030d;
+  --bg-accent: #12081f;
+  --surface: rgba(13, 10, 24, 0.78);
+  --surface-strong: rgba(19, 13, 34, 0.92);
+  --border: rgba(114, 231, 255, 0.22);
+  --text: #f7f4ff;
+  --muted: #b5a9d6;
+  --soft: #8f82b3;
+  --accent: #ff4fd8;
+  --accent-secondary: #4ef6ff;
+  --accent-tertiary: #7d6bff;
+  --accent-glow: rgba(78, 246, 255, 0.38);
+  --accent-glow-pink: rgba(255, 79, 216, 0.3);
+  --accent-strong: #ffffff;
+  --shadow: 0 24px 90px rgba(0, 0, 0, 0.42);
+  --shadow-cyber: 0 0 0 1px rgba(78, 246, 255, 0.16), 0 0 48px rgba(78, 246, 255, 0.12), 0 0 80px rgba(255, 79, 216, 0.08);
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --button-radius: 1rem 0.4rem 1rem 0.4rem;
+  --button-radius-tight: 0.85rem 0.3rem 0.85rem 0.3rem;
+  --content-width: 1180px;
+  --sans: "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  --serif: "Outfit", "Helvetica Neue", sans-serif;
+  --hero-min-height: 360px;
+  --hero-max-height: 768px;
+  --pointer-x: 50%;
+  --pointer-y: 22%;
+  --pointer-glow: 0;
+  --pointer-tilt-x: 0deg;
+  --pointer-tilt-y: 0deg;
+  --header-scroll-progress: 0;
+}

@@ -1,0 +1,41 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(78, 246, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78, 246, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 12% 10%, rgba(255, 79, 216, 0.18), transparent 24%),
+    radial-gradient(circle at 85% 12%, rgba(78, 246, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 50% 100%, rgba(125, 107, 255, 0.12), transparent 30%),
+    radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(78, 246, 255, calc(0.05 + var(--pointer-glow) * 0.08)), transparent 18%),
+    radial-gradient(circle at calc(var(--pointer-x) + 8%) calc(var(--pointer-y) - 4%), rgba(255, 79, 216, calc(0.03 + var(--pointer-glow) * 0.06)), transparent 20%),
+    linear-gradient(180deg, #080310 0%, var(--bg) 52%, #030108 100%);
+  background-size: 72px 72px, 72px 72px, auto, auto, auto, auto, auto, auto;
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-secondary);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
