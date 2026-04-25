@@ -30,9 +30,9 @@
 
 .site-header {
   padding:
-    calc(1.6875rem - (0.5625rem * var(--header-scroll-progress)))
+    calc(2.53125rem - (1.40625rem * var(--header-scroll-progress)))
     0
-    calc(1.21875rem - (0.40625rem * var(--header-scroll-progress)));
+    calc(1.828125rem - (1.015625rem * var(--header-scroll-progress)));
   position: sticky;
   top: 0;
   z-index: 30;
@@ -47,9 +47,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
   border-bottom: 1px solid var(--border);
-  padding-bottom: calc(1.03125rem - (0.34375rem * var(--header-scroll-progress)));
+  padding-bottom: calc(1.546875rem - (0.859375rem * var(--header-scroll-progress)));
   box-shadow: 0 1px 0 rgba(255, 79, 216, 0.08);
 }
 
@@ -161,7 +161,7 @@
   .editorial-section,
   .content-page,
   .blog-content {
-    border-radius: 1.4rem;
+    border-radius: var(--radius-lg);
   }
 
   .hero__title {
@@ -193,4 +193,3 @@
     align-items: flex-start;
   }
 }
-
