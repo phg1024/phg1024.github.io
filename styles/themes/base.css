@@ -1,0 +1,44 @@
+/* ── Theme Toggle (shared across all themes) ── */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted);
+}
+
+.theme-toggle__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.theme-toggle__select {
+  min-width: 11rem;
+  height: 2.4rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--button-radius);
+  background: var(--surface-strong);
+  color: var(--text);
+  box-shadow: var(--shadow-cyber);
+  outline: none;
+  appearance: none;
+}
+
+.theme-toggle__select:focus {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+/* ── Cyberpunk (default) ── */
+
+.theme-toggle__select {
+  border-color: rgba(78, 246, 255, 0.28);
+  background: rgba(18, 11, 33, 0.84);
+  box-shadow: inset 0 0 0 1px rgba(255, 79, 216, 0.08);
+}
+
+.theme-toggle__select:focus {
+  box-shadow: 0 0 0 2px rgba(78, 246, 255, 0.14), 0 0 16px rgba(255, 79, 216, 0.08);
+}

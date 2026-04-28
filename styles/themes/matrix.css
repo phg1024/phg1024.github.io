@@ -1,0 +1,445 @@
+/* ── Matrix Theme ── */
+
+[data-theme="matrix"] {
+   --bg: #020703;
+   --bg-accent: #08120a;
+   --surface: rgba(6, 18, 9, 0.8);
+    --surface-strong: rgba(8, 22, 10, 0.92);
+    --border: rgba(96, 255, 128, 0.22);
+    --text: #d8ffd8;
+    --muted: #84d184;
+    --soft: #58a658;
+    --accent: #7cff9d;
+    --accent-secondary: #d7ffd7;
+    --accent-tertiary: #2ce66d;
+    --accent-glow: rgba(124, 255, 157, 0.34);
+    --accent-glow-pink: rgba(124, 255, 157, 0.18);
+    --accent-strong: #f2fff2;
+    --shadow: 0 24px 90px rgba(0, 0, 0, 0.46);
+    --shadow-cyber: 0 0 0 1px rgba(124, 255, 157, 0.14), 0 0 40px rgba(124, 255, 157, 0.12);
+    --radius-lg: 0.42rem;
+    --radius-md: 0.28rem;
+    --button-radius: 0.22rem;
+    --button-radius-tight: 0.18rem;
+    --sans: "Courier New", "Lucida Console", monospace;
+    --serif: "Courier New", "Lucida Console", monospace;
+}
+
+[data-theme="matrix"] body {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(124, 255, 157, 0.1), transparent 22%),
+    radial-gradient(circle at 82% 10%, rgba(50, 220, 100, 0.08), transparent 18%),
+    linear-gradient(180deg, #030904 0%, #020703 52%, #010401 100%);
+}
+
+[data-theme="matrix"] .theme-backdrop {
+  opacity: 0.62;
+  mix-blend-mode: screen;
+}
+
+[data-theme="matrix"] .site-brand__name,
+[data-theme="matrix"] .hero__title,
+[data-theme="matrix"] .section-heading__title,
+[data-theme="matrix"] .journal-section__title,
+[data-theme="matrix"] .feature-card__title,
+[data-theme="matrix"] .journal-card__title,
+[data-theme="matrix"] .blog-content h1,
+[data-theme="matrix"] .blog-content h2,
+[data-theme="matrix"] .blog-content h3 {
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 12px rgba(124, 255, 157, 0.18);
+}
+
+[data-theme="matrix"] .site-brand__name {
+  text-transform: none;
+}
+
+[data-theme="matrix"] .feature-card::before,
+[data-theme="matrix"] .journal-card::before,
+[data-theme="matrix"] .journal-section::before,
+[data-theme="matrix"] .about-panel::before,
+[data-theme="matrix"] .blog-content::before,
+[data-theme="matrix"] .hero::before,
+[data-theme="matrix"] .editorial-section::before,
+[data-theme="matrix"] .content-page::before {
+  background: linear-gradient(135deg, rgba(124, 255, 157, 0.22), rgba(70, 210, 90, 0.08), rgba(200, 255, 200, 0.14));
+}
+
+[data-theme="matrix"] .feature-card__image-link,
+[data-theme="matrix"] .personal-project-image-link {
+  background: linear-gradient(180deg, #0b1d0e, #061108);
+}
+
+[data-theme="matrix"] .hero,
+[data-theme="matrix"] .editorial-section,
+[data-theme="matrix"] .content-page,
+[data-theme="matrix"] .blog-content,
+[data-theme="matrix"] .feature-card,
+[data-theme="matrix"] .journal-card,
+[data-theme="matrix"] .journal-section,
+[data-theme="matrix"] .about-panel,
+[data-theme="matrix"] .gallery-tabs-content,
+[data-theme="matrix"] .caption-overlay {
+  background:
+    linear-gradient(180deg, rgba(9, 24, 11, 0.44), rgba(6, 16, 8, 0.38));
+}
+
+[data-theme="matrix"] .journal-card {
+  box-shadow: var(--shadow), 0 0 24px rgba(124, 255, 157, 0.08);
+}
+
+[data-theme="matrix"] .journal-card__meta {
+  color: rgba(200, 255, 200, 0.82);
+}
+
+[data-theme="matrix"] .journal-card__title {
+  color: #e8ffe8;
+}
+
+[data-theme="matrix"] .gallery-tabs .nav-link {
+  background: rgba(8, 22, 10, 0.9);
+  color: #84d184;
+  border-radius: var(--button-radius-tight);
+}
+
+[data-theme="matrix"] .gallery-tabs .nav-link.active {
+  background: linear-gradient(135deg, rgba(25, 72, 32, 0.94), rgba(10, 30, 13, 0.96));
+  color: #e8ffe8;
+}
+
+[data-theme="matrix"] .gallery-tabs-content {
+  box-shadow: var(--shadow), 0 0 24px rgba(124, 255, 157, 0.08);
+}
+
+[data-theme="matrix"] .project-progress-fill {
+  color: #d8ffd8;
+}
+
+[data-theme="matrix"] .journal-section__header,
+[data-theme="matrix"] .carousel-control-prev,
+[data-theme="matrix"] .carousel-control-next {
+  background: rgba(8, 22, 10, 0.9);
+  color: #d8ffd8;
+  box-shadow: inset 0 0 0 1px rgba(124, 255, 157, 0.08), 0 0 18px rgba(124, 255, 157, 0.08);
+}
+
+[data-theme="matrix"] .journal-section__header:hover,
+[data-theme="matrix"] .journal-section__header:focus-visible {
+  background: rgba(14, 34, 16, 0.94);
+  border-color: rgba(200, 255, 200, 0.3);
+  box-shadow: 0 0 22px rgba(124, 255, 157, 0.14);
+}
+
+[data-theme="matrix"] .blog-content pre {
+  background: #020a02;
+  border: 1px solid rgba(96, 255, 128, 0.25);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 12px rgba(124, 255, 157, 0.08);
+}
+
+[data-theme="matrix"] .blog-content code {
+  background: rgba(124, 255, 157, 0.1);
+  color: #7cff9d;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--button-radius-tight);
+  font-size: 0.9em;
+  border: 1px solid rgba(124, 255, 157, 0.2);
+  text-shadow: 0 0 4px rgba(124, 255, 157, 0.3);
+}
+
+/* Override highlight.js default light-theme colors for matrix */
+[data-theme="matrix"] .blog-content pre code .hljs-keyword,
+[data-theme="matrix"] .blog-content pre code .hljs-keyword-title {
+  color: #39ff14;
+  font-weight: bold;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-built_in,
+[data-theme="matrix"] .blog-content pre code .hljs-type {
+  color: #00ff40;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-string,
+[data-theme="matrix"] .blog-content pre code .hljs-literal,
+[data-theme="matrix"] .blog-content pre code .hljs-number,
+[data-theme="matrix"] .blog-content pre code .hljs-atom {
+  color: #aaffaa;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-comment,
+[data-theme="matrix"] .blog-content pre code .hljs-quote {
+  color: #2d8e46;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-name,
+[data-theme="matrix"] .blog-content pre code .hljs-title,
+[data-theme="matrix"] .blog-content pre code .hljs-section {
+  color: #d8ffd8;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-tag {
+  color: #ff3333;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-regexp,
+[data-theme="matrix"] .blog-content pre code .hljs-link {
+  color: #7cff9d;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-symbol,
+[data-theme="matrix"] .blog-content pre code .hljs-variable {
+  color: #ffaa33;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-template-variable,
+[data-theme="matrix"] .blog-content pre code .hljs-addition {
+  color: #aaffaa;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-attr,
+[data-theme="matrix"] .blog-content pre code .hljs-property {
+  color: #cc99ff;
+}
+
+[data-theme="matrix"] .blog-content pre code .hljs-punctuation,
+[data-theme="matrix"] .blog-content pre code .hljs-meta {
+  color: #58a658;
+}
+
+[data-theme="matrix"] .blog-content pre code {
+  background: none;
+  color: #d8ffd8;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+  text-shadow: none;
+}
+
+[data-theme="matrix"] .image_info .media-body {
+  color: #d8ffd8;
+}
+
+[data-theme="matrix"] .image_info iframe {
+  box-shadow: 0 0 16px rgba(124, 255, 157, 0.12);
+}
+
+[data-theme="matrix"] .feature-card__image-link::after {
+  background:
+    linear-gradient(135deg, rgba(124, 255, 157, 0.12), transparent 38%),
+    linear-gradient(180deg, transparent 0%, rgba(200, 255, 200, 0.1) 100%);
+}
+
+/* ── Button links (About page LinkedIn/Scholar) ── */
+
+[data-theme="matrix"] .button-link {
+  border: 1px solid rgba(96, 255, 128, 0.25);
+  background: rgba(6, 18, 9, 0.9);
+  color: #d8ffd8;
+  border-radius: var(--button-radius);
+  box-shadow: 0 0 8px rgba(124, 255, 157, 0.06);
+}
+
+[data-theme="matrix"] .button-link:hover {
+  background: rgba(124, 255, 157, 0.12);
+  border-color: rgba(200, 255, 200, 0.4);
+  box-shadow: 0 0 14px rgba(124, 255, 157, 0.15);
+}
+
+[data-theme="matrix"] .button-link--in .btn-icon {
+  /* LinkedIn PNG logo renders as-is; ensure dark background */
+  background: transparent;
+  filter: none !important;
+}
+
+/* ── Project buttons ── */
+
+[data-theme="matrix"] .project-button {
+  border: 1px solid rgba(124, 255, 157, 0.3);
+  background: rgba(6, 18, 9, 0.9);
+  color: #d8ffd8;
+  border-radius: var(--button-radius);
+  box-shadow: 0 0 6px rgba(124, 255, 157, 0.06);
+}
+
+[data-theme="matrix"] .project-button:hover,
+[data-theme="matrix"] .project-button:focus-visible {
+  background: rgba(124, 255, 157, 0.1);
+  border-color: rgba(200, 255, 200, 0.4);
+  box-shadow: 0 0 12px rgba(124, 255, 157, 0.12);
+}
+
+[data-theme="matrix"] .project-button--secondary {
+  background: rgba(6, 18, 9, 0.7);
+  color: #d8ffd8;
+  border: 1px solid rgba(96, 255, 128, 0.2);
+}
+
+[data-theme="matrix"] .project-button--secondary:hover {
+  background: rgba(124, 255, 157, 0.08);
+}
+
+/* ── Project form fields ── */
+
+[data-theme="matrix"] .project-field input,
+[data-theme="matrix"] .project-field select {
+  border: 1px solid rgba(96, 255, 128, 0.3);
+  background: rgba(6, 18, 9, 0.85);
+  color: #d8ffd8;
+  border-radius: var(--button-radius-tight);
+}
+
+[data-theme="matrix"] .project-field input:focus,
+[data-theme="matrix"] .project-field select:focus {
+  border-color: rgba(124, 255, 157, 0.5);
+  box-shadow: 0 0 0 2px rgba(124, 255, 157, 0.15);
+}
+
+/* ── Progress bar ── */
+
+[data-theme="matrix"] .project-progress-fill {
+  background: linear-gradient(90deg, rgba(57, 255, 20, 0.7), rgba(124, 255, 157, 0.9));
+  color: #020703;
+}
+
+[data-theme="matrix"] .project-progress-bar {
+  border-color: rgba(96, 255, 128, 0.3);
+  background: rgba(6, 18, 9, 0.7);
+}
+
+/* ── Carousel controls ── */
+
+[data-theme="matrix"] .carousel__btn {
+  border-color: rgba(96, 255, 128, 0.3);
+  background: rgba(6, 18, 9, 0.9);
+  color: #d8ffd8;
+  border-radius: var(--button-radius-tight);
+  box-shadow: 0 0 10px rgba(124, 255, 157, 0.1);
+}
+
+[data-theme="matrix"] .carousel__btn:hover,
+[data-theme="matrix"] .carousel__btn:focus {
+  background: rgba(124, 255, 157, 0.1);
+  border-color: rgba(200, 255, 200, 0.4);
+}
+
+[data-theme="matrix"] .carousel__indicator {
+  border-color: rgba(96, 255, 128, 0.3);
+  background: transparent;
+}
+
+[data-theme="matrix"] .carousel__indicator.is-active {
+  background: rgba(124, 255, 157, 0.6);
+  border-color: rgba(96, 255, 128, 0.4);
+}
+
+[data-theme="matrix"] .carousel__caption {
+  background: rgba(0, 30, 0, 0.72);
+  color: #39ff14;
+  border: 1px solid rgba(57, 255, 20, 0.35);
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.18);
+  backdrop-filter: none;
+  border-radius: 0;
+  font-family: "Menlo", "Courier", monospace;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.5);
+}
+
+/* ── Minesweeper popup ── */
+
+[data-theme="matrix"] .ms-popup {
+  background: rgba(8, 22, 10, 0.95);
+  border: 1px solid rgba(96, 255, 128, 0.35);
+  box-shadow: 0 0 20px rgba(124, 255, 157, 0.15);
+  color: #39ff14;
+}
+
+[data-theme="matrix"] .ms-popup-btn {
+  background: rgba(57, 255, 20, 0.1);
+  color: #39ff14;
+  border: 1px solid rgba(57, 255, 20, 0.35);
+  border-radius: var(--button-radius-tight);
+}
+
+[data-theme="matrix"] .ms-popup-btn:hover {
+  background: rgba(57, 255, 20, 0.25);
+}
+
+[data-theme="matrix"] .ms-popup-overlay {
+  background: rgba(0, 10, 0, 0.6);
+}
+
+/* ── ImageprocJS mode picker / controls panel ── */
+
+[data-theme="matrix"] .mode-picker {
+  background: rgba(7, 18, 8, 0.85);
+  border-color: rgba(57, 255, 20, 0.25);
+  border-radius: var(--button-radius-tight);
+}
+
+[data-theme="matrix"] .controls-panel {
+  background: rgba(7, 18, 8, 0.75);
+  border-color: rgba(57, 255, 20, 0.25);
+}
+
+[data-theme="matrix"] .imageprocjs-panel {
+  background: rgba(7, 18, 8, 0.62);
+  border-color: rgba(57, 255, 20, 0.25);
+  box-shadow: inset 0 0 0 1px rgba(57, 255, 20, 0.06);
+}
+
+[data-theme="matrix"] .control-group {
+  border-bottom-color: rgba(96, 255, 128, 0.2);
+}
+
+[data-theme="matrix"] #div_canvas canvas,
+[data-theme="matrix"] #div_curveplot {
+  border-color: rgba(57, 255, 20, 0.3);
+  background: rgba(7, 18, 8, 0.5);
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.15);
+}
+
+[data-theme="matrix"] .curve-tool-header {
+  background: rgba(7, 18, 8, 0.85);
+  border-color: rgba(57, 255, 20, 0.25);
+}
+
+/* ── Fractal project ── */
+
+[data-theme="matrix"] .project-canvas-frame canvas {
+  border: 1px solid rgba(96, 255, 128, 0.3);
+  border-radius: var(--button-radius-tight);
+}
+
+/* ── Gallery tabs ── */
+
+[data-theme="matrix"] .gallery-tabs .nav-link {
+  background: rgba(8, 22, 10, 0.9);
+  border-radius: var(--button-radius-tight);
+}
+
+[data-theme="matrix"] .gallery-tabs .nav-link.active {
+  background: linear-gradient(135deg, rgba(25, 72, 32, 0.94), rgba(10, 30, 13, 0.96));
+  color: #e8ffe8;
+}
+
+/* ── Gallery panel wrapper ── */
+
+[data-theme="matrix"] .gallery-panel-wrapper {
+  background: rgba(6, 18, 9, 0.5);
+  border-color: rgba(96, 255, 128, 0.3);
+  box-shadow: var(--shadow), 0 0 20px rgba(124, 255, 157, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+/* ── Theme toggle for Matrix theme ── */
+
+[data-theme="matrix"] .theme-toggle__select {
+  border-color: rgba(96, 255, 128, 0.25);
+  background: rgba(6, 18, 9, 0.9);
+  color: #d8ffd8;
+  box-shadow: 0 0 8px rgba(124, 255, 157, 0.06);
+}
+
+[data-theme="matrix"] .theme-toggle__select:focus {
+  border-color: rgba(200, 255, 200, 0.4);
+  box-shadow: 0 0 0 2px rgba(124, 255, 157, 0.14), 0 0 18px rgba(124, 255, 157, 0.08);
+}

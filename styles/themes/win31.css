@@ -1,0 +1,284 @@
+/* ── Windows 3.1 Theme ── */
+
+[data-theme="win31"] {
+   --bg: #008080;
+   --bg-accent: #008080;
+   --surface: #c0c0c0;
+   --surface-strong: #c0c0c0;
+   --border: #7b7b7b;
+   --text: #000000;
+   --muted: #333333;
+   --soft: #333333;
+   --accent: #000080;
+   --accent-secondary: #0000cc;
+   --accent-tertiary: #000080;
+   --accent-glow: rgba(0, 0, 0, 0);
+   --accent-glow-pink: rgba(0, 0, 0, 0);
+   --accent-strong: #000000;
+   --shadow: none;
+   --shadow-cyber: none;
+   --radius-lg: 0;
+   --radius-md: 0;
+   --button-radius: 0;
+   --button-radius-tight: 0;
+   --sans: "MS Sans Serif", "Microsoft Sans Serif", "Chicago", "Geneva", "Tahoma", sans-serif;
+   --serif: "MS Sans Serif", "Microsoft Sans Serif", "Chicago", "Geneva", "Tahoma", sans-serif;
+}
+
+[data-theme="win31"] body {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(#008080, #008080);
+  background-size: 8px 8px, 8px 8px, auto;
+  background-attachment: scroll;
+}
+
+[data-theme="win31"] .pointer-reactive-overlay {
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+
+[data-theme="win31"] .theme-backdrop {
+  display: none;
+}
+
+[data-theme="win31"] .site-header__inner,
+[data-theme="win31"] .site-footer__inner,
+[data-theme="win31"] .hero,
+[data-theme="win31"] .editorial-section,
+[data-theme="win31"] .content-page,
+[data-theme="win31"] .blog-content,
+[data-theme="win31"] .feature-card,
+[data-theme="win31"] .journal-card,
+[data-theme="win31"] .journal-section,
+[data-theme="win31"] .about-panel,
+[data-theme="win31"] .card,
+[data-theme="win31"] .tab-content,
+[data-theme="win31"] .list-group-item,
+[data-theme="win31"] .dropdown-menu {
+  background: #c0c0c0;
+  border: 2px solid #7b7b7b;
+  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #7b7b7b;
+  backdrop-filter: none;
+}
+
+[data-theme="win31"] .hero,
+[data-theme="win31"] .editorial-section,
+[data-theme="win31"] .content-page,
+[data-theme="win31"] .blog-content,
+[data-theme="win31"] .feature-card,
+[data-theme="win31"] .journal-card,
+[data-theme="win31"] .journal-section,
+[data-theme="win31"] .about-panel {
+  transform: none !important;
+}
+
+[data-theme="win31"] .feature-card::before,
+[data-theme="win31"] .journal-card::before,
+[data-theme="win31"] .journal-section::before,
+[data-theme="win31"] .about-panel::before,
+[data-theme="win31"] .blog-content::before,
+[data-theme="win31"] .hero::before,
+[data-theme="win31"] .editorial-section::before,
+[data-theme="win31"] .content-page::before {
+  display: none;
+}
+
+[data-theme="win31"] .site-brand__name,
+[data-theme="win31"] .hero__title,
+[data-theme="win31"] .section-heading__title,
+[data-theme="win31"] .journal-section__title,
+[data-theme="win31"] .feature-card__title,
+[data-theme="win31"] .journal-card__title,
+[data-theme="win31"] .blog-content h1,
+[data-theme="win31"] .blog-content h2,
+[data-theme="win31"] .blog-content h3 {
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+[data-theme="win31"] body,
+[data-theme="win31"] .site-nav__link,
+[data-theme="win31"] .theme-toggle,
+[data-theme="win31"] .theme-toggle__select,
+[data-theme="win31"] .button-link,
+[data-theme="win31"] input,
+[data-theme="win31"] select,
+[data-theme="win31"] textarea,
+[data-theme="win31"] button {
+  font-family: "MS Sans Serif", "Microsoft Sans Serif", "Chicago", "Geneva", "Tahoma", sans-serif;
+  font-size: 16px;
+  line-height: 1.35;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeSpeed;
+}
+
+[data-theme="win31"] .site-brand__name,
+[data-theme="win31"] .hero__title,
+[data-theme="win31"] .section-heading__title,
+[data-theme="win31"] .journal-section__title,
+[data-theme="win31"] .feature-card__title,
+[data-theme="win31"] .journal-card__title,
+[data-theme="win31"] .blog-content h1,
+[data-theme="win31"] .blog-content h2,
+[data-theme="win31"] .blog-content h3 {
+  font-family: "MS Sans Serif", "Microsoft Sans Serif", "Chicago", "Geneva", "Tahoma", sans-serif;
+}
+
+[data-theme="win31"] .site-brand__tag,
+[data-theme="win31"] .site-nav__link,
+[data-theme="win31"] .theme-toggle__label,
+[data-theme="win31"] .blog-entry-date,
+[data-theme="win31"] .section-heading__eyebrow,
+[data-theme="win31"] .feature-card__meta,
+[data-theme="win31"] .journal-card__meta {
+  font-size: 13px;
+  text-transform: none;
+}
+
+[data-theme="win31"] .site-nav__link,
+[data-theme="win31"] .theme-toggle__label,
+[data-theme="win31"] .blog-entry-date,
+[data-theme="win31"] .section-heading__eyebrow,
+[data-theme="win31"] .feature-card__meta,
+[data-theme="win31"] .journal-card__meta {
+  letter-spacing: 0.08em;
+}
+
+[data-theme="win31"] .site-nav__link.is-active,
+[data-theme="win31"] .site-nav__link:hover,
+[data-theme="win31"] a:hover {
+  color: #000080;
+  text-shadow: none;
+}
+
+[data-theme="win31"] .site-nav__link.is-active::after,
+[data-theme="win31"] .site-nav__link:hover::after {
+  background: #000080;
+  box-shadow: none;
+}
+
+[data-theme="win31"] .theme-toggle__select {
+  border: 2px solid #7b7b7b;
+  border-radius: 0;
+  background: #ffffff;
+  color: #000000;
+  box-shadow: inset -1px -1px 0 #7b7b7b, inset 1px 1px 0 #ffffff;
+}
+
+[data-theme="win31"] .button-link {
+  border: 2px solid #7b7b7b;
+  border-radius: 0;
+  background: #c0c0c0;
+  color: #000000;
+  box-shadow: inset -1px -1px 0 #7b7b7b, inset 1px 1px 0 #ffffff;
+}
+
+[data-theme="win31"] .button-link:hover {
+  background: #d6d6d6;
+  border-color: #7b7b7b;
+  color: #000000;
+  box-shadow: inset -1px -1px 0 #7b7b7b, inset 1px 1px 0 #ffffff;
+}
+
+[data-theme="win31"] .feature-card__image-link,
+[data-theme="win31"] .personal-project-image-link {
+  background: #d6d6d6;
+}
+
+[data-theme="win31"] .editorial-section--split,
+[data-theme="win31"] .hero,
+[data-theme="win31"] .editorial-section,
+[data-theme="win31"] .content-page,
+[data-theme="win31"] .blog-content,
+[data-theme="win31"] .feature-card,
+[data-theme="win31"] .journal-card,
+[data-theme="win31"] .journal-section,
+[data-theme="win31"] .about-panel,
+[data-theme="win31"] .gallery-tabs-content,
+[data-theme="win31"] .caption-overlay {
+  background: rgba(192, 192, 192, 0.58);
+}
+
+[data-theme="win31"] .gallery-tabs .nav-link,
+[data-theme="win31"] .gallery-tabs-content {
+  border: 2px solid #7b7b7b;
+  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #7b7b7b;
+}
+
+/* Override highlight.js default colors for win31 theme */
+[data-theme="win31"] .blog-content pre code .hljs-keyword,
+[data-theme="win31"] .blog-content pre code .hljs-keyword-title {
+  color: #000080;
+  font-weight: 700;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-built_in,
+[data-theme="win31"] .blog-content pre code .hljs-type {
+  color: #008080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-string,
+[data-theme="win31"] .blog-content pre code .hljs-literal,
+[data-theme="win31"] .blog-content pre code .hljs-number {
+  color: #800080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-comment,
+[data-theme="win31"] .blog-content pre code .hljs-quote {
+  color: #808080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-name,
+[data-theme="win31"] .blog-content pre code .hljs-title,
+[data-theme="win31"] .blog-content pre code .hljs-section {
+  color: #000000;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-tag {
+  color: #000080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-symbol,
+[data-theme="win31"] .blog-content pre code .hljs-variable {
+  color: #800000;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-template-variable,
+[data-theme="win31"] .blog-content pre code .hljs-addition {
+  color: #800080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-attr,
+[data-theme="win31"] .blog-content pre code .hljs-property {
+  color: #000080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-punctuation,
+[data-theme="win31"] .blog-content pre code .hljs-meta {
+  color: #808080;
+}
+
+[data-theme="win31"] .blog-content pre code {
+  background: none;
+  color: #000000;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+  box-shadow: none;
+}
+
+[data-theme="win31"] .feature-card:hover,
+[data-theme="win31"] .journal-card:hover,
+[data-theme="win31"] .journal-section:hover,
+[data-theme="win31"] .about-panel:hover,
+[data-theme="win31"] .hero:hover,
+[data-theme="win31"] .editorial-section:hover,
+[data-theme="win31"] .content-page:hover,
+[data-theme="win31"] .blog-content:hover {
+  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #7b7b7b;
+}

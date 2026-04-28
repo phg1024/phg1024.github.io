@@ -1,0 +1,401 @@
+/* ── Minimalist Theme ── */
+
+[data-theme="minimalist"] {
+   --bg: #f3efe9;
+   --bg-accent: #ece6de;
+   --surface: rgba(255, 252, 248, 0.9);
+   --surface-strong: rgba(255, 255, 255, 0.94);
+   --border: rgba(58, 52, 46, 0.12);
+   --text: #201b17;
+   --muted: #73685e;
+   --soft: #9b8f85;
+   --accent: #6a7c8c;
+   --accent-secondary: #b8c2ca;
+   --accent-tertiary: #8a958f;
+   --accent-glow: rgba(184, 194, 202, 0.18);
+   --accent-glow-pink: rgba(184, 194, 202, 0.08);
+   --accent-strong: #201b17;
+   --shadow: 0 18px 42px rgba(37, 28, 18, 0.08);
+   --shadow-cyber: none;
+   --radius-lg: 1.1rem;
+   --radius-md: 0.75rem;
+   --button-radius: 0.55rem;
+   --button-radius-tight: 0.45rem;
+   --sans: "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+   --serif: "Outfit", "Helvetica Neue", sans-serif;
+}
+
+[data-theme="minimalist"] body {
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255, 255, 255, 0.7), transparent 24%),
+    linear-gradient(180deg, #f7f3ee 0%, #f3efe9 52%, #ece6de 100%);
+  color: var(--text);
+}
+
+[data-theme="minimalist"] .theme-backdrop {
+  opacity: 0;
+}
+
+[data-theme="minimalist"] .site-header__inner {
+  border-bottom-color: var(--border);
+  box-shadow: none;
+}
+
+[data-theme="minimalist"] .hero,
+[data-theme="minimalist"] .editorial-section,
+[data-theme="minimalist"] .content-page,
+[data-theme="minimalist"] .blog-content,
+[data-theme="minimalist"] .feature-card,
+[data-theme="minimalist"] .journal-card,
+[data-theme="minimalist"] .journal-section,
+[data-theme="minimalist"] .about-panel,
+[data-theme="minimalist"] .gallery-tabs-content,
+[data-theme="minimalist"] .caption-overlay {
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.5), rgba(248, 244, 238, 0.44));
+}
+
+[data-theme="minimalist"] .gallery-tabs .nav-link {
+  background: rgba(255, 252, 248, 0.9);
+  color: var(--muted);
+  border-radius: 0.55rem;
+}
+
+[data-theme="minimalist"] .gallery-tabs .nav-link.active {
+  background: linear-gradient(135deg, rgba(232, 236, 240, 0.95), rgba(255, 252, 248, 0.98));
+  color: var(--text);
+}
+
+[data-theme="minimalist"] .project-button,
+[data-theme="minimalist"] .project-field input,
+[data-theme="minimalist"] .project-field select,
+[data-theme="minimalist"] .project-canvas-frame,
+[data-theme="minimalist"] .project-progress-bar {
+  box-shadow: none;
+}
+
+[data-theme="minimalist"] .journal-section__header {
+  background: rgba(255, 252, 248, 0.82);
+  border-color: rgba(106, 124, 140, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32);
+}
+
+[data-theme="minimalist"] .journal-section__header:hover,
+[data-theme="minimalist"] .journal-section__header:focus-visible {
+  background: rgba(248, 244, 238, 0.88);
+  border-color: rgba(106, 124, 140, 0.3);
+  box-shadow: 0 10px 24px rgba(184, 194, 202, 0.14);
+}
+
+[data-theme="minimalist"] .blog-content pre {
+  background: var(--bg-accent);
+  border-color: var(--border);
+  color: var(--text);
+  border-radius: 0.5rem;
+}
+
+[data-theme="minimalist"] .blog-content code {
+  background: rgba(106, 124, 140, 0.1);
+  color: var(--soft);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  border: 1px solid rgba(106, 124, 140, 0.2);
+}
+
+/* Override highlight.js default colors for minimalist theme */
+[data-theme="minimalist"] .blog-content pre code .hljs-keyword,
+[data-theme="minimalist"] .blog-content pre code .hljs-keyword-title {
+  color: #5a6577;
+  font-weight: 700;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-built_in,
+[data-theme="minimalist"] .blog-content pre code .hljs-type {
+  color: #6b5a77;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-string,
+[data-theme="minimalist"] .blog-content pre code .hljs-literal,
+[data-theme="minimalist"] .blog-content pre code .hljs-number {
+  color: #7a6b5a;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-comment,
+[data-theme="minimalist"] .blog-content pre code .hljs-quote {
+  color: #9ca3af;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-name,
+[data-theme="minimalist"] .blog-content pre code .hljs-title,
+[data-theme="minimalist"] .blog-content pre code .hljs-section {
+  color: #2a2e35;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-tag {
+  color: #7a5a65;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-symbol,
+[data-theme="minimalist"] .blog-content pre code .hljs-variable {
+  color: #8b6b3a;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-template-variable,
+[data-theme="minimalist"] .blog-content pre code .hljs-addition {
+  color: #7a6b5a;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-attr,
+[data-theme="minimalist"] .blog-content pre code .hljs-property {
+  color: #5a6577;
+}
+
+[data-theme="minimalist"] .blog-content pre code .hljs-punctuation,
+[data-theme="minimalist"] .blog-content pre code .hljs-meta {
+  color: #9ca3af;
+}
+
+[data-theme="minimalist"] .blog-content pre code {
+  background: none;
+  color: #2a2e35;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+}
+
+/* Theme toggle select for minimalist */
+[data-theme="minimalist"] .theme-toggle__select {
+  border-color: rgba(106, 124, 140, 0.24);
+  background: rgba(255, 252, 248, 0.96);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 202, 0.14);
+}
+
+[data-theme="minimalist"] .theme-toggle__select:focus {
+  border-color: rgba(106, 124, 140, 0.35);
+  box-shadow: 0 0 0 2px rgba(184, 194, 202, 0.16);
+}
+
+/* Button link for minimalist */
+[data-theme="minimalist"] .button-link {
+  border-color: rgba(106, 124, 140, 0.24);
+  background: rgba(255, 252, 248, 0.96);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 202, 0.14);
+}
+
+[data-theme="minimalist"] .button-link:hover {
+  background: rgba(232, 236, 240, 0.96);
+  border-color: rgba(106, 124, 140, 0.3);
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(184, 194, 202, 0.16);
+}
+
+/* ── Button links (About page LinkedIn/Scholar) ── */
+
+[data-theme="minimalist"] .button-link {
+  border: 1px solid rgba(106, 124, 140, 0.24);
+  background: rgba(255, 252, 248, 0.96);
+  color: var(--text);
+  border-radius: var(--button-radius);
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 202, 0.14);
+}
+
+[data-theme="minimalist"] .button-link:hover {
+  background: rgba(232, 236, 240, 0.96);
+  border-color: rgba(106, 124, 140, 0.3);
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(184, 194, 202, 0.16);
+}
+
+[data-theme="minimalist"] .button-link--in .btn-icon {
+  background: transparent;
+  filter: none !important;
+}
+
+[data-theme="minimalist"] .button-link--gs .btn-icon {
+  background: transparent;
+  filter: none !important;
+}
+
+/* ── Project buttons ── */
+
+[data-theme="minimalist"] .project-button {
+  border: 1px solid rgba(106, 124, 140, 0.3);
+  background: linear-gradient(135deg, rgba(106, 124, 140, 0.7), rgba(138, 149, 143, 0.5));
+  color: var(--text);
+  box-shadow: none;
+  border-radius: var(--button-radius);
+}
+
+[data-theme="minimalist"] .project-button:hover,
+[data-theme="minimalist"] .project-button:focus-visible {
+  background: linear-gradient(135deg, rgba(106, 124, 140, 0.9), rgba(138, 149, 143, 0.7));
+  border-color: rgba(106, 124, 140, 0.4);
+  box-shadow: 0 2px 8px rgba(184, 194, 202, 0.12);
+}
+
+[data-theme="minimalist"] .project-button--secondary {
+  background: rgba(232, 236, 240, 0.7);
+  color: var(--text);
+  border: 1px solid rgba(106, 124, 140, 0.2);
+}
+
+[data-theme="minimalist"] .project-button--secondary:hover {
+  background: rgba(232, 236, 240, 0.9);
+}
+
+/* ── Project form fields ── */
+
+[data-theme="minimalist"] .project-field input,
+[data-theme="minimalist"] .project-field select {
+  border: 1px solid rgba(106, 124, 140, 0.3);
+  background: rgba(255, 252, 248, 0.9);
+  color: var(--text);
+  border-radius: var(--button-radius-tight);
+}
+
+[data-theme="minimalist"] .project-field input:focus,
+[data-theme="minimalist"] .project-field select:focus {
+  border-color: rgba(106, 124, 140, 0.5);
+  box-shadow: 0 0 0 2px rgba(184, 194, 202, 0.15);
+}
+
+/* ── Progress bar ── */
+
+[data-theme="minimalist"] .project-progress-fill {
+  background: linear-gradient(90deg, #6a7c8c, #8a958f);
+  color: #f3efe9;
+}
+
+[data-theme="minimalist"] .project-progress-bar {
+  border-color: rgba(106, 124, 140, 0.3);
+  background: rgba(232, 236, 240, 0.5);
+}
+
+/* ── Carousel controls ── */
+
+[data-theme="minimalist"] .carousel__btn {
+  border-color: rgba(106, 124, 140, 0.3);
+  background: rgba(255, 252, 248, 0.85);
+  color: var(--text);
+  border-radius: var(--button-radius-tight);
+  box-shadow: none;
+}
+
+[data-theme="minimalist"] .carousel__btn:hover,
+[data-theme="minimalist"] .carousel__btn:focus {
+  background: rgba(232, 236, 240, 0.9);
+  border-color: rgba(106, 124, 140, 0.4);
+}
+
+[data-theme="minimalist"] .carousel__indicator {
+  border-color: rgba(106, 124, 140, 0.3);
+  background: transparent;
+}
+
+[data-theme="minimalist"] .carousel__indicator.is-active {
+  background: rgba(106, 124, 140, 0.6);
+  border-color: rgba(106, 124, 140, 0.4);
+}
+
+[data-theme="minimalist"] .carousel__caption {
+  background: rgba(255, 252, 248, 0.85);
+  color: #3a3a3a;
+  border: 1px solid rgba(58, 52, 46, 0.14);
+  box-shadow: none;
+  backdrop-filter: none;
+  border-radius: var(--button-radius);
+  font-family: var(--serif);
+}
+
+/* ── Minesweeper popup ── */
+
+[data-theme="minimalist"] .ms-popup {
+  background: rgba(255, 252, 248, 0.95);
+  border: 1px solid rgba(106, 124, 140, 0.3);
+  box-shadow: 0 8px 32px rgba(37, 28, 18, 0.1);
+  color: var(--text);
+  border-radius: var(--button-radius);
+}
+
+[data-theme="minimalist"] .ms-popup-btn {
+  background: rgba(106, 124, 140, 0.15);
+  color: var(--text);
+  border: 1px solid rgba(106, 124, 140, 0.3);
+  border-radius: var(--button-radius-tight);
+}
+
+[data-theme="minimalist"] .ms-popup-btn:hover {
+  background: rgba(106, 124, 140, 0.25);
+}
+
+[data-theme="minimalist"] .ms-popup-overlay {
+  background: rgba(32, 27, 23, 0.3);
+}
+
+/* ── ImageprocJS mode picker / controls panel ── */
+
+[data-theme="minimalist"] .mode-picker {
+  background: rgba(255, 252, 248, 0.8);
+  border-color: rgba(58, 52, 46, 0.12);
+  border-radius: var(--button-radius);
+}
+
+[data-theme="minimalist"] .controls-panel {
+  background: rgba(255, 252, 248, 0.7);
+  border-color: rgba(58, 52, 46, 0.12);
+  border-radius: var(--button-radius);
+}
+
+[data-theme="minimalist"] .imageprocjs-panel {
+  background: rgba(255, 252, 248, 0.6);
+  border-color: rgba(58, 52, 46, 0.12);
+  box-shadow: none;
+}
+
+[data-theme="minimalist"] .control-group {
+  border-bottom-color: rgba(106, 124, 140, 0.15);
+}
+
+[data-theme="minimalist"] #div_canvas canvas,
+[data-theme="minimalist"] #div_curveplot {
+  border-color: rgba(58, 52, 46, 0.15);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--button-radius);
+}
+
+[data-theme="minimalist"] .curve-tool-header {
+  background: rgba(255, 252, 248, 0.8);
+  border-color: rgba(58, 52, 46, 0.12);
+  border-radius: var(--button-radius);
+}
+
+/* ── Fractal project ── */
+
+[data-theme="minimalist"] .project-canvas-frame canvas {
+  border: 1px solid rgba(106, 124, 140, 0.25);
+  border-radius: var(--button-radius);
+}
+
+/* ── Gallery tabs ── */
+
+[data-theme="minimalist"] .gallery-tabs .nav-link {
+  background: rgba(255, 252, 248, 0.9);
+  color: var(--muted);
+  border-radius: var(--button-radius);
+}
+
+[data-theme="minimalist"] .gallery-tabs .nav-link.active {
+  background: linear-gradient(135deg, rgba(232, 236, 240, 0.95), rgba(255, 252, 248, 0.98));
+  color: var(--text);
+}
+
+/* ── Gallery panel wrapper ── */
+
+[data-theme="minimalist"] .gallery-panel-wrapper {
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.5), rgba(248, 244, 238, 0.44));
+  border-color: var(--border);
+  box-shadow: none;
+  border-radius: var(--button-radius);
+}
