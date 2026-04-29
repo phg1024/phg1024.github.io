@@ -1,5 +1,6 @@
 /**
  * Created by peihongguo on 9/30/13.
+ * Rewritten to use Canvas API instead of D3.js
  */
 
 var CurveTool = function() {
@@ -12,11 +13,9 @@ var CurveTool = function() {
     var dragged = null,
         selected = null;
 
-    var line = d3.svg.line()
-        .x(function(d) { return d.x; })
-        .y(function(d) { return d.y; })
-        .interpolate("cardinal");
-    var svg;
+    var canvas;
+    var ctx;
+    var containerId;
 
     function createPoint(x, y, locked) {
         return {
@@ -46,63 +45,94 @@ var CurveTool = function() {
     }
 
     function redraw() {
-        svg.select("path.line")
-            .datum(points)
-            .attr("d", line);
+        ctx.clearRect(0, 0, width, height);
+        
+        // Draw axes
+        ctx.strokeStyle = '#ccc';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(0, 0); ctx.lineTo(0, height); ctx.lineTo(width, height);
+        ctx.stroke();
 
-        var circle = svg.selectAll("circle")
-            .data(points, function(d) { return d.id; });
+        // Calculate curve points
+        var curvePoints = [];
+        for (var x = 0; x <= width; x++) {
+            for (var i = 0; i < points.length - 1; i++) {
+                if (x >= points[i].x && x <= points[i+1].x) {
+                    var px, py;
+                    var xl = points[i].x, yl = points[i].y;
+                    var xr = points[i+1].x, yr = points[i+1].y;
+                    var mxl = 0.5 * (points[i+1].x - points[i].x), myl = 0.5 * (points[i+1].y - points[i].y);
+                    var mxr = 0.5 * (points[i+1].x - points[i-1].x, myr = 0.5 * (points[i+1].y - points[i-1].y);
+                    // simplified catmull-rom just for drawing path
+                    // actually just drawing points and lines first for simplicity or use the CatmullRomCurve logic
+                    // Let's reuse the existing CatmullRomCurve logic from curve.js if accessible, 
+                    // but since we don't have access in this scope easily without imports, I'll replicate the path logic.
+                    
+                    // Re-implementing simple card spline or just drawing control points
+                    break;
+                }
+            }
+        }
+        
+        // Draw the curve using CatmullRomCurve logic
+        var pts = [];
+        for (var i = 0; i < points.length; i++) {
+            pts.push({x: points[i].x, y: points[i].y});
+        }
+        var curve = new CatmullRomCurve(pts);
 
-        circle.enter().append("circle")
-            .attr("r", 1e-6)
-            .on("mousedown", function(d) {
-                selected = d;
-                dragged = d.locked ? null : d;
-                redraw();
-            })
-            .transition()
-            .duration(250)
-            .attr("r", 6.5);
+        ctx.beginPath();
+        ctx.strokeStyle = 'var(--accent-secondary)';
+        ctx.lineWidth = 2;
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = 'var(--accent-glow)';
 
-        circle
-            .classed("selected", function(d) { return d === selected; })
-            .classed("locked", function(d) { return d.locked; })
-            .attr("cx", function(d) { return d.x; })
-            .attr("cy", function(d) { return d.y; });
+        for (var x = 0; x <= width; x++) {
+            var y = curve.getValue(x);
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
 
-        circle.exit().remove();
-
-        if (d3.event) {
-            d3.event.preventDefault();
-            d3.event.stopPropagation();
+        // Draw points
+        for (var i = 0; i < points.length; i++) {
+            var p = points[i];
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.locked ? 4 : 6.5, 0, Math.PI * 2);
+            ctx.fillStyle = p.locked ? '#666' : (p === selected ? 'var(--accent)' : 'var(--text)');
+            ctx.fill();
+            if (!p.locked) {
+                ctx.strokeStyle = 'var(--accent-secondary)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
         }
     }
 
     function pathPos(x) {
-        var pathEl = svg.select("path.line").node();
-        var pathLength = pathEl.getTotalLength();
-        var beginning = clampValue(x, 0, width);
-        var end = pathLength;
-        var target;
-        var pos;
-
-        while (true) {
-            target = Math.floor((beginning + end) / 2);
-            pos = pathEl.getPointAtLength(target);
-            if ((target === end || target === beginning) && pos.x !== x) {
-                break;
-            }
-            if (pos.x > x) end = target;
-            else if (pos.x < x) beginning = target;
-            else break;
+        var pts = [];
+        for (var i = 0; i < points.length; i++) {
+            pts.push({x: points[i].x, y: points[i].y});
         }
-        return pos;
+        var curve = new CatmullRomCurve(pts);
+        var y = curve.getValue(x);
+        return { x: x, y: y };
     }
 
-    function mousedown() {
-        var mouse = d3.mouse(svg.node());
-        var x = clampValue(mouse[0], 0, width);
-        var y = clampValue(mouse[1], 0, height);
+    function getMousePos(evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
+
+    function mousedown(evt) {
+        var m = getMousePos(evt);
+        var x = clampValue(m.x, 0, width);
+        var y = clampValue(m.y, 0, height);
         var pos = pathPos(x);
 
         if (pos && !isNaN(pos.y)) {
@@ -113,41 +143,35 @@ var CurveTool = function() {
         points.push(selected);
         sortpoints();
         redraw();
-        $(document).trigger('curvechanged');
+        document.dispatchEvent(new Event('curvechanged'));
     }
 
-    function mousemove() {
+    function mousemove(evt) {
         if (!dragged) return;
-
-        var mouse = d3.mouse(svg.node());
-        dragged.x = clampValue(mouse[0], 0, width);
-        dragged.y = clampValue(mouse[1], 0, height);
-
+        var m = getMousePos(evt);
+        dragged.x = clampValue(m.x, 0, width);
+        dragged.y = clampValue(m.y, 0, height);
         sortpoints();
         redraw();
-        $(document).trigger('curvechanged');
+        document.dispatchEvent(new Event('curvechanged'));
     }
 
     function mouseup() {
         if (!dragged) return;
-        mousemove();
+        mousemove(document); // snap to curve one last time
         dragged = null;
-        $(document).trigger('curvechanged');
+        document.dispatchEvent(new Event('curvechanged'));
     }
 
-    function keydown() {
+    function keydown(evt) {
         if (!selected || selected.locked) return;
-
-        switch (d3.event.keyCode) {
-            case 8:
-            case 46: {
-                var index = points.indexOf(selected);
-                if (index === -1) return;
+        if ([8, 46].indexOf(evt.keyCode) !== -1) { // Backspace, Delete
+            var index = points.indexOf(selected);
+            if (index !== -1) {
                 points.splice(index, 1);
                 selected = null;
                 redraw();
-                $(document).trigger('curvechanged');
-                break;
+                document.dispatchEvent(new Event('curvechanged'));
             }
         }
     }
@@ -164,7 +188,6 @@ var CurveTool = function() {
         for (var i = 0; i < points.length; i++) {
             pts.push({x: points[i].x, y: 255 - points[i].y});
         }
-
         var crCurve = new CatmullRomCurve(pts);
         var lut = [0];
         for (var j = 1; j < 255; j++) {
@@ -178,29 +201,23 @@ var CurveTool = function() {
         if (!target) {
             throw "failed to initialize curve tool";
         }
+        
+        var container = document.querySelector(target);
+        if (!container) throw "Target not found";
 
-        svg = d3.select(target).append("svg")
-            .attr("id", "curvetool")
-            .attr("width", width)
-            .attr("height", height)
-            .attr("viewBox", "0 0 " + width + " " + height)
-            .attr("preserveAspectRatio", "xMidYMid meet")
-            .attr("tabindex", 1);
+        cursor: 'pointer';
+        canvas = document.createElement('canvas');
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        canvas.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+        canvas.setAttribute('tabindex', 1);
+        container.appendChild(canvas);
+        ctx = canvas.getContext('2d');
 
-        svg.append("rect")
-            .attr("id", "rect")
-            .attr("width", width)
-            .attr("height", height)
-            .on("mousedown", mousedown);
-
-        svg.append("path")
-            .datum(points)
-            .attr("class", "line");
-
-        d3.select(window)
-            .on("mousemove.curvetool", mousemove)
-            .on("mouseup.curvetool", mouseup)
-            .on("keydown.curvetool", keydown);
+        canvas.addEventListener('mousedown', mousedown);
+        document.addEventListener('mousemove', mousemove);
+        document.addEventListener('mouseup', mouseup);
+        canvas.addEventListener('keydown', keydown);
 
         redraw();
     };

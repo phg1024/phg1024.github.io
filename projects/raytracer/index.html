@@ -52,44 +52,29 @@
                          </div>
 
                          <div class="project-controls-grid">
+                             <label class="project-field project-field--compact"><span>Width <input id="width" type="text" value="480" class="project-field__inline" inputmode="numeric"></span></label>
+                             <label class="project-field project-field--compact"><span>Height <input id="height" type="text" value="320" class="project-field__inline" inputmode="numeric"></span></label>
+                             <label class="project-field project-field--compact"><span>Samples <input id="nsamples" type="text" value="512" class="project-field__inline" inputmode="numeric"></span></label>
+                             <label class="project-field project-field--compact"><span>Max Depth <input id="maxdepth" type="text" value="8" class="project-field__inline" inputmode="numeric"></span></label>
+                             <label class="project-field project-field--compact"><span>Threads <input id="threads" type="text" value="8" class="project-field__inline" inputmode="numeric"></span></label>
+                          </div>
+
+                          <div class="project-controls-secondary">
                              <label class="project-field project-field--compact">
-                                 <span>Width</span>
-                                 <input id="width" type="text" value="480" inputmode="numeric">
-                             </label>
-                             <label class="project-field project-field--compact">
-                                 <span>Height</span>
-                                 <input id="height" type="text" value="320" inputmode="numeric">
-                             </label>
-                             <label class="project-field project-field--compact">
-                                 <span>Samples</span>
-                                 <input id="nsamples" type="text" value="512" inputmode="numeric">
-                             </label>
-                             <label class="project-field project-field--compact">
-                                 <span>Max Depth</span>
-                                 <input id="maxdepth" type="text" value="8" inputmode="numeric">
-                             </label>
-                             <label class="project-field project-field--compact">
-                                 <span>Threads</span>
-                                 <input id="threads" type="text" value="8" inputmode="numeric">
-                             </label>
-                             <label class="project-field project-field--compact">
-                                 <span>Backend</span>
-                                 <select id="backend">
+                                 <span>Backend <select id="backend" class="project-field__inline project-field__inline--select">
                                      <option value="cpu">CPU Workers</option>
                                      <option value="webgpu" selected>WebGPU</option>
-                                 </select>
+                                 </select></span>
                              </label>
-                         </div>
-
-                         <div class="project-pathtrace-toggle">
-                             <input type="checkbox" id="pathTraceToggle" checked>
-                             <label for="pathTraceToggle">Path Trace Mode</label>
-                         </div>
-
-                         <div class="project-actions">
-                             <button id="renderButton" class="project-button" type="button" onclick="render()">Render</button>
-                             <button id="saveButton" class="project-button project-button--secondary" type="button" onclick="saveImage()">Save</button>
-                             <button id="resizeButton" class="project-button project-button--secondary" type="button" onclick="resize()">Resize</button>
+                             <label class="project-field project-field--compact">
+                                 <span>Path Trace <input type="checkbox" id="pathTraceToggle" class="project-field__toggle" checked></span>
+                             </label>
+                             <div class="project-actions">
+                                 <button id="renderButton" class="project-button" type="button" onclick="render()">Render</button>
+                                 <button id="saveButton" class="project-button project-button--secondary" type="button" onclick="saveImage()">Save</button>
+                                 <button id="resizeButton" class="project-button project-button--secondary" type="button" onclick="resize()">Resize</button>
+                             </div>
+                          </div>
                          </div>
 
                          <div class="project-progress-shell" aria-live="polite">

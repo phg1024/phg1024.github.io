@@ -1,15 +1,37 @@
 /**
  * Created by PhG on 11/17/13.
+ * Rewritten to use Canvas API instead of D3.js
  */
 
 var HistogramTool = function() {
     var width = 255, height = 255;
     var mode = 'brightness';
 
-    // histogram
     var hist = [];
     var chist = [];
-    var svg, area, curve;
+    var canvas;
+    var ctx;
+
+    var axes = {
+        draw: function() {
+            ctx.strokeStyle = '#ccc';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, 0); ctx.lineTo(0, height); ctx.lineTo(width, height);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#888';
+            ctx.font = '10px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Intensity (0-255)', width / 2, height - 4);
+            
+            ctx.save();
+            ctx.translate(10, height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('Count / CDF', 0, 0);
+            ctx.restore();
+        }
+    };
 
     this.bindImage = function( I ) {
         switch( mode ) {
@@ -18,8 +40,7 @@ var HistogramTool = function() {
                 this.bindHistogram(h);
                 break;
             }
-            case 'rgb':
-            {
+            case 'rgb': {
                 var h = colorHistogram(I, 0, 0, I.w, I.h);
                 this.bindHistogram(h);
                 break;
@@ -45,22 +66,16 @@ var HistogramTool = function() {
                     maxHist = Math.max(maxHist, h[i]);
                 }
         
-                // normalize
                 var factor = 0.9 / maxHist;
                 var factor2 = 1.0 / sum;
                 for(var i=0;i< h.length;i++) {
                     hist[i].cnt *= factor;
                     chist[i].cnt *= factor2;
                 }
-        
-                console.log(hist);
-                console.log(chist);
                 break;
             }
             case 'rgb': {
-                
                 for(var c=0;c<3;c++) {
-                                
                     hist[c] = [];
                     var sum = 0;
                     var maxHist = 0;
@@ -69,46 +84,70 @@ var HistogramTool = function() {
                         sum += h[c][i];
                         maxHist = Math.max(maxHist, h[c][i]);
                     }
-            
-                    // normalize
                     var factor = 0.9 / maxHist;
                     for(var i=0;i< h[c].length;i++) {
                         hist[c][i].cnt *= factor;
                     }
-            
-                    //console.log(hist[c]);
                 }
-                
                 break;
             }
             default: {
                 throw 'invalid histogram mode!';
             }
         }
-
         redraw();
     };
 
     function redraw() {
-        // display the histogram
-        
+        ctx.clearRect(0, 0, width, height);
+        axes.draw();
+
+        ctx.beginPath();
+        ctx.lineWidth = 1;
+
         switch(mode) {
             case 'rgb': {
+                var colors = ['rgba(255, 80, 80, 0.6)', 'rgba(80, 255, 80, 0.6)', 'rgba(80, 80, 255, 0.6)'];
                 for(var i=0;i<3;i++) {
-                    svg.select("#hist" + i).datum(hist[i])
-                        .attr("class", "area")
-                        .attr("d", area[i]);                    
+                    ctx.fillStyle = colors[i];
+                    ctx.strokeStyle = colors[i].replace('0.6', '1');
+                    ctx.beginPath();
+                    for(var j=0; j<hist[i].length; j++) {
+                        var x = hist[i][j].lev;
+                        var y = height - (hist[i][j].cnt * height); // Scale y to height
+                        if (j === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.fill();
                 }
                 break;
             }
             case 'brightness': {
-                svg.select("#hist").datum(hist)
-                    .attr("class", "area")
-                    .attr("d", area);
+                // Histogram area
+                ctx.fillStyle = 'rgba(78, 246, 255, 0.6)';
+                ctx.strokeStyle = 'rgba(78, 246, 255, 1)';
+                ctx.beginPath();
+                for(var j=0; j<hist.length; j++) {
+                    var x = hist[j].lev;
+                    var y = height - (hist[j].cnt * height);
+                    if (j === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.lineTo(width, height);
+                ctx.lineTo(0, height);
+                ctx.fill();
+                ctx.stroke();
 
-                svg.select("#cumucurve").datum(chist)
-                    .attr("class", "curve")
-                    .attr("d", curve);
+                // CDF curve
+                ctx.strokeStyle = 'rgba(255, 79, 216, 1)';
+                ctx.beginPath();
+                for(var j=0; j<chist.length; j++) {
+                    var x = chist[j].lev;
+                    var y = height - (chist[j].cnt * height);
+                    if (j === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
                 break;
             }
         }
@@ -121,91 +160,17 @@ var HistogramTool = function() {
 
         mode = m || mode;
 
-        var x = d3.scale.linear()
-            .range([0, width]);
-        var y = d3.scale.linear()
-            .range([height, 0]);
-        var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient("bottom");
-        var yAxis = d3.svg.axis()
-            .scale(y)
-            .orient("left");
+        var container = document.querySelector(target);
+        if (!container) throw "Target not found";
 
-        svg = d3.select(target).append("svg")
-            .attr("id", "histogram")
-            .attr("class", "back")
-            .attr("width", width)
-            .attr("height", height);
+        canvas = document.createElement('canvas');
+        canvas.id = "histogram";
+        canvas.className = "back";
+        canvas.width = width;
+        canvas.height = height;
+        container.appendChild(canvas);
 
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
-
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis)
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end");
-
-        x.domain([0, 255]);
-        y.domain([0.0, 1.0]);
-
-        switch( mode ) {
-            case 'brightness':
-            {
-                area = d3.svg.area()
-                    .x(function(d) { return x(d.lev); })
-                    .y0(height)
-                    .y1(function(d) { return y(d.cnt); });
-
-                curve = d3.svg.line()
-                    .x(function(d) { return x(d.lev); })
-                    .y(function(d) { return y(d.cnt); })
-                    .interpolate('linear');
-
-                svg.append("path")
-                    .datum(hist)
-                    .attr("id", 'hist')
-                    .attr("class", "area")
-                    .attr("d", area);
-
-                svg.append("path")
-                    .datum(chist)
-                    .attr("id", 'cumucurve')
-                    .attr("class", "curve")
-                    .attr("d", curve)
-                    .attr("stroke", "red")
-                    .attr("stroke-width", 2)
-                    .attr("fill", "none");
-                break;
-            }
-            case 'rgb': {
-                hist = new Array(3);
-                area = new Array(3);
-                var cls = ['red', 'green', 'blue'];
-                for(var i=0;i<3;i++) {
-                    hist[i] = [];
-                    area[i] = d3.svg.area()
-                        .x(function(d) { return x(d.lev); })
-                        .y0(height)
-                        .y1(function(d) { return y(d.cnt); });
-                    svg.append("path")
-                        .attr("id", 'hist' + i)
-                        .datum(hist[i])
-                        .attr("class", "area")
-                        .attr("d", area[i]);
-                    $('#hist' + i).addClass( cls[i] );
-                }
-                break;
-            }
-            default: {
-                throw 'invalid histogram mode!';
-            }
-        }
+        ctx = canvas.getContext('2d');
+        redraw();
     }
 };

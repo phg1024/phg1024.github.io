@@ -1,5 +1,5 @@
 .project-app-shell {
-    gap: 1.35rem;
+    gap: 0.95rem;
 }
 
 .project-app-intro {
@@ -15,50 +15,91 @@
 }
 
 .project-controls-grid {
-    grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
-    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fit, minmax(10.25rem, 1fr));
+    gap: 0.55rem 0.75rem;
+    /* padding: 0.75rem;; */
+}
+
+.project-controls-secondary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 0.9rem;
+    padding: 0 0 0.75rem 0;
 }
 
 .project-field {
-    gap: 0.4rem;
+    gap: 0.25rem;
 }
 
 .project-field span {
-    font-size: 0.76rem;
-    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
 }
 
-.project-field input,
+.project-field--compact > span {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.project-field .project-field__inline {
+    display: inline-flex;
+    width: 3.9rem;
+    min-height: 1.8rem;
+    margin-left: 0.4rem;
+    padding: 0.2rem 0.45rem;
+    vertical-align: middle;
+}
+
+.project-field .project-field__inline--select {
+    width: 7.5rem;
+    padding-right: 1.65rem;
+}
+
+.project-field .project-field__toggle {
+    width: auto;
+    min-height: 0;
+    padding: 0;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+}
+
+.project-field input[type="text"],
 .project-field select {
-    min-height: 2.35rem;
-    padding: 0.45rem 0.7rem;
-    font-size: 0.84rem;
+    min-height: 2rem;
+    padding: 0.3rem 0.55rem;
+    font-size: 0.78rem;
     line-height: 1.2;
     box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-glow) 8%, transparent);
 }
 
 .project-field select {
     appearance: none;
-    padding-right: 2.1rem;
+    padding-right: 1.85rem;
     background-image:
         linear-gradient(45deg, transparent 50%, currentColor 50%),
         linear-gradient(135deg, currentColor 50%, transparent 50%);
     background-position:
-        calc(100% - 1rem) calc(50% - 0.14rem),
-        calc(100% - 0.72rem) calc(50% - 0.14rem);
-    background-size: 0.34rem 0.34rem, 0.34rem 0.34rem;
+        calc(100% - 0.88rem) calc(50% - 0.12rem),
+        calc(100% - 0.62rem) calc(50% - 0.12rem);
+    background-size: 0.28rem 0.28rem, 0.28rem 0.28rem;
     background-repeat: no-repeat;
 }
 
 .project-actions {
-    gap: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
 }
 
 .project-button {
-    min-height: 2.2rem;
-    padding: 0.4rem 0.85rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
+    min-height: 1.95rem;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
     text-transform: none;
     font-weight: 600;
 }

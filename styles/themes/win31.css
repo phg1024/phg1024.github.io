@@ -201,13 +201,138 @@
 [data-theme="win31"] .about-panel,
 [data-theme="win31"] .gallery-tabs-content,
 [data-theme="win31"] .caption-overlay {
-  background: rgba(192, 192, 192, 0.58);
+  background: #c0c0c0;
 }
 
-[data-theme="win31"] .gallery-tabs .nav-link,
-[data-theme="win31"] .gallery-tabs-content {
+/* Project buttons */
+[data-theme="win31"] .project-button {
   border: 2px solid #7b7b7b;
-  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #7b7b7b;
+  border-radius: 0;
+  background: #c0c0c0;
+  color: #000000;
+  box-shadow: none;
+}
+
+[data-theme="win31"] .project-button:hover,
+[data-theme="win31"] .project-button:focus-visible {
+  background: #d6d6d6;
+  border-color: #7b7b7b;
+  color: #000000;
+  box-shadow: none;
+}
+
+[data-theme="win31"] .project-button:active {
+  box-shadow: inset -1px -1px 0 #7b7b7b, inset 1px 1px 0 #ffffff;
+  background: #b0b0b0;
+}
+
+[data-theme="win31"] .project-button--secondary {
+  background: #c0c0c0;
+  color: #000000;
+  border: 2px solid #7b7b7b;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+[data-theme="win31"] .project-button--secondary:hover {
+  background: #d6d6d6;
+}
+
+/* Project form fields */
+[data-theme="win31"] .project-field input,
+[data-theme="win31"] .project-field select {
+  border: 2px solid #7b7b7b;
+  border-radius: 0;
+  background: #ffffff;
+  color: #000000;
+  box-shadow: none;
+}
+
+[data-theme="win31"] .project-field input:focus,
+[data-theme="win31"] .project-field select:focus {
+  border-color: #000080;
+  box-shadow: none;
+}
+
+/* Project canvas frame */
+[data-theme="win31"] .project-canvas-frame {
+  background: #c0c0c0;
+  border: 2px solid #7b7b7b;
+  border-radius: 0;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+
+[data-theme="win31"] .project-canvas-frame canvas {
+  border: 2px solid #7b7b7b;
+  border-radius: 0;
+}
+
+/* Progress bar */
+[data-theme="win31"] .project-progress-fill {
+  background: #000080;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+[data-theme="win31"] .project-progress-bar {
+  border: 2px solid #7b7b7b;
+  background: #c0c0c0;
+  border-radius: 0;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+
+/* Path trace toggle checkbox */
+[data-theme="win31"] .project-pathtrace-toggle {
+  background: #c0c0c0;
+  border: 2px solid #7b7b7b;
+  border-radius: 0;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+
+[data-theme="win31"] .project-pathtrace-toggle input[type="checkbox"] {
+  accent-color: #000080;
+}
+
+/* Minesweeper popup */
+[data-theme="win31"] .ms-popup-overlay {
+  background: rgba(192, 192, 192, 0.8);
+}
+
+[data-theme="win31"] .ms-popup {
+  background: #c0c0c0;
+  border: 2px solid #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  box-shadow: none;
+  color: #000000;
+  border-radius: 0;
+}
+
+[data-theme="win31"] .ms-popup-msg {
+  color: #000000;
+  text-shadow: none;
+}
+
+[data-theme="win31"] .ms-popup-btn {
+  background: #c0c0c0;
+  color: #000000;
+  border: 2px solid #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+[data-theme="win31"] .ms-popup-btn:hover {
+  background: #d6d6d6;
+  color: #000000;
+}
+
+[data-theme="win31"] .ms-popup-btn:active {
+  border: 2px solid #404040;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+  background: #b0b0b0;
 }
 
 /* Override highlight.js default colors for win31 theme */
@@ -281,4 +406,69 @@
 [data-theme="win31"] .content-page:hover,
 [data-theme="win31"] .blog-content:hover {
   box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #7b7b7b;
+}
+
+/* Base code block styles for win31 */
+[data-theme="win31"] .blog-content pre {
+  background: #ffffff;
+  border: 2px solid #7b7b7b;
+  border-radius: 0;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+}
+
+[data-theme="win31"] .blog-content code {
+  background: #c0c0c0;
+  color: #000000;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0;
+  border: 1px solid #7b7b7b;
+  font-size: 0.9em;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+
+/* Missing hljs classes for win31 */
+[data-theme="win31"] .blog-content pre code .hljs-atom {
+  color: #808080;
+}
+
+[data-theme="win31"] .blog-content pre code .hljs-regexp,
+[data-theme="win31"] .blog-content pre code .hljs-link {
+  color: #008080;
+}
+
+/* ── Range sliders for win31 ── */
+
+[data-theme="win31"] input[type="range"]::-webkit-slider-runnable-track {
+  background: #c0c0c0;
+  border: 1px solid #7b7b7b;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+
+[data-theme="win31"] input[type="range"]::-webkit-slider-thumb {
+  background: #c0c0c0;
+  border: 2px solid #7b7b7b;
+  box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #000;
+}
+
+[data-theme="win31"] input[type="range"]::-webkit-slider-thumb:hover {
+  background: #d6d6d6;
+}
+
+[data-theme="win31"] input[type="range"]::-moz-range-track {
+  background: #c0c0c0;
+  border: 1px solid #7b7b7b;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+
+[data-theme="win31"] input[type="range"]::-moz-range-thumb {
+  background: #c0c0c0;
+  border: 2px solid #7b7b7b;
+  box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #000;
+}
+
+[data-theme="win31"] .project-field__val {
+  color: #000080;
+  font-family: "MS Sans Serif", monospace;
 }

@@ -1007,3 +1007,63 @@
     width: 1.3rem;
     height: 1.3rem;
 }
+
+/* ── Range sliders ── */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -3px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: transform 100ms ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  background: var(--accent);
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+
+
+/* ── Project field value display ── */
+
+.project-field__val {
+  display: inline;
+  font-family: "SF Mono", "Menlo", monospace;
+  color: var(--accent);
+  font-size: 0.82rem;
+  margin-left: 0.5rem;
+}

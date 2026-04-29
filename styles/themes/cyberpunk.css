@@ -16,3 +16,14 @@
   border-color: rgba(78, 246, 255, 0.34);
   box-shadow: 0 0 24px rgba(78, 246, 255, 0.12), 0 0 30px rgba(255, 79, 216, 0.1);
 }
+
+/* ── Blog code blocks for cyberpunk ── */
+
+[data-theme="cyberpunk"] .blog-content pre {
+  font-family: "JetBrains Mono", "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+}
+
+[data-theme="cyberpunk"] .blog-content code {
+  font-family: "JetBrains Mono", "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 0.9em;
+}

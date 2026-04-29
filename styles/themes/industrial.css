@@ -300,43 +300,6 @@
 
 /* ── Carousel ── */
 
-[data-theme="industrial"] .carousel__btn {
-	border-color: rgba(97, 113, 127, 0.4);
-	background: rgba(236, 240, 244, 0.85);
-	color: #202831;
-	border-radius: 0.35rem;
-	box-shadow: none;
-}
-
-[data-theme="industrial"] .carousel__btn:hover,
-[data-theme="industrial"] .carousel__btn:focus {
-	background: rgba(220, 227, 233, 0.9);
-	border-color: rgba(97, 113, 127, 0.6);
-}
-
-[data-theme="industrial"] .carousel__indicator {
-	border-color: rgba(97, 113, 127, 0.4);
-	background: transparent;
-}
-
-[data-theme="industrial"] .carousel__indicator.is-active {
-	background: rgba(111, 135, 155, 0.8);
-	border-color: rgba(97, 113, 127, 0.6);
-}
-
-[data-theme="industrial"] .carousel__caption {
-	background: rgba(244, 247, 250, 0.88);
-	color: #202831;
-	border: 1px solid rgba(32, 40, 49, 0.18);
-	box-shadow: none;
-	backdrop-filter: none;
-	border-radius: 0;
-	font-family: "Arial Black", "Arial", "Helvetica Neue", sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-}
-
-/* ── ImageprocJS mode picker ── */
 
 [data-theme="industrial"] .mode-picker {
 	background: rgba(245, 247, 249, 0.7);
@@ -376,4 +339,29 @@
 [data-theme="industrial"] .project-canvas-frame canvas {
 	border: 1px solid rgba(97, 113, 127, 0.35);
 	border-radius: 0.35rem;
+}
+
+/* ── Range sliders for industrial ── */
+
+[data-theme="industrial"] input[type="range"]::-webkit-slider-runnable-track {
+  background: rgba(97, 113, 127, 0.3);
+}
+
+[data-theme="industrial"] input[type="range"]::-webkit-slider-thumb {
+  background: #6f879b;
+  box-shadow: 0 0 6px rgba(111, 135, 155, 0.2);
+}
+
+[data-theme="industrial"] input[type="range"]::-moz-range-track {
+  background: rgba(97, 113, 127, 0.3);
+}
+
+[data-theme="industrial"] input[type="range"]::-moz-range-thumb {
+  background: #6f879b;
+  box-shadow: 0 0 6px rgba(111, 135, 155, 0.2);
+}
+
+[data-theme="industrial"] .project-field__val {
+  color: #6f879b;
+  font-family: "SF Mono", "Menlo", monospace;
 }

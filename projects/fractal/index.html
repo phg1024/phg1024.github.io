@@ -1,113 +1,111 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <script>
-            (function () {
+     <head>
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         <script>
+             (function () {
                 var savedTheme = localStorage.getItem('site-theme') || 'cyberpunk';
                 document.documentElement.setAttribute('data-theme', savedTheme);
-            })();
-        </script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <title>Fractal | Peihong Guo</title>
-        <link rel="stylesheet" href="/styles/styles.css">
-        <link rel="stylesheet" href="./style.css">
-    </head>
-    <body>
-        <canvas class="theme-backdrop" aria-hidden="true"></canvas>
-        <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
-        <div class="site-shell">
-            <header class="site-header">
-                <div class="site-header__inner">
-                    <a class="site-brand" href="/">
-                        <span class="site-brand__name">Peihong Guo</span>
-                    </a>
-                    <nav class="site-nav" aria-label="Primary navigation">
-                        <a class="site-nav__link" href="/">Home</a>
-                        <a class="site-nav__link is-active" href="/project/personal_projects/">Projects</a>
-                        <a class="site-nav__link" href="/blog/">Blog</a>
-                        <a class="site-nav__link" href="/gallery">Gallery</a>
-                        <a class="site-nav__link" href="/about">About</a>
-                    </nav>
-                </div>
-            </header>
+             })();
+         </script>
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+         <title>Fractal | Peihong Guo</title>
+         <link rel="stylesheet" href="/styles/styles.css">
+         <link rel="stylesheet" href="./style.css">
+     </head>
+     <body>
+         <canvas class="theme-backdrop" aria-hidden="true"></canvas>
+         <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+         <div class="site-shell">
+             <header class="site-header">
+                 <div class="site-header__inner">
+                     <a class="site-brand" href="/">
+                         <span class="site-brand__name">Peihong Guo</span>
+                     </a>
+                     <nav class="site-nav" aria-label="Primary navigation">
+                         <a class="site-nav__link" href="/">Home</a>
+                         <a class="site-nav__link is-active" href="/project/personal_projects/">Projects</a>
+                         <a class="site-nav__link" href="/blog/">Blog</a>
+                         <a class="site-nav__link" href="/gallery">Gallery</a>
+                         <a class="site-nav__link" href="/about">About</a>
+                     </nav>
+                 </div>
+             </header>
 
-            <main class="site-main" role="main">
-                <section class="content-page project-page">
-                    <div class="section-heading">
-                        <p class="section-heading__eyebrow">Interactive Project</p>
-                        <h1 class="section-heading__title">Fractal</h1>
-                    </div>
+             <main class="site-main" role="main">
+                 <section class="content-page project-page">
+                     <div class="section-heading">
+                         <p class="section-heading__eyebrow">Interactive Project</p>
+                         <h1 class="section-heading__title">Fractal</h1>
+                     </div>
 
-                    <div class="project-app-shell">
-                        <p class="project-app-intro">
+                     <div class="project-app-shell">
+                         <p class="project-app-intro">
                             Explore Julia and Mandelbrot sets directly in the browser with adjustable parameters.
-                        </p>
+                         </p>
 
-                        <div class="project-canvas-frame">
-                            <canvas id="lesson01-canvas" width="640" height="480"></canvas>
-                        </div>
+                         <div class="project-canvas-frame">
+                             <canvas id="lesson01-canvas" width="640" height="480"></canvas>
+                         </div>
 
-                        <div class="project-controls-grid">
-                            <label class="project-field">
-                                <span>Fractal Shape</span>
-                                <select id="fractalSelect">
-                                    <option value="0">Julia</option>
-                                    <option value="1">Mandelbrot</option>
-                                </select>
-                            </label>
-                            <label class="project-field project-field--compact">
-                                <span>c Real</span>
-                                <input id="cvalr" type="text" value="-0.8" inputmode="decimal">
-                            </label>
-                            <label class="project-field project-field--compact">
-                                <span>c Imaginary</span>
-                                <input id="cvali" type="text" value="0.16" inputmode="decimal">
-                            </label>
-                            <label class="project-field project-field--compact">
-                                <span>Iterations</span>
-                                <input id="maxiters" type="text" value="8192" inputmode="numeric">
-                            </label>
-                            <label class="project-field project-field--compact">
-                                <span>Blackout</span>
-                                <input id="blackout" type="text" value="65536" inputmode="numeric">
-                            </label>
-                        </div>
+                         <div class="project-controls-grid">
+                             <label class="project-field">
+                                 <span>Fractal Shape</span>
+                                 <select id="fractalSelect">
+                                     <option value="0">Julia</option>
+                                     <option value="1">Mandelbrot</option>
+                                 </select>
+                             </label>
+                             <label class="project-field project-field--compact">
+                                 <span>c Real <output id="cvalr-val" class="project-field__val">-0.800</output></span>
+                                 <input id="cvalr" type="range" min="-2" max="2" step="0.001" value="-0.8">
+                             </label>
+                             <label class="project-field project-field--compact">
+                                 <span>c Imaginary <output id="cvali-val" class="project-field__val">0.160</output></span>
+                                 <input id="cvali" type="range" min="-2" max="2" step="0.001" value="0.16">
+                             </label>
+                             <label class="project-field project-field--compact">
+                                 <span>Iterations <output id="maxiters-val" class="project-field__val">8192</output></span>
+                                 <input id="maxiters" type="range" min="256" max="32768" step="256" value="8192">
+                             </label>
+                             <label class="project-field project-field--compact">
+                                 <span>Blackout <output id="blackout-val" class="project-field__val">65536</output></span>
+                                 <input id="blackout" type="range" min="0" max="131072" step="256" value="65536">
+                             </label>
+                         </div>
 
-                        <div class="project-actions">
-                            <button id="saveButton" class="project-button" type="button" onclick="saveImage()">Save</button>
-                        </div>
-                    </div>
-                </section>
-            </main>
+                         <div class="project-actions">
+                             <button id="saveButton" class="project-button" type="button" onclick="saveImage()">Save</button>
+                         </div>
+                     </div>
+                 </section>
+             </main>
 
-            <footer class="site-footer">
-                <div class="site-footer__inner">
-                    <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
-                    <label class="theme-toggle" for="theme-toggle">
-                        <span class="theme-toggle__label">Theme</span>
-                        <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
-                            <option value="minimalist">Minimalist</option>
-                            <option value="cyberpunk">Cyberpunk</option>
-                            <option value="matrix">Matrix</option>
-                            <option value="industrial">Industrial</option>
-                            <option value="win31">Windows 3.1</option>
-                        </select>
-                    </label>
-                    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
-                </div>
-            </footer>
-        </div>
+             <footer class="site-footer">
+                 <div class="site-footer__inner">
+                     <p class="site-footer__copy">&copy; 2009-<span id="footer-year"></span> Peihong Guo</p>
+                     <label class="theme-toggle" for="theme-toggle">
+                         <span class="theme-toggle__label">Theme</span>
+                         <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+                             <option value="minimalist">Minimalist</option>
+                             <option value="cyberpunk">Cyberpunk</option>
+                             <option value="matrix">Matrix</option>
+                             <option value="industrial">Industrial</option>
+                             <option value="win31">Windows 3.1</option>
+                         </select>
+                     </label>
+                     <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+                 </div>
+             </footer>
+         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src="glmatrix.js"></script>
-        <script type="text/javascript" src="FileSaver.js"></script>
-        <script type="text/javascript" src="canvas-toBlob.js"></script>
+         <script type="text/javascript" src="glmatrix.js"></script>
+         <!-- Legacy libs removed: jquery, FileSaver, canvas-toBlob -->
 
-        <script id="shader-fs" type="x-shader/x-fragment">
+         <script id="shader-fs" type="x-shader/x-fragment">
     precision mediump float;
     uniform vec2 viewport;
     uniform vec2 c;
@@ -118,11 +116,11 @@
 
     vec2 mul(vec2 z1, vec2 z2) {
         return vec2(z1.x*z2.x-z1.y*z2.y,z1.x*z2.y+z1.y*z2.x);
-    }
+     }
 
     float mag(vec2 z) {
         return z.x*z.x+z.y*z.y;
-    }
+     }
 
     int julia_iteration(vec2 inz) {
         vec2 z = inz;
@@ -138,10 +136,10 @@
             val = mag(z);
             if( val >= THRES || i > iters ) break;
             counter++;
-        }
+         }
 
         return counter;
-    }
+     }
 
     vec4 iterpolate(int i) {
         float t = float(i) / float(iters);
@@ -155,7 +153,7 @@
             color = mix(c3, c4, pow(t / 0.5, 2.0));
 
         return vec4(color, 1.0);
-    }
+     }
 
     void main(void) {
         vec2 coord = gl_FragCoord.xy;
@@ -163,28 +161,30 @@
         float y = (coord.y - viewport.y*0.5) * 3.5 / viewport.y;
         int its = julia_iteration(vec2(x, y));
         gl_FragColor = iterpolate(its);
-    }
-        </script>
+     }
+         </script>
 
-        <script id="shader-vs" type="x-shader/x-vertex">
+         <script id="shader-vs" type="x-shader/x-vertex">
     attribute vec2 aVertex;
 
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
     void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertex, 0.0, 1.0);
-    }
-        </script>
+     }
+         </script>
 
-        <script type="text/javascript">
+         <script type="text/javascript">
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
             var gl;
             function initGL(canvas) {
                 try {
-                    gl = canvas.getContext("experimental-webgl");
+                    // Fixed legacy API usage
+                    gl = canvas.getContext("webgl");
                     gl.viewportWidth = canvas.width;
                     gl.viewportHeight = canvas.height;
-                } catch (e) {
-                }
+                  } catch (e) {
+                  }
                 if (!gl) {
                     alert("Could not initialise WebGL, sorry :-(");
                 }
@@ -275,10 +275,10 @@
                 vertexBuffer = gl.createBuffer();
                 gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
                 var vertices = [
-                    -1.0,  1.0,  -2.0,
-                    -1.0,  -1.0,  -2.0,
-                    1.0, -1.0,  -2.0,
-                    1.0, 1.0,  -2.0
+                    -1.0,   1.0,   -2.0,
+                    -1.0,   -1.0,   -2.0,
+                     1.0, -1.0,   -2.0,
+                     1.0,  1.0,   -2.0
                 ];
                 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
             }
@@ -295,10 +295,11 @@
 
                 gl.uniform2f(shaderProgram.viewport, gl.viewportWidth, gl.viewportHeight);
 
-                gl.uniform2f(shaderProgram.c, $('#cvalr').val(), $('#cvali').val());
-                gl.uniform1i(shaderProgram.iters, $('#maxiters').val());
-                gl.uniform1i(shaderProgram.setIdx, $('#fractalSelect').val());
-                gl.uniform1f(shaderProgram.thres, $('#blackout').val());
+                // Replaced jQuery selectors with vanilla JS
+                gl.uniform2f(shaderProgram.c, parseFloat(document.getElementById('cvalr').value), parseFloat(document.getElementById('cvali').value));
+                gl.uniform1i(shaderProgram.iters, parseInt(document.getElementById('maxiters').value, 10));
+                gl.uniform1i(shaderProgram.setIdx, parseInt(document.getElementById('fractalSelect').value, 10));
+                gl.uniform1f(shaderProgram.thres, parseFloat(document.getElementById('blackout').value));
 
                 gl.uniform3f(shaderProgram.c1, 0, 0.0, 0);
                 gl.uniform3f(shaderProgram.c2, 0.05, 0.10, 0.05);
@@ -314,7 +315,6 @@
 
             function webGLStart() {
                 var canvas = document.getElementById("lesson01-canvas");
-
                 initGL(canvas);
                 initShaders();
                 initBuffers();
@@ -327,21 +327,41 @@
 
             function saveImage() {
                 var canvas = document.getElementById("lesson01-canvas");
-                canvas.toBlob(function (blob) {
-                    saveAs(blob, "fractal.png");
-                });
+                // Replaced FileSaver.js with native canvas.toBlob
+                canvas.toBlob(function(blob) {
+                    if (!blob) {
+                        alert("Canvas is empty or failed to export.");
+                        return;
+                    }
+                    var url = URL.createObjectURL(blob);
+                    var link = document.createElement("a");
+                    link.href = url;
+                    link.download = "fractal.png";
+                    link.click();
+                    URL.revokeObjectURL(url);
+                }, "image/png");
             }
 
             window.onload = function () {
                 webGLStart();
 
-                $('#cvalr').change(function () { drawScene(); });
-                $('#cvali').change(function () { drawScene(); });
-                $('#maxiters').change(function () { drawScene(); });
-                $('#fractalSelect').change(function () { drawScene(); });
-                $('#blackout').change(function () { drawScene(); });
+                // Update output displays and redraw on slider change
+                function updateSlider(id, valId, fmt) {
+                    var slider = document.getElementById(id);
+                    var output = document.getElementById(valId);
+                    slider.addEventListener('input', function() {
+                        output.textContent = fmt(parseFloat(slider.value));
+                        drawScene();
+                    });
+                }
+                updateSlider('cvalr', 'cvalr-val', function(v) { return v.toFixed(3); });
+                updateSlider('cvali', 'cvali-val', function(v) { return v.toFixed(3); });
+                updateSlider('maxiters', 'maxiters-val', function(v) { return Math.round(v).toString(); });
+                updateSlider('blackout', 'blackout-val', function(v) { return Math.round(v).toString(); });
+
+                document.getElementById('fractalSelect').addEventListener('change', drawScene);
             };
-        </script>
-        <script src="/js/main.js"></script>
-    </body>
+         </script>
+         <script src="/js/main.js"></script>
+     </body>
 </html>

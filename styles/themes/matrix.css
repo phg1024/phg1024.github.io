@@ -3,26 +3,26 @@
 [data-theme="matrix"] {
    --bg: #020703;
    --bg-accent: #08120a;
-   --surface: rgba(6, 18, 9, 0.8);
-    --surface-strong: rgba(8, 22, 10, 0.92);
-    --border: rgba(96, 255, 128, 0.22);
-    --text: #d8ffd8;
-    --muted: #84d184;
-    --soft: #58a658;
-    --accent: #7cff9d;
-    --accent-secondary: #d7ffd7;
-    --accent-tertiary: #2ce66d;
-    --accent-glow: rgba(124, 255, 157, 0.34);
-    --accent-glow-pink: rgba(124, 255, 157, 0.18);
-    --accent-strong: #f2fff2;
-    --shadow: 0 24px 90px rgba(0, 0, 0, 0.46);
-    --shadow-cyber: 0 0 0 1px rgba(124, 255, 157, 0.14), 0 0 40px rgba(124, 255, 157, 0.12);
-    --radius-lg: 0.42rem;
-    --radius-md: 0.28rem;
-    --button-radius: 0.22rem;
-    --button-radius-tight: 0.18rem;
-    --sans: "Courier New", "Lucida Console", monospace;
-    --serif: "Courier New", "Lucida Console", monospace;
+    --surface: rgba(6, 18, 9, 0.8);
+     --surface-strong: rgba(8, 22, 10, 0.92);
+     --border: rgba(96, 255, 128, 0.22);
+     --text: #d8ffd8;
+     --muted: #84d184;
+     --soft: #58a658;
+     --accent: #7cff9d;
+     --accent-secondary: #d7ffd7;
+     --accent-tertiary: #2ce66d;
+     --accent-glow: rgba(124, 255, 157, 0.34);
+     --accent-glow-pink: rgba(124, 255, 157, 0.18);
+     --accent-strong: #f2fff2;
+     --shadow: 0 24px 90px rgba(0, 0, 0, 0.46);
+     --shadow-cyber: 0 0 0 1px rgba(124, 255, 157, 0.14), 0 0 40px rgba(124, 255, 157, 0.12);
+     --radius-lg: 0.42rem;
+     --radius-md: 0.28rem;
+     --button-radius: 0.22rem;
+     --button-radius-tight: 0.18rem;
+     --sans: "Courier New", "Lucida Console", monospace;
+     --serif: "Courier New", "Lucida Console", monospace;
 }
 
 [data-theme="matrix"] body {
@@ -131,6 +131,7 @@
 }
 
 [data-theme="matrix"] .blog-content pre {
+  font-family: "Courier New", "Lucida Console", monospace;
   background: #020a02;
   border: 1px solid rgba(96, 255, 128, 0.25);
   border-radius: var(--radius-md);
@@ -142,6 +143,7 @@
   color: #7cff9d;
   padding: 0.15rem 0.4rem;
   border-radius: var(--button-radius-tight);
+  font-family: "Courier New", "Lucida Console", monospace;
   font-size: 0.9em;
   border: 1px solid rgba(124, 255, 157, 0.2);
   text-shadow: 0 0 4px rgba(124, 255, 157, 0.3);
@@ -246,7 +248,7 @@
 }
 
 [data-theme="matrix"] .button-link--in .btn-icon {
-  /* LinkedIn PNG logo renders as-is; ensure dark background */
+   /* LinkedIn PNG logo renders as-is; ensure dark background */
   background: transparent;
   filter: none !important;
 }
@@ -306,42 +308,6 @@
   background: rgba(6, 18, 9, 0.7);
 }
 
-/* ── Carousel controls ── */
-
-[data-theme="matrix"] .carousel__btn {
-  border-color: rgba(96, 255, 128, 0.3);
-  background: rgba(6, 18, 9, 0.9);
-  color: #d8ffd8;
-  border-radius: var(--button-radius-tight);
-  box-shadow: 0 0 10px rgba(124, 255, 157, 0.1);
-}
-
-[data-theme="matrix"] .carousel__btn:hover,
-[data-theme="matrix"] .carousel__btn:focus {
-  background: rgba(124, 255, 157, 0.1);
-  border-color: rgba(200, 255, 200, 0.4);
-}
-
-[data-theme="matrix"] .carousel__indicator {
-  border-color: rgba(96, 255, 128, 0.3);
-  background: transparent;
-}
-
-[data-theme="matrix"] .carousel__indicator.is-active {
-  background: rgba(124, 255, 157, 0.6);
-  border-color: rgba(96, 255, 128, 0.4);
-}
-
-[data-theme="matrix"] .carousel__caption {
-  background: rgba(0, 30, 0, 0.72);
-  color: #39ff14;
-  border: 1px solid rgba(57, 255, 20, 0.35);
-  box-shadow: 0 0 12px rgba(57, 255, 20, 0.18);
-  backdrop-filter: none;
-  border-radius: 0;
-  font-family: "Menlo", "Courier", monospace;
-  text-shadow: 0 0 6px rgba(57, 255, 20, 0.5);
-}
 
 /* ── Minesweeper popup ── */
 
@@ -368,6 +334,11 @@
 }
 
 /* ── ImageprocJS mode picker / controls panel ── */
+
+/* Fix: add accent-color to radio buttons in mode picker */
+[data-theme="matrix"] .mode-picker input[type="radio"] {
+  accent-color: #39ff14;
+}
 
 [data-theme="matrix"] .mode-picker {
   background: rgba(7, 18, 8, 0.85);
@@ -409,26 +380,6 @@
   border-radius: var(--button-radius-tight);
 }
 
-/* ── Gallery tabs ── */
-
-[data-theme="matrix"] .gallery-tabs .nav-link {
-  background: rgba(8, 22, 10, 0.9);
-  border-radius: var(--button-radius-tight);
-}
-
-[data-theme="matrix"] .gallery-tabs .nav-link.active {
-  background: linear-gradient(135deg, rgba(25, 72, 32, 0.94), rgba(10, 30, 13, 0.96));
-  color: #e8ffe8;
-}
-
-/* ── Gallery panel wrapper ── */
-
-[data-theme="matrix"] .gallery-panel-wrapper {
-  background: rgba(6, 18, 9, 0.5);
-  border-color: rgba(96, 255, 128, 0.3);
-  box-shadow: var(--shadow), 0 0 20px rgba(124, 255, 157, 0.08);
-  backdrop-filter: blur(14px);
-}
 
 /* ── Theme toggle for Matrix theme ── */
 
@@ -442,4 +393,30 @@
 [data-theme="matrix"] .theme-toggle__select:focus {
   border-color: rgba(200, 255, 200, 0.4);
   box-shadow: 0 0 0 2px rgba(124, 255, 157, 0.14), 0 0 18px rgba(124, 255, 157, 0.08);
+}
+
+/* ── Range sliders for matrix ── */
+
+[data-theme="matrix"] input[type="range"]::-webkit-slider-runnable-track {
+  background: rgba(57, 255, 20, 0.15);
+  box-shadow: 0 0 4px rgba(57, 255, 20, 0.1);
+}
+
+[data-theme="matrix"] input[type="range"]::-webkit-slider-thumb {
+  background: #39ff14;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+}
+
+[data-theme="matrix"] input[type="range"]::-moz-range-track {
+  background: rgba(57, 255, 20, 0.15);
+}
+
+[data-theme="matrix"] input[type="range"]::-moz-range-thumb {
+  background: #39ff14;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+}
+
+[data-theme="matrix"] .project-field__val {
+  color: #7cff9d;
+  font-family: "Menlo", monospace;
 }

@@ -1,209 +1,209 @@
 <!doctype html>
 <html lang="en">
-       <head>
-           <meta charset="utf-8">
-           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-           <script>
-               (function () {
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <script>
+                (function () {
                  var savedTheme = localStorage.getItem('site-theme') || 'cyberpunk';
                  document.documentElement.setAttribute('data-theme', savedTheme);
-               })();
-           </script>
-           <link rel="preconnect" href="https://fonts.googleapis.com">
-           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-           <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-           <title>ImageProcJS | Peihong Guo</title>
-           <link rel="stylesheet" href="/styles/styles.css">
-           <link rel="stylesheet" href="./imageprocjs.css">
-       </head>
-       <body>
-           <canvas class="theme-backdrop" aria-hidden="true"></canvas>
-           <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
-           <div class="site-shell">
-               <header class="site-header">
-                   <div class="site-header__inner">
-                       <a class="site-brand" href="/">
-                           <span class="site-brand__name">Peihong Guo</span>
-                       </a>
-                       <nav class="site-nav" aria-label="Primary navigation">
-                           <a class="site-nav__link" href="/">Home</a>
-                           <a class="site-nav__link is-active" href="/project/personal_projects/">Projects</a>
-                           <a class="site-nav__link" href="/blog/">Blog</a>
-                           <a class="site-nav__link" href="/gallery">Gallery</a>
-                           <a class="site-nav__link" href="/about">About</a>
-                       </nav>
-                   </div>
-               </header>
+                })();
+            </script>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+            <title>ImageProcJS | Peihong Guo</title>
+            <link rel="stylesheet" href="/styles/styles.css">
+            <link rel="stylesheet" href="./imageprocjs.css">
+        </head>
+        <body>
+            <canvas class="theme-backdrop" aria-hidden="true"></canvas>
+            <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+            <div class="site-shell">
+                <header class="site-header">
+                    <div class="site-header__inner">
+                        <a class="site-brand" href="/">
+                            <span class="site-brand__name">Peihong Guo</span>
+                        </a>
+                        <nav class="site-nav" aria-label="Primary navigation">
+                            <a class="site-nav__link" href="/">Home</a>
+                            <a class="site-nav__link is-active" href="/project/personal_projects/">Projects</a>
+                            <a class="site-nav__link" href="/blog/">Blog</a>
+                            <a class="site-nav__link" href="/gallery">Gallery</a>
+                            <a class="site-nav__link" href="/about">About</a>
+                        </nav>
+                    </div>
+                </header>
 
-               <main class="site-main" role="main">
-                   <section class="content-page project-page imageprocjs-page">
-                       <div class="section-heading">
-                           <p class="section-heading__eyebrow">Interactive Project</p>
-                           <h1 class="section-heading__title">ImageProcJS</h1>
-                       </div>
-                       <div class="project-app-shell imageprocjs-shell">
-                           <p class="project-app-intro imageprocjs-intro">
+                <main class="site-main" role="main">
+                    <section class="content-page project-page imageprocjs-page">
+                        <div class="section-heading">
+                            <p class="section-heading__eyebrow">Interactive Project</p>
+                            <h1 class="section-heading__title">ImageProcJS</h1>
+                        </div>
+                        <div class="project-app-shell imageprocjs-shell">
+                            <p class="project-app-intro imageprocjs-intro">
                             A browser-based image processing playground with interactive filters, curve adjustments, and lightweight effects.
-                           </p>
-                           <div class="project-app-layout">
-                               <aside class="project-sidebar imageprocjs-panel">
-                                   <div class="imageprocjs-panel__header">
-                                       <p class="imageprocjs-panel__eyebrow">Workspace</p>
-                                       <h2 class="imageprocjs-panel__title">Controls</h2>
-                                   </div>
-                                   <div class="project-controls-grid imageprocjs-controls">
-                                       <button id="show_btn" type="button" class="project-button">Show Remote Image</button>
-                                       <button id="upload_btn" type="button" class="project-button project-button--secondary">Upload Image</button>
-                                   </div>
-                                   <input type="file" id="files" name="files[]" hidden>
-                                   <div class="mode-picker" role="radiogroup" aria-label="Operation mode">
-                                       <label class="mode-option">
-                                           <input name="opradio" type="radio" value="filters" checked>
+                            </p>
+                            <div class="project-app-layout">
+                                <aside class="project-sidebar imageprocjs-panel">
+                                    <div class="imageprocjs-panel__header">
+                                        <p class="imageprocjs-panel__eyebrow">Workspace</p>
+                                        <h2 class="imageprocjs-panel__title">Controls</h2>
+                                    </div>
+                                    <div class="project-controls-grid imageprocjs-controls">
+                                        <button id="show_btn" type="button" class="project-button">Show Remote Image</button>
+                                        <button id="upload_btn" type="button" class="project-button project-button--secondary">Upload Image</button>
+                                    </div>
+                                    <input type="file" id="files" name="files[]" hidden>
+                                    <div class="mode-picker" role="radiogroup" aria-label="Operation mode">
+                                        <label class="mode-option">
+                                            <input name="opradio" type="radio" value="filters" checked>
                                            Filters
-                                       </label>
-                                       <label class="mode-option">
-                                           <input name="opradio" type="radio" value="effects">
+                                        </label>
+                                        <label class="mode-option">
+                                            <input name="opradio" type="radio" value="effects">
                                            Effects
-                                       </label>
-                                   </div>
-                                   <div class="controls-panel" id="div_filters">
-                                       <div class="control-group">
-                                           <button id="gs_btn" type="button" class="project-button project-button--secondary">Grayscale</button>
-                                       </div>
-                                       <div class="control-group">
-                                           <button id="invert_btn" type="button" class="project-button project-button--secondary">Invert</button>
-                                       </div>
-                                       <div class="control-group">
-                                           <button id="hist_btn" type="button" class="project-button project-button--secondary">Histogram Equalization</button>
-                                       </div>
-                                       <div class="control-group">
-                                           <button id="ahe_btn" type="button" class="project-button project-button--secondary">Adaptive Histogram Equalization</button>
-                                       </div>
-                                       <div class="control-group">
-                                           <label class="checkbox-label">
-                                               <input type="checkbox" id="brightnesscontrast">
+                                        </label>
+                                    </div>
+                                    <div class="controls-panel" id="div_filters">
+                                        <div class="control-group">
+                                            <button id="gs_btn" type="button" class="project-button project-button--secondary">Grayscale</button>
+                                        </div>
+                                        <div class="control-group">
+                                            <button id="invert_btn" type="button" class="project-button project-button--secondary">Invert</button>
+                                        </div>
+                                        <div class="control-group">
+                                            <button id="hist_btn" type="button" class="project-button project-button--secondary">Histogram Equalization</button>
+                                        </div>
+                                        <div class="control-group">
+                                            <button id="ahe_btn" type="button" class="project-button project-button--secondary">Adaptive Histogram Equalization</button>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="brightnesscontrast">
                                                Brightness &amp; Contrast
-                                           </label>
-                                       </div>
-                                       <div class="control-group control-group--range">
-                                           <label for="brightnessbar">Brightness</label>
-                                           <input type="range" id="brightnessbar" min="-128" max="128" value="0" class="project-input">
-                                           <span id="brightnessval">0</span>
-                                       </div>
-                                       <div class="control-group control-group--range">
-                                           <label for="contrastbar">Contrast</label>
-                                           <input type="range" id="contrastbar" min="-128" max="128" value="0" class="project-input">
-                                           <span id="contrastval">0</span>
-                                       </div>
-                                       <div class="control-group control-group--compact">
-                                           <label class="control-group__label">Color Reduction</label>
-                                           <div class="control-group__row">
-                                               <select id="reduction_method" class="project-select">
-                                                   <option value="uniform">Uniform</option>
-                                                   <option value="population">Population</option>
-                                                   <option value="mediancut">Median-Cut</option>
-                                                   <option value="knn">kNN</option>
-                                                   <option value="ann">ANN</option>
-                                               </select>
-                                               <input type="text" id="reduction_colors" value="4" inputmode="numeric" class="project-input" style="width:3.5rem;" placeholder="Colors">
-                                               <button id="reduction_btn" type="button" class="project-button project-button--secondary">Apply</button>
-                                           </div>
-                                       </div>
-                                       <div class="control-group control-group--compact">
-                                           <label class="control-group__label">Spatial Filter</label>
-                                           <div class="control-group__row">
-                                               <select id="filter_select" class="project-select">
-                                                   <option value="gaussian">Gaussian</option>
-                                                   <option value="sharpen">Sharpen</option>
-                                                   <option value="vsobel">Sobel (Vertical)</option>
-                                                   <option value="hsobel">Sobel (Horizontal)</option>
-                                                   <option value="laplacian">Laplacian</option>
-                                               </select>
-                                               <input type="text" id="filter_size" value="3" inputmode="numeric" class="project-input" style="width:3rem;" placeholder="Size">
-                                               <input type="text" id="filter_sigma" value="1" inputmode="numeric" class="project-input" style="width:3rem;" placeholder="Sigma">
-                                               <button id="filter_btn" type="button" class="project-button project-button--secondary">Apply</button>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div class="controls-panel" id="div_effects" style="display:none;">
-                                       <div class="control-group">
-                                           <button id="sepia_btn" type="button" class="project-button project-button--secondary">Sepia</button>
-                                       </div>
-                                       <div class="control-group">
-                                           <button id="autumn_btn" type="button" class="project-button project-button--secondary">Autumn</button>
-                                       </div>
-                                   </div>
-                               </aside>
-                               <section class="project-canvas-column imageprocjs-panel" aria-label="Image canvas">
-                                   <div class="imageprocjs-panel__header imageprocjs-panel__header--inline">
-                                       <div>
-                                           <p class="imageprocjs-panel__eyebrow">Preview</p>
-                                           <h2 class="imageprocjs-panel__title">Image</h2>
-                                       </div>
-                                       <p id="imageinfo"></p>
-                                   </div>
-                                   <div id="div_canvas" class="project-canvas-frame imageprocjs-canvas-frame">
-                                       <canvas id="cvs"></canvas>
-                                   </div>
-                               </section>
-                               <aside class="project-curve-column imageprocjs-panel" aria-label="Curve tool">
-                                   <div class="imageprocjs-panel__header">
-                                       <p class="imageprocjs-panel__eyebrow">Adjustment</p>
-                                       <h2 class="imageprocjs-panel__title">Tone Curve</h2>
-                                   </div>
-                                   <div id="div_curvetool">
-                                       <div class="curve-tool-header">
-                                           <button id="resetcurve_btn" type="button" class="project-button project-button--secondary">Reset Curve</button>
-                                           <select id="channelselect" class="project-select">
-                                               <option value="brightness">Brightness</option>
-                                               <option value="red">Red</option>
-                                               <option value="green">Green</option>
-                                               <option value="blue">Blue</option>
-                                           </select>
-                                       </div>
-                                       <div id="div_curveplot"></div>
-                                   </div>
-                               </aside>
-                           </div>
-                       </div>
-                   </section>
-               </main>
+                                            </label>
+                                        </div>
+                                        <div class="control-group control-group--range">
+                                            <label for="brightnessbar">Brightness</label>
+                                            <input type="range" id="brightnessbar" min="-128" max="128" value="0" class="project-input">
+                                            <span id="brightnessval">0</span>
+                                        </div>
+                                        <div class="control-group control-group--range">
+                                            <label for="contrastbar">Contrast</label>
+                                            <input type="range" id="contrastbar" min="-128" max="128" value="0" class="project-input">
+                                            <span id="contrastval">0</span>
+                                        </div>
+                                        <div class="control-group control-group--compact">
+                                            <label class="control-group__label">Color Reduction</label>
+                                            <div class="control-group__row">
+                                                <select id="reduction_method" class="project-select">
+                                                    <option value="uniform">Uniform</option>
+                                                    <option value="population">Population</option>
+                                                    <option value="mediancut">Median-Cut</option>
+                                                    <option value="knn">kNN</option>
+                                                    <option value="ann">ANN</option>
+                                                </select>
+                                                <input type="text" id="reduction_colors" value="4" inputmode="numeric" class="project-input" style="width:3.5rem;" placeholder="Colors">
+                                                <button id="reduction_btn" type="button" class="project-button project-button--secondary">Apply</button>
+                                            </div>
+                                        </div>
+                                        <div class="control-group control-group--compact">
+                                            <label class="control-group__label">Spatial Filter</label>
+                                            <div class="control-group__row">
+                                                <select id="filter_select" class="project-select">
+                                                    <option value="gaussian">Gaussian</option>
+                                                    <option value="sharpen">Sharpen</option>
+                                                    <option value="vsobel">Sobel (Vertical)</option>
+                                                    <option value="hsobel">Sobel (Horizontal)</option>
+                                                    <option value="laplacian">Laplacian</option>
+                                                </select>
+                                                <input type="text" id="filter_size" value="3" inputmode="numeric" class="project-input" style="width:3rem;" placeholder="Size">
+                                                <input type="text" id="filter_sigma" value="1" inputmode="numeric" class="project-input" style="width:3rem;" placeholder="Sigma">
+                                                <button id="filter_btn" type="button" class="project-button project-button--secondary">Apply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="controls-panel" id="div_effects" style="display:none;">
+                                        <div class="control-group">
+                                            <button id="sepia_btn" type="button" class="project-button project-button--secondary">Sepia</button>
+                                        </div>
+                                        <div class="control-group">
+                                            <button id="autumn_btn" type="button" class="project-button project-button--secondary">Autumn</button>
+                                        </div>
+                                    </div>
+                                </aside>
+                                <section class="project-canvas-column imageprocjs-panel" aria-label="Image canvas">
+                                    <div class="imageprocjs-panel__header imageprocjs-panel__header--inline">
+                                        <div>
+                                            <p class="imageprocjs-panel__eyebrow">Preview</p>
+                                            <h2 class="imageprocjs-panel__title">Image</h2>
+                                        </div>
+                                        <p id="imageinfo"></p>
+                                    </div>
+                                    <div id="div_canvas" class="project-canvas-frame imageprocjs-canvas-frame">
+                                        <canvas id="cvs"></canvas>
+                                    </div>
+                                </section>
+                                <aside class="project-curve-column imageprocjs-panel" aria-label="Curve tool">
+                                    <div class="imageprocjs-panel__header">
+                                        <p class="imageprocjs-panel__eyebrow">Adjustment</p>
+                                        <h2 class="imageprocjs-panel__title">Tone Curve</h2>
+                                    </div>
+                                    <div id="div_curvetool">
+                                        <div class="curve-tool-header">
+                                            <button id="resetcurve_btn" type="button" class="project-button project-button--secondary">Reset Curve</button>
+                                            <select id="channelselect" class="project-select">
+                                                <option value="brightness">Brightness</option>
+                                                <option value="red">Red</option>
+                                                <option value="green">Green</option>
+                                                <option value="blue">Blue</option>
+                                            </select>
+                                        </div>
+                                        <div id="div_curveplot"></div>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </section>
+                </main>
 
-               <footer class="site-footer">
-                   <div class="site-footer__inner">
-                       <p class="site-footer__copy">&copy; 2009-<script>document.write(new Date().getFullYear());</script> Peihong Guo</p>
-                       <label class="theme-toggle" for="theme-toggle">
-                           <span class="theme-toggle__label">Theme</span>
-                           <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
-                               <option value="minimalist">Minimalist</option>
-                               <option value="cyberpunk">Cyberpunk</option>
-                               <option value="matrix">Matrix</option>
-                               <option value="industrial">Industrial</option>
-                               <option value="win31">Windows 3.1</option>
-                           </select>
-                       </label>
-                       <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
-                   </div>
-               </footer>
-           </div>
+                <footer class="site-footer">
+                    <div class="site-footer__inner">
+                        <p class="site-footer__copy">&copy; 2009-<span id="footer-year"></span> Peihong Guo</p>
+                        <label class="theme-toggle" for="theme-toggle">
+                            <span class="theme-toggle__label">Theme</span>
+                            <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+                                <option value="minimalist">Minimalist</option>
+                                <option value="cyberpunk">Cyberpunk</option>
+                                <option value="matrix">Matrix</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="win31">Windows 3.1</option>
+                            </select>
+                        </label>
+                        <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+                    </div>
+                </footer>
+            </div>
 
-           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-           <script src="./lib/d3.v3.min.js"></script>
-           <script src="./lib/require.js"></script>
-           <script src="./algorithms.js"></script>
-           <script src="./benchmark.js"></script>
-           <script src="./colorutils.js"></script>
-           <script src="./color.js"></script>
-           <script src="./image.js"></script>
-           <script src="./filter.js"></script>
-           <script src="./effects.js"></script>
-           <script src="./curve.js"></script>
-           <script src="./tools/curvetool.js"></script>
-           <script src="./tools/histogramtool.js"></script>
-           <script src="./imageloader.js"></script>
-           <script src="./utils.js"></script>
-           <script src="/js/main.js"></script>
-           <script>
+            <!-- Legacy libraries removed (d3, require, jquery) -->
+            <script src="./algorithms.js"></script>
+            <script src="./benchmark.js"></script>
+            <script src="./colorutils.js"></script>
+            <script src="./color.js"></script>
+            <script src="./image.js"></script>
+            <script src="./filter.js"></script>
+            <script src="./effects.js"></script>
+            <script src="./curve.js"></script>
+            <script src="./tools/curvetool.js"></script>
+            <script src="./tools/histogramtool.js"></script>
+            <script src="./imageloader.js"></script>
+            <script src="./utils.js"></script>
+            <script src="/js/main.js"></script>
+            <script>
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+
             var context, canvas;
             var curvetool, histtool;
             var loader;
@@ -211,7 +211,7 @@
             function cloneImage(image) {
                 if (!image) return null;
                 return new RGBAImage(image.w, image.h, image.data);
-            }
+             }
 
             function renderWithCurve() {
                 if (!loader || !loader.result) return;
@@ -219,16 +219,16 @@
                 var rendered = filters.curve(
                     cloneImage(loader.result),
                     curvetool.getLUT(),
-                    $('#channelselect').val()
-                );
+                    document.getElementById('channelselect').value
+                 );
                 rendered.render(canvas);
                 histtool.bindImage(rendered);
-            }
+             }
 
             function commitImage(image) {
                 loader.result = image;
                 renderWithCurve();
-            }
+             }
 
             window.addEventListener('load', function() {
                 loader = new ImageLoader(800);
@@ -245,123 +245,129 @@
                     var result;
                     benchmark(function(){ result = func(source); });
                     commitImage(result);
-                };
+                 };
 
-                $(document).on('curvechanged', function() {
+                 document.addEventListener('curvechanged', function() {
                     renderWithCurve();
-                });
+                 });
 
-                $(document).on('imageloaded', function() {
+                 document.addEventListener('imageloaded', function() {
                     curvetool.resetCurveTool();
                     renderWithCurve();
-                });
+                 });
 
-                $('#resetcurve_btn').click(function() {
+                 document.getElementById('resetcurve_btn').addEventListener('click', function() {
                     curvetool.resetCurveTool();
                     renderWithCurve();
-                });
+                 });
 
-                $('#channelselect').change(function() {
+                 document.getElementById('channelselect').addEventListener('change', function() {
                     renderWithCurve();
-                });
+                 });
 
-                $('#show_btn').click(function() {
+                 document.getElementById('show_btn').addEventListener('click', function() {
                     loader.loadImage('./seal.jpg', canvas);
-                });
+                 });
 
-                $('#gs_btn').click(function() {
+                 document.getElementById('gs_btn').addEventListener('click', function() {
                     transformImage(function(I) { return filters.grayscale(I); });
-                });
+                 });
 
-                $('#invert_btn').click(function() {
+                 document.getElementById('invert_btn').addEventListener('click', function() {
                     transformImage(function(I) { return filters.invert(I); });
-                });
+                 });
 
-                $('#hist_btn').click(function() {
+                 document.getElementById('hist_btn').addEventListener('click', function() {
                     transformImage(function(I) { return filters.histogram(I); });
-                });
+                 });
 
-                $('#ahe_btn').click(function() {
+                 document.getElementById('ahe_btn').addEventListener('click', function() {
                     transformImage(function(I) { return filters.ahe(I); });
-                });
+                 });
 
-                $('#reduction_btn').click(function() {
+                 document.getElementById('reduction_btn').addEventListener('click', function() {
                     transformImage(function(I) {
-                        return filters.reduction(I, $('#reduction_method').val(), parseFloat($('#reduction_colors').val()));
-                    });
-                });
+                        return filters.reduction(I, document.getElementById('reduction_method').value, parseFloat(document.getElementById('reduction_colors').value));
+                     });
+                 });
 
-                $('#filter_btn').click(function() {
+                 document.getElementById('filter_btn').addEventListener('click', function() {
                     transformImage(function(I) {
                         return filters.spatialfilter(I, algorithms.createfilter({
-                            name: $('#filter_select').val(),
-                            size: parseFloat($('#filter_size').val()),
-                            sigma: parseFloat($('#filter_sigma').val())
-                        }));
-                    });
-                });
+                            name: document.getElementById('filter_select').value,
+                            size: parseFloat(document.getElementById('filter_size').value),
+                            sigma: parseFloat(document.getElementById('filter_sigma').value)
+                         }));
+                     });
+                 });
 
-                $('#brightnessbar').change(function() {
-                    var beta = parseInt($('#brightnessbar').val(), 10);
-                    $('#brightnessval').html(beta);
+                 document.getElementById('brightnessbar').addEventListener('input', function() {
+                    var beta = parseInt(this.value, 10);
+                    document.getElementById('brightnessval').textContent = beta;
                     var I = loader.result;
                     if (!I) return;
 
-                    if ($('#brightnesscontrast').is(':checked')) {
-                        var alpha = parseInt($('#contrastbar').val(), 10);
+                    if (document.getElementById('brightnesscontrast').checked) {
+                        var alpha = parseInt(document.getElementById('contrastbar').value, 10);
                         I = filters.brightnesscontrast(I, alpha, beta);
-                    } else {
+                     } else {
                         I = filters.brightness(I, beta);
-                    }
+                     }
                     commitImage(I);
-                });
+                 });
 
-                $('#contrastbar').change(function() {
-                    var alpha = parseInt($('#contrastbar').val(), 10);
-                    $('#contrastval').html(alpha);
+                 document.getElementById('contrastbar').addEventListener('input', function() {
+                    var alpha = parseInt(this.value, 10);
+                    document.getElementById('contrastval').textContent = alpha;
                     var I = loader.result;
                     if (!I) return;
-                    if ($('#brightnesscontrast').is(':checked')) {
-                        var beta = parseInt($('#brightnessbar').val(), 10);
+                    if (document.getElementById('brightnesscontrast').checked) {
+                        var beta = parseInt(document.getElementById('brightnessbar').value, 10);
                         I = filters.brightnesscontrast(I, alpha, beta);
-                    } else {
+                     } else {
                         I = filters.contrast(I, alpha);
-                    }
+                     }
                     commitImage(I);
-                });
+                 });
 
-                $('#files').hide();
-                $('#files').change(function(e) {
+                 document.getElementById('files').style.display = 'none';
+                 
+                 // Re-initialize the file input handler since we re-attached events
+                 document.getElementById('files').addEventListener('change', function(e) {
                     handleFileSelect(e, loader, canvas);
-                });
-                $('#upload_btn').click(function() {
-                    $('#files').click();
-                });
+                 });
+                 
+                 document.getElementById('upload_btn').addEventListener('click', function() {
+                    document.getElementById('files').click();
+                 });
 
-                $('#sepia_btn').click(function() {
+                 document.getElementById('sepia_btn').addEventListener('click', function() {
                     transformImage(function(I) { return effects.sepia(I); });
-                });
+                 });
 
-                $('#autumn_btn').click(function() {
+                 document.getElementById('autumn_btn').addEventListener('click', function() {
                     transformImage(function(I) { return effects.autumn(I); });
-                });
+                 });
 
-                $('#div_effects').hide();
-                $("input[name='opradio']").change(function() {
-                    switch ($("input[name='opradio']:checked").val()) {
-                        case 'filters':
-                            $('#div_filters').show();
-                            $('#div_effects').hide();
+                 document.getElementById('div_effects').style.display = 'none';
+                 
+                 var radios = document.querySelectorAll("input[name='opradio']");
+                 for (var i = 0; i < radios.length; i++) {
+                     radios[i].addEventListener('change', function() {
+                        if (this.value === 'filters') {
+                             document.getElementById('div_filters').style.display = 'block';
+                             document.getElementById('div_effects').style.display = 'none';
                             break;
-                        case 'effects':
-                            $('#div_filters').hide();
-                            $('#div_effects').show();
+                        } else {
+                             document.getElementById('div_filters').style.display = 'none';
+                             document.getElementById('div_effects').style.display = 'block';
                             break;
-                    }
-                });
+                        }
+                     });
+                 }
 
                 loader.loadImage('./seal.jpg', canvas);
-            });
-           </script>
-       </body>
+             });
+            </script>
+        </body>
 </html>

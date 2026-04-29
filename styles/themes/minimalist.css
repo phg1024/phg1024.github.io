@@ -2,27 +2,27 @@
 
 [data-theme="minimalist"] {
    --bg: #f3efe9;
-   --bg-accent: #ece6de;
-   --surface: rgba(255, 252, 248, 0.9);
-   --surface-strong: rgba(255, 255, 255, 0.94);
-   --border: rgba(58, 52, 46, 0.12);
-   --text: #201b17;
-   --muted: #73685e;
-   --soft: #9b8f85;
-   --accent: #6a7c8c;
-   --accent-secondary: #b8c2ca;
-   --accent-tertiary: #8a958f;
-   --accent-glow: rgba(184, 194, 202, 0.18);
-   --accent-glow-pink: rgba(184, 194, 202, 0.08);
-   --accent-strong: #201b17;
-   --shadow: 0 18px 42px rgba(37, 28, 18, 0.08);
-   --shadow-cyber: none;
-   --radius-lg: 1.1rem;
-   --radius-md: 0.75rem;
-   --button-radius: 0.55rem;
-   --button-radius-tight: 0.45rem;
-   --sans: "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
-   --serif: "Outfit", "Helvetica Neue", sans-serif;
+    --bg-accent: #ece6de;
+    --surface: rgba(255, 252, 248, 0.9);
+    --surface-strong: rgba(255, 255, 255, 0.94);
+    --border: rgba(58, 52, 46, 0.12);
+    --text: #201b17;
+    --muted: #73685e;
+    --soft: #9b8f85;
+    --accent: #6a7c8c;
+    --accent-secondary: #b8c2ca;
+    --accent-tertiary: #8a958f;
+    --accent-glow: rgba(184, 194, 202, 0.18);
+    --accent-glow-pink: rgba(184, 194, 202, 0.08);
+    --accent-strong: #201b17;
+    --shadow: 0 18px 42px rgba(37, 28, 18, 0.08);
+    --shadow-cyber: none;
+    --radius-lg: 1.1rem;
+    --radius-md: 0.75rem;
+    --button-radius: 0.55rem;
+    --button-radius-tight: 0.45rem;
+    --sans: "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+    --serif: "Outfit", "Helvetica Neue", sans-serif;
 }
 
 [data-theme="minimalist"] body {
@@ -54,17 +54,6 @@
   background: linear-gradient(180deg, rgba(255, 252, 248, 0.5), rgba(248, 244, 238, 0.44));
 }
 
-[data-theme="minimalist"] .gallery-tabs .nav-link {
-  background: rgba(255, 252, 248, 0.9);
-  color: var(--muted);
-  border-radius: 0.55rem;
-}
-
-[data-theme="minimalist"] .gallery-tabs .nav-link.active {
-  background: linear-gradient(135deg, rgba(232, 236, 240, 0.95), rgba(255, 252, 248, 0.98));
-  color: var(--text);
-}
-
 [data-theme="minimalist"] .project-button,
 [data-theme="minimalist"] .project-field input,
 [data-theme="minimalist"] .project-field select,
@@ -87,6 +76,7 @@
 }
 
 [data-theme="minimalist"] .blog-content pre {
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
   background: var(--bg-accent);
   border-color: var(--border);
   color: var(--text);
@@ -98,6 +88,7 @@
   color: var(--soft);
   padding: 0.15rem 0.4rem;
   border-radius: 0.25rem;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
   font-size: 0.9em;
   border: 1px solid rgba(106, 124, 140, 0.2);
 }
@@ -273,43 +264,6 @@
   background: rgba(232, 236, 240, 0.5);
 }
 
-/* ── Carousel controls ── */
-
-[data-theme="minimalist"] .carousel__btn {
-  border-color: rgba(106, 124, 140, 0.3);
-  background: rgba(255, 252, 248, 0.85);
-  color: var(--text);
-  border-radius: var(--button-radius-tight);
-  box-shadow: none;
-}
-
-[data-theme="minimalist"] .carousel__btn:hover,
-[data-theme="minimalist"] .carousel__btn:focus {
-  background: rgba(232, 236, 240, 0.9);
-  border-color: rgba(106, 124, 140, 0.4);
-}
-
-[data-theme="minimalist"] .carousel__indicator {
-  border-color: rgba(106, 124, 140, 0.3);
-  background: transparent;
-}
-
-[data-theme="minimalist"] .carousel__indicator.is-active {
-  background: rgba(106, 124, 140, 0.6);
-  border-color: rgba(106, 124, 140, 0.4);
-}
-
-[data-theme="minimalist"] .carousel__caption {
-  background: rgba(255, 252, 248, 0.85);
-  color: #3a3a3a;
-  border: 1px solid rgba(58, 52, 46, 0.14);
-  box-shadow: none;
-  backdrop-filter: none;
-  border-radius: var(--button-radius);
-  font-family: var(--serif);
-}
-
-/* ── Minesweeper popup ── */
 
 [data-theme="minimalist"] .ms-popup {
   background: rgba(255, 252, 248, 0.95);
@@ -335,6 +289,11 @@
 }
 
 /* ── ImageprocJS mode picker / controls panel ── */
+
+/* Fix: add accent-color to radio buttons in mode picker */
+[data-theme="minimalist"] .mode-picker input[type="radio"] {
+  accent-color: var(--accent-secondary);
+}
 
 [data-theme="minimalist"] .mode-picker {
   background: rgba(255, 252, 248, 0.8);
@@ -378,24 +337,27 @@
   border-radius: var(--button-radius);
 }
 
-/* ── Gallery tabs ── */
+/* ── Range sliders for minimalist ── */
 
-[data-theme="minimalist"] .gallery-tabs .nav-link {
-  background: rgba(255, 252, 248, 0.9);
-  color: var(--muted);
-  border-radius: var(--button-radius);
+[data-theme="minimalist"] input[type="range"]::-webkit-slider-runnable-track {
+  background: rgba(106, 124, 140, 0.2);
 }
 
-[data-theme="minimalist"] .gallery-tabs .nav-link.active {
-  background: linear-gradient(135deg, rgba(232, 236, 240, 0.95), rgba(255, 252, 248, 0.98));
-  color: var(--text);
+[data-theme="minimalist"] input[type="range"]::-webkit-slider-thumb {
+  background: #6a7c8c;
+  box-shadow: 0 0 6px rgba(106, 124, 140, 0.25);
 }
 
-/* ── Gallery panel wrapper ── */
+[data-theme="minimalist"] input[type="range"]::-moz-range-track {
+  background: rgba(106, 124, 140, 0.2);
+}
 
-[data-theme="minimalist"] .gallery-panel-wrapper {
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.5), rgba(248, 244, 238, 0.44));
-  border-color: var(--border);
-  box-shadow: none;
-  border-radius: var(--button-radius);
+[data-theme="minimalist"] input[type="range"]::-moz-range-thumb {
+  background: #6a7c8c;
+  box-shadow: 0 0 6px rgba(106, 124, 140, 0.25);
+}
+
+[data-theme="minimalist"] .project-field__val {
+  color: #6a7c8c;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
 }
