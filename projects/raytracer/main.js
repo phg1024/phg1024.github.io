@@ -1,8 +1,9 @@
 import { RGBAImage } from './image.js';
 import { renderWebGPU } from './webgpuRenderer.js';
+import { SCENE_OPTIONS } from './sceneDef.js';
 
 var RAY_TRACE_DEFAULT_SAMPLES = 8;
-var PATH_TRACE_DEFAULT_SAMPLES = 512;
+var PATH_TRACE_DEFAULT_SAMPLES = 1;
 
 var canvas;
 var ctx;
@@ -10,21 +11,57 @@ var canvasBackend;
 var finishedCount;
 var startT, endT;
 var progress;
+var activeRenderController = null;
+var activeWorkers = [];
+var autoRenderStarted = false;
+var cpuAccumulationBuffer = null;
+var cpuImageData = null;
+var renderQueue = Promise.resolve();
+var latestRenderRequestId = 0;
+var DEBUG_CAUSTIC_WORLD_POINT = { x: 1.0, y: 0.0, z: 2.0 };
 
 export function init() {
     canvas = document.getElementById('canvas');
     ensureCanvasBackend('2d');
     finishedCount = 0;
     setProgressBar(0);
+    setFpsCounter(null);
 
     var pathTraceToggle = document.getElementById('pathTraceToggle');
     pathTraceToggle.addEventListener('change', setDefaultSamplesForMode);
+    setDefaultSamplesForMode();
+    initializeSceneDropdown();
+    updateProjectionMarker();
+    document.getElementById('bvhToggle').addEventListener('change', render);
+    document.getElementById('tracerMode').addEventListener('change', render);
+    document.getElementById('causticOnlyToggle').addEventListener('change', render);
 
     var backend = document.getElementById('backend');
+    backend.addEventListener('change', render);
     if (!navigator.gpu) {
         backend.value = 'cpu';
         backend.querySelector('option[value="webgpu"]').disabled = true;
     }
+
+    if (!autoRenderStarted) {
+        autoRenderStarted = true;
+        render();
+    }
+}
+
+function initializeSceneDropdown() {
+    var sceneSelect = document.getElementById('scene');
+    if (!sceneSelect || sceneSelect.options.length) return;
+
+    for (var i = 0; i < SCENE_OPTIONS.length; i++) {
+        var option = document.createElement('option');
+        option.value = SCENE_OPTIONS[i].value;
+        option.textContent = SCENE_OPTIONS[i].label;
+        sceneSelect.appendChild(option);
+    }
+
+    sceneSelect.value = 'bunny';
+    sceneSelect.addEventListener('change', render);
 }
 
 function ensureCanvasBackend(nextBackend) {
@@ -55,6 +92,94 @@ function setProgressBar(value) {
     pbarValue.textContent = percent.toFixed(2) + '% Complete';
 }
 
+function setLiveProgress(label) {
+    var pbar = document.getElementById('pbar');
+    var pbarValue = document.getElementById('pbarvalue');
+    pbar.style.width = '100%';
+    pbarValue.textContent = label;
+}
+
+function setFpsCounter(fps) {
+    var fpsCounter = document.getElementById('fpsCounter');
+    if (!fpsCounter) return;
+    fpsCounter.textContent = fps && fps > 0 ? 'FPS: ' + fps.toFixed(1) : 'FPS: --';
+}
+
+function normalize(v) {
+    var length = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+    return { x: v.x / length, y: v.y / length, z: v.z / length };
+}
+
+function dot(a, b) {
+    return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+function subtract(a, b) {
+    return { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z };
+}
+
+function cross(a, b) {
+    return {
+        x: a.y * b.z - a.z * b.y,
+        y: a.z * b.x - a.x * b.z,
+        z: a.x * b.y - a.y * b.x
+    };
+}
+
+function projectDebugPoint(point, width, height) {
+    var origin = { x: 0.0, y: 7.0, z: -36.0 };
+    var direction = normalize({ x: 0.0, y: -0.1, z: 1.0 });
+    var up = normalize({ x: 0.0, y: 1.0, z: 0.0 });
+    var right = cross(up, direction);
+    var scale = 6.0 * Math.atan(22.5 / 180.0 * Math.PI);
+    var aspect = width / height;
+    var center = {
+        x: origin.x + direction.x * 6.0,
+        y: origin.y + direction.y * 6.0,
+        z: origin.z + direction.z * 6.0
+    };
+    var axisX = { x: right.x * aspect, y: right.y * aspect, z: right.z * aspect };
+    var axisY = up;
+    var planeNormal = cross(axisX, axisY);
+    var rel = subtract(point, origin);
+    var denom = dot(rel, planeNormal);
+    if (Math.abs(denom) <= 0.000001) {
+        return null;
+    }
+    var rayScale = dot(subtract(center, origin), planeNormal) / denom;
+    if (rayScale <= 0.0) {
+        return null;
+    }
+    var planePoint = {
+        x: origin.x + rel.x * rayScale,
+        y: origin.y + rel.y * rayScale,
+        z: origin.z + rel.z * rayScale
+    };
+    var offset = subtract(planePoint, center);
+    var aa = dot(axisX, axisX);
+    var ab = dot(axisX, axisY);
+    var bb = dot(axisY, axisY);
+    var as = dot(axisX, offset);
+    var bs = dot(axisY, offset);
+    var det = aa * bb - ab * ab;
+    if (Math.abs(det) <= 0.000001) {
+        return null;
+    }
+    var dx = (as * bb - bs * ab) / det;
+    var dy = (bs * aa - as * ab) / det;
+    return {
+        x: (dx / scale + 0.5) * width,
+        y: (0.5 - dy / scale) * height
+    };
+}
+
+function updateProjectionMarker() {
+    var marker = document.getElementById('projectionMarker');
+    if (!marker || !canvas) return;
+    marker.hidden = false;
+    marker.style.display = 'none';
+}
+
 function mean(values) {
     if (!values.length) return 0;
     var sum = 0;
@@ -69,6 +194,8 @@ export function resize() {
     var h = parseInt(document.getElementById('height').value, 10) || 320;
     canvas.setAttribute('width', w);
     canvas.setAttribute('height', h);
+    updateProjectionMarker();
+    render();
 }
 
 function nextPowerOfTwo(value) {
@@ -126,8 +253,26 @@ function createHilbertTasks(width, height, blockSizeX, blockSizeY) {
 }
 
 export async function render() {
+    var requestId = ++latestRenderRequestId;
+    renderQueue = renderQueue
+        .catch(function () {})
+        .then(function () {
+            return performRender(requestId);
+        });
+    return renderQueue;
+}
+
+async function performRender(requestId) {
+    if (requestId !== latestRenderRequestId) {
+        return;
+    }
     if (!canvas) init();
+    await stopActiveRender();
+    if (requestId !== latestRenderRequestId) {
+        return;
+    }
     setProgressBar(0);
+    setFpsCounter(null);
     finishedCount = 0;
     startT = new Date();
 
@@ -139,86 +284,29 @@ export async function render() {
     if (ctx) ctx.clearRect(0, 0, w, h);
 
     var pathTraceMode = document.getElementById('pathTraceToggle').checked;
+    var sceneId = document.getElementById('scene').value;
+    var useBvh = document.getElementById('bvhToggle').checked;
+    var tracerMode = document.getElementById('tracerMode').value;
+    var showCausticOnly = document.getElementById('causticOnlyToggle').checked;
     var defaultSamples = pathTraceMode ? PATH_TRACE_DEFAULT_SAMPLES : RAY_TRACE_DEFAULT_SAMPLES;
     var nsamples = parseInt(document.getElementById('nsamples').value, 10) || defaultSamples;
     var maxDepth = parseInt(document.getElementById('maxdepth').value, 10) || 8;
     var nthreads = parseInt(document.getElementById('threads').value, 10) || 8;
     var seed = Math.random() * 999999 | 0;
+    updateProjectionMarker();
 
     if (backend === 'webgpu') {
-        await renderWithWebGPU(w, h, nsamples, maxDepth, pathTraceMode, seed);
+        await renderWithWebGPU(w, h, nsamples, maxDepth, pathTraceMode, seed, sceneId, useBvh, tracerMode, showCausticOnly);
         return;
     }
 
-    var nextTask = 0;
-    var blockSizeX = 32, blockSizeY = 32;
-    var ntasksX = Math.ceil(w / blockSizeX);
-    var ntasksY = Math.ceil(h / blockSizeY);
-    var ntasks = ntasksX * ntasksY;
-    nthreads = Math.max(1, Math.min(nthreads, ntasks));
-
-    var tasks = createHilbertTasks(w, h, blockSizeX, blockSizeY);
-
-    progress = [];
-    var workers = [];
-    for (var tid = 0; tid < nthreads; tid++) {
-        var worker = new Worker('renderWorker.js', { type: 'module' });
-        worker.idx = tid;
-        worker.onmessage = function (e) {
-            var data = e.data;
-            switch (data.msg) {
-                case 'progress':
-                    progress[data.tidx] = data.value;
-                    document.getElementById("progress").textContent = 'Rendering in progress: ' + mean(progress).toFixed(2) + '%';
-                    break;
-                case 'image':
-                    updateCanvas(data.x1, data.x2, data.y1, data.y2, data.value);
-                    finishedCount++;
-
-                    setProgressBar(finishedCount / ntasks * 100.0);
-
-                    if (nextTask < ntasks) {
-                        var task = tasks[nextTask];
-                        nextTask = nextTask + 1;
-
-                        this.postMessage({
-                            cmd: 'start', tidx: this.idx, w: w, h: h,
-                            x1: task.x1, x2: task.x2, y1: task.y1, y2: task.y2,
-                            nsamples: nsamples, maxDepth: maxDepth,
-                            pathTrace: pathTraceMode, seed: seed
-                        });
-                    } else if (finishedCount === ntasks) {
-                        endT = new Date();
-                        var diff = endT - startT;
-                        document.getElementById("progress").textContent = 'Finished in ' + diff + ' ms.';
-                    }
-
-                    break;
-            }
-        };
-        workers.push(worker);
-        progress.push(0);
-    }
-
-    for (var index = 0; index < nthreads; index++) {
-        var seedTask = tasks[nextTask];
-        nextTask = nextTask + 1;
-        workers[index].postMessage({
-            cmd: 'start', tidx: index, w: w, h: h,
-            x1: seedTask.x1, x2: seedTask.x2, y1: seedTask.y1, y2: seedTask.y2,
-            nsamples: nsamples, maxDepth: maxDepth,
-            pathTrace: pathTraceMode, seed: seed
-        });
-    }
+    startCpuRenderLoop(w, h, nsamples, maxDepth, nthreads, pathTraceMode, seed, sceneId, useBvh, tracerMode);
 }
 
-async function renderWithWebGPU(width, height, samples, maxDepth, pathTraceMode, seed) {
+async function renderWithWebGPU(width, height, samples, maxDepth, pathTraceMode, seed, sceneId, useBvh, tracerMode, showCausticOnly) {
     document.getElementById("progress").textContent = 'Rendering with WebGPU...';
     try {
-        var blockSizeX = 32;
-        var blockSizeY = 32;
-        var tasks = createHilbertTasks(width, height, blockSizeX, blockSizeY);
-        await renderWebGPU({
+        activeRenderController = await renderWebGPU({
             canvas: canvas,
             width: width,
             height: height,
@@ -226,20 +314,179 @@ async function renderWithWebGPU(width, height, samples, maxDepth, pathTraceMode,
             maxDepth: maxDepth,
             pathTrace: pathTraceMode,
             seed: seed,
-            tasks: tasks,
-            onProgress: function (done, total) {
-                setProgressBar(done / total * 100);
-                document.getElementById("progress").textContent = 'Rendering with WebGPU: ' + done + ' / ' + total + ' patches';
+            sceneId: sceneId,
+            useBvh: useBvh,
+            tracerMode: tracerMode,
+            showCausticOnly: showCausticOnly,
+            onFrame: function (frameCount, fps) {
+                setFpsCounter(fps);
+                setLiveProgress('Live');
+                var label = pathTraceMode
+                    ? (tracerMode === 'bdpt' ? 'WebGPU bidirectional path tracing' : 'WebGPU path tracing')
+                    : 'WebGPU rendering';
+                document.getElementById("progress").textContent = label + ': ' + frameCount + ' accumulated frames';
             }
         });
-        setProgressBar(100);
-        endT = new Date();
-        document.getElementById("progress").textContent = 'Finished in ' + (endT - startT) + ' ms.';
     } catch (error) {
+        setFpsCounter(null);
         document.getElementById('backend').value = 'cpu';
         document.getElementById("progress").textContent = error.message + ' Falling back to CPU workers.';
         await new Promise(function (resolve) { setTimeout(resolve, 50); });
         return render();
+    }
+}
+
+async function stopActiveRender() {
+    if (activeRenderController && typeof activeRenderController.stop === 'function') {
+        await activeRenderController.stop();
+    }
+    activeRenderController = null;
+    cpuAccumulationBuffer = null;
+    cpuImageData = null;
+
+    while (activeWorkers.length) {
+        activeWorkers.pop().terminate();
+    }
+}
+
+function startCpuRenderLoop(w, h, nsamples, maxDepth, nthreads, pathTraceMode, seed, sceneId, useBvh, tracerMode) {
+    var blockSizeX = 32;
+    var blockSizeY = 32;
+    var tasks = createHilbertTasks(w, h, blockSizeX, blockSizeY);
+    var ntasks = tasks.length;
+    var workerCount = Math.max(1, Math.min(nthreads, ntasks));
+    var workers = [];
+    var state = {
+        cancelled: false,
+        frameCount: 0,
+        frameId: 0,
+        nextTask: 0,
+        finishedTasks: 0,
+        lastFrameAt: performance.now(),
+        fpsSamples: []
+    };
+
+    cpuAccumulationBuffer = new Float32Array(w * h * 4);
+    cpuImageData = ctx.createImageData(w, h);
+    activeWorkers = workers;
+    activeRenderController = {
+        stop: function () {
+            state.cancelled = true;
+        }
+    };
+
+    function dispatchTask(worker) {
+        if (state.cancelled || state.nextTask >= ntasks) {
+            return;
+        }
+
+        var task = tasks[state.nextTask++];
+        worker.postMessage({
+            cmd: 'start',
+            tidx: worker.idx,
+            frameId: state.frameId,
+            w: w,
+            h: h,
+            x1: task.x1,
+            x2: task.x2,
+            y1: task.y1,
+            y2: task.y2,
+            nsamples: nsamples,
+            maxDepth: maxDepth,
+            pathTrace: pathTraceMode,
+            seed: seed,
+            sceneId: sceneId,
+            useBvh: useBvh,
+            tracerMode: tracerMode
+        });
+    }
+
+    function startNextFrame() {
+        if (state.cancelled) {
+            return;
+        }
+
+        state.nextTask = 0;
+        state.finishedTasks = 0;
+        for (var i = 0; i < workers.length; i++) {
+            dispatchTask(workers[i]);
+        }
+    }
+
+    function finishFrame() {
+        state.frameCount++;
+        state.frameId++;
+        updateCpuFps(state);
+        setFpsCounter(mean(state.fpsSamples));
+        setLiveProgress('Live');
+        var label = pathTraceMode
+            ? (tracerMode === 'bdpt' ? 'CPU bidirectional path tracing' : 'CPU photon mapping')
+            : 'CPU rendering';
+        document.getElementById("progress").textContent = label + ': ' + state.frameCount + ' accumulated frames';
+        requestAnimationFrame(startNextFrame);
+    }
+
+    for (var tid = 0; tid < workerCount; tid++) {
+        var worker = new Worker('renderWorker.js', { type: 'module' });
+        worker.idx = tid;
+        worker.onmessage = function (e) {
+            var data = e.data;
+            if (state.cancelled || data.msg !== 'tile' || data.frameId !== state.frameId) {
+                return;
+            }
+
+            updateAccumulatedCanvasTile(w, data.x1, data.x2, data.y1, data.y2, data.value, state.frameCount);
+            state.finishedTasks++;
+
+            if (state.nextTask < ntasks) {
+                dispatchTask(this);
+            } else if (state.finishedTasks === ntasks) {
+                finishFrame();
+            }
+        };
+        workers.push(worker);
+    }
+
+    startNextFrame();
+}
+
+function updateAccumulatedCanvasTile(canvasWidth, x1, x2, y1, y2, buffer, frameCount) {
+    var tileWidth = x2 - x1;
+    var tileHeight = y2 - y1;
+    var tile = new Float32Array(buffer);
+    var imageBytes = cpuImageData.data;
+
+    for (var localY = 0; localY < tileHeight; localY++) {
+        for (var localX = 0; localX < tileWidth; localX++) {
+            var tileIdx = (localY * tileWidth + localX) * 4;
+            var canvasX = x1 + localX;
+            var canvasY = canvas.height - y2 + localY;
+            var canvasIdx = (canvasY * canvasWidth + canvasX) * 4;
+
+            cpuAccumulationBuffer[canvasIdx] = (cpuAccumulationBuffer[canvasIdx] * frameCount + tile[tileIdx]) / (frameCount + 1);
+            cpuAccumulationBuffer[canvasIdx + 1] = (cpuAccumulationBuffer[canvasIdx + 1] * frameCount + tile[tileIdx + 1]) / (frameCount + 1);
+            cpuAccumulationBuffer[canvasIdx + 2] = (cpuAccumulationBuffer[canvasIdx + 2] * frameCount + tile[tileIdx + 2]) / (frameCount + 1);
+            cpuAccumulationBuffer[canvasIdx + 3] = 255;
+
+            imageBytes[canvasIdx] = cpuAccumulationBuffer[canvasIdx];
+            imageBytes[canvasIdx + 1] = cpuAccumulationBuffer[canvasIdx + 1];
+            imageBytes[canvasIdx + 2] = cpuAccumulationBuffer[canvasIdx + 2];
+            imageBytes[canvasIdx + 3] = 255;
+        }
+    }
+
+    ctx.putImageData(cpuImageData, 0, 0, x1, canvas.height - y2, tileWidth, tileHeight);
+}
+
+function updateCpuFps(state) {
+    var now = performance.now();
+    var dt = now - state.lastFrameAt;
+    state.lastFrameAt = now;
+    if (dt <= 0) return;
+
+    state.fpsSamples.push(1000 / dt);
+    if (state.fpsSamples.length > 24) {
+        state.fpsSamples.shift();
     }
 }
 

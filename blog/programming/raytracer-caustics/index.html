@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>Peihong Guo</title>
+ <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+ <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Adding Meshes, BVHs, and Photon Mapping to My Browser Ray Tracer</h1><p class="blog-post__date">May 5, 2026</p>
+<p>The previous ray tracer rewrite got me to Monte Carlo path tracing and a fast WebGPU backend. That was already a huge jump from the old recursive JavaScript renderer, but it still only handled a toy sphere scene.</p>
+<p>So I kept going.</p>
+<p>This round added:</p>
+<ul>
+<li>triangle mesh support</li>
+<li>Stanford bunny scenes</li>
+<li>BVH acceleration</li>
+<li>continuous progressive rendering</li>
+<li>CPU-side photon mapping</li>
+<li>world-space caustic estimation for the WebGPU path</li>
+</ul>
+<p>It also added a lot of bugs. Some of them were interesting.</p>
+<h2>Continuous Rendering Instead of One-Shot Rendering</h2>
+<p>The original browser flow was still basically &quot;click render, wait, get an image.&quot; That is fine for a traditional ray tracer, but it feels wrong once the renderer is progressive.</p>
+<p>Both backends now run continuously:</p>
+<ul>
+<li>WebGPU starts path tracing automatically</li>
+<li>CPU workers keep accumulating frames indefinitely</li>
+<li>switching scene, backend, BVH, or tracer mode restarts immediately</li>
+<li>the UI shows a live FPS counter</li>
+</ul>
+<p>That makes the renderer feel much more like a modern progressive preview than a batch job.</p>
+<h2>Triangle Meshes and the Stanford Bunny</h2>
+<p>The next obvious missing feature was mesh geometry.</p>
+<p>I added a <code>TriangleMesh</code> path to the CPU renderer, then extended the WebGPU scene packing and shader intersection code to carry triangles too. The Stanford bunny became the first real scene stress test, and it immediately exposed a bunch of things that spheres hide:</p>
+<ul>
+<li>flat-shaded normals look awful</li>
+<li>brute-force triangle traversal is too slow</li>
+<li>material bugs become much easier to spot on curved silhouettes</li>
+</ul>
+<p>So the bunny scene ended up driving most of the later renderer work.</p>
+<h2>Smooth Normals and a BVH</h2>
+<p>Per-face normals made the bunny look faceted, so I switched to averaged vertex normals and barycentric interpolation at hit points. That alone made the mesh read like an actual surface instead of a pile of triangles.</p>
+<p>Performance was the bigger problem.</p>
+<p>Testing every triangle against every ray is fine for a demo with a few primitives. It is not fine once three bunnies show up in the scene and the renderer starts tracing many bounces per pixel. I added a BVH on the CPU side and a packed flat BVH for WebGPU so rays could reject most triangles cheaply.</p>
+<p>There is also a UI toggle to turn the BVH off, which is useful both for debugging and for proving that it is actually doing work.</p>
+<h2>Materials: Glass, Matte, and &quot;Jade&quot;</h2>
+<p>Once the bunny scene existed, I used three copies of the mesh with different materials:</p>
+<ul>
+<li>a red matte bunny</li>
+<li>a green glass bunny</li>
+<li>a blue jade-like bunny</li>
+</ul>
+<p>The red and green cases were straightforward. The blue one was not.</p>
+<p>I first cheated by overloading the old refractive material path, which made the bunny look more like glossy plastic or glass than stone. That was the wrong model. I split the effect into a separate subsurface-style path and kept refraction for actual dielectric materials.</p>
+<p>It is still a lightweight approximation rather than a full production BSSRDF, but it is much closer to the look I wanted.</p>
+<h2>CPU Photon Mapping</h2>
+<p>The big new lighting feature was photon mapping on the CPU backend.</p>
+<p>The normal CPU path tracer now builds a photon map by:</p>
+<ol>
+<li>sampling the area light</li>
+<li>tracing photons through the scene</li>
+<li>storing caustic and global photon hits separately</li>
+<li>gathering caustic energy at visible diffuse surfaces</li>
+</ol>
+<p>The reason for adding photon mapping was simple: caustics are painful for plain camera-only path tracing. Refractive paths exist, but they converge slowly and the focused light pattern under a glass object is hard to discover reliably.</p>
+<p>Photon mapping is biased, but it is a very practical way to make those light paths visible.</p>
+<h2>WebGPU Caustics: From Screen Space to World Space</h2>
+<p>I also tried a screen-space caustic pass on the WebGPU backend. It worked well enough to prove the idea, but it had all the expected problems:</p>
+<ul>
+<li>view dependence</li>
+<li>projection bugs</li>
+<li>receiver matching issues</li>
+<li>&quot;sticker-like&quot; additive composition if the math was not careful</li>
+</ul>
+<p>So I replaced it with a world-space caustic estimate built from the same photon-map logic the CPU backend uses. The current WebGPU path still composites that estimate into the GPU render rather than doing the full photon gather directly inside WGSL, but the transport model is much better grounded than the earlier screen-space hack.</p>
+<p>That said, this part is still the messiest piece of the renderer and the place where CPU/WebGPU parity is hardest to maintain.</p>
+<h2>The Bugs Were the Real Project</h2>
+<p>The funny part is that the feature list sounds clean in hindsight, but the real work was mostly debugging:</p>
+<ul>
+<li>half-float accumulation made long-running WebGPU renders darken after enough frames</li>
+<li>backend switching could race and break the live renderer</li>
+<li>CPU and GPU material layouts drifted out of sync</li>
+<li>subsurface exits could use the wrong surface orientation</li>
+<li>caustic maps could show up upside down or in the wrong place</li>
+<li>refractive tinting could make low-IOR glass look far too dark</li>
+<li>photon contributions could blow out into giant white dots if the value scale was wrong</li>
+</ul>
+<p>Most of the recent progress was not &quot;invent a renderer from scratch.&quot; It was &quot;make two partially different renderers stop disagreeing with each other.&quot;</p>
+<h2>Where It Stands Now</h2>
+<p>The ray tracer is in a much more interesting place than it was a couple of weeks ago.</p>
+<p>It now has:</p>
+<ul>
+<li>CPU and WebGPU backends</li>
+<li>continuous progressive rendering</li>
+<li>sphere and triangle-mesh scenes</li>
+<li>Stanford bunny variants</li>
+<li>BVH acceleration</li>
+<li>diffuse, reflective, refractive, and subsurface-style materials</li>
+<li>CPU photon mapping</li>
+<li>world-space caustic estimation feeding the WebGPU path</li>
+</ul>
+<p>It is still very much an educational renderer, not a production one. The caustic path in particular is still the least settled part of the system, and matching CPU and WebGPU perfectly is harder than it sounds once photon maps, subsurface scattering, and progressive accumulation all get involved.</p>
+<p>But that is also what makes it fun. The project started years ago as a simple way to learn ray-object intersections and shading. Now it is a browser renderer with mesh support, BVHs, photon mapping, and just enough physically-based lighting to keep generating new bugs.</p>
+<p>That feels like progress.</p>
+<p><em><a href="/projects/raytracer/index.html">Try the ray tracer live</a> if you want to poke at the scenes, swap backends, or watch the caustics converge.</em></p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/programming/raytracer-caustics/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"></span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -1,11 +1,15 @@
-import { RGBAImage, Color } from './image.js';
+import { Color } from './image.js';
 import { Point3 } from './point.js';
 import { Vector3 } from './vector.js';
 import { createRNG } from './utils.js';
 import { Camera } from './raytracer.js';
-import { createDefaultScene } from './sceneDef.js';
+import { createScene } from './sceneDef.js';
 
 var rayTracingInfo;
+var cachedSceneKey = null;
+var cachedScene = null;
+var cachedPhotonMapKey = null;
+var cachedPhotonMap = null;
 self.addEventListener('message', function(e) {
     var data = e.data;
     switch (data.cmd) {
@@ -21,12 +25,14 @@ self.addEventListener('message', function(e) {
                 maxDepth : data.maxDepth,
                 tidx: data.tidx,
                 pathTrace: data.pathTrace || false,
-                seed: data.seed || 42
+                seed: data.seed || 42,
+                frameId: data.frameId || 0,
+                sceneId: data.sceneId || 'current',
+                useBvh: data.useBvh !== false,
+                tracerMode: data.tracerMode || 'path'
             };
 
             run();
-
-            self.postMessage({msg:'done'});
             break;
         default:
             self.postMessage('Unknown command: ' + data);
@@ -35,8 +41,11 @@ self.addEventListener('message', function(e) {
 
 function run()
 {
-    // load scene from centralized definition
-    var scene = createDefaultScene();
+    var scene = getOrCreateScene(rayTracingInfo.sceneId, rayTracingInfo.useBvh);
+    var photonMap = null;
+    if (rayTracingInfo.pathTrace && rayTracingInfo.tracerMode !== 'bdpt') {
+        photonMap = getOrCreatePhotonMap(scene);
+    }
 
     // setup camera
     var cam = new Camera(
@@ -57,20 +66,19 @@ function run()
     var w = x2 - x1;
     var h = y2 - y1;
 
-    var img = new RGBAImage(w, h);
+    var tile = new Float32Array(w * h * 4);
 
     var nsamples = rayTracingInfo.nsamples;
     var maxDepth = rayTracingInfo.maxDepth;
     var pathTraceMode = rayTracingInfo.pathTrace;
     var baseSeed = rayTracingInfo.seed || 42;
-    var progress = 0;
-    var progressStep = 1.0 / h;
+    var frameSeedOffset = rayTracingInfo.frameId * 131071;
 
     for(var i=y1;i<y2;i++)
     {
         for(var j=x1;j<x2;j++)
         {
-            var rng = createRNG(baseSeed + i * 1000 + j + rayTracingInfo.tidx);
+            var rng = createRNG(baseSeed + frameSeedOffset + i * 1000 + j + rayTracingInfo.tidx);
             var pixel;
 
             if (pathTraceMode) {
@@ -80,10 +88,16 @@ function run()
                     var jitterX = rng() - 0.5;
                     var jitterY = rng() - 0.5;
                     var rayDir = cam.getRays(j + jitterX, i + jitterY, 1, maxDepth)[0].v;
-                    var color = scene.pathTrace(cam.origin, rayDir, maxDepth, rng);
+                    var color = rayTracingInfo.tracerMode === 'bdpt'
+                        ? scene.bidirectionalPathTrace(cam.origin, rayDir, maxDepth, rng)
+                        : scene.pathTrace(cam.origin, rayDir, maxDepth, rng);
                     pixel = pixel.add(color);
                 }
-                img.setPixel(j-x1, y2-1-i, pixel.mul(1.0 / nsamples));
+                pixel = pixel.mul(1.0 / nsamples);
+                if (rayTracingInfo.tracerMode !== 'bdpt' && photonMap) {
+                    var centerRayDir = cam.getRays(j + 0.5, i + 0.5, 1, maxDepth)[0].v;
+                    pixel = pixel.add(scene.visibleSurfaceCausticRadiance(cam.origin, centerRayDir, photonMap));
+                }
             } else {
                  // ── Traditional Ray Tracing Mode ──
                 pixel = new Color(0, 0, 0, 0);
@@ -96,12 +110,66 @@ function run()
                     var hit = scene.intersect(rays[0], cam.origin);
                     pixel = pixel.add(hit.color);
                 }
-                img.setPixel(j-x1, y2-1-i, pixel.mul(1.0 / nsamples));
+                pixel = pixel.mul(1.0 / nsamples);
             }
-         }
-        progress += progressStep;
+
+            var localX = j - x1;
+            var localY = y2 - 1 - i;
+            var idx = (localY * w + localX) * 4;
+            tile[idx] = pixel.r;
+            tile[idx + 1] = pixel.g;
+            tile[idx + 2] = pixel.b;
+            tile[idx + 3] = 255;
+        }
     }
 
-    // post the image data to the main thread
-    self.postMessage({msg:'image', x1:x1, x2:x2, y1: y1, y2: y2, value:img.data.buffer}, [img.data.buffer]);
+    self.postMessage({
+        msg: 'tile',
+        frameId: rayTracingInfo.frameId,
+        x1: x1,
+        x2: x2,
+        y1: y1,
+        y2: y2,
+        value: tile.buffer
+    }, [tile.buffer]);
+}
+
+function getOrCreateScene(sceneId, useBvh) {
+    var sceneKey = sceneId + '|' + (useBvh !== false ? 'bvh' : 'flat');
+    if (sceneKey !== cachedSceneKey) {
+        cachedScene = createScene(sceneId, { useBvh: useBvh !== false });
+        cachedSceneKey = sceneKey;
+        cachedPhotonMapKey = null;
+        cachedPhotonMap = null;
+    }
+    return cachedScene;
+}
+
+function getOrCreatePhotonMap(scene) {
+    var isBunny = rayTracingInfo.sceneId === 'bunny';
+    var photonOptions = {
+        photonCount: isBunny ? 48000 : 96000,
+        maxDepth: Math.max(rayTracingInfo.maxDepth, 8),
+        globalRadius: isBunny ? 1.2 : 1.8,
+        causticRadius: isBunny ? 0.5 : 0.3,
+        focusedPhotonRatio: isBunny ? 0.45 : 0.7
+    };
+    var photonKey = [
+        cachedSceneKey,
+        photonOptions.photonCount,
+        photonOptions.maxDepth,
+        photonOptions.globalRadius,
+        photonOptions.causticRadius,
+        rayTracingInfo.seed
+    ].join('|');
+
+    if (photonKey !== cachedPhotonMapKey) {
+        cachedPhotonMap = scene.buildPhotonMap(
+            photonOptions,
+            createRNG((rayTracingInfo.seed || 42) ^ 0x5f3759df)
+        );
+        cachedPhotonMapKey = photonKey;
+    }
+
+    return cachedPhotonMap;
 }

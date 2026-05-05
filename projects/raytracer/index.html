@@ -49,17 +49,25 @@
 
                          <div class="project-canvas-frame">
                              <canvas id="canvas" width="480" height="320"></canvas>
+                             <div id="projectionMarker" class="project-projection-marker" hidden>
+                                 <span class="project-projection-marker__dot" aria-hidden="true"></span>
+                                 <span class="project-projection-marker__label">Under sphere</span>
+                             </div>
+                             <div id="fpsCounter" class="project-fps-counter" aria-live="polite">FPS: --</div>
                          </div>
 
                          <div class="project-controls-grid">
                              <label class="project-field project-field--compact"><span>Width <input id="width" type="text" value="480" class="project-field__inline" inputmode="numeric"></span></label>
                              <label class="project-field project-field--compact"><span>Height <input id="height" type="text" value="320" class="project-field__inline" inputmode="numeric"></span></label>
-                             <label class="project-field project-field--compact"><span>Samples <input id="nsamples" type="text" value="512" class="project-field__inline" inputmode="numeric"></span></label>
+                             <label class="project-field project-field--compact"><span>Samples <input id="nsamples" type="text" value="1" class="project-field__inline" inputmode="numeric"></span></label>
                              <label class="project-field project-field--compact"><span>Max Depth <input id="maxdepth" type="text" value="8" class="project-field__inline" inputmode="numeric"></span></label>
                              <label class="project-field project-field--compact"><span>Threads <input id="threads" type="text" value="8" class="project-field__inline" inputmode="numeric"></span></label>
                           </div>
 
-                          <div class="project-controls-secondary">
+                         <div class="project-controls-secondary">
+                             <label class="project-field project-field--compact">
+                                 <span>Scene <select id="scene" class="project-field__inline project-field__inline--select"></select></span>
+                             </label>
                              <label class="project-field project-field--compact">
                                  <span>Backend <select id="backend" class="project-field__inline project-field__inline--select">
                                      <option value="cpu">CPU Workers</option>
@@ -67,7 +75,19 @@
                                  </select></span>
                              </label>
                              <label class="project-field project-field--compact">
+                                 <span>Use BVH <input type="checkbox" id="bvhToggle" class="project-field__toggle" checked></span>
+                             </label>
+                             <label class="project-field project-field--compact">
                                  <span>Path Trace <input type="checkbox" id="pathTraceToggle" class="project-field__toggle" checked></span>
+                             </label>
+                             <label class="project-field project-field--compact">
+                                 <span>Tracer <select id="tracerMode" class="project-field__inline project-field__inline--select">
+                                     <option value="path" selected>Path Tracer</option>
+                                     <option value="bdpt">Bidirectional CPU</option>
+                                 </select></span>
+                             </label>
+                             <label class="project-field project-field--compact">
+                                 <span>Caustic Only <input type="checkbox" id="causticOnlyToggle" class="project-field__toggle"></span>
                              </label>
                              <div class="project-actions">
                                  <button id="renderButton" class="project-button" type="button" onclick="render()">Render</button>

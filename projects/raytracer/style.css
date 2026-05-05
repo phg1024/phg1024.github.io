@@ -7,11 +7,60 @@
 }
 
 .project-canvas-frame {
+    position: relative;
     padding: 1rem;
 }
 
 .project-canvas-frame canvas {
     background: #050608;
+}
+
+.project-fps-counter {
+    position: absolute;
+    top: 1.65rem;
+    right: 1.65rem;
+    padding: 0.35rem 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--accent-glow) 24%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface) 78%, rgba(3, 6, 10, 0.6));
+    box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.18);
+    color: var(--text);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.project-projection-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.project-projection-marker__dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 999px;
+    border: 2px solid #ff4d9d;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 3px rgba(255, 77, 157, 0.22);
+}
+
+.project-projection-marker__label {
+    padding: 0.2rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1b1f24;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.18);
 }
 
 .project-controls-grid {
