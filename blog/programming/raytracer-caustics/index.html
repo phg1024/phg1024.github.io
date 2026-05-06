@@ -127,6 +127,10 @@
 </ol>
 <p>The reason for adding photon mapping was simple: caustics are painful for plain camera-only path tracing. Refractive paths exist, but they converge slowly and the focused light pattern under a glass object is hard to discover reliably.</p>
 <p>Photon mapping is biased, but it is a very practical way to make those light paths visible.</p>
+<figure>
+  <img src="/images/blog/raytracer-caustics/spheres_caustics.png" alt="The current sphere scene showing a bright caustic under the green refractive sphere.">
+  <figcaption>The current scene after adding photon-mapped caustics on the floor under the green glass sphere.</figcaption>
+</figure>
 <h2>WebGPU Caustics: From Screen Space to World Space</h2>
 <p>I also tried a screen-space caustic pass on the WebGPU backend. It worked well enough to prove the idea, but it had all the expected problems:</p>
 <ul>
@@ -149,6 +153,10 @@
 <li>photon contributions could blow out into giant white dots if the value scale was wrong</li>
 </ul>
 <p>Most of the recent progress was not &quot;invent a renderer from scratch.&quot; It was &quot;make two partially different renderers stop disagreeing with each other.&quot;</p>
+<figure>
+  <img src="/images/blog/raytracer-caustics/bunny_caustics.png" alt="The Stanford bunny scene with visible caustic lighting from the refractive green bunny.">
+  <figcaption>The bunny scene after the mesh, BVH, and caustic work: matte red, glass green, and jade-like blue bunnies under the area light.</figcaption>
+</figure>
 <h2>Where It Stands Now</h2>
 <p>The ray tracer is in a much more interesting place than it was a couple of weeks ago.</p>
 <p>It now has:</p>
