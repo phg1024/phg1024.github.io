@@ -24,7 +24,7 @@
   .col-md-4, .col-md-6, .col-md-8 { grid-column: span 12; }
 }
 @media (min-width: 768px) {
-  .col-md-4 { grid-column: span 3; }
+  .col-md-4 { grid-column: span 4; }
   .col-md-6 { grid-column: span 6; }
   .col-md-8 { grid-column: span 8; }
 }
@@ -215,7 +215,32 @@
 }
 
 @media (max-width: 767px) {
-  .carousel__caption { display: none; }
+  .carousel__slide {
+    aspect-ratio: auto !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 280px !important;
+    padding-bottom: 1rem !important;
+    align-items: stretch !important;
+  }
+  .carousel__slide img {
+    height: 200px !important;
+    object-fit: contain !important;
+  }
+  .carousel__caption {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: min(calc(100% - 1.5rem), 420px) !important;
+    margin: 0.75rem auto 0 !important;
+    box-shadow: none !important;
+    display: block !important;
+    text-align: center !important;
+  }
+  .carousel__caption iframe {
+    display: none !important;
+  }
 }
 
 .carousel__btn {

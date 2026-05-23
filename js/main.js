@@ -713,6 +713,30 @@
             });
         });
 
+        // Touch swipe support
+        var touchStartX = 0;
+        var touchEndX = 0;
+
+        carouselEl.addEventListener('touchstart', function (event) {
+            touchStartX = event.changedTouches[0].screenX;
+            stopAutoplay();
+        }, { passive: true });
+
+        carouselEl.addEventListener('touchend', function (event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoplay();
+        }, { passive: true });
+
+        var handleSwipe = function () {
+            var swipeThreshold = 50; // pixels
+            if (touchEndX < touchStartX - swipeThreshold) {
+                goToSlide(currentIndex + 1);
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                goToSlide(currentIndex - 1);
+            }
+        };
+
         // Pause autoplay on hover
         carouselEl.addEventListener('mouseenter', stopAutoplay);
         carouselEl.addEventListener('mouseleave', startAutoplay);

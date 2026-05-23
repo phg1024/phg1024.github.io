@@ -285,6 +285,37 @@
   color: var(--text);
 }
 
+@media (max-width: 767px) {
+  .feature-card__image {
+    height: 168px;
+  }
+
+  .feature-card__body,
+  .journal-card,
+  .about-panel {
+    padding: 1.05rem;
+  }
+
+  .feature-card__title,
+  .journal-card__title {
+    font-size: 1.35rem;
+    margin: 0.25rem 0 0.55rem;
+  }
+
+  .feature-card__copy,
+  .journal-card__copy {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .feature-card__meta,
+  .journal-card__meta,
+  .section-heading__eyebrow {
+    letter-spacing: 0.16em;
+    font-size: 0.68rem;
+  }
+}
+
 .journal-card__title {
   margin-top: 0.6rem;
 }
@@ -384,6 +415,16 @@
 
 .blog-entry-brief {
   margin: 0;
+}
+
+@media (max-width: 991px) {
+  .blog-entry-line {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-entry-date {
+    margin-top: 0;
+  }
 }
 
 .content-page {
