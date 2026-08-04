@@ -34,6 +34,13 @@ const puppeteer = require('puppeteer');
         console.log("Navigating to local Ray Tracer deployment...");
         const baseUrl = process.env.RAYTRACER_BASE_URL || 'http://localhost:8080';
         await page.goto(`${baseUrl}/projects/raytracer/`, { waitUntil: 'networkidle2' });
+        await page.evaluate(() => {
+            let state = 0x6d2b79f5;
+            Math.random = () => {
+                state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+                return state / 4294967296;
+            };
+        });
 
         const webgpuState = await verifyLiveBackend(page, 'webgpu', 'WebGPU', 'current');
         console.log(`✓ WebGPU Rendering Succeeded: ${webgpuState.progress} (${webgpuState.fps})`);
