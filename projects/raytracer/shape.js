@@ -4,6 +4,11 @@ import { PI, quadraticSolve, reflect, refract } from './utils.js';
 import { Color } from './image.js';
 import { materialValue, shading } from './raytracer.js';
 
+function offsetRayOrigin(point, normal, direction) {
+    var sign = direction.dot(normal) < 0 ? -1 : 1;
+    return point.add(normal.mul(sign * 1e-4));
+}
+
 /*
  Shape base class
  */
@@ -62,6 +67,11 @@ export function Sphere(center, radius, color, material)
 			}			
 		}
 	}
+
+    that.shadowIntersect = function(p, v, maxT) {
+        var t = this.intersectT(p, v);
+        return t !== undefined && t < maxT;
+    };
 	
     that.intersect = function( ray, scene, eyepos ) {
 		var t = this.intersectT(ray.p, ray.v);
@@ -78,12 +88,15 @@ export function Sphere(center, radius, color, material)
         {
 			// hit at t
             var hitPos = ray.p.add(ray.v.mul(t));
-            var n = Vector3.fromPoint3(this.center, hitPos).normalized();
+            var geometricNormal = Vector3.fromPoint3(this.center, hitPos).normalized();
+            var frontFace = geometricNormal.dot(ray.v) < 0;
+            var n = frontFace ? geometricNormal : geometricNormal.mul(-1);
 
             // reflected
             var rv;
             if( this.material.refractive ) {
-                rv = refract(n, ray.v.normalized(), this.material.ior);
+                rv = refract(geometricNormal, ray.v.normalized(), this.material.ior);
+                if (!rv) rv = reflect(n, ray.v);
             }
             else {
                 rv = reflect(n, ray.v);
@@ -96,8 +109,9 @@ export function Sphere(center, radius, color, material)
 
             return {
                 hit: true, t: t,
-                p: hitPos, color: c,
-                newRay : {v:rv, p: hitPos, depth: ray.depth - 1},
+                p: hitPos, color: c, normal: n,
+                geometricNormal: geometricNormal, frontFace: frontFace,
+                newRay : {v:rv, p: offsetRayOrigin(hitPos, n, rv), depth: ray.depth - 1},
                 ior: reflectivity
             };
         }
@@ -247,10 +261,12 @@ export function TriangleMesh(vertices, indices, color, material, transform)
             bestT = bruteForceHit.bestT;
             bestNormal = bruteForceHit.bestNormal;
         } else {
-            var stack = [0];
+            var stack = this.bvhTraversalStack;
+            var stackSize = 1;
+            stack[0] = 0;
 
-            while (stack.length) {
-                var node = this.bvhNodes[stack.pop()];
+            while (stackSize > 0) {
+                var node = this.bvhNodes[stack[--stackSize]];
                 if (!intersectAabb(node.boundsMin, node.boundsMax, p, v, bestT)) {
                     continue;
                 }
@@ -260,8 +276,8 @@ export function TriangleMesh(vertices, indices, color, material, transform)
                     bestT = leafHit.bestT;
                     bestNormal = leafHit.bestNormal || bestNormal;
                 } else {
-                    stack.push(node.right);
-                    stack.push(node.left);
+                    stack[stackSize++] = node.right;
+                    stack[stackSize++] = node.left;
                 }
             }
         }
@@ -278,6 +294,34 @@ export function TriangleMesh(vertices, indices, color, material, transform)
         return hit ? hit.t : undefined;
     };
 
+    that.shadowIntersect = function(p, v, maxT) {
+        if (!intersectAabb(this.boundsMin, this.boundsMax, p, v, maxT)) {
+            return false;
+        }
+        if (!this.useBvh) {
+            return intersectTriangleRangeAny(this, this.triangles, 0, this.triangles.length, p, v, maxT);
+        }
+
+        var stack = this.bvhTraversalStack;
+        var stackSize = 1;
+        stack[0] = 0;
+        while (stackSize > 0) {
+            var node = this.bvhNodes[stack[--stackSize]];
+            if (!intersectAabb(node.boundsMin, node.boundsMax, p, v, maxT)) {
+                continue;
+            }
+            if (node.count > 0) {
+                if (intersectTriangleRangeAny(this, this.bvhTriangles, node.start, node.count, p, v, maxT)) {
+                    return true;
+                }
+            } else {
+                stack[stackSize++] = node.right;
+                stack[stackSize++] = node.left;
+            }
+        }
+        return false;
+    };
+
     that.intersect = function(ray, scene, eyepos) {
         var detail = this.intersectDetail(ray.p, ray.v);
         if (!detail) {
@@ -288,14 +332,14 @@ export function TriangleMesh(vertices, indices, color, material, transform)
         }
 
         var hitPos = ray.p.add(ray.v.mul(detail.t));
-        var n = detail.normal;
-        if (n.dot(ray.v) > 0) {
-            n = n.mul(-1);
-        }
+        var geometricNormal = detail.normal.normalized();
+        var frontFace = geometricNormal.dot(ray.v) < 0;
+        var n = frontFace ? geometricNormal : geometricNormal.mul(-1);
 
         var rv;
         if (this.material.refractive) {
-            rv = refract(n, ray.v.normalized(), this.material.ior);
+            rv = refract(geometricNormal, ray.v.normalized(), this.material.ior);
+            if (!rv) rv = reflect(n, ray.v);
         } else {
             rv = reflect(n, ray.v);
         }
@@ -306,7 +350,8 @@ export function TriangleMesh(vertices, indices, color, material, transform)
         return {
             hit: true, t: detail.t,
             p: hitPos, color: c, normal: n,
-            newRay: {v: rv, p: hitPos, depth: ray.depth - 1},
+            geometricNormal: geometricNormal, frontFace: frontFace,
+            newRay: {v: rv, p: offsetRayOrigin(hitPos, n, rv), depth: ray.depth - 1},
             ior: reflectivity
         };
     };
@@ -406,6 +451,7 @@ function buildBVH(mesh) {
     build(triangleIndices);
     mesh.bvhNodes = nodes;
     mesh.bvhTriangles = orderedTriangles;
+    mesh.bvhTraversalStack = new Int32Array(Math.max(1, nodes.length));
 }
 
 function intersectAabb(boundsMin, boundsMax, p, v, maxDistance) {
@@ -481,6 +527,28 @@ function intersectTriangleRange(mesh, triangles, start, count, p, v, bestT) {
         bestT: bestT,
         bestNormal: bestNormal
     };
+}
+
+function intersectTriangleRangeAny(mesh, triangles, start, count, p, v, maxT) {
+    for (var triOffset = 0; triOffset < count; triOffset++) {
+        var tri = triangles[start + triOffset];
+        var v0 = mesh.vertices[tri.i0];
+        var edge1 = Vector3.fromPoint3(v0, mesh.vertices[tri.i1]);
+        var edge2 = Vector3.fromPoint3(v0, mesh.vertices[tri.i2]);
+        var pvec = v.cross(edge2);
+        var det = edge1.dot(pvec);
+        if (Math.abs(det) < 1e-8) continue;
+        var invDet = 1.0 / det;
+        var tvec = Vector3.fromPoint3(v0, p);
+        var u = tvec.dot(pvec) * invDet;
+        if (u < 0 || u > 1) continue;
+        var qvec = tvec.cross(edge1);
+        var vCoord = v.dot(qvec) * invDet;
+        if (vCoord < 0 || u + vCoord > 1) continue;
+        var t = edge2.dot(qvec) * invDet;
+        if (t > 1e-6 && t < maxT) return true;
+    }
+    return false;
 }
 
 // ================================================================

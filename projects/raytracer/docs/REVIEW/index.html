@@ -1,0 +1,280 @@
+<h1>Ray Tracer Code Review</h1>
+<p>Review of the CPU + WebGPU ray tracer under <code>src/projects/raytracer/</code>.
+Findings are grouped by severity, each with file:line references and a
+concrete fix. The dependency-aware implementation order is in
+<a href="./PLAN.md">PLAN.md</a>.</p>
+<blockquote>
+<p><strong>Status (2026-08-04):</strong> C1-C9 and C11 are fixed for the supported forward
+path tracer. C10 is resolved by explicitly defining area lights as off-screen
+sampling primitives. The invalid BDPT mode in C3 has been retired from the UI
+and backend dispatch rather than presented as fixed. P2, P3, P6, and the
+zero-reflectivity portion of P7 are fixed; P4's traversal stack allocation is
+fixed while leaf-result allocation remains. P1 and P5 are intentionally
+deferred pending profiles. Unreachable BDPT, legacy photon-trace, and old
+JavaScript caustic helpers remain cleanup work. Historical snippets and line
+numbers below describe the pre-fix audit; see <a href="./IMPL_NOTES.md">IMPL_NOTES.md</a>
+for the current contracts and <a href="./PLAN.md">PLAN.md</a> for remaining work.</p>
+</blockquote>
+<hr>
+<h2>Correctness — high impact</h2>
+<h3>C1. Direct lighting missing the Lambertian <code>1/π</code> factor (~3.14× too bright)</h3>
+<p><code>estimateAreaLighting</code> computes the direct-illumination factor without the
+Lambertian <code>/π</code>:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// raytracer.js:401</span>
+<span class="token keyword">var</span> factor <span class="token operator">=</span> Kd <span class="token operator">*</span> light<span class="token punctuation">.</span>intensity <span class="token operator">*</span> light<span class="token punctuation">.</span>area <span class="token operator">*</span> surfaceCos <span class="token operator">*</span> lightCos
+           <span class="token operator">/</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>distanceSquared<span class="token punctuation">,</span> <span class="token number">1e-6</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The correct rendering-equation term is <code>(Kd/π) · L · A · cosθ_s · cosθ_l / r²</code>.
+The photon-map path right next to it <em>does</em> include it
+(<code>brdfScale = Kd / Math.PI</code>, raytracer.js:1214, 1235), so direct and indirect
+estimates are <strong>inconsistent by a factor of π</strong> — direct light will be washed
+out relative to indirect.</p>
+<p>The same omission exists in the WGSL <code>evaluateAreaLight</code>
+(<code>webgpuRenderer.js:428-434</code>, <code>factor = light.intensity * area * lightCos / max(dist2, ...)</code>).</p>
+<p><strong>Fix:</strong> apply <code>1/Math.PI</code> to the CPU path-tracing diffuse term. In WGSL,
+apply <code>1/π</code> only to the Lambertian diffuse contribution; do not divide the
+shared factor because <code>evaluateAreaLight</code> also serves the legacy specular
+shader. If the legacy renderer is to become physically normalized, update its
+CPU and GPU implementations together.</p>
+<hr>
+<h3>C2. Photon tracer double-applies absorption Russian roulette</h3>
+<p>In <code>tracePhoton</code>:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// raytracer.js:1131</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">rng</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> total<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>        <span class="token comment">// absorption RR, survival prob = total (= Kd+Ks)</span>
+<span class="token operator">...</span>
+throughput <span class="token operator">=</span> <span class="token function">scaleThroughput</span><span class="token punctuation">(</span>
+    <span class="token function">attenuateColor</span><span class="token punctuation">(</span>throughput<span class="token punctuation">,</span> surfaceColor<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    surfaceKd <span class="token operator">/</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>diffuseProbability<span class="token punctuation">,</span> <span class="token number">1e-4</span><span class="token punctuation">)</span>   <span class="token comment">// == total  (lobe-selection comp)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The lobe-selection scale <code>surfaceKd / diffuseProbability</code> already equals
+<code>total</code> (the diffuse-probability compensation), which is correct <strong>only when
+the ray always scatters</strong>. Layering the absorption RR on top double-applies:
+expected throughput becomes <code>total · (Kd·albedo + Ks)</code> instead of
+<code>(Kd·albedo + Ks)</code>. <code>Scene.pathTrace</code> does <strong>not</strong> have this bug (it omits the
+absorption RR).</p>
+<p>The continuation energy after a diffuse/specular bounce is too dark by the
+survival probability. Photons are stored before this roulette test, so the
+first caustic deposit is not attenuated by this bug; the main impact is on
+later global/indirect deposits. Relevant continuation probabilities include:</p>
+<ul>
+<li>red bunny: <code>Kd+Ks = 0.55</code></li>
+<li>subsurface bunny: <code>~0.496</code></li>
+<li>ground: <code>0.4</code></li>
+</ul>
+<p><strong>Fix:</strong> drop the <code>if (rng() &gt; total) return;</code> line (matching <code>pathTrace</code>), or
+compensate with an extra <code>1/total</code> scale on survival. Test continuation energy
+separately from first-hit caustic energy.</p>
+<h3>C2b. Focused photon emission is not PDF-compensated</h3>
+<p><code>buildPhotonMap</code> mixes cosine-weighted emission with rays aimed at sampled
+points on refractive objects. Both branches receive the same photon power even
+though their directional PDFs differ. The focused branch is therefore a biased
+visual heuristic, not an importance-sampled unbiased estimator.</p>
+<p><strong>Fix:</strong> either remove focused emission, explicitly document it as biased, or
+derive the target-to-solid-angle PDF and weight the full mixture correctly.</p>
+<h3>C2c. Combined photon estimate double-counts caustic photons</h3>
+<p><code>tracePhoton</code> stores every diffuse deposit in <code>globalPhotons</code> and additionally
+stores specular-path deposits in <code>causticPhotons</code>. <code>estimatePhotonMapLighting</code>
+then adds the global and caustic gathers, so caustic photons are counted twice
+through that helper. Production currently calls the caustic-only helper, making
+this latent outside tests and unused <code>photonMapTrace</code> paths.</p>
+<p><strong>Fix:</strong> make global and caustic maps mutually exclusive, or gather only one
+map for any transport class. Add a test that a caustic deposit contributes once
+when estimates are combined.</p>
+<h3>C2d. Photon gathering applies an extra incident-cosine factor</h3>
+<p>Photon power is initialized as flux per emitted photon. The surface density of
+photon hits already carries the projected-area cosine. <code>gatherPhotonIrradiance</code>
+multiplies each stored power by <code>max(0, -normal·photon.direction)</code> again, which
+suppresses grazing-energy deposits twice.</p>
+<p><strong>Fix:</strong> use the direction only to reject photons arriving from the wrong side,
+then sum photon power over the kernel area without another cosine. Verify the
+estimate on a diffuse plane under a known emitter.</p>
+<hr>
+<h3>C3. BDPT connection logic is inverted and has no MIS</h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// raytracer.js:638</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>lightVertex<span class="token punctuation">.</span>deltaType <span class="token operator">!==</span> <span class="token string">'refractive'</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>   <span class="token comment">// only connects to refractive/delta light verts!</span></code></pre>
+<p>This skips <strong>diffuse</strong> light vertices — exactly the ones BDPT should connect
+to — and only connects through refractive (delta) light-path vertices, which is
+physically wrong (delta surfaces aren't directly connectable in standard BDPT).
+<code>connectPathVertices</code> then routes those through <code>connectViaRefractiveVertex</code>.</p>
+<p>The light subpath also emits along <code>-light.normal</code>, while photon mapping and
+direct lighting treat <code>light.normal</code> as the emitting side. For the current
+scenes this points the BDPT light path upward, away from the geometry. The same
+filter and emission-direction bugs exist in WGSL.</p>
+<p>Additionally there are <strong>no MIS (multiple importance sampling) weights</strong>, the
+vertices do not retain forward/reverse PDFs, and the connection term is missing
+complete BRDF and light-selection normalization. The current routine is not a
+complete BDPT estimator.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Establish the same emitting-normal convention in CPU, WGSL, direct lighting,
+and photon emission.</li>
+<li>Record per-vertex BSDF type and forward/reverse area-measure PDFs.</li>
+<li>Evaluate valid non-delta connections with correct geometry and BRDF terms.</li>
+<li>Add MIS weights over supported <code>(s,t)</code> strategies.</li>
+<li>Implement CPU and WebGPU together; do not ship a filter-only change.</li>
+</ol>
+<hr>
+<h3>C4. <code>Point3()</code> default constructor leaves <code>z</code> undefined</h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// point.js:29</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span> arguments<span class="token punctuation">.</span>length <span class="token operator">!=</span> <span class="token number">3</span> <span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">// z never set</span></code></pre>
+<p><code>new Point3()</code> → <code>{x:0, y:0, z:undefined}</code>, and <code>Vector3.fromPoint3</code> then
+produces <code>NaN</code>. Returned in non-hit branches
+(<code>{hit:false, p:new Point3(), …}</code>) so mostly latent, but any future code
+touching <code>p</code> on a miss gets <code>NaN</code>.</p>
+<p><strong>Fix:</strong> set <code>this.x = this.y = this.z = 0;</code> in the <code>Point3</code> default
+constructor. <code>Point2</code> correctly has no <code>z</code> component.</p>
+<hr>
+<h3>C5. Old recursive tracer: <code>refract()</code> returns a zero vector on TIR</h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// utils.js:42</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">&lt;</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Vector3</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// not null</span></code></pre>
+<p><code>Sphere.intersect</code>/<code>TriangleMesh.intersect</code> (shape.js) assign
+<code>rv = refract(...)</code> into <code>newRay.v</code> without checking, so a TIR hit spawns a
+recursive ray with a zero direction. Sphere intersection hard-codes the
+quadratic coefficient <code>a = 1</code>, so this commonly turns into an incorrect miss
+and background contribution rather than the <code>quadraticSolve(0,0,c)</code> failure
+mode. It is live in the CPU non-path-tracing mode (<code>renderWorker.js:110</code>).</p>
+<p><strong>Fix:</strong> return <code>null</code> on TIR and fall back to <code>reflect</code>, or handle TIR
+explicitly as <code>pathTrace</code> does.</p>
+<hr>
+<h2>Correctness — moderate</h2>
+<h3>C6. Intersection normals do not preserve front-face information</h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// raytracer.js:442</span>
+<span class="token literal-property property">normal</span><span class="token operator">:</span> obj<span class="token punctuation">.</span>center <span class="token operator">?</span> Vector3<span class="token punctuation">.</span><span class="token function">fromPoint3</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>center<span class="token punctuation">,</span> hitPos<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">normalized</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                   <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Vector3</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span></code></pre>
+<p>The mesh path flips normals to face the incoming ray, while the sphere path
+keeps its outward normal. Refraction then infers entry/exit from
+<code>normal.dot(rayDir)</code>. Mesh exit hits therefore appear to be entering hits. If
+the sphere normal were also face-forwarded, sphere refraction would acquire the
+same bug. WGSL has the same mesh/sphere inconsistency.</p>
+<p><strong>Fix:</strong> return an outward/geometric normal, a face-forward shading normal, and
+an explicit <code>frontFace</code> flag. Use <code>frontFace</code> for IOR selection, the shading
+normal for hemisphere sampling, and a documented normal for ray offsets. Apply
+the contract consistently in CPU and WGSL before changing Fresnel behavior.</p>
+<hr>
+<h3>C7. <code>Camera.getRays</code> silently drops samples for non-square <code>n</code></h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// raytracer.js:97</span>
+<span class="token keyword">var</span> nx <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ny <span class="token operator">=</span> nx<span class="token punctuation">;</span>     <span class="token comment">// n=8 → only 4 rays</span></code></pre>
+<p>Returns <code>floor(√n)²</code> rays, so <code>getRays(x,y,8,…)</code> yields 4 samples, not 8.
+Latent in production (workers pass <code>n=1</code>), but <code>pathTracePixel</code> and any
+supersampling caller would be affected.</p>
+<p><strong>Fix:</strong> loop exactly <code>n</code> times over a near-square grid, stopping when the
+linear sample index reaches <code>n</code>. Merely rounding <code>n / nx</code> can overproduce
+samples for values such as <code>n = 5</code>.</p>
+<hr>
+<h3>C8. Dielectric Fresnel/interface handling is inconsistent</h3>
+<p><code>fresnelSchiek</code> is applied without a reliable front-face/interface contract.
+Mesh normals have already been face-forwarded, so dense-to-air exits can use
+the wrong IOR ratio before the cosine approximation is considered.</p>
+<p>(Also: the name is a typo for &quot;Schlick&quot; — cosmetic, used consistently.)</p>
+<p><strong>Fix:</strong> first complete C6. Then use a shared exact dielectric Fresnel helper or
+a clearly documented Schlick variant, with TIR tested before probabilistic
+branch selection. Mirror the implementation in WGSL.</p>
+<hr>
+<h3>C9. Caustics added from a single center ray, not integrated with jitter</h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// renderWorker.js:98-99</span>
+<span class="token keyword">var</span> centerRayDir <span class="token operator">=</span> cam<span class="token punctuation">.</span><span class="token function">getRays</span><span class="token punctuation">(</span>j <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> maxDepth<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>v<span class="token punctuation">;</span>
+pixel <span class="token operator">=</span> pixel<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>scene<span class="token punctuation">.</span><span class="token function">visibleSurfaceCausticRadiance</span><span class="token punctuation">(</span>cam<span class="token punctuation">.</span>origin<span class="token punctuation">,</span> centerRayDir<span class="token punctuation">,</span> photonMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The jittered CPU path samples do <strong>not</strong> include the photon-map caustic term;
+instead one deterministic center-ray caustic is added per pixel. WebGPU has the
+same behavior through <code>buildWorldSpaceCausticTexture</code>, which constructs a
+CPU-side center-ray texture and adds it during presentation. Caustics therefore
+do not anti-alias with the accumulating samples and can be misaligned at edges.</p>
+<p><strong>Fix:</strong> choose one estimator contract and implement it in both backends. The
+smallest correction is to gather the visible-surface caustic with each jittered
+camera sample. If gathering at later path vertices, define how double counting
+with BSDF-sampled transport is prevented.</p>
+<hr>
+<h3>C10. Area lights are not geometric</h3>
+<p><code>scene.areaLights</code> are sampled for shading but never added to <code>scene.objects</code>,
+so rays pass straight through them — looking directly at a light shows the
+background.</p>
+<p><strong>Fix:</strong> either add emissive light geometry or add explicit area-light
+intersection. Include scene packing and WGSL, not only the CPU intersection
+path. It is also acceptable to document the lights as off-screen-only.</p>
+<h3>C11. Material lobe weights can exceed unit energy</h3>
+<p>The forward tracer samples diffuse, mirror, and subsurface lobes in proportion
+to their weights, but preserves their unnormalized sum in throughput. The blue
+bunny uses <code>Kd * (1 - subsurface) + Ks + subsurface ≈ 1.246</code>, so its expected
+bounce throughput can increase.</p>
+<p><strong>Fix:</strong> define whether these fields are physical energy weights or artistic
+controls. For the reference integrators, validate or normalize the lobe sum to
+at most one and test that a white environment cannot gain energy after a
+non-emissive bounce.</p>
+<hr>
+<h2>Performance</h2>
+<h3>P1. <code>Vector3</code>/<code>Point3</code>/<code>Color</code> allocate on every operation</h3>
+<p>Every <code>.add/.sub/.mul/.cross/.normalized()</code> returns a brand-new object. In
+<code>intersectTriangleRange</code>, <code>sampleDiffuseDirection</code>, <code>pathTrace</code>, etc., this is
+hundreds of allocations per ray-segment. These allocations are a plausible
+major CPU cost.
+This has not yet been established as the dominant cost by profiling.</p>
+<p><strong>Fix:</strong> switch to flat <code>Float32Array</code> (or plain <code>{x,y,z}</code> with in-place
+scratch math) and SoA layouts for mesh data. This is invasive; stage it behind
+the existing API where possible.</p>
+<hr>
+<h3>P2. Every worker builds its own identical photon map</h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// renderWorker.js:47, 167</span>
+photonMap <span class="token operator">=</span> <span class="token function">getOrCreatePhotonMap</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// each of N workers builds 96k-photon map</span>
+<span class="token operator">...</span>
+cachedPhotonMap <span class="token operator">=</span> scene<span class="token punctuation">.</span><span class="token function">buildPhotonMap</span><span class="token punctuation">(</span>
+    photonOptions<span class="token punctuation">,</span> <span class="token function">createRNG</span><span class="token punctuation">(</span><span class="token punctuation">(</span>rayTracingInfo<span class="token punctuation">.</span>seed <span class="token operator">||</span> <span class="token number">42</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token number">0x5f3759df</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>All workers use the same seed → identical maps. With 8 workers you pay 8× the
+photon-tracing cost at startup.</p>
+<p><strong>Fix:</strong> build once and serialize positions/normals/directions/powers as typed
+arrays. Choose explicitly between structured-clone copies, one cloned
+transferable per worker, or <code>SharedArrayBuffer</code> with the required isolation
+headers; the same <code>ArrayBuffer</code> cannot be transferred to multiple workers.</p>
+<hr>
+<h3>P3. Shadow rays do a full closest-hit traversal</h3>
+<p><code>isPathToLightClear</code> → <code>obj.intersectT</code> → <code>intersectDetail</code> finds the
+<em>closest</em> intersection and then compares to <code>maxDistance</code>. For occluded
+shadow rays you traverse the whole BVH even after the first blocker. This fires
+at every path vertex × every light.</p>
+<p><strong>Fix:</strong> add an any-hit <code>shadowIntersect(p, dir, maxT)</code> that returns <code>true</code> on
+the first <code>t ∈ (ε, maxT)</code> and aborts early. Provide it on <code>Sphere</code> and
+<code>TriangleMesh</code> (BVH-aware).</p>
+<hr>
+<h3>P4. <code>intersectDetail</code> allocates per ray and per leaf</h3>
+<p><code>var stack = [0]</code> per BVH traversal and <code>intersectTriangleRange</code> returns a
+fresh <code>{bestT, bestNormal}</code> object per leaf visited.</p>
+<p><strong>Fix:</strong> use a preallocated <code>Int32Array</code> stack (thread-local / module-level)
+and have the leaf routine mutate <code>bestT</code>/<code>bestNormal</code> in place (or return a
+scalar <code>t</code> and recompute the normal once at the end).</p>
+<hr>
+<h3>P5. <code>buildPhotonLookup</code> uses string grid keys</h3>
+<p><code>photonCellKey(ix,iy,iz)</code> → <code>ix + '|' + iy + '|' + iz</code> (raytracer.js) allocates
+~96k strings and does string-hash lookups during every
+<code>gatherPhotonIrradiance</code> (3³ neighbor cells × N photons).</p>
+<p><strong>Fix:</strong> replace with a numeric hash into a flat <code>Int32Array</code> bucket structure
+(or a <code>Map&lt;number, number[]&gt;</code> with a packed 32-bit key).</p>
+<hr>
+<h3>P6. <code>sampleDiffuseDirection</code> rebuilds an orthonormal basis every bounce</h3>
+<p>Two crosses + two normalizations per diffuse sample.</p>
+<p><strong>Fix:</strong> use a stable branchless basis (for example Frisvad's method). Cache
+bases only where normals are constant; curved and smooth-shaded objects require
+per-hit bases.</p>
+<hr>
+<h3>P7. Old recursive tracer recurses on every hit (incl. diffuse)</h3>
+<p><code>Scene.intersect</code> (raytracer.js:65) spawns <code>hit.newRay</code> for <em>every</em> surface,
+including diffuse ones that shouldn't trace a reflection ray, and <code>shading</code>
+fires 32 shadow rays × <code>numObjects</code> per light (raytracer.js). Live in
+non-path-tracing mode (<code>renderWorker.js:110</code>).</p>
+<p><strong>Fix:</strong> restrict reflection rays to specular/reflective materials, and cut
+the shadow-ray count for the legacy mode (or deprecate it in favor of
+<code>pathTrace</code>).</p>
+<hr>
+<h2>Dead / buggy dead code</h2>
+<ul>
+<li><strong><code>cosineHemisphere</code> / <code>hemisphereSample</code></strong> (<code>utils.js:139, 164</code>) reconstruct
+the result as <code>N.x + x*A.x + y*B.x + z*N.x</code> (the leading <code>N.</code> term is
+spurious, biasing the distribution toward N). No callers — delete or fix.</li>
+<li><strong><code>russianRoulette</code></strong> (<code>utils.js:189</code>) is exported but never used.</li>
+<li><strong><code>Scene.photonMapTrace</code></strong> (<code>raytracer.js:1332</code>) is defined but not called by
+<code>renderWorker</code> (which uses <code>pathTrace</code> + the additive caustic). Either wire
+it up or remove it.</li>
+</ul>
+<hr>
+<h1>Implementation Plan</h1>
+<p>The audited, dependency-aware plan and its verification gates live in
+<strong><a href="./PLAN.md">PLAN.md</a></strong>. Tasks in that plan are intentionally not all
+independently shippable: normal/interface handling, photon estimator changes,
+and BDPT each have correctness dependencies that must land together.</p>

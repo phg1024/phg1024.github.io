@@ -44,7 +44,7 @@ function createBunnyScene(options) {
     scene.addObject(new TriangleMesh(
         bunnyVertices,
         bunnyFaces,
-        new Color(175, 0, 0, 255),
+        new Color(225, 25, 25, 255),
         {
             Ka: 0.00,
             Kd: 0.5,
@@ -69,7 +69,7 @@ function createBunnyScene(options) {
             Ks: 0.9,
             ior: 1.45,
             refractive: true,
-            transmissionColor: new Color(232, 255, 232, 255)
+            transmissionColor: new Color(202, 255, 202, 255)
         },
         {
             scale: 34.0,
@@ -81,15 +81,15 @@ function createBunnyScene(options) {
     scene.addObject(new TriangleMesh(
         bunnyVertices,
         bunnyFaces,
-        new Color(152, 152, 250, 255),
+        new Color(125, 125, 250, 255),
         {
             Ka: 0.08,
             Kd: 0.985,
             Ks: 0.25,
-            ior: 1.05,
+            ior: 1.15,
             refractive: false,
-            subsurface: 0.75,
-            subsurfaceDepth: 0.1,
+            subsurface: 0.5,
+            subsurfaceDepth: 0.15,
             subsurfaceColor: new Color(225, 225, 240, 255)
         },
         {
@@ -105,7 +105,7 @@ function createBunnyScene(options) {
         new Vector3(10.0, 0.0, 0.0),
         new Vector3(0.0, 0.0, 10.0),
         Color.WHITE,
-        8.0
+        25.0
     ));
     return scene;
 }

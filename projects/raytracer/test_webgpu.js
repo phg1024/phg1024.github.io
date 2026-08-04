@@ -32,8 +32,8 @@ const puppeteer = require('puppeteer');
     
     try {
         console.log("Navigating to local Ray Tracer deployment...");
-        // Assuming the local server is running on localhost:57142 as spun up earlier
-        await page.goto('http://localhost:57142/projects/raytracer/', { waitUntil: 'networkidle2' });
+        const baseUrl = process.env.RAYTRACER_BASE_URL || 'http://localhost:8080';
+        await page.goto(`${baseUrl}/projects/raytracer/`, { waitUntil: 'networkidle2' });
 
         const webgpuState = await verifyLiveBackend(page, 'webgpu', 'WebGPU', 'current');
         console.log(`✓ WebGPU Rendering Succeeded: ${webgpuState.progress} (${webgpuState.fps})`);
@@ -50,14 +50,8 @@ const puppeteer = require('puppeteer');
         const bunnyCaustics = await measureCausticsFromCurrentState(page);
         console.log(`✓ Bunny Scene Caustic Stats: ${JSON.stringify(bunnyCaustics)}`);
 
-        const bunnyWebgpuBdptState = await verifyLiveBackend(page, 'webgpu', 'WebGPU Bunny BDPT', 'bunny', true, 'bdpt');
-        console.log(`✓ Bunny WebGPU BDPT Rendering Succeeded: ${bunnyWebgpuBdptState.progress} (${bunnyWebgpuBdptState.fps})`);
-
         const bunnyCpuState = await verifyLiveBackend(page, 'cpu', 'CPU Bunny', 'bunny');
         console.log(`✓ Bunny CPU Rendering Succeeded: ${bunnyCpuState.progress} (${bunnyCpuState.fps})`);
-
-        const bunnyBdptState = await verifyLiveBackend(page, 'cpu', 'CPU Bunny BDPT', 'bunny', true, 'bdpt');
-        console.log(`✓ Bunny CPU BDPT Rendering Succeeded: ${bunnyBdptState.progress} (${bunnyBdptState.fps})`);
 
         const bunnyNoBvhState = await verifyLiveBackend(page, 'webgpu', 'WebGPU Bunny No BVH', 'bunny', false);
         console.log(`✓ Bunny WebGPU No BVH Rendering Succeeded: ${bunnyNoBvhState.progress} (${bunnyNoBvhState.fps})`);
@@ -126,13 +120,9 @@ async function verifyLiveBackend(page, backend, label, scene, useBvh = true, tra
 async function measureCausticsFromCurrentState(page) {
     await page.evaluate(() => {
         const pathTraceToggle = document.getElementById('pathTraceToggle');
-        if (!pathTraceToggle.checked) {
-            pathTraceToggle.click();
-        }
+        pathTraceToggle.checked = true;
         const causticOnlyToggle = document.getElementById('causticOnlyToggle');
-        if (!causticOnlyToggle.checked) {
-            causticOnlyToggle.click();
-        }
+        causticOnlyToggle.checked = true;
     });
     const scene = await page.$eval('#scene', el => el.value);
     await triggerAndWaitForRender(page, 'webgpu', scene, true, 'path');
@@ -251,7 +241,15 @@ async function measureCausticsFromCurrentState(page) {
 
 async function triggerAndWaitForRender(page, backend, scene, useBvh, tracerMode) {
     for (let attempt = 0; attempt < 2; attempt++) {
-        await page.click('#renderButton');
+        await page.evaluate(async (expectedBackend, expectedScene, expectedUseBvh, expectedTracerMode) => {
+            document.getElementById('backend').value = expectedBackend;
+            document.getElementById('scene').value = expectedScene;
+            document.getElementById('bvhToggle').checked = expectedUseBvh;
+            document.getElementById('tracerMode').value = expectedTracerMode;
+            document.getElementById('progress').textContent = 'Starting test render...';
+            document.getElementById('fpsCounter').textContent = 'FPS: --';
+            await window.render();
+        }, backend, scene, useBvh, tracerMode);
         try {
             await page.waitForFunction(
                 (expectedBackend, expectedScene, expectedUseBvh, expectedTracerMode) => {

@@ -28,7 +28,6 @@ struct Params {
 @group(0) @binding(0) var accumulationTexture: texture_2d<f32>;
 @group(0) @binding(1) var outputTexture: texture_storage_2d<rgba32float, write>;
 @group(0) @binding(2) var<uniform> params: Params;
-@group(0) @binding(8) var surfaceInfoTextureOut: texture_storage_2d<rgba32float, write>;
 
 struct Material {
     color: vec3<f32>,
@@ -99,6 +98,8 @@ struct Hit {
     t: f32,
     p: vec3<f32>,
     n: vec3<f32>,
+    geometricNormal: vec3<f32>,
+    frontFace: u32,
     materialIdx: u32,
     material: Material,
 };
@@ -126,10 +127,6 @@ struct Bounce {
     direction: vec3<f32>,
     alive: u32,
 };
-
-const PASS_MODE_PREPASS: u32 = 0u;
-const PASS_MODE_CAUSTICS: u32 = 1u;
-const PASS_MODE_RENDER: u32 = 2u;
 
 fn hash(value: u32) -> u32 {
     var x = value;
@@ -233,7 +230,7 @@ fn aabbIntersect(boundsMin: vec3<f32>, boundsMax: vec3<f32>, ro: vec3<f32>, rd: 
 }
 
 fn intersectScene(ro: vec3<f32>, rd: vec3<f32>) -> Hit {
-    var hit = Hit(false, 1.0e20, vec3<f32>(0.0), vec3<f32>(0.0, 1.0, 0.0), 0u, materials[0]);
+    var hit = Hit(false, 1.0e20, vec3<f32>(0.0), vec3<f32>(0.0, 1.0, 0.0), vec3<f32>(0.0, 1.0, 0.0), 0u, 0u, materials[0]);
     let numSpheres = arrayLength(&spheres);
     for (var i = 0u; i < numSpheres; i++) {
         let t = sphereIntersect(spheres[i].center, spheres[i].radius, ro, rd);
@@ -242,7 +239,9 @@ fn intersectScene(ro: vec3<f32>, rd: vec3<f32>) -> Hit {
             hit.hit = true;
             hit.t = t;
             hit.p = p;
-            hit.n = normalize(p - spheres[i].center);
+            hit.geometricNormal = normalize(p - spheres[i].center);
+            hit.frontFace = select(0u, 1u, dot(hit.geometricNormal, rd) < 0.0);
+            hit.n = select(-hit.geometricNormal, hit.geometricNormal, hit.frontFace == 1u);
             hit.materialIdx = u32(spheres[i].materialIdx);
             hit.material = materials[hit.materialIdx];
         }
@@ -276,18 +275,17 @@ fn intersectScene(ro: vec3<f32>, rd: vec3<f32>) -> Hit {
                     if (triHit.hit && triHit.t < hit.t) {
                         let p = ro + rd * triHit.t;
                         let w = 1.0 - triHit.u - triHit.v;
-                        var normal = normalize(
+                        let geometricNormal = normalize(
                             triangle.n0 * w +
                             triangle.n1 * triHit.u +
                             triangle.n2 * triHit.v
                         );
-                        if (dot(normal, rd) > 0.0) {
-                            normal = -normal;
-                        }
                         hit.hit = true;
                         hit.t = triHit.t;
                         hit.p = p;
-                        hit.n = normal;
+                        hit.geometricNormal = geometricNormal;
+                        hit.frontFace = select(0u, 1u, dot(geometricNormal, rd) < 0.0);
+                        hit.n = select(-geometricNormal, geometricNormal, hit.frontFace == 1u);
                         hit.materialIdx = u32(triangle.materialIdx);
                         hit.material = materials[hit.materialIdx];
                     }
@@ -306,9 +304,54 @@ fn intersectScene(ro: vec3<f32>, rd: vec3<f32>) -> Hit {
     return hit;
 }
 
+fn intersectSceneAny(ro: vec3<f32>, rd: vec3<f32>, maxDistance: f32) -> bool {
+    let numSpheres = arrayLength(&spheres);
+    for (var i = 0u; i < numSpheres; i++) {
+        let t = sphereIntersect(spheres[i].center, spheres[i].radius, ro, rd);
+        if (t > 0.0 && t < maxDistance) {
+            return true;
+        }
+    }
+
+    if (arrayLength(&triangles) == 0u) {
+        return false;
+    }
+
+    var stack: array<i32, 64>;
+    var stackSize = 1i;
+    stack[0] = 0;
+    loop {
+        if (stackSize <= 0) {
+            break;
+        }
+
+        stackSize -= 1;
+        let node = bvhNodes[u32(stack[stackSize])];
+        if (!aabbIntersect(node.minAndLeft.xyz, node.maxAndRight.xyz, ro, rd, maxDistance)) {
+            continue;
+        }
+
+        let triCount = u32(node.rangeData.y);
+        if (triCount > 0u) {
+            let triStart = u32(node.rangeData.x);
+            for (var triOffset = 0u; triOffset < triCount; triOffset++) {
+                let triangle = triangles[triStart + triOffset];
+                let triHit = triangleIntersect(triangle.v0, triangle.v1, triangle.v2, ro, rd);
+                if (triHit.hit && triHit.t < maxDistance) {
+                    return true;
+                }
+            }
+        } else if (stackSize < 62) {
+            stack[stackSize] = i32(node.maxAndRight.w);
+            stack[stackSize + 1] = i32(node.minAndLeft.w);
+            stackSize += 2;
+        }
+    }
+    return false;
+}
+
 fn visibleToLight(origin: vec3<f32>, dir: vec3<f32>, maxDistance: f32) -> bool {
-    let h = intersectScene(origin, dir);
-    return !h.hit || h.t > maxDistance - 0.0001;
+    return !intersectSceneAny(origin, dir, maxDistance - 0.0001);
 }
 
 fn reflectDir(n: vec3<f32>, v: vec3<f32>) -> vec3<f32> {
@@ -322,22 +365,27 @@ fn deltaDirectionWeight(actual: vec3<f32>, expected: vec3<f32>) -> f32 {
     return select(0.0, 1.0, dot(actual, expected) > 0.9995);
 }
 
-fn refractDir(n: vec3<f32>, v: vec3<f32>, ior: f32) -> vec3<f32> {
-    let entering = dot(v, n) < 0.0;
+fn refractDir(n: vec3<f32>, v: vec3<f32>, ior: f32, frontFace: u32) -> vec3<f32> {
+    let entering = frontFace == 1u;
     let eta = select(ior, 1.0 / ior, entering);
-    let normal = select(-n, n, entering);
-    let nDotI = dot(normal, v);
+    let nDotI = dot(n, v);
     let k = 1.0 - eta * eta * (1.0 - nDotI * nDotI);
     if (k < 0.0) {
         return vec3<f32>(0.0);
     }
-    return normalize(v * eta - normal * (eta * nDotI + sqrt(k)));
+    return normalize(v * eta - n * (eta * nDotI + sqrt(k)));
 }
 
-fn fresnel(cosTheta: f32, ior: f32) -> f32 {
-    var r0 = (1.0 - ior) / (1.0 + ior);
-    r0 = r0 * r0;
-    return r0 + (1.0 - r0) * pow(1.0 - cosTheta, 5.0);
+fn fresnel(cosTheta: f32, eta: f32) -> f32 {
+    let cosI = clamp(cosTheta, 0.0, 1.0);
+    let sinThetaTSquared = eta * eta * max(0.0, 1.0 - cosI * cosI);
+    if (sinThetaTSquared >= 1.0) {
+        return 1.0;
+    }
+    let cosT = sqrt(max(0.0, 1.0 - sinThetaTSquared));
+    let parallel = (eta * cosI - cosT) / max(abs(eta * cosI + cosT), 0.00000001);
+    let perpendicular = (cosI - eta * cosT) / max(abs(cosI + eta * cosT), 0.00000001);
+    return 0.5 * (parallel * parallel + perpendicular * perpendicular);
 }
 
 fn transmissionTint(color: vec3<f32>) -> vec3<f32> {
@@ -349,26 +397,26 @@ fn transmissionColor(mat: Material) -> vec3<f32> {
 }
 
 fn sampleDiffuse(n: vec3<f32>, state: ptr<function, u32>) -> vec3<f32> {
-    var tangent = vec3<f32>(1.0, 0.0, 0.0);
-    if (abs(dot(n, tangent)) > 0.9) {
-        tangent = vec3<f32>(0.0, 1.0, 0.0);
-    }
-    tangent = normalize(cross(n, tangent));
-    let bitangent = normalize(cross(n, tangent));
+    let basis = buildOrthonormalBasis(n);
     let r1 = 6.28318530718 * rand(state);
     let r2 = rand(state);
     let r2s = sqrt(r2);
     let local = vec3<f32>(cos(r1) * r2s, sin(r1) * r2s, sqrt(max(0.0, 1.0 - r2)));
-    return normalize(local.x * tangent + local.y * bitangent + local.z * n);
+    return normalize(basis * local);
 }
 
 fn buildOrthonormalBasis(n: vec3<f32>) -> mat3x3<f32> {
-    var tangent = vec3<f32>(1.0, 0.0, 0.0);
-    if (abs(dot(n, tangent)) > 0.9) {
-        tangent = vec3<f32>(0.0, 1.0, 0.0);
+    if (n.z < -0.9999999) {
+        return mat3x3<f32>(
+            vec3<f32>(0.0, -1.0, 0.0),
+            vec3<f32>(-1.0, 0.0, 0.0),
+            n
+        );
     }
-    tangent = normalize(cross(n, tangent));
-    let bitangent = normalize(cross(n, tangent));
+    let a = 1.0 / (1.0 + n.z);
+    let b = -n.x * n.y * a;
+    let tangent = vec3<f32>(1.0 - n.x * n.x * a, b, -n.x);
+    let bitangent = vec3<f32>(b, 1.0 - n.y * n.y * a, -n.y);
     return mat3x3<f32>(tangent, bitangent, n);
 }
 
@@ -386,11 +434,9 @@ fn sampleSubsurfaceExit(h: Hit, depthScale: f32, state: ptr<function, u32>) -> H
     let insideOrigin = h.p - h.n * max(depthScale, 0.0002);
     var exitHit = intersectScene(insideOrigin, inwardDir);
     if (!exitHit.hit || exitHit.materialIdx != h.materialIdx) {
-        return Hit(false, 0.0, h.p, h.n, h.materialIdx, h.material);
+        return Hit(false, 0.0, h.p, h.n, h.geometricNormal, h.frontFace, h.materialIdx, h.material);
     }
-    if (dot(exitHit.n, inwardDir) < 0.0) {
-        exitHit.n = -exitHit.n;
-    }
+    exitHit.n = exitHit.geometricNormal;
     return exitHit;
 }
 
@@ -427,7 +473,7 @@ fn evaluateAreaLight(p: vec3<f32>, n: vec3<f32>, viewDir: vec3<f32>, mat: Materi
                 if (visibleToLight(offsetOrigin(p, n, l), l, dist)) {
                     let factor = light.intensity * area * lightCos / max(dist2, 0.000001);
                     if (pathTrace == 1u) {
-                        shade += light.color * factor * surfaceCos * mat.kd;
+                        shade += light.color * factor * surfaceCos * mat.kd / 3.14159265359;
                     } else {
                         let rDir = normalize(n * 2.0 * surfaceCos - l);
                         let specArea = pow(max(0.0, dot(rDir, viewDir)), 40.0);
@@ -480,7 +526,8 @@ fn connectPathVertices(cameraVertex: PathVertex, lightVertex: PathVertex) -> vec
         let cosTheta = clamp(-dot(lightVertex.incomingDir, n), 0.0, 1.0);
         let fresnelWeight = fresnel(cosTheta, eta);
         let reflected = reflectDir(lightVertex.normal, lightVertex.incomingDir);
-        let refracted = refractDir(lightVertex.normal, lightVertex.incomingDir, ior);
+        let refractedFrontFace = select(0u, 1u, dot(lightVertex.incomingDir, lightVertex.normal) < 0.0);
+        let refracted = refractDir(lightVertex.normal, lightVertex.incomingDir, ior, refractedFrontFace);
         let branchWeight = max(
             deltaDirectionWeight(direction, reflected) * fresnelWeight,
             deltaDirectionWeight(direction, refracted) * (1.0 - fresnelWeight)
@@ -523,14 +570,31 @@ fn connectPathVertices(cameraVertex: PathVertex, lightVertex: PathVertex) -> vec
     return cameraVertex.throughput * lightVertex.throughput * cameraVertex.color * lightVertex.color * factor;
 }
 
+struct MaterialLobes {
+    diffuse: f32,
+    specular: f32,
+    subsurface: f32,
+    total: f32,
+};
+
+fn materialLobes(mat: Material) -> MaterialLobes {
+    let subsurface = clamp(mat.subsurface, 0.0, 1.0);
+    let diffuse = max(0.0, mat.kd) * (1.0 - subsurface);
+    let specular = max(0.0, mat.ks);
+    let total = diffuse + specular + subsurface;
+    let scale = select(1.0, 1.0 / max(total, 0.000001), total > 1.0);
+    return MaterialLobes(diffuse * scale, specular * scale, subsurface * scale, total * scale);
+}
+
 fn samplePathBounce(sceneHit: Hit, rayDir: vec3<f32>, throughput: vec3<f32>, state: ptr<function, u32>) -> Bounce {
     let mat = sceneHit.material;
-    let surfaceKd = mat.kd * (1.0 - clamp(mat.subsurface, 0.0, 1.0));
-    let subsurface = clamp(mat.subsurface, 0.0, 1.0);
-    let total = surfaceKd + mat.ks + subsurface;
+    let lobes = materialLobes(mat);
+    let surfaceKd = lobes.diffuse;
+    let subsurface = lobes.subsurface;
+    let total = lobes.total;
     let connectColor = select(mat.color, mat.subsurfaceColor, subsurface > 0.5);
 
-    let deltaType = select(select(0u, 1u, mat.ks > 0.0), 2u, mat.refractive > 0.5);
+    let deltaType = select(select(0u, 1u, lobes.specular > 0.0), 2u, mat.refractive > 0.5);
     var vertex = PathVertex(
         1u,
         select(1u, 0u, mat.refractive > 0.5),
@@ -548,9 +612,9 @@ fn samplePathBounce(sceneHit: Hit, rayDir: vec3<f32>, throughput: vec3<f32>, sta
     );
 
     if (mat.refractive > 0.5) {
-        let entering = dot(sceneHit.n, rayDir) < 0.0;
+        let entering = sceneHit.frontFace == 1u;
         let eta = select(mat.ior, 1.0 / mat.ior, entering);
-        let n = select(-sceneHit.n, sceneHit.n, entering);
+        let n = sceneHit.n;
         let cosTheta = clamp(-dot(rayDir, n), 0.0, 1.0);
         let f = fresnel(cosTheta, eta);
         if (rand(state) < f) {
@@ -574,7 +638,7 @@ fn samplePathBounce(sceneHit: Hit, rayDir: vec3<f32>, throughput: vec3<f32>, sta
     }
 
     let diffuseProbability = surfaceKd / total;
-    let specularProbability = mat.ks / total;
+    let specularProbability = lobes.specular / total;
     let choice = rand(state);
 
     if (choice < diffuseProbability) {
@@ -592,7 +656,7 @@ fn samplePathBounce(sceneHit: Hit, rayDir: vec3<f32>, throughput: vec3<f32>, sta
         let reflected = reflectDir(sceneHit.n, rayDir);
         return Bounce(
             vertex,
-            throughput * (mat.ks / max(specularProbability, 0.0001)),
+            throughput * (lobes.specular / max(specularProbability, 0.0001)),
             offsetOrigin(sceneHit.p, sceneHit.n, reflected),
             reflected,
             1u
@@ -730,16 +794,17 @@ fn pathTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<
         }
         let mat = h.material;
 
-        let surfaceKd = mat.kd * (1.0 - clamp(mat.subsurface, 0.0, 1.0));
-        let litMat = makeMaterial(mat.color, surfaceKd, mat.ks, mat.ior, mat.refractive, mat.ka, mat.subsurfaceColor, 0.0);
+        let lobes = materialLobes(mat);
+        let surfaceKd = lobes.diffuse;
+        let litMat = makeMaterial(mat.color, surfaceKd, lobes.specular, mat.ior, mat.refractive, mat.ka, mat.subsurfaceColor, 0.0);
         if (mat.refractive <= 0.5) {
             radiance += throughput * mat.color * evaluateAreaLight(h.p, h.n, vec3<f32>(0.0), litMat, 1u, state);
         }
 
         if (mat.refractive > 0.5) {
-            let entering = dot(h.n, rd) < 0.0;
+            let entering = h.frontFace == 1u;
             let eta = select(mat.ior, 1.0 / mat.ior, entering);
-            let n = select(-h.n, h.n, entering);
+            let n = h.n;
             let cosTheta = clamp(-dot(rd, n), 0.0, 1.0);
             let f = fresnel(cosTheta, eta);
             if (rand(state) < f) {
@@ -759,14 +824,14 @@ fn pathTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<
                 }
             }
         } else {
-            let subsurface = clamp(mat.subsurface, 0.0, 1.0);
-            let total = surfaceKd + mat.ks + subsurface;
+            let subsurface = lobes.subsurface;
+            let total = lobes.total;
             if (total <= 0.0) {
                 return radiance + throughput * bg;
             }
 
             let diffuseProbability = surfaceKd / total;
-            let specularProbability = mat.ks / total;
+            let specularProbability = lobes.specular / total;
             let bounceChoice = rand(state);
 
             if (bounceChoice < diffuseProbability) {
@@ -776,7 +841,7 @@ fn pathTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<
             } else if (bounceChoice < diffuseProbability + specularProbability) {
                 rd = reflectDir(h.n, rd);
                 ro = offsetOrigin(h.p, h.n, rd);
-                throughput *= mat.ks / max(specularProbability, 0.0001);
+                throughput *= lobes.specular / max(specularProbability, 0.0001);
             } else {
                 let exitHit = sampleSubsurfaceExit(h, mat.subsurfaceDepth, state);
                 if (!exitHit.hit) {
@@ -821,7 +886,8 @@ fn rayTrace(ro0: vec3<f32>, rd0: vec3<f32>, state: ptr<function, u32>) -> vec3<f
         }
 
         if (mat.refractive > 0.5) {
-            rd = refractDir(h.n, rd, mat.ior);
+            let refracted = refractDir(h.n, rd, mat.ior, h.frontFace);
+            rd = select(reflectDir(h.n, rd), refracted, length(refracted) > 0.000001);
         } else {
             rd = reflectDir(h.n, rd);
         }
@@ -886,28 +952,6 @@ fn projectToScreen(point: vec3<f32>) -> vec2<f32> {
 
 @compute @workgroup_size(8, 8)
 fn main(@builtin(global_invocation_id) gid: vec3<u32>) {
-    let passMode = params._pad0;
-    if (passMode == PASS_MODE_PREPASS) {
-        if (gid.x >= params.width || gid.y >= params.height) {
-            return;
-        }
-        let pixel = vec2<f32>(f32(gid.x) + 0.5, f32(gid.y) + 0.5);
-        let origin = vec3<f32>(0.0, 7.0, -36.0);
-        let rd = cameraRay(pixel);
-        let h = intersectScene(origin, rd);
-        let coord = vec2<i32>(i32(gid.x), i32(params.height - 1u - gid.y));
-        if (h.hit && h.material.refractive <= 0.5) {
-            textureStore(surfaceInfoTextureOut, coord, vec4<f32>(h.material.color * h.material.kd, 1.0));
-        } else {
-            textureStore(surfaceInfoTextureOut, coord, vec4<f32>(0.0, 0.0, 0.0, -1.0));
-        }
-        return;
-    }
-
-    if (passMode == PASS_MODE_CAUSTICS) {
-        return;
-    }
-
     let pixelX = gid.x + params.tileX;
     let pixelY = gid.y + params.tileY;
     if (gid.x >= params.tileWidth || gid.y >= params.tileHeight || pixelX >= params.width || pixelY >= params.height) {
@@ -923,7 +967,7 @@ fn main(@builtin(global_invocation_id) gid: vec3<u32>) {
         let pixel = vec2<f32>(f32(pixelX), f32(pixelY)) + jitter;
         let rd = cameraRay(pixel);
         if (params.pathTrace == 1u) {
-            color += select(pathTrace(origin, rd, &state), bidirectionalPathTrace(origin, rd, &state), params.tracerMode == 1u);
+            color += pathTrace(origin, rd, &state);
         } else {
             color += rayTrace(origin, rd, &state);
         }
@@ -1038,13 +1082,11 @@ export async function renderWebGPU(options) {
         createAccumulationTexture(device, width, height),
         createAccumulationTexture(device, width, height)
     ];
-    var surfaceInfoTexture = createSurfaceInfoTexture(device, width, height);
     var causticTexture = createSurfaceInfoTexture(device, width, height);
     var textureViews = [
         textures[0].createView(),
         textures[1].createView()
     ];
-    var surfaceInfoView = surfaceInfoTexture.createView();
     var causticView = causticTexture.createView();
     clearTexture(device, textureViews[0]);
     clearTexture(device, textureViews[1]);
@@ -1102,36 +1144,6 @@ export async function renderWebGPU(options) {
         device.queue.writeBuffer(bvhNodeBuffer, 0, packed.bvhNodes);
     }
 
-    var prepassBindGroups = [
-        device.createBindGroup({
-            layout: computePipeline.getBindGroupLayout(0),
-            entries: [
-                { binding: 0, resource: textureViews[0] },
-                { binding: 1, resource: textureViews[1] },
-                { binding: 2, resource: { buffer: uniformBuffer } },
-                { binding: 3, resource: { buffer: sphereBuffer } },
-                { binding: 4, resource: { buffer: materialBuffer } },
-                { binding: 5, resource: { buffer: lightBuffer } },
-                { binding: 6, resource: { buffer: triangleBuffer } },
-                { binding: 7, resource: { buffer: bvhNodeBuffer } },
-                { binding: 8, resource: surfaceInfoView }
-            ]
-        }),
-        device.createBindGroup({
-            layout: computePipeline.getBindGroupLayout(0),
-            entries: [
-                { binding: 0, resource: textureViews[1] },
-                { binding: 1, resource: textureViews[0] },
-                { binding: 2, resource: { buffer: uniformBuffer } },
-                { binding: 3, resource: { buffer: sphereBuffer } },
-                { binding: 4, resource: { buffer: materialBuffer } },
-                { binding: 5, resource: { buffer: lightBuffer } },
-                { binding: 6, resource: { buffer: triangleBuffer } },
-                { binding: 7, resource: { buffer: bvhNodeBuffer } },
-                { binding: 8, resource: surfaceInfoView }
-            ]
-        })
-    ];
     var computeBindGroups = [
         device.createBindGroup({
             layout: computePipeline.getBindGroupLayout(0),
@@ -1143,8 +1155,7 @@ export async function renderWebGPU(options) {
                 { binding: 4, resource: { buffer: materialBuffer } },
                 { binding: 5, resource: { buffer: lightBuffer } },
                 { binding: 6, resource: { buffer: triangleBuffer } },
-                { binding: 7, resource: { buffer: bvhNodeBuffer } },
-                { binding: 8, resource: surfaceInfoView }
+                { binding: 7, resource: { buffer: bvhNodeBuffer } }
             ]
         }),
         device.createBindGroup({
@@ -1157,8 +1168,7 @@ export async function renderWebGPU(options) {
                 { binding: 4, resource: { buffer: materialBuffer } },
                 { binding: 5, resource: { buffer: lightBuffer } },
                 { binding: 6, resource: { buffer: triangleBuffer } },
-                { binding: 7, resource: { buffer: bvhNodeBuffer } },
-                { binding: 8, resource: surfaceInfoView }
+                { binding: 7, resource: { buffer: bvhNodeBuffer } }
             ]
         })
     ];
@@ -1234,31 +1244,6 @@ export async function renderWebGPU(options) {
             computePass.end();
             device.queue.submit([encoder.finish()]);
             await device.queue.onSubmittedWorkDone();
-        }
-
-        if (options.pathTrace) {
-            await submitCompute(prepassBindGroups[state.readIndex], {
-                width: width,
-                height: height,
-                samples: options.samples,
-                maxDepth: options.maxDepth,
-                pathTrace: options.pathTrace ? 1 : 0,
-                tracerMode: options.tracerMode === 'bdpt' ? 1 : 0,
-                seed: options.seed >>> 0,
-                frameSeed: frameSeed,
-                accumulationCount: displayAccumulationCount,
-                tileX: 0,
-                tileY: 0,
-                tileWidth: width,
-                tileHeight: height,
-                passMode: 0,
-                causticPhotons: causticPhotons,
-                showCausticOnly: options.showCausticOnly ? 1 : 0
-            },
-                Math.ceil(width / 8),
-                Math.ceil(height / 8)
-            );
-
         }
 
         for (var taskIndex = 0; taskIndex < tasks.length; taskIndex++) {
@@ -1354,7 +1339,7 @@ function photonMapOptionsForScene(sceneId) {
         maxDepth: 8,
         globalRadius: isBunny ? 1.2 : 1.8,
         causticRadius: isBunny ? 0.5 : 0.3,
-        focusedPhotonRatio: isBunny ? 0.45 : 0.7
+        focusedPhotonRatio: 0
     };
 }
 
@@ -1761,16 +1746,26 @@ function buildWorldSpaceCausticTexture(scene, sceneId, width, height, seed) {
         createRNG((seed ^ 0x5f3759df) >>> 0)
     );
     var result = new Float32Array(width * height * 4);
+    var cameraSamples = 4;
+    var rng = createRNG((seed ^ 0xa511e9b3) >>> 0);
 
     for (var y = 0; y < height; y++) {
         for (var x = 0; x < width; x++) {
-            var ray = camera.getRays(x + 0.5, y + 0.5, 1, 8)[0];
-            var caustic = scene.visibleSurfaceCausticRadiance(camera.origin, ray.v, photonMap);
+            var causticR = 0;
+            var causticG = 0;
+            var causticB = 0;
+            for (var sample = 0; sample < cameraSamples; sample++) {
+                var ray = camera.getRays(x + rng() - 0.5, y + rng() - 0.5, 1, 8)[0];
+                var caustic = scene.visibleSurfaceCausticRadiance(camera.origin, ray.v, photonMap);
+                causticR += caustic.r;
+                causticG += caustic.g;
+                causticB += caustic.b;
+            }
             var flippedY = height - 1 - y;
             var idx = (flippedY * width + x) * 4;
-            result[idx + 0] = caustic.r / 255.0;
-            result[idx + 1] = caustic.g / 255.0;
-            result[idx + 2] = caustic.b / 255.0;
+            result[idx + 0] = causticR / cameraSamples / 255.0;
+            result[idx + 1] = causticG / cameraSamples / 255.0;
+            result[idx + 2] = causticB / cameraSamples / 255.0;
             result[idx + 3] = 1.0;
         }
     }

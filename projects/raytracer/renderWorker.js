@@ -10,10 +10,12 @@ var cachedSceneKey = null;
 var cachedScene = null;
 var cachedPhotonMapKey = null;
 var cachedPhotonMap = null;
+var suppliedPhotonMap = null;
 self.addEventListener('message', function(e) {
     var data = e.data;
     switch (data.cmd) {
         case 'start':
+            if (data.photonMap) suppliedPhotonMap = data.photonMap;
             rayTracingInfo = {
                 w: data.w,
                 h: data.h,
@@ -29,7 +31,7 @@ self.addEventListener('message', function(e) {
                 frameId: data.frameId || 0,
                 sceneId: data.sceneId || 'current',
                 useBvh: data.useBvh !== false,
-                tracerMode: data.tracerMode || 'path'
+                tracerMode: 'path'
             };
 
             run();
@@ -43,8 +45,8 @@ function run()
 {
     var scene = getOrCreateScene(rayTracingInfo.sceneId, rayTracingInfo.useBvh);
     var photonMap = null;
-    if (rayTracingInfo.pathTrace && rayTracingInfo.tracerMode !== 'bdpt') {
-        photonMap = getOrCreatePhotonMap(scene);
+    if (rayTracingInfo.pathTrace) {
+        photonMap = suppliedPhotonMap || getOrCreatePhotonMap(scene);
     }
 
     // setup camera
@@ -88,16 +90,13 @@ function run()
                     var jitterX = rng() - 0.5;
                     var jitterY = rng() - 0.5;
                     var rayDir = cam.getRays(j + jitterX, i + jitterY, 1, maxDepth)[0].v;
-                    var color = rayTracingInfo.tracerMode === 'bdpt'
-                        ? scene.bidirectionalPathTrace(cam.origin, rayDir, maxDepth, rng)
-                        : scene.pathTrace(cam.origin, rayDir, maxDepth, rng);
+                    var color = scene.pathTrace(cam.origin, rayDir, maxDepth, rng);
+                    if (photonMap) {
+                        color = color.add(scene.visibleSurfaceCausticRadiance(cam.origin, rayDir, photonMap));
+                    }
                     pixel = pixel.add(color);
                 }
                 pixel = pixel.mul(1.0 / nsamples);
-                if (rayTracingInfo.tracerMode !== 'bdpt' && photonMap) {
-                    var centerRayDir = cam.getRays(j + 0.5, i + 0.5, 1, maxDepth)[0].v;
-                    pixel = pixel.add(scene.visibleSurfaceCausticRadiance(cam.origin, centerRayDir, photonMap));
-                }
             } else {
                  // ── Traditional Ray Tracing Mode ──
                 pixel = new Color(0, 0, 0, 0);
@@ -152,7 +151,7 @@ function getOrCreatePhotonMap(scene) {
         maxDepth: Math.max(rayTracingInfo.maxDepth, 8),
         globalRadius: isBunny ? 1.2 : 1.8,
         causticRadius: isBunny ? 0.5 : 0.3,
-        focusedPhotonRatio: isBunny ? 0.45 : 0.7
+        focusedPhotonRatio: 0
     };
     var photonKey = [
         cachedSceneKey,

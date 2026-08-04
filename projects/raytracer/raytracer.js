@@ -1,6 +1,6 @@
 import { Point3 } from './point.js';
 import { Vector3 } from './vector.js';
-import { PI, clamp, reflect, russianRoulette } from './utils.js';
+import { PI, clamp, reflect } from './utils.js';
 import { Color } from './image.js';
 
 /*
@@ -59,16 +59,15 @@ export function Scene() {
         }
 
         // blend the hit with recursive hits
-        if( hit.hit )
+        if( hit.hit && hit.ior > 0 && hit.newRay )
         {
-            //console.log(hit);
             var recursiveHit = this.intersect( hit.newRay, eyepos );
             if( recursiveHit.hit )
                 hit.color = Color.interpolate(recursiveHit.color, hit.color, hit.ior);
             else
                 hit.color = Color.interpolate(this.bgColor, hit.color, hit.ior);
         }
-        else
+        else if (!hit.hit)
         {
             hit.color = this.bgColor;
         }
@@ -94,16 +93,18 @@ export function Camera(origin, dir, up, f, fovy, w, h) {
     );
 
     this.getRays = function(x, y, n, maxDepth) {
-		var nx = Math.floor(Math.sqrt(n)), ny = nx;
-		var h = 1.0 / nx;
-		var rays = [];
-		for(var yy=0;yy<ny;yy++)
-		{
-			for(var xx=0;xx<nx;xx++)
-			{
-				rays.push(this.canvas.getRay(x+h*xx, y+h*yy, this.origin, maxDepth));
+			var sampleCount = Math.max(0, Math.floor(n));
+			if (sampleCount === 0) return [];
+			var nx = Math.ceil(Math.sqrt(sampleCount));
+			var ny = Math.ceil(sampleCount / nx);
+			var rays = [];
+			for (var sampleIdx = 0; sampleIdx < sampleCount; sampleIdx++) {
+				var xx = sampleIdx % nx;
+				var yy = Math.floor(sampleIdx / nx);
+				var offsetX = nx === 1 ? 0 : (xx + 0.5) / nx - 0.5;
+				var offsetY = ny === 1 ? 0 : (yy + 0.5) / ny - 0.5;
+				rays.push(this.canvas.getRay(x + offsetX, y + offsetY, this.origin, maxDepth));
 			}
-		}
         return rays; 
     }
 }
@@ -229,11 +230,18 @@ export function shading( obj, epos, pos, normal, scene )
  Uses Monte Carlo integration of the rendering equation.
 */
 
-// ── Schlick's approximation for Fresnel ──
-export function fresnelSchiek(cosTheta, ior) {
-    var r0 = (1.0 - ior) / (1.0 + ior);
-    r0 = r0 * r0;
-    return r0 + (1.0 - r0) * Math.pow(1.0 - cosTheta, 5.0);
+export function dielectricFresnel(cosTheta, eta) {
+    var cosI = Math.min(1, Math.max(0, cosTheta));
+    var sinThetaTSquared = eta * eta * Math.max(0, 1.0 - cosI * cosI);
+    if (sinThetaTSquared >= 1.0) return 1.0;
+    var cosT = Math.sqrt(Math.max(0, 1.0 - sinThetaTSquared));
+    var parallelNumerator = eta * cosI - cosT;
+    var parallelDenominator = eta * cosI + cosT;
+    var perpendicularNumerator = cosI - eta * cosT;
+    var perpendicularDenominator = cosI + eta * cosT;
+    var parallel = parallelNumerator / Math.max(Math.abs(parallelDenominator), 1e-8);
+    var perpendicular = perpendicularNumerator / Math.max(Math.abs(perpendicularDenominator), 1e-8);
+    return 0.5 * (parallel * parallel + perpendicular * perpendicular);
 }
 
 export function attenuateColor(throughput, color) {
@@ -290,15 +298,31 @@ export function materialValue(value, fallback) {
     return value === undefined ? fallback : value;
 }
 
+export function materialLobes(mat) {
+    mat = mat || {};
+    var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
+    var Ks = Math.max(0, materialValue(mat.Ks, 0.3));
+    var subsurface = Math.max(0, Math.min(1, materialValue(mat.subsurface, 0)));
+    var diffuse = Kd * (1.0 - subsurface);
+    var total = diffuse + Ks + subsurface;
+    var scale = total > 1.0 ? 1.0 / total : 1.0;
+    return {
+        diffuse: diffuse * scale,
+        specular: Ks * scale,
+        subsurface: subsurface * scale,
+        total: total * scale
+    };
+}
+
 export function offsetPathOrigin(point, normal, direction) {
     var sign = direction.dot(normal) < 0 ? -1 : 1;
     return point.add(normal.mul(sign * 1e-4));
 }
 
-export function refractPathDirection(normal, direction, ior) {
-    var entering = normal.dot(direction) < 0;
+export function refractPathDirection(normal, direction, ior, frontFace) {
+    var entering = frontFace !== undefined ? frontFace : normal.dot(direction) < 0;
     var eta = entering ? 1.0 / ior : ior;
-    var n = entering ? normal : normal.mul(-1);
+    var n = frontFace !== undefined ? normal : (entering ? normal : normal.mul(-1));
     var cosTheta = Math.min(1, Math.max(0, -direction.dot(n)));
     var k = 1.0 - eta * eta * (1.0 - cosTheta * cosTheta);
     if (k < 0) {
@@ -327,10 +351,9 @@ export function subsurfaceTransmittance(color, travelDistance, depthScale) {
 }
 
 export function sampleDiffuseDirection(normal, rng) {
-    var tangent = new Vector3(1, 0, 0);
-    if (Math.abs(normal.dot(tangent)) > 0.9) tangent = new Vector3(0, 1, 0);
-    tangent = normal.cross(tangent).normalize();
-    var bitangent = normal.cross(tangent).normalize();
+    var basis = stableOrthonormalBasis(normal);
+    var tangent = basis.tangent;
+    var bitangent = basis.bitangent;
 
     var r1 = 2 * Math.PI * rng();
     var r2 = rng();
@@ -369,10 +392,13 @@ export function sampleAreaLight(light, rng) {
 export function isPathToLightClear(scene, origin, direction, maxDistance) {
     for (var i = 0; i < scene.objects.length; i++) {
         var obj = scene.objects[i];
-        if (!obj.intersectT) continue;
-        var t = obj.intersectT(origin, direction);
-        if (t !== undefined && t < maxDistance - 1e-4) {
+        var shadowMaxT = maxDistance - 1e-4;
+        if (obj.shadowIntersect && obj.shadowIntersect(origin, direction, shadowMaxT)) {
             return false;
+        }
+        if (!obj.shadowIntersect && obj.intersectT) {
+            var t = obj.intersectT(origin, direction);
+            if (t !== undefined && t < shadowMaxT) return false;
         }
     }
     return true;
@@ -398,7 +424,7 @@ export function estimateAreaLighting(scene, hit, normal, mat, throughput, rng) {
         var shadowOrigin = offsetPathOrigin(hit.p, normal, lightDir);
         if (!isPathToLightClear(scene, shadowOrigin, lightDir, distance)) continue;
 
-        var factor = Kd * light.intensity * light.area * surfaceCos * lightCos / Math.max(distanceSquared, 1e-6);
+        var factor = Kd / Math.PI * light.intensity * light.area * surfaceCos * lightCos / Math.max(distanceSquared, 1e-6);
         result = addColor(result, new Color(
             light.color.r * throughput.r * hit.object.color.r / 255.0 * factor,
             light.color.g * throughput.g * hit.object.color.g / 255.0 * factor,
@@ -419,15 +445,16 @@ Scene.prototype.intersectSingle = function( ray, eyepos ) {
             var detail = obj.intersectDetail(ray.p, ray.v);
             if (detail && detail.t < hit.t) {
                 var hitPos = ray.p.add(ray.v.mul(detail.t));
-                var normal = detail.normal;
-                if (normal.dot(ray.v) > 0) {
-                    normal = normal.mul(-1);
-                }
+                var geometricNormal = detail.normal.normalized();
+                var frontFace = geometricNormal.dot(ray.v) < 0;
+                var normal = frontFace ? geometricNormal : geometricNormal.mul(-1);
                 hit = {
                     hit: true,
                     t: detail.t,
                     p: hitPos,
                     normal: normal,
+                    geometricNormal: geometricNormal,
+                    frontFace: frontFace,
                     object: obj
                 };
             }
@@ -435,11 +462,15 @@ Scene.prototype.intersectSingle = function( ray, eyepos ) {
             var t = obj.intersectT(ray.p, ray.v);
             if (t !== undefined && t < hit.t) {
                 var hitPos = ray.p.add(ray.v.mul(t));
+                var geometricNormal = obj.center ? Vector3.fromPoint3(obj.center, hitPos).normalized() : new Vector3(0, 1, 0);
+                var frontFace = geometricNormal.dot(ray.v) < 0;
                 hit = {
                     hit: true,
                     t: t,
                     p: hitPos,
-                    normal: obj.center ? Vector3.fromPoint3(obj.center, hitPos).normalized() : new Vector3(0, 1, 0),
+                    normal: frontFace ? geometricNormal : geometricNormal.mul(-1),
+                    geometricNormal: geometricNormal,
+                    frontFace: frontFace,
                     object: obj
                 };
             }
@@ -449,7 +480,9 @@ Scene.prototype.intersectSingle = function( ray, eyepos ) {
                 hit = h;
                 hit.object = obj;
                 if (!hit.normal && hit.object.center) {
-                    hit.normal = Vector3.fromPoint3(hit.object.center, hit.p).normalized();
+                    hit.geometricNormal = Vector3.fromPoint3(hit.object.center, hit.p).normalized();
+                    hit.frontFace = hit.geometricNormal.dot(ray.v) < 0;
+                    hit.normal = hit.frontFace ? hit.geometricNormal : hit.geometricNormal.mul(-1);
                 }
             }
         }
@@ -474,9 +507,7 @@ Scene.prototype.sampleSubsurfaceExit = function(hit, rng, depthScale) {
         return null;
     }
 
-    if (exitHit.normal.dot(inwardDir) < 0) {
-        exitHit.normal = exitHit.normal.mul(-1);
-    }
+    exitHit.normal = exitHit.geometricNormal || exitHit.normal.mul(-1);
 
     return exitHit;
 };
@@ -508,15 +539,15 @@ Scene.prototype.pathTrace = function(origin, direction, maxDepth, rng) {
         surfaceColor = obj.color;   // accumulate base color
 
         // 5. Weighted BRDF sampling
-        var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
-        var Ks = Math.max(0, materialValue(mat.Ks, 0.3));
+        var lobes = materialLobes(mat);
+        var Ks = lobes.specular;
         var ior = Math.max(1.0001, materialValue(mat.ior, 1.5));
-        var subsurface = Math.max(0, Math.min(1, materialValue(mat.subsurface, 0)));
+        var subsurface = lobes.subsurface;
         var subsurfaceDepth = Math.max(0.0002, materialValue(mat.subsurfaceDepth, 0.35));
         var subsurfaceColor = mat.subsurfaceColor || surfaceColor;
 
         var surfaceMat = {
-            Kd: Kd * (1.0 - subsurface),
+            Kd: lobes.diffuse,
             Ks: Ks,
             ior: ior,
             refractive: mat.refractive,
@@ -529,11 +560,11 @@ Scene.prototype.pathTrace = function(origin, direction, maxDepth, rng) {
         // 6. Sample next ray direction
         if (mat.refractive) {
             // ── Refraction with Fresnel and TIR ──
-            var entering = N.dot(rayDir) < 0;
+            var entering = hit.frontFace;
             var newIor = entering ? 1.0 / ior : ior;
-            var n = entering ? N : N.mul(-1);
+            var n = N;
             var cosTheta = Math.min(1, Math.max(0, -rayDir.dot(n)));
-            var fresnel = fresnelSchiek(cosTheta, newIor);
+            var fresnel = dielectricFresnel(cosTheta, newIor);
 
             if (rng() < fresnel) {
                 // ── Reflect ──
@@ -718,13 +749,13 @@ function buildLightSubpath(scene, maxDepth, rng) {
 
 function samplePathBounce(scene, hit, mat, surfaceColor, throughput, rayDir, rng) {
     var N = hit.normal;
-    var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
-    var Ks = Math.max(0, materialValue(mat.Ks, 0.3));
+    var lobes = materialLobes(mat);
+    var Ks = lobes.specular;
     var ior = Math.max(1.0001, materialValue(mat.ior, 1.5));
-    var subsurface = Math.max(0, Math.min(1, materialValue(mat.subsurface, 0)));
+    var subsurface = lobes.subsurface;
     var subsurfaceDepth = Math.max(0.0002, materialValue(mat.subsurfaceDepth, 0.35));
     var subsurfaceColor = mat.subsurfaceColor || surfaceColor;
-    var surfaceKd = Kd * (1.0 - subsurface);
+    var surfaceKd = lobes.diffuse;
     var connectColor = subsurface > 0.5 ? subsurfaceColor : surfaceColor;
     var vertex = {
         p: hit.p,
@@ -741,11 +772,11 @@ function samplePathBounce(scene, hit, mat, surfaceColor, throughput, rayDir, rng
     };
 
     if (mat.refractive) {
-        var entering = N.dot(rayDir) < 0;
-        var newIor = entering ? 1.0 / ior : ior;
-        var n = entering ? N : N.mul(-1);
+            var entering = hit.frontFace;
+            var newIor = entering ? 1.0 / ior : ior;
+            var n = N;
         var cosTheta = Math.min(1, Math.max(0, -rayDir.dot(n)));
-        var fresnel = fresnelSchiek(cosTheta, newIor);
+        var fresnel = dielectricFresnel(cosTheta, newIor);
 
         if (rng() < fresnel) {
             var reflectedRay = reflect(n, rayDir);
@@ -768,7 +799,7 @@ function samplePathBounce(scene, hit, mat, surfaceColor, throughput, rayDir, rng
             };
         }
 
-        var refractedRay = refractPathDirection(N, rayDir, ior);
+        var refractedRay = refractPathDirection(N, rayDir, ior, hit.frontFace);
         var transmissionColor = entering ? transmissionTint(getTransmissionColor(mat, surfaceColor)) : new Color(255, 255, 255, 255);
         return {
             vertex: vertex,
@@ -895,7 +926,7 @@ function connectViaRefractiveVertex(scene, cameraVertex, lightVertex) {
     var reflected = reflect(normal, incomingDir);
     var refracted = refractPathDirection(normal, incomingDir, Math.max(1.0001, lightVertex.ior || 1.5));
     var entering = normal.dot(incomingDir) < 0;
-    var fresnel = fresnelSchiek(
+    var fresnel = dielectricFresnel(
         Math.min(1, Math.max(0, -(entering ? incomingDir.dot(normal) : incomingDir.dot(normal.mul(-1))))),
         entering ? 1.0 / Math.max(1.0001, lightVertex.ior || 1.5) : Math.max(1.0001, lightVertex.ior || 1.5)
     );
@@ -934,12 +965,21 @@ function photonCellKey(ix, iy, iz) {
 }
 
 function buildBasis(normal) {
-    var tangent = Math.abs(normal.x) > 0.7 ? new Vector3(0, 1, 0) : new Vector3(1, 0, 0);
-    tangent = normal.cross(tangent).normalized();
-    var bitangent = normal.cross(tangent).normalized();
+    return stableOrthonormalBasis(normal);
+}
+
+function stableOrthonormalBasis(normal) {
+    if (normal.z < -0.9999999) {
+        return {
+            tangent: new Vector3(0, -1, 0),
+            bitangent: new Vector3(-1, 0, 0)
+        };
+    }
+    var a = 1.0 / (1.0 + normal.z);
+    var b = -normal.x * normal.y * a;
     return {
-        tangent: tangent,
-        bitangent: bitangent
+        tangent: new Vector3(1.0 - normal.x * normal.x * a, b, -normal.x),
+        bitangent: new Vector3(b, 1.0 - normal.y * normal.y * a, -normal.y)
     };
 }
 
@@ -1057,8 +1097,7 @@ function storePhoton(list, hit, incomingDir, power) {
         p: new Point3(hit.p.x, hit.p.y, hit.p.z),
         normal: new Vector3(hit.normal.x, hit.normal.y, hit.normal.z),
         direction: incomingDir.normalized(),
-        power: cloneColor(power),
-        object: hit.object
+        power: cloneColor(power)
     });
 }
 
@@ -1082,24 +1121,24 @@ function tracePhoton(scene, origin, direction, power, maxDepth, rng, globalPhoto
         var mat = obj.material || {};
         var normal = hit.normal;
         var surfaceColor = obj.color;
-        var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
-        var Ks = Math.max(0, materialValue(mat.Ks, 0.3));
+        var lobes = materialLobes(mat);
+        var Ks = lobes.specular;
         var ior = Math.max(1.0001, materialValue(mat.ior, 1.5));
-        var subsurface = Math.max(0, Math.min(1, materialValue(mat.subsurface, 0)));
-        var surfaceKd = Kd * (1.0 - subsurface);
+        var subsurface = lobes.subsurface;
+        var surfaceKd = lobes.diffuse;
 
         if (mat.refractive) {
-            var entering = normal.dot(rayDir) < 0;
+            var entering = hit.frontFace;
             var eta = entering ? 1.0 / ior : ior;
-            var n = entering ? normal : normal.mul(-1);
+            var n = normal;
             var cosTheta = Math.min(1, Math.max(0, -rayDir.dot(n)));
-            var fresnel = fresnelSchiek(cosTheta, eta);
+            var fresnel = dielectricFresnel(cosTheta, eta);
 
             if (rng() < fresnel) {
                 rayDir = reflect(n, rayDir);
                 rayOrigin = offsetPathOrigin(hit.p, normal, rayDir);
             } else {
-                var refracted = refractPathDirection(normal, rayDir, ior);
+                var refracted = refractPathDirection(normal, rayDir, ior, hit.frontFace);
                 if (!refracted) {
                     rayDir = reflect(n, rayDir);
                     rayOrigin = offsetPathOrigin(hit.p, normal, rayDir);
@@ -1117,18 +1156,15 @@ function tracePhoton(scene, origin, direction, power, maxDepth, rng, globalPhoto
         }
 
         if (surfaceKd > 0.0001 || subsurface > 0.0001) {
-            storePhoton(globalPhotons, hit, rayDir, throughput);
             if (specularPath) {
                 storePhoton(causticPhotons, hit, rayDir, throughput);
+            } else {
+                storePhoton(globalPhotons, hit, rayDir, throughput);
             }
         }
 
         var total = surfaceKd + Ks;
         if (total <= 0.0) {
-            return;
-        }
-
-        if (rng() > total) {
             return;
         }
 
@@ -1173,7 +1209,8 @@ function gatherPhotonIrradiance(photonLookup, point, normal) {
 
                 for (var i = 0; i < bucket.length; i++) {
                     var photon = bucket[i];
-                    if (photon.normal.dot(normal) <= 0.25) {
+                    var normalAlignment = photon.normal.x * normal.x + photon.normal.y * normal.y + photon.normal.z * normal.z;
+                    if (normalAlignment <= 0.25) {
                         continue;
                     }
 
@@ -1183,12 +1220,12 @@ function gatherPhotonIrradiance(photonLookup, point, normal) {
                         continue;
                     }
 
-                    var surfaceCos = Math.max(0, -normal.dot(photon.direction));
-                    if (surfaceCos <= 0) {
+                    var incomingCos = -(normal.x * photon.direction.x + normal.y * photon.direction.y + normal.z * photon.direction.z);
+                    if (incomingCos <= 0) {
                         continue;
                     }
 
-                    sum = addColor(sum, photon.power.mul(surfaceCos));
+                    sum = addColor(sum, photon.power);
                 }
             }
         }
@@ -1202,7 +1239,7 @@ function estimatePhotonMapLighting(hit, normal, mat, throughput, photonMap) {
         return new Color(0, 0, 0, 255);
     }
 
-    var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
+    var Kd = materialLobes(mat).diffuse;
     if (Kd <= 0.0) {
         return new Color(0, 0, 0, 255);
     }
@@ -1225,7 +1262,7 @@ function estimateCausticPhotonLighting(hit, normal, mat, throughput, photonMap) 
     if (!photonMap || !photonMap.caustic) {
         return new Color(0, 0, 0, 255);
     }
-    var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
+    var Kd = materialLobes(mat).diffuse;
     if (Kd <= 0.0) {
         return new Color(0, 0, 0, 255);
     }
@@ -1249,9 +1286,7 @@ function isVisibleCausticReceiver(hit) {
     if (mat.refractive) {
         return false;
     }
-    var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
-    var subsurface = Math.max(0, Math.min(1, materialValue(mat.subsurface, 0)));
-    return Kd * (1.0 - subsurface) > 0.0;
+    return materialLobes(mat).diffuse > 0.0;
 }
 
 Scene.prototype.buildPhotonMap = function(options, rng) {
@@ -1263,7 +1298,7 @@ Scene.prototype.buildPhotonMap = function(options, rng) {
     var globalPhotons = [];
     var causticPhotons = [];
     var refractiveTargets = listRefractiveTargets(this);
-    var focusedPhotonRatio = refractiveTargets.length ? Math.max(0.0, Math.min(1.0, options.focusedPhotonRatio !== undefined ? options.focusedPhotonRatio : 0.65)) : 0.0;
+    var focusedPhotonRatio = refractiveTargets.length ? Math.max(0.0, Math.min(1.0, options.focusedPhotonRatio !== undefined ? options.focusedPhotonRatio : 0.0)) : 0.0;
 
     if (!this.areaLights.length || photonCount <= 0) {
         return {
@@ -1345,25 +1380,25 @@ Scene.prototype.photonMapTrace = function(origin, direction, maxDepth, rng, phot
         var mat = obj.material || {};
         var normal = hit.normal;
         var surfaceColor = obj.color;
-        var Kd = Math.max(0, materialValue(mat.Kd, 0.6));
-        var Ks = Math.max(0, materialValue(mat.Ks, 0.3));
+        var lobes = materialLobes(mat);
+        var Ks = lobes.specular;
         var ior = Math.max(1.0001, materialValue(mat.ior, 1.5));
-        var subsurface = Math.max(0, Math.min(1, materialValue(mat.subsurface, 0)));
+        var subsurface = lobes.subsurface;
         var subsurfaceDepth = Math.max(0.0002, materialValue(mat.subsurfaceDepth, 0.35));
         var subsurfaceColor = mat.subsurfaceColor || surfaceColor;
 
         if (mat.refractive) {
-            var entering = normal.dot(rayDir) < 0;
+            var entering = hit.frontFace;
             var eta = entering ? 1.0 / ior : ior;
-            var n = entering ? normal : normal.mul(-1);
+            var n = normal;
             var cosTheta = Math.min(1, Math.max(0, -rayDir.dot(n)));
-            var fresnel = fresnelSchiek(cosTheta, eta);
+            var fresnel = dielectricFresnel(cosTheta, eta);
 
             if (rng() < fresnel) {
                 rayDir = reflect(n, rayDir);
                 rayOrigin = offsetPathOrigin(hit.p, normal, rayDir);
             } else {
-                var refracted = refractPathDirection(normal, rayDir, ior);
+                var refracted = refractPathDirection(normal, rayDir, ior, hit.frontFace);
                 if (!refracted) {
                     rayDir = reflect(n, rayDir);
                     rayOrigin = offsetPathOrigin(hit.p, normal, rayDir);
@@ -1379,7 +1414,7 @@ Scene.prototype.photonMapTrace = function(origin, direction, maxDepth, rng, phot
         }
 
         var surfaceMat = {
-            Kd: Kd * (1.0 - subsurface),
+            Kd: lobes.diffuse,
             Ks: Ks,
             ior: ior,
             refractive: false,

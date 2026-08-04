@@ -26,7 +26,7 @@ Point2.prototype.mul = function( factor ) {
 
 export function Point3(x, y, z) {
     if( arguments.length != 3 ){
-        this.x = this.y = 0;
+        this.x = this.y = this.z = 0;
     }
     else
     {

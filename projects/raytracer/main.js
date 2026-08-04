@@ -1,6 +1,7 @@
 import { RGBAImage } from './image.js';
 import { renderWebGPU } from './webgpuRenderer.js';
-import { SCENE_OPTIONS } from './sceneDef.js';
+import { SCENE_OPTIONS, createScene } from './sceneDef.js';
+import { createRNG } from './utils.js';
 
 var RAY_TRACE_DEFAULT_SAMPLES = 8;
 var PATH_TRACE_DEFAULT_SAMPLES = 1;
@@ -355,6 +356,18 @@ function startCpuRenderLoop(w, h, nsamples, maxDepth, nthreads, pathTraceMode, s
     var tasks = createHilbertTasks(w, h, blockSizeX, blockSizeY);
     var ntasks = tasks.length;
     var workerCount = Math.max(1, Math.min(nthreads, ntasks));
+    var sharedPhotonMap = null;
+    if (pathTraceMode && tracerMode !== 'bdpt') {
+        var photonScene = createScene(sceneId, { useBvh: useBvh });
+        var isBunny = sceneId === 'bunny';
+        sharedPhotonMap = photonScene.buildPhotonMap({
+            photonCount: isBunny ? 48000 : 96000,
+            maxDepth: Math.max(maxDepth, 8),
+            globalRadius: isBunny ? 1.2 : 1.8,
+            causticRadius: isBunny ? 0.5 : 0.3,
+            focusedPhotonRatio: 0
+        }, createRNG((seed || 42) ^ 0x5f3759df));
+    }
     var workers = [];
     var state = {
         cancelled: false,
@@ -397,8 +410,10 @@ function startCpuRenderLoop(w, h, nsamples, maxDepth, nthreads, pathTraceMode, s
             seed: seed,
             sceneId: sceneId,
             useBvh: useBvh,
-            tracerMode: tracerMode
+            tracerMode: tracerMode,
+            photonMap: worker.hasPhotonMap ? null : sharedPhotonMap
         });
+        worker.hasPhotonMap = worker.hasPhotonMap || !!sharedPhotonMap;
     }
 
     function startNextFrame() {

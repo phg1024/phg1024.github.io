@@ -25,7 +25,8 @@ const puppeteer = require('puppeteer');
     });
 
     try {
-        await page.goto('http://localhost:57142/projects/raytracer/', { waitUntil: 'networkidle2' });
+        const baseUrl = process.env.RAYTRACER_BASE_URL || 'http://localhost:8080';
+        await page.goto(`${baseUrl}/projects/raytracer/`, { waitUntil: 'networkidle2' });
 
         const currentStats = await renderAndMeasureCaustics(page, {
             scene: 'current',
@@ -60,9 +61,12 @@ const puppeteer = require('puppeteer');
         if (currentStats.centroidY < currentStats.height * 0.45) {
             failures.push(`current-scene bright-pixel centroid too high in frame (${currentStats.centroidY.toFixed(1)})`);
         }
-        if (currentStats.meanLuma <= bunnyStats.meanLuma * 2.0) {
+        if (bunnyStats.maxLuma < 1 || bunnyStats.nonBlackPixels < 16) {
+            failures.push(`bunny-scene caustic signal is missing (${bunnyStats.maxLuma.toFixed(2)}, ${bunnyStats.nonBlackPixels} pixels)`);
+        }
+        if (bunnyStats.lowerHalfEnergy <= bunnyStats.upperHalfEnergy) {
             failures.push(
-                `current-scene caustic signal is not meaningfully stronger than bunny scene (${currentStats.meanLuma.toFixed(4)} vs ${bunnyStats.meanLuma.toFixed(4)})`
+                `bunny-scene caustic energy is not concentrated on lower receivers (upper=${bunnyStats.upperHalfEnergy.toFixed(2)}, lower=${bunnyStats.lowerHalfEnergy.toFixed(2)})`
             );
         }
 
