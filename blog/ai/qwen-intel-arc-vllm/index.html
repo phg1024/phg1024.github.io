@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>Peihong Guo</title>
+ <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+ <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Deploying Qwen on Intel Arc with vLLM and DFlash2</h1><p class="blog-post__date">Oct 6, 2026</p>
+<p>I've been running <strong>Qwen3.6-35B-A3B with INT4 weights on a single Intel Arc Pro B70 with 32 GB of GPU memory</strong>, using vLLM's XPU backend. A DFlash2 draft model adds speculative decoding, and an OpenAI-compatible API makes the deployment usable from ordinary chat clients.</p>
+<p>The interesting part is fitting the target model, draft model, and a useful context budget into the same GPU while keeping generation responsive. This post describes the deployment snapshot recorded on <strong>October 6, 2026</strong>, along with retained benchmark results. The measurements were not rerun for this post. Addresses and filesystem paths in the examples are generic replacements.</p>
+<h2>The serving stack</h2>
+<p>The request path is straightforward:</p>
+<p><img src="/images/blog/qwen-intel-arc-vllm/architecture.svg" alt="Qwen inference architecture: an API client connects to vLLM, which coordinates the INT4 target and DFlash2 draft model on a shared Intel Arc Pro B70 GPU."></p>
+<p>vLLM owns inference and scheduling. Clients supply messages and, optionally, tool definitions. The server can return structured tool calls, but the client application is responsible for executing them and returning their results.</p>
+<p>The recorded runtime consists of:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Deployment snapshot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operating system</td>
+<td>Ubuntu 26.04 LTS, x86_64</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Intel Core i7-12700K</td>
+</tr>
+<tr>
+<td>System memory</td>
+<td>Approximately 61 GiB visible to Linux</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Intel Arc Pro B70, 32 GB</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.12.14</td>
+</tr>
+<tr>
+<td>vLLM</td>
+<td>0.29.0</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>2.13.0+xpu</td>
+</tr>
+<tr>
+<td>XPU kernels</td>
+<td>vllm-xpu-kernels 0.1.14.1, locally modified</td>
+</tr>
+<tr>
+<td>Transformers</td>
+<td>5.17.0</td>
+</tr>
+<tr>
+<td>compressed-tensors</td>
+<td>0.17.0</td>
+</tr>
+</tbody>
+</table>
+<p>The launcher initializes the Intel runtime and selects the Level Zero GPU backend with <code>ONEAPI_DEVICE_SELECTOR=level_zero:gpu</code>. System RAM and swap do not extend the GPU's allocation budget: weights, caches, and execution buffers still have to fit on the device.</p>
+<h2>INT4 weights are only one part of the memory budget</h2>
+<p>The target is the <code>amd/Qwen3.6-35B-A3B-w4a16-llmcompressor</code> checkpoint. The deployment records describe GPTQ weight-only INT4 quantization in compressed-tensors format, using symmetric groups of 128 and BF16 activations.</p>
+<p>Different parts of the runtime use different precisions:</p>
+<table>
+<thead>
+<tr>
+<th>Allocation</th>
+<th>Selected precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target weights</td>
+<td>Packed INT4</td>
+</tr>
+<tr>
+<td>General computation</td>
+<td>BF16</td>
+</tr>
+<tr>
+<td>Target attention KV cache</td>
+<td><code>auto</code>, identified as BF16 in the selected benchmark</td>
+</tr>
+<tr>
+<td>Recurrent / Mamba state cache</td>
+<td>FP16</td>
+</tr>
+<tr>
+<td>Draft attention KV cache</td>
+<td>FP8</td>
+</tr>
+</tbody>
+</table>
+<p>Quantizing the weights does not make every allocation INT4. The target attention cache alone receives a fixed <strong>6.5 GiB</strong> allocation, while the draft model, recurrent state, runtime buffers, and target weights consume additional memory.</p>
+<p>This distinction matters when increasing context length. Earlier experiments with FP32 recurrent state and automatic sizing failed at the full configured context; the deployed recurrent cache remains FP16.</p>
+<h2>Context length, scheduling, and caching</h2>
+<p>The server is configured for a <strong>262,144-token context window</strong>, including input and generated output. That is a configured ceiling; the retained long-prompt benchmark used 133,745 input tokens.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Selected value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum model length</td>
+<td>262,144 tokens</td>
+</tr>
+<tr>
+<td>Maximum active sequences</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Batched token limit</td>
+<td>8,192</td>
+</tr>
+<tr>
+<td>Attention block size</td>
+<td>64</td>
+</tr>
+<tr>
+<td>Target KV allocation</td>
+<td>6.5 GiB</td>
+</tr>
+<tr>
+<td>Prefix caching</td>
+<td>Enabled</td>
+</tr>
+<tr>
+<td>Async scheduling</td>
+<td>Enabled</td>
+</tr>
+<tr>
+<td>XPU graphs</td>
+<td>Enabled by default</td>
+</tr>
+<tr>
+<td>Ahead-of-time compilation</td>
+<td>Disabled</td>
+</tr>
+<tr>
+<td>Reasoning parser</td>
+<td><code>qwen3</code></td>
+</tr>
+<tr>
+<td>Automatic tool choice parser</td>
+<td><code>qwen3_coder</code></td>
+</tr>
+</tbody>
+</table>
+<p>The 8,192-token scheduler budget is separate from the total context limit. Likewise, async scheduling does not create more active sequence slots: with one active sequence, competing requests can queue.</p>
+<p>Prefix caching helps when requests reuse eligible prefixes. Stable instructions and shared document prefixes can reduce repeated prompt processing, but a changed prefix, cache eviction, or server restart can remove that benefit.</p>
+<h2>DFlash2 speculative decoding</h2>
+<p>The draft model proposes tokens for the target model to verify. Whether this pays off depends on the cost of drafting and how many proposals the target accepts.</p>
+<p>The selected configuration uses three speculative tokens per step and an FP8 draft KV cache. With a generic local model path, its <code>--speculative-config</code> value is:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"method"</span><span class="token operator">:</span> <span class="token string">"dflash"</span><span class="token punctuation">,</span>
+  <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"/opt/models/qwen-dflash2"</span><span class="token punctuation">,</span>
+  <span class="token property">"num_speculative_tokens"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token property">"kv_cache_dtype"</span><span class="token operator">:</span> <span class="token string">"fp8"</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The installed speculative implementation requires <code>min_p=0</code> and does not support <code>logit_bias</code>, according to the experiment record. These are constraints of this deployment, not a promise about every vLLM release.</p>
+<p>The custom launcher also supports omitting speculative decoding for a target-only diagnostic run. That requires restarting the server with a different launch configuration; it is not a per-request toggle. Keeping that mode available helps isolate draft-model compatibility and memory issues.</p>
+<h2>A minimal API check</h2>
+<p>Use a short served-model name rather than exposing a local checkpoint path to clients. This example uses <code>qwen-int4</code> as a placeholder; replace it with the ID returned by <code>/v1/models</code> on your own server.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">--fail</span> <span class="token parameter variable">--silent</span> --show-error <span class="token punctuation">\</span>
+  http://127.0.0.1:8000/v1/chat/completions <span class="token punctuation">\</span>
+  <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-d</span> <span class="token string">'{
+    "model": "qwen-int4",
+    "messages": [{"role": "user", "content": "Reply with exactly READY."}],
+    "temperature": 0,
+    "min_p": 0,
+    "max_tokens": 16,
+    "chat_template_kwargs": {"enable_thinking": false}
+  }'</span></code></pre>
+<p>A warm loopback request with these generation settings returned <code>READY.</code> in approximately <strong>0.116 seconds</strong>, using 17 prompt tokens and 3 completion tokens. This is a short readiness check, not a throughput benchmark.</p>
+<p>The reasoning parser does not force every request to produce reasoning. In this check, the request explicitly disables thinking through <code>chat_template_kwargs</code>.</p>
+<p>For routine inspection, <code>/health</code> checks readiness, <code>/v1/models</code> confirms the served identity, and <code>/metrics</code> exposes request and cache behavior. I look at running requests, waiting requests, and KV cache utilization together: an available API can still have a queue.</p>
+<h2>Long-prompt performance</h2>
+<p>All of the following recorded runs used <strong>133,745 prompt tokens</strong>. They compare complete configurations and decoding conditions; they are not controlled measurements of one isolated optimization.</p>
+<table>
+<thead>
+<tr>
+<th>Recorded run</th>
+<th style="text-align:right">Output tokens</th>
+<th style="text-align:right">Prefill tokens/s</th>
+<th style="text-align:right">Decode tokens/s</th>
+<th style="text-align:right">Time to first token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DFlash2, 3 draft tokens, FP8 draft KV; cold greedy</td>
+<td style="text-align:right">512</td>
+<td style="text-align:right">3,785</td>
+<td style="text-align:right">112.05</td>
+<td style="text-align:right">35.49 s</td>
+</tr>
+<tr>
+<td>Same selected setup; cached greedy</td>
+<td style="text-align:right">512</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">107.14</td>
+<td style="text-align:right">0.97 s</td>
+</tr>
+<tr>
+<td>Same selected setup; sampled</td>
+<td style="text-align:right">105</td>
+<td style="text-align:right">3,788</td>
+<td style="text-align:right">78.11</td>
+<td style="text-align:right">35.51 s</td>
+</tr>
+<tr>
+<td>Final setup with fixed 6.5 GiB target KV; cold greedy</td>
+<td style="text-align:right">512</td>
+<td style="text-align:right">3,797</td>
+<td style="text-align:right">106.67</td>
+<td style="text-align:right">35.40 s</td>
+</tr>
+</tbody>
+</table>
+<p>The selected experiment peaked at approximately <strong>30,368 MiB</strong> of GPU memory. The final fixed-cache run recorded approximately <strong>30,171 MiB</strong>. Both are close enough to the device's capacity that additional allocations deserve careful measurement.</p>
+<p>A decode rate above 100 tokens per second can coexist with a 35-second wait before the first token. The server has to process the long prompt before generating an answer. The cached run shows how prefix reuse can change that wait substantially without increasing the decode rate.</p>
+<p>For interactive use, I would measure first-token latency and queue time alongside decode throughput. Trimming unnecessary history and preserving reusable prefixes can matter more than chasing a higher peak generation rate.</p>
+<p>These results have limits. Sampled and greedy runs produced different output lengths and text. Only output-coherence spot checks were recorded, and there was no full quality evaluation. A separate run affected by GPU resets was excluded. The measurements do not establish full-context stability or sustained performance under mixed-client load.</p>
+<h2>Local patches are part of the deployment</h2>
+<p>Package versions alone do not reproduce this environment. Two local changes are important:</p>
+<ul>
+<li>The DFlash implementation was patched so quantized context projections use their projection modules rather than assuming directly accessible dense weights. Unquantized projections retain the fused path.</li>
+<li>The XPU kernels binary was replaced. Deployment notes attribute it to a stacked-weight RMSNorm fix, but the documentation inspection verified the binary difference without independently establishing its build provenance.</li>
+</ul>
+<p>This makes the setup a record of a working environment, rather than an installation recipe guaranteed to work from stock packages. Before rebuilding it, preserve the model revision, launcher, dependency versions, source patches, and the provenance of any custom binaries.</p>
+<p>An upgrade should be checked with model startup, a short chat, structured tool output, and a representative long request before it replaces the working environment.</p>
+<h2>Keeping the service predictable</h2>
+<p>The deployment uses a user systemd unit with restart-on-failure behavior and a controlled stop timeout. The unit and launcher prevent an alternate backend from starting alongside it, since both would compete for the same GPU and port.</p>
+<p>Unattended startup needs its own check. An enabled user unit does not by itself prove that the service starts at boot without a login. User lingering was disabled in the recorded snapshot, so boot availability remains unverified.</p>
+<p>A restart interrupts active requests, clears runtime caches, and requires model initialization again. Environment changes belong in the persisted launcher or unit configuration; changing an interactive shell does not update a running service.</p>
+<p>For a deployment example, loopback is a useful default API boundary. Remote access should be configured deliberately through an authenticated gateway or private network, with transport protection appropriate to that route. API compatibility alone does not provide an access boundary.</p>
+<p>The remaining checks are full-context quality and stability, sustained mixed-client load, unattended boot, and image-input validation. Text generation was verified; multimodal behavior was not tested in this snapshot.</p>
+<p>The main lesson from this setup is to budget the entire GPU workload and measure the stages separately. Weight quantization makes the model fit, cache precision shapes the context budget, speculative decoding can improve generation, and prefix reuse can reduce the wait before generation starts. Each contributes to the result, and each needs its own evidence.</p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/qwen-intel-arc-vllm/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"></span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
