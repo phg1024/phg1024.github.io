@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>Peihong Guo</title>
+ <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+ <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Facial Keypoints as a Generative Modeling Problem</h1><p class="blog-post__date">Jan 5, 2026</p>
+<p>I've been exploring facial landmark detection as an image-conditioned generative modeling problem. Instead of producing coordinates in one pass, the prototype starts with random coordinates and updates them toward a face layout using image features as conditioning.</p>
+<p>The recovered project contains two approaches: <strong>diffusion with noise prediction</strong> and <strong>flow matching with velocity prediction</strong>. Both operate on landmark coordinates rather than generating image pixels.</p>
+<p>Originally dated January 5, 2026; updated October 6, 2026 with recovered experiment artifacts, a detailed architecture diagram, and a new DiT inference animation. The January 4 validation results and January 8 DiT checkpoint are separate experiments. Implementation details describe the source recovered in October, which includes uncommitted changes, rather than a verified snapshot of either training run.</p>
+<h2>DiT sampling in action</h2>
+<p><img src="/images/blog/facial-keypoint-diffusion/dit-cropped-landmark-sampling.gif" alt="Actual DiT flow-matching inference on four cropped face inputs, showing generated landmarks moving from Gaussian noise through 25 Euler updates."></p>
+<p><strong>October 2026 inference update:</strong> this animation was generated from the retained January 8 DiT checkpoint at training step 42,500, using frozen DINOv2-base features, random seed 17, and 25 Euler steps. It shows actual intermediate coordinates for four cropped 300-W sample images, not interpolation between known endpoints. Only generated landmarks are drawn. Playback timing is chosen for presentation and does not represent inference speed; the new run used CPU because the server's GPU runtime was unavailable.</p>
+<p>This is flow-matching inference: the model predicts velocity and advances coordinates from noise toward a landmark layout. It is distinct from the diffusion branch's DDIM denoising. The January 8 checkpoint strictly matches the current six-block, 384-wide DiT implementation, and its saved validation summaries show cropped face inputs. These samples illustrate behavior and are not a new held-out accuracy benchmark.</p>
+<p>The four inputs were selected at fixed indices from the 300-W loader using the original committed crop implementation: landmark bounding box, 20% margin, clipping to image bounds, then resizing to 224 × 224. Their membership in the checkpoint's original training or validation partition was not verified. These crops use ground-truth annotations, so this is not an end-to-end face-detection demonstration; an application would need a detector or another source of face bounds. The inference script loaded DINOv2-base explicitly from the local cache; this confirms the encoder used for the animation, not the encoder's provenance during the original training run.</p>
+<h2>Architecture: image features guide coordinate updates</h2>
+<p><img src="/images/blog/facial-keypoint-diffusion/model-architecture.png" alt="Detailed model architecture comparing the four-layer transformer decoder for diffusion with the six-block DiT-style velocity model for flow matching, including coordinate embeddings, frozen DINO image memory, time conditioning, self-attention, cross-attention, and output heads."></p>
+<p>The diagram follows the recovered source: the left branch adds time embeddings to landmark tokens before transformer decoding; the right branch uses time-conditioned normalization and gated residuals inside each DiT-style block. Both attend to projected image patches. The January 4 checkpoint uses the earlier decoder structure, while the January 8 checkpoint used in the animation matches the DiT-style structure. The diagram's full-image padding label describes the current loader; the animation instead uses the original face-crop loader. The January 4 training objective remains uncertain, as discussed with its results below.</p>
+<p>The image branch produces spatial patch features with a frozen DINO encoder. The coordinate branch embeds each two-dimensional landmark, adds a learned landmark-identity embedding, and incorporates time. Cross-attention lets coordinate tokens consult the image features, while self-attention lets landmarks interact with one another.</p>
+<p>The output is a two-dimensional vector for every landmark. Its meaning depends on the training objective: diffusion predicts noise, while flow matching predicts velocity. A sampler turns those predictions into successive coordinate updates.</p>
+<p>The extractor attempts to load a DINOv3 ViT-S/16 checkpoint and falls back to DINOv2-base on loading failure. That fallback changes the conditioning model, so the actual loaded encoder must be recorded with any future experiment. The training code infers feature dimensionality from a dummy forward pass.</p>
+<h2>Preparing images and landmarks</h2>
+<p>The dataset loaders combine still images from <strong>300-W</strong> and annotated frames from <strong>300-VW</strong>, parsing coordinates from <code>.pts</code> files. The dataset organizers provide the background for these benchmarks: <a href="https://ibug.doc.ic.ac.uk/resources/300-W/">300-W</a> and <a href="https://ibug.doc.ic.ac.uk/resources/300-VW/">300-VW</a>.</p>
+<p>The current preprocessing uses the full image, pads it to a square with black pixels, and resizes it to <strong>224 × 224</strong>. Coordinates receive the same translation and scaling. An optional landmark-based crop exists, but the default path uses the whole image.</p>
+<p>The training collator maps pixel coordinates into approximately <code>[-1, 1]</code>:</p>
+<pre class="language-python"><code class="language-python">normalized_keypoints <span class="token operator">=</span> <span class="token punctuation">(</span>pixel_keypoints <span class="token operator">/</span> <span class="token number">224.0</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2.0</span> <span class="token operator">-</span> <span class="token number">1.0</span></code></pre>
+<p>Coordinates and images must stay aligned through every transformation. A good first diagnostic is to draw the transformed ground truth on the resized image before training anything.</p>
+<h2>Diffusion: learn the noise added to a landmark set</h2>
+<p>The diffusion branch adds Gaussian noise at a randomly chosen timestep:</p>
+<p>$$
+x_t = \sqrt{\bar\alpha_t},x_{\mathrm{clean}}
++ \sqrt{1-\bar\alpha_t},\epsilon.
+$$</p>
+<p>The transformer receives the noisy coordinates, timestep, and image features. Its objective is mean squared error between predicted and actual noise.</p>
+<p>The recovered diffusion configuration uses 1,000 timesteps, and the process implements a linear beta schedule. Its evaluation path calls a 50-step DDIM sampler rather than the full ancestral sampler. <a href="https://arxiv.org/abs/2010.02502">DDIM</a> provides the underlying approach to sampling with fewer iterative steps.</p>
+<p>The diffusion backbone is a four-layer transformer decoder with hidden width 256 and four attention heads. However, the current <code>DiffusionTransformer.forward</code> computes <code>pred</code> without returning it. That branch needs repair before it can produce a usable loss. Its presence in the repository is evidence of an implemented design, not a currently working training path.</p>
+<h2>Flow matching: learn a velocity field</h2>
+<p>The default configuration selects flow matching with a DiT-style backbone. During training, it pairs Gaussian noise <code>x_0</code> with ground-truth coordinates <code>x_1</code> and constructs a straight interpolation:</p>
+<p>$$
+x_t = (1-t)x_0 + tx_1,
+\qquad v_{\mathrm{target}} = x_1-x_0.
+$$</p>
+<p>The network predicts that velocity given the intermediate coordinates, time, and image features. This coordinate-space experiment uses the velocity-regression idea described in <a href="https://arxiv.org/abs/2210.02747">Flow Matching for Generative Modeling</a>.</p>
+<p><img src="/images/blog/facial-keypoint-diffusion/flow-path.png" alt="Four stages of a straight interpolation from noise to a hand-designed facial landmark layout. This is a schematic, not a trained prediction."></p>
+<p><strong>This figure is explanatory:</strong> it uses hand-designed landmarks and Gaussian noise. It shows the training interpolation, not a learned sampling trajectory or an experimental result.</p>
+<p>At inference, the sampler starts from Gaussian coordinates and applies 25 Euler steps:</p>
+<pre class="language-python"><code class="language-python">x <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>shape<span class="token punctuation">,</span> device<span class="token operator">=</span>device<span class="token punctuation">)</span>
+dt <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token operator">/</span> steps
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>steps<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time_index <span class="token operator">=</span> torch<span class="token punctuation">.</span>full<span class="token punctuation">(</span>
+        <span class="token punctuation">(</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token punctuation">(</span>i <span class="token operator">/</span> steps<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        device<span class="token operator">=</span>device<span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    velocity <span class="token operator">=</span> model<span class="token punctuation">(</span>x<span class="token punctuation">,</span> time_index<span class="token punctuation">,</span> image_features<span class="token punctuation">)</span>
+    x <span class="token operator">=</span> x <span class="token operator">+</span> dt <span class="token operator">*</span> velocity</code></pre>
+<p>This sketch assumes the model is in evaluation mode and sampling runs without gradients. It maps time to a batch of integer indices to reuse sinusoidal time embeddings, matching the approach used for the GIF.</p>
+<p>The flow backbone uses six blocks, hidden width 384, and six attention heads. Time modulates the self-attention and MLP branches through AdaLN-style shifts, scales, and gates. Image cross-attention is a separate residual branch without that gate. The final coordinate projection is zero-initialized.</p>
+<h2>Recovered training configuration and evaluation</h2>
+<p>These are defaults from the recovered source. They are not independently verified hyperparameters for the January 4 or January 8 checkpoint; saved artifacts and nearby configurations do not establish a complete training manifest.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Recovered default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default objective</td>
+<td>Flow matching</td>
+</tr>
+<tr>
+<td>Batch size</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Optimizer</td>
+<td>Adam</td>
+</tr>
+<tr>
+<td>Learning rate</td>
+<td>0.0001</td>
+</tr>
+<tr>
+<td>Epochs</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Evaluation/checkpoint interval</td>
+<td>250 training steps</td>
+</tr>
+<tr>
+<td>Learning-rate schedule</td>
+<td>Cosine decay with warmup</td>
+</tr>
+<tr>
+<td>Warmup</td>
+<td>5% of steps, capped at 100</td>
+</tr>
+<tr>
+<td>Train/validation split</td>
+<td>90% / 10%, random seed 42</td>
+</tr>
+<tr>
+<td>Feature extraction during training</td>
+<td>Frozen encoder, BF16 autocast</td>
+</tr>
+</tbody>
+</table>
+<p>Evaluation accumulates squared coordinate error and divides by the number of images. Despite the <code>eval/mse</code> label, this is <strong>summed coordinate squared error per image</strong>, not mean error per coordinate or a standard facial-landmark normalized mean error. Its scale depends on the number of landmarks.</p>
+<p>The visualization logger overlays ground truth and sampled landmarks on the first four validation images. The saved TensorBoard image summaries preserve those overlays, making it possible to inspect the earlier experiment without rerunning inference.</p>
+<h2>Earlier transformer-decoder validation results</h2>
+<p>The retained January 4 run contains 246 image summaries and corresponding validation measurements, from step 250 through step 61,500. These results belong to the earlier transformer-decoder checkpoint, not the DiT animation above. The images below are extracted directly from those summaries. <strong>Red marks are ground truth; green marks are sampled predictions</strong>, following the logger's drawing convention.</p>
+<h3>Step 250</h3>
+<p><img src="/images/blog/facial-keypoint-diffusion/validation-step-250.png" alt="Saved validation overlays at training step 250, with red ground-truth landmarks and green sampled predictions."></p>
+<h3>Step 10,000</h3>
+<p><img src="/images/blog/facial-keypoint-diffusion/validation-step-10000.png" alt="Saved validation overlays at training step 10000."></p>
+<h3>Step 61,500</h3>
+<p><img src="/images/blog/facial-keypoint-diffusion/validation-step-61500.png" alt="Saved validation overlays at training step 61500, showing sampled landmarks close to many ground-truth positions."></p>
+<p>These are the four examples chosen by the existing validation logger, not a curated best-case selection. Many late-run predictions visually approach the annotations, but these examples do not establish accuracy across poses, occlusion, identities, or unseen videos.</p>
+<p><img src="/images/blog/facial-keypoint-diffusion/validation-error.png" alt="Validation coordinate error from the retained January 4 TensorBoard scalar summaries, plotted on a logarithmic vertical axis."></p>
+<p>The logged error falls from approximately <strong>1.7705 at step 250</strong> to <strong>0.0370 at step 61,500</strong>. These are the trainer's summed coordinate squared errors per image, not normalized mean landmark error. The existing sample-level split also limits what the improvement says about generalization.</p>
+<p>There is a provenance mismatch worth preserving: a nearby saved Hydra configuration selects flow matching, but the run's checkpoint contains the earlier 256-wide transformer decoder rather than the current 384-wide DiT backbone. Checkpoint structure identifies the backbone but does not identify its training objective. I therefore label these as results from the retained run, rather than claiming they establish a diffusion-versus-flow comparison. The current source's missing diffusion return also cannot be used to infer that earlier training failed: the saved artifacts show that an earlier implementation did run.</p>
+<p>A retained CSV contains episode, reward, and error columns from an earlier experiment. Its schema does not match the current trainer, and its model provenance is unclear. I have excluded those numbers rather than attaching them to diffusion or flow matching.</p>
+<h2>What needs validation next</h2>
+<p>The source offers a useful starting point, but several checks come before a credible comparison:</p>
+<ul>
+<li><strong>Split by video or subject.</strong> The current random sample split can place neighboring frames from one video in both partitions. It cannot establish generalization to unseen sequences.</li>
+<li><strong>Validate the encoder contract.</strong> The extractor removes one leading token and assumes the remaining sequence forms a square patch grid. Special/register tokens, feature layout, and the selected checkpoint need explicit checks.</li>
+<li><strong>Repair and test diffusion.</strong> Add the missing return and check the DDIM terminal update: the current schedule ends at diffusion index zero instead of explicitly stepping to the clean-data boundary. Its <code>eta</code> parameter is also ignored in favor of deterministic updates.</li>
+<li><strong>Establish evaluation units.</strong> Report a defined normalized landmark error and compare against a direct coordinate-regression baseline under the same split and preprocessing.</li>
+<li><strong>Measure sampling variability and cost.</strong> Multiple random starts may produce different landmarks. Accuracy, variation, and runtime should be measured together; the configured 25 versus 50 steps alone do not establish a speed or quality advantage.</li>
+</ul>
+<p>The appeal of this project is the compact output space: a generative process over structured coordinates, conditioned on a rich image representation. The recovered validation overlays and new DiT sampling animation show that idea in action. The next step is a reproducible comparison with sequence-aware splits, complete training manifests, defined accuracy metrics, and measured inference cost.</p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/facial-keypoint-diffusion/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"></span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
