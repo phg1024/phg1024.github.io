@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>Peihong Guo</title>
+ <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+ <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Building Jarvis: A Local Voice Assistant with Android and Hermes</h1><p class="blog-post__date">Oct 6, 2026</p>
+<p>Jarvis is a voice assistant built around a stock Android phone, a Hermes agent, local speech models, and Homebridge. The phone handles wake detection, recording, playback, and the interface. A separate service host handles transcription, orchestration, and speech synthesis, while a GPU inference server supplies the conversation model.</p>
+<p>The design also includes a background development queue: an explicit improvement request can start an isolated coding session, followed by tests, a signed Android build, and wireless installation.</p>
+<p>This post describes the implementation snapshot recorded on <strong>October 6, 2026</strong>. It is based on deployment notes rather than a new end-to-end test. Private addresses, account names, device identifiers, credential locations, and household inventory have been omitted.</p>
+<h2>A story request in action</h2>
+<figure>
+  <video controls playsinline preload="metadata" aria-label="Jarvis responding to a request for a Peppa Pig story" style="display: block; width: 100%; max-width: 280px; max-height: 60vh; margin: 0 auto; border-radius: 12px; background: #111;">
+    <source src="/images/blog/jarvis-architecture/jarvis-peppa-pig-story.mp4" type="video/mp4">
+    Your browser does not support embedded video. <a href="/images/blog/jarvis-architecture/jarvis-peppa-pig-story.mp4">Watch the Jarvis demo.</a>
+  </video>
+  <figcaption>Jarvis responds to a request to tell a Peppa Pig story.</figcaption>
+</figure>
+<h2>Architecture</h2>
+<p><img src="/images/blog/jarvis-architecture/architecture.svg" alt="Jarvis architecture: an Android client communicates with an authenticated voice bridge, which connects local transcription, Hermes orchestration, and speech synthesis. Hermes uses Qwen inference and Homebridge tools. A separate development queue leads to tested, signed updates."></p>
+<p>The phone talks to one authenticated bridge. The Hermes gateway and speech worker are loopback-only services behind it; the phone does not need direct access to either.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Android client</td>
+<td>Wake word, voice activity detection, audio capture, interface, playback</td>
+</tr>
+<tr>
+<td>Voice bridge</td>
+<td>Authentication, transcription, request routing, activity events, speech proxy</td>
+</tr>
+<tr>
+<td>Hermes conversation profile</td>
+<td>Sessions, context, memory, model requests, tool execution</td>
+</tr>
+<tr>
+<td>Qwen inference server</td>
+<td>Local conversation inference and structured tool decisions</td>
+</tr>
+<tr>
+<td>Persistent speech worker</td>
+<td>MLX speech models and serialized synthesis</td>
+</tr>
+<tr>
+<td>Homebridge connector</td>
+<td>Device discovery, fresh state, validated writes and readback</td>
+</tr>
+<tr>
+<td>Development controller</td>
+<td>Persistent jobs, worktrees, tests, signed builds, wireless updates</td>
+</tr>
+</tbody>
+</table>
+<p>The Qwen deployment is described separately in <a href="/blog/ai/qwen-intel-arc-vllm/">Deploying Qwen on Intel Arc with vLLM and DFlash2</a>.</p>
+<h2>One conversation turn</h2>
+<p>The phone detects “Hey Jarvis” locally, with a button as an alternative entry point. It records a complete utterance as <strong>16 kHz mono PCM16</strong>, using local voice activity detection to determine when speech ends. Voice requests are limited to 30 seconds.</p>
+<p>The recording goes to <code>/voice</code>, where faster-whisper's small model transcribes it on the service host's CPU. Typed requests enter <code>/text</code> and skip transcription. Ordinary requests then go through Hermes to Qwen and any required tools.</p>
+<p>The bridge returns activity events and a final reply. With <code>Accept: application/x-ndjson</code>, the client receives newline-delimited events followed by the result; ordinary JSON remains supported. Activity cues summarize tool work without exposing raw tool arguments or internal reasoning.</p>
+<p>Once the reply is complete, the phone splits it into speech segments, requests <code>/speech</code>, and plays the resulting WAV files in order. It downloads one next segment while the current segment plays. After playback, a <strong>30-second follow-up window</strong> accepts another utterance without repeating the wake word.</p>
+<p>This is a turn-based pipeline. Recording and playback are coordinated to prevent the assistant hearing itself. Full-duplex interruption and speech synthesis from unfinished model tokens are not implemented.</p>
+<p>All phone-facing routes require a pairing bearer token. The bridge serializes conversation processing and reports busy requests rather than overlapping turns. A conversation identifier connects requests to server-side history.</p>
+<h2>Android state ownership</h2>
+<p>The Android implementation uses native Java and runs without root or a custom ROM. Its interaction logic lives in a pure Java state machine owned by a controller thread. The interface observes immutable snapshots.</p>
+<p>The main voice path moves through starting, listening, capturing, processing, speaking, cooldown, and follow-up states. Typed input and recovery have their own paths.</p>
+<p>Every transition advances an <strong>operation ticket</strong>. Audio, HTTP, and speech callbacks must match both the current ticket and expected state. A delayed callback from a cancelled request cannot restart obsolete playback or revive an old recording.</p>
+<table>
+<thead>
+<tr>
+<th>Execution context</th>
+<th>Ownership</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UI thread</td>
+<td>Controls, transcript display, service snapshots</td>
+</tr>
+<tr>
+<td>Controller thread</td>
+<td>Transitions, operation tickets, timers, recovery, microphone policy</td>
+</tr>
+<tr>
+<td>Microphone reader</td>
+<td>Blocking audio reads and recorder release</td>
+</tr>
+<tr>
+<td>Request executor</td>
+<td>Voice/text HTTP requests and activity events</td>
+</tr>
+<tr>
+<td>Speech executor</td>
+<td>Ordered playback and cancellation</td>
+</tr>
+<tr>
+<td>Prefetch executor</td>
+<td>One next speech segment</td>
+</tr>
+</tbody>
+</table>
+<p>The microphone produces 20 ms frames into a bounded queue of 100 frames. Stale frames are rejected, and overflow is reported rather than silently accumulating latency. Delivery epochs discard frames crossing capture-gate changes. Audio collected during processing or playback is suppressed.</p>
+<p>Wake detection uses an <strong>openWakeWord ONNX pipeline</strong> of mel features, embeddings, and a wake classifier. Silero v4 VAD provides speech detection and endpointing. Foreground service behavior, a partial wake lock, and a Wi-Fi lock help maintain listening, while recovery timers handle some failures. Process termination and network outages remain possible.</p>
+<h2>Conversation context and model routing</h2>
+<p>Hermes uses separate profiles for conversation and development. The conversation profile calls local Qwen with thinking disabled and a 2,048-token generation cap. Its configured context is 65,536 tokens, with a compression threshold cap of 20,000 tokens.</p>
+<p>The conversation profile omits unrelated tool families and the full installed skills index. An earlier short-request comparison reduced input from roughly 17,206 to 8,707 tokens before the home-control addition. That is a historical prompt-size observation, not a fixed current cost or latency guarantee.</p>
+<p>The voice run budget is 60 seconds with one API retry. It is cooperative, so it does not impose a hard deadline on every tool or network call. The phone and adapter also handle timeouts.</p>
+<p>Development uses a distinct process, session, profile, and Git worktree for each job, with a cloud coding model. Separate profiles prevent ordinary conversation history and coding context from being mixed. They do not provide OS-level isolation: processes still share the host's user permissions and resources. Coding context sent to the cloud leaves the local network; local speech and Qwen inference stay local, while web tools can contact external services.</p>
+<h2>Speech synthesis that survives long replies</h2>
+<p>The persistent speech worker uses Qwen3-TTS through MLX. The recorded setup uses an 8-bit 0.6B CustomVoice model for default Chinese and English voices, with an 8-bit 1.7B model loaded for styled voices when needed. Synthesis is serialized to protect model and decoder state.</p>
+<p>Each reply captures a voice-settings snapshot. All prefetched segments use that snapshot, so a setting change cannot switch voices halfway through a reply.</p>
+<p>Long replies exposed stretching and truncation failures. The implementation addresses them with several controls:</p>
+<ul>
+<li>Client and server segmentation share a 140-weighted-unit budget, counting CJK characters as four units. Splits prefer sentence and punctuation boundaries while preserving decimals and common abbreviations.</li>
+<li>Spoken-text cleanup removes display markup without rewriting the visible answer.</li>
+<li>Each generation receives complete phrase text, with acoustic sampling configured separately from text/code prediction.</li>
+<li>Decoder streaming state is reset before and after independent generations, including failures.</li>
+<li>Duration, finite-sample, token-limit, and early-termination checks reject clearly malformed audio. Smaller phrases are retried within bounded limits.</li>
+<li>The phone validates WAV format and sample rate and monitors actual playback progress.</li>
+</ul>
+<p>These checks improve stability but cannot detect every pronunciation error. Prefetching reduces gaps between complete segments; it does not make this token-level audio streaming.</p>
+<h2>Home control with explicit confirmation</h2>
+<p>The Homebridge connector is installed only in the conversation profile and authenticates with a dedicated non-admin account. Credentials stay outside Git and tool results, and authentication tokens remain in memory.</p>
+<p>Its tools separate discovery, fresh-state reads, and writes. Discovery exposes supported settings without presenting cached values as current state. Reads report when refresh cannot be confirmed. Writes validate an explicit supported change and then perform a separate state readback.</p>
+<p>Only matching readback produces <code>confirmed=true</code>. A write timeout is not blindly retried because the device may already have received the command. Ambiguous device names require clarification. The enabled write surface covers lights, switches, outlets, and fans; door, lock, alarm, and camera control are excluded.</p>
+<p>An empty inventory can trigger a bounded discovery refresh with a cooldown. That refresh uses the Homebridge Accessories discovery channel without toggling devices.</p>
+<p>The deployment notes record end-to-end discovery and fresh-state reads, plus thirteen passing connector tests. Physical device writes were not exercised during setup, so those checks do not establish completed physical-control testing.</p>
+<h2>Requested improvements and wireless updates</h2>
+<p>An explicit app-improvement request enters a persistent queue. The assistant acknowledges queuing promptly, and the user can continue talking while coding runs. Acknowledgement means the request was queued; it does not mean an update has been installed.</p>
+<p>The controller serializes jobs with a process lock and requires a clean main checkout. Each job starts from the current revision in a separate branch and worktree. The coding agent edits there, while the controller owns signing, commits, and deployment.</p>
+<p>Before advancing a job, the controller checks permitted changes, runs server and Android host tests, builds with the existing signing key, and verifies package identity and signing. It advances the main branch only if the original base still matches. A stored APK digest is checked again before installation.</p>
+<p>Wireless deployment verifies the intended phone, waits for an allowed idle state, installs an in-place signed update, refuses downgrades, and checks the installed version and running process. The notes record completed jobs through this path. That verifies the tested build and installation, not every possible interaction.</p>
+<p>Selected server files have a deployment allowlist, backups, restart checks, and restoration after failed health checks. This is not an atomic rollback covering the APK, Git history, and every service. The idle-state check also has a race if a user begins a turn just before installation.</p>
+<p>On the older Android device used for this project, Wi-Fi ADB may require USB re-enablement after reboot. Voice service access and the update channel are independent, so conversation can work while an update waits for the phone.</p>
+<h2>Interface, history, and operating limits</h2>
+<p>An animated avatar uses OpenGL ES with a Canvas activity overlay. Visual transitions blend over 800 ms, while capture and playback amplitude drive an audio flame. Tool activity gets brief visual cues for research, calculation, or coding, with listening, speaking, and stopping taking priority. The coding cue is an activity summary rather than a live background-job monitor.</p>
+<p>The transcript screen supports selectable message bubbles and a native Markdown subset. User text stays literal. Visible history is currently held in memory and disappears after process death, while the persisted conversation ID can still refer to server-side history. Starting a new conversation clears the local transcript and chooses a new identity without deleting earlier server sessions.</p>
+<p>Server-side conversations retain transcribed text and tool results. Coding jobs retain requests, progress, logs, and changes. Ordinary speech processing does not retain payloads as speech logs, though explicit diagnostic artifacts are separate.</p>
+<p>The recorded deployment uses authenticated HTTP on a trusted local network. Bearer authentication does not encrypt transport, and remote access was not deployed in this snapshot. Other limits include shared compute during builds and speech processing, variable model and tool latency, imperfect wake detection, and short interruptions during updates.</p>
+<p>The most useful design choice has been making ownership explicit: the controller owns interaction state, Hermes owns conversations and tools, the speech worker owns synthesis state, and the release controller owns installation. That makes delayed callbacks, uncertain device writes, malformed audio, and partially completed updates easier to handle and inspect.</p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/jarvis-architecture/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"></span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

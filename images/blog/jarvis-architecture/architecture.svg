@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="770" viewBox="0 0 1080 770" role="img" aria-labelledby="title desc">
+  <title id="title">Jarvis voice assistant architecture</title>
+  <desc id="desc">Android communicates with a voice bridge. The bridge uses Whisper, Hermes, and Qwen3-TTS. Hermes connects to Qwen inference and Homebridge. Explicit improvement requests enter a separate development queue that produces tested signed updates for Android.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#64748b"/></marker>
+    <style>
+      text {font-family:system-ui,-apple-system,sans-serif;text-anchor:middle;fill:#172334}
+      .title {font-size:26px;font-weight:700}
+      .label {font-size:20px;font-weight:650}
+      .detail {font-size:16px;fill:#475569}
+      .edge {fill:none;stroke:#64748b;stroke-width:2.5;marker-end:url(#arrow)}
+      .box {rx:14;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="1080" height="770" rx="20" fill="#f8fafc"/>
+  <text x="540" y="43" class="title">Jarvis · voice, tools, and requested updates</text>
+  <rect x="340" y="65" width="400" height="90" class="box" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="540" y="100" class="label">Android client</text>
+  <text x="540" y="128" class="detail">Local wake word / VAD · recording · playback</text>
+  <path d="M540 155 V213" class="edge" marker-start="url(#arrow)"/>
+  <text x="735" y="190" class="detail">Authenticated voice / text / speech API</text>
+  <rect x="35" y="202" width="1010" height="246" rx="18" fill="#eef2f7" stroke="#cbd5e1" stroke-dasharray="7 5"/>
+  <text x="136" y="231" class="detail">Service host</text>
+  <rect x="340" y="213" width="400" height="82" class="box" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="540" y="246" class="label">Voice bridge</text>
+  <text x="540" y="273" class="detail">Routing · activity events · speech proxy</text>
+  <path d="M410 295 V323 H200 V351" class="edge"/>
+  <path d="M540 295 V351" class="edge" marker-start="url(#arrow)"/>
+  <path d="M670 295 V323 H880 V351" class="edge" marker-start="url(#arrow)"/>
+  <rect x="70" y="351" width="260" height="80" class="box" fill="#dbeafe" stroke="#60a5fa"/>
+  <text x="200" y="384" class="label">Whisper ASR</text>
+  <text x="200" y="412" class="detail">Recorded audio → transcript</text>
+  <rect x="410" y="351" width="260" height="80" class="box" fill="#dbeafe" stroke="#60a5fa"/>
+  <text x="540" y="384" class="label">Hermes agent</text>
+  <text x="540" y="412" class="detail">Sessions · memory · tools</text>
+  <path d="M330 390 H410" class="edge"/>
+  <rect x="750" y="351" width="260" height="80" class="box" fill="#ccfbf1" stroke="#2dd4bf"/>
+  <text x="880" y="384" class="label">Qwen3-TTS / MLX</text>
+  <text x="880" y="412" class="detail">Complete segments → WAV</text>
+  <path d="M490 431 V455 H320 V479" class="edge" marker-start="url(#arrow)"/>
+  <path d="M590 431 V455 H730 V479" class="edge" marker-start="url(#arrow)"/>
+  <rect x="170" y="479" width="300" height="60" class="box" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="320" y="504" class="label">Qwen inference server</text>
+  <text x="320" y="527" class="detail">Local conversation model</text>
+  <rect x="580" y="479" width="300" height="60" class="box" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="730" y="504" class="label">Homebridge</text>
+  <text x="730" y="527" class="detail">Discovery · state · validated control</text>
+  <path d="M740 254 H1030 V609 H895" class="edge" stroke-dasharray="6 5"/>
+  <text x="870" y="582" class="detail">Explicit improvement request</text>
+  <rect x="35" y="592" width="960" height="143" rx="18" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="515" y="622" class="label">Background development and release controller</text>
+  <rect x="60" y="645" width="230" height="62" class="box" fill="#ffffff" stroke="#fdba74"/>
+  <text x="175" y="671" class="label">Persistent queue</text>
+  <text x="175" y="695" class="detail">Serialized jobs</text>
+  <path d="M290 676 H340" class="edge"/>
+  <rect x="340" y="645" width="280" height="62" class="box" fill="#ffffff" stroke="#fdba74"/>
+  <text x="480" y="671" class="label">Separate coding agent</text>
+  <text x="480" y="695" class="detail">Cloud model · Git worktree</text>
+  <path d="M620 676 H670" class="edge"/>
+  <rect x="670" y="645" width="300" height="62" class="box" fill="#ffffff" stroke="#fdba74"/>
+  <text x="820" y="671" class="label">Tests and signed build</text>
+  <text x="820" y="695" class="detail">Verify · wait for idle · install</text>
+  <path d="M970 676 H1058 V110 H740" class="edge" stroke-dasharray="6 5"/>
+</svg>
