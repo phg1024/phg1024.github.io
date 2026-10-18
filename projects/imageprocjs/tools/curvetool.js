@@ -15,7 +15,6 @@ var CurveTool = function() {
 
     var canvas;
     var ctx;
-    var containerId;
 
     function createPoint(x, y, locked) {
         return {
@@ -54,27 +53,6 @@ var CurveTool = function() {
         ctx.moveTo(0, 0); ctx.lineTo(0, height); ctx.lineTo(width, height);
         ctx.stroke();
 
-        // Calculate curve points
-        var curvePoints = [];
-        for (var x = 0; x <= width; x++) {
-            for (var i = 0; i < points.length - 1; i++) {
-                if (x >= points[i].x && x <= points[i+1].x) {
-                    var px, py;
-                    var xl = points[i].x, yl = points[i].y;
-                    var xr = points[i+1].x, yr = points[i+1].y;
-                    var mxl = 0.5 * (points[i+1].x - points[i].x), myl = 0.5 * (points[i+1].y - points[i].y);
-                    var mxr = 0.5 * (points[i+1].x - points[i-1].x, myr = 0.5 * (points[i+1].y - points[i-1].y);
-                    // simplified catmull-rom just for drawing path
-                    // actually just drawing points and lines first for simplicity or use the CatmullRomCurve logic
-                    // Let's reuse the existing CatmullRomCurve logic from curve.js if accessible, 
-                    // but since we don't have access in this scope easily without imports, I'll replicate the path logic.
-                    
-                    // Re-implementing simple card spline or just drawing control points
-                    break;
-                }
-            }
-        }
-        
         // Draw the curve using CatmullRomCurve logic
         var pts = [];
         for (var i = 0; i < points.length; i++) {
@@ -124,12 +102,14 @@ var CurveTool = function() {
     function getMousePos(evt) {
         var rect = canvas.getBoundingClientRect();
         return {
-            x: evt.clientX - rect.left,
-            y: evt.clientY - rect.top
+            x: (evt.clientX - rect.left) * (width / rect.width),
+            y: (evt.clientY - rect.top) * (height / rect.height)
         };
     }
 
     function mousedown(evt) {
+        evt.preventDefault();
+        canvas.focus();
         var m = getMousePos(evt);
         var x = clampValue(m.x, 0, width);
         var y = clampValue(m.y, 0, height);
@@ -156,9 +136,9 @@ var CurveTool = function() {
         document.dispatchEvent(new Event('curvechanged'));
     }
 
-    function mouseup() {
+    function mouseup(evt) {
         if (!dragged) return;
-        mousemove(document); // snap to curve one last time
+        mousemove(evt);
         dragged = null;
         document.dispatchEvent(new Event('curvechanged'));
     }
@@ -205,12 +185,13 @@ var CurveTool = function() {
         var container = document.querySelector(target);
         if (!container) throw "Target not found";
 
-        cursor: 'pointer';
         canvas = document.createElement('canvas');
+        canvas.id = 'curvetool';
         canvas.setAttribute('width', width);
         canvas.setAttribute('height', height);
-        canvas.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
         canvas.setAttribute('tabindex', 1);
+        canvas.setAttribute('role', 'application');
+        canvas.setAttribute('aria-label', 'Tone curve editor');
         container.appendChild(canvas);
         ctx = canvas.getContext('2d');
 

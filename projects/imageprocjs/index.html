@@ -15,6 +15,8 @@
             <title>ImageProcJS | Peihong Guo</title>
             <link rel="stylesheet" href="/styles/styles.css">
             <link rel="stylesheet" href="./imageprocjs.css">
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+        <script async src="/js/ga.js"></script>
         </head>
         <body>
             <canvas class="theme-backdrop" aria-hidden="true"></canvas>
@@ -188,6 +190,10 @@
             </div>
 
             <!-- Legacy libraries removed (d3, require, jquery) -->
+            <script src="./algorithms/mediancut.js"></script>
+            <script src="./algorithms/kmeans.js"></script>
+            <script src="./algorithms/neuralnetwork.js"></script>
+            <script src="./algorithms/filterfactory.js"></script>
             <script src="./algorithms.js"></script>
             <script src="./benchmark.js"></script>
             <script src="./colorutils.js"></script>
@@ -357,11 +363,9 @@
                         if (this.value === 'filters') {
                              document.getElementById('div_filters').style.display = 'block';
                              document.getElementById('div_effects').style.display = 'none';
-                            break;
                         } else {
                              document.getElementById('div_filters').style.display = 'none';
                              document.getElementById('div_effects').style.display = 'block';
-                            break;
                         }
                      });
                  }

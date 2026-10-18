@@ -442,12 +442,15 @@
 
 #div_curveplot #histogram {
     z-index: 1;
+    pointer-events: none;
 }
 
 #div_curveplot #curvetool {
     z-index: 2;
     background: transparent;
     box-shadow: none;
+    cursor: crosshair;
+    touch-action: none;
 }
 
 #div_curvetool #rect {

@@ -577,6 +577,13 @@
   border: 1px solid var(--border);
 }
 
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
 .button-link {
   display: inline-flex;
   align-items: center;

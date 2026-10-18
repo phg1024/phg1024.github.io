@@ -749,6 +749,15 @@
         carousels.forEach(function (carousel) { initCarousel(carousel); });
     };
 
+    // ── Footer year ──
+
+    const initFooterYear = function () {
+        var footerYear = document.getElementById('footer-year');
+        if (!footerYear) return;
+        var year = new Date().getFullYear();
+        footerYear.textContent = year > 2009 ? ' \u2013 ' + year : '';
+    };
+
     // ── Init ──
 
     const init = function () {
@@ -794,10 +803,9 @@
         }
 
         // Gallery
-
-    // Gallery
-    initGalleryTabs();
-    initCarousels();
+        initGalleryTabs();
+        initCarousels();
+        initFooterYear();
     };
 
     // Boot
