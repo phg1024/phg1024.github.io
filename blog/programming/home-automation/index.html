@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>A Local-Only Garage Door Opener for Apple Home | Peihong Guo</title>
+ <meta name="description" content="Two ESP8266 boards, one Homebridge accessory plugin and no vendor cloud: how the pieces fit together, and how many of the design decisions were forced by…">
+ <link rel="canonical" href="https://phg1024.github.io/blog/programming/home-automation/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="A Local-Only Garage Door Opener for Apple Home | Peihong Guo">
+ <meta property="og:description" content="Two ESP8266 boards, one Homebridge accessory plugin and no vendor cloud: how the pieces fit together, and how many of the design decisions were forced by…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/programming/home-automation/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="A Local-Only Garage Door Opener for Apple Home | Peihong Guo">
+ <meta name="twitter:description" content="Two ESP8266 boards, one Homebridge accessory plugin and no vendor cloud: how the pieces fit together, and how many of the design decisions were forced by…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-10-18T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/styles.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>A Local-Only Garage Door Opener for Apple Home</h1><p class="blog-post__date">Oct 18, 2026</p>
+<p>My garage door opener was the one door in the house I couldn't close from my phone without installing a vendor's app, making a vendor's account, and letting a vendor's cloud poll my opener's status every few seconds. That's a strange dependency for a device whose entire interface is two screw terminals.</p>
+<p>So I built the missing piece myself: two ESP8266 boards and a Homebridge accessory plugin, all of it local. Neither board ever opens a connection to anything — they join the WLAN, answer HTTP on port 80, reply to mDNS, and stop there. No vendor account, no cloud polling the opener, no broker to keep alive. Inside the house the whole path is on the LAN; the only way anything leaves it is Apple's own encrypted relay when you operate the door from outside the house. The interesting part isn't that it works — it's how few parts the honest version needs, and how much of the design is forced by an interface with exactly one input.</p>
+<p><img src="/images/blog/home-automation/architecture.svg" alt="System overview: Apple Home over HomeKit to a Homebridge accessory plugin, which sends HTTP commands to an ESP8266 relay board and polls an ESP8266 reed-switch board for state."></p>
+<h2>The constraint that shapes everything</h2>
+<p>A garage door opener head unit exposes one input: a normally-open momentary contact. Shorting it for a moment does whatever the wall button does — start a close, start an open, or stop a moving door. There is no &quot;go to closed&quot; command, no position feedback, no acknowledgement beyond the relay clicking.</p>
+<p>Everything downstream is an interpretation of that one input:</p>
+<ul>
+<li><strong>Actuation</strong> is a pulse, not a direction. &quot;Open&quot; and &quot;close&quot; are indistinguishable at the wire.</li>
+<li><strong>State</strong> comes from exactly one binary sensor — a magnetic reed switch on the door edge.</li>
+<li><strong>Confirmation</strong> doesn't exist. After a pulse you can only watch the sensor and hope.</li>
+</ul>
+<p>That single fact drove most of the design, including the parts I got wrong.</p>
+<h2>The pieces</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Hardware</th>
+<th>Role</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Door sensor</td>
+<td>Wemos D1 Mini Lite (ESP8266)</td>
+<td>Reads a reed switch, reports state</td>
+<td><code>GET /</code> → <code>open</code> / <code>closed</code></td>
+</tr>
+<tr>
+<td>Relay controller</td>
+<td>Wemos D1 Mini Lite (ESP8266)</td>
+<td>Pulses the opener's button terminals</td>
+<td><code>GET /on</code>, <code>GET /off</code> → 1 s pulse</td>
+</tr>
+<tr>
+<td>Bridge plugin</td>
+<td>Homebridge on a Linux host</td>
+<td>Translates HAP to HTTP, owns door state</td>
+<td>HomeKit <code>GarageDoorOpener</code> service</td>
+</tr>
+</tbody>
+</table>
+<p>Both boards are the same board, on the same PlatformIO environment (<code>espressif8266</code>, <code>d1_mini_lite</code>), and both run a nearly identical sketch: connect to WiFi, start an <code>ESP8266WebServer</code> on port 80, register an mDNS name, serve a handful of one-line text endpoints. The firmware files are around 120 lines each, and most of that is the ESP8266 web-server example I started from and never fully cleaned up.</p>
+<p>The plugin is a Homebridge <em>accessory</em> plugin (not a platform plugin) written in TypeScript. It registers one <code>GarageDoorOpener</code> service, exposes <code>TargetDoorState</code> and <code>CurrentDoorState</code>, and does <code>http.get()</code> calls. That's the whole bridge.</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"accessory"</span><span class="token operator">:</span> <span class="token string">"GarageDoorController"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Garage Door"</span><span class="token punctuation">,</span>
+  <span class="token property">"open_url"</span><span class="token operator">:</span>   <span class="token string">"http://garage_door_relay.local/on"</span><span class="token punctuation">,</span>
+  <span class="token property">"close_url"</span><span class="token operator">:</span>  <span class="token string">"http://garage_door_relay.local/off"</span><span class="token punctuation">,</span>
+  <span class="token property">"status_url"</span><span class="token operator">:</span> <span class="token string">"http://garage_door_status.local"</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Plain HTTP everywhere, for the least ambitious reason: it was the easiest thing to stand up. The ESP8266 core ships a web server, a one-line text endpoint is the smallest interface that works, and there was nothing extra to install on either side of the wire. The one thing that choice costs me is push — nothing tells the plugin the door moved, so it has to ask.</p>
+<h2>Two boards, not one</h2>
+<p>The obvious design is one board with a reed switch on one pin and a relay on another. I used two boards instead, for two reasons that both turned out to matter.</p>
+<p><strong>Placement.</strong> The reed switch belongs at the door edge. The relay belongs at the opener head unit, up near the ceiling, next to the terminals it needs to short. Those are two to three metres apart with a metal door between them. One board means either a long sensor run past the moving door or a long low-voltage wire up to the header, and the failure mode of a wire chafing through on a door track is &quot;silently reports closed forever.&quot;</p>
+<p><strong>Blast radius.</strong> The relay board is the only thing that can <em>do</em> something. It has one endpoint that pulses and no knowledge of state. The sensor board can be reflashed, rebooted, or powered off and the worst case is a stale status reading. I can iterate on the sensor firmware without a board attached to my door motor in the loop.</p>
+<p>The cost is a second board, a second power supply, and a second IP address — cheap. If your sensor and your opener terminals are within reach of one board, one board is genuinely simpler.</p>
+<h2>mDNS instead of static IPs</h2>
+<p>Each board calls <code>MDNS.begin()</code> with a name and the plugin config stores URLs, not addresses:</p>
+<pre class="language-cpp"><code class="language-cpp">WiFi<span class="token punctuation">.</span><span class="token function">hostname</span><span class="token punctuation">(</span><span class="token string">"garage_door_status"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MDNS<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token string">"garage_door_status"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Nothing is pinned in a DHCP lease and nothing needs updating when I reflash a board or move it to another access point. The trade-off is that mDNS has to actually work end to end: the Homebridge host needs a working responder (<code>avahi</code> on Linux), and multicast doesn't cross a subnet or VLAN boundary. If I ever put these boards on an isolated IoT VLAN, this is the first thing that breaks, and the fix is an mDNS reflector rather than a trip back to static IPs.</p>
+<h2>Firmware stays stateless; the plugin owns the model</h2>
+<p>Both <code>/on</code> and <code>/off</code> do exactly the same thing:</p>
+<pre class="language-cpp"><code class="language-cpp">server<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"/on"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  server<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"text/plain"</span><span class="token punctuation">,</span> <span class="token string">"Opening"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">digitalWrite</span><span class="token punctuation">(</span>relay<span class="token punctuation">,</span> HIGH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">digitalWrite</span><span class="token punctuation">(</span>relay<span class="token punctuation">,</span> LOW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>That's not laziness — it's a deliberate choice about where semantics live. The opener can't tell the difference between open and close, so a firmware that pretended to is lying. The firmware's honest contract is <em>&quot;I will pulse for one second.&quot;</em> The plugin is the layer that decides which URL to hit, and the layer that has to reconcile the result with HomeKit's idea of a door.</p>
+<p>Two implementation notes from that handler. The response is sent <em>before</em> the pulse, so the caller isn't held open for the full second. And <code>delay(1000)</code> blocks the whole <code>loop()</code>, which means for that second the board stops servicing HTTP and stops calling <code>MDNS.update()</code>. For a device that receives one request every few seconds, that's acceptable; it stops being acceptable the moment anything else talks to it.</p>
+<h2>The HomeKit side: two door characteristics</h2>
+<p>HomeKit models a garage door with two characteristics: <code>TargetDoorState</code>, what the user asked for, and <code>CurrentDoorState</code>, what the door is doing. The plugin maps both onto the boards with a handful of handlers:</p>
+<table>
+<thead>
+<tr>
+<th>HomeKit</th>
+<th>Plugin</th>
+<th>Board</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TargetDoorState</code> SET</td>
+<td><code>GET /on</code> or <code>GET /off</code></td>
+<td>relay controller</td>
+</tr>
+<tr>
+<td><code>CurrentDoorState</code> GET</td>
+<td><code>GET /</code>, on demand</td>
+<td>door sensor</td>
+</tr>
+<tr>
+<td><code>CurrentDoorState</code> push</td>
+<td><code>GET /</code>, every 5 s</td>
+<td>door sensor</td>
+</tr>
+</tbody>
+</table>
+<p>Because the opener has a single input, the two command URLs are the same pulse. <code>TargetDoorState = OPEN</code> means pulse and <code>TargetDoorState = CLOSED</code> also means pulse; the distinction exists only in the plugin and nowhere on the wire. HomeKit also defines <code>OPENING</code> and <code>CLOSING</code> as current-state values, which is the honest vocabulary for a door that spends eight to twelve seconds in neither of the states the reed switch can see.</p>
+<h2>Polling, because nothing pushes</h2>
+<p>The plugin polls the sensor every five seconds and also fetches on a HomeKit-initiated GET. Five seconds came from arithmetic: one request every second is ~86,400 requests a day against an 80 MHz microcontroller that also blocks for a second when asked to move the door. Five seconds is still comfortably shorter than the door's travel time, so nobody in the house has an opinion about it.</p>
+<p><img src="/images/blog/home-automation/request-flow.svg" alt="Sequence diagram of a close command: Home sets TargetDoorState, the plugin sends GET /off to the relay board, the board replies and pulses for one second, the door physically travels for eight to twelve seconds, then the next poll reads the reed switch and the plugin reports the new state to Home."></p>
+<p>The loop is deliberately open. A command is one request that returns as soon as the pulse is finished, and the only evidence that the door moved is a reed switch changing state somewhere out in the garage. Nothing interrupts that quiet — the plugin finds out on the next poll, and HomeKit finds out a few milliseconds after that.</p>
+<p>That is also what makes the system easy to reason about. There is exactly one path by which the app learns anything about the door, and it is a request I can make myself with <code>curl</code>. Every state Home shows traces back to a line of text the sensor board returned.</p>
+<h2>Testing a plugin whose only test environment is a house</h2>
+<p>Flashing a board and walking to the garage is a slow loop, and almost all of the logic lives in the plugin rather than the firmware, so the plugin has Jest tests that mock <code>http</code> and hand-build the slice of the Homebridge API it uses:</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> mockHapCharacteristic <span class="token operator">=</span> <span class="token punctuation">{</span>
+  CurrentDoorState<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token constant">OPEN</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">CLOSED</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  TargetDoorState<span class="token operator">:</span>  <span class="token punctuation">{</span> <span class="token constant">OPEN</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">CLOSED</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The mock has to encode HomeKit's numeric contract by hand — <code>OPEN</code> is 0 and <code>CLOSED</code> is 1 in both enums — so the tests exercise what HAP actually receives rather than what TypeScript believes. They cover the cases that used to need a walk to the garage: sensor returns <code>open</code>/<code>closed</code>, HTTP errors, non-200 responses, the callback contract for both directions, and that polling actually fires on the interval (with fake timers).</p>
+<p>One TypeScript detail worth keeping in mind for any Homebridge plugin: import only <em>types</em> from the <code>homebridge</code> module and take <code>HAP</code> from the <code>api.hap</code> object at runtime. A value import compiles to a <code>require(&quot;homebridge&quot;)</code>, which loads a second copy of HAP-NodeJS and produces collisions that look nothing like an import problem.</p>
+<p>The deploy loop is still manual, and it's the part I'd automate next:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run build <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> <span class="token builtin class-name">.</span> <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> systemctl restart homebridge
+<span class="token function">sudo</span> journalctl <span class="token parameter variable">-u</span> homebridge <span class="token parameter variable">-n</span> <span class="token number">50</span> --no-pager</code></pre>
+<h2>Should you build this</h2>
+<p>If you want a garage door in Apple Home this weekend, use a supported bridge or an ESPHome build with native HomeKit support — that path is shorter, and its HomeKit implementation has had more eyes on it than mine.</p>
+<p>I built this one because the interesting part wasn't getting the door into the Home app. It was how little the finished thing is: two boards running about a hundred and twenty lines each, a plugin that makes four kinds of HTTP request, and roughly two hundred lines of glue between a tile on my phone and a piece of sheet metal on a spring. Almost nothing in it was a free choice. One momentary input, one binary sensor, two mounting points three metres apart, and a door that takes ten seconds to arrive decided most of the architecture for me — and what fell out is smaller and more legible than anything I would have drawn on a whiteboard first.</p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/programming/home-automation/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+   <a class="site-footer__link" href="/privacy/">Privacy</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

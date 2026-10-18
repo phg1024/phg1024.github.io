@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 524" width="900" height="524" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#3b4457"/>
+    </marker>
+    <marker id="arrB" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#2f6fd0"/>
+    </marker>
+    <marker id="arrG" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#1f9d6b"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="524" fill="#f7f8fb"/>
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">Garage door controller — system overview</text>
+  <text x="450" y="55" text-anchor="middle" font-size="12.5" fill="#5b6478">Two ESP8266 boards, one Homebridge accessory plugin, no cloud dependency</text>
+
+  <!-- HomeKit -->
+  <rect x="330" y="72" width="240" height="52" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="450" y="95" text-anchor="middle" font-size="14" font-weight="600" fill="#1e2433">Apple Home (HomeKit)</text>
+  <text x="450" y="113" text-anchor="middle" font-size="11.5" fill="#5b6478">iPhone · Apple Watch · Siri · automations</text>
+
+  <line x1="450" y1="124" x2="450" y2="156" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="462" y="146" font-size="11.5" fill="#5b6478">HAP — GarageDoorOpener service</text>
+
+  <!-- Homebridge -->
+  <rect x="200" y="158" width="500" height="100" rx="12" fill="#eef3fb" stroke="#b9c8e2" stroke-width="1.5"/>
+  <text x="450" y="180" text-anchor="middle" font-size="13.5" font-weight="600" fill="#243049">Homebridge host (Linux, systemd unit)</text>
+  <rect x="222" y="192" width="456" height="52" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+  <text x="450" y="213" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">GarageDoorController accessory plugin</text>
+  <text x="450" y="231" text-anchor="middle" font-size="11.5" fill="#5b6478">TypeScript · owns Target / Current door state · polls status</text>
+
+  <!-- control + status arrows -->
+  <line x1="330" y1="258" x2="330" y2="312" stroke="#2f6fd0" stroke-width="1.8" marker-end="url(#arrB)"/>
+  <text x="322" y="282" text-anchor="end" font-size="11.5" font-weight="600" fill="#2f6fd0">GET /on · GET /off</text>
+  <text x="322" y="298" text-anchor="end" font-size="11" fill="#5b6478">command, on demand</text>
+
+  <line x1="570" y1="258" x2="570" y2="312" stroke="#1f9d6b" stroke-width="1.8" marker-end="url(#arrG)"/>
+  <text x="578" y="282" font-size="11.5" font-weight="600" fill="#1f9d6b">GET / every 5 s</text>
+  <text x="578" y="298" font-size="11" fill="#5b6478">state poll, plain text</text>
+
+  <!-- ESP relay -->
+  <rect x="112" y="314" width="300" height="102" rx="10" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+  <text x="262" y="338" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1e2433">ESP8266 · relay controller</text>
+  <text x="262" y="357" text-anchor="middle" font-size="11.5" fill="#5b6478">garage_door_relay.local:80 (mDNS)</text>
+  <line x1="132" y1="368" x2="392" y2="368" stroke="#e2e7f0" stroke-width="1"/>
+  <text x="262" y="387" text-anchor="middle" font-size="11.5" fill="#243049">GPIO D2 → relay module</text>
+  <text x="262" y="404" text-anchor="middle" font-size="11" fill="#5b6478">blocking 1 s pulse inside the handler</text>
+
+  <!-- ESP sensor -->
+  <rect x="488" y="314" width="300" height="102" rx="10" fill="#ffffff" stroke="#1f9d6b" stroke-width="1.5"/>
+  <text x="638" y="338" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1e2433">ESP8266 · door sensor</text>
+  <text x="638" y="357" text-anchor="middle" font-size="11.5" fill="#5b6478">garage_door_status.local:80 (mDNS)</text>
+  <line x1="508" y1="368" x2="768" y2="368" stroke="#e2e7f0" stroke-width="1"/>
+  <text x="638" y="387" text-anchor="middle" font-size="11.5" fill="#243049">GPIO D2 ← reed switch (INPUT_PULLUP)</text>
+  <text x="638" y="404" text-anchor="middle" font-size="11" fill="#5b6478">HIGH = open · LOW = closed</text>
+
+  <!-- physical -->
+  <line x1="262" y1="416" x2="262" y2="446" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="638" y1="416" x2="638" y2="446" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <rect x="112" y="448" width="300" height="46" rx="10" fill="#f2f4f8" stroke="#c9d2e3" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="262" y="468" text-anchor="middle" font-size="12.5" font-weight="600" fill="#243049">Opener button terminals</text>
+  <text x="262" y="485" text-anchor="middle" font-size="11" fill="#5b6478">one momentary input toggles the motor</text>
+
+  <rect x="488" y="448" width="300" height="46" rx="10" fill="#f2f4f8" stroke="#c9d2e3" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="638" y="468" text-anchor="middle" font-size="12.5" font-weight="600" fill="#243049">Magnetic contact on the door</text>
+  <text x="638" y="485" text-anchor="middle" font-size="11" fill="#5b6478">the only source of physical truth</text>
+
+  <text x="450" y="516" text-anchor="middle" font-size="11.5" fill="#5b6478">Inside the house every link is plain HTTP on the LAN, and neither board initiates a connection.</text>
+</svg>
