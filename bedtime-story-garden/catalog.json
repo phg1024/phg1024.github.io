@@ -1,0 +1,147 @@
+[
+  {
+    "id": "wukongs-slippy-slide-skates",
+    "title": "Wukong’s Slippy-Slide Skates",
+    "series": "wukong",
+    "description": "小脚像坐上小雪橇。摔一跤，再试一次！",
+    "style": "Children’s crayon doodles",
+    "version": "v1",
+    "revision": "crayon",
+    "published": "2026-10-19",
+    "pages": 16,
+    "reading": "downloads/wukongs-slippy-slide-skates-v1.pdf",
+    "booklet": "downloads/wukongs-slippy-slide-skates-v1-booklet.pdf",
+    "cover": "covers/wukongs-slippy-slide-skates.jpg",
+    "prompts": "stories/wukongs-slippy-slide-skates/editions/v1/prompts.txt",
+    "sheets": 4,
+    "blank_pages": 0,
+    "source_pdf_sha256": "e7a96f8e3caedb73e8a1b8718dff26cc75738ff0f4233cbb262121784571fa00",
+    "keywords": "悟空 八戒 兔子 滑冰 溜冰 冰鞋 学滑冰 坚持 ice skating skates",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Slippy-Slide Skates",
+        "description": "His feet feel like tiny sleds. A little tumble, then one more try!"
+      },
+      "zh": {
+        "title": "悟空学滑冰",
+        "description": "小脚像坐上小雪橇。摔一跤，再试一次！"
+      }
+    }
+  },
+  {
+    "id": "wukong-and-the-big-red-truck",
+    "title": "Wukong and the Big Red Truck",
+    "series": "wukong",
+    "description": "跟着消防员 Ben，走近一辆很酷的大红消防车。",
+    "style": "Children’s crayon doodles",
+    "version": "v1",
+    "revision": "crayon",
+    "published": "2026-10-19",
+    "pages": 16,
+    "reading": "downloads/wukong-and-the-big-red-truck-v1.pdf",
+    "booklet": "downloads/wukong-and-the-big-red-truck-v1-booklet.pdf",
+    "cover": "covers/wukong-and-the-big-red-truck.jpg",
+    "prompts": "stories/wukong-and-the-big-red-truck/editions/v1/prompts.txt",
+    "sheets": 4,
+    "blank_pages": 0,
+    "source_pdf_sha256": "e504846fe9d1287d0f607ba95ac1175485e13c02b4675a215e157e585b7f8ccc",
+    "keywords": "悟空 八戒 兔子 消防车 消防员 消防站 fire truck firefighter",
+    "translations": {
+      "en": {
+        "title": "Wukong and the Big Red Truck",
+        "description": "Join Firefighter Ben to discover a very exciting big red truck."
+      },
+      "zh": {
+        "title": "悟空和大红消防车",
+        "description": "跟着消防员 Ben，走近一辆很酷的大红消防车。"
+      }
+    }
+  },
+  {
+    "id": "wukongs-wibble-wobble-ride",
+    "title": "Wukong’s Wibble-Wobble Ride",
+    "series": "wukong",
+    "description": "酷酷的自行车骑起来，却有些摇摇晃晃！",
+    "style": "Children’s crayon doodles",
+    "version": "v1",
+    "revision": "crayon",
+    "published": "2026-10-19",
+    "pages": 16,
+    "reading": "downloads/wukongs-wibble-wobble-ride-v1.pdf",
+    "booklet": "downloads/wukongs-wibble-wobble-ride-v1-booklet.pdf",
+    "cover": "covers/wukongs-wibble-wobble-ride.jpg",
+    "prompts": "stories/wukongs-wibble-wobble-ride/editions/v1/prompts.txt",
+    "sheets": 4,
+    "blank_pages": 0,
+    "source_pdf_sha256": "e655c476dfb96da797c3fc6d7f879ac7ec65810d4a63e9c7d6c0bc3002ce29ff",
+    "keywords": "悟空 八戒 兔子 自行车 骑车 坚持 bicycle bike practice",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Wibble-Wobble Ride",
+        "description": "Bicycles look so cool. Riding one turns out to be rather wibbly-wobbly!"
+      },
+      "zh": {
+        "title": "悟空的摇摇晃晃自行车",
+        "description": "酷酷的自行车骑起来，却有些摇摇晃晃！"
+      }
+    }
+  },
+  {
+    "id": "wukongs-one-little-bite",
+    "title": "Sun Wukong’s One Little Bite",
+    "series": "wukong",
+    "description": "从一小口新味道，到一顿暖暖的晚餐。",
+    "style": "Children’s crayon doodles",
+    "version": "v2",
+    "revision": "unified-crayon-remake",
+    "published": "2026-10-19",
+    "keywords": "悟空 八戒 沙僧 不挑食 尝试 食物 晚餐 food dinner vegetables",
+    "pages": 10,
+    "reading": "downloads/wukongs-one-little-bite-v2.pdf",
+    "booklet": "downloads/wukongs-one-little-bite-v2-booklet.pdf",
+    "cover": "covers/wukongs-one-little-bite-v2.jpg",
+    "prompts": "stories/wukongs-one-little-bite/editions/v2/prompts.txt",
+    "sheets": 3,
+    "blank_pages": 2,
+    "source_pdf_sha256": "0cf069b9d18cf53d4c399eeefaccb572dee005bfc7dc3cd533a8504a3ab19abf",
+    "translations": {
+      "en": {
+        "title": "Sun Wukong’s One Little Bite",
+        "description": "One tiny taste leads Wukong toward a warm, friendly supper."
+      },
+      "zh": {
+        "title": "悟空尝一小口",
+        "description": "从一小口新味道，到一顿暖暖的晚餐。"
+      }
+    }
+  },
+  {
+    "id": "wukongs-noisy-nap",
+    "title": "Sun Wukong’s Noisy Nap",
+    "series": "wukong",
+    "description": "悟空想睡午觉，可朋友们的好意有一点点吵。",
+    "style": "Children’s crayon doodles",
+    "version": "v2",
+    "revision": "unified-crayon-remake",
+    "published": "2026-10-19",
+    "keywords": "悟空 八戒 沙僧 午睡 睡午觉 nap sleep",
+    "pages": 10,
+    "reading": "downloads/wukongs-noisy-nap-v2.pdf",
+    "booklet": "downloads/wukongs-noisy-nap-v2-booklet.pdf",
+    "cover": "covers/wukongs-noisy-nap-v2.jpg",
+    "prompts": "stories/wukongs-noisy-nap/editions/v2/prompts.txt",
+    "sheets": 3,
+    "blank_pages": 2,
+    "source_pdf_sha256": "7e3701bb6bb841e0c2f3e36bd0400df2f7283929e80cb385a58286b8b740cb5a",
+    "translations": {
+      "en": {
+        "title": "Sun Wukong’s Noisy Nap",
+        "description": "Wukong wants a nap, but his friends’ helpful ideas are a little noisy."
+      },
+      "zh": {
+        "title": "悟空的热闹午觉",
+        "description": "悟空想睡午觉，可朋友们的好意有一点点吵。"
+      }
+    }
+  }
+]

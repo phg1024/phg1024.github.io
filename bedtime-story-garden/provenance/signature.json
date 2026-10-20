@@ -1,0 +1,8 @@
+{
+  "algorithm": "Ed25519",
+  "key_id": "sha256:f867d441f80dbae327f44c8392513a8a7d2a56fa3a6d73e7d8ab3defd4d5f850",
+  "public_key_base64": "c7nwNdqiiurgra9AZwvA5VBpaRL7t0HsYFnaMdgOZWI=",
+  "signature_base64": "bOQKYhGC/Wt4caSEfgqYfcA8sZI334IcHrgMVxbV086O40C/kfa+0JrnjrVnl8ArIpusI9bjt1NbrclXYhmxDA==",
+  "manifest_sha256": "f55bb6a43671afb543504cd50b7eb5af6eb4a71a519510a8a4e4633be69eb751",
+  "note": "Project provenance signature; not a certificate-based PDF signature or third-party identity verification."
+}

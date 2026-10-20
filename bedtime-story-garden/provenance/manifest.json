@@ -1,0 +1,155 @@
+{
+  "format": "story-garden-publication-v1",
+  "files": [
+    {
+      "path": "docs/downloads/bears-wobbly-ride-v1-booklet.pdf",
+      "sha256": "d13724b5909e5ef367ca0d6b9d619f26d76cd6defbecf80eae1bad792a80669d",
+      "bytes": 10081368
+    },
+    {
+      "path": "docs/downloads/bears-wobbly-ride-v1.pdf",
+      "sha256": "7b7ae36acf840db3473078bc23244d978a1c8035407ced790cb49950359c2bf7",
+      "bytes": 10083240
+    },
+    {
+      "path": "docs/downloads/bumbles-big-bike-ride-v0-booklet.pdf",
+      "sha256": "2873507faf08ebf3edc2617a029a01b81464bde9658996f21997db688ac57dd9",
+      "bytes": 9667741
+    },
+    {
+      "path": "docs/downloads/bumbles-big-bike-ride-v0.pdf",
+      "sha256": "4f3e49fe4db0f2aa3ec1ec8078b5035356d59a295eb6541b9c4472735af09e02",
+      "bytes": 9669793
+    },
+    {
+      "path": "docs/downloads/bumbles-big-bike-ride-v1-booklet.pdf",
+      "sha256": "70f75774425699d3e8e4477b26e6e2182d72e654bcb9af4b6857e51119124ff1",
+      "bytes": 10155201
+    },
+    {
+      "path": "docs/downloads/bumbles-big-bike-ride-v1.pdf",
+      "sha256": "5afadcbae276de6d351c8a13fcd10d7906829b4acb6fe729d0ac623716b2cf1d",
+      "bytes": 10156942
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v1-booklet.pdf",
+      "sha256": "810c175a7fa49e85bbd40c2ec5e01e0075e160560681c7838c55aec7d83ff764",
+      "bytes": 20308860
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v1.pdf",
+      "sha256": "013f5a8406b2640620a86e5ef1ad64f65caa7fb8ba9cb0a0793a2bcdd34b2ed4",
+      "bytes": 20311353
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
+      "sha256": "1731fcbd090f5810ada14a62d99821bdc3bd7226f3a39a8f3464801b255245f1",
+      "bytes": 8981000
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v1.pdf",
+      "sha256": "24cad48ba31eca99ad3bd888e5e2e81c306b356a71cb1b8b7ec5033daeafeb94",
+      "bytes": 8982706
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v2-booklet.pdf",
+      "sha256": "e19160047e032123498eaf543aa0b14887e2db2d9987e3f1ff120c313cf93431",
+      "bytes": 10695917
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v2.pdf",
+      "sha256": "eaaa086b56198cbfef0e478d9b5dbb88c9c9de2eb73717d7ad8d297510b5d7b9",
+      "bytes": 10697661
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v1-booklet.pdf",
+      "sha256": "94d280c8f7f1d8f81aba120ada39697983dc6da94932ae30d3c9487606a63162",
+      "bytes": 9558824
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v1.pdf",
+      "sha256": "cde0e2c44912ea4b7bc2c75dd73a0b45e27e145d240217b8df395942f5736d18",
+      "bytes": 9560605
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v2-booklet.pdf",
+      "sha256": "a62fc6d2c3eeed4b3a494db722fa54630721356d6c981e36fb59b1783b689c61",
+      "bytes": 11081322
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v2.pdf",
+      "sha256": "bf724c524b3d24ce9fd4d31495a1039e9d9041043548f7ca417f0c81a9cf721b",
+      "bytes": 11083072
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v1-booklet.pdf",
+      "sha256": "1412d4324d3467c470cfc7366897efb23b0086cff3038e12ad28da2a7b0fb644",
+      "bytes": 19871813
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v1.pdf",
+      "sha256": "b424021627a1e2f55d28e7c19bc0aa1384b845924b501eb585b430b24a445983",
+      "bytes": 19874253
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v1-booklet.pdf",
+      "sha256": "06520fe4eff78c8f0e47fba99b4501a029b32e1eb7f2221f6b95eb5469a000f9",
+      "bytes": 19153804
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v1.pdf",
+      "sha256": "e7926c054a155a8d0a83f87b4e1ad5fadf1e42158eebf102689e0e9c099d921a",
+      "bytes": 19156294
+    },
+    {
+      "path": "stories/bears-wobbly-ride/editions/v1/prompts.txt",
+      "sha256": "bd444dd5febec44423c645813abb7942d1aa58328d10d737fa88743dea8d6e79",
+      "bytes": 30907
+    },
+    {
+      "path": "stories/bumbles-big-bike-ride/editions/v0/prompts.txt",
+      "sha256": "bc899950022594cc676ffeb5764dc5c7aa090a8a908302a69f48545880f0afdb",
+      "bytes": 38921
+    },
+    {
+      "path": "stories/bumbles-big-bike-ride/editions/v1/prompts.txt",
+      "sha256": "bc899950022594cc676ffeb5764dc5c7aa090a8a908302a69f48545880f0afdb",
+      "bytes": 38921
+    },
+    {
+      "path": "stories/wukong-and-the-big-red-truck/editions/v1/prompts.txt",
+      "sha256": "fd0bb89cbfd3c49f49708c53e04fe1f766beba79b47643c808a1f16b4396da39",
+      "bytes": 46252
+    },
+    {
+      "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",
+      "sha256": "da2a369b73d446a4e214268402c55ddd35a3aa448a8df26ae1a01f9dd44b848b",
+      "bytes": 33053
+    },
+    {
+      "path": "stories/wukongs-noisy-nap/editions/v2/prompts.txt",
+      "sha256": "aa797d67bec5ee02d273023fc75ee602582559ca7e2692e5eab1dc7390ca92d1",
+      "bytes": 35294
+    },
+    {
+      "path": "stories/wukongs-one-little-bite/editions/v1/prompts.txt",
+      "sha256": "597d48daeb74c3e8cab4534a72a6d41924baf73b3fe73195ba5a48430ccb7eb7",
+      "bytes": 33320
+    },
+    {
+      "path": "stories/wukongs-one-little-bite/editions/v2/prompts.txt",
+      "sha256": "b4470e5283086a8d1df314c9b8d842d9e442a601181ce6c3e286a0e63e9cca31",
+      "bytes": 35336
+    },
+    {
+      "path": "stories/wukongs-slippy-slide-skates/editions/v1/prompts.txt",
+      "sha256": "f83cb6ad3d5380979db58130907b8dcbc9327c2071b57eff187b963b687c33a6",
+      "bytes": 53665
+    },
+    {
+      "path": "stories/wukongs-wibble-wobble-ride/editions/v1/prompts.txt",
+      "sha256": "2f2e54c0c4e2333b6921ae30d14660a80b695932c332fe1516686240d7eaf9a2",
+      "bytes": 47416
+    }
+  ]
+}
