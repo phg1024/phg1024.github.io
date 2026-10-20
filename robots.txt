@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://phg1024.github.io/sitemap.xml
+# Wukong & Friends publishes its own subdirectory and its own sitemap.
+Sitemap: https://phg1024.github.io/wukong-and-friends/sitemap.xml
