@@ -62,3 +62,21 @@ if (picker) {
     }
   });
 }
+
+// Download buttons open a thank-you page first; it continues to the file on its own.
+// The page also carries a meta refresh, so the download still happens without JavaScript.
+const gate = document.querySelector('[data-download-redirect]');
+if (gate) {
+  const label = document.querySelector('#countdown');
+  let remaining = Number(gate.dataset.seconds || 30);
+  const tick = () => {
+    if (label) label.textContent = text('redirect_countdown', { seconds: remaining });
+    if (remaining <= 0) {
+      window.location.replace(gate.dataset.downloadRedirect);
+      return;
+    }
+    remaining -= 1;
+    window.setTimeout(tick, 1000);
+  };
+  tick();
+}
