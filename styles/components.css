@@ -169,6 +169,19 @@
   margin-bottom: 0.75rem;
 }
 
+.hero__note-link {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
+
+.hero__note-link:hover,
+.hero__note-link:focus-visible {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
 .editorial-section,
 .content-page {
   padding: clamp(2rem, 4vw, 3rem);
