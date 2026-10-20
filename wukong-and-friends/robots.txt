@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://phg1024.github.io/wukong-and-friends/sitemap.xml
