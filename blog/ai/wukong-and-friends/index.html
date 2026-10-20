@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>Introducing Wukong &amp; Friends | Peihong Guo</title>
+ <meta name="description" content="Free read-aloud picture books, built to make bedtime calmer for a four-year-old — and the unglamorous machinery behind them: keeping one character…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/ai/wukong-and-friends/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="Introducing Wukong &amp; Friends | Peihong Guo">
+ <meta property="og:description" content="Free read-aloud picture books, built to make bedtime calmer for a four-year-old — and the unglamorous machinery behind them: keeping one character…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/ai/wukong-and-friends/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Introducing Wukong &amp; Friends | Peihong Guo">
+ <meta name="twitter:description" content="Free read-aloud picture books, built to make bedtime calmer for a four-year-old — and the unglamorous machinery behind them: keeping one character…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-10-20T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/styles.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Introducing Wukong &amp; Friends</h1><p class="blog-post__date">Oct 20, 2026</p>
+<p>The site is live at <strong><a href="https://phg1024.github.io/wukong-and-friends/">phg1024.github.io/wukong-and-friends</a></strong>: five free English bedtime picture books, a bilingual website, and printable booklets.</p>
+<p>This started as a bedtime problem, not an AI project. The parts that took real engineering — making a drawn character stay <em>the same character</em> across a dozen illustrations, and building a publishing path where a private repository produces a public site without either repository being able to wreck the other — are further down. First, why any of this exists.</p>
+<h2>Bedtime was the thing to fix</h2>
+<p>Getting our four-year-old to sleep smoothly was the least calm part of our day. We tried the obvious list: earlier bath, dimmer light, less screen, a shorter round of &quot;one more&quot;. The single best thing we found was reading a bedtime story together. It gives the evening a fixed shape — lights down, one book, two of our voices — and once that shape was in place, the day was allowed to end quietly and bedtime stopped being a negotiation.</p>
+<p>The catch is that the shape has to be filled every single night, and the supply side is not free. We go through books, we buy books, and after a few months of nightly reading I had a short list of complaints about the pile on the shelf.</p>
+<p><img src="/images/story-garden/story-garden.jpg" alt="Wukong, Pigsy and the little rabbit walking home under a crayon night sky."></p>
+<h2>Why not just buy the books?</h2>
+<p>We did buy them, and we keep buying them. None of these complaints are the publishers' fault:</p>
+<ul>
+<li><strong>A picture book carries its author's style, whether or not it suits our kid.</strong> The popular ones are drawn by artists with strong, deliberate looks. A strong look is not always something a tired four-year-old can read at 7:40 in the evening, and not always something we want to look at for the three-hundredth time.</li>
+<li><strong>The vocabulary rarely sits where he is.</strong> Some books are a step below him and he is bored by page three. Others lean on words he has no chance with, which turns read-aloud into a lecture with pictures. The band that actually helps him sits just above his head, and it is narrower than the market pretends.</li>
+<li><strong>A big pile of books is a pile you maintain.</strong> Every new title is another object to shelve, to rescue from a sticky hand, to pick up off the floor. He is four and still learning to keep anything organized, so a bigger library mostly means more tidying — for books we each read a handful of times.</li>
+<li><strong>We wanted some of our own culture in there.</strong> Sun Wukong, Nezha, Ao Bing, the Bull King, a dumpling kitchen, a night market, a dragon boat. We would rather those arrive as fun rather than as homework, and the good versions are not always the ones already on the shelf next to the truck books.</li>
+</ul>
+<p>None of that is an argument that published picture books are bad. It is an argument that a personal printing press changes the economics: a story pitched exactly at his level, in a style he recognizes, with a character he already loves, costs nothing to add to the pile, because it is a file rather than another book to tidy up after.</p>
+<h2>The spec is a four-year-old</h2>
+<p>Everything about the books follows from what actually works at bedtime:</p>
+<ul>
+<li><strong>Sixteen pages including the cover</strong>, so a story fits one read-aloud sitting and four sheets of paper.</li>
+<li><strong>Large, separate hand-printed letters</strong> — Chalkboard SE at 36 pt on reading pages, not cursive. A four-year-old sounding out <code>slip</code> needs the letters to stay apart.</li>
+<li><strong>Short sentences, one silly moment, calm ending.</strong> The stories end quietly on purpose. The last page is not a cliffhanger; it is a bedroom.</li>
+<li><strong>Free.</strong> Read it, download it, print it for your family or classroom. No account, no checkout, no email capture.</li>
+</ul>
+<p>The print side is a real constraint too. Each book ships two PDFs: a reading version and a <strong>booklet</strong> version already imposed two-up on US Letter landscape, double-sided short-edge, one PDF page per sheet. Print four sheets, nest them, fold, staple the fold, and you have a stapled little book a kid can hold and wreck. Books with 10 or 14 pages get blank pages padded to a multiple of four, and the exact sheet count is listed on each book's page.</p>
+<p>Five books are on the shelf — <em>Slippy-Slide Skates</em>, <em>The Big Red Truck</em>, <em>Wibble-Wobble Ride</em>, <em>Noisy Nap</em> and <em>One Little Bite</em>. Two earlier Bear and Bumble books stay in the repository and remain reachable by URL, but they are off the public shelf because they don't look like the rest of the set.</p>
+<h2>The hard part is not drawing, it is drawing the same monkey</h2>
+<p>An image model will happily draw a charming little Monkey King: big head, golden-brown fur, cream heart-shaped face, gold circlet, yellow tunic, red scarf, red sneakers. Ask for him again from a lower angle on the next page and you get a <em>near</em> Wukong — circlet with no bead, tunic gone orange, sneakers gone brown, tail on the wrong side — and by page nine a different monkey wearing his clothes. Four-year-olds notice. They are the strictest continuity department I have ever worked with.</p>
+<p>So every main character has a <strong>model sheet</strong> in the format a studio would use — a large front three-quarter view, a rear three-quarter view, three close-up heads (happy, puzzled, quietly determined), name hand-printed at the top. The <a href="https://phg1024.github.io/wukong-and-friends/characters/">friends page</a> publishes each sheet exactly as it was approved, Wukong's included:</p>
+<img src="/images/blog/wukong-and-friends/wukong-model-sheet.jpg" alt="Wukong's approved model sheet: full-body views and head studies in wax crayon on cream paper, with his name hand-printed at the top." style="width:50%;min-width:240px"/>
+<p>Every new illustration is then built from three deliberately separated layers:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Carried by</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identity</strong></td>
+<td>one reference image</td>
+<td>that character's own approved model sheet</td>
+</tr>
+<tr>
+<td><strong>Style</strong></td>
+<td>the same reference plus a short paragraph</td>
+<td>wobbly pencil outlines, patchy wax-crayon fills, cream paper showing through</td>
+</tr>
+<tr>
+<td><strong>Composition</strong></td>
+<td>words only</td>
+<td>low angle up the slide, Wukong small at the bottom, big empty sky</td>
+</tr>
+</tbody>
+</table>
+<p>That separation cost me a wasted session to learn. Generating Wukong's sheet, I passed the Bull King sheet as a second reference, meaning it purely as a <em>layout</em> example. He came back with a teal cast and the hint of a crown. The model does not know which image is &quot;the style hint&quot; and which is &quot;the character&quot; — it blends everything you hand it. One identity reference per character, and layout lives in words.</p>
+<p>The style is kept rough on purpose: outlines that overshoot their corners, fills with white paper gaps in them. The temptation with any image model is to smooth a kid's drawing into something prettier and completely generic. As a crude texture check I compare each image with a blurred copy of itself — approved art lands around 13–14, and a candidate near 9 is a laminated version of the style however good it looks at thumbnail size.</p>
+<h2>Technical details</h2>
+<h3>How the pictures are made</h3>
+<p>Illustrations are generated locally when I want control — ComfyUI with a Qwen-Image-Edit checkpoint on a machine under my desk, four-step Lightning for speed — and with a hosted image model when identity fidelity matters more than provenance purity. Every accepted image keeps a receipt: model, aspect ratio, the reference assets used and their SHA-256 hashes, and the full prompt. Those receipts are the reason a character drawn three months ago can still be drawn again today.</p>
+<h3>Provenance you can check without trusting me</h3>
+<p>Every published book is committed with its complete prompts including refinements, its selected art, its text and its layout plan, and the PDFs are watermarked with a subtle attribution line. On top of that, <code>provenance/</code> holds a SHA-256 manifest of every published PDF plus an <strong>Ed25519 detached signature</strong> over it, with the public key in the repository.</p>
+<p>There is a <a href="https://phg1024.github.io/wukong-and-friends/verify.html">verify page</a> where you drop a PDF and it recomputes the hash and checks it against the signed manifest in the browser.</p>
+<p>Two honest limits, because overclaiming here would be silly: the signature proves the file matches what this project published under this key. It is <strong>not</strong> a certificate-based PDF signature and <strong>not</strong> a third-party identity attestation. And the watermark is attribution, not copy protection — anyone determined can crop it. The private signing key lives outside the repository, in a backed-up private location, which is also the failure mode to remember: if that key is lost while a publication exists, it cannot be silently swapped for a new one.</p>
+<h3>A private repository that publishes into someone else's Pages</h3>
+<p>GitHub Pages cannot serve a private repository, and I did not want the source public either — it holds every prompt, every rejected draft and the full character library. So pushing <code>main</code> in the private story repository runs a GitHub Actions workflow that builds the bilingual site, verifies it (signed manifest, per-PDF hashes, watermarks, translations), and <code>rsync</code>s the result into <code>wukong-and-friends/</code> on the public <code>phg1024.github.io</code> repository. The last step fetches the live URL and fails if the new content did not actually arrive.</p>
+<p>Three details hold the arrangement together: a write-scoped deploy key whose private half exists only as an Actions secret; <code>--exclude wukong-and-friends/</code> in the personal site's own deploys, because without it a routine deploy would delete the entire bookshelf with a completely straight face; and keeping the roughly 250 MB of build artifacts in the disposable output repository rather than in anyone's source history.</p>
+<h2>The thirty-second thank-you</h2>
+<p>Every download button opens a short page first: two support links — Buy Me a Coffee and GitHub Sponsors — a countdown, and then it continues to the PDF by itself. Anyone who wants the PDF just waits half a minute or taps the direct link. It is a courtesy, not a lock: nothing is paywalled, nothing is registered, and the stories stay free. I would rather ask honestly for thirty seconds of attention than put a wall in front of a bedtime story.</p>
+<h2>Next</h2>
+<p>Bull King, Nezha and Ao Bing have model sheets and profiles and are badged <strong>Coming up</strong> on the friends page — they are drawn and waiting for their first story, and the friends page says so plainly rather than implying they are already in a book. After that: more stories, more camera angles, and a proper locally licensed children's face font so the reading typography can be locked down rather than inherited from system fonts.</p>
+<p>The whole thing exists so that &quot;one more story&quot; takes about four seconds and ends with a pig going to sleep.</p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/wukong-and-friends/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+   <a class="site-footer__link" href="/privacy/">Privacy</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
