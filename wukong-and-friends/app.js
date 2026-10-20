@@ -80,3 +80,11 @@ if (gate) {
   };
   tick();
 }
+
+// The home banner is a short silent loop. People who ask their system for reduced motion get the still poster.
+const banner = document.querySelector('.banner-video');
+if (banner && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  banner.removeAttribute('autoplay');
+  banner.pause();
+  banner.currentTime = 0;
+}
