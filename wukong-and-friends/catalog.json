@@ -1,5 +1,33 @@
 [
   {
+    "id": "wukong-and-the-tiny-tomatoes",
+    "title": "Wukong and the Tiny Tomatoes",
+    "series": "wukong",
+    "description": "悟空和敖丙一起种小番茄，浇水、等待，最后分享甜甜的收获。",
+    "style": "Children’s crayon doodles",
+    "version": "v1",
+    "revision": "approved-review-v7",
+    "published": "2026-10-20",
+    "keywords": "悟空 敖丙 小番茄 种植 浇水 耐心 分享 Wukong Ao Bing tomatoes gardening patience friendship",
+    "pages": 16,
+    "reading": "downloads/wukong-and-the-tiny-tomatoes-v1.pdf",
+    "booklet": "downloads/wukong-and-the-tiny-tomatoes-v1-booklet.pdf",
+    "cover": "covers/wukong-and-the-tiny-tomatoes-v1.jpg",
+    "sheets": 4,
+    "blank_pages": 0,
+    "source_pdf_sha256": "08161ea6e024491c0d5fe9176b269a0ed06e392c9e5eb4502325eca633c94c78",
+    "translations": {
+      "en": {
+        "title": "Wukong and the Tiny Tomatoes",
+        "description": "Wukong and Ao Bing plant tiny tomatoes, water them, and wait. A little rain magic helps; patience brings a sweet harvest to share."
+      },
+      "zh": {
+        "title": "悟空的小番茄",
+        "description": "悟空和敖丙一起种小番茄，浇水、耐心等待。敖丙的小雨云来帮忙，两位好朋友终于分享了甜甜的收获。"
+      }
+    }
+  },
+  {
     "id": "wukongs-slippy-slide-skates",
     "title": "Wukong’s Slippy-Slide Skates",
     "series": "wukong",

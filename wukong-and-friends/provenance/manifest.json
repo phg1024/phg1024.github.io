@@ -42,6 +42,16 @@
       "bytes": 20311353
     },
     {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v1-booklet.pdf",
+      "sha256": "0c8a68d6717781e251a688267722dd8a09d43a3b138db6ea236e56740e8e69c1",
+      "bytes": 21732377
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v1.pdf",
+      "sha256": "48d7f0e8b4b45f739f4907e18f1632c55ae3b7f5fb401f6d115a437b01f85e7f",
+      "bytes": 21734474
+    },
+    {
       "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
       "sha256": "1731fcbd090f5810ada14a62d99821bdc3bd7226f3a39a8f3464801b255245f1",
       "bytes": 8981000
@@ -120,6 +130,11 @@
       "path": "stories/wukong-and-the-big-red-truck/editions/v1/prompts.txt",
       "sha256": "fd0bb89cbfd3c49f49708c53e04fe1f766beba79b47643c808a1f16b4396da39",
       "bytes": 46252
+    },
+    {
+      "path": "stories/wukong-and-the-tiny-tomatoes/editions/v1/prompts.txt",
+      "sha256": "2723c8138950bd6713f410a707ab4f4d8d96d166dab9dc51bfb2361675384d73",
+      "bytes": 53414
     },
     {
       "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",
