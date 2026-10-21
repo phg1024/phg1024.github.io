@@ -180,14 +180,14 @@
     "series": "wukong",
     "description": "从一小口新味道，到一顿暖暖的晚餐。",
     "style": "Children’s crayon doodles",
-    "version": "v4",
-    "revision": "digital-author-and-back-cover",
+    "version": "v6",
+    "revision": "sandy-appearance-refresh-digital",
     "published": "2026-10-19",
     "keywords": "悟空 八戒 沙僧 不挑食 尝试 食物 晚餐 food dinner vegetables",
     "pages": 12,
-    "reading": "downloads/wukongs-one-little-bite-v4.pdf",
-    "booklet": "downloads/wukongs-one-little-bite-v3-booklet.pdf",
-    "cover": "covers/wukongs-one-little-bite-v2.jpg",
+    "reading": "downloads/wukongs-one-little-bite-v6.pdf",
+    "booklet": "downloads/wukongs-one-little-bite-v5-booklet.pdf",
+    "cover": "covers/wukongs-one-little-bite-v5.jpg",
     "sheets": 4,
     "blank_pages": 2,
     "translations": {
@@ -202,12 +202,13 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-one-little-bite-v4-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-one-little-bite-v3-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-one-little-bite-v2-zh-Hans.jpg"
+        "reading": "downloads/wukongs-one-little-bite-v6-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-one-little-bite-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-one-little-bite-v5-zh-Hans.jpg"
       }
     },
-    "booklet_pages": 16
+    "booklet_pages": 16,
+    "updated": "2026-10-21"
   },
   {
     "id": "wukongs-noisy-nap",
@@ -215,14 +216,14 @@
     "series": "wukong",
     "description": "悟空想睡午觉，可朋友们的好意有一点点吵。",
     "style": "Children’s crayon doodles",
-    "version": "v4",
-    "revision": "digital-author-and-back-cover",
+    "version": "v6",
+    "revision": "sandy-appearance-refresh-digital",
     "published": "2026-10-19",
     "keywords": "悟空 八戒 沙僧 午睡 睡午觉 nap sleep",
     "pages": 12,
-    "reading": "downloads/wukongs-noisy-nap-v4.pdf",
-    "booklet": "downloads/wukongs-noisy-nap-v3-booklet.pdf",
-    "cover": "covers/wukongs-noisy-nap-v2.jpg",
+    "reading": "downloads/wukongs-noisy-nap-v6.pdf",
+    "booklet": "downloads/wukongs-noisy-nap-v5-booklet.pdf",
+    "cover": "covers/wukongs-noisy-nap-v5.jpg",
     "sheets": 4,
     "blank_pages": 2,
     "translations": {
@@ -237,11 +238,12 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-noisy-nap-v4-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-noisy-nap-v3-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-noisy-nap-v2-zh-Hans.jpg"
+        "reading": "downloads/wukongs-noisy-nap-v6-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-noisy-nap-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-noisy-nap-v5-zh-Hans.jpg"
       }
     },
-    "booklet_pages": 16
+    "booklet_pages": 16,
+    "updated": "2026-10-21"
   }
 ]

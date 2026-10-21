@@ -1,0 +1,151 @@
+{
+  "format": "story-pages-v1",
+  "source_pdf": "downloads/wukongs-one-little-bite-v6.pdf",
+  "source_sha256": "85463f75b7ba6ad696f77006eb1de1b849b1bdf26e117e96fcb7acd32f081617",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d0ddf9f52a5c5d37a9bec3098c610bf7449cb0cde026227859241f29c5e12baa",
+      "text": "Sun Wukong’s\nOne Little Bite",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "99bff493d44e5bd1b6fb842bf58093f604a3e54ee37e689300f27ee06164a455",
+      "text": "The sun sank low.\nSun Wukong hugged his peach.\n“Only peaches for me!”",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "95982dd590f081481e70f1a54fcf2f4935cfc94c597a95e010732d59f2821589",
+      "text": "“Come help with supper,”\nsaid Pigsy.\nWukong washed a carrot.\nSplash! His nose got wet.",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "25cd0cc812568410715239773c658f5896732f2400d459e824cd27c288963829",
+      "text": "Sandy stirred a little pot.\nA leaf fell onto\nWukong’s peach.\n“My peach has a hat!”\nHe gave a little giggle.",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b7544ebefc0518922cb3c461e3abf8762423b8bbd6ad02ac7ac52d17e913bc86",
+      "text": "A sweet smell filled the air.\n“What is that?”\nasked Wukong.\n“A warm carrot,” said Sandy.",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "04ee3a5ffbb7bd3d10096f157ccdd72316d6702c78a4c9be17b367cce14b0f08",
+      "text": "Wukong took one tiny bite.\n“Oh! Sweet and soft.”\nHe set his peach\nbeside his bowl.",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c4a1bcdbd8b6dcdc7f071c08387cf728e89140865894ceca8f7897cf981ff948",
+      "text": "“How about a little green?”\nWukong tried a small leaf.\n“Hmm… soft and juicy!”",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c1c4ad7c07230ffedea7ed41ff53f74ad9fc2044de3b4becdb1b4c67c081d11b",
+      "text": "He tried rice\nand little tofu cubes.\nA little of this.\nA little of that.\n“My bowl has new friends!”",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2ae20476ca5a9864ff540effba33cce6a54b70365a1c4698d4c86eb085b93e71",
+      "text": "The moon shone over supper.\nWukong ate one last\npeach bite.\n“I like more than peaches.”",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "6c7a0ab48c4a444f883a19f22cc14c54c44912770aa2756ca7f306886c1ba177",
+      "text": "Wukong snuggled into bed.\n“Goodnight, little bowl.\nGoodnight, friends.”\nTomorrow, he could try\nsomething new.",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "6b94c8febe5feb6a7e982144d0c240be01010efc5f336537724b56e5cfcd50ae",
+      "text": "Wukong & Friends\nThank you for reading!\nWe hope you and your little reader\nenjoyed this little adventure.\nMore free stories\nphg1024.github.io/wukong-and-friends\nRead, download and print - always free.\nRead more free stories\nIf you enjoyed our stories, you are welcome\nto help the next one grow. Support is optional.\nBuy Me a Coffee\nGitHub Sponsors\nCreated by Peihong Guo\nStories and illustrations made with AI assistance and human editing.",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c29af9d6ed2acb2a92fcaa3850dde3b6d4c7d5427302dbe9f48100b398f2eac8",
+      "text": "Wukong & Friends\nOne little bite.\nA brand-new taste.\nA smile to share.\nphg1024.github.io/wukong-and-friends",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

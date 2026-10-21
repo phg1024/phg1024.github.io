@@ -1,0 +1,151 @@
+{
+  "format": "story-pages-v1",
+  "source_pdf": "downloads/wukongs-one-little-bite-v6-zh-Hans.pdf",
+  "source_sha256": "b3e901760c0d661dcb9f69e9ab661b199e31ee363afa512bb3f72d8fed0fe11f",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "5ec3d7ffe9eed18b57fd6d1ddf8af642d76d842b841406f6c163d0d80550fc40",
+      "text": "悟空\n尝一小口",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "6b28b1c81d326b0267595926cf919b6b33173083559e3fed9e7e8e27dbab3a7e",
+      "text": "太阳慢慢落山了。\n悟空抱着他的桃子。\n“我只吃桃子！”",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "32d4e8588de3456ae84aae6123197e8f1a452c3ec770b3c557f2d8239dacb220",
+      "text": "“来帮忙做晚饭吧。”\n八戒说。\n悟空帮忙洗胡萝卜。\n哗啦！鼻子也湿了。",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8b5a212f2c870fc1a475bc992853f893bb8763810ac4199946ea943fb2f0671a",
+      "text": "沙僧搅着锅里的菜。\n一片叶子落在\n悟空的桃子上。\n“我的桃子戴帽子啦！”\n他咯咯地笑。",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "3138a8dd73a5fa8ac4f77987267d71221a53cdd5bee3fc1da765e92cba5acb14",
+      "text": "一股香味飘过来。\n“那是什么呀？”悟空问。\n“热乎乎的胡萝卜呀。”\n沙僧说。",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8702680d3db141e85016c30adb857dce1265167235e35eec9b882dd1b77538da",
+      "text": "悟空尝了一小口。\n“哦！又甜又软。”\n他把桃子\n放在碗旁边。",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2b623ae2b4896c1a2c0031acf08f0bda371a98b489a658c7816069e6cf7c6e4e",
+      "text": "“再尝一口青菜？”\n悟空尝了一小片菜叶。\n“嗯……又软又多汁！”",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "291d4fd4534a984fcea32d922b0ad3e861a75b4536094b270e2fa68c12ce03f0",
+      "text": "他尝了米饭，\n还有小块小块的豆腐。\n这个尝一点，\n那个尝一点。\n“我的碗里有新朋友啦！”",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "bf510cd051f1204e97903fc5777d9d4b9da4d8d7853eadea3b0cbd5cffc1be62",
+      "text": "月光洒在餐桌上。\n悟空吃完最后一口桃子。\n“我喜欢的不光是桃子啦！”",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "e5279d62eee87d014bf03cd11065ec12582abaf8a6c282c76122bd796ad1e988",
+      "text": "悟空钻进被窝。\n“晚安，小碗。\n晚安，朋友们。”\n明天，他还可以\n尝尝新东西。",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "289f1ec520e4ee3afd619415c1cb27295d9ced81c1cf804b8ba097d89c275be2",
+      "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n故事与插画使用 AI 辅助创作，由作者指导和编辑。",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c24eb4c9fc0ced3befd71f06e9a47e6c90f1b78a682d85fd4ba685abef3f3a8c",
+      "text": "Wukong & Friends\n先尝一小口。\n发现新味道，\n也发现小惊喜。\nphg1024.github.io/wukong-and-friends/zh",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

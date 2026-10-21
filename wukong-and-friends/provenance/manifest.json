@@ -222,6 +222,36 @@
       "bytes": 13390549
     },
     {
+      "path": "docs/downloads/wukongs-noisy-nap-v5-booklet.pdf",
+      "sha256": "2cb8973c903a26cbcf5baeb49d5653fbf4994beb52a7a0166ee178b43942882f",
+      "bytes": 13097763
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v5-zh-Hans-booklet.pdf",
+      "sha256": "2d736405f2997769dd450b541020b354921eee52fc6183fdf8303a45fd180b14",
+      "bytes": 13130586
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v5-zh-Hans.pdf",
+      "sha256": "ca2cc59bec86878fb8a5bbd7e632cd42034cc103e8e6e33c38761d3131c8d802",
+      "bytes": 10406454
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v5.pdf",
+      "sha256": "e3f7110104cc347f59040225db07f302ab29a7fcbee5354f02d909fb368eca2a",
+      "bytes": 10383908
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v6-zh-Hans.pdf",
+      "sha256": "e6208dc37c38f8c355fa609fb7b37a533e9a4facff3acdf11a2a06ef10f2411f",
+      "bytes": 13115871
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v6.pdf",
+      "sha256": "b9bb5cf72947f6ac4784678a806149c0ad3a45099dc22feda59f1455b4986f85",
+      "bytes": 13076863
+    },
+    {
       "path": "docs/downloads/wukongs-one-little-bite-v1-booklet.pdf",
       "sha256": "94d280c8f7f1d8f81aba120ada39697983dc6da94932ae30d3c9487606a63162",
       "bytes": 9558824
@@ -270,6 +300,36 @@
       "path": "docs/downloads/wukongs-one-little-bite-v4.pdf",
       "sha256": "ba4c29da325ae05700114042715aff76227cbc2aab107e27c617085ce32087ff",
       "bytes": 13791929
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v5-booklet.pdf",
+      "sha256": "7c0d475cff5ff14132ee6b2bee9e9710100e78f73f397f5691dbd8a78887c032",
+      "bytes": 13432281
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v5-zh-Hans-booklet.pdf",
+      "sha256": "95bf48378d1cab1f40d4d96426f9bdf614ec17cd91d3dee89700165eeb8229cf",
+      "bytes": 13464904
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v5-zh-Hans.pdf",
+      "sha256": "30eda5781a6b247377f5cf4c70e701aa14e3aefb4ead0bb98f45bf279015b1f0",
+      "bytes": 10725801
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v5.pdf",
+      "sha256": "1092b024ce881b3250721608fd7d590e5c9f40345485bb79a9e10ccaa80388b7",
+      "bytes": 10702407
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v6-zh-Hans.pdf",
+      "sha256": "b3e901760c0d661dcb9f69e9ab661b199e31ee363afa512bb3f72d8fed0fe11f",
+      "bytes": 13450210
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v6.pdf",
+      "sha256": "85463f75b7ba6ad696f77006eb1de1b849b1bdf26e117e96fcb7acd32f081617",
+      "bytes": 13411384
     },
     {
       "path": "docs/downloads/wukongs-slippy-slide-skates-v1-booklet.pdf",
@@ -442,6 +502,16 @@
       "bytes": 38269
     },
     {
+      "path": "stories/wukongs-noisy-nap/editions/v5/prompts.txt",
+      "sha256": "7d1c5d7b815b49777342ecd5ad79b231f234970210ef75921577b29b57eeaf1d",
+      "bytes": 57724
+    },
+    {
+      "path": "stories/wukongs-noisy-nap/editions/v6/prompts.txt",
+      "sha256": "7d1c5d7b815b49777342ecd5ad79b231f234970210ef75921577b29b57eeaf1d",
+      "bytes": 57724
+    },
+    {
       "path": "stories/wukongs-one-little-bite/editions/v1/prompts.txt",
       "sha256": "597d48daeb74c3e8cab4534a72a6d41924baf73b3fe73195ba5a48430ccb7eb7",
       "bytes": 33320
@@ -460,6 +530,16 @@
       "path": "stories/wukongs-one-little-bite/editions/v4/prompts.txt",
       "sha256": "3a387b71b820f242477ab4f081eb5738e3ecd0620ff7bebe10747681b5fd53f7",
       "bytes": 38277
+    },
+    {
+      "path": "stories/wukongs-one-little-bite/editions/v5/prompts.txt",
+      "sha256": "89e603383753c80166a0598eb9cddf738c6de65ee1268bfd1b1d7fd9a6f91198",
+      "bytes": 65498
+    },
+    {
+      "path": "stories/wukongs-one-little-bite/editions/v6/prompts.txt",
+      "sha256": "89e603383753c80166a0598eb9cddf738c6de65ee1268bfd1b1d7fd9a6f91198",
+      "bytes": 65498
     },
     {
       "path": "stories/wukongs-slippy-slide-skates/editions/v1/prompts.txt",
