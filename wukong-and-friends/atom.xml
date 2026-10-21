@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<atom:feed xmlns:atom="http://www.w3.org/2005/Atom" xml:lang="en">
+  <atom:id>https://phg1024.github.io/wukong-and-friends/atom.xml</atom:id>
+  <atom:title type="text">Wukong &amp; Friends · New stories</atom:title>
+  <atom:subtitle type="text">New illustrated bedtime stories from Wukong &amp; Friends. Free to read, download and print.</atom:subtitle>
+  <atom:link href="https://phg1024.github.io/wukong-and-friends/atom.xml" rel="self" type="application/atom+xml" />
+  <atom:link href="https://phg1024.github.io/wukong-and-friends/rss.xml" rel="alternate" type="application/rss+xml" />
+  <atom:link href="https://phg1024.github.io/wukong-and-friends/" rel="alternate" type="text/html" hreflang="en" />
+  <atom:author>
+    <atom:name>Peihong Guo</atom:name>
+    <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+  </atom:author>
+  <atom:updated>2026-10-20T00:00:00Z</atom:updated>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-snowy-zigzags/</atom:id>
+    <atom:title type="text">Wukong and the Snowy Zigzags</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-snowy-zigzags/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-20T00:00:00Z</atom:published>
+    <atom:updated>2026-10-20T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong and Princess Iron Fan learn to ski, one snowy zigzag at a time. Jade Rabbit cheers them on, and warm cocoa and fish crackers make a happy finish.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-snowy-zigzags-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-snowy-zigzags-v1.jpg" alt="Wukong and the Snowy Zigzags" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-tiny-tomatoes/</atom:id>
+    <atom:title type="text">Wukong and the Tiny Tomatoes</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-tiny-tomatoes/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-20T00:00:00Z</atom:published>
+    <atom:updated>2026-10-20T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong and Ao Bing plant tiny tomatoes, water them, and wait. A little rain magic helps; patience brings a sweet harvest to share.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v1.jpg" alt="Wukong and the Tiny Tomatoes" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-big-red-truck/</atom:id>
+    <atom:title type="text">Wukong and the Big Red Truck</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-big-red-truck/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-19T00:00:00Z</atom:published>
+    <atom:updated>2026-10-19T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Join Firefighter Ben to discover a very exciting big red truck.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-big-red-truck.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-big-red-truck.jpg" alt="Wukong and the Big Red Truck" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-noisy-nap/</atom:id>
+    <atom:title type="text">Sun Wukong’s Noisy Nap</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukongs-noisy-nap/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-19T00:00:00Z</atom:published>
+    <atom:updated>2026-10-19T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong wants a nap, but his friends’ helpful ideas are a little noisy.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-noisy-nap-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-noisy-nap-v2.jpg" alt="Sun Wukong’s Noisy Nap" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-one-little-bite/</atom:id>
+    <atom:title type="text">Sun Wukong’s One Little Bite</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukongs-one-little-bite/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-19T00:00:00Z</atom:published>
+    <atom:updated>2026-10-19T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;One tiny taste leads Wukong toward a warm, friendly supper.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-one-little-bite-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-one-little-bite-v2.jpg" alt="Sun Wukong’s One Little Bite" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-slippy-slide-skates/</atom:id>
+    <atom:title type="text">Wukong’s Slippy-Slide Skates</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukongs-slippy-slide-skates/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-19T00:00:00Z</atom:published>
+    <atom:updated>2026-10-19T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;His feet feel like tiny sleds. A little tumble, then one more try!&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-slippy-slide-skates.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-slippy-slide-skates.jpg" alt="Wukong’s Slippy-Slide Skates" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-wibble-wobble-ride/</atom:id>
+    <atom:title type="text">Wukong’s Wibble-Wobble Ride</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukongs-wibble-wobble-ride/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-19T00:00:00Z</atom:published>
+    <atom:updated>2026-10-19T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Bicycles look so cool. Riding one turns out to be rather wibbly-wobbly!&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-wibble-wobble-ride.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-wibble-wobble-ride.jpg" alt="Wukong’s Wibble-Wobble Ride" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+</atom:feed>

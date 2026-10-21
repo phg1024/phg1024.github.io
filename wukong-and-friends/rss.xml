@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Wukong &amp; Friends · New stories</title>
+    <link>https://phg1024.github.io/wukong-and-friends/</link>
+    <description>New illustrated bedtime stories from Wukong &amp; Friends. Free to read, download and print.</description>
+    <language>en-us</language>
+    <generator>Wukong &amp; Friends story feed generator</generator>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/atom.xml" rel="alternate" type="application/atom+xml" />
+    <lastBuildDate>Tue, 20 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Wukong and the Snowy Zigzags</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-snowy-zigzags/</link>
+      <description>&lt;p&gt;Wukong and Princess Iron Fan learn to ski, one snowy zigzag at a time. Jade Rabbit cheers them on, and warm cocoa and fish crackers make a happy finish.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-snowy-zigzags-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-snowy-zigzags-v1.jpg" alt="Wukong and the Snowy Zigzags" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-snowy-zigzags/</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wukong and the Tiny Tomatoes</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-tiny-tomatoes/</link>
+      <description>&lt;p&gt;Wukong and Ao Bing plant tiny tomatoes, water them, and wait. A little rain magic helps; patience brings a sweet harvest to share.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v1.jpg" alt="Wukong and the Tiny Tomatoes" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-tiny-tomatoes/</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wukong and the Big Red Truck</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-big-red-truck/</link>
+      <description>&lt;p&gt;Join Firefighter Ben to discover a very exciting big red truck.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-big-red-truck.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-big-red-truck.jpg" alt="Wukong and the Big Red Truck" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-big-red-truck/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Sun Wukong’s Noisy Nap</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukongs-noisy-nap/</link>
+      <description>&lt;p&gt;Wukong wants a nap, but his friends’ helpful ideas are a little noisy.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-noisy-nap-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-noisy-nap-v2.jpg" alt="Sun Wukong’s Noisy Nap" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-noisy-nap/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Sun Wukong’s One Little Bite</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukongs-one-little-bite/</link>
+      <description>&lt;p&gt;One tiny taste leads Wukong toward a warm, friendly supper.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-one-little-bite-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-one-little-bite-v2.jpg" alt="Sun Wukong’s One Little Bite" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-one-little-bite/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wukong’s Slippy-Slide Skates</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukongs-slippy-slide-skates/</link>
+      <description>&lt;p&gt;His feet feel like tiny sleds. A little tumble, then one more try!&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-slippy-slide-skates.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-slippy-slide-skates.jpg" alt="Wukong’s Slippy-Slide Skates" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-slippy-slide-skates/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wukong’s Wibble-Wobble Ride</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukongs-wibble-wobble-ride/</link>
+      <description>&lt;p&gt;Bicycles look so cool. Riding one turns out to be rather wibbly-wobbly!&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-wibble-wobble-ride.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-wibble-wobble-ride.jpg" alt="Wukong’s Wibble-Wobble Ride" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-wibble-wobble-ride/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

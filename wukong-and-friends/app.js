@@ -88,3 +88,20 @@ if (banner && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   banner.pause();
   banner.currentTime = 0;
 }
+
+// Feed subscriptions live in the visitor's reader; this only copies its public address.
+const feedAddress = document.querySelector('#feed-address');
+if (feedAddress) {
+  feedAddress.addEventListener('focus', () => feedAddress.select());
+  document.querySelector('[data-copy-feed]').addEventListener('click', async () => {
+    const status = document.querySelector('#feed-copy-status');
+    try {
+      await navigator.clipboard.writeText(feedAddress.value);
+      status.textContent = text('feed_copied');
+    } catch {
+      feedAddress.focus();
+      feedAddress.select();
+      status.textContent = text('feed_copy_failed');
+    }
+  });
+}

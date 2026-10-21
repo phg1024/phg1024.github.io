@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>悟空和朋友们 · 新故事</title>
+    <link>https://phg1024.github.io/wukong-and-friends/zh/</link>
+    <description>订阅悟空和朋友们的新绘本。每本故事都可以免费阅读、下载和打印。</description>
+    <language>zh-cn</language>
+    <generator>Wukong &amp; Friends story feed generator</generator>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/atom.xml" rel="alternate" type="application/atom+xml" />
+    <lastBuildDate>Tue, 20 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>悟空的雪地弯弯</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/wukong-and-the-snowy-zigzags/</link>
+      <description>&lt;p&gt;悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-snowy-zigzags-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-snowy-zigzags-v1.jpg" alt="悟空的雪地弯弯" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-snowy-zigzags/</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>悟空的小番茄</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/wukong-and-the-tiny-tomatoes/</link>
+      <description>&lt;p&gt;悟空和敖丙一起种小番茄，浇水、耐心等待。敖丙的小雨云来帮忙，两位好朋友终于分享了甜甜的收获。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v1.jpg" alt="悟空的小番茄" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-tiny-tomatoes/</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>悟空和大红消防车</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/wukong-and-the-big-red-truck/</link>
+      <description>&lt;p&gt;跟着消防员 Ben，走近一辆很酷的大红消防车。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-big-red-truck.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-big-red-truck.jpg" alt="悟空和大红消防车" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-big-red-truck/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>悟空的热闹午觉</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/wukongs-noisy-nap/</link>
+      <description>&lt;p&gt;悟空想睡午觉，可朋友们的好意有一点点吵。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-noisy-nap-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-noisy-nap-v2.jpg" alt="悟空的热闹午觉" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-noisy-nap/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>悟空尝一小口</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/wukongs-one-little-bite/</link>
+      <description>&lt;p&gt;从一小口新味道，到一顿暖暖的晚餐。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-one-little-bite-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-one-little-bite-v2.jpg" alt="悟空尝一小口" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-one-little-bite/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>悟空学滑冰</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/wukongs-slippy-slide-skates/</link>
+      <description>&lt;p&gt;小脚像坐上小雪橇。摔一跤，再试一次！&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-slippy-slide-skates.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-slippy-slide-skates.jpg" alt="悟空学滑冰" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-slippy-slide-skates/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>悟空的摇摇晃晃自行车</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/wukongs-wibble-wobble-ride/</link>
+      <description>&lt;p&gt;酷酷的自行车骑起来，却有些摇摇晃晃！&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-wibble-wobble-ride.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-wibble-wobble-ride.jpg" alt="悟空的摇摇晃晃自行车" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-wibble-wobble-ride/</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
