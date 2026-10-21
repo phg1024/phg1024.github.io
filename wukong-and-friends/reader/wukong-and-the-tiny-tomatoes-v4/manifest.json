@@ -1,0 +1,199 @@
+{
+  "format": "story-pages-v1",
+  "source_pdf": "downloads/wukong-and-the-tiny-tomatoes-v4.pdf",
+  "source_sha256": "2e9ec4e25bbfce69537e1be43d06129ad368ee1422effc4641164a3165233583",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ccf35045b89b6bb13ca178f882266707b0a686505db480617d751085cb480ada",
+      "text": "Wukong and the\nTiny Tomatoes",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "1b7a8a93f2ae8991203c7f20bba1117cdf43dabafd3d5ab9eb51964354aa6d28",
+      "text": "By his front door,\nWukong had a sunny spot.\n“Let’s grow tiny tomatoes!”",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "0fe55b0e28dc81810fab7d903baf38c3ce8d5b3d56125a386ca58d25b995d16d",
+      "text": "Ao Bing brought two plants.\nThey dug two little holes.\n“One for you. One for me!”",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2b309479ce4dc5cb88b94f3ae68e1729ecdd4638eea76b20be16309350bf42e8",
+      "text": "In went the plants.\nPat, pat went the soil.\nWukong patted his tummy, too.",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "95a63ee6e967c0c0cd2c1a5ffe7c31af6a603aac136e5d1c7b71af961ac02d88",
+      "text": "Wukong tipped his little can.\n“A drink for you...”\nOops! A drink for his shoe!",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f087a5b4211bfb9440ddbbf24055462c590e0732ea1f88f2e57a83039b55271f",
+      "text": "Ao Bing made a tiny cloud. Drip,\ndrip, drip. “Gentle rain!” said\nWukong.",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "00aa1fed5b57e9b08a055ac2190337bd0fa794ad5dc240fe57c30b6bdae3e0a8",
+      "text": "Each day, they checked the soil.\nDry? A little drink.\nDamp? Time to play!",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "18027449296552e42bb146d6dde3a2f62654ce0aa772ede442dc273be9ca65f0",
+      "text": "“Red yet?” asked Wukong. He\npeeked under every leaf. Ao Bing\nfound his tickly nose.",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ec5f0bbb68260f716785741f67497dd1f933605c318dd7bf980224dde326c5af",
+      "text": "Days went by.\nLittle yellow flowers opened.\n“Hello, tiny stars!”",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "38feb5ca0c2640bc1d2686a0f51b7a020aa6734cbdb075f482fb560565a632d4",
+      "text": "Then came tiny green tomatoes.\n“Ready?” asked Wukong.\n“Not yet,” said Ao Bing.",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c9d7df2e97987d5d6f321624374c466228d4f6683be10eccc884419313898cca",
+      "text": "Wukong whispered, “Please\nturn red.” The tomatoes said\nnothing. Not even a peep.",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8010542c70ace91cc239bdf7287d2b51bc9e0f0968a58bcef6b8fed1953ba172",
+      "text": "They watered. They waited.\nGreen turned to gold.\nGold turned to orange.\n“Almost!”",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2e4bcc22edc45bc961761b7f5cf8f042aa6cad1ca2e9c0a4d5b76af891e9b54c",
+      "text": "One morning... red!\nBright, shiny, tomato red!\nWukong did a tiny tomato dance.",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "aeaa4c048974acbe557af02ff0b817b10b3bac13521e2c24e6fdaaa931559881",
+      "text": "Twist, lift, plop.\nThey picked the red ones.\nThe green ones stayed to grow.",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f067e79c642f8903207b2494d08d52c89a96d7b91f76f6312ce580e43de80215",
+      "text": "They washed their little harvest.\nRed tomatoes. Cool water.\n“Now we can taste them!”",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f0fade40515ed7b39a0a867e0915cfa40e49e6d2c67e14746e0ef8fdcef990cc",
+      "text": "They shared sweet tomato bites.\n“We grew these,” said Wukong.\nAo Bing smiled. “Together.”",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "6b94c8febe5feb6a7e982144d0c240be01010efc5f336537724b56e5cfcd50ae",
+      "text": "Wukong & Friends\nThank you for reading!\nWe hope you and your little reader\nenjoyed this little adventure.\nMore free stories\nphg1024.github.io/wukong-and-friends\nRead, download and print - always free.\nRead more free stories\nIf you enjoyed our stories, you are welcome\nto help the next one grow. Support is optional.\nBuy Me a Coffee\nGitHub Sponsors\nCreated by Peihong Guo\nStories and illustrations made with AI assistance and human editing.",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b7cfcfff6e74593ccbd3568e93f0839c2c0d4e0ffde0721e3a268a69306dc674",
+      "text": "Wukong & Friends\nA little water.\nA little waiting.\nA sweet surprise to share.\nphg1024.github.io/wukong-and-friends",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -63,31 +63,17 @@ if (picker) {
   });
 }
 
-// Download buttons open a thank-you page first; it continues to the file on its own.
-// The page also carries a meta refresh, so the download still happens without JavaScript.
-const gate = document.querySelector('[data-download-redirect]');
-if (gate) {
-  const label = document.querySelector('#countdown');
-  let remaining = Number(gate.dataset.seconds || 30);
-  const tick = () => {
-    if (label) label.textContent = text('redirect_countdown', { seconds: remaining });
-    if (remaining <= 0) {
-      window.location.replace(gate.dataset.downloadRedirect);
-      return;
-    }
-    remaining -= 1;
-    window.setTimeout(tick, 1000);
-  };
-  tick();
-}
-
-// The home banner is a short silent loop. People who ask their system for reduced motion get the still poster.
-const banner = document.querySelector('.banner-video');
-if (banner && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  banner.removeAttribute('autoplay');
-  banner.pause();
-  banner.currentTime = 0;
-}
+// Native PDF links start immediately and work without JavaScript.
+// Only reveal a same-page thank-you; never intercept or delay a download.
+document.querySelectorAll('[data-story-download]').forEach(link => {
+  link.addEventListener('click', () => {
+    const thanks = document.querySelector('[data-download-thanks]');
+    if (thanks) thanks.hidden = false;
+  });
+});
+// Old shared URLs still resolve, with no countdown or payment step.
+const legacyDownload = document.querySelector('[data-immediate-redirect]');
+if (legacyDownload) window.location.replace(legacyDownload.dataset.immediateRedirect);
 
 // Feed subscriptions live in the visitor's reader; this only copies its public address.
 const feedAddress = document.querySelector('#feed-address');

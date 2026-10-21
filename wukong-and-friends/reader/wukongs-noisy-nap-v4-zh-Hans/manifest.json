@@ -1,0 +1,151 @@
+{
+  "format": "story-pages-v1",
+  "source_pdf": "downloads/wukongs-noisy-nap-v4-zh-Hans.pdf",
+  "source_sha256": "8607a61e19af7f3f7f66fbefbc94213aecf458159f4b153fca45251ea13c9487",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "23e354050da121ed42d4fa1af7b3379125101ee2afb6b661a14382be92baf2fa",
+      "text": "悟空的\n热闹午觉",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "057c2ad63927b0cecfcd0f8ad895a315e755f6d25400541695363c32c67a5dee",
+      "text": "悟空打了个大哈欠。\n“该睡午觉啦！”\n他来到桃树下，凉快极了。",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b92cd3b0d8fddf30a2f5be3915352480862f716b5c54d9aeb152a0c9a66215d6",
+      "text": "八戒抱来一个枕头。\n“像云朵一样软！”\n接着，他的肚子\n咕噜咕噜叫。",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "4ce11a4967e4a95587fac2060cbd4ea4659d3993c075bfe567930f142894b6c2",
+      "text": "“先吃点心吧。”悟空说。\n吧唧，吧唧。\n八戒的肚子安静啦。",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "31d9c3f6ac481c89827a0201cbbe5647b1131008960afccbe65a61dba3c4e5ef",
+      "text": "沙僧拿着大叶子，\n慢慢地扇呀扇。\n叶子蹭到了悟空的鼻子。\n“啊……啊……阿嚏！”",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "068503e1bf6a1bc7b39c87bfe93dfcef8d576e30f388a63829a548ee690bea0f",
+      "text": "一只小鸟唱起歌。\n“啾啾！啾啾！”\n悟空坐了起来。\n“小声一点，好吗？”",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ec5870e9f00b86e6b7d025122accfe11ea4d86248e7eb5fcd9538f0da6683e87",
+      "text": "八戒轻轻地嚼，\n沙僧慢慢地扇，\n小鸟小声唱：“啾……啾……”\n悟空笑了。",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b79e62e4453a1e2e02c98042344c1f7d2f269bbb7ce59d8c5d105a573fbecdad",
+      "text": "悟空轻轻吹了一口气。\n一朵小云\n绕着他的脚转圈。\n“刚刚好。”他悄悄说。",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "436890c62a603c14275aa1fc3bb44f30ffa604ffebf3aaf54622915975ea9d44",
+      "text": "很快，朋友们也困了。\n八戒打起呼噜：“呼噜……”\n悟空忍不住又笑了一声。",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b2f6f4cafdc02a21c7b56729de5abe09cac771fc5a34e8d2d227e0ddda2b97f8",
+      "text": "桃树下，\n大家都睡着了。\n树叶沙沙轻响，\n云朵慢慢飘过。\n英雄也需要午睡呀。",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "289f1ec520e4ee3afd619415c1cb27295d9ced81c1cf804b8ba097d89c275be2",
+      "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n故事与插画使用 AI 辅助创作，由作者指导和编辑。",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "9084bacaae41c5e6518c0e678b0d8c622985ddfbc140dadc9d1fd19f88324b80",
+      "text": "Wukong & Friends\n轻轻一点，\n安静一点。\n朋友就在身边。\nphg1024.github.io/wukong-and-friends/zh",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}
