@@ -42,6 +42,16 @@
       "bytes": 20311353
     },
     {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v1-booklet.pdf",
+      "sha256": "31bc64fafc8832c1d075712183692d99e372d38d14406726771f8d39cd864b39",
+      "bytes": 20353494
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v1.pdf",
+      "sha256": "15199b9c04749a3925fbf1d3ec572bfac67a838f716a1f63c118f9ab74a9df78",
+      "bytes": 20355679
+    },
+    {
       "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v1-booklet.pdf",
       "sha256": "0c8a68d6717781e251a688267722dd8a09d43a3b138db6ea236e56740e8e69c1",
       "bytes": 21732377
@@ -130,6 +140,11 @@
       "path": "stories/wukong-and-the-big-red-truck/editions/v1/prompts.txt",
       "sha256": "fd0bb89cbfd3c49f49708c53e04fe1f766beba79b47643c808a1f16b4396da39",
       "bytes": 46252
+    },
+    {
+      "path": "stories/wukong-and-the-snowy-zigzags/editions/v1/prompts.txt",
+      "sha256": "cdd82100bafa8dcb532061ba5f3b58bf3e2646166e0d59ca516b37ee4b2be0d9",
+      "bytes": 57840
     },
     {
       "path": "stories/wukong-and-the-tiny-tomatoes/editions/v1/prompts.txt",

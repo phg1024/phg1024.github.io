@@ -1,5 +1,33 @@
 [
   {
+    "id": "wukong-and-the-snowy-zigzags",
+    "title": "Wukong and the Snowy Zigzags",
+    "series": "wukong",
+    "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。",
+    "style": "Children’s crayon doodles",
+    "version": "v1",
+    "revision": "approved-review-v4",
+    "published": "2026-10-20",
+    "keywords": "悟空 铁扇公主 玉兔 滑雪 学滑雪 坚持 热可可 小鱼饼干 Wukong Iron Fan Jade Rabbit skiing ski cocoa",
+    "pages": 16,
+    "reading": "downloads/wukong-and-the-snowy-zigzags-v1.pdf",
+    "booklet": "downloads/wukong-and-the-snowy-zigzags-v1-booklet.pdf",
+    "cover": "covers/wukong-and-the-snowy-zigzags-v1.jpg",
+    "sheets": 4,
+    "blank_pages": 0,
+    "source_pdf_sha256": "acd3bf1dbe999943d068af2675ed1d060c0c71f75052fb53f7518cc08f0003d7",
+    "translations": {
+      "en": {
+        "title": "Wukong and the Snowy Zigzags",
+        "description": "Wukong and Princess Iron Fan learn to ski, one snowy zigzag at a time. Jade Rabbit cheers them on, and warm cocoa and fish crackers make a happy finish."
+      },
+      "zh": {
+        "title": "悟空的雪地弯弯",
+        "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。"
+      }
+    }
+  },
+  {
     "id": "wukong-and-the-tiny-tomatoes",
     "title": "Wukong and the Tiny Tomatoes",
     "series": "wukong",
