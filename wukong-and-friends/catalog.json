@@ -5,13 +5,13 @@
     "series": "wukong",
     "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。",
     "style": "Children’s crayon doodles",
-    "version": "v4",
-    "revision": "digital-author-and-back-cover",
+    "version": "v5",
+    "revision": "jade-rabbit-and-snow-costume-continuity",
     "keywords": "悟空 铁扇公主 玉兔 滑雪 学滑雪 坚持 热可可 小鱼饼干 Wukong Iron Fan Jade Rabbit skiing ski cocoa",
     "pages": 18,
-    "reading": "downloads/wukong-and-the-snowy-zigzags-v4.pdf",
-    "booklet": "downloads/wukong-and-the-snowy-zigzags-v3-booklet.pdf",
-    "cover": "covers/wukong-and-the-snowy-zigzags-v2.jpg",
+    "reading": "downloads/wukong-and-the-snowy-zigzags-v5.pdf",
+    "booklet": "downloads/wukong-and-the-snowy-zigzags-v5-booklet.pdf",
+    "cover": "covers/wukong-and-the-snowy-zigzags-cover-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "translations": {
@@ -26,13 +26,14 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-and-the-snowy-zigzags-v4-zh-Hans.pdf",
-        "booklet": "downloads/wukong-and-the-snowy-zigzags-v3-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-snowy-zigzags-v2-zh-Hans.jpg"
+        "reading": "downloads/wukong-and-the-snowy-zigzags-v5-zh-Hans.pdf",
+        "booklet": "downloads/wukong-and-the-snowy-zigzags-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-snowy-zigzags-cover-v5-zh-Hans.jpg"
       }
     },
     "booklet_pages": 20,
-    "published": "2026-10-20"
+    "published": "2026-10-20",
+    "updated": "2026-10-22"
   },
   {
     "id": "wukong-and-the-tiny-tomatoes",
