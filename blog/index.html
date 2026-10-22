@@ -127,6 +127,14 @@
                     </div>
                 </li>
                 
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Oct 22, 2026</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/ai/strata-b70-page-reclaim/"><h3>My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</h3></a>
+                        <p class="blog-entry-brief">My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory mirror of MoE experts being allocated while Linux reclaimed page cache — pages the GPU reads at 55–85% speed while the CPU reads the same pages at full speed. What the measurements looked like, why my first three diagnoses were all wrong, and the 45-line patch that went upstream.</p>
+                    </div>
+                </li>
+                
             </ul>
             
         </details>
@@ -250,6 +258,14 @@
                     <div>
                         <a class="blog-entry-title" href="/blog/ai/wukong-and-friends/"><h3>Introducing Wukong &amp; Friends</h3></a>
                         <p class="blog-entry-brief">Free read-aloud picture books, built to make bedtime calmer for a four-year-old — and the unglamorous machinery behind them: keeping one character recognizable from book to book, signing every PDF, and publishing a private repository&#39;s build into a public subdirectory.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Oct 22, 2026</p>
+                    <div>
+                        <a class="blog-entry-title" href="/blog/ai/strata-b70-page-reclaim/"><h3>My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</h3></a>
+                        <p class="blog-entry-brief">My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory mirror of MoE experts being allocated while Linux reclaimed page cache — pages the GPU reads at 55–85% speed while the CPU reads the same pages at full speed. What the measurements looked like, why my first three diagnoses were all wrong, and the 45-line patch that went upstream.</p>
                     </div>
                 </li>
                 

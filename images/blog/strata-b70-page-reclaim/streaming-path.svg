@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="t">How experts reach the GPU in a streaming MoE deployment</title>
+  <desc id="desc">A router in the MoE layer selects experts for each token. Resident experts sit in the 32 GB of Arc Pro B70 VRAM and are computed on the GPU. The remaining experts live in a 25.7 GiB pinned host memory mirror and are read over PCIe at 24 to 27.5 gigabytes per second. The physical pages behind that mirror are chosen once, at allocation, by the xe driver and TTM.</desc>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+
+  <rect width="960" height="440" fill="#f7f8fb"/>
+  <text x="480" y="36" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">Why host memory placement decides decode speed</text>
+  <text x="480" y="58" text-anchor="middle" font-size="12.5" fill="#5b6478">Qwen 3.8 Flash Next on a 32 GB Arc Pro B70 &#183; experts streamed on demand</text>
+
+  <rect x="40" y="150" width="210" height="96" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="145" y="184" text-anchor="middle" font-size="14" font-weight="700" fill="#1e2433">MoE layer</text>
+  <text x="145" y="206" text-anchor="middle" font-size="12" fill="#5b6478">router picks the experts</text>
+  <text x="145" y="224" text-anchor="middle" font-size="12" fill="#5b6478">needed for this token</text>
+
+  <rect x="430" y="92" width="300" height="92" rx="10" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+  <text x="580" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#1e2433">Arc Pro B70 &#183; 32 GB VRAM</text>
+  <text x="580" y="144" text-anchor="middle" font-size="12" fill="#5b6478">11,702 resident experts (22.2 GiB)</text>
+  <text x="580" y="163" text-anchor="middle" font-size="12" fill="#2f6fd0">hit &#8594; computed on the GPU</text>
+
+  <rect x="430" y="246" width="300" height="92" rx="10" fill="#ffffff" stroke="#0f8f86" stroke-width="1.5"/>
+  <text x="580" y="276" text-anchor="middle" font-size="14" font-weight="700" fill="#1e2433">Pinned host mirror &#183; 25.7 GiB</text>
+  <text x="580" y="298" text-anchor="middle" font-size="12" fill="#5b6478">the experts VRAM cannot hold</text>
+  <text x="580" y="317" text-anchor="middle" font-size="12" fill="#0f8f86">miss &#8594; read by the GPU over PCIe</text>
+
+  <path d="M 250 178 L 424 140" stroke="#64748b" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+  <path d="M 250 218 L 424 296" stroke="#64748b" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+  <line x1="580" y1="188" x2="580" y2="242" stroke="#64748b" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text x="600" y="212" font-size="12" fill="#1e2433">PCIe &#183; pinned copies 24&#8211;27.5 GB/s</text>
+  <text x="600" y="230" font-size="11.5" fill="#5b6478">pageable probes read 7.1 GB/s &#8212; a red herring</text>
+
+  <text x="40" y="352" font-size="11.5" fill="#5b6478">At start-up the engine&#8217;s own model reads leave MemFree at 0.7&#8211;1.0 GiB, just as the 25.7 GiB mirror is requested.</text>
+
+  <rect x="40" y="364" width="880" height="62" rx="10" fill="#eef2f9" stroke="#c9d2e3" stroke-width="1.2"/>
+  <text x="480" y="388" text-anchor="middle" font-size="12.5" fill="#1e2433">The backing pages are chosen <tspan font-weight="700">once, at allocation</tspan>, by the xe driver and TTM.</text>
+  <text x="480" y="408" text-anchor="middle" font-size="12.5" fill="#1e2433">If memory is tight at that moment, the GPU pays for the lifetime of the mirror.</text>
+</svg>

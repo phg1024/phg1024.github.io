@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU | Peihong Guo</title>
+ <meta name="description" content="My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/ai/strata-b70-page-reclaim/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU | Peihong Guo">
+ <meta property="og:description" content="My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/ai/strata-b70-page-reclaim/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU | Peihong Guo">
+ <meta name="twitter:description" content="My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-10-22T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/styles.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn't the GPU</h1><p class="blog-post__date">Oct 22, 2026</p>
+<p>I've been running <a href="/blog/ai/qwen-intel-arc-vllm/">Qwen 3.6 35B A3B on my Arc Pro B70</a> for a while. It is blazing fast and not good enough: under stress testing — long agent loops, dense instruction following, code that has to actually run — a model with only a few billion active parameters drifts in ways I kept having to design around.</p>
+<p>So I went looking for Qwen 3.8. The 27B is a better model and far too heavy for one 32 GB card at any context length worth using (that fight is a post of its own, coming soon). While I was working out how to make a bigger model live on this hardware, <a href="https://github.com/Niko1221/Strata">Strata</a> kept turning up — it has been generating real buzz for getting large MoE models running on cards that have no business running them. So I gave it a try.</p>
+<p>It worked. Then it got slow.</p>
+<p>Two days ago it was doing 42–45 tokens per second of decode. This morning it was doing 26–28. I had changed nothing. No model swap, no driver update, no config edit — just a reboot in between, which turned out to be the most misleading variable in the whole investigation.</p>
+<p>The short version: the engine keeps a <strong>pinned host-memory mirror of model experts</strong> that the GPU reads over PCIe. Those pages are allocated by the kernel driver, and <em>which</em> pages it hands out depends on how much memory was free at the moment of allocation. Pages taken while the kernel was reclaiming page cache are read by the GPU at <strong>55–85% of full speed</strong> — while the CPU reads the very same pages at full speed. Nothing about the GPU, the link, or the model was wrong. The allocation had just landed in a bad place.</p>
+<p>A 45-line opt-in patch that drops the model files' page cache <em>before</em> the mirror is allocated made every restart run at 42–44 tok/s again. It is deployed, survived a five-hour soak test, and is now a draft upstream PR.</p>
+<h2>The setup, in one paragraph</h2>
+<p>A desktop box with an <strong>Intel Arc Pro B70 (32 GB)</strong>, an i7-12700K and 61 GiB of RAM, serving a quantized <strong>Qwen 3.8 Flash Next</strong> MoE at 262K context through Strata's SYCL engine. The model does not fit in VRAM, so it runs with <code>--stream-experts</code>: a slice of the experts lives in the 32 GB of VRAM, the rest is mirrored in pinned host memory and streamed to the GPU over PCIe as the router asks for them. MTP speculative decoding is on.</p>
+<p>That architecture is the whole story, because it makes decode speed a function of <strong>host memory bandwidth as seen by the GPU</strong> — a quantity I had never measured and wrongly assumed was fixed.</p>
+<p><img src="/images/blog/strata-b70-page-reclaim/streaming-path.svg" alt="Streaming experts: a router selects the experts for each token; resident experts are computed on the Arc Pro B70, and the rest are read from a 25.7 GiB pinned host mirror over PCIe. The backing pages are chosen once, at allocation."></p>
+<h2>Three wrong diagnoses</h2>
+<p>I want to be honest about this part, because the first version of my analysis was assembled from log files and release notes, and it was confidently wrong on every count.</p>
+<p><strong>&quot;The PCIe link only does 7.1 GB/s.&quot;</strong> The engine prints a start-up line: <code>PCIe probe: 7.1 GB/s host-&gt;device -&gt; pcie_frac 0.19</code>. That looks like a smoking gun for a card in a x4 slot. It is not. That probe times a <strong>pageable</strong> copy, which is a known-bad path (upstream <a href="https://github.com/Niko1221/Strata/issues/1745">#1745</a>). When I measured pinned copies directly — the ones the engine actually uses — the same link did <strong>24–27.5 GB/s</strong>. The auto-tuned <code>pcie_frac</code> was derived from a number that had nothing to do with the real transfer path.</p>
+<p><strong>&quot;The crashes are the known copy-engine hang.&quot;</strong> There were <code>UR_RESULT_ERROR_DEVICE_LOST</code> failures in the log, and there is an open upstream report of the Arc copy engine wedging the card. Plausible, tidy, wrong. On-host checks showed the engine was starting with <strong>1.6 GiB of VRAM free</strong>, and a <code>ccs</code> job then hit the <code>xe</code> driver's 5-second timeout, which loses the device. Starvation, not a hang.</p>
+<p><strong>&quot;The binary is stale.&quot;</strong> The engine binary's timestamp predated its own source checkout by about seven hours. It didn't: I had misread the time zone. And the &quot;missing&quot; <code>--suffix-draft</code> flag I went looking for was already on.</p>
+<p>The lesson here is not &quot;read the logs more carefully.&quot; It's that <strong>a coherent story built from other people's bug reports is not a measurement.</strong> Every one of those three conclusions came from matching my logs against someone else's described failure.</p>
+<h2>A real PCIe fault that turned out to be a distraction</h2>
+<p>The one thing that genuinely looked broken: the PCIe link was running as <strong>Gen5 x16 and logging about 2,900 AER <code>RxErr</code>/<code>BadTLP</code> errors</strong>. Signal integrity problems, real errors, exactly the kind of thing you'd expect to explain a slow GPU.</p>
+<p>After a reboot the link trained as <strong>Gen4 x16 with zero errors</strong>, and decode recovered to about 36 tok/s. Case closed? No — for two reasons.</p>
+<p>First, <code>auto_link_downgrade_status</code> was 0, meaning the card had never actually dropped itself to Gen4; the boot-time training just landed there. Second, and decisively: <strong>bandwidth fell again within 45 minutes on that same clean, error-free Gen4 link.</strong> Pinned transfers went from 27.5 GB/s down to 11–17.6 GB/s with no AER errors and no driver complaints.</p>
+<p>So the link quality was a real issue worth fixing eventually, and completely irrelevant to the slowdown.</p>
+<h2>The measurement that found it</h2>
+<p>I wrote a microbenchmark that allocates <strong>13 chunks of 2 GiB</strong> with <code>malloc_host</code> (Level Zero pinned host memory), fills them, and then reads them two ways: a plain CPU pass, and a GPU copy plus a GPU compute kernel. Same buffers, same bytes, two readers.</p>
+<p><img src="/images/blog/strata-b70-page-reclaim/allocation-bandwidth.svg" alt="Chart of thirteen 2 GiB pinned buffers. With about 60 GB free, every chunk reads at 27 GB/s by copy and 24 GB/s by kernel; allocated with about 11 GB free under reclaim, only the first three chunks stay fast and the rest fall to 16–22 and 14–20. The CPU reading the same pages holds 30.5 GB/s in every panel."></p>
+<table>
+<thead>
+<tr>
+<th>State of memory when the chunks were allocated</th>
+<th>GPU copy (GB/s)</th>
+<th>GPU kernel read (GB/s)</th>
+<th>CPU read (GB/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page cache dropped, ~60 GB free</td>
+<td>27 (all 13 chunks)</td>
+<td>24 (all 13)</td>
+<td>30.5</td>
+</tr>
+<tr>
+<td>~11 GB free, allocation needs reclaim</td>
+<td>27 for the first 3 chunks, then 16–22</td>
+<td>24 for the first 3, then 14–20</td>
+<td>30.5 everywhere</td>
+</tr>
+</tbody>
+</table>
+<p>Two things fall out of this table.</p>
+<p>The <strong>CPU reads every page at full speed regardless</strong>. So the pages are not slow, the memory is not slow, and there is no ECC or thermal story. Only the GPU's access degrades.</p>
+<p>And the degradation is <strong>positional</strong>: the first three chunks are fine, the rest are not. That is exactly what you'd expect if the driver satisfies early requests from a healthy pool and then starts pulling reclaimed pages. Level Zero debug logs confirm each chunk is a single <code>XE_GEM_CREATE</code> system buffer object with no internal chunking — the <code>xe</code> driver and TTM choose the backing pages, and the engine never gets a say.</p>
+<p>The last confirmation was the crudest one: run <code>drop_caches</code> and <code>compact_memory</code> as root, restart the engine, and decode comes back at <strong>42.4 tok/s on the Gen4 link</strong>. Free memory at allocation time was the variable all along.</p>
+<p>At engine start, the engine's own model reads left <code>MemFree</code> at <strong>0.7–1.0 GiB</strong> at the moment the mirror needed <strong>25.7 GiB</strong>. Of course it got reclaimed pages.</p>
+<h2>The fix, and the version that made things worse</h2>
+<p>My first patch attempt did the obvious-sounding thing: after filling the mirror, drop the page cache of the ranges that had just been mirrored, to give the pressure back. That made restarts <strong>slower</strong> — 27.6–30.3 tok/s against 35.5–38.9 without it. I was optimizing the wrong moment. The important instant is <em>free memory at the moment of allocation</em>, not afterwards.</p>
+<p>The version that works drops the model files' page cache <strong>before</strong> the mirror is allocated, so the pages the driver finds are already clean and free.</p>
+<p>Each arm restarted the engine four times in a row, reading an unrelated 22 GB file between starts to rebuild the page cache — i.e. deliberately recreating the bad condition. Prompts at 2K and 32K, 512 tokens out, temperature 0.</p>
+<table>
+<thead>
+<tr>
+<th>Runs</th>
+<th>Without the patch (restarts 2–4)</th>
+<th>With <code>DROP_CACHE=before</code> (restarts 2–4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Measurement build (24 starts)</td>
+<td>36.4–39.2 tok/s</td>
+<td><strong>44.1–44.5</strong></td>
+</tr>
+<tr>
+<td>Trimmed PR build (16 starts)</td>
+<td>37.5–41.4 tok/s</td>
+<td><strong>42.4–44.5</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The cost is about <strong>one extra second</strong> on the mirror fill, because it now reads from NVMe instead of the page cache it just evicted. Outputs were <strong>byte-identical</strong> across arms — which is the bar I want for any patch that touches memory layout: it may change how fast the answer arrives, never the answer.</p>
+<p>Worth noting: the patch is opt-in. It is not obviously right for a box with a different memory profile, and I'd rather ship a switch than silently change someone else's machine.</p>
+<h2>Things that did nothing</h2>
+<p>Equally useful, if less exciting:</p>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--pcie-frac</code> forced to 0 / 0.40 / 0.55</td>
+<td>3–8% <strong>slower</strong> than the automatic 0.20</td>
+</tr>
+<tr>
+<td><code>EnableRecoverablePageFaults=0</code></td>
+<td>1–2% slower; keep only as a <code>DEVICE_LOST</code> fallback</td>
+</tr>
+<tr>
+<td><code>STRATA_IQ_DECODE_FAST=1</code></td>
+<td>no measurable change, byte-identical output</td>
+</tr>
+<tr>
+<td>Upgrading the engine to the latest release</td>
+<td>no change for this quantization at all</td>
+</tr>
+</tbody>
+</table>
+<p>That last row is worth sitting with. I spent real time on version archaeology — comparing my build against 392 upstream commits, reading release notes for card-specific optimizations — and the version was not a factor. The two card-specific optimizations I found were already active in the build I had.</p>
+<h2>Soak test and real traffic</h2>
+<p>A patch that wins an A/B on restarts is not a deployment. The five-hour soak: Poisson arrivals with a 120-second mean, prompts from 1K to 128K tokens, 170 requests including 57 follow-up turns, and <strong>6 random restarts, 5 of them immediately after reading a 16–22 GB file</strong> to force the bad allocation condition.</p>
+<ul>
+<li><strong>0 errors, 0 wrong answers</strong>, 0 AER, 0 <code>xe</code> errors, swap ~0.</li>
+<li><code>MemFree</code> before the drop was 1.2–5.9 GiB at each restart; after it, 29–41 GiB.</li>
+<li>A fixed 2K probe held <strong>58.0–59.5 tok/s across all 13 runs</strong>.</li>
+</ul>
+<p>Real usage the next morning, on a long agent conversation at 179–194K context: over 34 requests, <strong>96.8% of prompt tokens were reused</strong>, median time-to-first-token 2.2 s, median decode 34 tok/s in a 22–42 range. The spread tracks speculative-decoding acceptance, which swung between 41% and 87% — a different, larger lever than anything in this post.</p>
+<p>The very first request of that session took 161 seconds, which is a story of its own.</p>
+<h2>The second fix: making conversations survive a restart</h2>
+<p>That 161-second request happened because earlier restarts had evicted the conversation state, forcing a full re-prefill of ~180K tokens.</p>
+<p>There is an upstream PR (#1937) adding a <strong>conversation disk tier</strong> — checkpoints of conversation state written to disk and reloaded on demand. It just didn't exist on Intel: the feature is wired into <code>src/program/generate.cpp</code>, but the SYCL engine compiles <strong>its own</strong> <code>sycl/src/program/generate.cpp</code>, so the <code>--conversation-disk-*</code> flags simply weren't there. Porting it took 12 pieces across +159/−16 lines.</p>
+<table>
+<thead>
+<tr>
+<th>Test on the B70</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>160K-token conversation, cold</td>
+<td>139.8 s to first token</td>
+</tr>
+<tr>
+<td>Same conversation after an engine restart, from disk</td>
+<td><strong>4.3 s</strong> (4.8 GB read at 1.4 GB/s), <strong>byte-identical answer</strong></td>
+</tr>
+<tr>
+<td>Evicted by three other conversations, then resumed</td>
+<td>5.0 s</td>
+</tr>
+<tr>
+<td>Shutdown save</td>
+<td>4.6 s (4.8 GB at 1.8 GB/s)</td>
+</tr>
+</tbody>
+</table>
+<p>The mechanism is prefix matching: a resumed request restores the longest matching prefix — either the live state or a checkpoint taken every 8K tokens — and computes only the remainder. Which also tells you when it <em>doesn't</em> help: a client that compacts the <strong>beginning</strong> of its history leaves only the system prompt matching, and you pay full price again.</p>
+<p>Two operational notes I'd want written down before deploying this myself. An 180K-token conversation costs about 5.5 GB on disk, so a 32 GiB budget holds roughly five conversations with the oldest dropped first. And with persistence enabled the engine <strong>ignores <code>SIGTERM</code></strong>, saving conversations only when the server sends an explicit quit — so <code>kill -9</code> on the engine silently loses whatever was only in RAM.</p>
+<h2>Upstream</h2>
+<ul>
+<li><strong>Issue</strong> — mirror bandwidth depends on memory state at engine start: <a href="https://github.com/Niko1221/Strata/issues/3681">Niko1221/Strata#3681</a></li>
+<li><strong>PR</strong> — <code>STRATA_MIRROR_DROP_CACHE=before</code>, +45 lines of code and docs, draft, CI passing: <a href="https://github.com/Niko1221/Strata/pull/3761">#3761</a></li>
+<li><strong>Port</strong> — SYCL conversation disk tier with B70 measurements, as a comment on <a href="https://github.com/Niko1221/Strata/pull/1937">#1937</a>; waiting on the maintainer to pick among six competing disk designs</li>
+</ul>
+<h2>What I still don't know</h2>
+<p><strong>Why are reclaimed pages slow for the GPU?</strong> I've localized it, not explained it. The two candidates are IOMMU mapping and the GPU's own page tables. Testing the difference means booting with <code>iommu=pt</code> and tracing TTM page orders with bpftrace. If it lands on <code>xe</code>, it belongs in a driver bug report, not a Strata patch.</p>
+<p><strong>Should I chase the Gen5 link?</strong> The options are locking Gen4 in the BIOS for predictability, or reseating the card and checking the riser for a clean Gen5. Right now the box happens to train at Gen4 with zero errors — and the next boot might land on the noisy Gen5 training again.</p>
+<p><strong>The Intel stack is behind, for stability rather than speed:</strong> compute-runtime 26.35 while deliberately keeping IGC 2.40.x (2.41.5 has regressions), a pending kernel update carrying an <code>xe</code> ring-ordering fix, and a newer GuC. I have not even read the card's firmware version yet.</p>
+<h2>Lessons</h2>
+<p><strong>&quot;Bandwidth&quot; is not a property of a link.</strong> It's a property of a link, an allocator, and the memory state when you allocated. On a streaming-experts architecture, host memory placement is a first-order performance variable.</p>
+<p><strong>Reboots are a confound.</strong> An earlier &quot;Gen5 is 40% faster&quot; result of mine was measured three minutes after boot. It was mostly fresh memory. Any measurement taken shortly after a reboot is measuring a machine nobody runs in production.</p>
+<p><strong>Measure the thing you blame.</strong> Every wrong turn came from a plausible mechanism borrowed from a bug tracker. The microbenchmark that read the same pages from CPU and GPU took an afternoon and settled it immediately.</p>
+<p><strong>Byte-identical output is the bar.</strong> For a patch that changes memory layout, &quot;same numbers, faster&quot; is the whole requirement, and it should be verified rather than assumed.</p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/strata-b70-page-reclaim/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+   <a class="site-footer__link" href="/privacy/">Privacy</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
