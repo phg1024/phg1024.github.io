@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">A 27B model on one 32 GB Arc Pro B70: decode holds up, capacity and prefill do not</title>
+<desc id="d">Left panel: decode rate in tokens per second against context from 64K to 220K for the target alone and with a DFlash2 drafter. Target only falls from 26.8 to 19.7. The drafter gives 54.9 at 64K but only 24.1 at 220K, and the BF16 drafter cannot be loaded past about 156.8K. Right panel: output tokens needed to pay back the drafter&#8217;s extra time to first token, rising from 43 at 64K to 2,361 at 220K.</desc>
+<rect width="960" height="470" fill="#f7f8fb"/>
+<text x="480.0" y="36.0" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">Decode holds up. Everything else does not.</text>
+<text x="480.0" y="58.0" text-anchor="middle" font-size="12.5" fill="#5b6478">Qwen 3.8 27B on one 32 GB Arc Pro B70 &#183; vLLM, W4A16, FP8 KV, one sequence, no prefix cache</text>
+<rect x="90" y="110" width="380" height="240" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.2"/><line x1="90" y1="350.0" x2="470" y2="350.0" stroke="#c9d2e3" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.7"/><text x="81.0" y="354.0" text-anchor="end" font-size="11" fill="#5b6478">0</text><line x1="90" y1="270.0" x2="470" y2="270.0" stroke="#c9d2e3" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.7"/><text x="81.0" y="274.0" text-anchor="end" font-size="11" fill="#5b6478">20</text><line x1="90" y1="190.0" x2="470" y2="190.0" stroke="#c9d2e3" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.7"/><text x="81.0" y="194.0" text-anchor="end" font-size="11" fill="#5b6478">40</text><line x1="90" y1="110.0" x2="470" y2="110.0" stroke="#c9d2e3" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.7"/><text x="81.0" y="114.0" text-anchor="end" font-size="11" fill="#5b6478">60</text><text x="90.0" y="368.0" text-anchor="middle" font-size="11.5" fill="#5b6478">64K</text><text x="245.9" y="368.0" text-anchor="middle" font-size="11.5" fill="#5b6478">128K</text><text x="372.6" y="368.0" text-anchor="middle" font-size="11.5" fill="#5b6478">180K</text><text x="470.0" y="368.0" text-anchor="middle" font-size="11.5" fill="#5b6478">220K</text><text x="90.0" y="392.0" font-size="11.5" fill="#5b6478">decode tokens / s</text>
+<rect x="560" y="110" width="380" height="240" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.2"/><line x1="560" y1="350.0" x2="940" y2="350.0" stroke="#c9d2e3" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.7"/><text x="551.0" y="354.0" text-anchor="end" font-size="11" fill="#5b6478">0</text><line x1="560" y1="270.0" x2="940" y2="270.0" stroke="#c9d2e3" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.7"/><text x="551.0" y="274.0" text-anchor="end" font-size="11" fill="#5b6478">800</text><line x1="560" y1="190.0" x2="940" y2="190.0" stroke="#c9d2e3" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.7"/><text x="551.0" y="194.0" text-anchor="end" font-size="11" fill="#5b6478">1600</text><line x1="560" y1="110.0" x2="940" y2="110.0" stroke="#c9d2e3" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.7"/><text x="551.0" y="114.0" text-anchor="end" font-size="11" fill="#5b6478">2400</text><text x="560.0" y="368.0" text-anchor="middle" font-size="11.5" fill="#5b6478">64K</text><text x="715.9" y="368.0" text-anchor="middle" font-size="11.5" fill="#5b6478">128K</text><text x="842.6" y="368.0" text-anchor="middle" font-size="11.5" fill="#5b6478">180K</text><text x="940.0" y="368.0" text-anchor="middle" font-size="11.5" fill="#5b6478">220K</text><text x="560.0" y="392.0" font-size="11.5" fill="#5b6478">output tokens to break even</text>
+<text x="90.0" y="100.0" font-size="13" font-weight="600" fill="#1e2433">Decode rate vs context</text>
+<text x="560.0" y="100.0" font-size="13" font-weight="600" fill="#1e2433">Speculative decoding payback</text>
+<line x1="316.0" y1="110" x2="316.0" y2="350" stroke="#c2760a" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="324.0" y="128.0" font-size="11" font-weight="600" fill="#c2760a">drafter limit ~156.8K</text>
+<polyline fill="none" stroke="#2f6fd0" stroke-width="2.2" points="90.0,242.8 245.9,256.8 372.6,265.6 470.0,271.2"/>
+<polyline fill="none" stroke="#0f8f86" stroke-width="2.2" points="90.0,130.4 245.9,229.2"/>
+<polyline fill="none" stroke="#0f8f86" stroke-width="2.2" stroke-dasharray="7 4" points="372.6,181.6 470.0,253.6"/>
+<polyline fill="none" stroke="#c2760a" stroke-width="2.2" points="560.0,345.7 715.9,335.2 842.6,282.8 940.0,113.9"/>
+<circle cx="90.0" cy="242.8" r="4.4" fill="#2f6fd0"/>
+<circle cx="245.9" cy="256.8" r="4.4" fill="#2f6fd0"/>
+<circle cx="372.6" cy="265.6" r="4.4" fill="#2f6fd0"/>
+<circle cx="470.0" cy="271.2" r="4.4" fill="#2f6fd0"/>
+<circle cx="90.0" cy="130.4" r="4.4" fill="#0f8f86"/>
+<circle cx="245.9" cy="229.2" r="4.4" fill="#0f8f86"/>
+<circle cx="372.6" cy="181.6" r="4.4" fill="#ffffff" stroke="#0f8f86" stroke-width="2"/>
+<circle cx="470.0" cy="253.6" r="4.4" fill="#ffffff" stroke="#0f8f86" stroke-width="2"/>
+<circle cx="560.0" cy="345.7" r="4.4" fill="#c2760a"/>
+<circle cx="715.9" cy="335.2" r="4.4" fill="#c2760a"/>
+<circle cx="842.6" cy="282.8" r="4.4" fill="#c2760a"/>
+<circle cx="940.0" cy="113.9" r="4.4" fill="#c2760a"/>
+<text x="100.0" y="150.4" font-size="11.5" font-weight="600" fill="#0f8f86">54.9</text>
+<text x="245.9" y="217.2" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0f8f86">30.2</text>
+<text x="372.6" y="169.6" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0f8f86">42.1</text>
+<text x="460.0" y="273.6" text-anchor="end" font-size="11.5" font-weight="600" fill="#0f8f86">24.1</text>
+<text x="100.0" y="230.8" font-size="11.5" font-weight="600" fill="#2f6fd0">26.8</text>
+<text x="460.0" y="259.2" text-anchor="end" font-size="11.5" font-weight="600" fill="#2f6fd0">19.7</text>
+<text x="570.0" y="334.7" font-size="11.5" font-weight="600" fill="#c2760a">43</text>
+<text x="715.9" y="324.2" text-anchor="middle" font-size="11.5" font-weight="600" fill="#c2760a">148</text>
+<text x="842.6" y="271.8" text-anchor="middle" font-size="11.5" font-weight="600" fill="#c2760a">672</text>
+<text x="930.0" y="133.9" text-anchor="end" font-size="11.5" font-weight="600" fill="#c2760a">2,361</text>
+<line x1="90" y1="418" x2="120" y2="418" stroke="#2f6fd0" stroke-width="2.2"/><circle cx="105" cy="418" r="4.4" fill="#2f6fd0"/><text x="128.0" y="422.0" font-size="12.5" fill="#1e2433">target only</text>
+<line x1="240" y1="418" x2="270" y2="418" stroke="#0f8f86" stroke-width="2.2"/><circle cx="255" cy="418" r="4.4" fill="#0f8f86"/><text x="278.0" y="422.0" font-size="12.5" fill="#1e2433">+ BF16 drafter</text>
+<line x1="410" y1="418" x2="440" y2="418" stroke="#0f8f86" stroke-width="2.2" stroke-dasharray="7 4"/><circle cx="425" cy="418" r="4.4" fill="#ffffff" stroke="#0f8f86" stroke-width="2"/><text x="448.0" y="422.0" font-size="12.5" fill="#1e2433">+ INT4 drafter (eager)</text>
+<line x1="620" y1="418" x2="650" y2="418" stroke="#c2760a" stroke-width="1.6" stroke-dasharray="6 4"/><text x="658.0" y="422.0" font-size="12.5" fill="#1e2433">capacity limit</text>
+<text x="480.0" y="450.0" text-anchor="middle" font-size="11.5" fill="#5b6478">Cold time-to-first-token over the same range: 65 s at 64K &#8594; 437 s at 220K. Single seeded random prompts, 128 output tokens, greedy.</text>
+</svg>

@@ -130,6 +130,14 @@
                 <li class="blog-entry-line">
                     <p class="blog-entry-date">Oct 22, 2026</p>
                     <div>
+                        <a class="blog-entry-title" href="/blog/ai/qwen38-27b-arc-b70/"><h3>The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</h3></a>
+                        <p class="blog-entry-brief">Qwen 3.8 27B is a clearly better model than the MoE I run today, and one 32 GB Arc Pro B70 will not hold it at a context length worth having. What &#39;too heavy&#39; actually decomposes into — weights, KV cache, drafter, and cold prefill — measured from 64K to 220K, the speculative-decoding break-even curve that grows from 43 tokens to 2,361, and why the port went back to a MoE.</p>
+                    </div>
+                </li>
+                
+                <li class="blog-entry-line">
+                    <p class="blog-entry-date">Oct 22, 2026</p>
+                    <div>
                         <a class="blog-entry-title" href="/blog/ai/strata-b70-page-reclaim/"><h3>My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</h3></a>
                         <p class="blog-entry-brief">My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory mirror of MoE experts being allocated while Linux reclaimed page cache — pages the GPU reads at 55–85% speed while the CPU reads the same pages at full speed. What the measurements looked like, why my first three diagnoses were all wrong, and the 45-line patch that went upstream.</p>
                     </div>

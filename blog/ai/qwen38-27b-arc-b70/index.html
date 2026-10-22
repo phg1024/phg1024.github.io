@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <title>The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70 | Peihong Guo</title>
+ <meta name="description" content="Qwen 3.8 27B is a clearly better model than the MoE I run today, and one 32 GB Arc Pro B70 will not hold it at a context length worth having. What &#39;too…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/ai/qwen38-27b-arc-b70/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70 | Peihong Guo">
+ <meta property="og:description" content="Qwen 3.8 27B is a clearly better model than the MoE I run today, and one 32 GB Arc Pro B70 will not hold it at a context length worth having. What &#39;too…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/ai/qwen38-27b-arc-b70/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70 | Peihong Guo">
+ <meta name="twitter:description" content="Qwen 3.8 27B is a clearly better model than the MoE I run today, and one 32 GB Arc Pro B70 will not hold it at a context length worth having. What &#39;too…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-10-22T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/styles.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head>
+<body>
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/">Home</a>
+    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/blog/">Blog</a>
+    <a class="site-nav__link" href="/gallery">Gallery</a>
+    <a class="site-nav__link" href="/about">About</a>
+   </nav>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>The Better Model That Wouldn't Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</h1><p class="blog-post__date">Oct 22, 2026</p>
+<p><a href="/blog/ai/strata-b70-page-reclaim/">The previous post</a> ended with a model I actually like running and a parenthetical about a 27B dense model being &quot;a post of its own.&quot; This is that post. It ends differently: with the model parked.</p>
+<p>The premise was simple. <a href="/blog/ai/qwen-intel-arc-vllm/">Qwen 3.6 35B A3B</a> is fast because only a few billion parameters are active per token, and that same property is why it drifts on long agent runs, dense instructions, and code that has to execute. A 27B dense model is a better thinker. The question was whether one could live on a single 32 GB Intel Arc Pro B70 at a context length I would actually use.</p>
+<p>It cannot. But &quot;too heavy&quot; turned out to be a sloppy phrase, because the weight is four separate budgets and only one of them is the weights.</p>
+<h2>What &quot;too heavy&quot; decomposes into</h2>
+<p>On a single card, a 27B model at long context spends four independent budgets:</p>
+<ol>
+<li><strong>Weights.</strong> 17–20 GB at INT4/Q4, about 30.9 GB at the official FP8 — before a single byte of cache.</li>
+<li><strong>KV cache.</strong> At 128K–220K this is not the remainder of the card; it <em>is</em> the card.</li>
+<li><strong>The drafter.</strong> Speculative decoding is how you make a dense model feel fast, and a drafter is another resident model.</li>
+<li><strong>Cold prefill.</strong> The one nobody budgets for, and the one that actually killed this.</li>
+</ol>
+<p>The first three are capacity, and capacity fails loudly — the server refuses to start. The fourth is latency, and it fails quietly: the model loads, runs, and takes seven minutes to answer.</p>
+<h2>The measurement</h2>
+<p>One B70, vLLM 0.29, a W4A16 Qwen 3.8 27B target, FP8 KV, one active sequence, prefix caching <strong>off</strong>, one seeded random prompt per point, 128 output tokens, greedy. <code>K</code> is binary: 64K is 65,536 tokens.</p>
+<p><img src="/images/blog/qwen38-27b-arc-b70/decode-vs-context.svg" alt="Decode rate versus context for a 27B target with and without a DFlash2 drafter on one 32 GB Arc Pro B70. Target-only decode falls from 26.8 to 19.7 tok/s across 64K to 220K. The drafter more than doubles it at 64K but only gains 22% at 220K, and the BF16 drafter cannot be loaded past about 156.8K at all."></p>
+<table>
+<thead>
+<tr>
+<th>Context</th>
+<th>Configuration</th>
+<th style="text-align:right">Cold TTFT</th>
+<th style="text-align:right">Prefill</th>
+<th style="text-align:right">TPOT</th>
+<th style="text-align:right">Decode</th>
+<th style="text-align:right">Accept. length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>64K</td>
+<td>target only</td>
+<td style="text-align:right">65.4 s</td>
+<td style="text-align:right">1,002 tok/s</td>
+<td style="text-align:right">37.3 ms</td>
+<td style="text-align:right">26.8 tok/s</td>
+<td style="text-align:right">–</td>
+</tr>
+<tr>
+<td>64K</td>
+<td>+ BF16 drafter</td>
+<td style="text-align:right">66.2 s</td>
+<td style="text-align:right">989</td>
+<td style="text-align:right">18.2 ms</td>
+<td style="text-align:right"><strong>54.9</strong></td>
+<td style="text-align:right">3.94</td>
+</tr>
+<tr>
+<td>128K</td>
+<td>target only</td>
+<td style="text-align:right">181.7 s</td>
+<td style="text-align:right">721</td>
+<td style="text-align:right">42.8 ms</td>
+<td style="text-align:right">23.3</td>
+<td style="text-align:right">–</td>
+</tr>
+<tr>
+<td>128K</td>
+<td>+ BF16 drafter</td>
+<td style="text-align:right">183.1 s</td>
+<td style="text-align:right">716</td>
+<td style="text-align:right">33.1 ms</td>
+<td style="text-align:right">30.2</td>
+<td style="text-align:right">2.76</td>
+</tr>
+<tr>
+<td>180K</td>
+<td>target only</td>
+<td style="text-align:right">313.3 s</td>
+<td style="text-align:right">588</td>
+<td style="text-align:right">47.4 ms</td>
+<td style="text-align:right">21.1</td>
+<td style="text-align:right">–</td>
+</tr>
+<tr>
+<td>180K</td>
+<td>+ INT4 drafter</td>
+<td style="text-align:right">329.1 s</td>
+<td style="text-align:right">560</td>
+<td style="text-align:right">23.8 ms</td>
+<td style="text-align:right"><strong>42.1</strong></td>
+<td style="text-align:right">4.71</td>
+</tr>
+<tr>
+<td>220K</td>
+<td>target only</td>
+<td style="text-align:right">437.2 s</td>
+<td style="text-align:right">515</td>
+<td style="text-align:right">50.8 ms</td>
+<td style="text-align:right">19.7</td>
+<td style="text-align:right">–</td>
+</tr>
+<tr>
+<td>220K</td>
+<td>+ INT4 drafter</td>
+<td style="text-align:right">459.1 s</td>
+<td style="text-align:right">491</td>
+<td style="text-align:right">41.6 ms</td>
+<td style="text-align:right">24.1</td>
+<td style="text-align:right">3.07</td>
+</tr>
+</tbody>
+</table>
+<p>Two things to read off this table.</p>
+<p><strong>Decode holds up surprisingly well.</strong> 26.8 → 19.7 tok/s across a 3.4× context increase. If you only ever looked at tokens per second, you would conclude the 27B &quot;basically works.&quot;</p>
+<p><strong>Everything else collapses.</strong> Cold time-to-first-token goes from 65 seconds to 437. A cold 220K turn costs over seven minutes before the first token arrives, and prefill throughput degrades from 1,002 to 515 tok/s as the attention and cache pressure climb.</p>
+<p>These were single seeded random prompts with repetitive output — capacity and performance probes, not chat quality, and no confidence intervals. They bound what is possible; they do not describe how the model feels.</p>
+<h2>The drafter runs out of card first</h2>
+<p>The BF16 drafter is what makes the 64K row look good, and it auto-fit to about <strong>156.8K tokens</strong> and then simply could not load. The 180K and 220K points needed an experimental INT4 drafter run in eager mode. Even that was tight: at 98% GPU utilization it fit 224,000 tokens with a 4,096-token scheduler budget, which was not enough for a binary 220K request plus its output. Dropping the scheduler budget to 2,048 raised capacity to 242,816 tokens — and that cost is baked into the 220K row above.</p>
+<p>Precision is not a knob here either. On XPU, an FP16 drafter overflows and produces <strong>zero draft acceptance</strong>; BF16 is mandatory for the high-acceptance route.</p>
+<h2>Speculative decoding is an amortization problem</h2>
+<p>This is the part I found genuinely interesting. A drafter buys you a lower per-token time, but it also buys you a <em>higher</em> time-to-first-token, because the target has to verify draft passes over an ever larger cache. The extra TTFT has to be paid back out of the tokens you generate:</p>
+<table>
+<thead>
+<tr>
+<th>Context</th>
+<th style="text-align:right">64K</th>
+<th style="text-align:right">128K</th>
+<th style="text-align:right">180K</th>
+<th style="text-align:right">220K</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>output tokens needed to pay back the extra TTFT</td>
+<td style="text-align:right"><strong>43</strong></td>
+<td style="text-align:right"><strong>148</strong></td>
+<td style="text-align:right"><strong>672</strong></td>
+<td style="text-align:right"><strong>2,361</strong></td>
+</tr>
+</tbody>
+</table>
+<p>At 64K, speculation pays for itself in a short reply. At 220K you need to generate more than two thousand tokens before the drafter has earned its own overhead — and the acceptance rate that made it worthwhile is exactly the thing that varies most with prompt content. (The 180K INT4 point hit an acceptance length of 4.71, unusually high; context length alone is a dangerous routing threshold.)</p>
+<p>The general lesson generalizes past this card: <strong>speculative decoding is not a speed setting, it is a bet on output length</strong>, and the bet gets worse as context grows. On a long-context agent workload — the workload I actually care about, which lives at 180K+ — the drafter is the first thing that stops making sense.</p>
+<p>There was also no way to route around it. vLLM could vary speculative tokens by batch size but had no per-sequence context-length policy, and target-only and drafter servers could not be resident on the same 32 GB card, so switching profiles meant a restart.</p>
+<h2>The llama.cpp attempts</h2>
+<p>Before the vLLM sweep I tried the same model through llama.cpp's SYCL server, with DFlash2 drafters at several precisions, <code>--parallel 1</code> and <code>2</code>. It produced no benchmark table. What it produced was a context-init failure in the DFlash path, a port collision with the live service, and a lost device when running two sequences with SYCL graphs disabled. That is a record of what went wrong, not a measurement, and I am not going to dress it up as the latter.</p>
+<h2>Why I stopped</h2>
+<p>Three reasons, in order of how much they weighed.</p>
+<p><strong>The ceiling is below my workload.</strong> The agent conversations that motivated this whole line of work live at 179–194K tokens. A route that tops out near 156.8K with a drafter is disqualified before quality enters the picture.</p>
+<p><strong>Cold prefill is unfixable by configuration.</strong> 515 tok/s at 220K is a property of the model, the cache layout and the card. No flag recovers seven minutes.</p>
+<p><strong>I never actually measured the quality gap.</strong> This is the uncomfortable one. The entire 27B pursuit rested on &quot;35B A3B drifts under stress testing&quot; — a judgement I made from working around it, not from a benchmark. I never ran a task-level comparison of 27B against the model I use now. It is entirely possible I was chasing a gap I had not quantified.</p>
+<p>So: parked, not disproved. What I actually established is much narrower than the title of this post implies — <em>27B does not fit on this card via vLLM with INT4 or FP8 weights and a DFlash2 drafter at 180K context or beyond</em> — and other serving routes and weight formats remain untested. I would rather say that here than let the title overclaim.</p>
+<h2>Back to MoE</h2>
+<p>The port that 27B was supposed to take is running a mixture-of-experts model again: <strong>Qwen 3.8 Flash Next</strong>, IQ3_S, 262K context, on Strata. So the honest ending is that I went looking for a dense model to replace my MoE with, and came back.</p>
+<p>What decided it was not a benchmark. It was watching where each architecture spends its budget on the same 32 GB of memory.</p>
+<p>A dense 27B pays for every parameter on every token. A MoE pays for the experts the router actually picks, and buys the rest with bandwidth — which sounds like the worse problem until you notice it is the <em>solvable</em> one. Streaming experts from host memory is an engineering problem with an answer. Making 30 GB of dense weights share a card with a 200K-token KV cache is arithmetic.</p>
+<p>Which is the practical lesson, and the reason I stopped measuring and wrote this up instead: <strong>the MoE's weakness is a bandwidth problem and the dense model's weakness is a capacity problem, and only one of those responds to good engineering.</strong> The bandwidth problem turned out to be plenty of a problem in its own right — it got <a href="/blog/ai/strata-b70-page-reclaim/">a post of its own</a> two days after I switched.</p>
+<p>Two things I want to be precise about, because it would be easy to oversell this ending.</p>
+<p>I did not go back to the model that disappointed me. Flash Next is a newer MoE generation than <a href="/blog/ai/qwen-intel-arc-vllm/">Qwen 3.6 35B A3B</a>, and the drift I kept designing around is much less of an issue in it. &quot;MoE again&quot; is not the same as &quot;the same MoE again.&quot;</p>
+<p>And I still have no head-to-head quality measurement between the 27B and Flash Next. Everything above is an argument about <em>fit</em> — memory, context, prefill, drafter economics — not about which model thinks better. On this card, at this context length, fit was the binding constraint and it settled the question before quality got a vote. If the card changes, the question reopens.</p>
+<h2>What I would do before trying again</h2>
+<ul>
+<li>Compare candidate weight formats and serving routes on identical <strong>real</strong> coding and chat prompts at 2K, 32K and 128K, with cold and reused-prefix turns recorded separately.</li>
+<li>Measure TTFT, tokens after first token, acceptance, peak VRAM <strong>and answer correctness</strong> in the same run.</li>
+<li>Exercise reasoning parsers, tool-call parsers, and exact retrieval — the failure modes that motivated the switch.</li>
+<li>Keep short greedy/counting results separate from sampled coding performance; they answer different questions.</li>
+<li>And before any of it: define the quality bar the 27B has to clear, in writing, so &quot;better model&quot; stops being a vibe.</li>
+</ul>
+<p>That last bullet is the one I skipped, and it is the reason this post ends with a parked model instead of a benchmark.</p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/qwen38-27b-arc-b70/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <label class="theme-toggle" for="theme-toggle">
+    <span class="theme-toggle__label">Theme</span>
+    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+    </select>
+   </label>
+   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+   <a class="site-footer__link" href="/privacy/">Privacy</a>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
