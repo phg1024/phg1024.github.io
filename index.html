@@ -2,7 +2,37 @@
 <html lang="en">
 <head>
  <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      if (!path || animated.indexOf(path) < 0) event.viewTransition.skipTransition();
+    });
+    window.addEventListener('pagereveal', handled);
+  })();
+ </script>
  <script>
   (function () {
      var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
@@ -11,7 +41,7 @@
  </script>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
  <title>AI, Graphics, and Doodling | Peihong Guo</title>
  <meta name="description" content="Peihong Guo is a Senior Staff Research Engineer at Meta Reality Labs, working on real-time graphics and visual computing. Notes on machine learning,…">
  <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
@@ -27,12 +57,11 @@
  <meta name="twitter:description" content="Peihong Guo is a Senior Staff Research Engineer at Meta Reality Labs, working on real-time graphics and visual computing. Notes on machine learning,…">
  <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
- <link rel="stylesheet" href="/styles/styles.css">
+ <link rel="stylesheet" href="/styles/proto.css">
  
 <script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
 
-</head>
-<body>
+</head><body class="proto">
 <canvas class="theme-backdrop" aria-hidden="true"></canvas>
 <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
 <a class="skip-to-content" href="#main-content">Skip to content</a>
@@ -41,203 +70,117 @@
   <div class="site-header__inner">
    <a class="site-brand" href="/">
     <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
    </a>
    <nav class="site-nav" aria-label="Primary navigation">
-    <a class="site-nav__link is-active" href="/">Home</a>
-    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
-    <a class="site-nav__link" href="/blog/">Blog</a>
-    <a class="site-nav__link" href="/gallery">Gallery</a>
-    <a class="site-nav__link" href="/about">About</a>
-   </nav>
+    <a class="site-nav__link" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by tag">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">10</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/cooking/">Cooking <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">16</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
   </div>
  </header>
 
  <main class="site-main" id="main-content" role="main">
   
-<div class="home-stack">
-     <section class="hero">
-         <div class="hero__grid">
-             <div>
-                 <h1 class="hero__title">AI, Graphics, and Doodling.</h1>
-                 <p class="hero__lede">
-                    Peihong Guo is a Senior Staff Research Engineer at Meta Reality Labs, working on
-                    real-time graphics and visual computing. Those three words are also what this site
-                    keeps growing: models run and probed on machines you can point at, renderers written
-                    to find out how light actually reaches a pixel, and a crayon-doodle shelf of bedtime
-                    picture books drawn to a four-year-old's specifications.
-                 </p>
-             </div>
-             <div class="hero__note">
-                 <p>Currently</p>
-                 <p><strong>AI</strong> — <a class="hero__note-link" href="/blog/ai/qwen-intel-arc-vllm/">Qwen
-                    served from a machine under the desk</a>, an <a class="hero__note-link" href="/blog/ai/jarvis-architecture/">Android
-                    voice assistant</a> that runs it locally, <a class="hero__note-link" href="/blog/ai/facial-keypoint-diffusion/">generative
-                    AI</a>, and <a class="hero__note-link" href="/blog/programming/aos-agent-os/">agent
-                    prototypes</a> built on the same idea. <strong>Graphics</strong> — a <a
-                    class="hero__note-link" href="/projects/raytracer/">raytracer</a> that finally takes
-                    refraction seriously, with real-time work at Reality Labs in between.
-                    <strong>Doodling</strong> — <a class="hero__note-link" href="/wukong-and-friends/">Wukong
-                    &amp; Friends</a>, a bedtime story garden with signed PDFs.</p>
-             </div>
-         </div>
-     </section>
+<section class="content-page">
+    <div class="section-heading">
+        <h1 class="section-heading__title">AI, Graphics, and Doodling.</h1>
+        <p class="section-heading__lede">
+            I am a Senior Staff Research Engineer at
+            <a href="https://www.meta.com">Meta Reality Labs</a>, working on real-time graphics and
+            visual computing. This site keeps growing the same three things: models run and probed on
+            machines you can point at, renderers written to find out how light actually reaches a
+            pixel, and a crayon-doodle shelf of bedtime picture books drawn to a four-year-old's
+            specifications.
+        </p>
+    </div>
 
-     <section class="editorial-section">
-         <div class="section-heading">
-             <p class="section-heading__eyebrow">Selected work</p>
-             <h2 class="section-heading__title">Featured projects</h2>
-         </div>
-         <div class="feature-grid">
-             
-             <article class="feature-card feature-card--compact">
-                 <a class="feature-card__image-link" href="/blog/programming/aos-agent-os/">
-                     <img class="feature-card__image" src="/images/blog/aos-agent-os/aos-architecture.png" alt="AOS: Agent Operating System" loading="lazy">
-                 </a>
-                 <div class="feature-card__body">
-                     <p class="feature-card__meta">Project 01</p>
-                     <h3 class="feature-card__title"><a href="/blog/programming/aos-agent-os/">AOS: Agent Operating System</a></h3>
-                     <p class="feature-card__copy">A research prototype for agent collaboration through runtime primitives: artifacts, messaging, capabilities, and scheduling.</p>
-                 </div>
-             </article>
-             
-             <article class="feature-card">
-                 <a class="feature-card__image-link" href="/blog/ai/jarvis-architecture/">
-                     <img class="feature-card__image" src="/images/blog/jarvis-architecture/demo-thumbnail.jpg" alt="Jarvis Voice Assistant" loading="lazy">
-                 </a>
-                 <div class="feature-card__body">
-                     <p class="feature-card__meta">Project 02</p>
-                     <h3 class="feature-card__title"><a href="/blog/ai/jarvis-architecture/">Jarvis Voice Assistant</a></h3>
-                     <p class="feature-card__copy">An Android voice assistant with local Qwen inference, speech models, home-control tools, and a background update pipeline.</p>
-                 </div>
-             </article>
-             
-             <article class="feature-card">
-                 <a class="feature-card__image-link" href="/blog/ai/facial-keypoint-diffusion/">
-                     <img class="feature-card__image" src="/images/blog/facial-keypoint-diffusion/dit-cropped-landmark-sampling.gif" alt="Generative Facial Keypoints" loading="lazy">
-                 </a>
-                 <div class="feature-card__body">
-                     <p class="feature-card__meta">Project 03</p>
-                     <h3 class="feature-card__title"><a href="/blog/ai/facial-keypoint-diffusion/">Generative Facial Keypoints</a></h3>
-                     <p class="feature-card__copy">Exploring image-conditioned diffusion and flow matching for facial landmarks with frozen DINO features and transformer coordinate models.</p>
-                 </div>
-             </article>
-             
-             <article class="feature-card">
-                 <a class="feature-card__image-link" href="/wukong-and-friends/">
-                     <img class="feature-card__image" src="/images/story-garden/story-garden.jpg" alt="Wukong &amp; Friends" loading="lazy">
-                 </a>
-                 <div class="feature-card__body">
-                     <p class="feature-card__meta">Project 04</p>
-                     <h3 class="feature-card__title"><a href="/wukong-and-friends/">Wukong &amp; Friends</a></h3>
-                     <p class="feature-card__copy">Crayon-doodle bedtime picture books for young readers, with free reading and two-up booklet PDFs, published from a private repository against an Ed25519-signed manifest.</p>
-                 </div>
-             </article>
-             
-         </div>
-     </section>
+    <div class="section-heading">
+        <p class="section-heading__eyebrow">Latest writing</p>
+        <p class="proto-subheading"><a href="/writing/">All 28 pieces</a></p>
+    </div>
+    
+<ul class="writing-list">
+    <li class="writing-item">
+        <div class="writing-item__main">
+            <h2 class="writing-item__title"><a href="/blog/ai/wukong-and-friends-update/">Wukong &amp; Friends, Updated: Nine Bilingual Books and a Download Button I Deleted</a></h2>
+            <p class="writing-item__brief">Three days after introducing the bedtime story site: five books became nine, the books themselves went bilingual, every title ships four PDFs instead of two, the licence moved inside the files, and the download countdown is gone. What changed, and why.</p>
+        </div>
+        <p class="writing-item__when">Oct 23, 2026</p>
+    </li>
+    <li class="writing-item">
+        <div class="writing-item__main">
+            <h2 class="writing-item__title"><a href="/blog/ai/qwen38-27b-arc-b70/">The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</a></h2>
+            <p class="writing-item__brief">Qwen 3.8 27B is a clearly better model than the MoE I run today, and one 32 GB Arc Pro B70 will not hold it at a context length worth having. What &#39;too heavy&#39; actually decomposes into — weights, KV cache, drafter, and cold prefill — measured from 64K to 220K, the speculative-decoding break-even curve that grows from 43 tokens to 2,361, and why the port went back to a MoE.</p>
+        </div>
+        <p class="writing-item__when">Oct 22, 2026</p>
+    </li>
+    <li class="writing-item">
+        <div class="writing-item__main">
+            <h2 class="writing-item__title"><a href="/blog/ai/strata-b70-page-reclaim/">My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</a></h2>
+            <p class="writing-item__brief">My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory mirror of MoE experts being allocated while Linux reclaimed page cache — pages the GPU reads at 55–85% speed while the CPU reads the same pages at full speed. What the measurements looked like, why my first three diagnoses were all wrong, and the 45-line patch that went upstream.</p>
+        </div>
+        <p class="writing-item__when">Oct 22, 2026</p>
+    </li>
+    <li class="writing-item">
+        <div class="writing-item__main">
+            <h2 class="writing-item__title"><a href="/blog/ai/wukong-and-friends/">Introducing Wukong &amp; Friends</a></h2>
+            <p class="writing-item__brief">Free read-aloud picture books, built to make bedtime calmer for a four-year-old — and the unglamorous machinery behind them: keeping one character recognizable from book to book, signing every PDF, and publishing a private repository&#39;s build into a public subdirectory.</p>
+        </div>
+        <p class="writing-item__when">Oct 20, 2026</p>
+    </li>
+    <li class="writing-item">
+        <div class="writing-item__main">
+            <h2 class="writing-item__title"><a href="/blog/programming/home-automation/">A Local-Only Garage Door Opener for Apple Home</a></h2>
+            <p class="writing-item__brief">Two ESP8266 boards, one Homebridge accessory plugin and no vendor cloud: how the pieces fit together, and how many of the design decisions were forced by an opener with a single momentary input.</p>
+        </div>
+        <p class="writing-item__when">Oct 18, 2026</p>
+    </li>
+</ul>
 
-     <section class="editorial-section editorial-section--split">
-         <div class="section-heading">
-             <p class="section-heading__eyebrow">Recent writing</p>
-             <h2 class="section-heading__title">Blog highlights</h2>
-         </div>
-         <div class="journal-grid">
-             
-             
-             <article class="journal-card">
-                 <p class="journal-card__meta">Oct 23, 2026</p>
-                 <h3 class="journal-card__title"><a href="/blog/ai/wukong-and-friends-update/">Wukong &amp; Friends, Updated: Nine Bilingual Books and a Download Button I Deleted</a></h3>
-                 <p class="journal-card__copy">Three days after introducing the bedtime story site: five books became nine, the books themselves went bilingual, every title ships four PDFs instead of two, the licence moved inside the files, and the download countdown is gone. What changed, and why.</p>
-             </article>
-             
-             
-             
-             <article class="journal-card">
-                 <p class="journal-card__meta">Oct 22, 2026</p>
-                 <h3 class="journal-card__title"><a href="/blog/ai/strata-b70-page-reclaim/">My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</a></h3>
-                 <p class="journal-card__copy">My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory mirror of MoE experts being allocated while Linux reclaimed page cache — pages the GPU reads at 55–85% speed while the CPU reads the same pages at full speed. What the measurements looked like, why my first three diagnoses were all wrong, and the 45-line patch that went upstream.</p>
-             </article>
-             
-             
-             
-             <article class="journal-card">
-                 <p class="journal-card__meta">Oct 22, 2026</p>
-                 <h3 class="journal-card__title"><a href="/blog/ai/qwen38-27b-arc-b70/">The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</a></h3>
-                 <p class="journal-card__copy">Qwen 3.8 27B is a clearly better model than the MoE I run today, and one 32 GB Arc Pro B70 will not hold it at a context length worth having. What &#39;too heavy&#39; actually decomposes into — weights, KV cache, drafter, and cold prefill — measured from 64K to 220K, the speculative-decoding break-even curve that grows from 43 tokens to 2,361, and why the port went back to a MoE.</p>
-             </article>
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-         </div>
-     </section>
-</div>
+
+    <div class="section-heading">
+        <p class="section-heading__eyebrow">Selected work</p>
+        <p class="proto-subheading"><a href="/projects/">All projects</a></p>
+    </div>
+    <ul class="demo-row">
+        <li><a class="button-link" href="/blog/programming/aos-agent-os/">AOS: Agent Operating System</a></li>
+        <li><a class="button-link" href="/blog/ai/jarvis-architecture/">Jarvis Voice Assistant</a></li>
+        <li><a class="button-link" href="/blog/ai/facial-keypoint-diffusion/">Generative Facial Keypoints</a></li>
+        <li><a class="button-link" href="/wukong-and-friends/">Wukong &amp; Friends</a></li>
+        <li><a class="button-link" href="/projects/raytracer/index.html">Ray tracer</a></li>
+        <li><a class="button-link" href="/projects/imageprocjs/index.html">ImageProcJS</a></li>
+        <li><a class="button-link" href="/projects/fractal/index.html">Fractal explorer</a></li>
+        <li><a class="button-link" href="/projects/minesweeper/index.html">MineSweeper</a></li>
+        <li><a class="button-link" href="https://phg1024.github.io/MultilinearReconstruction/">Multilinear Reconstruction</a></li>
+    </ul>
+</section>
 
  </main>
 
  <footer class="site-footer">
   <div class="site-footer__inner">
    <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
-   <label class="theme-toggle" for="theme-toggle">
-    <span class="theme-toggle__label">Theme</span>
-    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
-     <option value="minimalist">Minimalist</option>
-     <option value="cyberpunk">Cyberpunk</option>
-     <option value="matrix">Matrix</option>
-     <option value="industrial">Industrial</option>
-     <option value="win31">Windows 3.1</option>
-    </select>
-   </label>
-   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
-   <a class="site-footer__link" href="/privacy/">Privacy</a>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
   </div>
  </footer>
 </div>

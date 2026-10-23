@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      if (!path || animated.indexOf(path) < 0) event.viewTransition.skipTransition();
+    });
+    window.addEventListener('pagereveal', handled);
+  })();
+ </script>
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+ <title>Projects | Peihong Guo</title>
+ <meta name="description" content="Things built and shipped: a bedtime picture book publishing pipeline, agent prototypes, a local voice assistant, generative facial landmarks, and browser…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/projects/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="website">
+ <meta property="og:title" content="Projects | Peihong Guo">
+ <meta property="og:description" content="Things built and shipped: a bedtime picture book publishing pipeline, agent prototypes, a local voice assistant, generative facial landmarks, and browser…">
+ <meta property="og:url" content="https://phg1024.github.io/projects/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Projects | Peihong Guo">
+ <meta name="twitter:description" content="Things built and shipped: a bedtime picture book publishing pipeline, agent prototypes, a local voice assistant, generative facial landmarks, and browser…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/proto.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head><body class="proto">
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link" href="/writing/">Writing</a>
+    <a class="site-nav__link is-active" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by tag">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">10</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/cooking/">Cooking <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">16</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<section class="content-page">
+    <div class="section-heading">
+        <p class="section-heading__eyebrow">Projects</p>
+        <h1 class="section-heading__title">Built and shipped</h1>
+        <p class="section-heading__lede">
+            The long writeups live in <a href="/writing/">Writing</a>; this page is the index.
+            Anything that runs in a browser is linked directly below it.
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 text-left">
+                <a class="personal-project-image-link" href="/blog/programming/aos-agent-os/">
+                    <img class="card-img-top personal-project-image" src="/images/blog/aos-agent-os/aos-architecture.png" alt="AOS: Agent Operating System" loading="lazy">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/blog/programming/aos-agent-os/">AOS: Agent Operating System</a></h5>
+                    <p class="card-text">A research prototype for agent collaboration through runtime primitives: artifacts, messaging, capabilities, and scheduling.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 text-left">
+                <a class="personal-project-image-link" href="/blog/ai/jarvis-architecture/">
+                    <img class="card-img-top personal-project-image" src="/images/blog/jarvis-architecture/demo-thumbnail.jpg" alt="Jarvis Voice Assistant" loading="lazy">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/blog/ai/jarvis-architecture/">Jarvis Voice Assistant</a></h5>
+                    <p class="card-text">An Android voice assistant with local Qwen inference, speech models, home-control tools, and a background update pipeline.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 text-left">
+                <a class="personal-project-image-link" href="/blog/ai/facial-keypoint-diffusion/">
+                    <img class="card-img-top personal-project-image" src="/images/blog/facial-keypoint-diffusion/dit-cropped-landmark-sampling.gif" alt="Generative Facial Keypoints" loading="lazy">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/blog/ai/facial-keypoint-diffusion/">Generative Facial Keypoints</a></h5>
+                    <p class="card-text">Exploring image-conditioned diffusion and flow matching for facial landmarks with frozen DINO features and transformer coordinate models.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 text-left">
+                <a class="personal-project-image-link" href="/wukong-and-friends/">
+                    <img class="card-img-top personal-project-image" src="/images/story-garden/story-garden.jpg" alt="Wukong &amp; Friends" loading="lazy">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/wukong-and-friends/">Wukong &amp; Friends</a></h5>
+                    <p class="card-text">Crayon-doodle bedtime picture books for young readers, with free reading and two-up booklet PDFs, published from a private repository against an Ed25519-signed manifest.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-panel">
+        <p class="section-heading__eyebrow">Runs in the browser</p>
+        <h2 class="proto-subheading">Open one and poke at it</h2>
+        <ul class="writing-list">
+            <li class="writing-item">
+                <h3 class="writing-item__title"><a href="/projects/raytracer/index.html">Ray tracer</a></h3>
+                <p class="writing-item__brief">
+                    Browser path tracer: refraction, dispersion and photon mapping
+                    &middot; <a href="/blog/programming/raytracer-caustics/">writeup</a>
+                </p>
+            </li>
+            <li class="writing-item">
+                <h3 class="writing-item__title"><a href="/projects/imageprocjs/index.html">ImageProcJS</a></h3>
+                <p class="writing-item__brief">
+                    Image processing workbench
+                    &middot; <a href="/image/processing/2014/01/04/ImageProcJS1.html">writeup</a>
+                </p>
+            </li>
+            <li class="writing-item">
+                <h3 class="writing-item__title"><a href="/projects/fractal/index.html">Fractal explorer</a></h3>
+                <p class="writing-item__brief">
+                    WebGL Julia and Mandelbrot sets
+                </p>
+            </li>
+            <li class="writing-item">
+                <h3 class="writing-item__title"><a href="/projects/minesweeper/index.html">MineSweeper</a></h3>
+                <p class="writing-item__brief">
+                    Playable in the browser
+                </p>
+            </li>
+            <li class="writing-item">
+                <h3 class="writing-item__title"><a href="https://phg1024.github.io/MultilinearReconstruction/">Multilinear Reconstruction</a></h3>
+                <p class="writing-item__brief">
+                    Realtime facial performance capture from RGBD
+                </p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

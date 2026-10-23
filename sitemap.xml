@@ -116,18 +116,6 @@
     <loc>https://phg1024.github.io/about/</loc>
   </url>
   <url>
-    <loc>https://phg1024.github.io/blog/category/ai/</loc>
-  </url>
-  <url>
-    <loc>https://phg1024.github.io/blog/category/cooking/</loc>
-  </url>
-  <url>
-    <loc>https://phg1024.github.io/blog/category/programming/</loc>
-  </url>
-  <url>
-    <loc>https://phg1024.github.io/blog/</loc>
-  </url>
-  <url>
     <loc>https://phg1024.github.io/gallery/</loc>
   </url>
   <url>
@@ -149,6 +137,15 @@
     <loc>https://phg1024.github.io/privacy/</loc>
   </url>
   <url>
-    <loc>https://phg1024.github.io/project/personal_projects/</loc>
+    <loc>https://phg1024.github.io/tag/ai/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/cooking/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/programming/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/writing/</loc>
   </url>
 </urlset>

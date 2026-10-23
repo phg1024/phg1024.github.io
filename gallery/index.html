@@ -2,7 +2,37 @@
 <html lang="en">
 <head>
  <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      if (!path || animated.indexOf(path) < 0) event.viewTransition.skipTransition();
+    });
+    window.addEventListener('pagereveal', handled);
+  })();
+ </script>
  <script>
   (function () {
      var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
@@ -11,7 +41,7 @@
  </script>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
  <title>Photo Gallery | Peihong Guo</title>
  <meta name="description" content="Photographic studies from Alaska, California, Texas and the UK, presented as tabbed carousels with location context.">
  <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
@@ -27,12 +57,11 @@
  <meta name="twitter:description" content="Photographic studies from Alaska, California, Texas and the UK, presented as tabbed carousels with location context.">
  <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
- <link rel="stylesheet" href="/styles/styles.css">
+ <link rel="stylesheet" href="/styles/proto.css">
  
 <script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
 
-</head>
-<body>
+</head><body class="proto proto--gallery">
 <canvas class="theme-backdrop" aria-hidden="true"></canvas>
 <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
 <a class="skip-to-content" href="#main-content">Skip to content</a>
@@ -41,14 +70,29 @@
   <div class="site-header__inner">
    <a class="site-brand" href="/">
     <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
    </a>
    <nav class="site-nav" aria-label="Primary navigation">
-    <a class="site-nav__link" href="/">Home</a>
-    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
-    <a class="site-nav__link" href="/blog/">Blog</a>
-    <a class="site-nav__link is-active" href="/gallery">Gallery</a>
-    <a class="site-nav__link" href="/about">About</a>
-   </nav>
+    <a class="site-nav__link" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link is-active" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by tag">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">10</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/cooking/">Cooking <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">16</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
   </div>
  </header>
 
@@ -141,11 +185,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459874557_cf6c8785ed_k.jpg" alt="Snow Mountain" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Glenn%20Highway%20Alaska"
-            allowfullscreen
-            title="Map showing location for Snow Mountain"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Snow Mountain"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Glenn%20Highway%20Alaska"
+            data-title="Map showing location for Snow Mountain"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Snow Mountain</h5>
@@ -159,11 +201,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459874462_c21c7fab8b_k.jpg" alt="Matanuska Glacier" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Matanuska%20glacier"
-            allowfullscreen
-            title="Map showing location for Matanuska Glacier"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Matanuska Glacier"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Matanuska%20glacier"
+            data-title="Map showing location for Matanuska Glacier"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Matanuska Glacier</h5>
@@ -177,11 +217,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459709126_fe92006efc_k.jpg" alt="Sled dogs" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Denali+Sled+Dog+Kennels"
-            allowfullscreen
-            title="Map showing location for Sled dogs"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Sled dogs"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Denali+Sled+Dog+Kennels"
+            data-title="Map showing location for Sled dogs"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Sled dogs</h5>
@@ -195,11 +233,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459709041_c2c5ec4eac_k.jpg" alt="Icy trees" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Chena%20Hot%20Spring%20Resort"
-            allowfullscreen
-            title="Map showing location for Icy trees"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Icy trees"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Chena%20Hot%20Spring%20Resort"
+            data-title="Map showing location for Icy trees"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Icy trees</h5>
@@ -213,11 +249,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459874167_ed65e737d4_k.jpg" alt="Surprise Glacier" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Surprise%20Glacier"
-            allowfullscreen
-            title="Map showing location for Surprise Glacier"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Surprise Glacier"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Surprise%20Glacier"
+            data-title="Map showing location for Surprise Glacier"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Surprise Glacier</h5>
@@ -231,11 +265,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459874097_157491fb45_k.jpg" alt="Surprise Glacier" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Surprise%20Glacier"
-            allowfullscreen
-            title="Map showing location for Surprise Glacier"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Surprise Glacier"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Surprise%20Glacier"
+            data-title="Map showing location for Surprise Glacier"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Surprise Glacier</h5>
@@ -249,11 +281,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459874002_03baa064ac_k.jpg" alt="Caribou" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Denali%20National%20Park"
-            allowfullscreen
-            title="Map showing location for Caribou"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Caribou"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Denali%20National%20Park"
+            data-title="Map showing location for Caribou"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Caribou</h5>
@@ -267,11 +297,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459873647_d3202b1a4c_k.jpg" alt="Beaver" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Denali%20National%20Park"
-            allowfullscreen
-            title="Map showing location for Beaver"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Beaver"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Denali%20National%20Park"
+            data-title="Map showing location for Beaver"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Beaver</h5>
@@ -285,11 +313,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459708686_67450a3d8c_k.jpg" alt="Rabbit" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Denali%20National%20Park"
-            allowfullscreen
-            title="Map showing location for Rabbit"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Rabbit"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Denali%20National%20Park"
+            data-title="Map showing location for Rabbit"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Rabbit</h5>
@@ -303,11 +329,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459708496_34e551fd88_k.jpg" alt="Potter Marsh Bird Sanctuary" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Potter%20Marsh%20Bird%20Sanctuary"
-            allowfullscreen
-            title="Map showing location for Potter Marsh Bird Sanctuary"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Potter Marsh Bird Sanctuary"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Potter%20Marsh%20Bird%20Sanctuary"
+            data-title="Map showing location for Potter Marsh Bird Sanctuary"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Potter Marsh Bird Sanctuary</h5>
@@ -411,11 +435,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459886672_7eadf6e4a4_k.jpg" alt="Half Dome" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Glacier%20point%20Yosemite"
-            allowfullscreen
-            title="Map showing location for Half Dome"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Half Dome"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Glacier%20point%20Yosemite"
+            data-title="Map showing location for Half Dome"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Half Dome</h5>
@@ -429,11 +451,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459721076_32e57361ee_k.jpg" alt="Glacier point" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Glacier%20point%20Yosemite"
-            allowfullscreen
-            title="Map showing location for Glacier point"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Glacier point"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Glacier%20point%20Yosemite"
+            data-title="Map showing location for Glacier point"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Glacier point</h5>
@@ -447,11 +467,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459720946_3b5b09ea7c_k.jpg" alt="El Capitan" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=El%20capitan%20Yosemite"
-            allowfullscreen
-            title="Map showing location for El Capitan"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for El Capitan"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=El%20capitan%20Yosemite"
+            data-title="Map showing location for El Capitan"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">El Capitan</h5>
@@ -465,11 +483,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459886372_5e222c358d_k.jpg" alt="Tunnel View" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=El%20capitan%20Yosemite"
-            allowfullscreen
-            title="Map showing location for Tunnel View"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Tunnel View"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=El%20capitan%20Yosemite"
+            data-title="Map showing location for Tunnel View"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Tunnel View</h5>
@@ -483,11 +499,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459886202_5395f49c00_k.jpg" alt="Tunnel View 2" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Tunnel%20%view%20Yosemite"
-            allowfullscreen
-            title="Map showing location for Tunnel View 2"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Tunnel View 2"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Tunnel%20%view%20Yosemite"
+            data-title="Map showing location for Tunnel View 2"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Tunnel View 2</h5>
@@ -501,11 +515,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459720546_cbac34b9a4_k.jpg" alt="Vikingshome" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Vikingshome%20%lake%20tahoe"
-            allowfullscreen
-            title="Map showing location for Vikingshome"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Vikingshome"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Vikingshome%20%lake%20tahoe"
+            data-title="Map showing location for Vikingshome"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Vikingshome</h5>
@@ -519,11 +531,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459885937_75a022e91e_k.jpg" alt="Lake Tahoe" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=lake%20tahoe"
-            allowfullscreen
-            title="Map showing location for Lake Tahoe"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Lake Tahoe"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=lake%20tahoe"
+            data-title="Map showing location for Lake Tahoe"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Lake Tahoe</h5>
@@ -537,11 +547,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459885837_f648b70bfa_k.jpg" alt="Lake Tahoe 2" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=lake%20tahoe"
-            allowfullscreen
-            title="Map showing location for Lake Tahoe 2"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Lake Tahoe 2"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=lake%20tahoe"
+            data-title="Map showing location for Lake Tahoe 2"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Lake Tahoe 2</h5>
@@ -555,11 +563,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459885682_3d133f5b3e_k.jpg" alt="Sunset at Lake Tahoe" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=lake%20tahoe"
-            allowfullscreen
-            title="Map showing location for Sunset at Lake Tahoe"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Sunset at Lake Tahoe"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=lake%20tahoe"
+            data-title="Map showing location for Sunset at Lake Tahoe"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Sunset at Lake Tahoe</h5>
@@ -573,11 +579,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459720076_fdd8d64e9e_k.jpg" alt="Railway at Lake Tahoe" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=lake%20tahoe"
-            allowfullscreen
-            title="Map showing location for Railway at Lake Tahoe"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Railway at Lake Tahoe"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=lake%20tahoe"
+            data-title="Map showing location for Railway at Lake Tahoe"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Railway at Lake Tahoe</h5>
@@ -591,11 +595,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459719921_7d0589f9e1_k.jpg" alt="Giraffe" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=san%20francisco%20zoo"
-            allowfullscreen
-            title="Map showing location for Giraffe"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Giraffe"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=san%20francisco%20zoo"
+            data-title="Map showing location for Giraffe"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Giraffe</h5>
@@ -609,11 +611,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459719781_f33a344501_k.jpg" alt="Tiger" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=san%20francisco%20zoo"
-            allowfullscreen
-            title="Map showing location for Tiger"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Tiger"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=san%20francisco%20zoo"
+            data-title="Map showing location for Tiger"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Tiger</h5>
@@ -627,11 +627,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459885212_3b4e2de2cf_k.jpg" alt="Goat" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=san%20francisco%20zoo"
-            allowfullscreen
-            title="Map showing location for Goat"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Goat"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=san%20francisco%20zoo"
+            data-title="Map showing location for Goat"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Goat</h5>
@@ -645,11 +643,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459721366_f0e4e4aed6_k.jpg" alt="Japanese Garden" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=japanese%20garden%20san%20francisco"
-            allowfullscreen
-            title="Map showing location for Japanese Garden"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Japanese Garden"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=japanese%20garden%20san%20francisco"
+            data-title="Map showing location for Japanese Garden"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Japanese Garden</h5>
@@ -713,11 +709,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459891642_3d92bd7cdd_k.jpg" alt="Colorful Cave" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Longhorn%20Cavern"
-            allowfullscreen
-            title="Map showing location for Colorful Cave"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Colorful Cave"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Longhorn%20Cavern"
+            data-title="Map showing location for Colorful Cave"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Colorful Cave</h5>
@@ -731,11 +725,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459891502_249f42630a_k.jpg" alt="Space Shuttle" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Johnson%20Space%20Center"
-            allowfullscreen
-            title="Map showing location for Space Shuttle"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Space Shuttle"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Johnson%20Space%20Center"
+            data-title="Map showing location for Space Shuttle"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Space Shuttle</h5>
@@ -749,11 +741,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459726311_343ddb92d8_k.jpg" alt="Fishes &amp; Duck" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Japanese%20Tea%20Garden%20San%Antonio"
-            allowfullscreen
-            title="Map showing location for Fishes &amp; Duck"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Fishes &amp; Duck"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Japanese%20Tea%20Garden%20San%Antonio"
+            data-title="Map showing location for Fishes &amp; Duck"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Fishes &amp; Duck</h5>
@@ -767,11 +757,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459726176_d5bd7f4298_k.jpg" alt="Japanese Garden" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Japanese%20Tea%20Garden%20San%Antonio"
-            allowfullscreen
-            title="Map showing location for Japanese Garden"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Japanese Garden"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Japanese%20Tea%20Garden%20San%Antonio"
+            data-title="Map showing location for Japanese Garden"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Japanese Garden</h5>
@@ -785,11 +773,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459726016_0464fb2ff8_k.jpg" alt="Japanese Garden" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Japanese%20Tea%20Garden%20San%Antonio"
-            allowfullscreen
-            title="Map showing location for Japanese Garden"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Japanese Garden"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Japanese%20Tea%20Garden%20San%Antonio"
+            data-title="Map showing location for Japanese Garden"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Japanese Garden</h5>
@@ -803,11 +789,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/48459891057_1b685d0585_k.jpg" alt="New year light show" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Houston"
-            allowfullscreen
-            title="Map showing location for New year light show"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for New year light show"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Houston"
+            data-title="Map showing location for New year light show"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">New year light show</h5>
@@ -871,11 +855,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/50381850826_37916c5ea7_k.jpg" alt="Dover Train Station" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Dover%20Priory"
-            allowfullscreen
-            title="Map showing location for Dover Train Station"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Dover Train Station"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Dover%20Priory"
+            data-title="Map showing location for Dover Train Station"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Dover Train Station</h5>
@@ -889,11 +871,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/50382027292_ee22f2d2a9_k.jpg" alt="National Trust The White Cliffs of Dover" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Dover%20Langdon%20Hole%20Park"
-            allowfullscreen
-            title="Map showing location for National Trust The White Cliffs of Dover"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for National Trust The White Cliffs of Dover"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Dover%20Langdon%20Hole%20Park"
+            data-title="Map showing location for National Trust The White Cliffs of Dover"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">National Trust The White Cliffs of Dover</h5>
@@ -907,11 +887,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/50381841326_9450b46fc0_k.jpg" alt="Tower Bridge" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Tower%20Bridge"
-            allowfullscreen
-            title="Map showing location for Tower Bridge"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Tower Bridge"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Tower%20Bridge"
+            data-title="Map showing location for Tower Bridge"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Tower Bridge</h5>
@@ -925,11 +903,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/50381840376_65f14825cc_k.jpg" alt="Thinking King?" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=British%20Museum"
-            allowfullscreen
-            title="Map showing location for Thinking King?"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Thinking King?"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=British%20Museum"
+            data-title="Map showing location for Thinking King?"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Thinking King?</h5>
@@ -943,11 +919,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/50381139508_364eb5bf94_k.jpg" alt="London Eye" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=London%20Eye"
-            allowfullscreen
-            title="Map showing location for London Eye"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for London Eye"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=London%20Eye"
+            data-title="Map showing location for London Eye"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">London Eye</h5>
@@ -961,11 +935,9 @@
        <img class="d-block w-100" src="https://live.staticflickr.com/65535/50381138923_cd1cac329a_k.jpg" alt="Victoria Memorial" loading="lazy">
        <div class="carousel__caption rounded">
          <div class="gallery-caption-media">
-           
-           <iframe width="120" height="120" frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Buckingham%20Palace"
-            allowfullscreen
-            title="Map showing location for Victoria Memorial"></iframe>
+           <span class="gallery-map" role="img" aria-label="Map showing location for Victoria Memorial"
+            data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGbKfu45uoLF7Kd-og1LxPutiEAx_45Q8&q=Buckingham%20Palace"
+            data-title="Map showing location for Victoria Memorial"></span>
            
            <div class="align-self-center">
              <h5 class="mt-0">Victoria Memorial</h5>
@@ -990,23 +962,56 @@
    </div>
 </div>
 
+<script>
+  // Maps on demand. Every photo carries a Google Maps embed (36 on this page); loading them
+  // all up front made the page heavy, delayed the page transition into it, ran every browser
+  // extension once per map, and happened on phones too, where CSS hides the maps. Turn the
+  // placeholder into an iframe only for the photo on screen in the visible tab, plus the next
+  // one so autoplay finds it ready, and never below 768px. main.js stays untouched: it already
+  // marks the current slide's indicator and the visible tab panel, and this watches those.
+  (function () {
+    var narrow = window.matchMedia('(max-width: 767px)');
+    function load(slide) {
+      var spot = slide && slide.querySelector('span.gallery-map[data-src]');
+      if (!spot) return;
+      var map = document.createElement('iframe');
+      map.className = 'gallery-map';
+      map.width = 120;
+      map.height = 120;
+      map.style.border = '0';
+      map.setAttribute('allowfullscreen', '');
+      map.title = spot.getAttribute('data-title');
+      map.src = spot.getAttribute('data-src');
+      spot.replaceWith(map);
+    }
+    function sync() {
+      if (narrow.matches) return;
+      document.querySelectorAll('.gallery-tabs-panel.is-active .carousel').forEach(function (carousel) {
+        var slides = carousel.querySelectorAll('.carousel__slide');
+        var dots = Array.prototype.slice.call(carousel.querySelectorAll('.carousel__indicator'));
+        var i = Math.max(0, dots.findIndex(function (d) { return d.classList.contains('is-active'); }));
+        load(slides[i]);
+        load(slides[(i + 1) % slides.length]);
+      });
+    }
+    var watch = new MutationObserver(sync);
+    document.querySelectorAll('.carousel__indicator, .gallery-tabs-panel').forEach(function (el) {
+      watch.observe(el, { attributes: true, attributeFilter: ['class'] });
+    });
+    if (narrow.addEventListener) narrow.addEventListener('change', sync);
+    sync();
+  })();
+</script>
+
  </main>
 
  <footer class="site-footer">
   <div class="site-footer__inner">
    <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
-   <label class="theme-toggle" for="theme-toggle">
-    <span class="theme-toggle__label">Theme</span>
-    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
-     <option value="minimalist">Minimalist</option>
-     <option value="cyberpunk">Cyberpunk</option>
-     <option value="matrix">Matrix</option>
-     <option value="industrial">Industrial</option>
-     <option value="win31">Windows 3.1</option>
-    </select>
-   </label>
-   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
-   <a class="site-footer__link" href="/privacy/">Privacy</a>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
   </div>
  </footer>
 </div>

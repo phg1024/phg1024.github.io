@@ -2,7 +2,37 @@
 <html lang="en">
 <head>
  <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      if (!path || animated.indexOf(path) < 0) event.viewTransition.skipTransition();
+    });
+    window.addEventListener('pagereveal', handled);
+  })();
+ </script>
  <script>
   (function () {
      var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
@@ -11,7 +41,7 @@
  </script>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
  <title>Making Bread (1): Basic Bread | Peihong Guo</title>
  <meta name="description" content="Making some basic bread following the guide by 小高姐的 Magic Ingredients.">
  <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
@@ -28,12 +58,11 @@
  <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
- <link rel="stylesheet" href="/styles/styles.css">
+ <link rel="stylesheet" href="/styles/proto.css">
  
 <script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
 
-</head>
-<body>
+</head><body class="proto">
 <canvas class="theme-backdrop" aria-hidden="true"></canvas>
 <canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
 <a class="skip-to-content" href="#main-content">Skip to content</a>
@@ -42,14 +71,29 @@
   <div class="site-header__inner">
    <a class="site-brand" href="/">
     <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
    </a>
    <nav class="site-nav" aria-label="Primary navigation">
-    <a class="site-nav__link" href="/">Home</a>
-    <a class="site-nav__link" href="/project/personal_projects/">Projects</a>
-    <a class="site-nav__link is-active" href="/blog/">Blog</a>
-    <a class="site-nav__link" href="/gallery">Gallery</a>
-    <a class="site-nav__link" href="/about">About</a>
-   </nav>
+    <a class="site-nav__link is-active" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by tag">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">10</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/cooking/">Cooking <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">16</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
   </div>
  </header>
 
@@ -217,18 +261,10 @@
  <footer class="site-footer">
   <div class="site-footer__inner">
    <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
-   <label class="theme-toggle" for="theme-toggle">
-    <span class="theme-toggle__label">Theme</span>
-    <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
-     <option value="minimalist">Minimalist</option>
-     <option value="cyberpunk">Cyberpunk</option>
-     <option value="matrix">Matrix</option>
-     <option value="industrial">Industrial</option>
-     <option value="win31">Windows 3.1</option>
-    </select>
-   </label>
-   <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
-   <a class="site-footer__link" href="/privacy/">Privacy</a>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
   </div>
  </footer>
 </div>

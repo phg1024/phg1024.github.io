@@ -1,0 +1,51 @@
+---
+layout: base.njk
+permalink: /projects/
+title: Projects
+description: "Things built and shipped: a bedtime picture book publishing pipeline, agent prototypes, a local voice assistant, generative facial landmarks, and browser graphics demos."
+---
+
+<section class="content-page">
+    <div class="section-heading">
+        <p class="section-heading__eyebrow">Projects</p>
+        <h1 class="section-heading__title">Built and shipped</h1>
+        <p class="section-heading__lede">
+            The long writeups live in <a href="/writing/">Writing</a>; this page is the index.
+            Anything that runs in a browser is linked directly below it.
+        </p>
+    </div>
+
+    <div class="row">
+        {%- for project in projects %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 text-left">
+                <a class="personal-project-image-link" href="{{ project.url }}">
+                    <img class="card-img-top personal-project-image" src="{{ project.imageUrl }}" alt="{{ project.name }}" loading="lazy">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ project.url }}">{{ project.name }}</a></h5>
+                    <p class="card-text">{{ project.description }}</p>
+                </div>
+            </div>
+        </div>
+        {%- endfor %}
+    </div>
+
+    <div class="about-panel">
+        <p class="section-heading__eyebrow">Runs in the browser</p>
+        <h2 class="proto-subheading">Open one and poke at it</h2>
+        <ul class="writing-list">
+            {%- for demo in demos %}
+            <li class="writing-item">
+                <h3 class="writing-item__title"><a href="{{ demo.url }}">{{ demo.name }}</a></h3>
+                <p class="writing-item__brief">
+                    {{ demo.note }}
+                    {%- if demo.writeup %}
+                    &middot; <a href="{{ demo.writeup }}">writeup</a>
+                    {%- endif %}
+                </p>
+            </li>
+            {%- endfor %}
+        </ul>
+    </div>
+</section>

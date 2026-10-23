@@ -1,0 +1,15 @@
+/* Prototype stylesheet: one entry point, all five themes still loaded.
+   The IA prototype never intended to drop the themes; they stay selectable. */
+@import "./variables.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./themes/base.css";
+@import "./themes/cyberpunk.css";
+@import "./themes/minimalist.css";
+@import "./themes/matrix.css";
+@import "./themes/industrial.css";
+@import "./themes/win31.css";
+@import "./utilities.css";
+@import "./syntax.css";
+@import "./proto-extra.css";
