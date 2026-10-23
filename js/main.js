@@ -180,22 +180,67 @@
         initializeIndustrialCircuits();
     };
 
+    // Matrix rain with depth. Streams come in three layers: far ones are small, faint and
+    // slow, near ones large, bright and quick, so the glyph sizes vary from 10px to 34px and
+    // the field reads as having depth. Each stream randomly falls or rises.
+    // Streams are not tied to a grid; each picks its layer, direction and position again
+    // whenever it leaves the screen. Every stream is two glyph sequences printed over each
+    // other, cycling at different rates and slightly offset, so the text cannot be read.
+    const MATRIX_LAYERS = [
+        { share: 0.5, size: [10, 13], speed: [0.6, 1.3], alpha: 0.38 },   // far
+        { share: 0.35, size: [15, 20], speed: [1.3, 2.6], alpha: 0.7 },   // middle
+        { share: 0.15, size: [24, 34], speed: [2.4, 4.2], alpha: 0.95 }   // near
+    ];
+    const MATRIX_RISING_SHARE = 0.5;    // chance a stream rises; drawn again each time it re-enters
+    const MATRIX_STREAMS_PER_PX = 1 / 12;
+
+    const pickBetween = function (range) {
+        return range[0] + Math.random() * (range[1] - range[0]);
+    };
+
+    const spawnMatrixStream = function (stream, anywhere) {
+        var roll = Math.random();
+        var layer = MATRIX_LAYERS[MATRIX_LAYERS.length - 1];
+        for (var li = 0, total = 0; li < MATRIX_LAYERS.length; li += 1) {
+            total += MATRIX_LAYERS[li].share;
+            if (roll < total) { layer = MATRIX_LAYERS[li]; break; }
+        }
+        stream.size = Math.round(pickBetween(layer.size));
+        stream.step = Math.round(stream.size * 0.95);
+        stream.speed = pickBetween(layer.speed);
+        stream.alpha = layer.alpha;
+        stream.rising = Math.random() < MATRIX_RISING_SHARE;
+        stream.length = 6 + Math.floor(Math.random() * 14);
+        stream.x = Math.random() * backdropWidth;
+        stream.glyphs = Array.from({ length: 24 }, randomGlyph);
+        stream.overlay = Array.from({ length: 17 }, randomGlyph);   // a different period from glyphs
+        stream.shiftX = (Math.random() - 0.5) * stream.size * 0.36;
+        stream.shiftY = (Math.random() - 0.5) * stream.size * 0.36;
+        var span = stream.length * stream.step;
+        if (anywhere) {
+            // First fill: scatter heads over the whole screen so it does not start empty.
+            stream.y = Math.random() * (backdropHeight + span) - (stream.rising ? span : 0);
+        } else {
+            // Re-entry: just off the edge the stream is moving away from.
+            stream.y = stream.rising ? backdropHeight + Math.random() * 160 : -Math.random() * 160;
+        }
+        return stream;
+    };
+
+    const sortMatrixByDepth = function () {
+        matrixColumns.sort(function (a, b) { return a.size - b.size; });   // far layers first
+    };
+
     const initializeMatrixColumns = function () {
         if (!backdropContext || getTheme() !== 'matrix') {
             matrixColumns = [];
             return;
         }
-        var fontSize = 18;
-        var columnCount = Math.max(12, Math.ceil(backdropWidth / fontSize));
-        matrixColumns = Array.from({ length: columnCount }, function (_, index) {
-            return {
-                x: index * fontSize,
-                y: Math.random() * -backdropHeight,
-                speed: 1.4 + Math.random() * 2.4,
-                length: 6 + Math.floor(Math.random() * 12),
-                glyphs: Array.from({ length: 22 }, randomGlyph)
-            };
+        var count = Math.max(24, Math.min(220, Math.round(backdropWidth * MATRIX_STREAMS_PER_PX)));
+        matrixColumns = Array.from({ length: count }, function () {
+            return spawnMatrixStream({}, true);
         });
+        sortMatrixByDepth();
     };
 
     const distanceToSegment = function (pointX, pointY, startX, startY, endX, endY) {
@@ -352,35 +397,52 @@
         lastBackdropTimestamp = timestamp || 0;
         backdropContext.fillStyle = 'rgba(2, 7, 3, 0.28)';
         backdropContext.fillRect(0, 0, backdropWidth, backdropHeight);
-        backdropContext.font = '18px "Courier New", monospace';
         backdropContext.textBaseline = 'top';
-        matrixColumns.forEach(function (column) {
-            var pointerDistance = Math.abs(column.x - currentX);
+        var respawned = false;
+        matrixColumns.forEach(function (stream) {
+            var pointerDistance = Math.abs(stream.x - currentX);
             var pointerBoost = pointerDistance < 120 ? 1.22 : 1;
-            column.y += column.speed * pointerBoost;
-            for (var gi = 0; gi < column.length; gi += 1) {
-                var glyph = column.glyphs[(Math.floor(column.y / 16) + gi) % column.glyphs.length];
-                var glyphY = column.y - (gi * 16);
-                if (glyphY < -24 || glyphY > backdropHeight + 24) continue;
-                var alpha = Math.max(0.06, 1 - (gi / (column.length + 2)));
+            stream.y += (stream.rising ? -1 : 1) * stream.speed * pointerBoost;
+            backdropContext.font = stream.size + 'px "Courier New", monospace';
+            // The head leads in the direction of travel and the trail fades out behind it:
+            // above the head when falling, below it when rising.
+            var trail = stream.rising ? 1 : -1;
+            var offset = Math.floor(Math.abs(stream.y) / stream.step);
+            for (var gi = 0; gi < stream.length; gi += 1) {
+                var glyphY = stream.y + (trail * gi * stream.step);
+                if (glyphY < -stream.size * 2 || glyphY > backdropHeight + stream.size) continue;
+                var glyph = stream.glyphs[(offset + gi) % stream.glyphs.length];
+                var fade = Math.max(0.06, 1 - (gi / (stream.length + 2)));
                 var isHead = gi === 0;
                 backdropContext.fillStyle = isHead
-                    ? 'rgba(220, 255, 220, 0.92)'
-                    : 'rgba(100, 255, 140, ' + (alpha * 0.75).toFixed(3) + ')';
-                backdropContext.shadowBlur = isHead ? 6 : 0;
-                backdropContext.shadowColor = isHead ? 'rgba(124, 255, 157, 0.65)' : 'transparent';
-                backdropContext.fillText(glyph, column.x, glyphY);
+                    ? 'rgba(220, 255, 220, ' + (0.92 * stream.alpha).toFixed(3) + ')'
+                    : 'rgba(100, 255, 140, ' + (fade * 0.75 * stream.alpha).toFixed(3) + ')';
+                // Glow only on the heads of near streams: shadowBlur is the expensive part.
+                var glow = isHead && stream.size >= 20;
+                backdropContext.shadowBlur = glow ? Math.round(stream.size / 3) : 0;
+                backdropContext.shadowColor = glow ? 'rgba(124, 255, 157, 0.65)' : 'transparent';
+                backdropContext.fillText(glyph, stream.x, glyphY);
+                // Second layer: another glyph on the same spot, nudged a little and a bit dimmer.
+                var overlay = stream.overlay[(offset * 2 + gi * 3) % stream.overlay.length];
+                backdropContext.fillStyle = isHead
+                    ? 'rgba(200, 255, 205, ' + (0.7 * stream.alpha).toFixed(3) + ')'
+                    : 'rgba(90, 240, 130, ' + (fade * 0.56 * stream.alpha).toFixed(3) + ')';
+                backdropContext.fillText(overlay, stream.x + stream.shiftX, glyphY + stream.shiftY);
             }
             if (Math.random() > 0.96) {
-                column.glyphs[Math.floor(Math.random() * column.glyphs.length)] = randomGlyph();
+                stream.glyphs[Math.floor(Math.random() * stream.glyphs.length)] = randomGlyph();
             }
-            if (column.y - (column.length * 16) > backdropHeight) {
-                column.y = -Math.random() * 240;
-                column.speed = 1.4 + Math.random() * 2.4;
-                column.length = 6 + Math.floor(Math.random() * 12);
-                column.glyphs = Array.from({ length: 22 }, randomGlyph);
+            if (Math.random() > 0.94) {
+                stream.overlay[Math.floor(Math.random() * stream.overlay.length)] = randomGlyph();
+            }
+            var span = stream.length * stream.step;
+            var gone = stream.rising ? (stream.y + span < 0) : (stream.y - span > backdropHeight);
+            if (gone) {
+                spawnMatrixStream(stream, false);
+                respawned = true;
             }
         });
+        if (respawned) sortMatrixByDepth();
         backdropContext.shadowBlur = 0;
         backdropFrame = window.requestAnimationFrame(drawMatrixBackdrop);
     };
