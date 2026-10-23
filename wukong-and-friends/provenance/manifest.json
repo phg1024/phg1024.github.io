@@ -202,6 +202,46 @@
       "bytes": 22404132
     },
     {
+      "path": "docs/downloads/wukong-plays-in-the-sand-v1-booklet.pdf",
+      "sha256": "59b43c6689e285508c427aeda106ce3236a4bcd4613529fb4e82248e48787459",
+      "bytes": 25699832
+    },
+    {
+      "path": "docs/downloads/wukong-plays-in-the-sand-v1-core.pdf",
+      "sha256": "d43850da2fc71a1a8a5e9fb94303004fc76d5588bb7934bd967b334dea921656",
+      "bytes": 21627159
+    },
+    {
+      "path": "docs/downloads/wukong-plays-in-the-sand-v1.pdf",
+      "sha256": "7762007dfb9d1492bcda7b0569099dcb4350f169406cdeb8b8f510dcf893b780",
+      "bytes": 25679730
+    },
+    {
+      "path": "docs/downloads/wukong-plays-in-the-sand-v2-booklet.pdf",
+      "sha256": "fdcc74efc83505f282d1f5c13347c37693ec33351c105b4db50d1f8327512bd4",
+      "bytes": 25700847
+    },
+    {
+      "path": "docs/downloads/wukong-plays-in-the-sand-v2-core-zh-Hans.pdf",
+      "sha256": "06552891a89af4f84312dd9a2312e2f5d27140a5c3a2e6530cad0af57ec111ac",
+      "bytes": 21656100
+    },
+    {
+      "path": "docs/downloads/wukong-plays-in-the-sand-v2-zh-Hans-booklet.pdf",
+      "sha256": "1fabed22ade2d51c77803ef8c8e030d287082f791ccda1ac87c5d20e254e4118",
+      "bytes": 25742772
+    },
+    {
+      "path": "docs/downloads/wukong-plays-in-the-sand-v2-zh-Hans.pdf",
+      "sha256": "e264e321569435692daff293667cfd62abda82922a9298df046c35c4830da49f",
+      "bytes": 25732762
+    },
+    {
+      "path": "docs/downloads/wukong-plays-in-the-sand-v2.pdf",
+      "sha256": "ef29f10dd697f53460c5a8401515822f2a309bdab9816c87326721ab018634c3",
+      "bytes": 25681637
+    },
+    {
       "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
       "sha256": "1731fcbd090f5810ada14a62d99821bdc3bd7226f3a39a8f3464801b255245f1",
       "bytes": 8981000
@@ -362,6 +402,46 @@
       "bytes": 13411384
     },
     {
+      "path": "docs/downloads/wukongs-painting-class-v1-booklet.pdf",
+      "sha256": "67d6897d2f3d1438038a43737eb8f532e0e0918fb8777cef8670ca808e21cc3e",
+      "bytes": 23254513
+    },
+    {
+      "path": "docs/downloads/wukongs-painting-class-v1-core.pdf",
+      "sha256": "18cedf4680f2c19338eaa98c91d017d6a446510e37aeda18122360f8f4c2f31d",
+      "bytes": 19434131
+    },
+    {
+      "path": "docs/downloads/wukongs-painting-class-v1.pdf",
+      "sha256": "3ba7b5adfca4454a7b8b38d4f49e5cc365b347ddb905b864cd4bf2e2eb376af9",
+      "bytes": 23234428
+    },
+    {
+      "path": "docs/downloads/wukongs-painting-class-v2-booklet.pdf",
+      "sha256": "6b78e6835d0938946139545414725fe1b193593751d7cafaf43789b5fe4a2a70",
+      "bytes": 23255528
+    },
+    {
+      "path": "docs/downloads/wukongs-painting-class-v2-core-zh-Hans.pdf",
+      "sha256": "0648b9687f0df5574ccb6771f487cdfe9c5cfa529453fb2ad370ea0d879f3aa0",
+      "bytes": 19462931
+    },
+    {
+      "path": "docs/downloads/wukongs-painting-class-v2-zh-Hans-booklet.pdf",
+      "sha256": "29ea398ae6a1304853ba252ec086091a58b57cb615269eb49ee979fc1d3ce876",
+      "bytes": 23296614
+    },
+    {
+      "path": "docs/downloads/wukongs-painting-class-v2-zh-Hans.pdf",
+      "sha256": "7684b35648ce28aa5bf3cd47811b45e98080b6d24a52fe8c2983c4358ee7079d",
+      "bytes": 23286617
+    },
+    {
+      "path": "docs/downloads/wukongs-painting-class-v2.pdf",
+      "sha256": "c7ca566e7702d2c6f6fa09f3c22b19ff7597c9eb2d7dc97cf32f982404b76bb4",
+      "bytes": 23236340
+    },
+    {
       "path": "docs/downloads/wukongs-slippy-slide-skates-v1-booklet.pdf",
       "sha256": "1412d4324d3467c470cfc7366897efb23b0086cff3038e12ad28da2a7b0fb644",
       "bytes": 19871813
@@ -517,6 +597,16 @@
       "bytes": 103303
     },
     {
+      "path": "stories/wukong-plays-in-the-sand/editions/v1/prompts.txt",
+      "sha256": "942fe929d98dd30104e49fe4bf6279b3ce7e0d6412170adfdb0edbdc4a96538f",
+      "bytes": 129105
+    },
+    {
+      "path": "stories/wukong-plays-in-the-sand/editions/v2/prompts.txt",
+      "sha256": "942fe929d98dd30104e49fe4bf6279b3ce7e0d6412170adfdb0edbdc4a96538f",
+      "bytes": 129105
+    },
+    {
       "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",
       "sha256": "da2a369b73d446a4e214268402c55ddd35a3aa448a8df26ae1a01f9dd44b848b",
       "bytes": 33053
@@ -575,6 +665,16 @@
       "path": "stories/wukongs-one-little-bite/editions/v6/prompts.txt",
       "sha256": "89e603383753c80166a0598eb9cddf738c6de65ee1268bfd1b1d7fd9a6f91198",
       "bytes": 65498
+    },
+    {
+      "path": "stories/wukongs-painting-class/editions/v1/prompts.txt",
+      "sha256": "73828c8c3f98c05cd582ddcf433a9f90d0568ef221941b62f3fb307cf4bdca19",
+      "bytes": 146888
+    },
+    {
+      "path": "stories/wukongs-painting-class/editions/v2/prompts.txt",
+      "sha256": "73828c8c3f98c05cd582ddcf433a9f90d0568ef221941b62f3fb307cf4bdca19",
+      "bytes": 146888
     },
     {
       "path": "stories/wukongs-slippy-slide-skates/editions/v1/prompts.txt",

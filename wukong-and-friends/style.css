@@ -49,6 +49,7 @@
 .reader-page-select{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}.reader-page-select select{font:inherit;color:var(--ink);background:#faf7ee;border:1px solid #b8beac;border-radius:var(--button-radius);padding:10px 8px;min-height:44px;cursor:pointer}
 .reader-page-select select:focus-visible{outline:3px solid #62795d;outline-offset:3px}
 .reader-progress{display:block;width:100%;height:4px;appearance:none;border:0;background:#ded8c7;color:#899e7f}.reader-progress::-webkit-progress-bar{background:#ded8c7}.reader-progress::-webkit-progress-value{background:#899e7f}.reader-progress::-moz-progress-bar{background:#899e7f}
+.reader-rights{display:flex;justify-content:center;flex-wrap:wrap;gap:3px 16px;margin:0;padding:10px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.6;text-align:center}.reader-rights a{color:inherit;text-underline-offset:3px}.reader-rights a:focus-visible{outline:3px solid #62795d;outline-offset:3px}
 .reader-download-note{margin:14px 0 0;text-align:right}
 .reader-dialog{max-width:none;max-height:none;width:min(100% - 24px,1060px);padding:0;border:0;background:transparent;overflow:visible}
 .reader-dialog::backdrop{background:#272d26d9;backdrop-filter:blur(3px)}
@@ -69,3 +70,5 @@ html[lang=zh-CN] .reader-book-title{font:500 17px/1.5 'Noto Sans SC',sans-serif}
 .banner-choice[aria-pressed=true]{background:#e6ecd9;border-color:#879b78}
 .banner-choice:focus-visible{outline:3px solid #62795d;outline-offset:3px}
 .banner-toggle{font-size:13px;padding:8px 14px;min-height:44px}
+
+.footer-rights{margin:8px 0 0;line-height:1.8}.footer-rights a{text-underline-offset:3px}

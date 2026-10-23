@@ -71,6 +71,84 @@
     "published": "2026-10-20"
   },
   {
+    "id": "wukong-plays-in-the-sand",
+    "title": "Wukong Plays in the Sand",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "version": "v2",
+    "revision": "natural-chinese-and-rights-refresh",
+    "publication_status": "published",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "reading": "downloads/wukong-plays-in-the-sand-v2.pdf",
+    "booklet": "downloads/wukong-plays-in-the-sand-v2-booklet.pdf",
+    "cover": "covers/wukong-plays-in-the-sand-v2.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Plays in the Sand",
+        "description": "Wukong and his friends try dry sand, then add too much water. They adjust the mix and build a sand tower together. At the end, Wukong finds a little mountain in his shoe."
+      },
+      "zh": {
+        "title": "悟空去海边玩沙",
+        "description": "悟空和朋友们先用干沙堆塔，沙子却散了；水加多了又成了沙汤。大家调整方法，终于一起堆起沙塔。最后，悟空发现鞋里也藏着一座小山。"
+      }
+    },
+    "description": "悟空和朋友们先用干沙堆塔，沙子却散了；水加多了又成了沙汤。大家调整方法，终于一起堆起沙塔。最后，悟空发现鞋里也藏着一座小山。",
+    "keywords": "悟空 沙滩 沙子 朋友 Wukong sand beach friends",
+    "description_en": "Wukong and his friends try dry sand, then add too much water. They adjust the mix and build a sand tower together. At the end, Wukong finds a little mountain in his shoe.",
+    "languages": {
+      "zh-Hans": {
+        "reading": "downloads/wukong-plays-in-the-sand-v2-zh-Hans.pdf",
+        "booklet": "downloads/wukong-plays-in-the-sand-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-plays-in-the-sand-v2-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukongs-painting-class",
+    "title": "Wukong’s Painting Class",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "version": "v2",
+    "revision": "natural-chinese-and-rights-refresh",
+    "publication_status": "published",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "reading": "downloads/wukongs-painting-class-v2.pdf",
+    "booklet": "downloads/wukongs-painting-class-v2-booklet.pdf",
+    "cover": "covers/wukongs-painting-class-v2.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Painting Class",
+        "description": "Wukong turns a brown paint blob into a little bear. Nezha paints a rainbow unicorn, Pigsy paints a bunny, and together they make one happy picture."
+      },
+      "zh": {
+        "title": "悟空的画画课",
+        "description": "悟空把一团棕色颜料变成小熊。哪吒画彩虹独角兽，猪八戒画兔子，大家一起完成一幅快乐的画。"
+      }
+    },
+    "description": "悟空把一团棕色颜料变成小熊。哪吒画彩虹独角兽，猪八戒画兔子，大家一起完成一幅快乐的画。",
+    "keywords": "悟空 绘画 朋友 Wukong painting friends",
+    "description_en": "Wukong turns a brown paint blob into a little bear. Nezha paints a rainbow unicorn, Pigsy paints a bunny, and together they make one happy picture.",
+    "languages": {
+      "zh-Hans": {
+        "reading": "downloads/wukongs-painting-class-v2-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-painting-class-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-painting-class-v2-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "wukongs-slippy-slide-skates",
     "title": "Wukong’s Slippy-Slide Skates",
     "series": "wukong",

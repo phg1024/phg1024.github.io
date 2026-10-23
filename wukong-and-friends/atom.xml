@@ -12,6 +12,30 @@
   </atom:author>
   <atom:updated>2026-10-22T00:00:00Z</atom:updated>
   <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-plays-in-the-sand/</atom:id>
+    <atom:title type="text">Wukong Plays in the Sand</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-plays-in-the-sand/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-22T00:00:00Z</atom:published>
+    <atom:updated>2026-10-22T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong and his friends try dry sand, then add too much water. They adjust the mix and build a sand tower together. At the end, Wukong finds a little mountain in his shoe.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-plays-in-the-sand-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-plays-in-the-sand-v2.jpg" alt="Wukong Plays in the Sand" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-painting-class/</atom:id>
+    <atom:title type="text">Wukong’s Painting Class</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukongs-painting-class/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-22T00:00:00Z</atom:published>
+    <atom:updated>2026-10-22T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong turns a brown paint blob into a little bear. Nezha paints a rainbow unicorn, Pigsy paints a bunny, and together they make one happy picture.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-painting-class-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-painting-class-v2.jpg" alt="Wukong’s Painting Class" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-snowy-zigzags/</atom:id>
     <atom:title type="text">Wukong and the Snowy Zigzags</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-snowy-zigzags/" rel="alternate" type="text/html" hreflang="en" />
