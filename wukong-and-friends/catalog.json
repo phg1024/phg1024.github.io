@@ -5,12 +5,12 @@
     "series": "wukong",
     "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。",
     "style": "Children’s crayon doodles",
-    "version": "v5",
-    "revision": "jade-rabbit-and-snow-costume-continuity",
+    "version": "v6",
+    "revision": "copyright-only-refresh",
     "keywords": "悟空 铁扇公主 玉兔 滑雪 学滑雪 坚持 热可可 小鱼饼干 Wukong Iron Fan Jade Rabbit skiing ski cocoa",
     "pages": 18,
-    "reading": "downloads/wukong-and-the-snowy-zigzags-v5.pdf",
-    "booklet": "downloads/wukong-and-the-snowy-zigzags-v5-booklet.pdf",
+    "reading": "downloads/wukong-and-the-snowy-zigzags-v6.pdf",
+    "booklet": "downloads/wukong-and-the-snowy-zigzags-v6-booklet.pdf",
     "cover": "covers/wukong-and-the-snowy-zigzags-cover-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
@@ -26,8 +26,8 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-and-the-snowy-zigzags-v5-zh-Hans.pdf",
-        "booklet": "downloads/wukong-and-the-snowy-zigzags-v5-zh-Hans-booklet.pdf",
+        "reading": "downloads/wukong-and-the-snowy-zigzags-v6-zh-Hans.pdf",
+        "booklet": "downloads/wukong-and-the-snowy-zigzags-v6-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-and-the-snowy-zigzags-cover-v5-zh-Hans.jpg"
       }
     },
@@ -41,12 +41,12 @@
     "series": "wukong",
     "description": "悟空和敖丙一起种小番茄，浇水、等待，最后分享甜甜的收获。",
     "style": "Children’s crayon doodles",
-    "version": "v4",
-    "revision": "digital-author-and-back-cover",
+    "version": "v5",
+    "revision": "copyright-only-refresh",
     "keywords": "悟空 敖丙 小番茄 种植 浇水 耐心 分享 Wukong Ao Bing tomatoes gardening patience friendship",
     "pages": 18,
-    "reading": "downloads/wukong-and-the-tiny-tomatoes-v4.pdf",
-    "booklet": "downloads/wukong-and-the-tiny-tomatoes-v3-booklet.pdf",
+    "reading": "downloads/wukong-and-the-tiny-tomatoes-v5.pdf",
+    "booklet": "downloads/wukong-and-the-tiny-tomatoes-v5-booklet.pdf",
     "cover": "covers/wukong-and-the-tiny-tomatoes-v2.jpg",
     "sheets": 5,
     "blank_pages": 0,
@@ -62,13 +62,14 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-and-the-tiny-tomatoes-v4-zh-Hans.pdf",
-        "booklet": "downloads/wukong-and-the-tiny-tomatoes-v3-zh-Hans-booklet.pdf",
+        "reading": "downloads/wukong-and-the-tiny-tomatoes-v5-zh-Hans.pdf",
+        "booklet": "downloads/wukong-and-the-tiny-tomatoes-v5-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-and-the-tiny-tomatoes-v2-zh-Hans.jpg"
       }
     },
     "booklet_pages": 20,
-    "published": "2026-10-20"
+    "published": "2026-10-20",
+    "updated": "2026-10-22"
   },
   {
     "id": "wukong-plays-in-the-sand",
@@ -154,19 +155,19 @@
     "series": "wukong",
     "description": "小脚像坐上小雪橇。摔一跤，再试一次！",
     "style": "Children’s crayon doodles",
-    "version": "v3",
-    "revision": "digital-author-and-back-cover",
+    "version": "v4",
+    "revision": "copyright-only-refresh",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukongs-slippy-slide-skates-v3.pdf",
-    "booklet": "downloads/wukongs-slippy-slide-skates-v2-booklet.pdf",
+    "reading": "downloads/wukongs-slippy-slide-skates-v4.pdf",
+    "booklet": "downloads/wukongs-slippy-slide-skates-v4-booklet.pdf",
     "cover": "covers/wukongs-slippy-slide-skates.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-slippy-slide-skates-v3-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-slippy-slide-skates-v2-zh-Hans-booklet.pdf",
+        "reading": "downloads/wukongs-slippy-slide-skates-v4-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-slippy-slide-skates-v4-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-slippy-slide-skates-v1-zh-Hans.jpg"
       }
     },
@@ -181,7 +182,8 @@
         "title": "悟空学滑冰",
         "description": "小脚像坐上小雪橇。摔一跤，再试一次！"
       }
-    }
+    },
+    "updated": "2026-10-22"
   },
   {
     "id": "wukong-and-the-big-red-truck",
@@ -189,19 +191,19 @@
     "series": "wukong",
     "description": "跟着消防员 Ben，走近一辆很酷的大红消防车。",
     "style": "Children’s crayon doodles",
-    "version": "v3",
-    "revision": "digital-author-and-back-cover",
+    "version": "v4",
+    "revision": "copyright-only-refresh",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukong-and-the-big-red-truck-v3.pdf",
-    "booklet": "downloads/wukong-and-the-big-red-truck-v2-booklet.pdf",
+    "reading": "downloads/wukong-and-the-big-red-truck-v4.pdf",
+    "booklet": "downloads/wukong-and-the-big-red-truck-v4-booklet.pdf",
     "cover": "covers/wukong-and-the-big-red-truck.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-and-the-big-red-truck-v3-zh-Hans.pdf",
-        "booklet": "downloads/wukong-and-the-big-red-truck-v2-zh-Hans-booklet.pdf",
+        "reading": "downloads/wukong-and-the-big-red-truck-v4-zh-Hans.pdf",
+        "booklet": "downloads/wukong-and-the-big-red-truck-v4-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-and-the-big-red-truck-v1-zh-Hans.jpg"
       }
     },
@@ -216,7 +218,8 @@
         "title": "悟空和大红消防车",
         "description": "跟着消防员 Ben，走近一辆很酷的大红消防车。"
       }
-    }
+    },
+    "updated": "2026-10-22"
   },
   {
     "id": "wukongs-wibble-wobble-ride",
@@ -224,19 +227,19 @@
     "series": "wukong",
     "description": "酷酷的自行车骑起来，却有些摇摇晃晃！",
     "style": "Children’s crayon doodles",
-    "version": "v3",
-    "revision": "digital-author-and-back-cover",
+    "version": "v4",
+    "revision": "copyright-only-refresh",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukongs-wibble-wobble-ride-v3.pdf",
-    "booklet": "downloads/wukongs-wibble-wobble-ride-v2-booklet.pdf",
+    "reading": "downloads/wukongs-wibble-wobble-ride-v4.pdf",
+    "booklet": "downloads/wukongs-wibble-wobble-ride-v4-booklet.pdf",
     "cover": "covers/wukongs-wibble-wobble-ride.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-wibble-wobble-ride-v3-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-wibble-wobble-ride-v2-zh-Hans-booklet.pdf",
+        "reading": "downloads/wukongs-wibble-wobble-ride-v4-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-wibble-wobble-ride-v4-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-wibble-wobble-ride-v1-zh-Hans.jpg"
       }
     },
@@ -251,7 +254,8 @@
         "title": "悟空的摇摇晃晃自行车",
         "description": "酷酷的自行车骑起来，却有些摇摇晃晃！"
       }
-    }
+    },
+    "updated": "2026-10-22"
   },
   {
     "id": "wukongs-one-little-bite",
@@ -259,13 +263,13 @@
     "series": "wukong",
     "description": "从一小口新味道，到一顿暖暖的晚餐。",
     "style": "Children’s crayon doodles",
-    "version": "v6",
-    "revision": "sandy-appearance-refresh-digital",
+    "version": "v7",
+    "revision": "copyright-only-refresh",
     "published": "2026-10-19",
     "keywords": "悟空 八戒 沙僧 不挑食 尝试 食物 晚餐 food dinner vegetables",
     "pages": 12,
-    "reading": "downloads/wukongs-one-little-bite-v6.pdf",
-    "booklet": "downloads/wukongs-one-little-bite-v5-booklet.pdf",
+    "reading": "downloads/wukongs-one-little-bite-v7.pdf",
+    "booklet": "downloads/wukongs-one-little-bite-v7-booklet.pdf",
     "cover": "covers/wukongs-one-little-bite-v5.jpg",
     "sheets": 4,
     "blank_pages": 2,
@@ -281,13 +285,13 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-one-little-bite-v6-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-one-little-bite-v5-zh-Hans-booklet.pdf",
+        "reading": "downloads/wukongs-one-little-bite-v7-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-one-little-bite-v7-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-one-little-bite-v5-zh-Hans.jpg"
       }
     },
     "booklet_pages": 16,
-    "updated": "2026-10-21"
+    "updated": "2026-10-22"
   },
   {
     "id": "wukongs-noisy-nap",
@@ -295,13 +299,13 @@
     "series": "wukong",
     "description": "悟空想睡午觉，可朋友们的好意有一点点吵。",
     "style": "Children’s crayon doodles",
-    "version": "v6",
-    "revision": "sandy-appearance-refresh-digital",
+    "version": "v7",
+    "revision": "copyright-only-refresh",
     "published": "2026-10-19",
     "keywords": "悟空 八戒 沙僧 午睡 睡午觉 nap sleep",
     "pages": 12,
-    "reading": "downloads/wukongs-noisy-nap-v6.pdf",
-    "booklet": "downloads/wukongs-noisy-nap-v5-booklet.pdf",
+    "reading": "downloads/wukongs-noisy-nap-v7.pdf",
+    "booklet": "downloads/wukongs-noisy-nap-v7-booklet.pdf",
     "cover": "covers/wukongs-noisy-nap-v5.jpg",
     "sheets": 4,
     "blank_pages": 2,
@@ -317,12 +321,12 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-noisy-nap-v6-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-noisy-nap-v5-zh-Hans-booklet.pdf",
+        "reading": "downloads/wukongs-noisy-nap-v7-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-noisy-nap-v7-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-noisy-nap-v5-zh-Hans.jpg"
       }
     },
     "booklet_pages": 16,
-    "updated": "2026-10-21"
+    "updated": "2026-10-22"
   }
 ]

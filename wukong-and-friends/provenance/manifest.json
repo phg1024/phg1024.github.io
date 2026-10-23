@@ -72,6 +72,26 @@
       "bytes": 23784948
     },
     {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v4-booklet.pdf",
+      "sha256": "2f90a573f699c7fb5bf67f3815a713e85d3566273b59edb60c91d0f35e00b959",
+      "bytes": 23805363
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v4-zh-Hans-booklet.pdf",
+      "sha256": "8c9ed4a0535a83f6b09952a2eaff9d12d2a0d5f14f1a614ccafa5a3de0253b6c",
+      "bytes": 23867657
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v4-zh-Hans.pdf",
+      "sha256": "76c1a6c5270d001d7122dd50df3754b0c5d2b2e026e9afd3cb90e365a437a0da",
+      "bytes": 23857272
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v4.pdf",
+      "sha256": "cbe15941cbb96be2848c4a1db59289e9ef4e578f3ac899390bab0be967aebac9",
+      "bytes": 23786186
+    },
+    {
       "path": "docs/downloads/wukong-and-the-snowy-zigzags-v1-booklet.pdf",
       "sha256": "31bc64fafc8832c1d075712183692d99e372d38d14406726771f8d39cd864b39",
       "bytes": 20353494
@@ -152,6 +172,26 @@
       "bytes": 20605047
     },
     {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v6-booklet.pdf",
+      "sha256": "93adac89e183a99365eaeab19487254cc96b301b635d88c6dc55b62a0ec54fc2",
+      "bytes": 20625618
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v6-zh-Hans-booklet.pdf",
+      "sha256": "d35b83b368660b28eb64b593859e12ee3487d35ecd9bd8c3967c874ff3048439",
+      "bytes": 20681698
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v6-zh-Hans.pdf",
+      "sha256": "b5b9510ab6831d0a814fcaf8f0fdaf835b01a81e1bb877308c38abf409a097eb",
+      "bytes": 20671312
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v6.pdf",
+      "sha256": "2be88e4413e9666f47ed2df7cefc8983e17ff4bc7672bf7e84b628d82e4962a8",
+      "bytes": 20606286
+    },
+    {
       "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v1-booklet.pdf",
       "sha256": "0c8a68d6717781e251a688267722dd8a09d43a3b138db6ea236e56740e8e69c1",
       "bytes": 21732377
@@ -200,6 +240,26 @@
       "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v4.pdf",
       "sha256": "2e9ec4e25bbfce69537e1be43d06129ad368ee1422effc4641164a3165233583",
       "bytes": 22404132
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v5-booklet.pdf",
+      "sha256": "f47ecb75e5f26df8408c1293c7255fc04dd5e847a75bf0eb1ea9d7b76b7c0540",
+      "bytes": 22424638
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v5-zh-Hans-booklet.pdf",
+      "sha256": "9a73a506fec639df00c318db27dd440160e13f1aa4165ab3c9bdff0777dfa369",
+      "bytes": 22469807
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v5-zh-Hans.pdf",
+      "sha256": "017f6a42dc489b0ba1eb136a0f03485c86882773b8b029d3ab445b8e00a6f225",
+      "bytes": 22459530
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v5.pdf",
+      "sha256": "1759c2968c906ef1b99653ee34c5b4e5d84a63d04281b9e396ba3341b83a4a49",
+      "bytes": 22405371
     },
     {
       "path": "docs/downloads/wukong-plays-in-the-sand-v1-booklet.pdf",
@@ -322,6 +382,26 @@
       "bytes": 13076863
     },
     {
+      "path": "docs/downloads/wukongs-noisy-nap-v7-booklet.pdf",
+      "sha256": "6ec7b3a3c3396d56f2cf94515178791876bf0d517c17198427338154e27a864a",
+      "bytes": 13098788
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v7-zh-Hans-booklet.pdf",
+      "sha256": "8e16cc3bbd9d9efdf7720efc0a5bf50ceb29f860051ab3da28b1620ceaea8cc8",
+      "bytes": 13134236
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v7-zh-Hans.pdf",
+      "sha256": "45b96986e42b3f5c486fad9a4fdb01c0884041e98b85909605655a7f2a5ddc12",
+      "bytes": 13122413
+    },
+    {
+      "path": "docs/downloads/wukongs-noisy-nap-v7.pdf",
+      "sha256": "61d757e47439a388f9e963b9fac38815a5cdfd43f49786d82e9f6156786667d0",
+      "bytes": 13078106
+    },
+    {
       "path": "docs/downloads/wukongs-one-little-bite-v1-booklet.pdf",
       "sha256": "94d280c8f7f1d8f81aba120ada39697983dc6da94932ae30d3c9487606a63162",
       "bytes": 9558824
@@ -400,6 +480,26 @@
       "path": "docs/downloads/wukongs-one-little-bite-v6.pdf",
       "sha256": "85463f75b7ba6ad696f77006eb1de1b849b1bdf26e117e96fcb7acd32f081617",
       "bytes": 13411384
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v7-booklet.pdf",
+      "sha256": "3d46c396383ff74ecfd0860ed1d61f4d1ffb173886692640b5c941722d10ca72",
+      "bytes": 13433306
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v7-zh-Hans-booklet.pdf",
+      "sha256": "2b145262af09018a68ed3e44b15dd01162b146a57ce7c0d22f2ca9321854ddb6",
+      "bytes": 13468587
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v7-zh-Hans.pdf",
+      "sha256": "e918e7568c078eb4b693c833290f899a925e577ab1a6a42a398dccb00122edbd",
+      "bytes": 13456776
+    },
+    {
+      "path": "docs/downloads/wukongs-one-little-bite-v7.pdf",
+      "sha256": "231bfc6f3eb0e1fb8edd067422b19e00f8d646b00313fc5c40bca691878d706d",
+      "bytes": 13412625
     },
     {
       "path": "docs/downloads/wukongs-painting-class-v1-booklet.pdf",
@@ -482,6 +582,26 @@
       "bytes": 22798060
     },
     {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v4-booklet.pdf",
+      "sha256": "90765d3d7692b7c396c6399296cb138112727193ebfa854d6d488896f62ad4c2",
+      "bytes": 22818499
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v4-zh-Hans-booklet.pdf",
+      "sha256": "cd8f4a624b68422d25f2a42e0eee04cfe40a9636844dab9234c02010e9dacdc0",
+      "bytes": 22867829
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v4-zh-Hans.pdf",
+      "sha256": "89ef492edf8cb668b2b1152c7354dd552babff046686728c0c5c15132805ec89",
+      "bytes": 22857540
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v4.pdf",
+      "sha256": "af2b92056ca31a7220990e54bbd1bbedbc57bc2b4f1144bf07985981269a0793",
+      "bytes": 22799300
+    },
+    {
       "path": "docs/downloads/wukongs-wibble-wobble-ride-v1-booklet.pdf",
       "sha256": "06520fe4eff78c8f0e47fba99b4501a029b32e1eb7f2221f6b95eb5469a000f9",
       "bytes": 19153804
@@ -522,6 +642,26 @@
       "bytes": 22192038
     },
     {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v4-booklet.pdf",
+      "sha256": "477780d3e1f7a7b73eee747d06b29eb8cab6bd723b516e2c9a7cef2d7ad3a8b8",
+      "bytes": 22212479
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v4-zh-Hans-booklet.pdf",
+      "sha256": "543b243f2a8e47eeb6508671ac9a7050425ce1e7f9be58b6a5ab21c98172faf4",
+      "bytes": 22266115
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v4-zh-Hans.pdf",
+      "sha256": "d1b3ebb1f6b69eafcb4134a749f1698002d35ea2f063f81e5fb0555a38650098",
+      "bytes": 22255710
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v4.pdf",
+      "sha256": "d96ec5726c51d4f580a83b62f40d4f3c1271cd8cfdc83cc638c40df5f8dbd91c",
+      "bytes": 22193279
+    },
+    {
       "path": "stories/bears-wobbly-ride/editions/v1/prompts.txt",
       "sha256": "bd444dd5febec44423c645813abb7942d1aa58328d10d737fa88743dea8d6e79",
       "bytes": 30907
@@ -552,6 +692,11 @@
       "bytes": 49330
     },
     {
+      "path": "stories/wukong-and-the-big-red-truck/editions/v4/prompts.txt",
+      "sha256": "937bd726e8c2afaf7ff343472dec659ffa9d44a6c49639732d80f359d84c8797",
+      "bytes": 49758
+    },
+    {
       "path": "stories/wukong-and-the-snowy-zigzags/editions/v1/prompts.txt",
       "sha256": "cdd82100bafa8dcb532061ba5f3b58bf3e2646166e0d59ca516b37ee4b2be0d9",
       "bytes": 57840
@@ -577,6 +722,11 @@
       "bytes": 183131
     },
     {
+      "path": "stories/wukong-and-the-snowy-zigzags/editions/v6/prompts.txt",
+      "sha256": "c1859fe0a520c8dfc9484fb8751cc5d033e1c5a1f54e2016d1aee991efed98eb",
+      "bytes": 183559
+    },
+    {
       "path": "stories/wukong-and-the-tiny-tomatoes/editions/v1/prompts.txt",
       "sha256": "2723c8138950bd6713f410a707ab4f4d8d96d166dab9dc51bfb2361675384d73",
       "bytes": 53414
@@ -595,6 +745,11 @@
       "path": "stories/wukong-and-the-tiny-tomatoes/editions/v4/prompts.txt",
       "sha256": "8646ce8742f16b2359be347b0e7160a88262e894e8904f471634056128dd77f1",
       "bytes": 103303
+    },
+    {
+      "path": "stories/wukong-and-the-tiny-tomatoes/editions/v5/prompts.txt",
+      "sha256": "4ff8eae3b29939e2bf62407bb3edff957897900d6695b07931fe551989d4a18e",
+      "bytes": 103731
     },
     {
       "path": "stories/wukong-plays-in-the-sand/editions/v1/prompts.txt",
@@ -637,6 +792,11 @@
       "bytes": 57724
     },
     {
+      "path": "stories/wukongs-noisy-nap/editions/v7/prompts.txt",
+      "sha256": "b9b2109b519ae8a7c34ac994a2504b647de71a0dabd84edf11375bc075246824",
+      "bytes": 58152
+    },
+    {
       "path": "stories/wukongs-one-little-bite/editions/v1/prompts.txt",
       "sha256": "597d48daeb74c3e8cab4534a72a6d41924baf73b3fe73195ba5a48430ccb7eb7",
       "bytes": 33320
@@ -667,6 +827,11 @@
       "bytes": 65498
     },
     {
+      "path": "stories/wukongs-one-little-bite/editions/v7/prompts.txt",
+      "sha256": "c856b9638d3ea6faa1f455bd3d166572763226c5118b26a56e4d1274e5b88dd0",
+      "bytes": 65926
+    },
+    {
       "path": "stories/wukongs-painting-class/editions/v1/prompts.txt",
       "sha256": "73828c8c3f98c05cd582ddcf433a9f90d0568ef221941b62f3fb307cf4bdca19",
       "bytes": 146888
@@ -692,6 +857,11 @@
       "bytes": 56723
     },
     {
+      "path": "stories/wukongs-slippy-slide-skates/editions/v4/prompts.txt",
+      "sha256": "4509cbd38ac49e4238535670c0496600efd0a95035fd2a9899982cd754349694",
+      "bytes": 57151
+    },
+    {
       "path": "stories/wukongs-wibble-wobble-ride/editions/v1/prompts.txt",
       "sha256": "2f2e54c0c4e2333b6921ae30d14660a80b695932c332fe1516686240d7eaf9a2",
       "bytes": 47416
@@ -705,6 +875,11 @@
       "path": "stories/wukongs-wibble-wobble-ride/editions/v3/prompts.txt",
       "sha256": "23433ee7596e53e8cb0921d08e181cef640df7d363b6c74cde64cf5ba143e362",
       "bytes": 50496
+    },
+    {
+      "path": "stories/wukongs-wibble-wobble-ride/editions/v4/prompts.txt",
+      "sha256": "f1796a2bbe3ee141fe11791e825b950a8d8894113f9900b09157f940789263cb",
+      "bytes": 50924
     }
   ]
 }
