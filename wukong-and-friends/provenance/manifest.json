@@ -92,6 +92,36 @@
       "bytes": 23786186
     },
     {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v5-booklet.pdf",
+      "sha256": "aa663a85c7aaad12dd00017e07f6c158929cd25c1c182180c47c5a71b46885a9",
+      "bytes": 23379177
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v5-core-zh-Hans.pdf",
+      "sha256": "eb1274ae8a9ef307143c2edbf29a3c34124490989636995fb4d51d583464c05a",
+      "bytes": 19934294
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v5-core.pdf",
+      "sha256": "3e8b173c986feb7a02724d9bf51112a6890901d7e0c7254e827107627e004846",
+      "bytes": 19885011
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v5-zh-Hans-booklet.pdf",
+      "sha256": "288d28456caa76efdcf7e56db01eee8cf801f02b0382de637bdd8cb879e6a268",
+      "bytes": 23440991
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v5-zh-Hans.pdf",
+      "sha256": "cce105aa2a26be0b06e12b495373a2817ef85bd997b1f7d6a12731a1aceac767",
+      "bytes": 23430606
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-big-red-truck-v5.pdf",
+      "sha256": "095603cd4e0b7710d0bf8d9d5e6d4222f290f7389d9806315a19bf8840bfe643",
+      "bytes": 23359952
+    },
+    {
       "path": "docs/downloads/wukong-and-the-snowy-zigzags-v1-booklet.pdf",
       "sha256": "31bc64fafc8832c1d075712183692d99e372d38d14406726771f8d39cd864b39",
       "bytes": 20353494
@@ -602,6 +632,36 @@
       "bytes": 22799300
     },
     {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v5-booklet.pdf",
+      "sha256": "d918eba64f14b43c3e4b6ca0faa9b3afc10e2e5dab2c3e10d9064a97b31bf59d",
+      "bytes": 22413876
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v5-core-zh-Hans.pdf",
+      "sha256": "339e77260e4df661f4d847518156af6f61cbdd2f5ef3955c26cd70b545c351cb",
+      "bytes": 19506227
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v5-core.pdf",
+      "sha256": "57081f58eef034cdd776d3ea0fd2f233980e7e0d16bdca609f953691a931e553",
+      "bytes": 19469514
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v5-zh-Hans-booklet.pdf",
+      "sha256": "d3da4d7b475d2096e261adceeeacc98341526e07be4dbda02b709dbcc143b159",
+      "bytes": 22462726
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v5-zh-Hans.pdf",
+      "sha256": "544a81da00313cb32f9f96e4f2ef3ee8fbaf9df76972274f64da38d2a7d8df7b",
+      "bytes": 22452436
+    },
+    {
+      "path": "docs/downloads/wukongs-slippy-slide-skates-v5.pdf",
+      "sha256": "6722b847d1177c0a868431134db24f545fb419fab33593cdefa9874c5db0fa81",
+      "bytes": 22394628
+    },
+    {
       "path": "docs/downloads/wukongs-wibble-wobble-ride-v1-booklet.pdf",
       "sha256": "06520fe4eff78c8f0e47fba99b4501a029b32e1eb7f2221f6b95eb5469a000f9",
       "bytes": 19153804
@@ -662,6 +722,36 @@
       "bytes": 22193279
     },
     {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v5-booklet.pdf",
+      "sha256": "fb8b2ef5e800e787ddb8a72a72aec6d1f8a336a6ff94f33d507c4fe15b3b39c4",
+      "bytes": 21886041
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v5-core-zh-Hans.pdf",
+      "sha256": "26ac1d10d908e09577678b4202a453615aad0ed2b7ed139023db2a7d71e6a9f6",
+      "bytes": 18870643
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v5-core.pdf",
+      "sha256": "dc05235e2a574167f1922d7a64880c1fbbc08d8f7ac4eb4e9ddf632c159ceb5b",
+      "bytes": 18829694
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v5-zh-Hans-booklet.pdf",
+      "sha256": "0f29b89c412c7898e6ab649cae8bc0dcf12773b53c9da565ec3b57affcfac80e",
+      "bytes": 21939197
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v5-zh-Hans.pdf",
+      "sha256": "311975f0010598a8c0bd25c9ab2938fafb39cf8bbbc784f50f30108bb24327e0",
+      "bytes": 21928791
+    },
+    {
+      "path": "docs/downloads/wukongs-wibble-wobble-ride-v5.pdf",
+      "sha256": "9a9005a2b4e43931676b0de573b8663c60377c8a2002e46140dbdac5f6735840",
+      "bytes": 21866792
+    },
+    {
       "path": "stories/bears-wobbly-ride/editions/v1/prompts.txt",
       "sha256": "bd444dd5febec44423c645813abb7942d1aa58328d10d737fa88743dea8d6e79",
       "bytes": 30907
@@ -695,6 +785,11 @@
       "path": "stories/wukong-and-the-big-red-truck/editions/v4/prompts.txt",
       "sha256": "937bd726e8c2afaf7ff343472dec659ffa9d44a6c49639732d80f359d84c8797",
       "bytes": 49758
+    },
+    {
+      "path": "stories/wukong-and-the-big-red-truck/editions/v5/prompts.txt",
+      "sha256": "37eca924ca39b5f4aeab1d5424ee48e8d1855848abbfb1df82cc6a652ea80fc8",
+      "bytes": 70457
     },
     {
       "path": "stories/wukong-and-the-snowy-zigzags/editions/v1/prompts.txt",
@@ -862,6 +957,11 @@
       "bytes": 57151
     },
     {
+      "path": "stories/wukongs-slippy-slide-skates/editions/v5/prompts.txt",
+      "sha256": "a9145168fc9ccff93a2b92165db4ef9d44067defcc9b638ab94c1d05288bb246",
+      "bytes": 85555
+    },
+    {
       "path": "stories/wukongs-wibble-wobble-ride/editions/v1/prompts.txt",
       "sha256": "2f2e54c0c4e2333b6921ae30d14660a80b695932c332fe1516686240d7eaf9a2",
       "bytes": 47416
@@ -880,6 +980,11 @@
       "path": "stories/wukongs-wibble-wobble-ride/editions/v4/prompts.txt",
       "sha256": "f1796a2bbe3ee141fe11791e825b950a8d8894113f9900b09157f940789263cb",
       "bytes": 50924
+    },
+    {
+      "path": "stories/wukongs-wibble-wobble-ride/editions/v5/prompts.txt",
+      "sha256": "6ee7cb8a1911009c8e5f7b617b806d764ff1dac76fd9b27f148472711924a844",
+      "bytes": 74797
     }
   ]
 }

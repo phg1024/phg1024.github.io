@@ -155,20 +155,20 @@
     "series": "wukong",
     "description": "小脚像坐上小雪橇。摔一跤，再试一次！",
     "style": "Children’s crayon doodles",
-    "version": "v4",
-    "revision": "copyright-only-refresh",
+    "version": "v5",
+    "revision": "jade-rabbit-refresh-with-copyright",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukongs-slippy-slide-skates-v4.pdf",
-    "booklet": "downloads/wukongs-slippy-slide-skates-v4-booklet.pdf",
-    "cover": "covers/wukongs-slippy-slide-skates.jpg",
+    "reading": "downloads/wukongs-slippy-slide-skates-v5.pdf",
+    "booklet": "downloads/wukongs-slippy-slide-skates-v5-booklet.pdf",
+    "cover": "covers/wukongs-slippy-slide-skates-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-slippy-slide-skates-v4-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-slippy-slide-skates-v4-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-slippy-slide-skates-v1-zh-Hans.jpg"
+        "reading": "downloads/wukongs-slippy-slide-skates-v5-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-slippy-slide-skates-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-slippy-slide-skates-v5-zh-Hans.jpg"
       }
     },
     "booklet_pages": 20,
@@ -191,20 +191,20 @@
     "series": "wukong",
     "description": "跟着消防员 Ben，走近一辆很酷的大红消防车。",
     "style": "Children’s crayon doodles",
-    "version": "v4",
-    "revision": "copyright-only-refresh",
+    "version": "v5",
+    "revision": "jade-rabbit-refresh-with-copyright",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukong-and-the-big-red-truck-v4.pdf",
-    "booklet": "downloads/wukong-and-the-big-red-truck-v4-booklet.pdf",
-    "cover": "covers/wukong-and-the-big-red-truck.jpg",
+    "reading": "downloads/wukong-and-the-big-red-truck-v5.pdf",
+    "booklet": "downloads/wukong-and-the-big-red-truck-v5-booklet.pdf",
+    "cover": "covers/wukong-and-the-big-red-truck-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-and-the-big-red-truck-v4-zh-Hans.pdf",
-        "booklet": "downloads/wukong-and-the-big-red-truck-v4-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-big-red-truck-v1-zh-Hans.jpg"
+        "reading": "downloads/wukong-and-the-big-red-truck-v5-zh-Hans.pdf",
+        "booklet": "downloads/wukong-and-the-big-red-truck-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-big-red-truck-v5-zh-Hans.jpg"
       }
     },
     "booklet_pages": 20,
@@ -227,20 +227,20 @@
     "series": "wukong",
     "description": "酷酷的自行车骑起来，却有些摇摇晃晃！",
     "style": "Children’s crayon doodles",
-    "version": "v4",
-    "revision": "copyright-only-refresh",
+    "version": "v5",
+    "revision": "jade-rabbit-refresh-with-copyright",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukongs-wibble-wobble-ride-v4.pdf",
-    "booklet": "downloads/wukongs-wibble-wobble-ride-v4-booklet.pdf",
-    "cover": "covers/wukongs-wibble-wobble-ride.jpg",
+    "reading": "downloads/wukongs-wibble-wobble-ride-v5.pdf",
+    "booklet": "downloads/wukongs-wibble-wobble-ride-v5-booklet.pdf",
+    "cover": "covers/wukongs-wibble-wobble-ride-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-wibble-wobble-ride-v4-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-wibble-wobble-ride-v4-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-wibble-wobble-ride-v1-zh-Hans.jpg"
+        "reading": "downloads/wukongs-wibble-wobble-ride-v5-zh-Hans.pdf",
+        "booklet": "downloads/wukongs-wibble-wobble-ride-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-wibble-wobble-ride-v5-zh-Hans.jpg"
       }
     },
     "booklet_pages": 20,

@@ -72,3 +72,5 @@ html[lang=zh-CN] .reader-book-title{font:500 17px/1.5 'Noto Sans SC',sans-serif}
 .banner-toggle{font-size:13px;padding:8px 14px;min-height:44px}
 
 .footer-rights{margin:8px 0 0;line-height:1.8}.footer-rights a{text-underline-offset:3px}
+
+.portrait-rights{margin:0!important;padding:5px 12px 0;text-align:center;font:11px/1.5 system-ui,sans-serif!important;color:var(--muted)}.portrait-rights a{color:inherit;text-underline-offset:2px}.portrait-rights a:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
