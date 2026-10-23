@@ -9,8 +9,8 @@
     "revision": "approved-chinese-naturalness-current-art",
     "keywords": "悟空 铁扇公主 玉兔 滑雪 学滑雪 坚持 热可可 小鱼饼干 Wukong Iron Fan Jade Rabbit skiing ski cocoa",
     "pages": 18,
-    "reading": "downloads/wukong-and-the-snowy-zigzags-v6.pdf",
-    "booklet": "downloads/wukong-and-the-snowy-zigzags-v6-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v6.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v6-booklet.pdf",
     "cover": "covers/wukong-and-the-snowy-zigzags-cover-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
@@ -26,8 +26,8 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-and-the-snowy-zigzags-v7-zh-Hans.pdf",
-        "booklet": "downloads/wukong-and-the-snowy-zigzags-v7-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v7-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v7-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-and-the-snowy-zigzags-cover-v5-zh-Hans.jpg"
       }
     },
@@ -45,8 +45,8 @@
     "revision": "approved-chinese-naturalness-current-art",
     "keywords": "悟空 敖丙 小番茄 种植 浇水 耐心 分享 Wukong Ao Bing tomatoes gardening patience friendship",
     "pages": 18,
-    "reading": "downloads/wukong-and-the-tiny-tomatoes-v5.pdf",
-    "booklet": "downloads/wukong-and-the-tiny-tomatoes-v5-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v5.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v5-booklet.pdf",
     "cover": "covers/wukong-and-the-tiny-tomatoes-v2.jpg",
     "sheets": 5,
     "blank_pages": 0,
@@ -62,8 +62,8 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-and-the-tiny-tomatoes-v6-zh-Hans.pdf",
-        "booklet": "downloads/wukong-and-the-tiny-tomatoes-v6-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v6-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v6-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-and-the-tiny-tomatoes-v2-zh-Hans.jpg"
       }
     },
@@ -86,8 +86,8 @@
     "publication_status": "published",
     "published": "2026-10-22",
     "updated": "2026-10-22",
-    "reading": "downloads/wukong-plays-in-the-sand-v2.pdf",
-    "booklet": "downloads/wukong-plays-in-the-sand-v2-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v2-booklet.pdf",
     "cover": "covers/wukong-plays-in-the-sand-v2.jpg",
     "translations": {
       "en": {
@@ -104,8 +104,8 @@
     "description_en": "Wukong and his friends try dry sand, then add too much water. They adjust the mix and build a sand tower together. At the end, Wukong finds a little mountain in his shoe.",
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-plays-in-the-sand-v2-zh-Hans.pdf",
-        "booklet": "downloads/wukong-plays-in-the-sand-v2-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v2-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-plays-in-the-sand-v2-zh-Hans.jpg"
       }
     }
@@ -125,8 +125,8 @@
     "publication_status": "published",
     "published": "2026-10-22",
     "updated": "2026-10-22",
-    "reading": "downloads/wukongs-painting-class-v2.pdf",
-    "booklet": "downloads/wukongs-painting-class-v2-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-painting-class-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-painting-class-v2-booklet.pdf",
     "cover": "covers/wukongs-painting-class-v2.jpg",
     "translations": {
       "en": {
@@ -143,8 +143,8 @@
     "description_en": "Wukong turns a brown paint blob into a little bear. Nezha paints a rainbow unicorn, Pigsy paints a bunny, and together they make one happy picture.",
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-painting-class-v2-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-painting-class-v2-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-painting-class-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-painting-class-v2-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-painting-class-v2-zh-Hans.jpg"
       }
     }
@@ -159,15 +159,15 @@
     "revision": "approved-chinese-naturalness-current-art",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukongs-slippy-slide-skates-v5.pdf",
-    "booklet": "downloads/wukongs-slippy-slide-skates-v5-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v5.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v5-booklet.pdf",
     "cover": "covers/wukongs-slippy-slide-skates-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-slippy-slide-skates-v6-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-slippy-slide-skates-v6-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v6-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v6-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-slippy-slide-skates-v5-zh-Hans.jpg"
       }
     },
@@ -195,15 +195,15 @@
     "revision": "approved-chinese-naturalness-current-art",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukong-and-the-big-red-truck-v5.pdf",
-    "booklet": "downloads/wukong-and-the-big-red-truck-v5-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v5.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v5-booklet.pdf",
     "cover": "covers/wukong-and-the-big-red-truck-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukong-and-the-big-red-truck-v6-zh-Hans.pdf",
-        "booklet": "downloads/wukong-and-the-big-red-truck-v6-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v6-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v6-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-and-the-big-red-truck-v5-zh-Hans.jpg"
       }
     },
@@ -231,15 +231,15 @@
     "revision": "approved-chinese-naturalness-current-art",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "downloads/wukongs-wibble-wobble-ride-v5.pdf",
-    "booklet": "downloads/wukongs-wibble-wobble-ride-v5-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v5.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v5-booklet.pdf",
     "cover": "covers/wukongs-wibble-wobble-ride-v5.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-wibble-wobble-ride-v6-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-wibble-wobble-ride-v6-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v6-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v6-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-wibble-wobble-ride-v5-zh-Hans.jpg"
       }
     },
@@ -268,8 +268,8 @@
     "published": "2026-10-19",
     "keywords": "悟空 八戒 沙僧 不挑食 尝试 食物 晚餐 food dinner vegetables",
     "pages": 12,
-    "reading": "downloads/wukongs-one-little-bite-v7.pdf",
-    "booklet": "downloads/wukongs-one-little-bite-v7-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v7.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v7-booklet.pdf",
     "cover": "covers/wukongs-one-little-bite-v5.jpg",
     "sheets": 4,
     "blank_pages": 2,
@@ -285,8 +285,8 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-one-little-bite-v8-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-one-little-bite-v8-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v8-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-one-little-bite-v5-zh-Hans.jpg"
       }
     },
@@ -304,8 +304,8 @@
     "published": "2026-10-19",
     "keywords": "悟空 八戒 沙僧 午睡 睡午觉 nap sleep",
     "pages": 12,
-    "reading": "downloads/wukongs-noisy-nap-v7.pdf",
-    "booklet": "downloads/wukongs-noisy-nap-v7-booklet.pdf",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v7.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v7-booklet.pdf",
     "cover": "covers/wukongs-noisy-nap-v5.jpg",
     "sheets": 4,
     "blank_pages": 2,
@@ -321,8 +321,8 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "downloads/wukongs-noisy-nap-v8-zh-Hans.pdf",
-        "booklet": "downloads/wukongs-noisy-nap-v8-zh-Hans-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v8-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-noisy-nap-v5-zh-Hans.jpg"
       }
     },
