@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">One story core produces four PDFs: an 18-page reading version and a 20-page booklet, in English and Chinese</title>
+<desc id="d">A 16-page story core feeds two builds. The reading PDF adds an author page and an illustrated back cover for 18 pages. The booklet is built from the core, never from the reading version, and adds an inner title page, the author page, a blank inner back and the illustrated back cover, giving 20 pages on five sheets. Both builds are produced in English and Simplified Chinese, so each title ships four PDFs.</desc>
+<defs><marker id="a-2f6fd0" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#2f6fd0" stroke-width="1.4"/></marker><marker id="a-0f8f86" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0f8f86" stroke-width="1.4"/></marker></defs>
+<rect width="960" height="400" fill="#f7f8fb"/>
+<text x="480.0" y="36.0" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">One story, four PDFs</text>
+<text x="480.0" y="58.0" text-anchor="middle" font-size="12.5" fill="#5b6478">The core never changes; each build adds its own ending pages, then both are produced in both languages</text>
+<rect x="40" y="170" width="190" height="90" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.6"/>
+<text x="135.0" y="205.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1e2433">Story core</text>
+<text x="135.0" y="226.0" text-anchor="middle" font-size="11.5" fill="#5b6478">16 pages, cover included</text>
+<text x="135.0" y="243.0" text-anchor="middle" font-size="11.5" fill="#5b6478">unchanged</text>
+<path d="M 232 200 C 277 200, 273 145, 318 145" fill="none" stroke="#2f6fd0" stroke-width="1.8" marker-end="url(#a-2f6fd0)"/>
+<path d="M 232 230 C 277 230, 273 278, 318 278" fill="none" stroke="#0f8f86" stroke-width="1.8" marker-end="url(#a-0f8f86)"/>
+<rect x="320" y="95" width="300" height="95" rx="10" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.6"/>
+<text x="332.0" y="120.0" font-size="14" font-weight="700" fill="#2f6fd0">Reading PDF  ·  18 pages</text>
+<text x="332.0" y="141.0" font-size="11.5" fill="#1e2433">+ author page</text>
+<text x="332.0" y="158.0" font-size="11.5" fill="#1e2433">+ illustrated back cover</text>
+<text x="332.0" y="176.0" font-size="11" fill="#5b6478">clickable links, no QR code</text>
+<rect x="320" y="225" width="300" height="120" rx="10" fill="#ffffff" stroke="#0f8f86" stroke-width="1.6"/>
+<text x="332.0" y="250.0" font-size="14" font-weight="700" fill="#0f8f86">Booklet  ·  20 pages / 5 sheets</text>
+<text x="332.0" y="271.0" font-size="11.5" fill="#1e2433">+ inner title page, credit per language</text>
+<text x="332.0" y="288.0" font-size="11.5" fill="#1e2433">+ author page  ·  blank inner back</text>
+<text x="332.0" y="305.0" font-size="11.5" fill="#1e2433">+ illustrated back cover, always last</text>
+<text x="332.0" y="325.0" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#5b6478">ceil((N + 4) / 4) x 4</text>
+<path d="M 622 142 C 667 142, 653 200, 698 200" fill="none" stroke="#2f6fd0" stroke-width="1.8" marker-end="url(#a-2f6fd0)"/>
+<path d="M 622 285 C 667 285, 653 232, 698 232" fill="none" stroke="#0f8f86" stroke-width="1.8" marker-end="url(#a-0f8f86)"/>
+<rect x="700" y="170" width="220" height="90" rx="10" fill="#fdf6ea" stroke="#c2760a" stroke-width="1.6"/>
+<text x="810.0" y="203.0" text-anchor="middle" font-size="15" font-weight="700" fill="#c2760a">4 PDFs per title</text>
+<text x="810.0" y="225.0" text-anchor="middle" font-size="11.5" fill="#5b6478">reading + booklet</text>
+<text x="810.0" y="242.0" text-anchor="middle" font-size="11.5" fill="#5b6478">x English + Simplified Chinese</text>
+<text x="40.0" y="372.0" font-size="11.5" fill="#5b6478">N = core pages. A 10-page short becomes 12 pages digital and 16 pages on 4 sheets.</text>
+</svg>
