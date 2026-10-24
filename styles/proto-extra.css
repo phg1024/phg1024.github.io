@@ -380,7 +380,7 @@
      vertical space on everything around the viewer (content padding, eyebrow, title,
      intro, tabs, reserve under the content) at every width >=960. Rounded up a touch so
      the page cannot overflow. The probe script prints this number. */
-  --gallery-chrome: 17.75rem;
+  --gallery-chrome: 22.375rem;   /* 347-357px measured at 960-1600px wide with the shared panel and the full-size title (it follows clamp(2.5rem, 5vw, 4rem)); the largest, rounded up */
 }
 @media (min-width: 960px) {
   .proto--gallery .site-shell {
@@ -398,7 +398,6 @@
    padding reappear on the same page below that width. The panel's own hairline was the
    last border left once the card went: 1px solid around the photo with 8px of padding,
    which is 18px of vertical room and a line drawn across the middle of a photograph. */
-.proto--gallery .content-page,
 .proto--gallery .gallery-panel-wrapper {
   padding: 0;
   margin: 0;
@@ -427,12 +426,36 @@ span.gallery-map {
   }
 }
 
-/* The card's visible edge is not its border: components.css draws a 1px gradient ring with
-   .content-page::before (a gradient background masked down to its 1px padding), and the
-   matrix theme recolours it. The resets above clear border/background/shadow but leave that
-   ring, which is the line still drawn around the gallery. */
-.proto--gallery .content-page::before {
+/* One content panel on every page, the gallery included, so that moving between pages reads
+   as a single container changing size (see the transition rules at the end). The gallery
+   keeps the theme's panel but with tighter padding, which leaves the photo its room.
+   The 1px gradient ring that components.css draws with ::before is dropped on every panel:
+   it looked wrong around the photo, and keeping it elsewhere would make the panel differ
+   between pages. */
+.proto .content-page::before,
+.proto .blog-content::before {
   display: none;
+}
+/* The panel (and the About page's inner panel) is a plain surface now: background, blur and
+   rounded corners, no edge and no drop shadow (hover included, where components.css adds a glow). The edge is made
+   transparent rather than removed so the panel keeps its exact size. win31 keeps its bevel,
+   which is that theme's whole look. */
+html:not([data-theme="win31"]) .proto .content-page,
+html:not([data-theme="win31"]) .proto .content-page:hover,
+html:not([data-theme="win31"]) .proto .blog-content,
+html:not([data-theme="win31"]) .proto .blog-content:hover,
+html:not([data-theme="win31"]) .proto .about-panel,
+html:not([data-theme="win31"]) .proto .about-panel:hover {
+  border-color: transparent;
+  box-shadow: none;
+}
+/* The About page's inner panel gets the same plain treatment, ring included. */
+.proto .about-panel::before {
+  display: none;
+}
+.proto--gallery .content-page {
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0;
 }
 
 .proto--gallery .gallery-page {
@@ -455,14 +478,10 @@ span.gallery-map {
   object-fit: contain;
 }
 
-/* The title block is the last big spender on this page: at clamp(2.5rem, 5vw, 4rem) it
-   costs about 90px of height that a photograph would rather have. */
+/* The page title keeps the size every other page uses: with one shared panel, a smaller
+   title here read as a different page style. Only the spacing around it is tightened. */
 .proto--gallery .section-heading {
   margin-bottom: 0.9rem;
-}
-.proto--gallery .section-heading__title {
-  font-size: 1.75rem;
-  line-height: 1.12;
 }
 .proto--gallery .gallery-intro {
   margin-bottom: 0.75rem;
@@ -548,6 +567,74 @@ span.gallery-map {
   animation-duration: 240ms;
 }
 
+/* ── One container that resizes ─────────────────────────────────────────────────
+   Every page has exactly one panel (.content-page, or .blog-content on posts) and it carries
+   the same name, so the browser keeps it across the navigation and morphs its box from one
+   page's size to the other's: 792px wide and as tall as the page on most pages, 1148px by
+   one screen on the gallery.
+   - The panel's look is drawn by the transition group itself, from custom properties that
+     base.njk copies off the real panel when the new page is revealed. The panel's own
+     snapshot is hidden: stretching a picture of a 2,700px-tall page into a one-screen box
+     would squash the off-screen content into view.
+   - The panel's direct children that are on screen get .vt-card-item (base.njk, on pageswap
+     and pagereveal): each becomes its own group nested in the panel (view-transition-group:
+     nearest), keeps its real size, fades out or in, and is clipped by the panel's edges.
+   Needs match-element and nested groups (Chrome 140+); other browsers keep the column morph
+   above. */
+@supports (view-transition-group: nearest) and (view-transition-name: match-element) {
+  .proto .site-main {
+    view-transition-name: none;
+  }
+  .proto .site-main > .content-page,
+  .proto .site-main > .blog-content {
+    view-transition-name: site-card;
+  }
+  .vt-card-item {
+    view-transition-name: match-element;
+    view-transition-class: card-item;
+    view-transition-group: nearest;
+  }
+  /* Inside a moving item, a backdrop blur (the About panel has one) reaches through to the
+     other page's content underneath while the item is still fading in, and blurred the
+     outgoing photo. The container's own blur is drawn by the transition group, so the items
+     can drop theirs for the 0.6 s the classes are on. */
+  .vt-card-item,
+  .vt-card-item * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  ::view-transition-group(site-card) {
+    box-sizing: border-box;
+    background-color: var(--vt-card-bg-color, transparent);
+    background-image: var(--vt-card-bg-image, none);
+    border: var(--vt-card-border, 0 solid transparent);
+    border-radius: var(--vt-card-radius, 0);
+    box-shadow: var(--vt-card-shadow, none);
+    backdrop-filter: var(--vt-card-backdrop, none);
+    animation-duration: var(--vt-duration);
+    animation-timing-function: var(--vt-ease);
+  }
+  ::view-transition-old(site-card),
+  ::view-transition-new(site-card) {
+    animation: none;
+    opacity: 0;
+  }
+  ::view-transition-group-children(site-card) {
+    overflow: clip;
+    border-radius: var(--vt-card-radius, 0);
+  }
+  ::view-transition-old(.card-item) {
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+  }
+  ::view-transition-new(.card-item) {
+    animation-duration: 380ms;
+    animation-delay: 120ms;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+}
+
 /* If the site should skip the motion, skip it properly, including the
    cross-document opt-in. */
 @media (prefers-reduced-motion: reduce) {
@@ -558,7 +645,10 @@ span.gallery-map {
   ::view-transition-old(site-rail),
   ::view-transition-new(site-rail),
   ::view-transition-old(site-column),
-  ::view-transition-new(site-column) {
+  ::view-transition-new(site-column),
+  ::view-transition-group(site-card),
+  ::view-transition-old(.card-item),
+  ::view-transition-new(.card-item) {
     animation-duration: 0.01ms;
     animation-delay: 0s;
   }
