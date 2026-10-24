@@ -72,6 +72,46 @@
     "updated": "2026-10-22"
   },
   {
+    "id": "wukong-learns-to-swim",
+    "title": "Wukong Learns to Swim",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 22,
+    "core_pages": 20,
+    "booklet_pages": 24,
+    "sheets": 6,
+    "blank_pages": 0,
+    "version": "v1",
+    "revision": "approved-full-v1",
+    "publication_status": "published",
+    "published": "2026-10-23",
+    "updated": "2026-10-23",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v1-booklet.pdf",
+    "cover": "covers/wukong-learns-to-swim-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Learns to Swim",
+        "description": "Wukong is curious about swimming, but the pool feels big. With Coach Otter nearby and Ao Bing cheering him on, he practices bubbles, floating, and kicks until he swims a little way on his own."
+      },
+      "zh": {
+        "title": "悟空的游泳课",
+        "description": "悟空想学游泳，却觉得泳池有点大。在教练陪伴和敖丙鼓励下，他练习吹泡泡、漂浮和踢腿，终于自己向前游了一小段。"
+      }
+    },
+    "description": "悟空想学游泳，却觉得泳池有点大。在教练陪伴和敖丙鼓励下，他练习吹泡泡、漂浮和踢腿，终于自己向前游了一小段。",
+    "description_en": "Wukong is curious about swimming, but the pool feels big. With Coach Otter nearby and Ao Bing cheering him on, he practices bubbles, floating, and kicks until he swims a little way on his own.",
+    "keywords": "悟空 游泳 学习 勇气 泡泡 踢腿 敖丙 Wukong swimming lessons pool courage practice friendship Ao Bing",
+    "languages": {
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v1-zh-Hans.jpg"
+      }
+    },
+    "target_age_months": 54
+  },
+  {
     "id": "wukong-plays-in-the-sand",
     "title": "Wukong Plays in the Sand",
     "series": "wukong",
@@ -109,6 +149,46 @@
         "cover": "covers/wukong-plays-in-the-sand-v2-zh-Hans.jpg"
       }
     }
+  },
+  {
+    "id": "wukongs-first-ballet-class",
+    "title": "Jade Rabbit’s First Ballet Class",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "version": "v1",
+    "revision": "approved-full-v1",
+    "publication_status": "published",
+    "published": "2026-10-23",
+    "updated": "2026-10-23",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v1-booklet.pdf",
+    "cover": "covers/wukongs-first-ballet-class-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Jade Rabbit’s First Ballet Class",
+        "description": "Jade Rabbit’s first ballet class is full of tiny steps, a playful turn, and wobbly ears. With Chang’e beside her, Jade finds the beat and takes a happy bow."
+      },
+      "zh": {
+        "title": "玉兔的第一堂芭蕾课",
+        "description": "玉兔第一次上芭蕾课，学小步、慢慢转身，还让耳朵跟着音乐跳舞。在嫦娥的陪伴下，她找到节奏，开心地行礼谢幕。"
+      }
+    },
+    "description": "玉兔第一次上芭蕾课，学小步、慢慢转身，还让耳朵跟着音乐跳舞。在嫦娥的陪伴下，她找到节奏，开心地行礼谢幕。",
+    "description_en": "Jade Rabbit’s first ballet class is full of tiny steps, a playful turn, and wobbly ears. With Chang’e beside her, Jade finds the beat and takes a happy bow.",
+    "keywords": "玉兔 芭蕾 嫦娥 舞蹈 音乐 朋友 Jade Rabbit ballet Chang’e dance music friendship Wukong and Friends",
+    "languages": {
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-first-ballet-class-v1-zh-Hans.jpg"
+      }
+    },
+    "target_age_months": 48
   },
   {
     "id": "wukongs-painting-class",

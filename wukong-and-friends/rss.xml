@@ -9,7 +9,23 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Thu, 22 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Wukong Learns to Swim</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukong-learns-to-swim/</link>
+      <description>&lt;p&gt;Wukong is curious about swimming, but the pool feels big. With Coach Otter nearby and Ao Bing cheering him on, he practices bubbles, floating, and kicks until he swims a little way on his own.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-learns-to-swim-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-learns-to-swim-v1.jpg" alt="Wukong Learns to Swim" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukong-learns-to-swim/</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Jade Rabbit’s First Ballet Class</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/wukongs-first-ballet-class/</link>
+      <description>&lt;p&gt;Jade Rabbit’s first ballet class is full of tiny steps, a playful turn, and wobbly ears. With Chang’e beside her, Jade finds the beat and takes a happy bow.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-first-ballet-class-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-first-ballet-class-v1.jpg" alt="Jade Rabbit’s First Ballet Class" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukongs-first-ballet-class/</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>Wukong Plays in the Sand</title>
       <link>https://phg1024.github.io/wukong-and-friends/books/wukong-plays-in-the-sand/</link>
