@@ -137,6 +137,9 @@
     <loc>https://phg1024.github.io/privacy/</loc>
   </url>
   <url>
+    <loc>https://phg1024.github.io/projects/</loc>
+  </url>
+  <url>
     <loc>https://phg1024.github.io/tag/ai/</loc>
   </url>
   <url>
@@ -147,5 +150,17 @@
   </url>
   <url>
     <loc>https://phg1024.github.io/writing/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/projects/raytracer/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/projects/imageprocjs/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/projects/fractal/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/projects/minesweeper/</loc>
   </url>
 </urlset>
