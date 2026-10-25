@@ -1,5 +1,9 @@
 /*
- * Shared Google Analytics 4 loader.
+ * Shared Google Analytics 4 loader. Published as /js/ga.js by src/ga.js.njk, and only in the
+ * production build (SITE_ENV=production, `npm run build:production`, which the deploy workflow
+ * and scripts/publish_github_pages.sh use). Every other build serves a no-op /js/ga.js, so
+ * local previews and tests never load Google Analytics. The guard below is the second layer,
+ * for automated browsers pointed at the live site.
  *
  * Used by the Eleventy pages (via src/_includes/analytics.njk, which passes the
  * ID from src/_data/site.js) and by the standalone project apps under
@@ -57,3 +61,4 @@
   tag.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
   (document.head || document.documentElement).appendChild(tag);
 })();
+
