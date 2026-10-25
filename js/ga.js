@@ -16,6 +16,17 @@
 
   var GA_ID = "G-D20F5RT2LN";
 
+  // Count people, not previews or test runs. Local dev servers (eleventy --serve, any
+  // localhost port, LAN addresses), pages opened from disk, and automated browsers
+  // (Puppeteer, Playwright, Selenium set navigator.webdriver) used to send page views to the
+  // live property: a day of headless layout tests became several hundred localhost visits.
+  var host = location.hostname;
+  var local = location.protocol === "file:" ||
+    host === "localhost" || host === "127.0.0.1" || host === "::1" || host === "[::1]" ||
+    host === "0.0.0.0" || host === "" || /\.local$/.test(host) ||
+    /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(host);
+  if (local || navigator.webdriver) return;
+
   var script = document.currentScript || document.querySelector("script[src*='/js/ga.js']");
   var id = (script && script.getAttribute("data-ga-id")) || GA_ID;
   if (!id) return;
