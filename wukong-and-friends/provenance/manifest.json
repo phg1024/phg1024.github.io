@@ -367,6 +367,36 @@
       "bytes": 28302163
     },
     {
+      "path": "docs/downloads/wukong-learns-to-swim-v2-booklet.pdf",
+      "sha256": "4d18358b6a3a1c2e12846e090028ba81d8a69e31f4cef073f649a04887b9c7b2",
+      "bytes": 30587354
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v2-core-en.pdf",
+      "sha256": "e50186383728ceb44d31729a49e9acf8393d5a741b57c91e97e46a55f7785cc9",
+      "bytes": 26405541
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v2-core-zh-Hans.pdf",
+      "sha256": "da461b5efb8a69fd348822036778d8cc71ce193c10bbb135d28469e188096950",
+      "bytes": 26453781
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v2-zh-Hans-booklet.pdf",
+      "sha256": "11f4613eaebb4e1ae806f3aeb87e21efa2815b7d4d0195f85c327ac105756b9a",
+      "bytes": 30647032
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v2-zh-Hans.pdf",
+      "sha256": "f256e0acf9f351c7c8d71f20f867a6132d34e4b3124895af00274dc62d80d403",
+      "bytes": 30633703
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v2.pdf",
+      "sha256": "4c679acb36dbf48bb5dc5f98736ed4a44e66ad282158435823da15a18d54ac56",
+      "bytes": 30565333
+    },
+    {
       "path": "docs/downloads/wukong-plays-in-the-sand-v1-booklet.pdf",
       "sha256": "59b43c6689e285508c427aeda106ce3236a4bcd4613529fb4e82248e48787459",
       "bytes": 25699832
@@ -435,6 +465,36 @@
       "path": "docs/downloads/wukongs-first-ballet-class-v1.pdf",
       "sha256": "fad9ca98896cf5ab8cc9ec03455092d549bba8f9f5b6d60710af3c18b627d5ed",
       "bytes": 25973681
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v2-booklet.pdf",
+      "sha256": "8abdffc55dcffc00ecb488818b3503746d65e93cc39ed6767c7162ce9a5fa87e",
+      "bytes": 21106046
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v2-core-en.pdf",
+      "sha256": "e2d08c8849b0096fcaec0059b93cb4c0a38749fd3117982d15fcd5caff21fd18",
+      "bytes": 17212524
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v2-core-zh-Hans.pdf",
+      "sha256": "834832962bd42337c8c28b79621745bfd7565d13909c18fe6ac541f2d0eed655",
+      "bytes": 17240965
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v2-zh-Hans-booklet.pdf",
+      "sha256": "47f1287ba739f40ccdc33b3e17b50c2a815a66e4f195395be5ca91f45de7560a",
+      "bytes": 21142135
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v2-zh-Hans.pdf",
+      "sha256": "fcff1fd4d48ba881330c9b9eab368dbcf98d51f6af79774f5eac4fa5a8d7070b",
+      "bytes": 21130095
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v2.pdf",
+      "sha256": "23096022dbfdefd767447a4d43d316c6d7fdd5993d186a23528f40894fb9a2bd",
+      "bytes": 21085217
     },
     {
       "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
@@ -1032,6 +1092,11 @@
       "bytes": 153868
     },
     {
+      "path": "stories/wukong-learns-to-swim/editions/v2/prompts.txt",
+      "sha256": "49ab7e511d9a9d1de9fa3962a95083049f3a1ad462405123d0148f5ea5a2957f",
+      "bytes": 105262
+    },
+    {
       "path": "stories/wukong-plays-in-the-sand/editions/v1/prompts.txt",
       "sha256": "942fe929d98dd30104e49fe4bf6279b3ce7e0d6412170adfdb0edbdc4a96538f",
       "bytes": 129105
@@ -1045,6 +1110,11 @@
       "path": "stories/wukongs-first-ballet-class/editions/v1/prompts.txt",
       "sha256": "54bc6b5d3d6fa025c327b0b6f00fb5598f78f9fec0c30e993cb10f2620d8a339",
       "bytes": 144827
+    },
+    {
+      "path": "stories/wukongs-first-ballet-class/editions/v2/prompts.txt",
+      "sha256": "ebe75e61fb2577eb75ed08375368df280c2d0f6e880cdcb1f8433bf4d8a0d8ac",
+      "bytes": 145252
     },
     {
       "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",

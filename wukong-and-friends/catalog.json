@@ -81,14 +81,14 @@
     "booklet_pages": 24,
     "sheets": 6,
     "blank_pages": 0,
-    "version": "v1",
-    "revision": "approved-full-v1",
+    "version": "v2",
+    "revision": "owner-approved-r9-spatial-calibration",
     "publication_status": "published",
     "published": "2026-10-23",
-    "updated": "2026-10-23",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v1-booklet.pdf",
-    "cover": "covers/wukong-learns-to-swim-v1.jpg",
+    "updated": "2026-10-25",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v2-booklet.pdf",
+    "cover": "covers/wukong-learns-to-swim-v2.jpg",
     "translations": {
       "en": {
         "title": "Wukong Learns to Swim",
@@ -104,12 +104,21 @@
     "keywords": "悟空 游泳 学习 勇气 泡泡 踢腿 敖丙 Wukong swimming lessons pool courage practice friendship Ao Bing",
     "languages": {
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-learns-to-swim-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v2-zh-Hans.jpg"
+      },
+      "en": {
+        "reading": "downloads/wukong-learns-to-swim-v2.pdf",
+        "booklet": "downloads/wukong-learns-to-swim-v2-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v2.jpg"
       }
     },
-    "target_age_months": 54
+    "target_age_months": 54,
+    "language_reading_versions": {
+      "en": "wukong-learns-to-swim/v2/en",
+      "zh-Hans": "wukong-learns-to-swim/v2/zh-Hans"
+    }
   },
   {
     "id": "wukong-plays-in-the-sand",
@@ -160,14 +169,14 @@
     "booklet_pages": 20,
     "sheets": 5,
     "blank_pages": 0,
-    "version": "v1",
-    "revision": "approved-full-v1",
+    "version": "v2",
+    "revision": "ballet-mirror12-v2-round2",
     "publication_status": "published",
     "published": "2026-10-23",
-    "updated": "2026-10-23",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v1-booklet.pdf",
-    "cover": "covers/wukongs-first-ballet-class-v1.jpg",
+    "updated": "2026-10-25",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v2-booklet.pdf",
+    "cover": "covers/wukongs-first-ballet-class-v2.jpg",
     "translations": {
       "en": {
         "title": "Jade Rabbit’s First Ballet Class",
@@ -183,12 +192,18 @@
     "keywords": "玉兔 芭蕾 嫦娥 舞蹈 音乐 朋友 Jade Rabbit ballet Chang’e dance music friendship Wukong and Friends",
     "languages": {
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-first-ballet-class-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-first-ballet-class-v2-zh-Hans.jpg"
       }
     },
-    "target_age_months": 48
+    "language_reading_versions": {
+      "en": "wukongs-first-ballet-class/v2/en",
+      "zh-Hans": "wukongs-first-ballet-class/v2/zh-Hans"
+    },
+    "target_age_months": 48,
+    "source_v1_preserved": true,
+    "source_pdf_sha256_zh-Hans": "fcff1fd4d48ba881330c9b9eab368dbcf98d51f6af79774f5eac4fa5a8d7070b"
   },
   {
     "id": "wukongs-painting-class",
