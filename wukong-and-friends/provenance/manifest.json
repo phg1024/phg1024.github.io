@@ -252,6 +252,36 @@
       "bytes": 20673145
     },
     {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v8-booklet.pdf",
+      "sha256": "f224766bd9f933c3d65586e19bc80634a135d5f470b53aa3e99bf17c3a54c984",
+      "bytes": 20740435
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v8-core-en.pdf",
+      "sha256": "cb7c82be445e9c26c6e0a292b1aae8716a327eddb25eed177031753573af2542",
+      "bytes": 17821070
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v8-core-zh-Hans.pdf",
+      "sha256": "6c6c67a0a970105bd7de1f8c41f439525e6ed9a379bf11214540973dc0683d84",
+      "bytes": 17901869
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v8-zh-Hans-booklet.pdf",
+      "sha256": "db3d13431f9552d82a1f749d23e3acf14a23d9ec86b5cbb3e4000603d591d7ea",
+      "bytes": 20835238
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v8-zh-Hans.pdf",
+      "sha256": "a1eca8c9b067483dafb22c20ef40f8fbf1531736d786b9e69ee156040dd4475b",
+      "bytes": 20825350
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-snowy-zigzags-v8.pdf",
+      "sha256": "077d48e7a9497c3a141fec44436836600728c4a6895d5143aa18c5f988f3567f",
+      "bytes": 20721394
+    },
+    {
       "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v1-booklet.pdf",
       "sha256": "0c8a68d6717781e251a688267722dd8a09d43a3b138db6ea236e56740e8e69c1",
       "bytes": 21732377
@@ -1055,6 +1085,11 @@
       "path": "stories/wukong-and-the-snowy-zigzags/editions/v7/prompts.txt",
       "sha256": "944ba8fa8d6f464a6794693818a49085182cf919424f8b88187d004ddcfc9104",
       "bytes": 184088
+    },
+    {
+      "path": "stories/wukong-and-the-snowy-zigzags/editions/v8/prompts.txt",
+      "sha256": "70812b028b08eda71376dfee70228363ada7c9935262cf8fc46e718a0301b92a",
+      "bytes": 187977
     },
     {
       "path": "stories/wukong-and-the-tiny-tomatoes/editions/v1/prompts.txt",

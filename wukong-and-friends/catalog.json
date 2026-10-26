@@ -5,13 +5,13 @@
     "series": "wukong",
     "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。",
     "style": "Children’s crayon doodles",
-    "version": "v7",
-    "revision": "approved-chinese-naturalness-current-art",
+    "version": "v8",
+    "revision": "owner-approved-snow-cover-orientation",
     "keywords": "悟空 铁扇公主 玉兔 滑雪 学滑雪 坚持 热可可 小鱼饼干 Wukong Iron Fan Jade Rabbit skiing ski cocoa",
     "pages": 18,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v6.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v6-booklet.pdf",
-    "cover": "covers/wukong-and-the-snowy-zigzags-cover-v5.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v8.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v8-booklet.pdf",
+    "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "translations": {
@@ -26,14 +26,19 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v7-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v7-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-snowy-zigzags-cover-v5-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v8-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8-zh-Hans.jpg"
+      },
+      "en": {
+        "reading": "downloads/wukong-and-the-snowy-zigzags-v8.pdf",
+        "booklet": "downloads/wukong-and-the-snowy-zigzags-v8-booklet.pdf",
+        "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8.jpg"
       }
     },
     "booklet_pages": 20,
     "published": "2026-10-20",
-    "updated": "2026-10-22"
+    "updated": "2026-10-25"
   },
   {
     "id": "wukong-and-the-tiny-tomatoes",

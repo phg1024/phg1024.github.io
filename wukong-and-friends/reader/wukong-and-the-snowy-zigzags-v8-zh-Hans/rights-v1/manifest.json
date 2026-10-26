@@ -3,15 +3,15 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/wukong-and-the-snowy-zigzags-v7-zh-Hans.pdf",
-  "source_sha256": "d5bd323809ad0f03bc23e84f10258efaaf64011e6bf9385d8b7afb7d9cbbedf1",
+  "source_pdf": "downloads/wukong-and-the-snowy-zigzags-v8-zh-Hans.pdf",
+  "source_sha256": "a1eca8c9b067483dafb22c20ef40f8fbf1531736d786b9e69ee156040dd4475b",
   "pixel_width": 1224,
   "pages": [
     {
       "image": "page-01.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "49b09f617a0f7e38e68a31035975c37a33a86a005332ee0fd8c4f4ef857aa7df",
+      "sha256": "56bfd23a79aaead2249109c4c51d8b410e10ca9e7a7d0f38017cefc54400d0f4",
       "text": "悟空的\n雪地弯弯",
       "links": []
     },
