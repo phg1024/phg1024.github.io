@@ -174,14 +174,14 @@
     "booklet_pages": 20,
     "sheets": 5,
     "blank_pages": 0,
-    "version": "v2",
-    "revision": "ballet-mirror12-v2-round2",
+    "version": "v3",
+    "revision": "ballet-spatial-consistency-round7",
     "publication_status": "published",
     "published": "2026-10-23",
-    "updated": "2026-10-25",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v2.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v2-booklet.pdf",
-    "cover": "covers/wukongs-first-ballet-class-v2.jpg",
+    "updated": "2026-10-26",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v3.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v3-booklet.pdf",
+    "cover": "covers/wukongs-first-ballet-class-v3.jpg",
     "translations": {
       "en": {
         "title": "Jade Rabbit’s First Ballet Class",
@@ -197,14 +197,19 @@
     "keywords": "玉兔 芭蕾 嫦娥 舞蹈 音乐 朋友 Jade Rabbit ballet Chang’e dance music friendship Wukong and Friends",
     "languages": {
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-first-ballet-class-v2-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v3-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v3-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-first-ballet-class-v3-zh-Hans.jpg"
+      },
+      "en": {
+        "reading": "downloads/wukongs-first-ballet-class-v3.pdf",
+        "booklet": "downloads/wukongs-first-ballet-class-v3-booklet.pdf",
+        "cover": "covers/wukongs-first-ballet-class-v3.jpg"
       }
     },
     "language_reading_versions": {
-      "en": "wukongs-first-ballet-class/v2/en",
-      "zh-Hans": "wukongs-first-ballet-class/v2/zh-Hans"
+      "en": "wukongs-first-ballet-class/v3/en",
+      "zh-Hans": "wukongs-first-ballet-class/v3/zh-Hans"
     },
     "target_age_months": 48,
     "source_v1_preserved": true,

@@ -527,6 +527,36 @@
       "bytes": 21085217
     },
     {
+      "path": "docs/downloads/wukongs-first-ballet-class-v3-booklet.pdf",
+      "sha256": "8f6adea87f9d51d8e64011dcdcbd733c7675c36e65bf4a886b94f5cf87e8e765",
+      "bytes": 18950121
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v3-core-en.pdf",
+      "sha256": "d99074634bb28c1268f502e47b4f26eabe2c65ef2713a989b55f66cc7a36faad",
+      "bytes": 15180694
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v3-core-zh-Hans.pdf",
+      "sha256": "bb26cece1132682bda3c646c06ec2fb582088251435380beda89c15adeab4cfb",
+      "bytes": 15208980
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v3-zh-Hans-booklet.pdf",
+      "sha256": "cbf479850a269d6a1c7970c2a1ae11660587f904e0a78f033b94e0a9536f31f3",
+      "bytes": 18986194
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v3-zh-Hans.pdf",
+      "sha256": "8d324c006e32bba1ca51b2e7508546298067f1d4d98f1f2fb3db6c3f2c4a6973",
+      "bytes": 18972873
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v3.pdf",
+      "sha256": "efe17bf6d7c68c122acd7b4257230329bada0261602c743ee84a248774fb06f9",
+      "bytes": 18928014
+    },
+    {
       "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
       "sha256": "1731fcbd090f5810ada14a62d99821bdc3bd7226f3a39a8f3464801b255245f1",
       "bytes": 8981000
@@ -1150,6 +1180,11 @@
       "path": "stories/wukongs-first-ballet-class/editions/v2/prompts.txt",
       "sha256": "ebe75e61fb2577eb75ed08375368df280c2d0f6e880cdcb1f8433bf4d8a0d8ac",
       "bytes": 145252
+    },
+    {
+      "path": "stories/wukongs-first-ballet-class/editions/v3/prompts.txt",
+      "sha256": "bb5a560d6bbf71f1887fb5b73a4e970fca9c5566ba7b47d3a739dffadb2e40b3",
+      "bytes": 232123
     },
     {
       "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",
