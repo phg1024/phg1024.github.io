@@ -90,6 +90,7 @@
   {
     "id": "wukong-learns-to-swim",
     "title": "Wukong Learns to Swim",
+    "title_zh": "悟空的游泳课",
     "series": "wukong",
     "style": "Children’s crayon doodles",
     "pages": 22,
@@ -97,14 +98,15 @@
     "booklet_pages": 24,
     "sheets": 6,
     "blank_pages": 0,
-    "version": "v3",
-    "revision": "english-age-target-editorial-review",
+    "author": "Peihong Guo",
+    "version": "v4",
+    "revision": "restore-established-bold-cover-typography",
     "publication_status": "published",
     "published": "2026-10-23",
     "updated": "2026-10-26",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v3.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v3-booklet.pdf",
-    "cover": "covers/wukong-learns-to-swim-v2.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-booklet.pdf",
+    "cover": "covers/wukong-learns-to-swim-v4.jpg",
     "translations": {
       "en": {
         "title": "Wukong Learns to Swim",
@@ -119,22 +121,30 @@
     "description_en": "Wukong is curious about swimming, but the pool feels big. With Coach Otter nearby and Ao Bing cheering him on, he practices bubbles, floating, and kicks until he swims a little way on his own.",
     "keywords": "悟空 游泳 学习 勇气 泡泡 踢腿 敖丙 Wukong swimming lessons pool courage practice friendship Ao Bing",
     "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-learns-to-swim-v2-zh-Hans.jpg"
-      },
       "en": {
-        "reading": "downloads/wukong-learns-to-swim-v3.pdf",
-        "booklet": "downloads/wukong-learns-to-swim-v3-booklet.pdf",
-        "cover": "covers/wukong-learns-to-swim-v2.jpg"
+        "reading": "downloads/wukong-learns-to-swim-v4.pdf",
+        "booklet": "downloads/wukong-learns-to-swim-v4-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v4.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v4-zh-Hans.jpg"
       }
     },
-    "target_age_months": 54,
     "language_reading_versions": {
-      "en": "wukong-learns-to-swim/v3/en",
-      "zh-Hans": "wukong-learns-to-swim/v2/zh-Hans"
-    }
+      "en": "wukong-learns-to-swim/v4/en",
+      "zh-Hans": "wukong-learns-to-swim/v4/zh-Hans"
+    },
+    "focus_vocabulary": [
+      "pool",
+      "coach",
+      "bubble",
+      "hold",
+      "float",
+      "kick"
+    ],
+    "target_age_months": 54
   },
   {
     "id": "wukong-plays-in-the-sand",
@@ -184,8 +194,129 @@
     }
   },
   {
+    "id": "wukong-visits-the-aquarium",
+    "title": "Wukong Visits the Aquarium",
+    "title_zh": "悟空逛水族馆",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 22,
+    "core_pages": 20,
+    "booklet_pages": 24,
+    "sheets": 6,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v2",
+    "revision": "restore-established-bold-cover-typography",
+    "publication_status": "published",
+    "published": "2026-10-26",
+    "updated": "2026-10-26",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "choose",
+      "kelp",
+      "hide",
+      "wait",
+      "float",
+      "otter"
+    ],
+    "language_reading_versions": {
+      "en": "wukong-visits-the-aquarium/v2/en",
+      "zh-Hans": "wukong-visits-the-aquarium/v2/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-booklet.pdf",
+    "cover": "covers/wukong-visits-the-aquarium-v2.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Visits the Aquarium",
+        "description": "Wukong visits an aquarium with Ao Bing and Sandy. He watches kelp, a hiding fish, jellyfish, and a sea otter, then draws three favorites on his card."
+      },
+      "zh": {
+        "title": "悟空逛水族馆",
+        "description": "悟空和敖丙、沙僧一起逛水族馆。他们看海带、躲藏的小鱼、水母和海獭，最后悟空把三样喜欢的东西画在卡片上。"
+      }
+    },
+    "description": "悟空和敖丙、沙僧一起逛水族馆。他们看海带、躲藏的小鱼、水母和海獭，最后悟空把三样喜欢的东西画在卡片上。",
+    "description_en": "Wukong visits an aquarium with Ao Bing and Sandy. He watches kelp, a hiding fish, jellyfish, and a sea otter, then draws three favorites on his card.",
+    "keywords": "水族馆 海带 小鱼 水母 海獭 明信片 悟空 敖丙 沙僧 aquarium kelp fish jellyfish sea otter postcard Wukong Ao Bing Sandy",
+    "languages": {
+      "en": {
+        "reading": "downloads/wukong-visits-the-aquarium-v2.pdf",
+        "booklet": "downloads/wukong-visits-the-aquarium-v2-booklet.pdf",
+        "cover": "covers/wukong-visits-the-aquarium-v2.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-visits-the-aquarium-v2-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukongs-brick-building-day",
+    "title": "Wukong’s Brick-Building Day",
+    "title_zh": "悟空的积木城堡",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 22,
+    "core_pages": 20,
+    "booklet_pages": 24,
+    "sheets": 6,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v2",
+    "revision": "restore-established-bold-cover-typography",
+    "publication_status": "published",
+    "published": "2026-10-26",
+    "updated": "2026-10-26",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "build",
+      "brick",
+      "tall",
+      "wide",
+      "door",
+      "fit"
+    ],
+    "language_reading_versions": {
+      "en": "wukongs-brick-building-day/v2/en",
+      "zh-Hans": "wukongs-brick-building-day/v2/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v2-booklet.pdf",
+    "cover": "covers/wukongs-brick-building-day-v2.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Brick-Building Day",
+        "description": "Wukong and his friends build a brick castle together, solving a tricky doorway problem and making room for everyone."
+      },
+      "zh": {
+        "title": "悟空的积木城堡",
+        "description": "悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。"
+      }
+    },
+    "description": "悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。",
+    "description_en": "Wukong and his friends build a brick castle together, solving a tricky doorway problem and making room for everyone.",
+    "keywords": "积木 城堡 门 沙僧 八戒 悟空 敖丙 bricks castle doorway Pigsy Wukong Ao Bing Sandy",
+    "languages": {
+      "en": {
+        "reading": "downloads/wukongs-brick-building-day-v2.pdf",
+        "booklet": "downloads/wukongs-brick-building-day-v2-booklet.pdf",
+        "cover": "covers/wukongs-brick-building-day-v2.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-brick-building-day-v2-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "wukongs-first-ballet-class",
     "title": "Jade Rabbit’s First Ballet Class",
+    "title_zh": "玉兔的第一堂芭蕾课",
     "series": "wukong",
     "style": "Children’s crayon doodles",
     "pages": 18,
@@ -193,14 +324,15 @@
     "booklet_pages": 20,
     "sheets": 5,
     "blank_pages": 0,
-    "version": "v4",
-    "revision": "english-age-target-editorial-review",
+    "author": "Peihong Guo",
+    "version": "v5",
+    "revision": "restore-established-bold-cover-typography",
     "publication_status": "published",
     "published": "2026-10-23",
     "updated": "2026-10-26",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v4.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v4-booklet.pdf",
-    "cover": "covers/wukongs-first-ballet-class-v3.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-booklet.pdf",
+    "cover": "covers/wukongs-first-ballet-class-v5.jpg",
     "translations": {
       "en": {
         "title": "Jade Rabbit’s First Ballet Class",
@@ -215,24 +347,30 @@
     "description_en": "Jade Rabbit’s first ballet class is full of tiny steps, a playful turn, and wobbly ears. With Chang’e beside her, Jade finds the beat and takes a happy bow.",
     "keywords": "玉兔 芭蕾 嫦娥 舞蹈 音乐 朋友 Jade Rabbit ballet Chang’e dance music friendship Wukong and Friends",
     "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v3-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v3-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-first-ballet-class-v3-zh-Hans.jpg"
-      },
       "en": {
-        "reading": "downloads/wukongs-first-ballet-class-v4.pdf",
-        "booklet": "downloads/wukongs-first-ballet-class-v4-booklet.pdf",
-        "cover": "covers/wukongs-first-ballet-class-v3.jpg"
+        "reading": "downloads/wukongs-first-ballet-class-v5.pdf",
+        "booklet": "downloads/wukongs-first-ballet-class-v5-booklet.pdf",
+        "cover": "covers/wukongs-first-ballet-class-v5.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-first-ballet-class-v5-zh-Hans.jpg"
       }
     },
     "language_reading_versions": {
-      "en": "wukongs-first-ballet-class/v4/en",
-      "zh-Hans": "wukongs-first-ballet-class/v3/zh-Hans"
+      "en": "wukongs-first-ballet-class/v5/en",
+      "zh-Hans": "wukongs-first-ballet-class/v5/zh-Hans"
     },
+    "focus_vocabulary": [
+      "step",
+      "slow",
+      "turn",
+      "stop",
+      "dance"
+    ],
     "target_age_months": 48,
-    "source_v1_preserved": true,
-    "source_pdf_sha256_zh-Hans": "fcff1fd4d48ba881330c9b9eab368dbcf98d51f6af79774f5eac4fa5a8d7070b"
+    "source_v1_preserved": true
   },
   {
     "id": "wukongs-painting-class",

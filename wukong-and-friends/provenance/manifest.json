@@ -487,6 +487,36 @@
       "bytes": 30564049
     },
     {
+      "path": "docs/downloads/wukong-learns-to-swim-v4-booklet.pdf",
+      "sha256": "fd0fb01b5846ea7b31377f9f7f5a37ccc8e6733df0ac1b912a13d10eeec82c00",
+      "bytes": 30624913
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v4-core-en.pdf",
+      "sha256": "2de6aab8cb173b4455d0859038de6b15c7c1a0d69a68ae97a0bc1baf27635e76",
+      "bytes": 26441240
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v4-core-zh-Hans.pdf",
+      "sha256": "8daf63c73814998eed5ef867ade7f14cb61ac2ec265251bd9a3deeb026615885",
+      "bytes": 26526797
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v4-zh-Hans-booklet.pdf",
+      "sha256": "9b92d8a885c2ca707ff68a4bb8688747044059a49cd51210eaf68ad00761c04c",
+      "bytes": 30719882
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v4-zh-Hans.pdf",
+      "sha256": "b2796cd25ced40e30e1913825648ceafd5c66bd1518df4a5aee0b414588f07c6",
+      "bytes": 30706502
+    },
+    {
+      "path": "docs/downloads/wukong-learns-to-swim-v4.pdf",
+      "sha256": "fc5ae2044c733b259ebd49ee92781bf54f1926307dab281a20734a31099145dd",
+      "bytes": 30600931
+    },
+    {
       "path": "docs/downloads/wukong-plays-in-the-sand-v1-booklet.pdf",
       "sha256": "59b43c6689e285508c427aeda106ce3236a4bcd4613529fb4e82248e48787459",
       "bytes": 25699832
@@ -540,6 +570,126 @@
       "path": "docs/downloads/wukong-plays-in-the-sand-v3.pdf",
       "sha256": "ca86d70b898ad37b9f66389a14964c757d2ffb8dd6f04cc9f13a4c37bf85d016",
       "bytes": 25688979
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v1-booklet.pdf",
+      "sha256": "45b88e44831b6bb7ccb56894852776d277ec814969f89b97dc046ff6efb81a5a",
+      "bytes": 29467349
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v1-core-en.pdf",
+      "sha256": "253ffd5603feb3b706641b39865b7405b2bfe93d03fe163437901147368bf7ff",
+      "bytes": 25128049
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v1-core-zh-Hans.pdf",
+      "sha256": "5c1a352bdf83257c12cdc1be9b6bf9a99bde7e04cb606c5fc34b77b1bdde8889",
+      "bytes": 25173770
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v1-zh-Hans-booklet.pdf",
+      "sha256": "8a981e4b17771edad8312c0539824b9a6ae11e472f1d4cc30eede3375b0aecab",
+      "bytes": 29525029
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v1-zh-Hans.pdf",
+      "sha256": "8018666cfa6ada1c5409430fb3c01998de0515dbc04bb9f4c7b7c07632871c7e",
+      "bytes": 29514235
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v1.pdf",
+      "sha256": "9c78ffea2bb5514a57a979a62ee27fd2b1c25b35fb39b0478040739fdefc0b1b",
+      "bytes": 29447876
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v2-booklet.pdf",
+      "sha256": "956ca00786ac34149556b63042a0a505329ef7efba1196e4136a91688385e726",
+      "bytes": 29504420
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v2-core-en.pdf",
+      "sha256": "281ddeaf112e68cf6d6cb93c6fa50f6046ee313b7e00bed76c79c10d3c607d10",
+      "bytes": 25165108
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v2-core-zh-Hans.pdf",
+      "sha256": "648f673808d231ca13fce72627a0e8b9d153d0f0ba11245815417ad80e0d7597",
+      "bytes": 25245703
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v2-zh-Hans-booklet.pdf",
+      "sha256": "167b9895c5ef2b8dc63a88c647181efa92483dd63ca3594ead30c72360a12f48",
+      "bytes": 29597084
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v2-zh-Hans.pdf",
+      "sha256": "041be5fe462aed6e2174544f853f0703fa57a03e1977b522775452071fe02da1",
+      "bytes": 29586596
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-aquarium-v2.pdf",
+      "sha256": "cd8917e564d0ffedd1da85ceb0b65da6eb9db591580085d70347e85e6196628c",
+      "bytes": 29485354
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v1-booklet.pdf",
+      "sha256": "d207f638d7281d99ea0354892e50aa941e1b80f3c0db2cfa8bfbab3af4892de3",
+      "bytes": 24495445
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v1-core-en.pdf",
+      "sha256": "5836855f6bee4847a1a5ce2d478dcd636398ab790a34edee8ab274757d52e3b8",
+      "bytes": 20536450
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v1-core-zh-Hans.pdf",
+      "sha256": "06c2a08e0bd3574b49d6d32ac9a00a2eb512f6ad32510a1a26e7386d66698d05",
+      "bytes": 20575278
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v1-zh-Hans-booklet.pdf",
+      "sha256": "f5925186401e37aac57bbb45c525765e36f7738c1c41c87b60fae667e86a500d",
+      "bytes": 24545848
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v1-zh-Hans.pdf",
+      "sha256": "df6e99dadfd07637dcc4a5046e503b3bc79ea6e49e7769bdb32a6878a333dc07",
+      "bytes": 24535195
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v1.pdf",
+      "sha256": "21e7e2c30c18f0adf500369d79b71dd5f84ad8fa3dde27431cc71528b22a2a49",
+      "bytes": 24475957
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v2-booklet.pdf",
+      "sha256": "b260aa53ea470bce90afede2202b0aefe46cb99833d771b346985c2a123e870a",
+      "bytes": 24532625
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v2-core-en.pdf",
+      "sha256": "2f9db53c4a213c654c5f9328806b7ab1cca2944f4ec9d5ee1914bd98e6ad3db3",
+      "bytes": 20573611
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v2-core-zh-Hans.pdf",
+      "sha256": "2612ebb416b451a872aedd76c5d8c1479eef8b113f7db13b4fc2bf34e6e037e6",
+      "bytes": 20641720
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v2-zh-Hans-booklet.pdf",
+      "sha256": "9cc8b1953bd4fdaf8fb5b0a5a2a6d09b1fe693e755b5176aea9eb7267277062a",
+      "bytes": 24612445
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v2-zh-Hans.pdf",
+      "sha256": "fd807bcb26a8664e4f2906d51108ccd6354ec0463952032b9e9e029dc5761d0e",
+      "bytes": 24602085
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v2.pdf",
+      "sha256": "f6ee3e46e3a8144da9746bfd344d6ae54fd8ff481d81ed59d800d1afca91b231",
+      "bytes": 24513544
     },
     {
       "path": "docs/downloads/wukongs-first-ballet-class-v1-booklet.pdf",
@@ -645,6 +795,36 @@
       "path": "docs/downloads/wukongs-first-ballet-class-v4.pdf",
       "sha256": "e826991aa56e0fc772d0e019a0587a859fdcc6735af6cbd2813d88e18d197ee4",
       "bytes": 18928012
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v5-booklet.pdf",
+      "sha256": "5d62703ebd8a8af57d11d12d8315fae7c668237ca7a5b7df9f6c5e1d5efe2009",
+      "bytes": 18987068
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v5-core-en.pdf",
+      "sha256": "da30e8ea9d758273c9e15b1cc14182d0a4c8b66147523037e838fe099d1b2154",
+      "bytes": 15206072
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v5-core-zh-Hans.pdf",
+      "sha256": "e2babaea8a4648e932bd7f7d7684279507e149e921ea9f3ea350556cd45e1ae1",
+      "bytes": 15245486
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v5-zh-Hans-booklet.pdf",
+      "sha256": "bd9fba982ebb7a86d5f451b8c06feb89a13c28281d69359f2c745ce57cb9c2de",
+      "bytes": 19038560
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v5-zh-Hans.pdf",
+      "sha256": "98d72f0786fa53795aec48ab4a42f3711bc37d67fb6ed59d55b7e3927eff69b4",
+      "bytes": 19025230
+    },
+    {
+      "path": "docs/downloads/wukongs-first-ballet-class-v5.pdf",
+      "sha256": "750b22f1b79d98e5d2cfa36bce6d8b471d6b73eb9fce36895809c55ec8193737",
+      "bytes": 18964998
     },
     {
       "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
@@ -1347,6 +1527,11 @@
       "bytes": 105735
     },
     {
+      "path": "stories/wukong-learns-to-swim/editions/v4/prompts.txt",
+      "sha256": "77a5e10e766755665fde37808a6434f0cc93a4d1212e47535de7bbd2973942cc",
+      "bytes": 105994
+    },
+    {
       "path": "stories/wukong-plays-in-the-sand/editions/v1/prompts.txt",
       "sha256": "942fe929d98dd30104e49fe4bf6279b3ce7e0d6412170adfdb0edbdc4a96538f",
       "bytes": 129105
@@ -1360,6 +1545,26 @@
       "path": "stories/wukong-plays-in-the-sand/editions/v3/prompts.txt",
       "sha256": "046e743329760a1089cf617537bc9433461377fb5ed0133116a9855cf6b3778e",
       "bytes": 129578
+    },
+    {
+      "path": "stories/wukong-visits-the-aquarium/editions/v1/prompts.txt",
+      "sha256": "699fcdafad15ae1e0e5af9a78e38b02ea50ecb16f73ecf6665908f65b1715bcb",
+      "bytes": 117215
+    },
+    {
+      "path": "stories/wukong-visits-the-aquarium/editions/v2/prompts.txt",
+      "sha256": "0757062d5a4e2c509114c212e4e65a765c21eba96ecfd7bce2344815e956fc8b",
+      "bytes": 131732
+    },
+    {
+      "path": "stories/wukongs-brick-building-day/editions/v1/prompts.txt",
+      "sha256": "c22dcd5f57b7bca51f11a7ea06f09295465923fe630b9a0caf497eba372bfab0",
+      "bytes": 104804
+    },
+    {
+      "path": "stories/wukongs-brick-building-day/editions/v2/prompts.txt",
+      "sha256": "5d17e7fb8c00f7333321f468f6b6c4b2cd5ad9380f5cf498e3947a1d6efdef81",
+      "bytes": 127595
     },
     {
       "path": "stories/wukongs-first-ballet-class/editions/v1/prompts.txt",
@@ -1380,6 +1585,11 @@
       "path": "stories/wukongs-first-ballet-class/editions/v4/prompts.txt",
       "sha256": "337d787c1a6fa5ca5ac6f98e56e772f00844df72ae766f66bb35ededc9893729",
       "bytes": 232596
+    },
+    {
+      "path": "stories/wukongs-first-ballet-class/editions/v5/prompts.txt",
+      "sha256": "2a44346c147e8f4aee9926fe33856f21ee18c3ec5066c7300c42563a65a95d1c",
+      "bytes": 232855
     },
     {
       "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",

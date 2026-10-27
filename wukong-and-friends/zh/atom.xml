@@ -12,6 +12,30 @@
   </atom:author>
   <atom:updated>2026-10-26T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-aquarium/</atom:id>
+    <atom:title type="text">悟空逛水族馆</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukong-visits-the-aquarium/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-10-26T00:00:00Z</atom:published>
+    <atom:updated>2026-10-26T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;悟空和敖丙、沙僧一起逛水族馆。他们看海带、躲藏的小鱼、水母和海獭，最后悟空把三样喜欢的东西画在卡片上。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-visits-the-aquarium-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-visits-the-aquarium-v2-zh-Hans.jpg" alt="悟空逛水族馆" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-brick-building-day/</atom:id>
+    <atom:title type="text">悟空的积木城堡</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukongs-brick-building-day/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-10-26T00:00:00Z</atom:published>
+    <atom:updated>2026-10-26T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-brick-building-day-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-brick-building-day-v2-zh-Hans.jpg" alt="悟空的积木城堡" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-learns-to-swim/</atom:id>
     <atom:title type="text">悟空的游泳课</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukong-learns-to-swim/" rel="alternate" type="text/html" hreflang="zh-CN" />
@@ -21,7 +45,7 @@
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;悟空想学游泳，却觉得泳池有点大。在教练陪伴和敖丙鼓励下，他练习吹泡泡、漂浮和踢腿，终于自己向前游了一小段。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-learns-to-swim-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-learns-to-swim-v2-zh-Hans.jpg" alt="悟空的游泳课" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;悟空想学游泳，却觉得泳池有点大。在教练陪伴和敖丙鼓励下，他练习吹泡泡、漂浮和踢腿，终于自己向前游了一小段。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-learns-to-swim-v4-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-learns-to-swim-v4-zh-Hans.jpg" alt="悟空的游泳课" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-first-ballet-class/</atom:id>
@@ -33,7 +57,7 @@
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;玉兔第一次上芭蕾课，学小步、慢慢转身，还让耳朵跟着音乐跳舞。在嫦娥的陪伴下，她找到节奏，开心地行礼谢幕。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-first-ballet-class-v3-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-first-ballet-class-v3-zh-Hans.jpg" alt="玉兔的第一堂芭蕾课" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;玉兔第一次上芭蕾课，学小步、慢慢转身，还让耳朵跟着音乐跳舞。在嫦娥的陪伴下，她找到节奏，开心地行礼谢幕。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-first-ballet-class-v5-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-first-ballet-class-v5-zh-Hans.jpg" alt="玉兔的第一堂芭蕾课" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-plays-in-the-sand/</atom:id>
