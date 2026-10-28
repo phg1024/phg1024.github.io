@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/iron-fans-ribbon-parade-v1-zh-Hans.pdf",
+  "source_sha256": "fd33c10fa446b8d86cea053b91b95eff37b4155fa6b53c9dd84511f7ca827f32",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2f1aac7b055ee86a679f7b4ed131a5a9d963684150a0ff2bf1e2ffc1bdd950f8",
+      "text": "铁扇公主的彩带游行",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "523f4b28f8e2b0e99ac3545a27e921db495b6a5966bf6d62c5abcf3453d0b826",
+      "text": "铁扇公主有个好主意：\n“我们来办彩带游行吧！\n每人一条彩带。”\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "994b484ad16f60b14693ebc19ff9ea934a9085d1c2f29a4fbe009221fbba832c",
+      "text": "玉兔拿了黄彩带，\n铁扇公主拿了紫彩带，\n悟空拿到红彩带——\n它卷成了小小一团。\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "a72df8291d5fcfa82190983c7e95c1dc744368facca90cfdab8d4bf00cba4954",
+      "text": "悟空皱起眉头：\n“我的最短！”\n铁扇公主说：“我们再看看。”\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d5d3503e6e7679da9660b17e0b04361bee26de1031cb6ab768f17d96c791ecac",
+      "text": "悟空拉呀拉呀，\n哇！\n红彩带长长地拖了出来。\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "924aacadaf49b8b6f8fb227ffc5ada0e381aaba080830cfc71056cb69d2fd6f3",
+      "text": "大家把彩带摊在地上。\n悟空把红彩带往前一挪：\n“现在我的最长！”\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "1f6c35fe6cf26a8a0b8ec04adf3717b2aba6e21db70bb81e2fb1979a208d800f",
+      "text": "玉兔咯咯笑：\n“你的彩带从那么前面开始！\n这样可不算数。”\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "261546e79040a0ab6d98c6f0af94201f1bacee4f5443bd9d6fd8c1ccf1a361a8",
+      "text": "铁扇公主轻轻点了点石板边：\n“大家从同一条线开始。”\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "89a8827d8f497bb9217aeff638ea53f02133927e569fbaf4428dffe5fe5edea7",
+      "text": "黄彩带和紫彩带从同一条\n线开始。\n“紫彩带长一些，\n黄彩带短一些。”\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "cdee9bd8f28da56f4225d44562c60a0759fa98e4e56470643f47fd235c5861d4",
+      "text": "红彩带也从这条线开始。\n“红彩带比紫彩带还长！”\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "a3195346aadbffafcda5ab3c3be62c8c098f37187ba194028ac591ec16db8c46",
+      "text": "玉兔一条一条地指：\n“短的，长一些的，最长的！”\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "502c2a5cb62e3af38c6c058402def9ab45e3dc27b0346f735f3ec28c07e67b9d",
+      "text": "悟空欢呼：\n“我的最长！\n这回是真的！”\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d0ff3b8a0b1b8f17b817ba0691f0d3c2d807c39c6e11c9e5a62aadcf523ffe0c",
+      "text": "游行开始啦！\n玉兔转着短短的彩带，\n铁扇公主把彩带举得高高的。\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8485c132efec531c19404c53acd93f3137b343ec169d340219737fd8cdd27ae7",
+      "text": "悟空跑起来，\n长长的红彩带飘在身后。\n“看！我有两条尾巴啦！”\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "53b7c7d0d1d130538bc2992c243bce17b5177f8e71aaeda2000c62e0dedb8608",
+      "text": "哎呀！彩带把悟空缠住了。\n铁扇公主打开扇子，\n轻轻扇一下——呼！\n彩带松开，飘了起来。\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8fb1e6dcce94520d20857bba8a3bd032cc9914bc965658eb12efa8e800ab6f70",
+      "text": "游行结束了，\n他们又把彩带排在同一条线上：\n短的，长一些的，最长的。\n“真是一场好游行！”\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d5fe2412537ab0ab9a468f8fb7e11a30b221231ff6b956d3c19f2625a27017f1",
+      "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n这些故事和插画由作者借助 AI 创作，并经过人工编辑。\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · 署名—非商业性使用—禁止演绎\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "11438974be5c8b1eecde5a2129a9a23e0a0094c8944ced7e14a2ba9e77212566",
+      "text": "Wukong & Friends\n从同一条线开始，\n短的，长一些的，最长的，\n一比就知道！\nphg1024.github.io/wukong-and-friends/zh",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

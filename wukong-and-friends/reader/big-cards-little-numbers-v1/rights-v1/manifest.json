@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/big-cards-little-numbers-v1.pdf",
+  "source_sha256": "f95ed7876ffb3bfb64106082c7cbec6517320b8168e45f19433d9ccb8097b71e",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "74d76b63644d7f4a80549d8114177ebfc3039deb9ec302595aca572aa835e113",
+      "text": "Big Cards,\nLittle Numbers",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8cbcf4fbb361c0798078955cbdb3d9f2b6403c80327248d13bb4076bda424cba",
+      "text": "Nezha paints number cards.\nA big card has a 3.\nA small card has a 5.\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "eeda62f41337a56488aa6aac6f4ce2cc3e9eaa9583741d016480232f7cf00b36",
+      "text": "“Let’s play a game,”\nsays Nezha.\n“The bigger number wins!”\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d3265120931147a4ceb3a346c1e41da332b9a51923dece81d6ea3b2b67daaeed",
+      "text": "Wukong grabs the big card.\n“Big card, big number!”\n“I win!”\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "458ab05b455dc6ec842a201bf539a8e75364b5bb3579196ed82462fb0d983162",
+      "text": "Rabbit hops over.\n“Is 3 bigger than 5?”\n“Let’s ask the beads!”\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "38bd1b392fbf11338d3b72911ad335a080e2293ae6c2b3c3d58f943d3a0c4c0d",
+      "text": "The beads are all the same.\n“Put beads by each card.\nAs many as the number.”\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "dd79872896c8a47413a3d27f153caf3251c85024389da74e5da70af9a07e21ca",
+      "text": "Wukong puts beads by his 3.\n“One, two, three.”\nThree beads.\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "69072f99b7b2689c103acfdbb1539e1eb73f084ce0ae69ca66bbf714a1a9a6d2",
+      "text": "Nezha puts beads by his 5.\n“One, two, three, four, five.”\nFive beads.\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "83660170bef7c4e35621133ea9950979426ad9377c3e737ca5409eb3f834d3f9",
+      "text": "Rabbit points. “Look!”\n“Five beads are more\nthan three.”\n“So 5 is bigger than 3.”\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "eb684cd5de929b243a201a4d4e39640f3b0ed4ad5722657c453bef4036928de8",
+      "text": "“But my card is so big!”\nNezha giggles.\n“A big card. A small number.”\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "960489246d7084a3ce6f02a8d1935c89de41a7e2eb9056884885ba04f1162fa4",
+      "text": "Nezha has an idea.\nHe paints new cards.\nA tiny 3. A giant 5!\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2ae36d81b298a94a0088f151960f93583a44df02585c2cf0bdc4e653e8202892",
+      "text": "They put out beads again.\nThree beads for 3.\nFive beads for 5.\n“Same as before!”\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "aff5e889083e974a7dd6fc4c75967c266610bc7111d1002ce5f5ac8fc308ffc4",
+      "text": "Wukong laughs.\n“Big card? Small card?\nThe number tells how many!”\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "1cf1167c3ad75500f11cad770bb350787a2a9a5f2a463aa5bb09ca97b8de3c1e",
+      "text": "Then Wukong paints a card.\nThe biggest card of all.\nIt has a 1!\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "4b3545c0ed8bc8802b0b882fb7c77bdb791389e5fb2083bd21c7af984f8a96df",
+      "text": "“One bead for number 1.”\nWukong sets down one bead.\n“A big house for one bead!”\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "508f7e1fe79f3fb9808ce5638dd7cf06289bd231096fdbbab7a6e8546b2d6611",
+      "text": "Now they make cards 1 to 5.\nBig ones, small ones,\neach with its beads.\n“Let’s play again!”\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d22637ab6fc3dba430ef0766620f48df979b60ce1dd6eb422e5d1b92cb88016b",
+      "text": "Wukong & Friends\nThank you for reading!\nWe hope you and your little reader\nenjoyed this little adventure.\nMore free stories\nphg1024.github.io/wukong-and-friends\nRead, download and print - always free.\nRead more free stories\nIf you enjoyed our stories, you are welcome\nto help the next one grow. Support is optional.\nBuy Me a Coffee\nGitHub Sponsors\nCreated by Peihong Guo\nStories and illustrations made with AI assistance and human editing.\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · Attribution · NonCommercial · NoDerivatives\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d16112173eecafa4fe36364e8b8d736c0383bfa2657cf86ba9adc2a995095065",
+      "text": "Wukong & Friends\nA big card. A little number.\nCount the beads\nto see how many!\nphg1024.github.io/wukong-and-friends",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

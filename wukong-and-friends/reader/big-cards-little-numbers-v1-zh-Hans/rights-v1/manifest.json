@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/big-cards-little-numbers-v1-zh-Hans.pdf",
+  "source_sha256": "20ceec6ee3a41135b00b5cec2f98c82560aa2ec2b0262830a575bcc4571b43f4",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "54c0ddc224e3fdbab38bb251fa326aa5f7c8c8ef36c756e644f4c18f126651d3",
+      "text": "大纸牌，小数字",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "1d62f3e8f0eb0350b3350dc21ee2d7c1de6c333d2349307b9c48df3146dfbaf9",
+      "text": "哪吒在画数字卡。\n大卡片上写着3，\n小卡片上写着5。\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "cdbdbbcb879adcd1e6f74085bd5a79678220bb5c4df7bdc22205fd014e760920",
+      "text": "哪吒说：“我们来玩个游戏，\n看谁的数字大，谁就赢！”\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "3235f08c15e0b15331a0a45e7f08004134baf55cb4c706afa3b1f8765c157727",
+      "text": "悟空一把抓起大卡片：\n“卡片这么大，数字一定大！\n我赢啦！”\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "dfeef3f0fdf41a608dfff54d0da450923ec3aabb5f9d64486e21805ea0193951",
+      "text": "玉兔跳过来问：\n“3比5大吗？\n我们问问珠子吧！”\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "0a76853d7f833606cfdbe147ae005dbc0ac197d5f70e93acab86d5cb837b4c97",
+      "text": "这些珠子都一样大。\n“卡片上的数字是几，\n就在旁边放几颗珠子。”\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c0f5ca3c1fce38243ec31db43aca457fb9eeb852efa1ab6ff54ab57ec2f5dbf3",
+      "text": "悟空在3的旁边放珠子：\n“一、二、三。”\n三颗珠子。\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "931e4bd65da1b4c6117549ac9d77400b35743ab87a1132563cd7ddf52b8c13aa",
+      "text": "哪吒在5的旁边放珠子：\n“一、二、三、四、五。”\n五颗珠子。\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "885a46cbc81d6fd6f505b348a8814f37369c7f5ae38975cabc4668125a7f21e8",
+      "text": "玉兔指着说：“看！\n五颗珠子比三颗多，\n所以5比3大。”\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "3408e61f93e415daf67fc4a9fedbfb34392231f1ce61f55bd4503cec4c8c219f",
+      "text": "“可是我的卡片那么大呀！”\n哪吒咯咯笑：\n“卡片大，数字小。”\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f1adbaea534ab1b1b87a4c2a14db5e3fc16a932de1551e2445f741c93e9f8b94",
+      "text": "哪吒想到一个好主意。\n他又画了两张新卡片：\n小小的3，大大的5！\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "0f9a9e9bb0b1ab0388f701dbb5ae97e2dd059c00ae2aa3bdcfd7fa2fd2cb6d47",
+      "text": "他们又摆起珠子：\n3放三颗，\n5放五颗。\n“和刚才一样！”\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "cb8c05ad9e6ab57284746b6b85e4459b07052b0fcb565d51e8597f74ee1474ef",
+      "text": "悟空哈哈笑：\n“卡片大也好，小也好，\n数字告诉我们有几个！”\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "0db5b2f4ab305a7c6f3c88b5965d7224218e0f6372007322bc1ed88e43def44b",
+      "text": "接着，悟空也画了一张卡片，\n比哪张都大，\n上面写着1！\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "990341cb451ffa4ba26489bfb59a66851d0a9428a8d8eb3e771ae0b6b21e112b",
+      "text": "“数字1，放一颗珠子。”\n悟空放下一颗珠子：\n“一颗珠子住这么大的房子！”\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "29e86a15a2e144b01e5b9ecf2daeb312f9996f4a4a958e719f3f3ecc04aac013",
+      "text": "他们做好1到5的卡片，\n有大有小，\n每张旁边都放好珠子。\n“我们再玩一次吧！”\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d5fe2412537ab0ab9a468f8fb7e11a30b221231ff6b956d3c19f2625a27017f1",
+      "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n这些故事和插画由作者借助 AI 创作，并经过人工编辑。\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · 署名—非商业性使用—禁止演绎\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ef859d8aa74c0f9a566c1dc91efda3ced86e93ceef7513dd3188d1d78678279e",
+      "text": "Wukong & Friends\n卡片大，数字小，\n数一数珠子，\n就知道有几个！\nphg1024.github.io/wukong-and-friends/zh",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

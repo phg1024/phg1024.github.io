@@ -12,6 +12,36 @@
       "bytes": 10083240
     },
     {
+      "path": "docs/downloads/big-cards-little-numbers-v1-booklet.pdf",
+      "sha256": "72a05d7ba4c508fecf04dd32190091d614652cc930aec975641fe2d6a8efc622",
+      "bytes": 8762739
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v1-core-en.pdf",
+      "sha256": "05c69263aead2f6f7ca031361cf08cfa6e92376bc6fcc48ba4200bb0a90efe09",
+      "bytes": 8421135
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v1-core-zh-Hans.pdf",
+      "sha256": "018b826619b618d9e1a4ef7625f9be6feea4fbaccca1816c44c181f267dba7d7",
+      "bytes": 8440887
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v1-zh-Hans-booklet.pdf",
+      "sha256": "4a98afd6b8ff78fc4c96db1b8eab2431daabb47d1f2822d36ec6a04b50e81d74",
+      "bytes": 8795403
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v1-zh-Hans.pdf",
+      "sha256": "20ceec6ee3a41135b00b5cec2f98c82560aa2ec2b0262830a575bcc4571b43f4",
+      "bytes": 8785543
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v1.pdf",
+      "sha256": "f95ed7876ffb3bfb64106082c7cbec6517320b8168e45f19433d9ccb8097b71e",
+      "bytes": 8743732
+    },
+    {
       "path": "docs/downloads/bumbles-big-bike-ride-v0-booklet.pdf",
       "sha256": "2873507faf08ebf3edc2617a029a01b81464bde9658996f21997db688ac57dd9",
       "bytes": 9667741
@@ -30,6 +60,36 @@
       "path": "docs/downloads/bumbles-big-bike-ride-v1.pdf",
       "sha256": "5afadcbae276de6d351c8a13fcd10d7906829b4acb6fe729d0ac623716b2cf1d",
       "bytes": 10156942
+    },
+    {
+      "path": "docs/downloads/iron-fans-ribbon-parade-v1-booklet.pdf",
+      "sha256": "578835d1da72d9b96a0992e51f06bcb41f212be9b1ac7e6ba608cafdc9d538c5",
+      "bytes": 9353375
+    },
+    {
+      "path": "docs/downloads/iron-fans-ribbon-parade-v1-core-en.pdf",
+      "sha256": "fee9cd5464eea53dd5e11383486486166d9b050e2615d7728e826681896450a1",
+      "bytes": 9018899
+    },
+    {
+      "path": "docs/downloads/iron-fans-ribbon-parade-v1-core-zh-Hans.pdf",
+      "sha256": "5a45620c1fcf52f78fa11b062759ba0ac3182e35e7b82d0fe15189ac0625f426",
+      "bytes": 9047068
+    },
+    {
+      "path": "docs/downloads/iron-fans-ribbon-parade-v1-zh-Hans-booklet.pdf",
+      "sha256": "b4d6523a797fcbda6081e13f308752a6c2bbaa44b39d781d63d6a75805a81ae7",
+      "bytes": 9396037
+    },
+    {
+      "path": "docs/downloads/iron-fans-ribbon-parade-v1-zh-Hans.pdf",
+      "sha256": "fd33c10fa446b8d86cea053b91b95eff37b4155fa6b53c9dd84511f7ca827f32",
+      "bytes": 9386152
+    },
+    {
+      "path": "docs/downloads/iron-fans-ribbon-parade-v1.pdf",
+      "sha256": "7d7a2e32db0cc4834776f575890dbecb2cccf20ae6c689030823b7b43d7a0279",
+      "bytes": 9334283
     },
     {
       "path": "docs/downloads/pigsys-peach-puzzle-v1-booklet.pdf",
@@ -180,6 +240,36 @@
       "path": "docs/downloads/wukong-and-the-big-red-truck-v7.pdf",
       "sha256": "a4768d2ace8d95eb5c458ed64c002d5f883e14923df93665c276ed38f71f1426",
       "bytes": 23367376
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v1-booklet.pdf",
+      "sha256": "d52efe519bd97de81a71c0884d17a6c60e1bf24fadf38d8a7944ebcc327af2dc",
+      "bytes": 8182221
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v1-core-en.pdf",
+      "sha256": "14955fdf1f3e3b985f9609dc25d272c0b75120dc1829279f7ee1101374557a0e",
+      "bytes": 7846987
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v1-core-zh-Hans.pdf",
+      "sha256": "a82cc6bbceec69ac8ba31c7ab2260044b11d4e80246757b67965a003bdaa47fb",
+      "bytes": 7871606
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v1-zh-Hans-booklet.pdf",
+      "sha256": "e2bcaa3b0d2536288f64deb089591da7ef79361ab2a4d7102c6fa95debb47e0f",
+      "bytes": 8220334
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v1-zh-Hans.pdf",
+      "sha256": "7fec754581895175fea93cc6964e9264038f677f5951a2438c182dfa65210429",
+      "bytes": 8210449
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v1.pdf",
+      "sha256": "7a1b494847a4f3e2fa21dd5a25758f085d9d0df89b1cffa2e817d02512a59a7f",
+      "bytes": 8163200
     },
     {
       "path": "docs/downloads/wukong-and-the-snowy-zigzags-v1-booklet.pdf",
@@ -1477,6 +1567,11 @@
       "bytes": 30907
     },
     {
+      "path": "stories/big-cards-little-numbers/editions/v1/prompts.txt",
+      "sha256": "d45c4e01d00b2a539ee92e62d2c08346b2efb31775e8babd6a017a94dc038c2b",
+      "bytes": 211161
+    },
+    {
       "path": "stories/bumbles-big-bike-ride/editions/v0/prompts.txt",
       "sha256": "bc899950022594cc676ffeb5764dc5c7aa090a8a908302a69f48545880f0afdb",
       "bytes": 38921
@@ -1485,6 +1580,11 @@
       "path": "stories/bumbles-big-bike-ride/editions/v1/prompts.txt",
       "sha256": "bc899950022594cc676ffeb5764dc5c7aa090a8a908302a69f48545880f0afdb",
       "bytes": 38921
+    },
+    {
+      "path": "stories/iron-fans-ribbon-parade/editions/v1/prompts.txt",
+      "sha256": "42fb5584628e2262ebd4b181bdaa75b5e3c99a4b0ef5fd69aa723d22e9374048",
+      "bytes": 185992
     },
     {
       "path": "stories/pigsys-peach-puzzle/editions/v1/prompts.txt",
@@ -1525,6 +1625,11 @@
       "path": "stories/wukong-and-the-big-red-truck/editions/v7/prompts.txt",
       "sha256": "10bef8fb04e9c48398e518a1a361f405595b900d5a65046d6e0cfeea96d73f44",
       "bytes": 71459
+    },
+    {
+      "path": "stories/wukong-and-the-block-bridge/editions/v1/prompts.txt",
+      "sha256": "00c6f3ccee2715ec507c8bfd9c898d2c1c8006358102a34dc8d42751f4c8bfdf",
+      "bytes": 185967
     },
     {
       "path": "stories/wukong-and-the-snowy-zigzags/editions/v1/prompts.txt",
