@@ -86,18 +86,18 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
  <title>I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See | Peihong Guo</title>
- <meta name="description" content="Two coding agents, two plans, five usage windows with their own reset times — and a habit of stopping mid-task to type /usage. Quota Float is a small macOS…">
+ <meta name="description" content="I kept stopping mid-task to check how much Codex and Claude quota I had left. Quota Float is a small macOS floating panel and menu-bar gauge that keeps…">
  <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
  <link rel="canonical" href="https://phg1024.github.io/blog/ai/quota-float/">
  <meta property="og:site_name" content="Peihong Guo">
  <meta property="og:type" content="article">
  <meta property="og:title" content="I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See | Peihong Guo">
- <meta property="og:description" content="Two coding agents, two plans, five usage windows with their own reset times — and a habit of stopping mid-task to type /usage. Quota Float is a small macOS…">
+ <meta property="og:description" content="I kept stopping mid-task to check how much Codex and Claude quota I had left. Quota Float is a small macOS floating panel and menu-bar gauge that keeps…">
  <meta property="og:url" content="https://phg1024.github.io/blog/ai/quota-float/">
  <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
  <meta name="twitter:card" content="summary_large_image">
  <meta name="twitter:title" content="I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See | Peihong Guo">
- <meta name="twitter:description" content="Two coding agents, two plans, five usage windows with their own reset times — and a habit of stopping mid-task to type /usage. Quota Float is a small macOS…">
+ <meta name="twitter:description" content="I kept stopping mid-task to check how much Codex and Claude quota I had left. Quota Float is a small macOS floating panel and menu-bar gauge that keeps…">
  <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
  <meta property="article:published_time" content="2026-10-27T00:00:00.000Z">
  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -174,47 +174,28 @@
          }
       </style>
       <div class="blog-content__inner"><h1>I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See</h1><p class="blog-post__date">Oct 27, 2026</p>
-<p>Most of my coding now happens with two agents open: Codex on a ChatGPT plan and Claude Code on a Claude plan. Both plans are generous. Both also have limits, and the limits come in layers: a rolling 5-hour window, a weekly window, and on the Claude side a separate weekly allowance per model. Each one resets on its own schedule.</p>
-<p>So I developed a tic. Before handing an agent anything big, and again partway through, I'd stop and check how much was left: <code>/usage</code> in Claude Code, the status screen in Codex. Then I'd go back to work, half-remember the number, and check again a little later.</p>
-<p>None of this is hard. It is just constant, and it is exactly the kind of interruption that breaks a train of thought: you leave the problem to go look up a number, and the number isn't even what you were thinking about. After enough of that, I stopped asking how to check faster and started asking why I was checking at all. The information should simply <em>be there</em>, the way the battery percentage is.</p>
+<p>I code with two agents open: Codex on a ChatGPT plan and Claude Code on a Claude plan. Each has a 5-hour window, a weekly window and, on the Claude side, per-model weekly limits, all resetting on their own schedules.</p>
+<p>So I kept checking. <code>/usage</code> in Claude Code, the status screen in Codex, back to work, check again a bit later. Each check is trivial; together they're a constant small interruption. Eventually it was annoying enough that I stopped trying to check faster and made the numbers always visible instead, like the battery percentage.</p>
 <p>That's <a href="https://github.com/phg1024/quota-float">Quota Float</a>.</p>
 <img src="/images/blog/quota-float/screenshot.png" width="454" height="628" style="display:block;width:100%;max-width:420px;height:auto;margin:1.5rem auto" alt="Quota Float: a dark floating panel listing Codex's 5-hour and weekly windows and Claude's 5-hour, weekly and Opus windows as percentages left with reset times, plus two compact gauges in the macOS menu bar.">
-<h2>What it does</h2>
-<p>It is a small macOS app with two faces.</p>
-<p><strong>A floating panel</strong> shows every window for both services — 5-hour, weekly, per-model — as a percentage <strong>remaining</strong>, with a bar and the reset time in local time. It floats above other windows on every Space, so it is visible over the editor, the terminal and the browser. Drag the title to put it wherever it bothers you least; the position is remembered. When I want the screen back, the hide button puts it away.</p>
-<p><strong>A menu-bar gauge</strong> is the at-a-glance version. For each service (✦ for Codex, ✱ for Claude) it draws two stacked bars, 5-hour on top and weekly below, next to the lower of the two percentages — the one that will stop me first. Bars turn orange at 25% left and red at 10%. Hovering or opening the menu gives the full text.</p>
-<p>Two rules I cared about more than any feature:</p>
+<h2>What it shows</h2>
 <ul>
-<li><strong>Never guess.</strong> If a value isn't available, it is shown as unavailable. If a refresh fails, the last good numbers stay up with a stale-data notice instead of disappearing or being replaced by something plausible. A quota display that is confidently wrong is worse than none, because you stop checking.</li>
-<li><strong>Never touch credentials.</strong> More on that next, because it shaped the whole design.</li>
+<li><strong>A floating panel</strong> with every window for both services as a percentage <strong>remaining</strong>, plus its reset time. It stays above other windows on every Space; drag it anywhere, or hide it.</li>
+<li><strong>A menu-bar gauge</strong>: for Codex (✦) and Claude (✱), two tiny bars (5-hour and weekly) and the lower of the two percentages. Orange at 25%, red at 10%.</li>
 </ul>
-<p>Codex refreshes every minute and Claude every five minutes, plus on demand and after waking from sleep.</p>
-<h2>Getting the numbers without holding any keys</h2>
-<p>The obvious way to build this is to take an API token and call the services directly. I didn't want that. It means storing secrets in yet another app, and plan quota isn't even attached to API keys — it belongs to the signed-in plan account.</p>
-<p>Both services already ship a CLI that manages its own sign-in. So Quota Float doesn't sign in to anything. It starts the CLI, asks it for the numbers, and reads the answer:</p>
+<p>Codex refreshes every minute, Claude every five. If a refresh fails, the last numbers stay up, marked stale. Nothing is ever guessed.</p>
+<h2>No keys, no quota spent</h2>
+<p>Quota Float never stores credentials or calls a model. It asks the CLIs, which handle their own sign-in:</p>
 <ul>
-<li><strong>Codex:</strong> it starts <code>codex app-server</code>, which speaks JSON-RPC over stdio, sends <code>initialize</code>, and calls the documented <code>account/rateLimits/read</code> method. The response carries each bucket's used percentage, window length and reset time.</li>
-<li><strong>Claude:</strong> it starts <code>claude -p</code> in stream-JSON mode and sends a single <code>get_usage</code> control request — the same data behind <code>/usage</code>. No prompt and no user message is ever sent, so no model turn starts and <strong>checking the quota never costs quota</strong>. Session saving, MCP servers and hooks are switched off for that process; closing stdin ends it.</li>
+<li><strong>Codex:</strong> <code>codex app-server</code>, calling the documented <code>account/rateLimits/read</code>.</li>
+<li><strong>Claude:</strong> <code>claude -p</code> in stream-JSON mode with a single <code>get_usage</code> request, the data behind <code>/usage</code>. No prompt is sent, so checking the quota doesn't use any.</li>
 </ul>
-<p>The only thing the app writes is its window position, in its own preferences.</p>
-<p>This approach has an honest cost: it depends on the CLIs' behaviour. Codex's method is documented. Claude Code labels <code>get_usage</code> as experimental, so a future CLI release could change its shape; the README says so. If that happens, the check fails loudly: the panel keeps the last good numbers, marks them stale and shows the error, rather than inventing a value.</p>
-<h2>The parts that were harder than they looked</h2>
-<p>The app is about 700 lines of Swift with no third-party dependencies: a small data layer (<code>QuotaKit</code>, unit-tested) and an AppKit/SwiftUI shell. Most of it was straightforward. A few things weren't.</p>
-<p><strong>Talking to a CLI without ever hanging.</strong> Both sources run through one helper that starts a process, sends one JSON line, and reads newline-delimited JSON back through a non-blocking reader that skips anything that isn't a JSON object. Every exchange has a hard 25-second deadline. When it returns, the process gets SIGTERM, then SIGKILL two seconds later if it's still alive, and the app ignores SIGPIPE so a CLI that exits early can't take it down. The tests stand in for the CLIs with tiny shell scripts — including one that deliberately ignores SIGTERM — to prove that the kill path really is bounded. A menu-bar app that leaks a zombie <code>claude</code> process every five minutes would be a bad trade for saving a few keystrokes.</p>
-<p><strong>Why Claude refreshes less often.</strong> Each Claude check starts a full Claude Code process, which is not free, so Claude refreshes every five minutes instead of every minute. For windows measured in hours and days, a few minutes of lag is fine.</p>
-<p><strong>The environment-variable trap.</strong> Plan limits only exist for plan sign-ins. If the Claude process inherits API-key or gateway settings — <code>ANTHROPIC_*</code>, most <code>CLAUDE_CODE_*</code> variables, or <code>CLAUDECODE</code>, which is set in any shell opened <em>inside</em> Claude Code — the CLI reports that plan limits are unavailable. That one is easy to hit by accident, since the natural place to test a tool like this is a terminal inside the very agent it's measuring. So the app strips those variables from the Claude process's environment, keeping only <code>CLAUDE_CODE_OAUTH_TOKEN</code>.</p>
-<p><strong>A floating window that ignores the mouse.</strong> The panel is a borderless, non-activating <code>NSPanel</code> at floating level that joins all Spaces — the right recipe for &quot;visible but never steals focus&quot;. It is also the recipe for a window that doesn't respond to dragging, or swallows the first click when it's inactive. Getting title dragging, first-click behaviour and the two title-bar buttons all working took three overlapping event paths, and the architecture notes now carry a warning to re-test all three before anyone &quot;simplifies&quot; them.</p>
-<p><strong>A gauge that follows the menu bar.</strong> The menu-bar gauge is an image drawn by a closure every time it's displayed, so its label colour tracks a light or dark menu bar instead of being frozen at whatever it was when the app launched.</p>
-<h2>Trying it</h2>
-<p>Quota Float needs macOS 13 or later (Apple silicon or Intel), plus whichever of the two CLIs you use, signed in with your plan: <code>codex login</code> for Codex, <code>claude auth login</code> for Claude Code. Either one alone works; a service that isn't set up shows a short explanation instead of numbers.</p>
-<p>Grab <code>QuotaFloat-1.0.0.zip</code> from the <a href="https://github.com/phg1024/quota-float/releases/latest">latest release</a>, unzip it and move <strong>Quota Float.app</strong> to Applications. Release builds are ad-hoc signed, not notarized, so macOS will block the first launch: right-click the app and choose <strong>Open</strong>, or clear the quarantine flag:</p>
+<p>One gotcha worth knowing: plan limits only exist for plan sign-ins, and a shell opened <em>inside</em> Claude Code carries environment variables that make the CLI report them as unavailable. The app strips those from the Claude process. It also puts a hard 25-second deadline on every CLI call, so a stuck process can't pile up behind a menu-bar app.</p>
+<h2>Try it</h2>
+<p>It needs macOS 13+ and either CLI signed in with your plan (<code>codex login</code>, <code>claude auth login</code>). Download the zip from the <a href="https://github.com/phg1024/quota-float/releases/latest">latest release</a> and move the app to Applications. The build isn't notarized, so right-click → <strong>Open</strong> the first time, or run:</p>
 <pre class="language-bash"><code class="language-bash">xattr <span class="token parameter variable">-dr</span> com.apple.quarantine <span class="token string">"/Applications/Quota Float.app"</span></code></pre>
-<p>Add it to <strong>System Settings → General → Login Items</strong> if you want it there from boot. There's also a no-window mode that prints the current numbers in a terminal:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token string">"/Applications/Quota Float.app/Contents/MacOS/QuotaFloat"</span> <span class="token parameter variable">--check</span></code></pre>
-<p>One thing to know: the CLIs' sign-ins can differ from the desktop apps', so the numbers are for whichever account each CLI is logged in to. And for the record, it's an independent project, not affiliated with or endorsed by OpenAI or Anthropic.</p>
-<h2>What's next</h2>
-<p>It's version 1.0.0 and it already did its job: I no longer stop to check, because the answer is in the corner of my eye. The notes list a few small things I'd still like — relative &quot;resets in 2 h 10 min&quot; countdowns, showing how old stale data is, a reset-position item for when a saved position ends up on a disconnected display, and settings for per-service visibility and refresh intervals.</p>
-<p>The code is MIT-licensed on <a href="https://github.com/phg1024/quota-float">GitHub</a>. If you run two coding agents and catch yourself typing <code>/usage</code> more often than you'd like to admit, it might save you some of the same small interruptions.</p>
+<p>Caveats: Claude Code marks <code>get_usage</code> as experimental, so a future CLI could change it. The numbers belong to whichever account each CLI is signed in to. Quota Float isn't affiliated with OpenAI or Anthropic. It's MIT-licensed on <a href="https://github.com/phg1024/quota-float">GitHub</a>.</p>
+<p>Now the answer is just in the corner of my eye, and I don't have to go looking for it.</p>
 </div>
 </div>
 

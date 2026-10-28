@@ -187,12 +187,13 @@
     // whenever it leaves the screen. Every stream is two glyph sequences printed over each
     // other, cycling at different rates and slightly offset, so the text cannot be read.
     const MATRIX_LAYERS = [
-        { share: 0.5, size: [10, 13], speed: [0.6, 1.3], alpha: 0.38 },   // far
-        { share: 0.35, size: [15, 20], speed: [1.3, 2.6], alpha: 0.7 },   // middle
-        { share: 0.15, size: [24, 34], speed: [2.4, 4.2], alpha: 0.95 }   // near
+        // Kept deliberately low-key: it is a backdrop behind text, not the show.
+        { share: 0.6, size: [10, 13], speed: [0.35, 0.7], alpha: 0.18 },  // far
+        { share: 0.32, size: [15, 20], speed: [0.7, 1.4], alpha: 0.32 },  // middle
+        { share: 0.08, size: [24, 34], speed: [1.3, 2.2], alpha: 0.45 }   // near
     ];
     const MATRIX_RISING_SHARE = 0.5;    // chance a stream rises; drawn again each time it re-enters
-    const MATRIX_STREAMS_PER_PX = 1 / 12;
+    const MATRIX_STREAMS_PER_PX = 1 / 18;
 
     const pickBetween = function (range) {
         return range[0] + Math.random() * (range[1] - range[0]);
@@ -414,18 +415,15 @@
                 var glyph = stream.glyphs[(offset + gi) % stream.glyphs.length];
                 var fade = Math.max(0.06, 1 - (gi / (stream.length + 2)));
                 var isHead = gi === 0;
+                // Heads are a lighter green rather than near-white, and nothing glows.
                 backdropContext.fillStyle = isHead
-                    ? 'rgba(220, 255, 220, ' + (0.92 * stream.alpha).toFixed(3) + ')'
+                    ? 'rgba(160, 255, 180, ' + (0.85 * stream.alpha).toFixed(3) + ')'
                     : 'rgba(100, 255, 140, ' + (fade * 0.75 * stream.alpha).toFixed(3) + ')';
-                // Glow only on the heads of near streams: shadowBlur is the expensive part.
-                var glow = isHead && stream.size >= 20;
-                backdropContext.shadowBlur = glow ? Math.round(stream.size / 3) : 0;
-                backdropContext.shadowColor = glow ? 'rgba(124, 255, 157, 0.65)' : 'transparent';
                 backdropContext.fillText(glyph, stream.x, glyphY);
                 // Second layer: another glyph on the same spot, nudged a little and a bit dimmer.
                 var overlay = stream.overlay[(offset * 2 + gi * 3) % stream.overlay.length];
                 backdropContext.fillStyle = isHead
-                    ? 'rgba(200, 255, 205, ' + (0.7 * stream.alpha).toFixed(3) + ')'
+                    ? 'rgba(150, 245, 170, ' + (0.65 * stream.alpha).toFixed(3) + ')'
                     : 'rgba(90, 240, 130, ' + (fade * 0.56 * stream.alpha).toFixed(3) + ')';
                 backdropContext.fillText(overlay, stream.x + stream.shiftX, glyphY + stream.shiftY);
             }
