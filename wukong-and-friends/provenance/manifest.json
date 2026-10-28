@@ -32,6 +32,36 @@
       "bytes": 10156942
     },
     {
+      "path": "docs/downloads/pigsys-peach-puzzle-v1-booklet.pdf",
+      "sha256": "f47a2869d280cf8ed35f4e1fa29d436d365bbffc086f8870cf0ba9faabcc3a88",
+      "bytes": 8437121
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v1-core-en.pdf",
+      "sha256": "12a2bf8c9c1a14adb93efe53f7ec0c076f10fc83db5131bd107dcaef68a93a9a",
+      "bytes": 8126408
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v1-core-zh-Hans.pdf",
+      "sha256": "f51d797618134df620e3610e38535f5ef1b9faf0cb54387811582f1c921f962b",
+      "bytes": 8150794
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v1-zh-Hans-booklet.pdf",
+      "sha256": "a4fb137392d80beec2852b66e5fc1074fb90ea45452d5f529a721f885738d865",
+      "bytes": 8473968
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v1-zh-Hans.pdf",
+      "sha256": "d2e693a24d2b4e16bc736f008df75035bf5e6b65ffbb81eb4bc87401debab8b8",
+      "bytes": 8464066
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v1.pdf",
+      "sha256": "a9e1f843861ea1c7e7da82f1ce070625f07c1292e5f3e06f5c06a563ffb01b2f",
+      "bytes": 8418067
+    },
+    {
       "path": "docs/downloads/wukong-and-the-big-red-truck-v1-booklet.pdf",
       "sha256": "810c175a7fa49e85bbd40c2ec5e01e0075e160560681c7838c55aec7d83ff764",
       "bytes": 20308860
@@ -857,6 +887,36 @@
       "bytes": 18964998
     },
     {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v1-booklet.pdf",
+      "sha256": "3841db87a47317f05ebb89ef684e52ef0ad24ec29a2e6ea1f3c9f0fd3df862fc",
+      "bytes": 9559889
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v1-core-en.pdf",
+      "sha256": "deb02298e2da717f8dc33625e70a9575e7542c3e026be3ffc1c8c78bd2cbe33b",
+      "bytes": 9173449
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v1-core-zh-Hans.pdf",
+      "sha256": "334c50c86cfdc46b89f283887539e648506c08784a22cba76b8aa46368782d73",
+      "bytes": 9201577
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v1-zh-Hans-booklet.pdf",
+      "sha256": "cc2dfcce208a8d52bdd46982fda006082f6a4b243784ae0c2e98c77d497e5e8e",
+      "bytes": 9600911
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v1-zh-Hans.pdf",
+      "sha256": "898dac3ed0a38682e031e6d43c20b019640cc89a340fbfdaf9d9c43a6e7e525b",
+      "bytes": 9591043
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v1.pdf",
+      "sha256": "52365d41b6b2c921057a20b877bfda4ff37e2450456a6425341774fd6b16df5b",
+      "bytes": 9540764
+    },
+    {
       "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
       "sha256": "1731fcbd090f5810ada14a62d99821bdc3bd7226f3a39a8f3464801b255245f1",
       "bytes": 8981000
@@ -1427,6 +1487,11 @@
       "bytes": 38921
     },
     {
+      "path": "stories/pigsys-peach-puzzle/editions/v1/prompts.txt",
+      "sha256": "f4b606fe581f3e7dbe4769908ea11080609b31d3a45acbc5c4d9c838f0d840ec",
+      "bytes": 160781
+    },
+    {
       "path": "stories/wukong-and-the-big-red-truck/editions/v1/prompts.txt",
       "sha256": "fd0bb89cbfd3c49f49708c53e04fe1f766beba79b47643c808a1f16b4396da39",
       "bytes": 46252
@@ -1625,6 +1690,11 @@
       "path": "stories/wukongs-first-ballet-class/editions/v5/prompts.txt",
       "sha256": "2a44346c147e8f4aee9926fe33856f21ee18c3ec5066c7300c42563a65a95d1c",
       "bytes": 232855
+    },
+    {
+      "path": "stories/wukongs-missing-picnic-cup/editions/v1/prompts.txt",
+      "sha256": "b7140f5a4070fed6c342e219b6345223b3f89967fa9f9b797a2757a8e7603763",
+      "bytes": 167310
     },
     {
       "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",

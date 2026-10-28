@@ -12,6 +12,30 @@
   </atom:author>
   <atom:updated>2026-10-28T00:00:00Z</atom:updated>
   <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/pigsys-peach-puzzle/</atom:id>
+    <atom:title type="text">Pigsy’s Peach Puzzle</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/pigsys-peach-puzzle/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-28T00:00:00Z</atom:published>
+    <atom:updated>2026-10-28T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Pigsy is sure three big peaches are more than five small ones. Wukong and Rabbit line them up in pairs to compare, and Pigsy finds out: big or small, one peach is one peach.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/pigsys-peach-puzzle-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/pigsys-peach-puzzle-v1.jpg" alt="Pigsy’s Peach Puzzle" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-missing-picnic-cup/</atom:id>
+    <atom:title type="text">Wukong’s Missing Picnic Cup</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukongs-missing-picnic-cup/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-28T00:00:00Z</atom:published>
+    <atom:updated>2026-10-28T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong sets out cups for his picnic friends: one, two, three, four. But when he sits down, his own hands are empty! Counting again, everyone finds the friend he forgot: Wukong himself.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-missing-picnic-cup-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-missing-picnic-cup-v1.jpg" alt="Wukong’s Missing Picnic Cup" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-aquarium/</atom:id>
     <atom:title type="text">Wukong Visits the Aquarium</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-aquarium/" rel="alternate" type="text/html" hreflang="en" />

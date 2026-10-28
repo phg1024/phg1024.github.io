@@ -1,5 +1,66 @@
 [
   {
+    "id": "pigsys-peach-puzzle",
+    "title": "Pigsy’s Peach Puzzle",
+    "title_zh": "八戒的桃子谜题",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-28",
+    "updated": "2026-10-28",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "more",
+      "fewer",
+      "pair",
+      "same",
+      "left over",
+      "row"
+    ],
+    "math_plan_id": "M2",
+    "language_reading_versions": {
+      "en": "pigsys-peach-puzzle/v1/en",
+      "zh-Hans": "pigsys-peach-puzzle/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1-booklet.pdf",
+    "cover": "covers/pigsys-peach-puzzle-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Pigsy’s Peach Puzzle",
+        "description": "Pigsy is sure three big peaches are more than five small ones. Wukong and Rabbit line them up in pairs to compare, and Pigsy finds out: big or small, one peach is one peach."
+      },
+      "zh": {
+        "title": "八戒的桃子谜题",
+        "description": "八戒觉得三个大桃子一定比五个小桃子多。悟空和玉兔把桃子一对一对排好来比，八戒终于明白：不管大还是小，一个桃子就是一个。"
+      }
+    },
+    "description": "八戒觉得三个大桃子一定比五个小桃子多。悟空和玉兔把桃子一对一对排好来比，八戒终于明白：不管大还是小，一个桃子就是一个。",
+    "description_en": "Pigsy is sure three big peaches are more than five small ones. Wukong and Rabbit line them up in pairs to compare, and Pigsy finds out: big or small, one peach is one peach.",
+    "keywords": "八戒 悟空 玉兔 唐僧 桃子 多少 配对 一样多 比较 数学启蒙 Pigsy Wukong Rabbit Tang Monk peaches more fewer pairs same compare early math",
+    "languages": {
+      "en": {
+        "reading": "downloads/pigsys-peach-puzzle-v1.pdf",
+        "booklet": "downloads/pigsys-peach-puzzle-v1-booklet.pdf",
+        "cover": "covers/pigsys-peach-puzzle-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/pigsys-peach-puzzle-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "wukong-and-the-snowy-zigzags",
     "title": "Wukong and the Snowy Zigzags",
     "series": "wukong",
@@ -372,6 +433,66 @@
     ],
     "target_age_months": 48,
     "source_v1_preserved": true
+  },
+  {
+    "id": "wukongs-missing-picnic-cup",
+    "title": "Wukong’s Missing Picnic Cup",
+    "title_zh": "悟空少算了谁？",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-28",
+    "updated": "2026-10-28",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "picnic",
+      "cup",
+      "basket",
+      "count",
+      "how many"
+    ],
+    "math_plan_id": "M1",
+    "language_reading_versions": {
+      "en": "wukongs-missing-picnic-cup/v1/en",
+      "zh-Hans": "wukongs-missing-picnic-cup/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-booklet.pdf",
+    "cover": "covers/wukongs-missing-picnic-cup-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Missing Picnic Cup",
+        "description": "Wukong sets out cups for his picnic friends: one, two, three, four. But when he sits down, his own hands are empty! Counting again, everyone finds the friend he forgot: Wukong himself."
+      },
+      "zh": {
+        "title": "悟空少算了谁？",
+        "description": "悟空给野餐的朋友们摆杯子：一、二、三、四。可他自己坐下来，手里却空空的！大家再数一数，原来他少算了一个朋友——就是他自己。"
+      }
+    },
+    "description": "悟空给野餐的朋友们摆杯子：一、二、三、四。可他自己坐下来，手里却空空的！大家再数一数，原来他少算了一个朋友——就是他自己。",
+    "description_en": "Wukong sets out cups for his picnic friends: one, two, three, four. But when he sits down, his own hands are empty! Counting again, everyone finds the friend he forgot: Wukong himself.",
+    "keywords": "悟空 八戒 玉兔 敖丙 铁扇公主 野餐 杯子 数数 一共有几个 数学启蒙 Wukong Pigsy Rabbit Ao Bing Iron Fan picnic cups counting how many early math",
+    "languages": {
+      "en": {
+        "reading": "downloads/wukongs-missing-picnic-cup-v1.pdf",
+        "booklet": "downloads/wukongs-missing-picnic-cup-v1-booklet.pdf",
+        "cover": "covers/wukongs-missing-picnic-cup-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-missing-picnic-cup-v1-zh-Hans.jpg"
+      }
+    }
   },
   {
     "id": "wukongs-painting-class",

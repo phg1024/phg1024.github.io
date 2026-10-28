@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/pigsys-peach-puzzle-v1.pdf",
+  "source_sha256": "a9e1f843861ea1c7e7da82f1ce070625f07c1292e5f3e06f5c06a563ffb01b2f",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "9df85b686cf7ba7cf5fee383d6c75c4fea354983894310e6b54b9d01c9ebaa77",
+      "text": "Pigsy’s Peach\nPuzzle",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "659706867d986437d9c4b9762a40c8ec61c3894555ad4f2edae2bf5e2c3e3a58",
+      "text": "Tang Monk is by the peaches.\nHe gives Rabbit two plates.\n“Peaches to share!”\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "1f360ba724df8064c47bf5ea8678c9358ad8a5118f0cfefb393d3b3ddb3ec07b",
+      "text": "Rabbit sets them on the mat.\nThis plate has big peaches.\nThat plate has small peaches.\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8c7055a3874e88737bbf741874ea821754677f00df2cc4143046df3ebea2074b",
+      "text": "Pigsy points at the big\npeaches.\n“That plate has more!”\n“Mine, please!”\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b08e7cb89a895b9585cc4eff899afc6556a247b3bbbe7dea4a5ff3c92e268dea",
+      "text": "Wukong looks again.\n“Which has more peaches?”\n“Let’s make pairs.”\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b062effc463a8226ff0733a59d97e2b25cd42d376984829b9afee0effa548bd6",
+      "text": "One big peach. One small\npeach.\nA pair!\nA pair! A pair!\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2d890d9761a91efd7a8ff101e003bb86e5fc00a813d36a9a01dc708f88efe7f4",
+      "text": "Two small peaches have no\npair.\n“Look! Two are left over.”\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "6b9eb160167a1098fbf97d6c9c1cbc475341b19210f634c577c0e55fc9b09af5",
+      "text": "Rabbit counts. “One, two,\nthree.”\n“One, two, three, four, five.”\n“Five is more than three!”\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "747c43438835e8f08ac2c05c3183d2a9e83b47c802f2dac680298950bf8af84b",
+      "text": "“Three is fewer,” says Rabbit.\nPigsy frowns.\n“Big peaches, but fewer?”\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "08771b80c31a191ee47cc211c7bfe83d6e085721b4ce42eb73824c24927a6982",
+      "text": "Then Pigsy has an idea.\nHe rolls his peaches far apart.\nWhat a long row!\n“Now I have more!”\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "e1c36e582630dbcb7d59c06306dc3c1fedbbd5d8ce4a1536f5df1f77def9b23d",
+      "text": "Wukong makes pairs again.\nRabbit counts. “One, two,\nthree.”\n“A long row—but still three!”\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8e3c5e1ce51175ca05c2dfc7a25a0b020d9aa0733f8278f06939f4bf11113704",
+      "text": "Pigsy scratches his ear.\n“The peaches moved.\nBut no new peach came.”\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "a5839bebeef842c0981c5e177e15dcf893aea2b3defe3ae41edd9cf86737f58e",
+      "text": "“Let’s make them the same,”\nsays Rabbit.\nWukong puts three small\npeaches in a row.\nPigsy keeps his three big ones.\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "cf6ce8b8dbd71e1b8e7e02422502f5b681b93f7208768544225bd50056810935",
+      "text": "Pair, pair, pair!\nNo peach is left out.\nRabbit claps. “Not more. Not\nfewer.”\n“These have the same\nnumber!”\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c07a2b73fa093797ddbaffe97dda160c9a41a4cae0746ac7f941faa644776676",
+      "text": "Two small peaches are left\nover.\nThey go in the middle.\n“For everyone to share!”\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "fe4f968a82452f59f7ff17105d7894b95c7cb058f801a525978bbdcc27da115e",
+      "text": "Pigsy takes a big bite.\n“Big or small,\none peach is one peach!”\nYum, yum, yum!\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d22637ab6fc3dba430ef0766620f48df979b60ce1dd6eb422e5d1b92cb88016b",
+      "text": "Wukong & Friends\nThank you for reading!\nWe hope you and your little reader\nenjoyed this little adventure.\nMore free stories\nphg1024.github.io/wukong-and-friends\nRead, download and print - always free.\nRead more free stories\nIf you enjoyed our stories, you are welcome\nto help the next one grow. Support is optional.\nBuy Me a Coffee\nGitHub Sponsors\nCreated by Peihong Guo\nStories and illustrations made with AI assistance and human editing.\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · Attribution · NonCommercial · NoDerivatives\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "51c4980c2ecb0c3baa67902c1ac591f1a1e2e17d3b535159a261f13ac638b191",
+      "text": "Wukong & Friends\nBig or small,\none peach is one peach.\nMake pairs and see!\nphg1024.github.io/wukong-and-friends",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

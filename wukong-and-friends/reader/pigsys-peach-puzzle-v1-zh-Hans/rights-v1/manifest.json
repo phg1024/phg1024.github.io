@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/pigsys-peach-puzzle-v1-zh-Hans.pdf",
+  "source_sha256": "d2e693a24d2b4e16bc736f008df75035bf5e6b65ffbb81eb4bc87401debab8b8",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8476c5500c3f8c7c0411dda3b37ba334eed2c05fab1f7b4abe0559ac05a4e67e",
+      "text": "八戒的桃子谜题",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "1a7417bc44e92148c07b7f678a9052b6898ce6aaedd84366fb6ec144ccb13f8c",
+      "text": "唐僧站在桃子小摊旁，\n递给玉兔两盘桃子。\n“拿去和朋友分着吃吧！”\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "92459ff94391a181bcc63a24fc56aaab421902702dea7b69a9687a51d95304e1",
+      "text": "玉兔把盘子放到垫子上。\n这一盘是大桃子。\n那一盘是小桃子。\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "27b44eba66147f9e3c55ca2c2eb5d5d47be78993ab66491ff62456fd5d06a4fe",
+      "text": "八戒指着大桃子：\n“那一盘多！”\n“我要那一盘！”\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "033aa08fa69419d6641fbccbac5c28e5f39d29cbbd2123643eb9caa5c37bb378",
+      "text": "悟空又看了看：\n“到底哪一盘桃子多？”\n“我们来配对吧。”\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "225abfcb45a7dce6fabad92426241245869d270785c87b45f02c2e58a7f7684a",
+      "text": "一个大桃，配一个小桃。\n配好一对！\n又一对！再一对！\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ed1d6e8f1ae56bfc8a925f0966a8502dc5ab92406527a69e0ec92779cc758b4e",
+      "text": "还有两个小桃子没配上。\n“看！多出来两个。”\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f1c313fa93fc0ca976c0a9a2c685a872ac8479b746070e5fdbcb5b478036b2f5",
+      "text": "玉兔数一数：“一、二、三。”\n“一、二、三、四、五。”\n“五比三多！”\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "088a5fc2708085b356434b9f364d1b557ee29021b3be675cddad649e1a6f02ca",
+      "text": "“三比五少。”玉兔说。\n八戒皱起眉头：\n“桃子大，个数反而少？”\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8701e10cb02453960fc5f4b4c49de6d0b45b5417e8d66bdfd6acf07dd6849824",
+      "text": "八戒想到一个办法。\n他把三个大桃子远远滚开，\n排成长长的一行。\n“这下我的多啦！”\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "6be5db058c84c7698c1427ecb3f7c675770fccb0339b1dc1f38c11956706bee2",
+      "text": "悟空又来配一配。\n玉兔数：“一、二、三。”\n“排得再长，也还是三个！”\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "20972d38638a2772d639854f77a194e1442a3c9f0796de56d3aeecc78bc6708f",
+      "text": "八戒挠挠耳朵：\n“桃子挪了地方，\n可没有多出新桃子。”\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "e8c37a7d96727186c418e5fa54a33397f717bb8a7c8369030eb7872a05bbc3f5",
+      "text": "玉兔说：“我们让两边一样多吧。”\n悟空把三个小桃子排成一行，\n八戒留下他的三个大桃子。\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "e88113e7dba5fce7b3a37d8a07450770528f0a01f1c232ba4bb212a45b7d4c08",
+      "text": "配对，配对，再配对！\n一个也没落下。\n玉兔拍拍手：“不多，也不少，\n两边一样多！”\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f897b523427799ee6e7e1fb9c2f90dab0f5ffce536d0947aa57a160b8980410b",
+      "text": "还剩两个小桃子，\n放到垫子中间。\n“大家一起分着吃！”\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "7922490afa3cc9242749d5eab39798f7e879cf249429924852df8292362ded16",
+      "text": "八戒咬了一大口：\n“不管大还是小，\n一个桃子就是一个！”\n好吃，好吃，真好吃！\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d5fe2412537ab0ab9a468f8fb7e11a30b221231ff6b956d3c19f2625a27017f1",
+      "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n这些故事和插画由作者借助 AI 创作，并经过人工编辑。\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · 署名—非商业性使用—禁止演绎\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d1d72bac6f3f22f0ad49e7492250495129feac16c2f2a56f81aca9c6e8e68d6a",
+      "text": "Wukong & Friends\n大桃子，小桃子，\n一个就是一个。\n配一配，就知道！\nphg1024.github.io/wukong-and-friends/zh",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}
