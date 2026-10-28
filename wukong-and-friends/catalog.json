@@ -49,13 +49,13 @@
     "series": "wukong",
     "description": "悟空和敖丙一起种小番茄，浇水、等待，最后分享甜甜的收获。",
     "style": "Children’s crayon doodles",
-    "version": "v7",
-    "revision": "english-age-target-editorial-review",
+    "version": "v8",
+    "revision": "courtyard-and-tomato-consistency",
     "keywords": "悟空 敖丙 小番茄 种植 浇水 耐心 分享 Wukong Ao Bing tomatoes gardening patience friendship",
     "pages": 18,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v7.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v7-booklet.pdf",
-    "cover": "covers/wukong-and-the-tiny-tomatoes-v2.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-booklet.pdf",
+    "cover": "covers/wukong-and-the-tiny-tomatoes-v8.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "translations": {
@@ -70,21 +70,22 @@
     },
     "languages": {
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v6-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v6-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-tiny-tomatoes-v2-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-tiny-tomatoes-v8-zh-Hans.jpg"
       },
       "en": {
-        "reading": "downloads/wukong-and-the-tiny-tomatoes-v7.pdf",
-        "booklet": "downloads/wukong-and-the-tiny-tomatoes-v7-booklet.pdf",
-        "cover": "covers/wukong-and-the-tiny-tomatoes-v2.jpg"
+        "reading": "downloads/wukong-and-the-tiny-tomatoes-v8.pdf",
+        "booklet": "downloads/wukong-and-the-tiny-tomatoes-v8-booklet.pdf",
+        "cover": "covers/wukong-and-the-tiny-tomatoes-v8.jpg"
       }
     },
     "booklet_pages": 20,
     "published": "2026-10-20",
-    "updated": "2026-10-26",
+    "updated": "2026-10-28",
     "language_reading_versions": {
-      "en": "wukong-and-the-tiny-tomatoes/v7/en"
+      "en": "wukong-and-the-tiny-tomatoes/v8/en",
+      "zh-Hans": "wukong-and-the-tiny-tomatoes/v8/zh-Hans"
     }
   },
   {

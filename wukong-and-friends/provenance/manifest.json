@@ -412,6 +412,36 @@
       "bytes": 22412867
     },
     {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v8-booklet.pdf",
+      "sha256": "128a46818acb040c18f5b70f05a09c423a0ee21431c7c4c4764a53e89508c625",
+      "bytes": 23964667
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v8-core-en.pdf",
+      "sha256": "7e262d206be6c7e38c2d9f7d929ffeff9c578967533b5016a282609fa52f861c",
+      "bytes": 21040136
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v8-core-zh-Hans.pdf",
+      "sha256": "59d57fb3beb091e86fa57f4ab7588fbfe2bfae64df55e7503fd74d1e32736d48",
+      "bytes": 21073694
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v8-zh-Hans-booklet.pdf",
+      "sha256": "ceb382aac57f9d18370ce311ba25832a2018bca69a194009f842660358f2ebc9",
+      "bytes": 24010410
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v8-zh-Hans.pdf",
+      "sha256": "10cad651e33cf78ba3c35b989943af09ca92b6b6929a7f6a059f9b1282dc6cf4",
+      "bytes": 24000562
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-tiny-tomatoes-v8.pdf",
+      "sha256": "1b924fa4db5a28820fab7249745dd063be6bf29d3102932aca170755da26bc07",
+      "bytes": 23945609
+    },
+    {
       "path": "docs/downloads/wukong-learns-to-swim-v1-booklet.pdf",
       "sha256": "fa2cfb21b0e3678bc7558877399faead4e640be8dfbfb83c5b8893b1cd932224",
       "bytes": 28322207
@@ -1510,6 +1540,11 @@
       "path": "stories/wukong-and-the-tiny-tomatoes/editions/v7/prompts.txt",
       "sha256": "2783eda3faa61cbf1418d0afbc0abb0bfbd1cde98706604454db309573340ad0",
       "bytes": 104733
+    },
+    {
+      "path": "stories/wukong-and-the-tiny-tomatoes/editions/v8/prompts.txt",
+      "sha256": "b60229762989a7f65268d4e5e96c11da4a96f038a0b127d72779e5184b5d3ad8",
+      "bytes": 413855
     },
     {
       "path": "stories/wukong-learns-to-swim/editions/v1/prompts.txt",

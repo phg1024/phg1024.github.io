@@ -10,7 +10,7 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-10-26T00:00:00Z</atom:updated>
+  <atom:updated>2026-10-28T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-aquarium/</atom:id>
     <atom:title type="text">悟空逛水族馆</atom:title>
@@ -100,12 +100,12 @@
     <atom:title type="text">悟空的小番茄</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukong-and-the-tiny-tomatoes/" rel="alternate" type="text/html" hreflang="zh-CN" />
     <atom:published>2026-10-20T00:00:00Z</atom:published>
-    <atom:updated>2026-10-26T00:00:00Z</atom:updated>
+    <atom:updated>2026-10-28T00:00:00Z</atom:updated>
     <atom:author>
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;悟空和敖丙一起种小番茄，浇水、耐心等待。敖丙的小雨云来帮忙，两位好朋友终于分享了甜甜的收获。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v2-zh-Hans.jpg" alt="悟空的小番茄" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;悟空和敖丙一起种小番茄，浇水、耐心等待。敖丙的小雨云来帮忙，两位好朋友终于分享了甜甜的收获。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v8-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-tiny-tomatoes-v8-zh-Hans.jpg" alt="悟空的小番茄" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-big-red-truck/</atom:id>
