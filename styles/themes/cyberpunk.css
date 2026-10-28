@@ -27,3 +27,10 @@
   font-family: "JetBrains Mono", "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
   font-size: 0.9em;
 }
+
+/* Skip link: white on the pink accent was below 3:1. */
+[data-theme="cyberpunk"] .skip-to-content {
+  background: #0d0a18;
+  color: #ffffff;
+  outline: 1px solid #ff4fd8;
+}

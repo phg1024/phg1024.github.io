@@ -490,6 +490,17 @@ html:not([data-theme="win31"]) .proto .about-panel:hover {
   margin-bottom: 0.7rem;
 }
 
+/* Wide tables in posts and on the privacy page pushed the whole page sideways on phones
+   (up to 553px wide at 390px). Below 768px they scroll inside their own box instead. */
+@media (max-width: 767px) {
+  .proto .blog-content table,
+  .proto .content-page table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
 /* ── Moving between pages: the rail should travel, not teleport ─────────────────
    The gallery page lets its column run to the window edges, so the rail sits at
    x=20 there and x=192 on the capped pages, and the content column is 1148px wide

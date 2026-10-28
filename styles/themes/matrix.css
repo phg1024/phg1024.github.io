@@ -420,3 +420,10 @@
   color: #7cff9d;
   font-family: "Menlo", monospace;
 }
+
+/* Skip link: the default accent fill put pale text on bright green (contrast 1.2). */
+[data-theme="matrix"] .skip-to-content {
+  background: #021a07;
+  color: #b8ffc6;
+  outline: 1px solid #7cff9d;
+}

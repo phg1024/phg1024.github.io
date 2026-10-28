@@ -472,3 +472,56 @@
   color: #000080;
   font-family: "MS Sans Serif", monospace;
 }
+
+/* ── Rail and footer as Windows 3.1 chrome (new layout) ─────────────────────────────
+   The rail is a window: a navy title bar carrying the name, then a padded body. The
+   current page is a selected list item (navy, white text) rather than the other themes'
+   dot and underline, and nothing sits flush against a bevel. */
+[data-theme="win31"] .proto .site-header__inner {
+  padding: 0 0 10px;
+}
+[data-theme="win31"] .proto .site-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 6px;
+  padding: 4px 10px 5px;
+  background: #000080;
+}
+[data-theme="win31"] .proto .site-brand__name,
+[data-theme="win31"] .proto .site-brand__tag {
+  color: #ffffff;
+  text-shadow: none;
+}
+[data-theme="win31"] .proto .site-header__inner > :not(.site-brand) {
+  box-sizing: border-box;
+  width: calc(100% - 20px);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+[data-theme="win31"] .proto .site-nav__link::before,
+[data-theme="win31"] .proto .site-nav__link::after {
+  display: none;
+}
+[data-theme="win31"] .proto .site-nav__link.is-active,
+[data-theme="win31"] .proto .site-nav__link.is-active:hover {
+  background: #000080;
+  color: #ffffff;
+}
+[data-theme="win31"] .proto .site-footer__inner {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+[data-theme="win31"] .skip-to-content {
+  background: #000080;
+  color: #ffffff;
+}
+@media (max-width: 959px) {
+  [data-theme="win31"] .proto .site-nav__link.is-active {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
