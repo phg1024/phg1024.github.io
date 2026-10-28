@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      if (!path || animated.indexOf(path) < 0) event.viewTransition.skipTransition();
+    });
+    window.addEventListener('pagereveal', handled);
+
+    // One container that resizes (proto-extra.css). On both sides of the hop, give the panel's
+    // on-screen children their own nested groups; on the new page, hand the panel's look to
+    // the transition group, which draws the container while it changes size.
+    var nested = window.CSS && CSS.supports && CSS.supports('view-transition-group: nearest');
+    function panel() {
+      return document.querySelector('.site-main > .content-page, .site-main > .blog-content');
+    }
+    function markVisibleChildren(card) {
+      var marked = [];
+      var h = window.innerHeight;
+      Array.prototype.forEach.call(card.children, function (child) {
+        var r = child.getBoundingClientRect();
+        if (r.height > 0 && r.bottom > 0 && r.top < h) {
+          child.classList.add('vt-card-item');
+          marked.push(child);
+        }
+      });
+      return marked;
+    }
+    function lendPanelLook(card) {
+      var s = getComputedStyle(card);
+      var rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--vt-card-bg-color', s.backgroundColor);
+      rootStyle.setProperty('--vt-card-bg-image', s.backgroundImage);
+      rootStyle.setProperty('--vt-card-border', s.borderTopWidth + ' ' + s.borderTopStyle + ' ' + s.borderTopColor);
+      rootStyle.setProperty('--vt-card-radius', s.borderTopLeftRadius);
+      rootStyle.setProperty('--vt-card-shadow', s.boxShadow);
+      rootStyle.setProperty('--vt-card-backdrop', s.backdropFilter || 'none');
+    }
+    window.addEventListener('pageswap', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (card) markVisibleChildren(card);
+    });
+    window.addEventListener('pagereveal', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (!card) return;
+      var marked = markVisibleChildren(card);
+      lendPanelLook(card);
+      event.viewTransition.finished.finally(function () {
+        marked.forEach(function (el) { el.classList.remove('vt-card-item'); });
+      });
+    });
+  })();
+ </script>
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+ <title>I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See | Peihong Guo</title>
+ <meta name="description" content="Two coding agents, two plans, five usage windows with their own reset times — and a habit of stopping mid-task to type /usage. Quota Float is a small macOS…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/ai/quota-float/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See | Peihong Guo">
+ <meta property="og:description" content="Two coding agents, two plans, five usage windows with their own reset times — and a habit of stopping mid-task to type /usage. Quota Float is a small macOS…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/ai/quota-float/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See | Peihong Guo">
+ <meta name="twitter:description" content="Two coding agents, two plans, five usage windows with their own reset times — and a habit of stopping mid-task to type /usage. Quota Float is a small macOS…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-10-27T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/proto.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head><body class="proto">
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link is-active" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by tag">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">11</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/cooking/">Cooking <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">17</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See</h1><p class="blog-post__date">Oct 27, 2026</p>
+<p>Most of my coding now happens with two agents open: Codex on a ChatGPT plan and Claude Code on a Claude plan. Both plans are generous. Both also have limits, and the limits come in layers: a rolling 5-hour window, a weekly window, and on the Claude side a separate weekly allowance per model. Each one resets on its own schedule.</p>
+<p>So I developed a tic. Before handing an agent anything big, and again partway through, I'd stop and check how much was left: <code>/usage</code> in Claude Code, the status screen in Codex. Then I'd go back to work, half-remember the number, and check again a little later.</p>
+<p>None of this is hard. It is just constant, and it is exactly the kind of interruption that breaks a train of thought: you leave the problem to go look up a number, and the number isn't even what you were thinking about. After enough of that, I stopped asking how to check faster and started asking why I was checking at all. The information should simply <em>be there</em>, the way the battery percentage is.</p>
+<p>That's <a href="https://github.com/phg1024/quota-float">Quota Float</a>.</p>
+<img src="/images/blog/quota-float/screenshot.png" width="454" height="628" style="display:block;width:100%;max-width:420px;height:auto;margin:1.5rem auto" alt="Quota Float: a dark floating panel listing Codex's 5-hour and weekly windows and Claude's 5-hour, weekly and Opus windows as percentages left with reset times, plus two compact gauges in the macOS menu bar.">
+<h2>What it does</h2>
+<p>It is a small macOS app with two faces.</p>
+<p><strong>A floating panel</strong> shows every window for both services — 5-hour, weekly, per-model — as a percentage <strong>remaining</strong>, with a bar and the reset time in local time. It floats above other windows on every Space, so it is visible over the editor, the terminal and the browser. Drag the title to put it wherever it bothers you least; the position is remembered. When I want the screen back, the hide button puts it away.</p>
+<p><strong>A menu-bar gauge</strong> is the at-a-glance version. For each service (✦ for Codex, ✱ for Claude) it draws two stacked bars, 5-hour on top and weekly below, next to the lower of the two percentages — the one that will stop me first. Bars turn orange at 25% left and red at 10%. Hovering or opening the menu gives the full text.</p>
+<p>Two rules I cared about more than any feature:</p>
+<ul>
+<li><strong>Never guess.</strong> If a value isn't available, it is shown as unavailable. If a refresh fails, the last good numbers stay up with a stale-data notice instead of disappearing or being replaced by something plausible. A quota display that is confidently wrong is worse than none, because you stop checking.</li>
+<li><strong>Never touch credentials.</strong> More on that next, because it shaped the whole design.</li>
+</ul>
+<p>Codex refreshes every minute and Claude every five minutes, plus on demand and after waking from sleep.</p>
+<h2>Getting the numbers without holding any keys</h2>
+<p>The obvious way to build this is to take an API token and call the services directly. I didn't want that. It means storing secrets in yet another app, and plan quota isn't even attached to API keys — it belongs to the signed-in plan account.</p>
+<p>Both services already ship a CLI that manages its own sign-in. So Quota Float doesn't sign in to anything. It starts the CLI, asks it for the numbers, and reads the answer:</p>
+<ul>
+<li><strong>Codex:</strong> it starts <code>codex app-server</code>, which speaks JSON-RPC over stdio, sends <code>initialize</code>, and calls the documented <code>account/rateLimits/read</code> method. The response carries each bucket's used percentage, window length and reset time.</li>
+<li><strong>Claude:</strong> it starts <code>claude -p</code> in stream-JSON mode and sends a single <code>get_usage</code> control request — the same data behind <code>/usage</code>. No prompt and no user message is ever sent, so no model turn starts and <strong>checking the quota never costs quota</strong>. Session saving, MCP servers and hooks are switched off for that process; closing stdin ends it.</li>
+</ul>
+<p>The only thing the app writes is its window position, in its own preferences.</p>
+<p>This approach has an honest cost: it depends on the CLIs' behaviour. Codex's method is documented. Claude Code labels <code>get_usage</code> as experimental, so a future CLI release could change its shape; the README says so. If that happens, the check fails loudly: the panel keeps the last good numbers, marks them stale and shows the error, rather than inventing a value.</p>
+<h2>The parts that were harder than they looked</h2>
+<p>The app is about 700 lines of Swift with no third-party dependencies: a small data layer (<code>QuotaKit</code>, unit-tested) and an AppKit/SwiftUI shell. Most of it was straightforward. A few things weren't.</p>
+<p><strong>Talking to a CLI without ever hanging.</strong> Both sources run through one helper that starts a process, sends one JSON line, and reads newline-delimited JSON back through a non-blocking reader that skips anything that isn't a JSON object. Every exchange has a hard 25-second deadline. When it returns, the process gets SIGTERM, then SIGKILL two seconds later if it's still alive, and the app ignores SIGPIPE so a CLI that exits early can't take it down. The tests stand in for the CLIs with tiny shell scripts — including one that deliberately ignores SIGTERM — to prove that the kill path really is bounded. A menu-bar app that leaks a zombie <code>claude</code> process every five minutes would be a bad trade for saving a few keystrokes.</p>
+<p><strong>Why Claude refreshes less often.</strong> Each Claude check starts a full Claude Code process, which is not free, so Claude refreshes every five minutes instead of every minute. For windows measured in hours and days, a few minutes of lag is fine.</p>
+<p><strong>The environment-variable trap.</strong> Plan limits only exist for plan sign-ins. If the Claude process inherits API-key or gateway settings — <code>ANTHROPIC_*</code>, most <code>CLAUDE_CODE_*</code> variables, or <code>CLAUDECODE</code>, which is set in any shell opened <em>inside</em> Claude Code — the CLI reports that plan limits are unavailable. That one is easy to hit by accident, since the natural place to test a tool like this is a terminal inside the very agent it's measuring. So the app strips those variables from the Claude process's environment, keeping only <code>CLAUDE_CODE_OAUTH_TOKEN</code>.</p>
+<p><strong>A floating window that ignores the mouse.</strong> The panel is a borderless, non-activating <code>NSPanel</code> at floating level that joins all Spaces — the right recipe for &quot;visible but never steals focus&quot;. It is also the recipe for a window that doesn't respond to dragging, or swallows the first click when it's inactive. Getting title dragging, first-click behaviour and the two title-bar buttons all working took three overlapping event paths, and the architecture notes now carry a warning to re-test all three before anyone &quot;simplifies&quot; them.</p>
+<p><strong>A gauge that follows the menu bar.</strong> The menu-bar gauge is an image drawn by a closure every time it's displayed, so its label colour tracks a light or dark menu bar instead of being frozen at whatever it was when the app launched.</p>
+<h2>Trying it</h2>
+<p>Quota Float needs macOS 13 or later (Apple silicon or Intel), plus whichever of the two CLIs you use, signed in with your plan: <code>codex login</code> for Codex, <code>claude auth login</code> for Claude Code. Either one alone works; a service that isn't set up shows a short explanation instead of numbers.</p>
+<p>Grab <code>QuotaFloat-1.0.0.zip</code> from the <a href="https://github.com/phg1024/quota-float/releases/latest">latest release</a>, unzip it and move <strong>Quota Float.app</strong> to Applications. Release builds are ad-hoc signed, not notarized, so macOS will block the first launch: right-click the app and choose <strong>Open</strong>, or clear the quarantine flag:</p>
+<pre class="language-bash"><code class="language-bash">xattr <span class="token parameter variable">-dr</span> com.apple.quarantine <span class="token string">"/Applications/Quota Float.app"</span></code></pre>
+<p>Add it to <strong>System Settings → General → Login Items</strong> if you want it there from boot. There's also a no-window mode that prints the current numbers in a terminal:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token string">"/Applications/Quota Float.app/Contents/MacOS/QuotaFloat"</span> <span class="token parameter variable">--check</span></code></pre>
+<p>One thing to know: the CLIs' sign-ins can differ from the desktop apps', so the numbers are for whichever account each CLI is logged in to. And for the record, it's an independent project, not affiliated with or endorsed by OpenAI or Anthropic.</p>
+<h2>What's next</h2>
+<p>It's version 1.0.0 and it already did its job: I no longer stop to check, because the answer is in the corner of my eye. The notes list a few small things I'd still like — relative &quot;resets in 2 h 10 min&quot; countdowns, showing how old stale data is, a reset-position item for when a saved position ends up on a disconnected display, and settings for per-service visibility and refresh intervals.</p>
+<p>The code is MIT-licensed on <a href="https://github.com/phg1024/quota-float">GitHub</a>. If you run two coding agents and catch yourself typing <code>/usage</code> more often than you'd like to admit, it might save you some of the same small interruptions.</p>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/quota-float/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

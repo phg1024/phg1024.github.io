@@ -14,7 +14,7 @@
   // generated at build time). Any other cancellation (a navigation interrupting a running
   // transition) rejects promises nobody awaits; mark those handled on both sides.
   (function () {
-    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
+    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
     function handled(event) {
       var vt = event.viewTransition;
       if (!vt) return;
@@ -121,9 +121,9 @@
     <a class="site-nav__link" href="/gallery/">Photos</a>
     <a class="site-nav__link" href="/about/">About</a>
    </nav><ul class="proto-rail__tags" aria-label="Browse by tag">
-    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">10</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">11</span></a></li>
     <li><a class="proto-rail__tag" href="/tag/cooking/">Cooking <span class="proto-rail__count">6</span></a></li>
-    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">16</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">17</span></a></li>
    </ul><div class="proto-rail__theme">
      <label class="theme-toggle" for="theme-toggle">
        <span class="theme-toggle__label">Theme</span>
@@ -156,10 +156,17 @@
 
     <div class="section-heading">
         <p class="section-heading__eyebrow">Latest writing</p>
-        <p class="proto-subheading"><a href="/writing/">All 28 pieces</a></p>
+        <p class="proto-subheading"><a href="/writing/">All 29 pieces</a></p>
     </div>
     
 <ul class="writing-list">
+    <li class="writing-item">
+        <div class="writing-item__main">
+            <h2 class="writing-item__title"><a href="/blog/ai/quota-float/">I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See</a></h2>
+            <p class="writing-item__brief">Two coding agents, two plans, five usage windows with their own reset times — and a habit of stopping mid-task to type /usage. Quota Float is a small macOS floating panel and menu-bar gauge that keeps the remaining Codex and Claude quota on screen all the time. Why I built it, how it gets the numbers without touching a single credential, and the few parts that were harder than they looked.</p>
+        </div>
+        <p class="writing-item__when">Oct 27, 2026</p>
+    </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/wukong-and-friends-update/">Wukong &amp; Friends, Updated: Nine Bilingual Books and a Download Button I Deleted</a></h2>
@@ -187,13 +194,6 @@
             <p class="writing-item__brief">Free read-aloud picture books, built to make bedtime calmer for a four-year-old — and the unglamorous machinery behind them: keeping one character recognizable from book to book, signing every PDF, and publishing a private repository&#39;s build into a public subdirectory.</p>
         </div>
         <p class="writing-item__when">Oct 20, 2026</p>
-    </li>
-    <li class="writing-item">
-        <div class="writing-item__main">
-            <h2 class="writing-item__title"><a href="/blog/programming/home-automation/">A Local-Only Garage Door Opener for Apple Home</a></h2>
-            <p class="writing-item__brief">Two ESP8266 boards, one Homebridge accessory plugin and no vendor cloud: how the pieces fit together, and how many of the design decisions were forced by an opener with a single momentary input.</p>
-        </div>
-        <p class="writing-item__when">Oct 18, 2026</p>
     </li>
 </ul>
 
