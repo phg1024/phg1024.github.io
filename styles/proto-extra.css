@@ -490,6 +490,48 @@ html:not([data-theme="win31"]) .proto .about-panel:hover {
   margin-bottom: 0.7rem;
 }
 
+/* ── Tags and series ───────────────────────────────────────────────────────────
+   Rail: areas, then a second, smaller group of topics. Writing rows: the post's tags in
+   small muted type. Post footer: series position with neighbours, then the tags. */
+.proto-rail__tags--topics {
+  margin-top: 0.55rem;
+}
+.proto-rail__tags--topics .proto-rail__tag {
+  font-size: 0.78rem;
+}
+.writing-item__tags {
+  margin: 0.3rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.writing-item__tags a {
+  color: inherit;
+  text-decoration: none;
+}
+.writing-item__tags a:hover {
+  color: var(--accent);
+}
+.post-meta {
+  margin-top: 2.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.post-meta p {
+  margin: 0 0 0.45rem;
+}
+.post-meta__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem 1.5rem;
+}
+.post-meta__next {
+  margin-left: auto;
+  text-align: right;
+}
+
 /* Post titles are left-aligned in every theme, so the date under them is too; centred, it
    floated under the middle of a left-aligned title. */
 .proto .blog-post__date {

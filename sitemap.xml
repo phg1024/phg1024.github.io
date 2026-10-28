@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://phg1024.github.io/test/2013/12/04/first.html</loc>
-    <lastmod>2013-12-04</lastmod>
-  </url>
-  <url>
     <loc>https://phg1024.github.io/test/2013/12/04/Migrating.html</loc>
     <lastmod>2013-12-04</lastmod>
   </url>
@@ -29,7 +25,7 @@
     <lastmod>2015-11-05</lastmod>
   </url>
   <url>
-    <loc>https://phg1024.github.io/blog/cooking/basic_bread/</loc>
+    <loc>https://phg1024.github.io/bread/basic-bread/</loc>
     <lastmod>2024-01-01</lastmod>
   </url>
   <url>
@@ -37,23 +33,23 @@
     <lastmod>2024-01-02</lastmod>
   </url>
   <url>
-    <loc>https://phg1024.github.io/blog/cooking/potato_bread/</loc>
+    <loc>https://phg1024.github.io/bread/potato-bread/</loc>
     <lastmod>2024-01-02</lastmod>
   </url>
   <url>
-    <loc>https://phg1024.github.io/blog/cooking/banana_bread/</loc>
+    <loc>https://phg1024.github.io/bread/banana-bread/</loc>
     <lastmod>2024-01-03</lastmod>
   </url>
   <url>
-    <loc>https://phg1024.github.io/blog/cooking/toast_bread/</loc>
+    <loc>https://phg1024.github.io/bread/toast-bread/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://phg1024.github.io/blog/cooking/rye_bread/</loc>
+    <loc>https://phg1024.github.io/bread/rye-bread/</loc>
     <lastmod>2024-01-05</lastmod>
   </url>
   <url>
-    <loc>https://phg1024.github.io/blog/cooking/banana_bun/</loc>
+    <loc>https://phg1024.github.io/bread/banana-bun/</loc>
     <lastmod>2024-01-06</lastmod>
   </url>
   <url>
@@ -120,6 +116,9 @@
     <loc>https://phg1024.github.io/about/</loc>
   </url>
   <url>
+    <loc>https://phg1024.github.io/bread/</loc>
+  </url>
+  <url>
     <loc>https://phg1024.github.io/gallery/</loc>
   </url>
   <url>
@@ -147,10 +146,34 @@
     <loc>https://phg1024.github.io/tag/ai/</loc>
   </url>
   <url>
-    <loc>https://phg1024.github.io/tag/cooking/</loc>
+    <loc>https://phg1024.github.io/tag/graphics/</loc>
   </url>
   <url>
-    <loc>https://phg1024.github.io/tag/programming/</loc>
+    <loc>https://phg1024.github.io/tag/doodling/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/web/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/home-lab/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/image-processing/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/local-inference/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/agents/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/ml-research/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/rendering/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/wukong-and-friends/</loc>
   </url>
   <url>
     <loc>https://phg1024.github.io/writing/</loc>

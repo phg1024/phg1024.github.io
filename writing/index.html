@@ -14,7 +14,7 @@
   // generated at build time). Any other cancellation (a navigation interrupting a running
   // transition) rejects promises nobody awaits; mark those handled on both sides.
   (function () {
-    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
+    var animated = ["/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/bread/basic-bread/","/blog/ai/dreamfusion/","/bread/potato-bread/","/bread/banana-bread/","/bread/toast-bread/","/bread/rye-bread/","/bread/banana-bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/about/","/bread/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/graphics/","/tag/doodling/","/tag/web/","/tag/home-lab/","/tag/image-processing/","/tag/local-inference/","/tag/agents/","/tag/ml-research/","/tag/rendering/","/tag/wukong-and-friends/","/writing/","/"];
     function handled(event) {
       var vt = event.viewTransition;
       if (!vt) return;
@@ -86,18 +86,18 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
  <title>Writing | Peihong Guo</title>
- <meta name="description" content="Everything written on this site in one dated list: AI and inference work, graphics and rendering, agent prototypes, and bread.">
+ <meta name="description" content="Everything written on this site in one dated list: AI and local inference, graphics and rendering, agent prototypes, and gadgets around the house.">
  <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
  <link rel="canonical" href="https://phg1024.github.io/writing/">
  <meta property="og:site_name" content="Peihong Guo">
  <meta property="og:type" content="website">
  <meta property="og:title" content="Writing | Peihong Guo">
- <meta property="og:description" content="Everything written on this site in one dated list: AI and inference work, graphics and rendering, agent prototypes, and bread.">
+ <meta property="og:description" content="Everything written on this site in one dated list: AI and local inference, graphics and rendering, agent prototypes, and gadgets around the house.">
  <meta property="og:url" content="https://phg1024.github.io/writing/">
  <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
  <meta name="twitter:card" content="summary_large_image">
  <meta name="twitter:title" content="Writing | Peihong Guo">
- <meta name="twitter:description" content="Everything written on this site in one dated list: AI and inference work, graphics and rendering, agent prototypes, and bread.">
+ <meta name="twitter:description" content="Everything written on this site in one dated list: AI and local inference, graphics and rendering, agent prototypes, and gadgets around the house.">
  <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
  <link rel="stylesheet" href="/styles/proto.css">
@@ -120,10 +120,20 @@
     <a class="site-nav__link" href="/projects/">Projects</a>
     <a class="site-nav__link" href="/gallery/">Photos</a>
     <a class="site-nav__link" href="/about/">About</a>
-   </nav><ul class="proto-rail__tags" aria-label="Browse by tag">
+   </nav><ul class="proto-rail__tags" aria-label="Browse by area">
     <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">11</span></a></li>
-    <li><a class="proto-rail__tag" href="/tag/cooking/">Cooking <span class="proto-rail__count">6</span></a></li>
-    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">17</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/graphics/">Graphics <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/doodling/">Doodling <span class="proto-rail__count">5</span></a></li>
+   </ul>
+   <ul class="proto-rail__tags proto-rail__tags--topics" aria-label="Browse by topic">
+    <li><a class="proto-rail__tag" href="/tag/web/">Web <span class="proto-rail__count">9</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/home-lab/">Home lab <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/image-processing/">Image processing <span class="proto-rail__count">4</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/local-inference/">Local inference <span class="proto-rail__count">4</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/agents/">Agents <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/ml-research/">ML research <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/rendering/">Rendering <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/wukong-and-friends/">Wukong &amp; Friends <span class="proto-rail__count">2</span></a></li>
    </ul><div class="proto-rail__theme">
      <label class="theme-toggle" for="theme-toggle">
        <span class="theme-toggle__label">Theme</span>
@@ -146,9 +156,9 @@
         <p class="section-heading__eyebrow">Writing</p>
         <h1 class="section-heading__title">Build log</h1>
         <p class="section-heading__lede">
-            29 entries from the bench: inference on odd hardware,
-            renderers, agent prototypes, and the occasional loaf of bread. Latest first; filter
-            by tag at the bottom.
+            22 entries from the bench: inference on odd hardware,
+            renderers, agent prototypes, and gadgets around the house. Latest first; filter by
+            tag at the bottom. (The bread moved to <a href="/bread/">its own page</a>.)
         </p>
     </div>
 
@@ -157,174 +167,154 @@
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/quota-float/">I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/agents/">Agents</a></p>
         </div>
         <p class="writing-item__when">Oct 27, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/wukong-and-friends-update/">Wukong &amp; Friends, Updated: Nine Bilingual Books and a Download Button I Deleted</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/wukong-and-friends/">Wukong &amp; Friends</a></p>
         </div>
         <p class="writing-item__when">Oct 23, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/qwen38-27b-arc-b70/">The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/local-inference/">Local inference</a> · <a href="/tag/home-lab/">Home lab</a></p>
         </div>
         <p class="writing-item__when">Oct 22, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/strata-b70-page-reclaim/">My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/local-inference/">Local inference</a> · <a href="/tag/home-lab/">Home lab</a></p>
         </div>
         <p class="writing-item__when">Oct 22, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/wukong-and-friends/">Introducing Wukong &amp; Friends</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/wukong-and-friends/">Wukong &amp; Friends</a></p>
         </div>
         <p class="writing-item__when">Oct 20, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/programming/home-automation/">A Local-Only Garage Door Opener for Apple Home</a></h2>
+            <p class="writing-item__tags"><a href="/tag/doodling/">Doodling</a> · <a href="/tag/home-lab/">Home lab</a></p>
         </div>
         <p class="writing-item__when">Oct 18, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/jarvis-architecture/">Building Jarvis: A Local Voice Assistant with Android and Hermes</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/agents/">Agents</a> · <a href="/tag/local-inference/">Local inference</a> · <a href="/tag/home-lab/">Home lab</a></p>
         </div>
         <p class="writing-item__when">Oct 6, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/qwen-intel-arc-vllm/">Deploying Qwen on Intel Arc with vLLM and DFlash2</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/local-inference/">Local inference</a> · <a href="/tag/home-lab/">Home lab</a></p>
         </div>
         <p class="writing-item__when">Oct 6, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/programming/raytracer-caustics/">Adding Meshes, BVHs, and Photon Mapping to My Browser Ray Tracer</a></h2>
+            <p class="writing-item__tags"><a href="/tag/graphics/">Graphics</a> · <a href="/tag/rendering/">Rendering</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">May 5, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/programming/raytracer-refactor/">Refactoring My Ray Tracer: From Broken to WebGPU Path Tracing</a></h2>
+            <p class="writing-item__tags"><a href="/tag/graphics/">Graphics</a> · <a href="/tag/rendering/">Rendering</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">Apr 24, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/programming/aos-agent-os/">AOS: An Agent Operating System</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/agents/">Agents</a></p>
         </div>
         <p class="writing-item__when">Apr 23, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/programming/2026/04/22/site-redesign.html">Refactoring My Personal Site</a></h2>
+            <p class="writing-item__tags"><a href="/tag/doodling/">Doodling</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">Apr 22, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/facial-keypoint-diffusion/">Facial Keypoints as a Generative Modeling Problem</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/ml-research/">ML research</a></p>
         </div>
         <p class="writing-item__when">Jan 5, 2026</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/3d_gaussian_splitting/">Paper Reading Notes (1): 3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/ml-research/">ML research</a> · <a href="/tag/rendering/">Rendering</a></p>
         </div>
         <p class="writing-item__when">Jan 15, 2024</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/programming/async/">Programming Async (1): Wrapping Functions with Callbacks as Promises</a></h2>
+            <p class="writing-item__tags"><a href="/tag/doodling/">Doodling</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">Jan 10, 2024</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
-            <h2 class="writing-item__title"><a href="/blog/cooking/banana_bun/">Making Bread (6): Banana Bun</a></h2>
-        </div>
-        <p class="writing-item__when">Jan 6, 2024</p>
-    </li>
-    <li class="writing-item">
-        <div class="writing-item__main">
-            <h2 class="writing-item__title"><a href="/blog/cooking/rye_bread/">Making Bread (5): Rye Bread</a></h2>
-        </div>
-        <p class="writing-item__when">Jan 5, 2024</p>
-    </li>
-    <li class="writing-item">
-        <div class="writing-item__main">
-            <h2 class="writing-item__title"><a href="/blog/cooking/toast_bread/">Making Bread (4): Easy Handmade Bread</a></h2>
-        </div>
-        <p class="writing-item__when">Jan 4, 2024</p>
-    </li>
-    <li class="writing-item">
-        <div class="writing-item__main">
-            <h2 class="writing-item__title"><a href="/blog/cooking/banana_bread/">Making Bread (3): Banana Bread</a></h2>
-        </div>
-        <p class="writing-item__when">Jan 3, 2024</p>
-    </li>
-    <li class="writing-item">
-        <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/dreamfusion/">Paper Reading Notes (2): DreamFusion: Text-to-3D using 2D Diffusion</a></h2>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/ml-research/">ML research</a></p>
         </div>
         <p class="writing-item__when">Jan 2, 2024</p>
-    </li>
-    <li class="writing-item">
-        <div class="writing-item__main">
-            <h2 class="writing-item__title"><a href="/blog/cooking/potato_bread/">Making Bread (2): Potato Bread</a></h2>
-        </div>
-        <p class="writing-item__when">Jan 2, 2024</p>
-    </li>
-    <li class="writing-item">
-        <div class="writing-item__main">
-            <h2 class="writing-item__title"><a href="/blog/cooking/basic_bread/">Making Bread (1): Basic Bread</a></h2>
-        </div>
-        <p class="writing-item__when">Jan 1, 2024</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/boost/2015/11/05/BoostGraph.html">Boost Graph Library - A Primer</a></h2>
+            <p class="writing-item__tags"><a href="/tag/doodling/">Doodling</a></p>
         </div>
         <p class="writing-item__when">Nov 5, 2015</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/image/processing/2014/02/26/ImageProcJS4.html">JavaScript Image Processing (4) - Histogram Equalization</a></h2>
+            <p class="writing-item__tags"><a href="/tag/graphics/">Graphics</a> · <a href="/tag/image-processing/">Image processing</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">Feb 26, 2014</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/image/processing/2014/02/24/ImageProcJS3.html">JavaScript Image Processing (3) - Brightness/Contrast Adjustment</a></h2>
+            <p class="writing-item__tags"><a href="/tag/graphics/">Graphics</a> · <a href="/tag/image-processing/">Image processing</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">Feb 24, 2014</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/image/processing/2014/01/05/ImageProcJS2.html">JavaScript Image Processing (2) - The Image Class</a></h2>
+            <p class="writing-item__tags"><a href="/tag/graphics/">Graphics</a> · <a href="/tag/image-processing/">Image processing</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">Jan 5, 2014</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/image/processing/2014/01/04/ImageProcJS1.html">JavaScript Image Processing (1) - Getting Started</a></h2>
+            <p class="writing-item__tags"><a href="/tag/graphics/">Graphics</a> · <a href="/tag/image-processing/">Image processing</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">Jan 4, 2014</p>
     </li>
     <li class="writing-item">
         <div class="writing-item__main">
-            <h2 class="writing-item__title"><a href="/test/2013/12/04/first.html">First</a></h2>
-        </div>
-        <p class="writing-item__when">Dec 4, 2013</p>
-    </li>
-    <li class="writing-item">
-        <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/test/2013/12/04/Migrating.html">Migrating to github.io</a></h2>
+            <p class="writing-item__tags"><a href="/tag/doodling/">Doodling</a> · <a href="/tag/web/">Web</a></p>
         </div>
         <p class="writing-item__when">Dec 4, 2013</p>
     </li>
@@ -332,11 +322,22 @@
 
 
     <div class="about-panel">
-        <p class="section-heading__eyebrow">Browse by tag</p>
+        <p class="section-heading__eyebrow">Browse by area</p>
         <ul class="tag-chips">
-            <li><a class="tag-chip" href="/tag/ai/">AI</a></li>
-            <li><a class="tag-chip" href="/tag/cooking/">Cooking</a></li>
-            <li><a class="tag-chip" href="/tag/programming/">Programming</a></li>
+            <li><a class="tag-chip" href="/tag/ai/">AI · 11</a></li>
+            <li><a class="tag-chip" href="/tag/graphics/">Graphics · 6</a></li>
+            <li><a class="tag-chip" href="/tag/doodling/">Doodling · 5</a></li>
+        </ul>
+        <p class="section-heading__eyebrow">Browse by topic</p>
+        <ul class="tag-chips">
+            <li><a class="tag-chip" href="/tag/web/">Web · 9</a></li>
+            <li><a class="tag-chip" href="/tag/home-lab/">Home lab · 5</a></li>
+            <li><a class="tag-chip" href="/tag/image-processing/">Image processing · 4</a></li>
+            <li><a class="tag-chip" href="/tag/local-inference/">Local inference · 4</a></li>
+            <li><a class="tag-chip" href="/tag/agents/">Agents · 3</a></li>
+            <li><a class="tag-chip" href="/tag/ml-research/">ML research · 3</a></li>
+            <li><a class="tag-chip" href="/tag/rendering/">Rendering · 3</a></li>
+            <li><a class="tag-chip" href="/tag/wukong-and-friends/">Wukong &amp; Friends · 2</a></li>
         </ul>
     </div>
 </section>

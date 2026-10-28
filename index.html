@@ -14,7 +14,7 @@
   // generated at build time). Any other cancellation (a navigation interrupting a running
   // transition) rejects promises nobody awaits; mark those handled on both sides.
   (function () {
-    var animated = ["/test/2013/12/04/first.html","/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/blog/cooking/basic_bread/","/blog/ai/dreamfusion/","/blog/cooking/potato_bread/","/blog/cooking/banana_bread/","/blog/cooking/toast_bread/","/blog/cooking/rye_bread/","/blog/cooking/banana_bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/about/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/cooking/","/tag/programming/","/writing/","/"];
+    var animated = ["/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/bread/basic-bread/","/blog/ai/dreamfusion/","/bread/potato-bread/","/bread/banana-bread/","/bread/toast-bread/","/bread/rye-bread/","/bread/banana-bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/about/","/bread/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/graphics/","/tag/doodling/","/tag/web/","/tag/home-lab/","/tag/image-processing/","/tag/local-inference/","/tag/agents/","/tag/ml-research/","/tag/rendering/","/tag/wukong-and-friends/","/writing/","/"];
     function handled(event) {
       var vt = event.viewTransition;
       if (!vt) return;
@@ -120,10 +120,20 @@
     <a class="site-nav__link" href="/projects/">Projects</a>
     <a class="site-nav__link" href="/gallery/">Photos</a>
     <a class="site-nav__link" href="/about/">About</a>
-   </nav><ul class="proto-rail__tags" aria-label="Browse by tag">
+   </nav><ul class="proto-rail__tags" aria-label="Browse by area">
     <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">11</span></a></li>
-    <li><a class="proto-rail__tag" href="/tag/cooking/">Cooking <span class="proto-rail__count">6</span></a></li>
-    <li><a class="proto-rail__tag" href="/tag/programming/">Programming <span class="proto-rail__count">17</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/graphics/">Graphics <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/doodling/">Doodling <span class="proto-rail__count">5</span></a></li>
+   </ul>
+   <ul class="proto-rail__tags proto-rail__tags--topics" aria-label="Browse by topic">
+    <li><a class="proto-rail__tag" href="/tag/web/">Web <span class="proto-rail__count">9</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/home-lab/">Home lab <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/image-processing/">Image processing <span class="proto-rail__count">4</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/local-inference/">Local inference <span class="proto-rail__count">4</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/agents/">Agents <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/ml-research/">ML research <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/rendering/">Rendering <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/wukong-and-friends/">Wukong &amp; Friends <span class="proto-rail__count">2</span></a></li>
    </ul><div class="proto-rail__theme">
      <label class="theme-toggle" for="theme-toggle">
        <span class="theme-toggle__label">Theme</span>
@@ -156,7 +166,7 @@
 
     <div class="section-heading">
         <p class="section-heading__eyebrow">Latest writing</p>
-        <p class="proto-subheading"><a href="/writing/">All 29 pieces</a></p>
+        <p class="proto-subheading"><a href="/writing/">All 22 pieces</a></p>
     </div>
     
 <ul class="writing-list">
@@ -164,6 +174,7 @@
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/quota-float/">I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See</a></h2>
             <p class="writing-item__brief">I kept stopping mid-task to check how much Codex and Claude quota I had left. Quota Float is a small macOS floating panel and menu-bar gauge that keeps those numbers on screen all the time, read through the signed-in CLIs without touching any credentials.</p>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/agents/">Agents</a></p>
         </div>
         <p class="writing-item__when">Oct 27, 2026</p>
     </li>
@@ -171,6 +182,7 @@
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/wukong-and-friends-update/">Wukong &amp; Friends, Updated: Nine Bilingual Books and a Download Button I Deleted</a></h2>
             <p class="writing-item__brief">Three days after introducing the bedtime story site: five books became nine, the books themselves went bilingual, every title ships four PDFs instead of two, the licence moved inside the files, and the download countdown is gone. What changed, and why.</p>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/wukong-and-friends/">Wukong &amp; Friends</a></p>
         </div>
         <p class="writing-item__when">Oct 23, 2026</p>
     </li>
@@ -178,6 +190,7 @@
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/qwen38-27b-arc-b70/">The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</a></h2>
             <p class="writing-item__brief">Qwen 3.8 27B is a clearly better model than the MoE I run today, and one 32 GB Arc Pro B70 will not hold it at a context length worth having. What &#39;too heavy&#39; actually decomposes into — weights, KV cache, drafter, and cold prefill — measured from 64K to 220K, the speculative-decoding break-even curve that grows from 43 tokens to 2,361, and why the port went back to a MoE.</p>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/local-inference/">Local inference</a> · <a href="/tag/home-lab/">Home lab</a></p>
         </div>
         <p class="writing-item__when">Oct 22, 2026</p>
     </li>
@@ -185,6 +198,7 @@
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/strata-b70-page-reclaim/">My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</a></h2>
             <p class="writing-item__brief">My Qwen 3.8 Flash Next on Strata, running on an Intel Arc Pro B70, fell from 42 tok/s to 26 tok/s with no config change. The cause was a pinned-memory mirror of MoE experts being allocated while Linux reclaimed page cache — pages the GPU reads at 55–85% speed while the CPU reads the same pages at full speed. What the measurements looked like, why my first three diagnoses were all wrong, and the 45-line patch that went upstream.</p>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/local-inference/">Local inference</a> · <a href="/tag/home-lab/">Home lab</a></p>
         </div>
         <p class="writing-item__when">Oct 22, 2026</p>
     </li>
@@ -192,6 +206,7 @@
         <div class="writing-item__main">
             <h2 class="writing-item__title"><a href="/blog/ai/wukong-and-friends/">Introducing Wukong &amp; Friends</a></h2>
             <p class="writing-item__brief">Free read-aloud picture books, built to make bedtime calmer for a four-year-old — and the unglamorous machinery behind them: keeping one character recognizable from book to book, signing every PDF, and publishing a private repository&#39;s build into a public subdirectory.</p>
+            <p class="writing-item__tags"><a href="/tag/ai/">AI</a> · <a href="/tag/wukong-and-friends/">Wukong &amp; Friends</a></p>
         </div>
         <p class="writing-item__when">Oct 20, 2026</p>
     </li>
@@ -207,6 +222,7 @@
         <li><a class="button-link" href="/blog/ai/jarvis-architecture/">Jarvis Voice Assistant</a></li>
         <li><a class="button-link" href="/blog/ai/facial-keypoint-diffusion/">Generative Facial Keypoints</a></li>
         <li><a class="button-link" href="/wukong-and-friends/">Wukong &amp; Friends</a></li>
+        <li><a class="button-link" href="/bread/">Bread</a></li>
         <li><a class="button-link" href="/projects/raytracer/index.html">Ray tracer</a></li>
         <li><a class="button-link" href="/projects/imageprocjs/index.html">ImageProcJS</a></li>
         <li><a class="button-link" href="/projects/fractal/index.html">Fractal explorer</a></li>
