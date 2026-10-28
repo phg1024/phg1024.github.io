@@ -490,6 +490,12 @@ html:not([data-theme="win31"]) .proto .about-panel:hover {
   margin-bottom: 0.7rem;
 }
 
+/* Post titles are left-aligned in every theme, so the date under them is too; centred, it
+   floated under the middle of a left-aligned title. */
+.proto .blog-post__date {
+  text-align: left;
+}
+
 /* Wide tables in posts and on the privacy page pushed the whole page sideways on phones
    (up to 553px wide at 390px). Below 768px they scroll inside their own box instead. */
 @media (max-width: 767px) {

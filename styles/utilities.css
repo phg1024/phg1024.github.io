@@ -346,6 +346,11 @@
   border-radius: 0;
 }
 
+/* The caption title inherited a near-white heading colour: white on this light panel. */
+[data-theme="industrial"] .carousel__caption h5 {
+  color: #202831;
+}
+
 /* Cyberpunk theme panel wrapper */
 [data-theme="cyberpunk"] .gallery-panel-wrapper {
   background: color-mix(in srgb, var(--surface) 25%, transparent);
@@ -378,6 +383,11 @@
   backdrop-filter: none;
   border-radius: 0.55rem;
   font-family: var(--serif);
+}
+
+/* The caption title inherited a pale grey-blue (about 1.8:1 on this panel). */
+[data-theme="minimalist"] .carousel__caption h5 {
+  color: #201b17;
 }
 
 [data-theme="win31"] .gallery-tabs__tab {
