@@ -1231,12 +1231,13 @@
     // The untyped rest of the title is in the line already, only hidden, so the heading keeps
     // its final size and nothing below it moves. Screen readers get the whole title from
     // aria-label while it types. Not with reduced motion, and only on a page load.
-    const typeMatrixTitle = function () {
-        if (getTheme() !== 'matrix' || media.matches) return;
+    const typeMatrixTitle = function (onDone) {
+        var done = onDone || function () {};
+        if (getTheme() !== 'matrix' || media.matches) return done();
         var title = document.querySelector('.section-heading__title, .blog-content h1');
-        if (!title || title.children.length) return;
+        if (!title || title.children.length) return done();
         var text = title.textContent;
-        if (!text.trim()) return;
+        if (!text.trim()) return done();
         var typed = document.createElement('span');
         var cursor = document.createElement('span');
         var rest = document.createElement('span');
@@ -1264,8 +1265,52 @@
             title.textContent = text;
             title.removeAttribute('aria-label');
             title.classList.remove('is-typing');
+            done();
         };
         window.requestAnimationFrame(step);
+    };
+
+    // ── Matrix: a post prints block by block ──
+    // After the title, each block of the post (paragraph, heading, list, code, table, figure,
+    // the footer) appears whole, one after another, as it comes into view: those on screen
+    // at load in order, the rest as you scroll to them. Opacity only, so nothing moves and
+    // screen readers still have the text. Not with reduced motion.
+    const printMatrixBlocks = function () {
+        var inner = document.querySelector('.blog-content__inner');
+        if (getTheme() !== 'matrix' || media.matches || !inner || !('IntersectionObserver' in window)) return null;
+        var blocks = Array.prototype.filter.call(inner.children, function (block) {
+            return !block.matches('h1, .blog-post__date, script, style');
+        });
+        if (blocks.length === 0) return null;
+        blocks.forEach(function (block) { block.classList.add('matrix-pending'); });
+        var queue = [];
+        var running = false;
+        var started = false;
+        var next = function () {
+            if (!started) return;
+            var block = queue.shift();
+            if (!block) { running = false; return; }
+            running = true;
+            block.classList.remove('matrix-pending');
+            block.classList.add('matrix-printed');
+            window.setTimeout(next, 110);
+        };
+        var observer = new IntersectionObserver(function (entries) {
+            entries
+                .filter(function (entry) { return entry.isIntersecting; })
+                .map(function (entry) { return entry.target; })
+                .sort(function (a, b) { return blocks.indexOf(a) - blocks.indexOf(b); })
+                .forEach(function (block) {
+                    observer.unobserve(block);
+                    queue.push(block);
+                });
+            if (!running) next();
+        }, { rootMargin: '0px 0px -8% 0px' });
+        blocks.forEach(function (block) { observer.observe(block); });
+        return function start() {
+            started = true;
+            if (!running) next();
+        };
     };
 
     // ── Init ──
@@ -1274,7 +1319,8 @@
         resizeOverlay();
         resizeBackdrop();
         setTheme(getTheme());
-        typeMatrixTitle();
+        var startPrinting = printMatrixBlocks();
+        typeMatrixTitle(function () { if (startPrinting) startPrinting(); });
         applyPointerState();
         applyHeaderScrollState();
 

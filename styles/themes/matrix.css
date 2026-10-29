@@ -27,11 +27,16 @@
      --serif: "IBM Plex Mono", "Courier New", monospace;
 }
 
+/* Scanlines and the vignette are background layers: they show around the page but never
+   cross the panels or the text. */
 [data-theme="matrix"] body {
   background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45)),
     radial-gradient(circle at 18% 12%, rgba(124, 255, 157, 0.1), transparent 22%),
     radial-gradient(circle at 82% 10%, rgba(50, 220, 100, 0.08), transparent 18%),
     linear-gradient(180deg, #030904 0%, #020703 52%, #010401 100%);
+  background-attachment: fixed;
 }
 
 [data-theme="matrix"] .theme-backdrop {
@@ -320,7 +325,7 @@
    Titles in bright phosphor green with a glow, body text with a faint one; a "~/" before
    the name and "> " before labels; a block cursor after the page title (typed out on load
    by main.js, then blinking); pictures in green until hovered; scanlines and a vignette
-   like an old monitor. */
+   like an old monitor, behind the page (see body above). */
 [data-theme="matrix"] .section-heading__title,
 [data-theme="matrix"] .blog-content h1 {
   color: #7cff9d;
@@ -384,20 +389,29 @@
 [data-theme="matrix"] .blog-content img:hover {
   filter: none;
 }
-[data-theme="matrix"] body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 40;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45)),
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
-}
 /* Form controls don't inherit the page font by default. */
 [data-theme="matrix"] button,
 [data-theme="matrix"] select,
 [data-theme="matrix"] input,
 [data-theme="matrix"] textarea {
   font-family: inherit;
+}
+
+/* A post prints block by block (main.js): a block waits unseen, then comes up whole with a
+   brief bright flash that settles to green. */
+[data-theme="matrix"] .matrix-pending {
+  opacity: 0;
+}
+@keyframes matrix-print {
+  0%   { opacity: 0; filter: brightness(1.9); }
+  35%  { opacity: 1; filter: brightness(1.5); }
+  100% { opacity: 1; filter: none; }
+}
+[data-theme="matrix"] .matrix-printed {
+  animation: matrix-print 0.32s ease-out both;
+}
+@media print {
+  [data-theme="matrix"] .matrix-pending {
+    opacity: 1;
+  }
 }
