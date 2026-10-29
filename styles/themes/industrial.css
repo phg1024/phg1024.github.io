@@ -9,20 +9,22 @@
 	--text: #202831;
 	--muted: #566474;
 	--soft: #778391;
-	--accent: #6f879b;
+	--accent: #c2410c;
 	--accent-secondary: #f7fbff;
 	--accent-tertiary: #8e9ba8;
 	--accent-glow: rgba(147, 167, 184, 0.18);
 	--accent-glow-pink: rgba(255, 255, 255, 0.12);
 	--accent-strong: #182028;
-	--shadow: 0 24px 70px rgba(80, 92, 104, 0.18);
+	--shadow: 0 10px 28px rgba(80, 92, 104, 0.14);
 	--shadow-cyber: 0 0 0 1px rgba(97, 113, 127, 0.12), 0 0 18px rgba(147, 167, 184, 0.08);
-	--radius-lg: 0.85rem;
-	--radius-md: 0.55rem;
-	--button-radius: 0.4rem;
-	--button-radius-tight: 0.28rem;
-	--sans: "Arial", "Helvetica Neue", sans-serif;
-	--serif: "Arial Black", "Arial", "Helvetica Neue", sans-serif;
+	--radius-lg: 0.2rem;
+	--radius-md: 0.15rem;
+	--button-radius: 0.15rem;
+	--button-radius-tight: 0.12rem;
+	/* One type family, Barlow (drawn from road signs and equipment plates): the regular
+	   width for text and labels, the condensed width in capitals for headings. */
+	--sans: "Barlow", "Arial", sans-serif;
+	--serif: "Barlow Condensed", "Arial Narrow", "Arial", sans-serif;
 }
 
 [data-theme="industrial"] body {
@@ -35,7 +37,7 @@
 }
 
 [data-theme="industrial"] .theme-backdrop {
-	opacity: 0.45;
+	opacity: 0.85;
 }
 
 [data-theme="industrial"] .site-header__inner {
@@ -376,4 +378,91 @@
 [data-theme="industrial"] .project-field__val {
   color: #6f879b;
   font-family: "SF Mono", "Menlo", monospace;
+}
+
+/* Rail as frosted glass over the circuit board (wide screens): a light translucent panel
+   that blurs the traces behind it, so they show through without competing with the links. */
+@media (min-width: 960px) {
+	/* The panel reaches 1rem past the rail on each side, so the text keeps its width and
+	   position (with the padding inside the rail, the name wrapped onto two lines). */
+	[data-theme="industrial"] .proto .site-header__inner {
+		margin: 0 -1rem;
+		padding: 1.1rem 1rem 1.2rem;
+		background: rgba(236, 240, 244, 0.52);
+		-webkit-backdrop-filter: blur(7px) saturate(1.15);
+		backdrop-filter: blur(7px) saturate(1.15);
+		border: 1px solid rgba(97, 113, 127, 0.2);
+		border-radius: var(--radius-lg);
+		box-shadow: 0 10px 30px rgba(80, 92, 104, 0.1);
+	}
+}
+
+/* ── Signage and the one signal colour ──
+   Headings in condensed capitals (the site's default tight tracking is for a wide face and
+   would crush this one). Safety orange (--accent) is the only colour: links, the current
+   page in the rail, "All … →" and the current on the circuit board. */
+[data-theme="industrial"] .hero__title,
+[data-theme="industrial"] .section-heading__title,
+[data-theme="industrial"] .journal-section__title,
+[data-theme="industrial"] .blog-content h1,
+[data-theme="industrial"] .blog-content h2,
+[data-theme="industrial"] .blog-content h3,
+[data-theme="industrial"] .site-brand__name {
+	font-weight: 700;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+}
+/* Three levels and no more: the condensed capitals above for the name and page / post
+   headings; item titles (writing rows, cards, related posts, photo captions) in the text
+   face at 600, like the writing list; and every small label in tracked capitals, like the
+   eyebrows. */
+[data-theme="industrial"] .card-title,
+[data-theme="industrial"] .carousel__caption h5 {
+	font-family: var(--sans);
+	font-weight: 600;
+	letter-spacing: normal;
+	text-transform: none;
+}
+[data-theme="industrial"] .post-meta .post-box .post-meta__label,
+[data-theme="industrial"] .post-pager__label {
+	font-size: 0.74rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+[data-theme="industrial"] .section-heading__title,
+[data-theme="industrial"] .blog-content h1 {
+	line-height: 0.95;
+}
+@media (min-width: 960px) {
+	[data-theme="industrial"] .proto .site-brand__name {
+		font-size: 1.9rem;
+		line-height: 1;
+	}
+}
+[data-theme="industrial"] .blog-content p a,
+[data-theme="industrial"] .blog-content li a {
+	text-decoration-color: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+[data-theme="industrial"] .blog-content p a:hover,
+[data-theme="industrial"] .blog-content li a:hover,
+[data-theme="industrial"] .writing-item__title a:hover,
+[data-theme="industrial"] .card-title a:hover,
+[data-theme="industrial"] .post-related a:hover,
+[data-theme="industrial"] .post-pager a:hover,
+[data-theme="industrial"] .site-nav__link:hover {
+	color: var(--accent);
+	text-decoration-color: var(--accent);
+}
+[data-theme="industrial"] .home-section-head__more {
+	color: var(--accent);
+	font-weight: 600;
+}
+/* Form controls don't inherit the page font by default (the theme picker, the gallery tabs). */
+[data-theme="industrial"] button,
+[data-theme="industrial"] select,
+[data-theme="industrial"] input,
+[data-theme="industrial"] textarea {
+	font-family: inherit;
 }

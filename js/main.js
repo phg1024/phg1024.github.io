@@ -42,6 +42,10 @@
     let industrialPaths = [];
     let industrialSegments = [];
     let industrialPulses = [];
+    let industrialChips = [];
+    let industrialRipples = [];
+    let industrialPointerActive = false;
+    let lastAmbientPulse = 0;
 
     // ── Idle detection ──
 
@@ -66,7 +70,9 @@
                 cancelAnimationFrame(overlayFrame);
                 overlayFrame = null;
             }
-            if (backdropFrame) {
+            // The circuit board winds down by itself (drawIndustrialBackdrop stops once its
+            // pulses have run out), so a pulse is never frozen halfway along a trace.
+            if (backdropFrame && getTheme() !== 'industrial') {
                 cancelAnimationFrame(backdropFrame);
                 backdropFrame = null;
             }
@@ -97,7 +103,7 @@
             return { core: ['64, 255, 120', '200, 255, 210'], sparks: ['64, 255, 120', '210, 255, 210'] };
         }
         if (theme === 'industrial') {
-            return { core: ['156, 206, 250', '234, 246, 255'], sparks: ['156, 206, 250', '110, 182, 242'] };
+            return { core: ['250, 146, 60', '255, 236, 214'], sparks: ['250, 146, 60', '214, 82, 16'] };
         }
         if (theme === 'win31') {
             return { core: ['255, 255, 255', '0, 0, 128'], sparks: ['255, 255, 255', '0, 0, 0'] };
@@ -281,7 +287,22 @@
             industrialPaths = [];
             industrialSegments = [];
             industrialPulses = [];
+            industrialChips = [];
             return;
+        }
+        // Chips go only in the empty margins beside the page (.site-shell). At fixed fractions
+        // of the window they landed under the rail, a dark block behind the navigation.
+        var shell = document.querySelector('.site-shell');
+        var shellBox = shell ? shell.getBoundingClientRect() : { left: 0, right: backdropWidth };
+        var leftRoom = shellBox.left;
+        var rightRoom = backdropWidth - shellBox.right;
+        industrialChips = [];
+        if (leftRoom >= 160) {
+            industrialChips.push({ x: (leftRoom / 2) - 55, y: backdropHeight * 0.62, w: 110, h: 64 });
+        }
+        if (rightRoom >= 180) {
+            industrialChips.push({ x: shellBox.right + (rightRoom / 2) - 68, y: backdropHeight * 0.24, w: 136, h: 72 });
+            industrialChips.push({ x: shellBox.right + (rightRoom / 2) - 60, y: backdropHeight * 0.66, w: 120, h: 68 });
         }
         var grid = Math.max(42, Math.round(Math.min(backdropWidth, backdropHeight) / 18));
         var columns = Math.max(8, Math.floor(backdropWidth / grid));
@@ -316,7 +337,11 @@
                 segmentData.push({ start: start, end: end, length: length, accumulated: totalLength });
                 totalLength += length;
             }
-            return { id: pathIndex, points: points, segmentData: segmentData, totalLength: totalLength };
+            var pointDistances = [0].concat(segmentData.map(function (segment) { return segment.accumulated + segment.length; }));
+            return {
+                id: pathIndex, points: points, segmentData: segmentData, totalLength: totalLength,
+                pointDistances: pointDistances, flash: points.map(function () { return 0; })
+            };
         });
 
         industrialSegments = [];
@@ -330,6 +355,7 @@
             });
         });
         industrialPulses = [];
+        industrialRipples = [];
     };
 
     const spawnBurst = function (x, y, strength) {
@@ -355,6 +381,19 @@
         }
     };
 
+    // Frames for a pulse starting at `origin` to carry its head to both ends of the trace and
+    // its tail in after it, plus a short fade.
+    const pulseLifetime = function (path, origin, speed, tail) {
+        var farthest = Math.max(origin, path.totalLength - origin);
+        return Math.ceil((farthest + tail) / speed) + 12;
+    };
+
+    // The pointer sits over the article panel or the footer bar: the traces there are covered,
+    // so a pulse would run unseen and then appear at the panel's edge out of nowhere.
+    const overCoveredArea = function (target) {
+        return !!(target && target.closest && target.closest('.site-main, .site-footer'));
+    };
+
     const triggerIndustrialCircuit = function (x, y, strength) {
         if (getTheme() !== 'industrial' || industrialSegments.length === 0) return;
         var bestHit = null;
@@ -364,25 +403,86 @@
                 bestHit = { distance: hit.distance, segment: segment, localT: hit.t, x: hit.x, y: hit.y };
             }
         });
-        if (!bestHit || bestHit.distance > 24) return;
+        if (!bestHit || bestHit.distance > 40) return;
         var path = industrialPaths.find(function (entry) { return entry.id === bestHit.segment.pathId; });
         if (!path) return;
-        var hasNearbyActivePulse = industrialPulses.some(function (pulse) {
-            var dx = pulse.glowX - bestHit.x;
-            var dy = pulse.glowY - bestHit.y;
-            return pulse.life > 0 && Math.hypot(dx, dy) <= 15;
-        });
-        if (hasNearbyActivePulse) return;
+        // One pulse per trace per sweep: running the pointer along a trace used to start a new
+        // pulse every 15px (the check compared against where earlier pulses had started).
+        var now = performance.now();
+        if (path.lastHoverPulse && now - path.lastHoverPulse < 450) return;
+        path.lastHoverPulse = now;
+        var origin = bestHit.segment.accumulated + (bestHit.segment.length * bestHit.localT);
+        var speed = 4.5 + (strength * 4);
+        var life = pulseLifetime(path, origin, speed, 64);
         industrialPulses.push({
-            pathId: path.id,
-            originDistance: bestHit.segment.accumulated + (bestHit.segment.length * bestHit.localT),
-            progress: 0, speed: 2.6 + (strength * 3.4),
-            life: 132, maxLife: 132,
-            glowX: bestHit.x, glowY: bestHit.y
+            pathId: path.id, originDistance: origin,
+            progress: 0, speed: speed, life: life, maxLife: life,
+            glowX: bestHit.x, glowY: bestHit.y,
+            energy: 1, leak: 0.006, dropChance: 0.02
         });
         if (industrialPulses.length > 12) {
             industrialPulses = industrialPulses.slice(industrialPulses.length - 12);
         }
+    };
+
+    // A click sends a ring out from the pointer and strong pulses along the (up to) three
+    // nearest traces, each starting from the point on it closest to the click.
+    const burstIndustrialCircuit = function (x, y) {
+        if (getTheme() !== 'industrial' || industrialSegments.length === 0) return;
+        industrialRipples.push({ x: x, y: y, life: 40, maxLife: 40 });
+        var nearestPerPath = {};
+        industrialSegments.forEach(function (segment) {
+            var hit = distanceToSegment(x, y, segment.start.x, segment.start.y, segment.end.x, segment.end.y);
+            var best = nearestPerPath[segment.pathId];
+            if (!best || hit.distance < best.distance) {
+                nearestPerPath[segment.pathId] = { distance: hit.distance, segment: segment, localT: hit.t, x: hit.x, y: hit.y };
+            }
+        });
+        Object.keys(nearestPerPath)
+            .map(function (key) { return nearestPerPath[key]; })
+            .filter(function (hit) { return hit.distance < 220; })
+            .sort(function (a, b) { return a.distance - b.distance; })
+            .slice(0, 3)
+            .forEach(function (hit) {
+                var path = industrialPaths.find(function (entry) { return entry.id === hit.segment.pathId; });
+                if (!path) return;
+                var origin = hit.segment.accumulated + (hit.segment.length * hit.localT);
+                var life = pulseLifetime(path, origin, 9, 90);
+                industrialPulses.push({
+                    pathId: path.id, originDistance: origin,
+                    progress: 0, speed: 9, life: life, maxLife: life,
+                    glowX: hit.x, glowY: hit.y, strong: true,
+                    energy: 1, leak: 0.003, dropChance: 0.01
+                });
+            });
+        if (industrialPulses.length > 14) {
+            industrialPulses = industrialPulses.slice(industrialPulses.length - 14);
+        }
+    };
+
+    // A pulse that has run out of energy goes out with a small spark at each head.
+    const fizzleIndustrialPulse = function (path, pulse) {
+        [pulse.originDistance + pulse.progress, pulse.ambient ? null : pulse.originDistance - pulse.progress]
+            .forEach(function (distance) {
+                if (distance === null || distance < 0 || distance > path.totalLength) return;
+                var point = pointAlongPath(path, distance);
+                industrialRipples.push({ x: point.x, y: point.y, life: 14, maxLife: 14, spark: true });
+            });
+    };
+
+    // Every few seconds while someone is around, a faint pulse runs the length of a random
+    // trace, so the board reads as live before it is touched.
+    const spawnAmbientPulse = function (timestamp) {
+        if (isIdle || industrialPaths.length === 0 || timestamp - lastAmbientPulse < 2600) return;
+        lastAmbientPulse = timestamp;
+        var path = industrialPaths[Math.floor(Math.random() * industrialPaths.length)];
+        var life = pulseLifetime(path, 0, 4, 64);
+        industrialPulses.push({
+            pathId: path.id, originDistance: 0, progress: 0, speed: 4,
+            life: life, maxLife: life,
+            glowX: path.points[0].x, glowY: path.points[0].y, ambient: true,
+            energy: 1, leak: 0.008, dropChance: 0.03
+        });
     };
 
     const drawMatrixBackdrop = function (timestamp) {
@@ -445,18 +545,16 @@
         backdropFrame = window.requestAnimationFrame(drawMatrixBackdrop);
     };
 
-    const drawIndustrialBackdrop = function (timestamp) {
-        if (!backdropContext || media.matches || getTheme() !== 'industrial') {
-            if (backdropContext) backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
-            backdropFrame = null;
-            return;
-        }
-        if (timestamp && (timestamp - lastBackdropTimestamp) < (1000 / MAX_BACKDROP_FPS)) {
-            backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
-            return;
-        }
-        lastBackdropTimestamp = timestamp || 0;
-        backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
+    // The industrial backdrop is a circuit board: traces with vias at the bends and pads at
+    // the ends, chips in the side margins, and blue pulses. Traces near the pointer light up,
+    // moving across one sends a pulse along it, a click sends a ring and pulses down the
+    // nearest three, and vias flash as a pulse passes. With reduced motion it is drawn once,
+    // still.
+    // Safety orange, the theme's one signal colour (--accent).
+    const PULSE_RGB = '214, 82, 16';
+    const GLOW_RGB = '250, 146, 60';
+
+    const drawIndustrialBoard = function () {
         backdropContext.lineCap = 'round';
         backdropContext.lineJoin = 'round';
         industrialPaths.forEach(function (path) {
@@ -465,79 +563,235 @@
                 if (pi === 0) backdropContext.moveTo(point.x, point.y);
                 else backdropContext.lineTo(point.x, point.y);
             });
-            backdropContext.strokeStyle = 'rgba(134, 152, 168, 0.18)';
-            backdropContext.lineWidth = 10;
+            backdropContext.strokeStyle = 'rgba(120, 138, 156, 0.22)';
+            backdropContext.lineWidth = 9;
             backdropContext.stroke();
-            backdropContext.strokeStyle = 'rgba(205, 218, 229, 0.35)';
-            backdropContext.lineWidth = 3;
-            backdropContext.shadowBlur = 0;
+            backdropContext.strokeStyle = 'rgba(86, 104, 122, 0.62)';
+            backdropContext.lineWidth = 2.4;
             backdropContext.stroke();
-            path.points.forEach(function (point) {
-                backdropContext.fillStyle = 'rgba(216, 227, 236, 0.55)';
+        });
+        // Proximity: the stretch of each trace within reach of the pointer brightens.
+        if (industrialPointerActive) {
+            var reach = 110;
+            industrialSegments.forEach(function (segment) {
+                var hit = distanceToSegment(currentX, currentY, segment.start.x, segment.start.y, segment.end.x, segment.end.y);
+                if (hit.distance > reach) return;
+                var strength = 1 - (hit.distance / reach);
+                var half = reach * 0.9;
+                var along = Math.hypot(segment.end.x - segment.start.x, segment.end.y - segment.start.y) || 1;
+                var t0 = Math.max(0, hit.t - (half / along));
+                var t1 = Math.min(1, hit.t + (half / along));
+                var fromX = segment.start.x + ((segment.end.x - segment.start.x) * t0);
+                var fromY = segment.start.y + ((segment.end.y - segment.start.y) * t0);
+                var toX = segment.start.x + ((segment.end.x - segment.start.x) * t1);
+                var toY = segment.start.y + ((segment.end.y - segment.start.y) * t1);
+                var gradient = backdropContext.createLinearGradient(fromX, fromY, toX, toY);
+                var mid = (hit.t - t0) / Math.max(0.0001, t1 - t0);
+                gradient.addColorStop(0, 'rgba(' + GLOW_RGB + ', 0)');
+                gradient.addColorStop(Math.min(1, Math.max(0, mid)), 'rgba(' + PULSE_RGB + ', ' + (0.75 * strength).toFixed(3) + ')');
+                gradient.addColorStop(1, 'rgba(' + GLOW_RGB + ', 0)');
+                backdropContext.strokeStyle = gradient;
+                backdropContext.lineWidth = 3.2;
                 backdropContext.beginPath();
-                backdropContext.arc(point.x, point.y, 3.2, 0, Math.PI * 2);
-                backdropContext.fill();
+                backdropContext.moveTo(fromX, fromY);
+                backdropContext.lineTo(toX, toY);
+                backdropContext.stroke();
+            });
+        }
+        // Vias at the bends, square pads at the two ends; a via that a pulse just passed
+        // glows and fades.
+        industrialPaths.forEach(function (path) {
+            path.points.forEach(function (point, pi) {
+                var flash = path.flash[pi];
+                var isEnd = pi === 0 || pi === path.points.length - 1;
+                if (flash > 0.02) {
+                    backdropContext.fillStyle = 'rgba(' + GLOW_RGB + ', ' + (0.45 * flash).toFixed(3) + ')';
+                    backdropContext.beginPath();
+                    backdropContext.arc(point.x, point.y, 7 + (flash * 7), 0, Math.PI * 2);
+                    backdropContext.fill();
+                    path.flash[pi] = flash * 0.9;
+                }
+                var tone = flash > 0.02 ? PULSE_RGB : '86, 104, 122';
+                if (isEnd) {
+                    backdropContext.fillStyle = 'rgba(' + tone + ', 0.7)';
+                    backdropContext.fillRect(point.x - 5, point.y - 5, 10, 10);
+                    backdropContext.fillStyle = 'rgba(214, 222, 230, 0.9)';
+                    backdropContext.fillRect(point.x - 2, point.y - 2, 4, 4);
+                } else {
+                    backdropContext.strokeStyle = 'rgba(' + tone + ', 0.75)';
+                    backdropContext.lineWidth = 2;
+                    backdropContext.beginPath();
+                    backdropContext.arc(point.x, point.y, 4.2, 0, Math.PI * 2);
+                    backdropContext.stroke();
+                    backdropContext.fillStyle = 'rgba(214, 222, 230, 0.95)';
+                    backdropContext.beginPath();
+                    backdropContext.arc(point.x, point.y, 1.8, 0, Math.PI * 2);
+                    backdropContext.fill();
+                }
             });
         });
-        backdropContext.fillStyle = 'rgba(26, 32, 38, 0.96)';
-        [
-            { x: backdropWidth * 0.15, y: backdropHeight * 0.18, w: 110, h: 64 },
-            { x: backdropWidth * 0.58, y: backdropHeight * 0.28, w: 136, h: 72 },
-            { x: backdropWidth * 0.32, y: backdropHeight * 0.66, w: 120, h: 68 }
-        ].forEach(function (chip) {
+        industrialChips.forEach(function (chip, index) {
+            backdropContext.fillStyle = 'rgba(38, 46, 56, 0.92)';
             backdropContext.fillRect(chip.x, chip.y, chip.w, chip.h);
-            backdropContext.strokeStyle = 'rgba(190, 204, 216, 0.24)';
+            backdropContext.strokeStyle = 'rgba(150, 166, 182, 0.5)';
             backdropContext.lineWidth = 1;
             backdropContext.strokeRect(chip.x + 0.5, chip.y + 0.5, chip.w - 1, chip.h - 1);
-            for (var pin = 0; pin < 7; pin += 1) {
+            backdropContext.fillStyle = 'rgba(160, 174, 188, 0.75)';
+            for (var pin = 0; pin * 14 + 10 < chip.h - 4; pin += 1) {
                 var pinOffset = 10 + (pin * 14);
-                backdropContext.fillStyle = 'rgba(204, 216, 225, 0.42)';
                 backdropContext.fillRect(chip.x - 7, chip.y + pinOffset, 7, 2);
                 backdropContext.fillRect(chip.x + chip.w, chip.y + pinOffset, 7, 2);
             }
+            backdropContext.beginPath();
+            backdropContext.arc(chip.x + 9, chip.y + 9, 2.5, 0, Math.PI * 2);
+            backdropContext.fill();
+            backdropContext.font = '10px "Courier New", monospace';
+            backdropContext.fillText('U' + (index + 1), chip.x + chip.w - 22, chip.y + chip.h - 9);
         });
+    };
+
+    const drawIndustrialBackdrop = function (timestamp) {
+        if (!backdropContext || getTheme() !== 'industrial') {
+            if (backdropContext) backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
+            backdropFrame = null;
+            return;
+        }
+        if (media.matches) {
+            backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
+            drawIndustrialBoard();
+            backdropFrame = null;
+            return;
+        }
+        if (timestamp && (timestamp - lastBackdropTimestamp) < (1000 / MAX_BACKDROP_FPS)) {
+            backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
+            return;
+        }
+        lastBackdropTimestamp = timestamp || 0;
+        spawnAmbientPulse(timestamp || 0);
+        backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
+        drawIndustrialBoard();
+
+        industrialRipples = industrialRipples.filter(function (ripple) {
+            ripple.life -= 1;
+            var progress = 1 - (ripple.life / ripple.maxLife);
+            if (ripple.spark) {
+                backdropContext.strokeStyle = 'rgba(' + GLOW_RGB + ', ' + (0.8 * (1 - progress)).toFixed(3) + ')';
+                backdropContext.lineWidth = 1;
+                for (var ray = 0; ray < 4; ray += 1) {
+                    var angle = Math.random() * Math.PI * 2;
+                    var reach = 3 + (progress * 9) + (Math.random() * 4);
+                    backdropContext.beginPath();
+                    backdropContext.moveTo(ripple.x, ripple.y);
+                    backdropContext.lineTo(ripple.x + (Math.cos(angle) * reach), ripple.y + (Math.sin(angle) * reach));
+                    backdropContext.stroke();
+                }
+                return ripple.life > 0;
+            }
+            backdropContext.strokeStyle = 'rgba(' + PULSE_RGB + ', ' + (0.6 * (1 - progress)).toFixed(3) + ')';
+            backdropContext.lineWidth = 2;
+            backdropContext.beginPath();
+            backdropContext.arc(ripple.x, ripple.y, 8 + (progress * 90), 0, Math.PI * 2);
+            backdropContext.stroke();
+            return ripple.life > 0;
+        });
+
         industrialPulses = industrialPulses.filter(function (pulse) {
             var path = industrialPaths.find(function (entry) { return entry.id === pulse.pathId; });
             if (!path) return false;
+            var previous = pulse.progress;
             pulse.progress += pulse.speed;
             pulse.life -= 1;
-            var alpha = Math.max(0, pulse.life / pulse.maxLife);
+            // The current leaks as it travels, and now and then loses a chunk at once, so some
+            // pulses reach the pads and some die out on the way (strong ones least often).
+            pulse.energy *= 1 - (pulse.leak * (0.5 + Math.random()));
+            if (Math.random() < pulse.dropChance) pulse.energy *= 0.45 + (Math.random() * 0.35);
+            if (pulse.energy < 0.12) {
+                fizzleIndustrialPulse(path, pulse);
+                return false;
+            }
+            var alpha = Math.max(0, Math.min(1, pulse.life / 12)) * Math.min(1, pulse.energy * 1.25);
+            var weight = pulse.ambient ? 0.45 : 1;
             var headDistanceA = pulse.originDistance + pulse.progress;
-            var tailDistanceA = Math.max(pulse.originDistance, headDistanceA - 58);
+            var tailDistanceA = Math.max(pulse.originDistance, headDistanceA - (pulse.strong ? 90 : 64));
             var headDistanceB = pulse.originDistance - pulse.progress;
-            var tailDistanceB = Math.min(pulse.originDistance, headDistanceB + 58);
-            backdropContext.strokeStyle = 'rgba(232, 246, 255, ' + (alpha * 0.98).toFixed(3) + ')';
-            backdropContext.lineWidth = 3.2;
-            backdropContext.shadowBlur = 18;
-            backdropContext.shadowColor = 'rgba(132, 196, 248, ' + (alpha * 0.92).toFixed(3) + ')';
-            var drawPulseSegment = function (fromDistance, toDistance) {
+            var tailDistanceB = Math.min(pulse.originDistance, headDistanceB + (pulse.strong ? 90 : 64));
+            // Light the vias the heads crossed this frame.
+            path.pointDistances.forEach(function (distance, pi) {
+                var crossedA = distance > pulse.originDistance + previous && distance <= headDistanceA;
+                var crossedB = !pulse.ambient && distance < pulse.originDistance - previous && distance >= headDistanceB;
+                if (crossedA || crossedB) path.flash[pi] = Math.max(path.flash[pi], weight * pulse.energy);
+            });
+            // Current crackles: every frame the inner points of the pulse are knocked a little
+            // off the trace (more toward the head), its brightness flickers, and a few short
+            // sparks jump off the head.
+            var flicker = 0.78 + (Math.random() * 0.22);
+            var shake = (pulse.strong ? 2.6 : 1.8) * (pulse.ambient ? 0.6 : 1) * (0.4 + (0.6 * pulse.energy));
+            var drawPulseSegment = function (fromDistance, toDistance, headDistance) {
                 var clampedStart = Math.max(0, Math.min(path.totalLength, fromDistance));
                 var clampedEnd = Math.max(0, Math.min(path.totalLength, toDistance));
                 if (Math.abs(clampedEnd - clampedStart) < 2) return;
-                var segmentCount = Math.max(2, Math.ceil(Math.abs(clampedEnd - clampedStart) / 18));
+                var segmentCount = Math.max(3, Math.ceil(Math.abs(clampedEnd - clampedStart) / 7));
+                var head = null;
                 backdropContext.beginPath();
                 for (var step = 0; step <= segmentCount; step += 1) {
-                    var ratio = step / segmentCount;
-                    var distance = clampedStart + ((clampedEnd - clampedStart) * ratio);
+                    var distance = clampedStart + ((clampedEnd - clampedStart) * (step / segmentCount));
                     var point = pointAlongPath(path, distance);
-                    var jitter = (Math.sin((step * 1.7) + (timestamp || 0) * 0.03) * 1.6) * alpha;
-                    if (step === 0) backdropContext.moveTo(point.x + jitter, point.y - jitter);
-                    else backdropContext.lineTo(point.x + jitter, point.y - jitter);
+                    var nearHead = 1 - Math.min(1, Math.abs(headDistance - distance) / 70);
+                    var amount = (step === 0 || step === segmentCount) ? 0 : shake * (0.35 + nearHead);
+                    var x = point.x + ((Math.random() - 0.5) * 2 * amount);
+                    var y = point.y + ((Math.random() - 0.5) * 2 * amount);
+                    if (step === 0) backdropContext.moveTo(x, y);
+                    else backdropContext.lineTo(x, y);
+                    if (Math.abs(distance - Math.max(0, Math.min(path.totalLength, headDistance))) < 0.5) head = point;
                 }
+                var strength = alpha * weight * flicker;
+                backdropContext.shadowBlur = 14;
+                backdropContext.shadowColor = 'rgba(' + GLOW_RGB + ', ' + strength.toFixed(3) + ')';
+                backdropContext.strokeStyle = 'rgba(' + PULSE_RGB + ', ' + strength.toFixed(3) + ')';
+                // Thinner as well as dimmer as the energy runs down, until it goes out.
+                var thickness = 0.45 + (0.55 * pulse.energy);
+                backdropContext.lineWidth = (pulse.strong ? 4 : 3) * thickness;
                 backdropContext.stroke();
-                backdropContext.strokeStyle = 'rgba(132, 196, 248, ' + (alpha * 0.72).toFixed(3) + ')';
-                backdropContext.lineWidth = 1.4;
+                backdropContext.shadowBlur = 0;
+                backdropContext.strokeStyle = 'rgba(255, 238, 214, ' + (strength * 0.9).toFixed(3) + ')';
+                backdropContext.lineWidth = 1.2 * thickness;
                 backdropContext.stroke();
+                if (head && headDistance > 0 && headDistance < path.totalLength && Math.random() < 0.7) {
+                    backdropContext.strokeStyle = 'rgba(' + GLOW_RGB + ', ' + (strength * 0.85).toFixed(3) + ')';
+                    backdropContext.lineWidth = 1;
+                    for (var spark = 0; spark < (pulse.strong ? 3 : 2); spark += 1) {
+                        var angle = Math.random() * Math.PI * 2;
+                        var reach = 4 + (Math.random() * (pulse.strong ? 10 : 7));
+                        var bendX = head.x + (Math.cos(angle) * reach * 0.5) + ((Math.random() - 0.5) * 3);
+                        var bendY = head.y + (Math.sin(angle) * reach * 0.5) + ((Math.random() - 0.5) * 3);
+                        backdropContext.beginPath();
+                        backdropContext.moveTo(head.x, head.y);
+                        backdropContext.lineTo(bendX, bendY);
+                        backdropContext.lineTo(head.x + (Math.cos(angle) * reach), head.y + (Math.sin(angle) * reach));
+                        backdropContext.stroke();
+                    }
+                }
             };
-            drawPulseSegment(tailDistanceA, headDistanceA);
-            drawPulseSegment(tailDistanceB, headDistanceB);
-            backdropContext.beginPath();
-            backdropContext.fillStyle = 'rgba(238, 248, 255, ' + (alpha * 0.98).toFixed(3) + ')';
-            backdropContext.arc(pulse.glowX, pulse.glowY, 4.5 + ((1 - alpha) * 5), 0, Math.PI * 2);
-            backdropContext.fill();
-            return pulse.life > 0 && (headDistanceA < path.totalLength + 72 || headDistanceB > -72);
+            drawPulseSegment(tailDistanceA, headDistanceA, headDistanceA);
+            if (!pulse.ambient) drawPulseSegment(headDistanceB, tailDistanceB, headDistanceB);
+            var spark = Math.max(0, 1 - ((pulse.maxLife - pulse.life) / 24));
+            if (!pulse.ambient && spark > 0) {
+                backdropContext.beginPath();
+                backdropContext.fillStyle = 'rgba(' + PULSE_RGB + ', ' + (spark * 0.8).toFixed(3) + ')';
+                backdropContext.arc(pulse.glowX, pulse.glowY, 3.5 + ((1 - spark) * 8), 0, Math.PI * 2);
+                backdropContext.fill();
+            }
+            return pulse.life > 0;
         });
         backdropContext.shadowBlur = 0;
+
+        // Idle: keep going only until the last pulse, ring and via flash have died out.
+        var settling = industrialPulses.length > 0 || industrialRipples.length > 0 ||
+            industrialPaths.some(function (path) { return path.flash.some(function (f) { return f > 0.02; }); });
+        if (isIdle && !settling) {
+            backdropFrame = null;
+            return;
+        }
         backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
     };
 
@@ -591,7 +845,7 @@
             overlayContext.strokeStyle = 'rgba(0, 0, 128, 0.55)';
             overlayContext.strokeRect(Math.round(currentX - 3) + 0.5, Math.round(currentY - 3) + 0.5, 6, 6);
         } else if (theme === 'industrial') {
-            overlayContext.strokeStyle = 'rgba(156, 206, 250, 0.42)';
+            overlayContext.strokeStyle = 'rgba(214, 82, 16, 0.45)';
             overlayContext.lineWidth = 1.4;
             overlayContext.beginPath();
             overlayContext.moveTo(currentX - 16, currentY);
@@ -600,7 +854,7 @@
             overlayContext.lineTo(currentX, currentY + 16);
             overlayContext.stroke();
             overlayContext.beginPath();
-            overlayContext.fillStyle = 'rgba(232, 246, 255, 0.48)';
+            overlayContext.fillStyle = 'rgba(255, 236, 214, 0.6)';
             overlayContext.arc(currentX, currentY, 3.2, 0, Math.PI * 2);
             overlayContext.fill();
         }
@@ -646,7 +900,9 @@
     };
 
     const queueBackdrop = function () {
-        if (backdropFrame || media.matches || !hasDynamicBackdrop()) return;
+        if (backdropFrame || !hasDynamicBackdrop()) return;
+        // Reduced motion: the circuit board is still drawn, once and still; matrix is not.
+        if (media.matches && getTheme() !== 'industrial') return;
         if (getTheme() === 'industrial') {
             backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
         } else {
@@ -679,10 +935,11 @@
         var velocity = Math.min(1, Math.sqrt((dx * dx) + (dy * dy)) / 36);
         targetX = event.clientX;
         targetY = event.clientY;
+        industrialPointerActive = true;
         resetIdleTimer();
 
         if (getTheme() === 'industrial') {
-            triggerIndustrialCircuit(event.clientX, event.clientY, velocity);
+            if (!overCoveredArea(event.target)) triggerIndustrialCircuit(event.clientX, event.clientY, velocity);
         } else if (hasReactiveOverlay()) {
             spawnBurst(event.clientX, event.clientY, velocity);
         }
@@ -691,7 +948,15 @@
         if (hasDynamicBackdrop()) queueBackdrop();
     };
 
+    const handlePointerDown = function (event) {
+        if (getTheme() !== 'industrial' || overCoveredArea(event.target)) return;
+        burstIndustrialCircuit(event.clientX, event.clientY);
+        resetIdleTimer();
+        queueBackdrop();
+    };
+
     const resetPointer = function () {
+        industrialPointerActive = false;
         targetX = window.innerWidth * 0.5;
         targetY = window.innerHeight * 0.22;
         queueAnimation();
@@ -836,6 +1101,7 @@
 
         if (!media.matches) {
             window.addEventListener('pointermove', handlePointerMove, { passive: true });
+            window.addEventListener('pointerdown', handlePointerDown, { passive: true });
             window.addEventListener('pointerleave', resetPointer);
             window.addEventListener('blur', resetPointer);
             window.addEventListener('scroll', applyHeaderScrollState, { passive: true });
