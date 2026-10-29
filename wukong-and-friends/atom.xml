@@ -12,6 +12,30 @@
   </atom:author>
   <atom:updated>2026-10-29T00:00:00Z</atom:updated>
   <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/</atom:id>
+    <atom:title type="text">Nezha’s Shape Town</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-29T00:00:00Z</atom:published>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1.jpg" alt="Nezha’s Shape Town" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-copycat-shadow/</atom:id>
+    <atom:title type="text">Wukong and the Copycat Shadow</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-copycat-shadow/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-29T00:00:00Z</atom:published>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;At shadow-show night, Wukong thinks a giant copycat is following him. Rabbit shows him it is his shadow: he blocks the light. Nearer the lamp, a puppet’s shadow grows big; farther away, it shrinks. And when the lamp goes off, the copycat goes home.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-copycat-shadow-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-copycat-shadow-v1.jpg" alt="Wukong and the Copycat Shadow" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-joins-the-game/</atom:id>
     <atom:title type="text">Wukong Wants to Play Too</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-joins-the-game/" rel="alternate" type="text/html" hreflang="en" />

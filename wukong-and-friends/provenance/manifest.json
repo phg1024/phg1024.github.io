@@ -122,6 +122,36 @@
       "bytes": 9334283
     },
     {
+      "path": "docs/downloads/nezhas-shape-town-v1-booklet.pdf",
+      "sha256": "e3104a93508b1bb482b02b65d78747ecde6df20c7e93530d54326b8553cca815",
+      "bytes": 8833289
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v1-core-en.pdf",
+      "sha256": "d5aa0e37f48f574d6ece566efcdad3f4104ee96965eb819f37eae362356c9e83",
+      "bytes": 8517440
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v1-core-zh-Hans.pdf",
+      "sha256": "423dd5971bdef9c99ec62a1f7f7ecac40bad11fe5aec8740a86727fb95dde20d",
+      "bytes": 8548093
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v1-zh-Hans-booklet.pdf",
+      "sha256": "8348a4ffd5c6da195bc99d3ce331332ac6302bc7fbdac54730f1051d331af429",
+      "bytes": 8876148
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v1-zh-Hans.pdf",
+      "sha256": "7cf7d2d8cffd54401f16135f528c771e36dc2c53275875ec62e39c04c60d05a2",
+      "bytes": 8866304
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v1.pdf",
+      "sha256": "c147ef41b1186a32f57bdbfd6e5c40fddfc5a9e672d19fd880ca18339e3d6306",
+      "bytes": 8814281
+    },
+    {
       "path": "docs/downloads/pigsys-peach-puzzle-v1-booklet.pdf",
       "sha256": "f47a2869d280cf8ed35f4e1fa29d436d365bbffc086f8870cf0ba9faabcc3a88",
       "bytes": 8437121
@@ -300,6 +330,36 @@
       "path": "docs/downloads/wukong-and-the-block-bridge-v1.pdf",
       "sha256": "7a1b494847a4f3e2fa21dd5a25758f085d9d0df89b1cffa2e817d02512a59a7f",
       "bytes": 8163200
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v1-booklet.pdf",
+      "sha256": "c6e1e353347d0b59110311519b61d76c67a05f1a7f3039eaa55922039b97c600",
+      "bytes": 8470009
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v1-core-en.pdf",
+      "sha256": "8296b65ebcde107d5790cb8ae81830be44415cceb8c76c706e23871fd14f08fb",
+      "bytes": 8117083
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v1-core-zh-Hans.pdf",
+      "sha256": "3c35962b350eedb215ef1afa86e1ecb68aa0f16f0280852ae10974e37252a001",
+      "bytes": 8150396
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v1-zh-Hans-booklet.pdf",
+      "sha256": "870c4b33f76bc4a6d5710358f132d82a91df74619d3d89728a6e25b704c98cc3",
+      "bytes": 8517298
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v1-zh-Hans.pdf",
+      "sha256": "f68f3733f7a184de66fac6b9ff1f557c267ff5cc3846d6e64b1ccf4883443b8b",
+      "bytes": 8507439
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v1.pdf",
+      "sha256": "d1f4d8fe8ff1942db0d3805d9f61ae4ab234f919c1a7bb817ae69baca4e740bf",
+      "bytes": 8450929
     },
     {
       "path": "docs/downloads/wukong-and-the-snowy-zigzags-v1-booklet.pdf",
@@ -1772,6 +1832,11 @@
       "bytes": 185992
     },
     {
+      "path": "stories/nezhas-shape-town/editions/v1/prompts.txt",
+      "sha256": "12484266b2ccfbf9e9e71291db1e60ffbab155f210c9a3b12151653333141112",
+      "bytes": 1077374
+    },
+    {
       "path": "stories/pigsys-peach-puzzle/editions/v1/prompts.txt",
       "sha256": "f4b606fe581f3e7dbe4769908ea11080609b31d3a45acbc5c4d9c838f0d840ec",
       "bytes": 160781
@@ -1815,6 +1880,11 @@
       "path": "stories/wukong-and-the-block-bridge/editions/v1/prompts.txt",
       "sha256": "00c6f3ccee2715ec507c8bfd9c898d2c1c8006358102a34dc8d42751f4c8bfdf",
       "bytes": 185967
+    },
+    {
+      "path": "stories/wukong-and-the-copycat-shadow/editions/v1/prompts.txt",
+      "sha256": "7a327c6c966ce4e792b0f602dc77efd30e969f24bb5008120dd88e628f7433b8",
+      "bytes": 285742
     },
     {
       "path": "stories/wukong-and-the-snowy-zigzags/editions/v1/prompts.txt",

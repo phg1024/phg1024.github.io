@@ -120,6 +120,69 @@
     }
   },
   {
+    "id": "nezhas-shape-town",
+    "title": "Nezha’s Shape Town",
+    "title_zh": "哪吒的形状小镇",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "triangle",
+      "square",
+      "corner",
+      "side",
+      "turn",
+      "fit",
+      "together",
+      "shape"
+    ],
+    "math_plan_id": "M7",
+    "language_reading_versions": {
+      "en": "nezhas-shape-town/v1/en",
+      "zh-Hans": "nezhas-shape-town/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-booklet.pdf",
+    "cover": "covers/nezhas-shape-town-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Nezha’s Shape Town",
+        "description": "Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too."
+      },
+      "zh": {
+        "title": "哪吒的形状小镇",
+        "description": "哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。"
+      }
+    },
+    "description": "哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。",
+    "description_en": "Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too.",
+    "keywords": "哪吒 悟空 玉兔 形状 三角形 正方形 拼一拼 转一转 角 边 数学启蒙 Nezha Wukong Rabbit shapes triangle square turn fit corners sides early math",
+    "languages": {
+      "en": {
+        "reading": "downloads/nezhas-shape-town-v1.pdf",
+        "booklet": "downloads/nezhas-shape-town-v1-booklet.pdf",
+        "cover": "covers/nezhas-shape-town-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/nezhas-shape-town-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "pigsys-peach-puzzle",
     "title": "Pigsy’s Peach Puzzle",
     "title_zh": "八戒的桃子谜题",
@@ -238,6 +301,69 @@
         "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-zh-Hans.pdf",
         "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-and-the-block-bridge-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukong-and-the-copycat-shadow",
+    "title": "Wukong and the Copycat Shadow",
+    "title_zh": "悟空的跟屁虫影子",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "science-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "light",
+      "shadow",
+      "block",
+      "screen",
+      "between",
+      "nearer",
+      "farther",
+      "copy"
+    ],
+    "science_plan_id": "S1",
+    "language_reading_versions": {
+      "en": "wukong-and-the-copycat-shadow/v1/en",
+      "zh-Hans": "wukong-and-the-copycat-shadow/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-booklet.pdf",
+    "cover": "covers/wukong-and-the-copycat-shadow-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong and the Copycat Shadow",
+        "description": "At shadow-show night, Wukong thinks a giant copycat is following him. Rabbit shows him it is his shadow: he blocks the light. Nearer the lamp, a puppet’s shadow grows big; farther away, it shrinks. And when the lamp goes off, the copycat goes home."
+      },
+      "zh": {
+        "title": "悟空的跟屁虫影子",
+        "description": "院子里演影子戏，悟空以为有个大个子在学他。玉兔告诉他，那是他的影子：他挡住了光。纸偶离灯近，影子就变大；离灯远，影子就变小。灯一关，学他的朋友也回家了。"
+      }
+    },
+    "description": "院子里演影子戏，悟空以为有个大个子在学他。玉兔告诉他，那是他的影子：他挡住了光。纸偶离灯近，影子就变大；离灯远，影子就变小。灯一关，学他的朋友也回家了。",
+    "description_en": "At shadow-show night, Wukong thinks a giant copycat is following him. Rabbit shows him it is his shadow: he blocks the light. Nearer the lamp, a puppet’s shadow grows big; farther away, it shrinks. And when the lamp goes off, the copycat goes home.",
+    "keywords": "悟空 玉兔 沙僧 八戒 影子 光 影子戏 纸偶 远近 变大 变小 科学启蒙 Wukong Rabbit Sandy Pigsy shadow light shadow show puppets nearer farther bigger smaller early science",
+    "languages": {
+      "en": {
+        "reading": "downloads/wukong-and-the-copycat-shadow-v1.pdf",
+        "booklet": "downloads/wukong-and-the-copycat-shadow-v1-booklet.pdf",
+        "cover": "covers/wukong-and-the-copycat-shadow-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-copycat-shadow-v1-zh-Hans.jpg"
       }
     }
   },

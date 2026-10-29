@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/nezhas-shape-town-v1.pdf",
+  "source_sha256": "c147ef41b1186a32f57bdbfd6e5c40fddfc5a9e672d19fd880ca18339e3d6306",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c68a42a21daf9cf85266b039d1ada71bfea751ae86d77e67509ce08c6e6a804a",
+      "text": "Nezha’s\nShape Town",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "95e822ca6692ed1614e4e79b9eb8cd4933ba0f5e679a3d8bb5ab144ed6d45aa7",
+      "text": "Nezha makes a paper town\non the floor.\nRed houses, green trees,\na long yellow road…\n“My town needs windows!”\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "04597f7de8f086f394d8946ea00481a36d127681ef2253bea6d2bd3d101dea2a",
+      "text": "Each house gets\na square window.\nBut the blue house has none.\nNezha looks in the box.\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2cf8cfd36e0642f6a1695b2607157dd878fe4f2e616d91036b6d33b6d1e32db7",
+      "text": "No more squares!\nOnly two blue triangles,\nthe same shape and size.\n“Two triangles\nare not a square,”\nsighs Nezha.\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "939cbcfa1eb9c7e8e96c49b2d9c009044478d01a73a082aaf08db39bc7ca8930",
+      "text": "Wukong puts them\non his head.\n“Look! My triangle hat\nhas two pointy corners!”\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ea8b8278e028779e99641248ba181fcae9cde05e256935a2f3ca78a9263c30fc",
+      "text": "Rabbit laughs.\n“Let’s turn them\nand try,” she says.\nShe turns one triangle.\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "7c333d1c500f06ce859fdc6701390407c90f49188fdd46b42d4faa565f48b364",
+      "text": "“When we turn\nthe triangles,\nthe long sides fit.”\nShe pushes them together.\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "321f365b41e3f2dd1108d63dfc22867cca9e0a9943bca4a0b48543203ddbe78f",
+      "text": "Four corners.\nFour sides, all the same.\n“A square!” shouts Nezha.\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "cf46c3d83f1d8fc5926e99c0c1669c285aae6331461190fa2eb29f9aa35220bf",
+      "text": "Nezha holds the square\nup to the blue house.\nIt fits just right!\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "0e602b6d867372552828be2e7e768caeb4fdad43fb257bbaa0aead57c01c98c5",
+      "text": "“Wait! Let me try,”\nsays Wukong.\nHe turns them a new way.\nNow the short sides fit.\n“A big triangle!”\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "73f9ba4325412c6cd73e916f17b029b822825985e13d982dfe8f1d7fdf66d466",
+      "text": "Nezha puts it\non top of a house.\n“It looks like\na pointy roof!”\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "adc32daebabd7416e1fd42020db969c56ec130fffa5b56ef40f02c24b5d87f12",
+      "text": "Rabbit counts the corners.\nThe square has four.\nThe triangle has three.\n“Same two pieces,\ndifferent shapes!”\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d00adeea0b23ce4118dbaf6d0ac7aff970c2fbd275b6dd6229150d04590d0eab",
+      "text": "But the blue house\nstill needs a window.\nThey put the pieces\nback together: a square!\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "20bedeff3d90dd0f6630dbab121248c7cbdc688a11bba8f31ada65c4b3963331",
+      "text": "Nezha sticks the window\non the blue house.\nEvery house has a window.\nThe town is ready!\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "06eeb56c5200f26fcfeb441660f96881b358273f39365f84307be8d632413345",
+      "text": "Little toy friends\nwalk down the yellow road.\nThey peek in\nthe new window.\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c5d8df6e241ac93fc99ddca1d032a83851f9ae8d2095604aa0b5eea55394ac5a",
+      "text": "Wukong pats his head.\n“Hey! My triangle hat\nbecame a window!”\nEveryone laughs.\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d22637ab6fc3dba430ef0766620f48df979b60ce1dd6eb422e5d1b92cb88016b",
+      "text": "Wukong & Friends\nThank you for reading!\nWe hope you and your little reader\nenjoyed this little adventure.\nMore free stories\nphg1024.github.io/wukong-and-friends\nRead, download and print - always free.\nRead more free stories\nIf you enjoyed our stories, you are welcome\nto help the next one grow. Support is optional.\nBuy Me a Coffee\nGitHub Sponsors\nCreated by Peihong Guo\nStories and illustrations made with AI assistance and human editing.\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · Attribution · NonCommercial · NoDerivatives\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "36d5bbd422b1d69b8ca5d68c3db37302b34755f4ce3d367f27230cc338a9c866",
+      "text": "Wukong & Friends\nTurn them around.\nPut them together.\nWhat shape can you make?\nphg1024.github.io/wukong-and-friends",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

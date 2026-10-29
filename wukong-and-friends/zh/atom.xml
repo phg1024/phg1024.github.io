@@ -12,6 +12,30 @@
   </atom:author>
   <atom:updated>2026-10-29T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/</atom:id>
+    <atom:title type="text">哪吒的形状小镇</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/nezhas-shape-town/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-10-29T00:00:00Z</atom:published>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1-zh-Hans.jpg" alt="哪吒的形状小镇" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-copycat-shadow/</atom:id>
+    <atom:title type="text">悟空的跟屁虫影子</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukong-and-the-copycat-shadow/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-10-29T00:00:00Z</atom:published>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;院子里演影子戏，悟空以为有个大个子在学他。玉兔告诉他，那是他的影子：他挡住了光。纸偶离灯近，影子就变大；离灯远，影子就变小。灯一关，学他的朋友也回家了。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-copycat-shadow-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-and-the-copycat-shadow-v1-zh-Hans.jpg" alt="悟空的跟屁虫影子" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-joins-the-game/</atom:id>
     <atom:title type="text">悟空想一起玩</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukong-joins-the-game/" rel="alternate" type="text/html" hreflang="zh-CN" />
