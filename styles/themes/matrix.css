@@ -27,12 +27,8 @@
      --serif: "IBM Plex Mono", "Courier New", monospace;
 }
 
-/* Scanlines and the vignette are background layers: they show around the page but never
-   cross the panels or the text. */
 [data-theme="matrix"] body {
   background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0 1px, transparent 1px 3px),
-    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45)),
     radial-gradient(circle at 18% 12%, rgba(124, 255, 157, 0.1), transparent 22%),
     radial-gradient(circle at 82% 10%, rgba(50, 220, 100, 0.08), transparent 18%),
     linear-gradient(180deg, #030904 0%, #020703 52%, #010401 100%);
@@ -325,7 +321,7 @@
    Titles in bright phosphor green with a glow, body text with a faint one; a "~/" before
    the name and "> " before labels; a block cursor after the page title (typed out on load
    by main.js, then blinking); pictures in green until hovered; scanlines and a vignette
-   like an old monitor, behind the page (see body above). */
+   over the whole screen, text included, like an old monitor. */
 [data-theme="matrix"] .section-heading__title,
 [data-theme="matrix"] .blog-content h1 {
   color: #7cff9d;
@@ -388,6 +384,17 @@
 [data-theme="matrix"] .card:hover .card-img-top,
 [data-theme="matrix"] .blog-content img:hover {
   filter: none;
+}
+/* CRT: scanlines and a vignette over everything, the text included; they never take a click. */
+[data-theme="matrix"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45)),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
 }
 /* Form controls don't inherit the page font by default. */
 [data-theme="matrix"] button,
