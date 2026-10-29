@@ -44,7 +44,7 @@
     let industrialPulses = [];
     let industrialChips = [];
     let industrialRipples = [];
-    let industrialPointerActive = false;
+    let pointerActive = false;
     let lastAmbientPulse = 0;
     let cyberSkyline = [];
     let cyberGridOffset = 0;
@@ -364,6 +364,26 @@
         industrialRipples = [];
     };
 
+    // Matrix: a few glyphs fall from where the pointer moves, like code leaking out of the
+    // rain, rather than bursting outward.
+    const spawnMatrixDrip = function (x, y, strength) {
+        var count = Math.random() < (0.35 + strength * 0.5) ? (strength > 0.6 ? 2 : 1) : 0;
+        for (var i = 0; i < count; i += 1) {
+            var life = 26 + Math.random() * 18;
+            particles.push({
+                x: x + ((Math.random() - 0.5) * 10), y: y,
+                vx: (Math.random() - 0.5) * 0.8, vy: 0.4 + Math.random() * 0.8,
+                life: life, maxLife: life,
+                size: 1.4 + Math.random() * 1.2,
+                hue: '124, 255, 157',
+                glyph: randomGlyph(), isGlyph: true, drip: true
+            });
+        }
+        if (particles.length > MAX_PARTICLES) {
+            particles = particles.slice(particles.length - MAX_PARTICLES);
+        }
+    };
+
     const spawnBurst = function (x, y, strength) {
         var count = Math.max(3, Math.min(8, Math.round(3 + strength * 6)));
         var palette = getThemeParticlePalette();
@@ -521,10 +541,20 @@
                 var glyph = stream.glyphs[(offset + gi) % stream.glyphs.length];
                 var fade = Math.max(0.06, 1 - (gi / (stream.length + 2)));
                 var isHead = gi === 0;
-                // Heads are a lighter green rather than near-white, and nothing glows.
-                backdropContext.fillStyle = isHead
-                    ? 'rgba(160, 255, 180, ' + (0.85 * stream.alpha).toFixed(3) + ')'
-                    : 'rgba(100, 255, 140, ' + (fade * 0.75 * stream.alpha).toFixed(3) + ')';
+                // Heads are a lighter green rather than near-white, and nothing glows; near the
+                // pointer the rain lights up, as if that stretch of code were being read.
+                var lit = 0;
+                if (pointerActive) {
+                    var reach = Math.hypot(stream.x - currentX, glyphY - currentY);
+                    if (reach < 120) lit = 1 - (reach / 120);
+                }
+                var baseAlpha = isHead ? 0.85 * stream.alpha : fade * 0.75 * stream.alpha;
+                var litAlpha = baseAlpha + ((0.95 - baseAlpha) * lit);
+                backdropContext.fillStyle = lit > 0
+                    ? 'rgba(' + Math.round(100 + (130 * lit)) + ', 255, ' + Math.round(140 + (95 * lit)) + ', ' + litAlpha.toFixed(3) + ')'
+                    : isHead
+                        ? 'rgba(160, 255, 180, ' + baseAlpha.toFixed(3) + ')'
+                        : 'rgba(100, 255, 140, ' + baseAlpha.toFixed(3) + ')';
                 backdropContext.fillText(glyph, stream.x, glyphY);
                 // Second layer: another glyph on the same spot, nudged a little and a bit dimmer.
                 var overlay = stream.overlay[(offset * 2 + gi * 3) % stream.overlay.length];
@@ -577,7 +607,7 @@
             backdropContext.stroke();
         });
         // Proximity: the stretch of each trace within reach of the pointer brightens.
-        if (industrialPointerActive) {
+        if (pointerActive) {
             var reach = 110;
             industrialSegments.forEach(function (segment) {
                 var hit = distanceToSegment(currentX, currentY, segment.start.x, segment.start.y, segment.end.x, segment.end.y);
@@ -918,6 +948,9 @@
         var glowRadius = theme === 'matrix' ? 52 : theme === 'win31' ? 18 : theme === 'industrial' ? 24 : theme === 'minimalist' ? 34 : 64;
         var outerRadius = theme === 'matrix' ? 84 : theme === 'win31' ? 34 : theme === 'industrial' ? 42 : theme === 'minimalist' ? 58 : 102;
 
+        // Matrix draws nothing at the pointer itself: the code rain answers it instead (see
+        // drawMatrixBackdrop), and glyphs drip from where it moves (spawnMatrixDrip).
+        if (theme !== 'matrix') {
         var coreGlow = overlayContext.createRadialGradient(currentX, currentY, 0, currentX, currentY, glowRadius);
         coreGlow.addColorStop(0, 'rgba(' + palette.core[0] + ', ' + (theme === 'win31' ? '0.16' : theme === 'minimalist' ? '0.12' : '0.28') + ')');
         coreGlow.addColorStop(0.35, 'rgba(' + palette.core[0] + ', ' + (theme === 'win31' ? '0.06' : theme === 'minimalist' ? '0.05' : '0.12') + ')');
@@ -934,17 +967,9 @@
         overlayContext.beginPath();
         overlayContext.arc(currentX, currentY, outerRadius, 0, Math.PI * 2);
         overlayContext.fill();
+        }
 
-        if (theme === 'matrix') {
-            overlayContext.strokeStyle = 'rgba(124, 255, 157, 0.18)';
-            overlayContext.lineWidth = 1;
-            overlayContext.beginPath();
-            overlayContext.moveTo(currentX - 18, currentY);
-            overlayContext.lineTo(currentX + 18, currentY);
-            overlayContext.moveTo(currentX, currentY - 18);
-            overlayContext.lineTo(currentX, currentY + 18);
-            overlayContext.stroke();
-        } else if (theme === 'win31') {
+        if (theme === 'win31') {
             overlayContext.strokeStyle = 'rgba(255, 255, 255, 0.65)';
             overlayContext.lineWidth = 1;
             overlayContext.strokeRect(Math.round(currentX - 7) + 0.5, Math.round(currentY - 7) + 0.5, 14, 14);
@@ -968,16 +993,24 @@
         particles = particles.filter(function (particle) {
             particle.x += particle.vx;
             particle.y += particle.vy;
-            particle.vx *= particle.isGlyph ? 0.978 : 0.985;
-            particle.vy *= particle.isGlyph ? 0.978 : 0.985;
+            if (particle.drip) {
+                particle.vy += 0.09;
+                particle.vx *= 0.94;
+                if (Math.random() < 0.18) particle.glyph = randomGlyph();
+            } else {
+                particle.vx *= particle.isGlyph ? 0.978 : 0.985;
+                particle.vy *= particle.isGlyph ? 0.978 : 0.985;
+            }
             particle.life -= 1;
             var alpha = Math.max(0, particle.life / particle.maxLife);
             if (alpha <= 0) return false;
             overlayContext.shadowBlur = particle.isPixel ? 0 : 8;
             overlayContext.shadowColor = 'rgba(' + particle.hue + ', ' + (alpha * 0.75).toFixed(3) + ')';
             if (particle.isGlyph) {
-                overlayContext.fillStyle = 'rgba(' + particle.hue + ', ' + (alpha * 0.95).toFixed(3) + ')';
-                overlayContext.font = Math.max(11, Math.round(10 + particle.size * 2)) + 'px "Courier New", monospace';
+                // A drip starts as a white head and cools to green as it falls.
+                var hue = particle.drip && alpha > 0.72 ? '232, 255, 236' : particle.hue;
+                overlayContext.fillStyle = 'rgba(' + hue + ', ' + (alpha * 0.95).toFixed(3) + ')';
+                overlayContext.font = Math.max(11, Math.round(10 + particle.size * 2)) + 'px "IBM Plex Mono", "Courier New", monospace';
                 overlayContext.fillText(particle.glyph, particle.x, particle.y);
             } else if (particle.isPixel) {
                 overlayContext.fillStyle = 'rgba(' + particle.hue + ', ' + (alpha * 0.92).toFixed(3) + ')';
@@ -1043,11 +1076,14 @@
         var velocity = Math.min(1, Math.sqrt((dx * dx) + (dy * dy)) / 36);
         targetX = event.clientX;
         targetY = event.clientY;
-        industrialPointerActive = true;
+        pointerActive = true;
         resetIdleTimer();
 
         if (getTheme() === 'industrial') {
             if (!overCoveredArea(event.target)) triggerIndustrialCircuit(event.clientX, event.clientY, velocity);
+        } else if (getTheme() === 'matrix') {
+            // No glyphs over the article: they would fall across the text being read.
+            if (!overCoveredArea(event.target)) spawnMatrixDrip(event.clientX, event.clientY, velocity);
         } else if (hasReactiveOverlay()) {
             spawnBurst(event.clientX, event.clientY, velocity);
         }
@@ -1064,7 +1100,7 @@
     };
 
     const resetPointer = function () {
-        industrialPointerActive = false;
+        pointerActive = false;
         targetX = window.innerWidth * 0.5;
         targetY = window.innerHeight * 0.22;
         queueAnimation();
@@ -1191,12 +1227,54 @@
         footerYear.textContent = year > 2009 ? ' \u2013 ' + year : '';
     };
 
+    // ── Matrix: the page title is typed out ──
+    // The untyped rest of the title is in the line already, only hidden, so the heading keeps
+    // its final size and nothing below it moves. Screen readers get the whole title from
+    // aria-label while it types. Not with reduced motion, and only on a page load.
+    const typeMatrixTitle = function () {
+        if (getTheme() !== 'matrix' || media.matches) return;
+        var title = document.querySelector('.section-heading__title, .blog-content h1');
+        if (!title || title.children.length) return;
+        var text = title.textContent;
+        if (!text.trim()) return;
+        var typed = document.createElement('span');
+        var cursor = document.createElement('span');
+        var rest = document.createElement('span');
+        typed.setAttribute('aria-hidden', 'true');
+        cursor.className = 'matrix-cursor';
+        cursor.setAttribute('aria-hidden', 'true');
+        rest.setAttribute('aria-hidden', 'true');
+        rest.style.visibility = 'hidden';
+        title.setAttribute('aria-label', text);
+        title.classList.add('is-typing');
+        title.textContent = '';
+        title.append(typed, cursor, rest);
+        rest.textContent = text;
+        var duration = Math.min(1100, Math.max(450, text.length * 32));
+        var start = null;
+        var step = function (now) {
+            if (start === null) start = now;
+            var count = Math.min(text.length, Math.round(((now - start) / duration) * text.length));
+            typed.textContent = text.slice(0, count);
+            rest.textContent = text.slice(count);
+            if (count < text.length) {
+                window.requestAnimationFrame(step);
+                return;
+            }
+            title.textContent = text;
+            title.removeAttribute('aria-label');
+            title.classList.remove('is-typing');
+        };
+        window.requestAnimationFrame(step);
+    };
+
     // ── Init ──
 
     const init = function () {
         resizeOverlay();
         resizeBackdrop();
         setTheme(getTheme());
+        typeMatrixTitle();
         applyPointerState();
         applyHeaderScrollState();
 

@@ -17,12 +17,14 @@
      --accent-strong: #f2fff2;
      --shadow: 0 24px 90px rgba(0, 0, 0, 0.46);
      --shadow-cyber: 0 0 0 1px rgba(124, 255, 157, 0.14), 0 0 40px rgba(124, 255, 157, 0.12);
-     --radius-lg: 0.42rem;
-     --radius-md: 0.28rem;
-     --button-radius: 0.22rem;
-     --button-radius-tight: 0.18rem;
-     --sans: "Courier New", "Lucida Console", monospace;
-     --serif: "Courier New", "Lucida Console", monospace;
+     --radius-lg: 0;
+     --radius-md: 0;
+     --button-radius: 0;
+     --button-radius-tight: 0;
+     /* One face for everything, code included: IBM Plex Mono (Courier New was thin and grey
+        at the small sizes the rail and dates use). */
+     --sans: "IBM Plex Mono", "Courier New", monospace;
+     --serif: "IBM Plex Mono", "Courier New", monospace;
 }
 
 [data-theme="matrix"] body {
@@ -38,11 +40,7 @@
 }
 
 [data-theme="matrix"] .site-brand__name,
-[data-theme="matrix"] .hero__title,
 [data-theme="matrix"] .section-heading__title,
-[data-theme="matrix"] .journal-section__title,
-[data-theme="matrix"] .feature-card__title,
-[data-theme="matrix"] .journal-card__title,
 [data-theme="matrix"] .blog-content h1,
 [data-theme="matrix"] .blog-content h2,
 [data-theme="matrix"] .blog-content h3 {
@@ -54,68 +52,30 @@
   text-transform: none;
 }
 
-[data-theme="matrix"] .feature-card::before,
-[data-theme="matrix"] .journal-card::before,
-[data-theme="matrix"] .journal-section::before,
 [data-theme="matrix"] .about-panel::before,
 [data-theme="matrix"] .blog-content::before,
 [data-theme="matrix"] .hero::before,
-[data-theme="matrix"] .editorial-section::before,
 [data-theme="matrix"] .content-page::before {
   background: linear-gradient(135deg, rgba(124, 255, 157, 0.22), rgba(70, 210, 90, 0.08), rgba(200, 255, 200, 0.14));
 }
 
-[data-theme="matrix"] .feature-card__image-link,
 [data-theme="matrix"] .personal-project-image-link {
   background: linear-gradient(180deg, #0b1d0e, #061108);
 }
 
 [data-theme="matrix"] .hero,
-[data-theme="matrix"] .editorial-section,
 [data-theme="matrix"] .content-page,
 [data-theme="matrix"] .blog-content,
-[data-theme="matrix"] .feature-card,
-[data-theme="matrix"] .journal-card,
-[data-theme="matrix"] .journal-section,
 [data-theme="matrix"] .about-panel,
-[data-theme="matrix"] .gallery-tabs-content,
 [data-theme="matrix"] .caption-overlay {
   background:
     linear-gradient(180deg, rgba(9, 24, 11, 0.44), rgba(6, 16, 8, 0.38));
-}
-
-[data-theme="matrix"] .journal-card {
-  box-shadow: var(--shadow), 0 0 24px rgba(124, 255, 157, 0.08);
-}
-
-[data-theme="matrix"] .journal-card__meta {
-  color: rgba(200, 255, 200, 0.82);
-}
-
-[data-theme="matrix"] .journal-card__title {
-  color: #e8ffe8;
-}
-
-[data-theme="matrix"] .gallery-tabs .nav-link {
-  background: rgba(8, 22, 10, 0.9);
-  color: #84d184;
-  border-radius: var(--button-radius-tight);
-}
-
-[data-theme="matrix"] .gallery-tabs .nav-link.active {
-  background: linear-gradient(135deg, rgba(25, 72, 32, 0.94), rgba(10, 30, 13, 0.96));
-  color: #e8ffe8;
-}
-
-[data-theme="matrix"] .gallery-tabs-content {
-  box-shadow: var(--shadow), 0 0 24px rgba(124, 255, 157, 0.08);
 }
 
 [data-theme="matrix"] .project-progress-fill {
   color: #d8ffd8;
 }
 
-[data-theme="matrix"] .journal-section__header,
 [data-theme="matrix"] .carousel-control-prev,
 [data-theme="matrix"] .carousel-control-next {
   background: rgba(8, 22, 10, 0.9);
@@ -123,15 +83,8 @@
   box-shadow: inset 0 0 0 1px rgba(124, 255, 157, 0.08), 0 0 18px rgba(124, 255, 157, 0.08);
 }
 
-[data-theme="matrix"] .journal-section__header:hover,
-[data-theme="matrix"] .journal-section__header:focus-visible {
-  background: rgba(14, 34, 16, 0.94);
-  border-color: rgba(200, 255, 200, 0.3);
-  box-shadow: 0 0 22px rgba(124, 255, 157, 0.14);
-}
-
 [data-theme="matrix"] .blog-content pre {
-  font-family: "Courier New", "Lucida Console", monospace;
+  font-family: var(--sans);
   background: #020a02;
   border: 1px solid rgba(96, 255, 128, 0.25);
   border-radius: var(--radius-md);
@@ -143,70 +96,13 @@
   color: #7cff9d;
   padding: 0.15rem 0.4rem;
   border-radius: var(--button-radius-tight);
-  font-family: "Courier New", "Lucida Console", monospace;
+  font-family: var(--sans);
   font-size: 0.9em;
   border: 1px solid rgba(124, 255, 157, 0.2);
   text-shadow: 0 0 4px rgba(124, 255, 157, 0.3);
 }
 
-/* Override highlight.js default light-theme colors for matrix */
-[data-theme="matrix"] .blog-content pre code .hljs-keyword,
-[data-theme="matrix"] .blog-content pre code .hljs-keyword-title {
-  color: #39ff14;
-  font-weight: bold;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-built_in,
-[data-theme="matrix"] .blog-content pre code .hljs-type {
-  color: #00ff40;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-string,
-[data-theme="matrix"] .blog-content pre code .hljs-literal,
-[data-theme="matrix"] .blog-content pre code .hljs-number,
-[data-theme="matrix"] .blog-content pre code .hljs-atom {
-  color: #aaffaa;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-comment,
-[data-theme="matrix"] .blog-content pre code .hljs-quote {
-  color: #2d8e46;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-name,
-[data-theme="matrix"] .blog-content pre code .hljs-title,
-[data-theme="matrix"] .blog-content pre code .hljs-section {
-  color: #d8ffd8;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-tag {
-  color: #ff3333;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-regexp,
-[data-theme="matrix"] .blog-content pre code .hljs-link {
-  color: #7cff9d;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-symbol,
-[data-theme="matrix"] .blog-content pre code .hljs-variable {
-  color: #ffaa33;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-template-variable,
-[data-theme="matrix"] .blog-content pre code .hljs-addition {
-  color: #aaffaa;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-attr,
-[data-theme="matrix"] .blog-content pre code .hljs-property {
-  color: #cc99ff;
-}
-
-[data-theme="matrix"] .blog-content pre code .hljs-punctuation,
-[data-theme="matrix"] .blog-content pre code .hljs-meta {
-  color: #58a658;
-}
+/* Code block text */
 
 [data-theme="matrix"] .blog-content pre code {
   background: none;
@@ -223,12 +119,6 @@
 
 [data-theme="matrix"] .image_info iframe {
   box-shadow: 0 0 16px rgba(124, 255, 157, 0.12);
-}
-
-[data-theme="matrix"] .feature-card__image-link::after {
-  background:
-    linear-gradient(135deg, rgba(124, 255, 157, 0.12), transparent 38%),
-    linear-gradient(180deg, transparent 0%, rgba(200, 255, 200, 0.1) 100%);
 }
 
 /* ── Button links (About page LinkedIn/Scholar) ── */
@@ -308,7 +198,6 @@
   background: rgba(6, 18, 9, 0.7);
 }
 
-
 /* ── Minesweeper popup ── */
 
 [data-theme="matrix"] .ms-popup {
@@ -380,7 +269,6 @@
   border-radius: var(--button-radius-tight);
 }
 
-
 /* ── Theme toggle for Matrix theme ── */
 
 [data-theme="matrix"] .theme-toggle__select {
@@ -426,4 +314,90 @@
   background: #021a07;
   color: #b8ffc6;
   outline: 1px solid #7cff9d;
+}
+
+/* ── Phosphor terminal ──────────────────────────────────────────────────────────────────
+   Titles in bright phosphor green with a glow, body text with a faint one; a "~/" before
+   the name and "> " before labels; a block cursor after the page title (typed out on load
+   by main.js, then blinking); pictures in green until hovered; scanlines and a vignette
+   like an old monitor. */
+[data-theme="matrix"] .section-heading__title,
+[data-theme="matrix"] .blog-content h1 {
+  color: #7cff9d;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 6px rgba(124, 255, 157, 0.55), 0 0 22px rgba(124, 255, 157, 0.25);
+}
+[data-theme="matrix"] .blog-content h2,
+[data-theme="matrix"] .blog-content h3 {
+  color: #b8ffc8;
+  text-shadow: 0 0 8px rgba(124, 255, 157, 0.3);
+}
+[data-theme="matrix"] .section-heading__title::after,
+[data-theme="matrix"] .blog-content h1::after,
+[data-theme="matrix"] .matrix-cursor {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.9em;
+  margin-left: 0.12em;
+  vertical-align: -0.08em;
+  background: #7cff9d;
+  box-shadow: 0 0 10px rgba(124, 255, 157, 0.7);
+}
+[data-theme="matrix"] .section-heading__title.is-typing::after,
+[data-theme="matrix"] .blog-content h1.is-typing::after {
+  display: none;
+}
+@keyframes matrix-blink {
+  50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="matrix"] .section-heading__title::after,
+  [data-theme="matrix"] .blog-content h1::after {
+    animation: matrix-blink 1.06s steps(1, end) infinite;
+  }
+}
+[data-theme="matrix"] .site-brand__name {
+  color: #7cff9d;
+  text-shadow: 0 0 8px rgba(124, 255, 157, 0.5);
+}
+[data-theme="matrix"] .site-brand__name::before {
+  content: "~/";
+  opacity: 0.6;
+}
+[data-theme="matrix"] .section-heading__eyebrow::before {
+  content: "> ";
+}
+[data-theme="matrix"] .blog-content p,
+[data-theme="matrix"] .blog-content li,
+[data-theme="matrix"] .section-heading__lede,
+[data-theme="matrix"] .writing-item__brief {
+  text-shadow: 0 0 4px rgba(124, 255, 157, 0.18);
+}
+[data-theme="matrix"] .card-img-top,
+[data-theme="matrix"] .blog-content img {
+  filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(2.2) brightness(0.85) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+[data-theme="matrix"] .card:hover .card-img-top,
+[data-theme="matrix"] .blog-content img:hover {
+  filter: none;
+}
+[data-theme="matrix"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45)),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
+}
+/* Form controls don't inherit the page font by default. */
+[data-theme="matrix"] button,
+[data-theme="matrix"] select,
+[data-theme="matrix"] input,
+[data-theme="matrix"] textarea {
+  font-family: inherit;
 }
