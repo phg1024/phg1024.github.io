@@ -694,14 +694,16 @@
   line-height: 1.5;
 }
 
+/* Header row: the body font a little smaller and bolder on one flat tint, with a single
+   rule under it. (It was a per-cell gradient with an inner glow, which read as a row of
+   separate tiles.) */
 .blog-content th {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 48%, transparent), color-mix(in srgb, var(--accent) 12%, transparent));
-  font-family: var(--serif);
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  font-size: 0.9em;
   font-weight: 600;
   color: var(--text);
-  letter-spacing: 0.02em;
-  border-bottom: 2px solid color-mix(in srgb, var(--accent-secondary) 30%, var(--border));
-  box-shadow: inset 0 -4px 12px color-mix(in srgb, var(--accent-glow) 30%, transparent);
+  vertical-align: bottom;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 22%, transparent);
 }
 
 .blog-content tbody tr:last-child td {

@@ -531,15 +531,98 @@ html:not([data-theme="win31"]) .proto .about-panel:hover {
 .post-meta p {
   margin: 0 0 0.45rem;
 }
-.post-meta__nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.4rem 1.5rem;
+/* Everything in the footer (series, tags, related, by date) shares one look, no frame:
+   each block's label is its first row, and rows or columns inside are divided by hairlines.
+   The footer sits inside .blog-content__inner, so it lines up with the article text. */
+.post-meta .post-box {
+  margin: 1.6rem 0 0;
 }
-.post-meta__next {
-  margin-left: auto;
+.post-meta .post-box .post-meta__label {
+  margin: 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+.post-meta .post-box:first-child {
+  margin-top: 0;
+}
+
+
+/* Related posts: dated rows, the writing index's at footer scale. */
+.post-related {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.post-related li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.3rem 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.post-related li:last-child {
+  border-bottom: none;
+}
+.post-related__when {
+  flex: none;
+  font-size: 0.82rem;
+}
+
+/* Previous / next, in a series or by date: two columns, a small label over each title, so
+   long titles wrap inside their own half instead of pushing each other around. */
+.post-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.post-pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.8rem 0;
+  line-height: 1.4;
+  text-decoration: none;
+}
+.post-pager a:hover {
+  color: var(--accent);
+}
+.post-pager__prev {
+  padding-right: 1.1rem !important;
+}
+.post-pager__next {
+  grid-column: 2;
+  padding-left: 1.1rem !important;
   text-align: right;
+}
+.post-pager__prev + .post-pager__next {
+  border-left: 1px solid var(--border);
+}
+.post-pager__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+@media (max-width: 559px) {
+  .post-related li {
+    flex-direction: column;
+  }
+  .post-pager {
+    grid-template-columns: 1fr;
+  }
+  .post-pager__prev {
+    padding-right: 0 !important;
+  }
+  .post-pager__next {
+    grid-column: 1;
+    padding-left: 0 !important;
+    text-align: left;
+  }
+  .post-pager__prev + .post-pager__next {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
 }
 
 /* Post titles are left-aligned in every theme, so the date under them is too; centred, it
