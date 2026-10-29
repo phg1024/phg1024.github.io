@@ -34,3 +34,184 @@
   color: #ffffff;
   outline: 1px solid #ff4fd8;
 }
+
+/* ── Night City (2077) ──────────────────────────────────────────────────────────────────
+   Yellow is the signal colour (name, page titles, the current page, keywords), cyan the
+   data colour (links, labels, strings, the grid), red the alarm colour (glitch split,
+   prefixes). Two faces: Chakra Petch for everything that is read (headings in capitals
+   with a red/cyan split, item titles, body text) and JetBrains Mono for every label, date
+   and readout. Panels with cut corners and a hairline edge; faint scanlines over all. */
+[data-theme="cyberpunk"] {
+  --bg: #07080b;
+  --bg-accent: #0c1117;
+  --surface: rgba(9, 12, 18, 0.8);
+  --surface-strong: rgba(12, 16, 24, 0.94);
+  --border: rgba(46, 242, 255, 0.24);
+  --text: #f1f5f9;
+  --muted: #a9b4c4;
+  --soft: #8291a6;
+  --accent: #fcee0a;
+  --accent-secondary: #2ef2ff;
+  --accent-tertiary: #ff3b5c;
+  --accent-glow: rgba(46, 242, 255, 0.35);
+  --accent-glow-pink: rgba(255, 59, 92, 0.3);
+  --radius-lg: 0;
+  --radius-md: 0;
+  --button-radius: 0;
+  --button-radius-tight: 0;
+  --sans: "Chakra Petch", "Helvetica Neue", sans-serif;
+  --serif: "Chakra Petch", "Helvetica Neue", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", monospace;
+  --cp-yellow: #fcee0a;
+  --cp-cyan: #2ef2ff;
+  --cp-red: #ff3b5c;
+}
+
+[data-theme="cyberpunk"] body {
+  background:
+    linear-gradient(rgba(46, 242, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 242, 255, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 10% 8%, rgba(255, 59, 92, 0.14), transparent 26%),
+    radial-gradient(circle at 88% 14%, rgba(46, 242, 255, 0.13), transparent 22%),
+    radial-gradient(circle at 50% 108%, rgba(252, 238, 10, 0.07), transparent 34%),
+    linear-gradient(180deg, #090b10 0%, var(--bg) 55%, #040507 100%);
+  background-size: 72px 72px, 72px 72px, auto, auto, auto, auto;
+  background-attachment: fixed;
+}
+
+[data-theme="cyberpunk"] .theme-backdrop {
+  opacity: 0.7;
+}
+
+/* Scanlines over the whole page; they never take a click. */
+[data-theme="cyberpunk"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0 1px, transparent 1px 3px);
+}
+
+/* Headings: capitals, yellow for titles, a red/cyan split like a misregistered screen. */
+[data-theme="cyberpunk"] .section-heading__title,
+[data-theme="cyberpunk"] .blog-content h1 {
+  color: var(--cp-yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-shadow: -2px 0 rgba(255, 59, 92, 0.75), 2px 0 rgba(46, 242, 255, 0.7);
+}
+[data-theme="cyberpunk"] .blog-content h2,
+[data-theme="cyberpunk"] .blog-content h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 14px rgba(46, 242, 255, 0.35);
+}
+[data-theme="cyberpunk"] .site-brand__name {
+  color: var(--cp-yellow);
+  letter-spacing: 0.03em;
+  text-shadow: -1px 0 rgba(255, 59, 92, 0.6), 1px 0 rgba(46, 242, 255, 0.55);
+}
+
+/* A short glitch as a page's title comes in; none with reduced motion. */
+@keyframes cp-glitch {
+  0%   { transform: translate(-4px, 0) skewX(-10deg); clip-path: inset(0 0 62% 0); text-shadow: -6px 0 var(--cp-red), 6px 0 var(--cp-cyan); }
+  12%  { transform: translate(4px, 1px); clip-path: inset(48% 0 12% 0); }
+  24%  { transform: translate(-2px, -1px) skewX(6deg); clip-path: inset(18% 0 40% 0); }
+  36%  { transform: none; clip-path: none; text-shadow: -4px 0 var(--cp-red), 4px 0 var(--cp-cyan); }
+  52%  { transform: translate(2px, 0); text-shadow: -3px 0 var(--cp-red), 3px 0 var(--cp-cyan); }
+  64%  { transform: none; }
+  100% { transform: none; clip-path: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="cyberpunk"] .section-heading__title,
+  [data-theme="cyberpunk"] .blog-content h1 {
+    animation: cp-glitch 0.65s linear 0.1s 1 both;
+  }
+}
+
+/* Readouts: labels, navigation, dates and tags in mono. */
+[data-theme="cyberpunk"] .section-heading__eyebrow,
+[data-theme="cyberpunk"] .site-brand__tag,
+[data-theme="cyberpunk"] .site-nav__link,
+[data-theme="cyberpunk"] .proto-rail__tag,
+[data-theme="cyberpunk"] .theme-toggle__label,
+[data-theme="cyberpunk"] .writing-item__when,
+[data-theme="cyberpunk"] .writing-item__tags,
+[data-theme="cyberpunk"] .blog-post__date,
+[data-theme="cyberpunk"] .home-section-head__more,
+[data-theme="cyberpunk"] .post-meta__label,
+[data-theme="cyberpunk"] .post-pager__label,
+[data-theme="cyberpunk"] .post-related__when,
+[data-theme="cyberpunk"] .post-meta__tags,
+[data-theme="cyberpunk"] .home-demos,
+[data-theme="cyberpunk"] .site-footer,
+[data-theme="cyberpunk"] .gallery-tabs__tab,
+[data-theme="cyberpunk"] select {
+  font-family: var(--mono);
+}
+[data-theme="cyberpunk"] .section-heading__eyebrow {
+  color: var(--cp-cyan);
+}
+[data-theme="cyberpunk"] .section-heading__eyebrow::before {
+  content: "// ";
+  color: var(--cp-red);
+}
+[data-theme="cyberpunk"] .post-meta .post-box .post-meta__label,
+[data-theme="cyberpunk"] .post-pager__label {
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cp-cyan);
+}
+[data-theme="cyberpunk"] .home-section-head__more {
+  color: var(--cp-yellow);
+}
+
+/* Links: cyan with a little glow. */
+[data-theme="cyberpunk"] .blog-content p a,
+[data-theme="cyberpunk"] .blog-content li a {
+  color: var(--cp-cyan);
+  text-decoration-color: rgba(46, 242, 255, 0.45);
+}
+[data-theme="cyberpunk"] .blog-content p a:hover,
+[data-theme="cyberpunk"] .blog-content li a:hover,
+[data-theme="cyberpunk"] .writing-item__title a:hover,
+[data-theme="cyberpunk"] .card-title a:hover,
+[data-theme="cyberpunk"] .post-related a:hover,
+[data-theme="cyberpunk"] .post-pager a:hover {
+  color: var(--cp-yellow);
+  text-shadow: 0 0 10px rgba(252, 238, 10, 0.45);
+}
+
+/* Panels with cut corners (top right, bottom left), a hairline cyan edge and the cut
+   itself drawn in. html + body.proto outranks proto-extra.css's plain-panel rule. */
+html[data-theme="cyberpunk"] body.proto .content-page,
+html[data-theme="cyberpunk"] body.proto .blog-content {
+  position: relative;
+  background: linear-gradient(135deg, rgba(46, 242, 255, 0.06), transparent 32%), rgba(8, 10, 16, 0.82);
+  box-shadow: inset 0 0 0 1px rgba(46, 242, 255, 0.26);
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 26px 100%, 0 calc(100% - 26px));
+}
+html[data-theme="cyberpunk"] body.proto .content-page::after,
+html[data-theme="cyberpunk"] body.proto .blog-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(225deg, transparent 17.8px, var(--cp-cyan) 17.8px, var(--cp-cyan) 19.2px, transparent 19.2px) top right / 28px 28px no-repeat,
+    linear-gradient(45deg, transparent 17.8px, var(--cp-yellow) 17.8px, var(--cp-yellow) 19.2px, transparent 19.2px) bottom left / 28px 28px no-repeat;
+}
+[data-theme="cyberpunk"] .card {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  border-color: rgba(46, 242, 255, 0.28);
+}
+
+/* Form controls don't inherit the page font by default. */
+[data-theme="cyberpunk"] button,
+[data-theme="cyberpunk"] input,
+[data-theme="cyberpunk"] textarea {
+  font-family: inherit;
+}

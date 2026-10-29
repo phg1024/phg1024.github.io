@@ -46,6 +46,8 @@
     let industrialRipples = [];
     let industrialPointerActive = false;
     let lastAmbientPulse = 0;
+    let cyberSkyline = [];
+    let cyberGridOffset = 0;
 
     // ── Idle detection ──
 
@@ -91,7 +93,7 @@
 
     const hasDynamicBackdrop = function () {
         const theme = getTheme();
-        return theme === 'matrix' || theme === 'industrial';
+        return theme === 'matrix' || theme === 'industrial' || theme === 'cyberpunk';
     };
 
     const getThemeParticlePalette = function () {
@@ -108,7 +110,7 @@
         if (theme === 'win31') {
             return { core: ['255, 255, 255', '0, 0, 128'], sparks: ['255, 255, 255', '0, 0, 0'] };
         }
-        return { core: ['78, 246, 255', '255, 79, 216'], sparks: ['78, 246, 255', '255, 79, 216'] };
+        return { core: ['46, 242, 255', '252, 238, 10'], sparks: ['252, 238, 10', '255, 59, 92'] };
     };
 
     const randomGlyph = function () {
@@ -133,6 +135,9 @@
             queueBackdrop();
         } else if (getTheme() === 'industrial') {
             initializeIndustrialCircuits();
+            queueBackdrop();
+        } else if (getTheme() === 'cyberpunk') {
+            initializeCyberSkyline();
             queueBackdrop();
         }
     };
@@ -184,6 +189,7 @@
         backdropContext.setTransform(backdropRatio, 0, 0, backdropRatio, 0, 0);
         initializeMatrixColumns();
         initializeIndustrialCircuits();
+        initializeCyberSkyline();
     };
 
     // Matrix rain with depth. Streams come in three layers: far ones are small, faint and
@@ -795,6 +801,106 @@
         backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
     };
 
+    // Cyberpunk backdrop: a city skyline on a horizon with a neon grid floor running toward
+    // the viewer. The vanishing point drifts with the pointer; windows flicker. With reduced
+    // motion it is drawn once, still.
+    const initializeCyberSkyline = function () {
+        cyberSkyline = [];
+        if (!backdropContext || getTheme() !== 'cyberpunk') return;
+        var x = -20;
+        while (x < backdropWidth + 20) {
+            var width = 26 + Math.random() * 70;
+            var height = 30 + Math.random() * (Math.random() < 0.18 ? 190 : 90);
+            var windows = [];
+            for (var wy = 8; wy < height - 8; wy += 9) {
+                for (var wx = 5; wx < width - 5; wx += 8) {
+                    if (Math.random() < 0.16) windows.push({ x: wx, y: wy, tone: Math.random() < 0.7 ? 0 : (Math.random() < 0.5 ? 1 : 2), on: Math.random() < 0.85 });
+                }
+            }
+            cyberSkyline.push({ x: x, w: width, h: height, windows: windows, antenna: height > 120 && Math.random() < 0.6 });
+            x += width + (Math.random() < 0.3 ? 6 + Math.random() * 18 : 0);
+        }
+    };
+
+    const drawCyberpunkBackdrop = function (timestamp) {
+        if (!backdropContext || getTheme() !== 'cyberpunk') {
+            if (backdropContext) backdropContext.clearRect(0, 0, backdropWidth, backdropHeight);
+            backdropFrame = null;
+            return;
+        }
+        if (!media.matches && timestamp && (timestamp - lastBackdropTimestamp) < (1000 / MAX_BACKDROP_FPS)) {
+            backdropFrame = window.requestAnimationFrame(drawCyberpunkBackdrop);
+            return;
+        }
+        lastBackdropTimestamp = timestamp || 0;
+        var ctx = backdropContext;
+        var horizon = backdropHeight * 0.62;
+        var vanishX = (backdropWidth * 0.5) + ((currentX - (backdropWidth * 0.5)) * 0.12);
+        ctx.clearRect(0, 0, backdropWidth, backdropHeight);
+
+        // Haze behind the city.
+        var haze = ctx.createLinearGradient(0, horizon - 220, 0, horizon);
+        haze.addColorStop(0, 'rgba(255, 59, 92, 0)');
+        haze.addColorStop(1, 'rgba(255, 59, 92, 0.16)');
+        ctx.fillStyle = haze;
+        ctx.fillRect(0, horizon - 220, backdropWidth, 220);
+
+        // Skyline, with a slight parallax against the pointer.
+        var shift = (currentX - (backdropWidth * 0.5)) * -0.02;
+        var tones = ['252, 238, 10', '46, 242, 255', '255, 59, 92'];
+        cyberSkyline.forEach(function (tower) {
+            var left = tower.x + shift;
+            var top = horizon - tower.h;
+            ctx.fillStyle = 'rgba(6, 8, 13, 0.96)';
+            ctx.fillRect(left, top, tower.w, tower.h);
+            ctx.fillStyle = 'rgba(46, 242, 255, 0.18)';
+            ctx.fillRect(left, top, tower.w, 1);
+            if (tower.antenna) {
+                ctx.fillRect(left + (tower.w / 2), top - 24, 1, 24);
+                ctx.fillStyle = 'rgba(255, 59, 92, ' + (0.4 + (0.5 * Math.abs(Math.sin(((timestamp || 0) / 600) + tower.x)))).toFixed(3) + ')';
+                ctx.fillRect(left + (tower.w / 2) - 1, top - 26, 3, 3);
+            }
+            tower.windows.forEach(function (light) {
+                if (!media.matches && Math.random() < 0.004) light.on = !light.on;
+                if (!light.on) return;
+                ctx.fillStyle = 'rgba(' + tones[light.tone] + ', 0.55)';
+                ctx.fillRect(left + light.x, top + light.y, 3, 2);
+            });
+        });
+
+        // Horizon line.
+        ctx.fillStyle = 'rgba(255, 59, 92, 0.7)';
+        ctx.fillRect(0, horizon, backdropWidth, 1.5);
+
+        // Floor grid: rays from the vanishing point, and cross lines that run toward the
+        // viewer, spaced by perspective.
+        ctx.lineWidth = 1;
+        for (var ray = -24; ray <= 24; ray += 1) {
+            var footX = vanishX + (ray * backdropWidth / 9);
+            var rayGradient = ctx.createLinearGradient(0, horizon, 0, backdropHeight);
+            rayGradient.addColorStop(0, 'rgba(46, 242, 255, 0)');
+            rayGradient.addColorStop(1, 'rgba(46, 242, 255, 0.5)');
+            ctx.strokeStyle = rayGradient;
+            ctx.beginPath();
+            ctx.moveTo(vanishX, horizon);
+            ctx.lineTo(footX, backdropHeight);
+            ctx.stroke();
+        }
+        if (!media.matches) cyberGridOffset = (cyberGridOffset + 0.012) % 1;
+        var depth = backdropHeight - horizon;
+        for (var line = 0; line < 14; line += 1) {
+            var t = (line + cyberGridOffset) / 14;
+            var y = horizon + (depth * t * t);
+            ctx.strokeStyle = 'rgba(46, 242, 255, ' + (0.08 + (0.45 * t)).toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(backdropWidth, y);
+            ctx.stroke();
+        }
+
+        backdropFrame = media.matches ? null : window.requestAnimationFrame(drawCyberpunkBackdrop);
+    };
+
     const drawOverlay = function (timestamp) {
         if (!overlayContext || media.matches || !hasReactiveOverlay()) {
             if (overlayContext) overlayContext.clearRect(0, 0, overlayWidth, overlayHeight);
@@ -901,10 +1007,12 @@
 
     const queueBackdrop = function () {
         if (backdropFrame || !hasDynamicBackdrop()) return;
-        // Reduced motion: the circuit board is still drawn, once and still; matrix is not.
-        if (media.matches && getTheme() !== 'industrial') return;
+        // Reduced motion: the circuit board and the city are drawn once and still; matrix is not.
+        if (media.matches && getTheme() === 'matrix') return;
         if (getTheme() === 'industrial') {
             backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
+        } else if (getTheme() === 'cyberpunk') {
+            backdropFrame = window.requestAnimationFrame(drawCyberpunkBackdrop);
         } else {
             backdropFrame = window.requestAnimationFrame(drawMatrixBackdrop);
         }
