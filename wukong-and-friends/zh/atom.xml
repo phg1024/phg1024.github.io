@@ -10,7 +10,19 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-10-28T00:00:00Z</atom:updated>
+  <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+  <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-joins-the-game/</atom:id>
+    <atom:title type="text">悟空想一起玩</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukong-joins-the-game/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-10-29T00:00:00Z</atom:published>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1-zh-Hans.jpg" alt="悟空想一起玩" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/big-cards-little-numbers/</atom:id>
     <atom:title type="text">大纸牌，小数字</atom:title>

@@ -10,7 +10,19 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-10-28T00:00:00Z</atom:updated>
+  <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-joins-the-game/</atom:id>
+    <atom:title type="text">Wukong Wants to Play Too</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-joins-the-game/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-29T00:00:00Z</atom:published>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Pigsy, Rabbit and Ao Bing are rolling a ball in a circle. Wukong wants to play so much that he runs in and grabs it. Sandy shows him another way: look, ask, wait. Soon there is room in the circle for everyone.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1.jpg" alt="Wukong Wants to Play Too" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
   <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/big-cards-little-numbers/</atom:id>
     <atom:title type="text">Big Cards, Little Numbers</atom:title>

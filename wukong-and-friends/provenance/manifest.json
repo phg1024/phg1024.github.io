@@ -562,6 +562,36 @@
       "bytes": 23945609
     },
     {
+      "path": "docs/downloads/wukong-joins-the-game-v1-booklet.pdf",
+      "sha256": "517754d9e28dfbc23d99d45993cfe6feeaeff1198c335885eb2f482f3755ac0d",
+      "bytes": 8897728
+    },
+    {
+      "path": "docs/downloads/wukong-joins-the-game-v1-core-en.pdf",
+      "sha256": "7242e2a50f5d948da729a63e799d124d23d1612fa0b82634725d82f5e5bf98a3",
+      "bytes": 8541077
+    },
+    {
+      "path": "docs/downloads/wukong-joins-the-game-v1-core-zh-Hans.pdf",
+      "sha256": "255e4a0a50c7df14445c62ab8d7a0a6f9205d178f1e9b2bfc6e1e31b65a8c027",
+      "bytes": 8571152
+    },
+    {
+      "path": "docs/downloads/wukong-joins-the-game-v1-zh-Hans-booklet.pdf",
+      "sha256": "5259abc98a8ae71ac7f59a51ade7afedc0cbe1a7c367a37facf932bc89f0059a",
+      "bytes": 8939210
+    },
+    {
+      "path": "docs/downloads/wukong-joins-the-game-v1-zh-Hans.pdf",
+      "sha256": "66482c988b188b8894243fdffe34f67a31130f3bbe9333f4c2e380d7d83d9868",
+      "bytes": 8929341
+    },
+    {
+      "path": "docs/downloads/wukong-joins-the-game-v1.pdf",
+      "sha256": "ff979d55ed954a2180528f0da8a9c946d3b4225f00fc39835447e20cf85559b0",
+      "bytes": 8878690
+    },
+    {
       "path": "docs/downloads/wukong-learns-to-swim-v1-booklet.pdf",
       "sha256": "fa2cfb21b0e3678bc7558877399faead4e640be8dfbfb83c5b8893b1cd932224",
       "bytes": 28322207
@@ -1715,6 +1745,11 @@
       "path": "stories/wukong-and-the-tiny-tomatoes/editions/v8/prompts.txt",
       "sha256": "b60229762989a7f65268d4e5e96c11da4a96f038a0b127d72779e5184b5d3ad8",
       "bytes": 413855
+    },
+    {
+      "path": "stories/wukong-joins-the-game/editions/v1/prompts.txt",
+      "sha256": "2ac7ea340bc9e3c744efcbae3aa8776dca702cc4727aee66a853b6164f0c5719",
+      "bytes": 749895
     },
     {
       "path": "stories/wukong-learns-to-swim/editions/v1/prompts.txt",

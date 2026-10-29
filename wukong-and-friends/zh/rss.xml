@@ -9,7 +9,15 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Wed, 28 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>悟空想一起玩</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/wukong-joins-the-game/</link>
+      <description>&lt;p&gt;八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1-zh-Hans.jpg" alt="悟空想一起玩" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/wukong-joins-the-game/</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>大纸牌，小数字</title>
       <link>https://phg1024.github.io/wukong-and-friends/zh/books/big-cards-little-numbers/</link>

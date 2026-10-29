@@ -331,6 +331,66 @@
     }
   },
   {
+    "id": "wukong-joins-the-game",
+    "title": "Wukong Wants to Play Too",
+    "title_zh": "悟空想一起玩",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "look",
+      "ask",
+      "wait",
+      "turn",
+      "roll",
+      "play"
+    ],
+    "language_reading_versions": {
+      "en": "wukong-joins-the-game/v1/en",
+      "zh-Hans": "wukong-joins-the-game/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-booklet.pdf",
+    "cover": "covers/wukong-joins-the-game-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Wants to Play Too",
+        "description": "Pigsy, Rabbit and Ao Bing are rolling a ball in a circle. Wukong wants to play so much that he runs in and grabs it. Sandy shows him another way: look, ask, wait. Soon there is room in the circle for everyone."
+      },
+      "zh": {
+        "title": "悟空想一起玩",
+        "description": "八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。"
+      }
+    },
+    "description": "八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。",
+    "description_en": "Pigsy, Rabbit and Ao Bing are rolling a ball in a circle. Wukong wants to play so much that he runs in and grabs it. Sandy shows him another way: look, ask, wait. Soon there is room in the circle for everyone.",
+    "keywords": "悟空 八戒 玉兔 敖丙 沙僧 滚球 一起玩 礼貌 轮流 等待 社交 Wukong Pigsy Rabbit Ao Bing Sandy ball game join in ask politely take turns wait social skills",
+    "languages": {
+      "en": {
+        "reading": "downloads/wukong-joins-the-game-v1.pdf",
+        "booklet": "downloads/wukong-joins-the-game-v1-booklet.pdf",
+        "cover": "covers/wukong-joins-the-game-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-joins-the-game-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "wukong-learns-to-swim",
     "title": "Wukong Learns to Swim",
     "title_zh": "悟空的游泳课",
