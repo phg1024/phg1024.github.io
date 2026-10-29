@@ -40,7 +40,7 @@
    data colour (links, labels, strings, the grid), red the alarm colour (glitch split,
    prefixes). Two faces: Chakra Petch for everything that is read (headings in capitals
    with a red/cyan split, item titles, body text) and JetBrains Mono for every label, date
-   and readout. Panels with cut corners and a hairline edge; faint scanlines behind. */
+   and readout. Panels with cut corners and a hairline edge. */
 [data-theme="cyberpunk"] {
   --bg: #07080b;
   --bg-accent: #0c1117;
@@ -67,18 +67,15 @@
   --cp-red: #ff3b5c;
 }
 
-/* Scanlines are part of the background (first layer), so they show around the page but
-   never cross the panels or the text. */
 [data-theme="cyberpunk"] body {
   background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px),
     linear-gradient(rgba(46, 242, 255, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(46, 242, 255, 0.035) 1px, transparent 1px),
     radial-gradient(circle at 10% 8%, rgba(255, 59, 92, 0.14), transparent 26%),
     radial-gradient(circle at 88% 14%, rgba(46, 242, 255, 0.13), transparent 22%),
     radial-gradient(circle at 50% 108%, rgba(252, 238, 10, 0.07), transparent 34%),
     linear-gradient(180deg, #090b10 0%, var(--bg) 55%, #040507 100%);
-  background-size: auto, 72px 72px, 72px 72px, auto, auto, auto, auto;
+  background-size: 72px 72px, 72px 72px, auto, auto, auto, auto;
   background-attachment: fixed;
 }
 
