@@ -75,7 +75,7 @@ pre code .token.url {
 pre code .token.atrule,
 pre code .token.attr-value,
 pre code .token.keyword {
-  color: var(--accent-glow-pink);
+  color: var(--accent);
   font-weight: 600;
 }
 pre code .token.function,
@@ -113,7 +113,7 @@ pre code .token.entity {
 [data-theme="matrix"] pre code .token.comment,
 [data-theme="matrix"] pre code .token.prolog,
 [data-theme="matrix"] pre code .token.cdata {
-  color: #1a8a1a;
+  color: #22a022;
   text-shadow: 0 0 3px rgba(57, 255, 20, 0.2);
 }
 [data-theme="matrix"] pre code .token.keyword,
@@ -142,7 +142,7 @@ pre code .token.entity {
 }
 [data-theme="matrix"] pre code .token.punctuation {
   color: #39ff14;
-  opacity: 0.5;
+  opacity: 0.75;
   text-shadow: 0 0 3px rgba(57, 255, 20, 0.2);
 }
 [data-theme="matrix"] pre code .token.operator,
@@ -191,13 +191,19 @@ pre code .token.entity {
 }
 [data-theme="minimalist"] pre code .token.punctuation {
   color: #52525b;
-  opacity: 0.8;
+  opacity: 1;
 }
 [data-theme="minimalist"] pre code .token.operator,
 [data-theme="minimalist"] pre code .token.entity,
 [data-theme="minimalist"] pre code .token.url {
   color: #0369a1;
-  opacity: 0.9;
+  opacity: 1;
+}
+[data-theme="minimalist"] pre code .token.regex,
+[data-theme="minimalist"] pre code .token.important,
+[data-theme="minimalist"] pre code .token.variable {
+  color: #475569;
+  opacity: 1;
 }
 
 /* ── Industrial theme overrides ── */

@@ -150,28 +150,40 @@
 	border: 1px solid rgba(97, 113, 127, 0.25);
 }
 
-/* Override highlight.js colors for industrial theme */
-[data-theme="industrial"] .blog-content pre code .hljs-keyword,
-[data-theme="industrial"] .blog-content pre code .hljs-keyword-title { color: #4a5568; font-weight: 700; }
-[data-theme="industrial"] .blog-content pre code .hljs-built_in,
-[data-theme="industrial"] .blog-content pre code .hljs-type { color: #566474; }
-[data-theme="industrial"] .blog-content pre code .hljs-string,
-[data-theme="industrial"] .blog-content pre code .hljs-literal,
-[data-theme="industrial"] .blog-content pre code .hljs-number { color: #6b7a8a; }
-[data-theme="industrial"] .blog-content pre code .hljs-comment,
-[data-theme="industrial"] .blog-content pre code .hljs-quote { color: #8b95a1; }
-[data-theme="industrial"] .blog-content pre code .hljs-name,
-[data-theme="industrial"] .blog-content pre code .hljs-title,
-[data-theme="industrial"] .blog-content pre code .hljs-section { color: #202831; }
-[data-theme="industrial"] .blog-content pre code .hljs-tag { color: #5a6a7a; }
-[data-theme="industrial"] .blog-content pre code .hljs-symbol,
-[data-theme="industrial"] .blog-content pre code .hljs-variable { color: #7a6a4a; }
-[data-theme="industrial"] .blog-content pre code .hljs-template-variable,
-[data-theme="industrial"] .blog-content pre code .hljs-addition { color: #6b7a8a; }
-[data-theme="industrial"] .blog-content pre code .hljs-attr,
-[data-theme="industrial"] .blog-content pre code .hljs-property { color: #4a5568; }
-[data-theme="industrial"] .blog-content pre code .hljs-punctuation,
-[data-theme="industrial"] .blog-content pre code .hljs-meta { color: #8b95a1; }
+/* Code in posts sits on a light panel (#e4e8ec), but syntax.css colours Prism tokens for the
+   dark pre it gives this theme elsewhere: mint strings and amber numbers at about 1.5:1.
+   Dark, muted token colours instead, each at 4.5:1 or better on the light panel, and no
+   opacity (it lowered contrast further; it is reset per rule because a bare .token rule
+   ties with syntax.css's, which loads later). */
+[data-theme="industrial"] .blog-content pre code .token.comment,
+[data-theme="industrial"] .blog-content pre code .token.prolog,
+[data-theme="industrial"] .blog-content pre code .token.doctype,
+[data-theme="industrial"] .blog-content pre code .token.cdata { color: #56626f; }
+[data-theme="industrial"] .blog-content pre code .token.keyword,
+[data-theme="industrial"] .blog-content pre code .token.atrule,
+[data-theme="industrial"] .blog-content pre code .token.attr-value { color: #1f4e79; }
+[data-theme="industrial"] .blog-content pre code .token.property,
+[data-theme="industrial"] .blog-content pre code .token.tag,
+[data-theme="industrial"] .blog-content pre code .token.number,
+[data-theme="industrial"] .blog-content pre code .token.boolean,
+[data-theme="industrial"] .blog-content pre code .token.constant,
+[data-theme="industrial"] .blog-content pre code .token.symbol,
+[data-theme="industrial"] .blog-content pre code .token.deleted { color: #7a4f00; }
+[data-theme="industrial"] .blog-content pre code .token.function,
+[data-theme="industrial"] .blog-content pre code .token.class-name,
+[data-theme="industrial"] .blog-content pre code .token.builtin,
+[data-theme="industrial"] .blog-content pre code .token.string,
+[data-theme="industrial"] .blog-content pre code .token.char,
+[data-theme="industrial"] .blog-content pre code .token.attr-name,
+[data-theme="industrial"] .blog-content pre code .token.selector,
+[data-theme="industrial"] .blog-content pre code .token.inserted,
+[data-theme="industrial"] .blog-content pre code .token.operator,
+[data-theme="industrial"] .blog-content pre code .token.entity,
+[data-theme="industrial"] .blog-content pre code .token.url { color: #17614a; opacity: 1; }
+[data-theme="industrial"] .blog-content pre code .token.regex,
+[data-theme="industrial"] .blog-content pre code .token.important,
+[data-theme="industrial"] .blog-content pre code .token.variable { color: #4a5d70; opacity: 1; }
+[data-theme="industrial"] .blog-content pre code .token.punctuation { color: #4a5568; opacity: 1; }
 [data-theme="industrial"] .blog-content pre code {
 	background: none;
 	color: #202831;
