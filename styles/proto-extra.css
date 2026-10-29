@@ -426,6 +426,16 @@ span.gallery-map {
   }
 }
 
+/* Link to the untouched original in the photos repository's Releases. */
+.carousel__caption .gallery-original {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* One content panel on every page, the gallery included, so that moving between pages reads
    as a single container changing size (see the transition rules at the end). The gallery
    keeps the theme's panel but with tighter padding, which leaves the photo its room.
