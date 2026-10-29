@@ -557,6 +557,67 @@
     }
   },
   {
+    "id": "wukong-visits-the-pumpkin-patch",
+    "title": "Wukong Visits the Pumpkin Patch",
+    "title_zh": "悟空逛南瓜农场",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "left",
+      "right",
+      "straight",
+      "in front of",
+      "behind",
+      "between",
+      "next to"
+    ],
+    "language_reading_versions": {
+      "en": "wukong-visits-the-pumpkin-patch/v1/en",
+      "zh-Hans": "wukong-visits-the-pumpkin-patch/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
+    "cover": "covers/wukong-visits-the-pumpkin-patch-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Visits the Pumpkin Patch",
+        "description": "Wukong, Ao Bing and Nezha head into a corn maze on the way to the pumpkin field. Nezha dashes ahead and they pop out back at the start, so they look for clues: left at the scarecrow, right at the pumpkins, straight ahead — and a pumpkin each to take home."
+      },
+      "zh": {
+        "title": "悟空逛南瓜农场",
+        "description": "悟空、敖丙和哪吒走进通往南瓜田的玉米迷宫。哪吒冲在前面，结果又绕回了入口。大家改成找路上的标记：到了稻草人往左拐，到了南瓜堆往右拐，一直往前走，最后每人都挑到一个南瓜。"
+      }
+    },
+    "description": "悟空、敖丙和哪吒走进通往南瓜田的玉米迷宫。哪吒冲在前面，结果又绕回了入口。大家改成找路上的标记：到了稻草人往左拐，到了南瓜堆往右拐，一直往前走，最后每人都挑到一个南瓜。",
+    "description_en": "Wukong, Ao Bing and Nezha head into a corn maze on the way to the pumpkin field. Nezha dashes ahead and they pop out back at the start, so they look for clues: left at the scarecrow, right at the pumpkins, straight ahead — and a pumpkin each to take home.",
+    "keywords": "悟空 敖丙 哪吒 唐僧 南瓜农场 玉米迷宫 左右 前后 中间 旁边 方位 Wukong Ao Bing Nezha Tang Monk pumpkin patch corn maze left right straight in front of behind between next to directions",
+    "languages": {
+      "en": {
+        "reading": "downloads/wukong-visits-the-pumpkin-patch-v1.pdf",
+        "booklet": "downloads/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
+        "cover": "covers/wukong-visits-the-pumpkin-patch-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-visits-the-pumpkin-patch-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "wukongs-brick-building-day",
     "title": "Wukong’s Brick-Building Day",
     "title_zh": "悟空的积木城堡",
@@ -676,6 +737,67 @@
     "source_v1_preserved": true
   },
   {
+    "id": "wukongs-little-dinosaur-halloween",
+    "title": "Wukong’s Little Dinosaur Halloween",
+    "title_zh": "悟空的小恐龙万圣夜",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "trick or treat",
+      "thank you",
+      "ring",
+      "one",
+      "softly",
+      "costume",
+      "scared"
+    ],
+    "language_reading_versions": {
+      "en": "wukongs-little-dinosaur-halloween/v1/en",
+      "zh-Hans": "wukongs-little-dinosaur-halloween/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-booklet.pdf",
+    "cover": "covers/wukongs-little-dinosaur-halloween-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Little Dinosaur Halloween",
+        "description": "Wukong has a brand-new dinosaur costume and a big, loud ROAR. But when a tiny hedgehog opens the first door, Wukong finds a softer way to say trick or treat. Ring the bell, take one, say thank you — and share with a friend."
+      },
+      "zh": {
+        "title": "悟空的小恐龙万圣夜",
+        "description": "悟空穿上新的恐龙装，练了一声大大的“嗷——呜！”。可第一家开门的是一只小小的刺猬，悟空换成小小声的“嗷呜”。按门铃、只拿一颗、说谢谢，回家还把糖分给陪他走了一路的沙僧。"
+      }
+    },
+    "description": "悟空穿上新的恐龙装，练了一声大大的“嗷——呜！”。可第一家开门的是一只小小的刺猬，悟空换成小小声的“嗷呜”。按门铃、只拿一颗、说谢谢，回家还把糖分给陪他走了一路的沙僧。",
+    "description_en": "Wukong has a brand-new dinosaur costume and a big, loud ROAR. But when a tiny hedgehog opens the first door, Wukong finds a softer way to say trick or treat. Ring the bell, take one, say thank you — and share with a friend.",
+    "keywords": "悟空 八戒 玉兔 沙僧 万圣节 恐龙装 不给糖就捣蛋 讨糖 礼貌 谢谢 分享 Wukong Pigsy Rabbit Sandy Halloween dinosaur costume trick or treat manners thank you sharing",
+    "languages": {
+      "en": {
+        "reading": "downloads/wukongs-little-dinosaur-halloween-v1.pdf",
+        "booklet": "downloads/wukongs-little-dinosaur-halloween-v1-booklet.pdf",
+        "cover": "covers/wukongs-little-dinosaur-halloween-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-little-dinosaur-halloween-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "wukongs-missing-picnic-cup",
     "title": "Wukong’s Missing Picnic Cup",
     "title_zh": "悟空少算了谁？",
@@ -780,6 +902,69 @@
     },
     "language_reading_versions": {
       "en": "wukongs-painting-class/v3/en"
+    }
+  },
+  {
+    "id": "wukongs-starry-stage",
+    "title": "Wukong’s Starry Stage",
+    "title_zh": "悟空的星星小剧场",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "add",
+      "more",
+      "take away",
+      "left",
+      "altogether",
+      "stage",
+      "curtain",
+      "entrance"
+    ],
+    "math_plan_id": "M6",
+    "language_reading_versions": {
+      "en": "wukongs-starry-stage/v1/en",
+      "zh-Hans": "wukongs-starry-stage/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-booklet.pdf",
+    "cover": "covers/wukongs-starry-stage-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Starry Stage",
+        "description": "Wukong sets up a little stage for story night. Six paper stars, then two more from Rabbit — eight altogether. The entrance needs some too, so they take away three: five are left on the curtain, but still eight altogether. And Pigsy has an idea for the moon."
+      },
+      "zh": {
+        "title": "悟空的星星小剧场",
+        "description": "悟空要办故事会，在幕布上贴了六颗纸星星，玉兔又带来两颗，一共八颗。入口也想要星星，他们从幕布上拿走三颗：幕布上还剩五颗，合起来还是八颗。八戒还想用自己的圆肚子当月亮呢！"
+      }
+    },
+    "description": "悟空要办故事会，在幕布上贴了六颗纸星星，玉兔又带来两颗，一共八颗。入口也想要星星，他们从幕布上拿走三颗：幕布上还剩五颗，合起来还是八颗。八戒还想用自己的圆肚子当月亮呢！",
+    "description_en": "Wukong sets up a little stage for story night. Six paper stars, then two more from Rabbit — eight altogether. The entrance needs some too, so they take away three: five are left on the curtain, but still eight altogether. And Pigsy has an idea for the moon.",
+    "keywords": "悟空 玉兔 八戒 星星 小舞台 故事会 加 减 还剩 一共 数学启蒙 Wukong Rabbit Pigsy stars stage story night add take away left altogether early math",
+    "languages": {
+      "en": {
+        "reading": "downloads/wukongs-starry-stage-v1.pdf",
+        "booklet": "downloads/wukongs-starry-stage-v1-booklet.pdf",
+        "cover": "covers/wukongs-starry-stage-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-starry-stage-v1-zh-Hans.jpg"
+      }
     }
   },
   {

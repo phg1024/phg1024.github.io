@@ -842,6 +842,36 @@
       "bytes": 29485354
     },
     {
+      "path": "docs/downloads/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
+      "sha256": "91ac9c249fc7c4921a3337d1f68158d2e4a38c9d006ac2a944f911955cae4c1f",
+      "bytes": 10102597
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-pumpkin-patch-v1-core-en.pdf",
+      "sha256": "4f7050c85c60537121447491b3f9c8fb1b680d3def24a5a5d0f3eab2dd37081a",
+      "bytes": 9782645
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-pumpkin-patch-v1-core-zh-Hans.pdf",
+      "sha256": "9b77aea0e869ff5859e78d6dd40b53bdcd290cacdafdd1faf8e91b696f1a63f6",
+      "bytes": 9813426
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-pumpkin-patch-v1-zh-Hans-booklet.pdf",
+      "sha256": "36509a1ca4a70baf42ef849f2255a5f3dc9736f8c347c7b42b8245244ce9c334",
+      "bytes": 10147668
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-pumpkin-patch-v1-zh-Hans.pdf",
+      "sha256": "581cb8b0da9b9b94333bbc94246ba4d221c986b46424502f4423cb6a3bc83462",
+      "bytes": 10137804
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-pumpkin-patch-v1.pdf",
+      "sha256": "86bd0a350104559bab1403177e819bd5f1fc98840b5abeb6cc9f41bb15824f90",
+      "bytes": 10083506
+    },
+    {
       "path": "docs/downloads/wukongs-brick-building-day-v1-booklet.pdf",
       "sha256": "d207f638d7281d99ea0354892e50aa941e1b80f3c0db2cfa8bfbab3af4892de3",
       "bytes": 24495445
@@ -1065,6 +1095,36 @@
       "path": "docs/downloads/wukongs-first-ballet-class-v5.pdf",
       "sha256": "750b22f1b79d98e5d2cfa36bce6d8b471d6b73eb9fce36895809c55ec8193737",
       "bytes": 18964998
+    },
+    {
+      "path": "docs/downloads/wukongs-little-dinosaur-halloween-v1-booklet.pdf",
+      "sha256": "70d0b9fb3b7bdef1f3f3889493a0e0e3984bd20a69e76ceedf6e469565785548",
+      "bytes": 9728932
+    },
+    {
+      "path": "docs/downloads/wukongs-little-dinosaur-halloween-v1-core-en.pdf",
+      "sha256": "75d1074875e092a2572166bbd9a6448c8b778d754ab056f7ba6ce3397dde477a",
+      "bytes": 9377750
+    },
+    {
+      "path": "docs/downloads/wukongs-little-dinosaur-halloween-v1-core-zh-Hans.pdf",
+      "sha256": "62ec4e58c00e4a109adb24e3979f06f667d2c51df8d760515d9d1dae56882fc8",
+      "bytes": 9421361
+    },
+    {
+      "path": "docs/downloads/wukongs-little-dinosaur-halloween-v1-zh-Hans-booklet.pdf",
+      "sha256": "f8f2a7bf8c8e43227975d4c1d5783c7439dbe3abeed81a2b32ec4ef9b3ac1524",
+      "bytes": 9787397
+    },
+    {
+      "path": "docs/downloads/wukongs-little-dinosaur-halloween-v1-zh-Hans.pdf",
+      "sha256": "b3274ac859583e60fbc9c664fc75bd9a668e7b2fc268b92beb67e4785d441a80",
+      "bytes": 9777470
+    },
+    {
+      "path": "docs/downloads/wukongs-little-dinosaur-halloween-v1.pdf",
+      "sha256": "eb4940e8e69edc1601eb318bb0203e71698c12975fecf1fd886ab9301e2f9e39",
+      "bytes": 9709830
     },
     {
       "path": "docs/downloads/wukongs-missing-picnic-cup-v1-booklet.pdf",
@@ -1532,6 +1592,36 @@
       "bytes": 22402065
     },
     {
+      "path": "docs/downloads/wukongs-starry-stage-v1-booklet.pdf",
+      "sha256": "cdd472ed2004005fa999ca6238a39634fb4fa13ea8243c7691d903972cb283f5",
+      "bytes": 9428376
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v1-core-en.pdf",
+      "sha256": "3c3339ed138cfa2aacf7d6435c5e2f7cfe25429762e523c0c16b45096d5dd031",
+      "bytes": 9101047
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v1-core-zh-Hans.pdf",
+      "sha256": "941bc25cf74d70697314f2c574d7332db3aed5a1525ed7f059eb7e93dd383c0b",
+      "bytes": 9131275
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v1-zh-Hans-booklet.pdf",
+      "sha256": "ecc4259694b290976c37722a902643bb60f9262b567dcdb02e79aca887459e51",
+      "bytes": 9472637
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v1-zh-Hans.pdf",
+      "sha256": "88cc873ea275e3a70209d5fb6d42b9b2d4a070c4d9c10c0187251a12fdf612e4",
+      "bytes": 9462766
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v1.pdf",
+      "sha256": "bf3c057a4bce5bbf1a62264a168afd93e9a74dcff5a7a729e21aacb05de80d24",
+      "bytes": 9409327
+    },
+    {
       "path": "docs/downloads/wukongs-wibble-wobble-ride-v1-booklet.pdf",
       "sha256": "06520fe4eff78c8f0e47fba99b4501a029b32e1eb7f2221f6b95eb5469a000f9",
       "bytes": 19153804
@@ -1862,6 +1952,11 @@
       "bytes": 131732
     },
     {
+      "path": "stories/wukong-visits-the-pumpkin-patch/editions/v1/prompts.txt",
+      "sha256": "dcc20280ed533fddae01c46221c2a19a8cef4704ab80a1f9fface8bc1e0818c4",
+      "bytes": 701754
+    },
+    {
       "path": "stories/wukongs-brick-building-day/editions/v1/prompts.txt",
       "sha256": "c22dcd5f57b7bca51f11a7ea06f09295465923fe630b9a0caf497eba372bfab0",
       "bytes": 104804
@@ -1900,6 +1995,11 @@
       "path": "stories/wukongs-first-ballet-class/editions/v5/prompts.txt",
       "sha256": "2a44346c147e8f4aee9926fe33856f21ee18c3ec5066c7300c42563a65a95d1c",
       "bytes": 232855
+    },
+    {
+      "path": "stories/wukongs-little-dinosaur-halloween/editions/v1/prompts.txt",
+      "sha256": "605bf45535180bb72ad633a9f98c968a69cd88b8b598e055fc3a1e061f96829a",
+      "bytes": 724427
     },
     {
       "path": "stories/wukongs-missing-picnic-cup/editions/v1/prompts.txt",
@@ -2045,6 +2145,11 @@
       "path": "stories/wukongs-slippy-slide-skates/editions/v7/prompts.txt",
       "sha256": "6440000957a38dbbd61fdadeb83b8ee179b8e4cd3a10965a09e9ca64ff52a6e8",
       "bytes": 86557
+    },
+    {
+      "path": "stories/wukongs-starry-stage/editions/v1/prompts.txt",
+      "sha256": "9958f2565e799c8a9f8b1aea3fb6f6d26a5852cf3e94d729a793e7fa49ec76db",
+      "bytes": 1145237
     },
     {
       "path": "stories/wukongs-wibble-wobble-ride/editions/v1/prompts.txt",
