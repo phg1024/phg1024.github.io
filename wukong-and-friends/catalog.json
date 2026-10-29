@@ -1,5 +1,376 @@
 [
   {
+    "id": "nezhas-shape-town",
+    "title": "Nezha’s Shape Town",
+    "title_zh": "哪吒的形状小镇",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "triangle",
+      "square",
+      "corner",
+      "side",
+      "turn",
+      "fit",
+      "together",
+      "shape"
+    ],
+    "math_plan_id": "M7",
+    "language_reading_versions": {
+      "en": "nezhas-shape-town/v1/en",
+      "zh-Hans": "nezhas-shape-town/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-booklet.pdf",
+    "cover": "covers/nezhas-shape-town-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Nezha’s Shape Town",
+        "description": "Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too."
+      },
+      "zh": {
+        "title": "哪吒的形状小镇",
+        "description": "哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。"
+      }
+    },
+    "description": "哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。",
+    "description_en": "Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too.",
+    "keywords": "哪吒 悟空 玉兔 形状 三角形 正方形 拼一拼 转一转 角 边 数学启蒙 Nezha Wukong Rabbit shapes triangle square turn fit corners sides early math",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-booklet.pdf",
+        "cover": "covers/nezhas-shape-town-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/nezhas-shape-town-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukong-and-the-copycat-shadow",
+    "title": "Wukong and the Copycat Shadow",
+    "title_zh": "悟空的跟屁虫影子",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "science-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "light",
+      "shadow",
+      "block",
+      "screen",
+      "between",
+      "nearer",
+      "farther",
+      "copy"
+    ],
+    "science_plan_id": "S1",
+    "language_reading_versions": {
+      "en": "wukong-and-the-copycat-shadow/v1/en",
+      "zh-Hans": "wukong-and-the-copycat-shadow/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-booklet.pdf",
+    "cover": "covers/wukong-and-the-copycat-shadow-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong and the Copycat Shadow",
+        "description": "At shadow-show night, Wukong thinks a giant copycat is following him. Rabbit shows him it is his shadow: he blocks the light. Nearer the lamp, a puppet’s shadow grows big; farther away, it shrinks. And when the lamp goes off, the copycat goes home."
+      },
+      "zh": {
+        "title": "悟空的跟屁虫影子",
+        "description": "院子里演影子戏，悟空以为有个大个子在学他。玉兔告诉他，那是他的影子：他挡住了光。纸偶离灯近，影子就变大；离灯远，影子就变小。灯一关，学他的朋友也回家了。"
+      }
+    },
+    "description": "院子里演影子戏，悟空以为有个大个子在学他。玉兔告诉他，那是他的影子：他挡住了光。纸偶离灯近，影子就变大；离灯远，影子就变小。灯一关，学他的朋友也回家了。",
+    "description_en": "At shadow-show night, Wukong thinks a giant copycat is following him. Rabbit shows him it is his shadow: he blocks the light. Nearer the lamp, a puppet’s shadow grows big; farther away, it shrinks. And when the lamp goes off, the copycat goes home.",
+    "keywords": "悟空 玉兔 沙僧 八戒 影子 光 影子戏 纸偶 远近 变大 变小 科学启蒙 Wukong Rabbit Sandy Pigsy shadow light shadow show puppets nearer farther bigger smaller early science",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-booklet.pdf",
+        "cover": "covers/wukong-and-the-copycat-shadow-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-copycat-shadow-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukong-joins-the-game",
+    "title": "Wukong Wants to Play Too",
+    "title_zh": "悟空想一起玩",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "look",
+      "ask",
+      "wait",
+      "turn",
+      "roll",
+      "play"
+    ],
+    "language_reading_versions": {
+      "en": "wukong-joins-the-game/v1/en",
+      "zh-Hans": "wukong-joins-the-game/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-booklet.pdf",
+    "cover": "covers/wukong-joins-the-game-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Wants to Play Too",
+        "description": "Pigsy, Rabbit and Ao Bing are rolling a ball in a circle. Wukong wants to play so much that he runs in and grabs it. Sandy shows him another way: look, ask, wait. Soon there is room in the circle for everyone."
+      },
+      "zh": {
+        "title": "悟空想一起玩",
+        "description": "八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。"
+      }
+    },
+    "description": "八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。",
+    "description_en": "Pigsy, Rabbit and Ao Bing are rolling a ball in a circle. Wukong wants to play so much that he runs in and grabs it. Sandy shows him another way: look, ask, wait. Soon there is room in the circle for everyone.",
+    "keywords": "悟空 八戒 玉兔 敖丙 沙僧 滚球 一起玩 礼貌 轮流 等待 社交 Wukong Pigsy Rabbit Ao Bing Sandy ball game join in ask politely take turns wait social skills",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-booklet.pdf",
+        "cover": "covers/wukong-joins-the-game-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-joins-the-game-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukong-visits-the-pumpkin-patch",
+    "title": "Wukong Visits the Pumpkin Patch",
+    "title_zh": "悟空逛南瓜农场",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "left",
+      "right",
+      "straight",
+      "in front of",
+      "behind",
+      "between",
+      "next to"
+    ],
+    "language_reading_versions": {
+      "en": "wukong-visits-the-pumpkin-patch/v1/en",
+      "zh-Hans": "wukong-visits-the-pumpkin-patch/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
+    "cover": "covers/wukong-visits-the-pumpkin-patch-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Visits the Pumpkin Patch",
+        "description": "Wukong, Ao Bing and Nezha head into a corn maze on the way to the pumpkin field. Nezha dashes ahead and they pop out back at the start, so they look for clues: left at the scarecrow, right at the pumpkins, straight ahead — and a pumpkin each to take home."
+      },
+      "zh": {
+        "title": "悟空逛南瓜农场",
+        "description": "悟空、敖丙和哪吒走进通往南瓜田的玉米迷宫。哪吒冲在前面，结果又绕回了入口。大家改成找路上的标记：到了稻草人往左拐，到了南瓜堆往右拐，一直往前走，最后每人都挑到一个南瓜。"
+      }
+    },
+    "description": "悟空、敖丙和哪吒走进通往南瓜田的玉米迷宫。哪吒冲在前面，结果又绕回了入口。大家改成找路上的标记：到了稻草人往左拐，到了南瓜堆往右拐，一直往前走，最后每人都挑到一个南瓜。",
+    "description_en": "Wukong, Ao Bing and Nezha head into a corn maze on the way to the pumpkin field. Nezha dashes ahead and they pop out back at the start, so they look for clues: left at the scarecrow, right at the pumpkins, straight ahead — and a pumpkin each to take home.",
+    "keywords": "悟空 敖丙 哪吒 唐僧 南瓜农场 玉米迷宫 左右 前后 中间 旁边 方位 Wukong Ao Bing Nezha Tang Monk pumpkin patch corn maze left right straight in front of behind between next to directions",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
+        "cover": "covers/wukong-visits-the-pumpkin-patch-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-visits-the-pumpkin-patch-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukongs-little-dinosaur-halloween",
+    "title": "Wukong’s Little Dinosaur Halloween",
+    "title_zh": "悟空的小恐龙万圣夜",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "trick or treat",
+      "thank you",
+      "ring",
+      "one",
+      "softly",
+      "costume",
+      "scared"
+    ],
+    "language_reading_versions": {
+      "en": "wukongs-little-dinosaur-halloween/v1/en",
+      "zh-Hans": "wukongs-little-dinosaur-halloween/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-booklet.pdf",
+    "cover": "covers/wukongs-little-dinosaur-halloween-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Little Dinosaur Halloween",
+        "description": "Wukong has a brand-new dinosaur costume and a big, loud ROAR. But when a tiny hedgehog opens the first door, Wukong finds a softer way to say trick or treat. Ring the bell, take one, say thank you — and share with a friend."
+      },
+      "zh": {
+        "title": "悟空的小恐龙万圣夜",
+        "description": "悟空穿上新的恐龙装，练了一声大大的“嗷——呜！”。可第一家开门的是一只小小的刺猬，悟空换成小小声的“嗷呜”。按门铃、只拿一颗、说谢谢，回家还把糖分给陪他走了一路的沙僧。"
+      }
+    },
+    "description": "悟空穿上新的恐龙装，练了一声大大的“嗷——呜！”。可第一家开门的是一只小小的刺猬，悟空换成小小声的“嗷呜”。按门铃、只拿一颗、说谢谢，回家还把糖分给陪他走了一路的沙僧。",
+    "description_en": "Wukong has a brand-new dinosaur costume and a big, loud ROAR. But when a tiny hedgehog opens the first door, Wukong finds a softer way to say trick or treat. Ring the bell, take one, say thank you — and share with a friend.",
+    "keywords": "悟空 八戒 玉兔 沙僧 万圣节 恐龙装 不给糖就捣蛋 讨糖 礼貌 谢谢 分享 Wukong Pigsy Rabbit Sandy Halloween dinosaur costume trick or treat manners thank you sharing",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-booklet.pdf",
+        "cover": "covers/wukongs-little-dinosaur-halloween-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-little-dinosaur-halloween-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukongs-starry-stage",
+    "title": "Wukong’s Starry Stage",
+    "title_zh": "悟空的星星小剧场",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "add",
+      "more",
+      "take away",
+      "left",
+      "altogether",
+      "stage",
+      "curtain",
+      "entrance"
+    ],
+    "math_plan_id": "M6",
+    "language_reading_versions": {
+      "en": "wukongs-starry-stage/v1/en",
+      "zh-Hans": "wukongs-starry-stage/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-booklet.pdf",
+    "cover": "covers/wukongs-starry-stage-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Starry Stage",
+        "description": "Wukong sets up a little stage for story night. Six paper stars, then two more from Rabbit — eight altogether. The entrance needs some too, so they take away three: five are left on the curtain, but still eight altogether. And Pigsy has an idea for the moon."
+      },
+      "zh": {
+        "title": "悟空的星星小剧场",
+        "description": "悟空要办故事会，在幕布上贴了六颗纸星星，玉兔又带来两颗，一共八颗。入口也想要星星，他们从幕布上拿走三颗：幕布上还剩五颗，合起来还是八颗。八戒还想用自己的圆肚子当月亮呢！"
+      }
+    },
+    "description": "悟空要办故事会，在幕布上贴了六颗纸星星，玉兔又带来两颗，一共八颗。入口也想要星星，他们从幕布上拿走三颗：幕布上还剩五颗，合起来还是八颗。八戒还想用自己的圆肚子当月亮呢！",
+    "description_en": "Wukong sets up a little stage for story night. Six paper stars, then two more from Rabbit — eight altogether. The entrance needs some too, so they take away three: five are left on the curtain, but still eight altogether. And Pigsy has an idea for the moon.",
+    "keywords": "悟空 玉兔 八戒 星星 小舞台 故事会 加 减 还剩 一共 数学启蒙 Wukong Rabbit Pigsy stars stage story night add take away left altogether early math",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-booklet.pdf",
+        "cover": "covers/wukongs-starry-stage-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-starry-stage-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "big-cards-little-numbers",
     "title": "Big Cards, Little Numbers",
     "title_zh": "大纸牌，小数字",
@@ -48,8 +419,8 @@
     "keywords": "悟空 哪吒 玉兔 数字卡片 木珠 数字 比大小 数学启蒙 Wukong Nezha Rabbit number cards beads numerals bigger number early math",
     "languages": {
       "en": {
-        "reading": "downloads/big-cards-little-numbers-v2.pdf",
-        "booklet": "downloads/big-cards-little-numbers-v2-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v2-booklet.pdf",
         "cover": "covers/big-cards-little-numbers-v2.jpg"
       },
       "zh-Hans": {
@@ -108,77 +479,14 @@
     "keywords": "铁扇公主 玉兔 悟空 彩带 游行 长短 比较 排序 数学启蒙 Princess Iron Fan Rabbit Wukong ribbons parade long short compare length early math",
     "languages": {
       "en": {
-        "reading": "downloads/iron-fans-ribbon-parade-v1.pdf",
-        "booklet": "downloads/iron-fans-ribbon-parade-v1-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-ribbon-parade-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-ribbon-parade-v1-booklet.pdf",
         "cover": "covers/iron-fans-ribbon-parade-v1.jpg"
       },
       "zh-Hans": {
         "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-ribbon-parade-v1-zh-Hans.pdf",
         "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-ribbon-parade-v1-zh-Hans-booklet.pdf",
         "cover": "covers/iron-fans-ribbon-parade-v1-zh-Hans.jpg"
-      }
-    }
-  },
-  {
-    "id": "nezhas-shape-town",
-    "title": "Nezha’s Shape Town",
-    "title_zh": "哪吒的形状小镇",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 18,
-    "core_pages": 16,
-    "booklet_pages": 20,
-    "sheets": 5,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
-    "publication_status": "published",
-    "published": "2026-10-29",
-    "updated": "2026-10-29",
-    "level": "L3",
-    "target_age_months": 60,
-    "focus_vocabulary": [
-      "triangle",
-      "square",
-      "corner",
-      "side",
-      "turn",
-      "fit",
-      "together",
-      "shape"
-    ],
-    "math_plan_id": "M7",
-    "language_reading_versions": {
-      "en": "nezhas-shape-town/v1/en",
-      "zh-Hans": "nezhas-shape-town/v1/zh-Hans"
-    },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-booklet.pdf",
-    "cover": "covers/nezhas-shape-town-v1.jpg",
-    "translations": {
-      "en": {
-        "title": "Nezha’s Shape Town",
-        "description": "Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too."
-      },
-      "zh": {
-        "title": "哪吒的形状小镇",
-        "description": "哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。"
-      }
-    },
-    "description": "哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。",
-    "description_en": "Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too.",
-    "keywords": "哪吒 悟空 玉兔 形状 三角形 正方形 拼一拼 转一转 角 边 数学启蒙 Nezha Wukong Rabbit shapes triangle square turn fit corners sides early math",
-    "languages": {
-      "en": {
-        "reading": "downloads/nezhas-shape-town-v1.pdf",
-        "booklet": "downloads/nezhas-shape-town-v1-booklet.pdf",
-        "cover": "covers/nezhas-shape-town-v1.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/nezhas-shape-town-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/nezhas-shape-town-v1-zh-Hans.jpg"
       }
     }
   },
@@ -232,8 +540,8 @@
     "keywords": "八戒 悟空 玉兔 唐僧 桃子 多少 配对 一样多 比较 数学启蒙 Pigsy Wukong Rabbit Tang Monk peaches more fewer pairs same compare early math",
     "languages": {
       "en": {
-        "reading": "downloads/pigsys-peach-puzzle-v1.pdf",
-        "booklet": "downloads/pigsys-peach-puzzle-v1-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1-booklet.pdf",
         "cover": "covers/pigsys-peach-puzzle-v1.jpg"
       },
       "zh-Hans": {
@@ -293,633 +601,14 @@
     "keywords": "悟空 敖丙 八戒 积木 测量 长度 小火车 桥 数学启蒙 Wukong Ao Bing Pigsy blocks measure length same size train bridge early math",
     "languages": {
       "en": {
-        "reading": "downloads/wukong-and-the-block-bridge-v1.pdf",
-        "booklet": "downloads/wukong-and-the-block-bridge-v1-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-booklet.pdf",
         "cover": "covers/wukong-and-the-block-bridge-v1.jpg"
       },
       "zh-Hans": {
         "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-zh-Hans.pdf",
         "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-zh-Hans-booklet.pdf",
         "cover": "covers/wukong-and-the-block-bridge-v1-zh-Hans.jpg"
-      }
-    }
-  },
-  {
-    "id": "wukong-and-the-copycat-shadow",
-    "title": "Wukong and the Copycat Shadow",
-    "title_zh": "悟空的跟屁虫影子",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 18,
-    "core_pages": 16,
-    "booklet_pages": 20,
-    "sheets": 5,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "science-cp5-approved",
-    "publication_status": "published",
-    "published": "2026-10-29",
-    "updated": "2026-10-29",
-    "level": "L3",
-    "target_age_months": 60,
-    "focus_vocabulary": [
-      "light",
-      "shadow",
-      "block",
-      "screen",
-      "between",
-      "nearer",
-      "farther",
-      "copy"
-    ],
-    "science_plan_id": "S1",
-    "language_reading_versions": {
-      "en": "wukong-and-the-copycat-shadow/v1/en",
-      "zh-Hans": "wukong-and-the-copycat-shadow/v1/zh-Hans"
-    },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-booklet.pdf",
-    "cover": "covers/wukong-and-the-copycat-shadow-v1.jpg",
-    "translations": {
-      "en": {
-        "title": "Wukong and the Copycat Shadow",
-        "description": "At shadow-show night, Wukong thinks a giant copycat is following him. Rabbit shows him it is his shadow: he blocks the light. Nearer the lamp, a puppet’s shadow grows big; farther away, it shrinks. And when the lamp goes off, the copycat goes home."
-      },
-      "zh": {
-        "title": "悟空的跟屁虫影子",
-        "description": "院子里演影子戏，悟空以为有个大个子在学他。玉兔告诉他，那是他的影子：他挡住了光。纸偶离灯近，影子就变大；离灯远，影子就变小。灯一关，学他的朋友也回家了。"
-      }
-    },
-    "description": "院子里演影子戏，悟空以为有个大个子在学他。玉兔告诉他，那是他的影子：他挡住了光。纸偶离灯近，影子就变大；离灯远，影子就变小。灯一关，学他的朋友也回家了。",
-    "description_en": "At shadow-show night, Wukong thinks a giant copycat is following him. Rabbit shows him it is his shadow: he blocks the light. Nearer the lamp, a puppet’s shadow grows big; farther away, it shrinks. And when the lamp goes off, the copycat goes home.",
-    "keywords": "悟空 玉兔 沙僧 八戒 影子 光 影子戏 纸偶 远近 变大 变小 科学启蒙 Wukong Rabbit Sandy Pigsy shadow light shadow show puppets nearer farther bigger smaller early science",
-    "languages": {
-      "en": {
-        "reading": "downloads/wukong-and-the-copycat-shadow-v1.pdf",
-        "booklet": "downloads/wukong-and-the-copycat-shadow-v1-booklet.pdf",
-        "cover": "covers/wukong-and-the-copycat-shadow-v1.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-copycat-shadow-v1-zh-Hans.jpg"
-      }
-    }
-  },
-  {
-    "id": "wukong-and-the-snowy-zigzags",
-    "title": "Wukong and the Snowy Zigzags",
-    "series": "wukong",
-    "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。",
-    "style": "Children’s crayon doodles",
-    "version": "v9",
-    "revision": "english-age-target-editorial-review",
-    "keywords": "悟空 铁扇公主 玉兔 滑雪 学滑雪 坚持 热可可 小鱼饼干 Wukong Iron Fan Jade Rabbit skiing ski cocoa",
-    "pages": 18,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v9.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v9-booklet.pdf",
-    "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8.jpg",
-    "sheets": 5,
-    "blank_pages": 0,
-    "translations": {
-      "en": {
-        "title": "Wukong and the Snowy Zigzags",
-        "description": "Wukong and Princess Iron Fan learn to ski, one snowy zigzag at a time. Jade Rabbit cheers them on, and warm cocoa and fish crackers make a happy finish."
-      },
-      "zh": {
-        "title": "悟空的雪地弯弯",
-        "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。"
-      }
-    },
-    "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v8-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v8-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8-zh-Hans.jpg"
-      },
-      "en": {
-        "reading": "downloads/wukong-and-the-snowy-zigzags-v9.pdf",
-        "booklet": "downloads/wukong-and-the-snowy-zigzags-v9-booklet.pdf",
-        "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8.jpg"
-      }
-    },
-    "booklet_pages": 20,
-    "published": "2026-10-20",
-    "updated": "2026-10-26",
-    "language_reading_versions": {
-      "en": "wukong-and-the-snowy-zigzags/v9/en"
-    }
-  },
-  {
-    "id": "wukong-and-the-tiny-tomatoes",
-    "title": "Wukong and the Tiny Tomatoes",
-    "series": "wukong",
-    "description": "悟空和敖丙一起种小番茄，浇水、等待，最后分享甜甜的收获。",
-    "style": "Children’s crayon doodles",
-    "version": "v8",
-    "revision": "courtyard-and-tomato-consistency",
-    "keywords": "悟空 敖丙 小番茄 种植 浇水 耐心 分享 Wukong Ao Bing tomatoes gardening patience friendship",
-    "pages": 18,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-booklet.pdf",
-    "cover": "covers/wukong-and-the-tiny-tomatoes-v8.jpg",
-    "sheets": 5,
-    "blank_pages": 0,
-    "translations": {
-      "en": {
-        "title": "Wukong and the Tiny Tomatoes",
-        "description": "Wukong and Ao Bing plant tiny tomatoes, water them, and wait. A little rain magic helps; patience brings a sweet harvest to share."
-      },
-      "zh": {
-        "title": "悟空的小番茄",
-        "description": "悟空和敖丙一起种小番茄，浇水、耐心等待。敖丙的小雨云来帮忙，两位好朋友终于分享了甜甜的收获。"
-      }
-    },
-    "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-tiny-tomatoes-v8-zh-Hans.jpg"
-      },
-      "en": {
-        "reading": "downloads/wukong-and-the-tiny-tomatoes-v8.pdf",
-        "booklet": "downloads/wukong-and-the-tiny-tomatoes-v8-booklet.pdf",
-        "cover": "covers/wukong-and-the-tiny-tomatoes-v8.jpg"
-      }
-    },
-    "booklet_pages": 20,
-    "published": "2026-10-20",
-    "updated": "2026-10-28",
-    "language_reading_versions": {
-      "en": "wukong-and-the-tiny-tomatoes/v8/en",
-      "zh-Hans": "wukong-and-the-tiny-tomatoes/v8/zh-Hans"
-    }
-  },
-  {
-    "id": "wukong-joins-the-game",
-    "title": "Wukong Wants to Play Too",
-    "title_zh": "悟空想一起玩",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 18,
-    "core_pages": 16,
-    "booklet_pages": 20,
-    "sheets": 5,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "cp5-approved",
-    "publication_status": "published",
-    "published": "2026-10-29",
-    "updated": "2026-10-29",
-    "level": "L2",
-    "target_age_months": 54,
-    "focus_vocabulary": [
-      "look",
-      "ask",
-      "wait",
-      "turn",
-      "roll",
-      "play"
-    ],
-    "language_reading_versions": {
-      "en": "wukong-joins-the-game/v1/en",
-      "zh-Hans": "wukong-joins-the-game/v1/zh-Hans"
-    },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-booklet.pdf",
-    "cover": "covers/wukong-joins-the-game-v1.jpg",
-    "translations": {
-      "en": {
-        "title": "Wukong Wants to Play Too",
-        "description": "Pigsy, Rabbit and Ao Bing are rolling a ball in a circle. Wukong wants to play so much that he runs in and grabs it. Sandy shows him another way: look, ask, wait. Soon there is room in the circle for everyone."
-      },
-      "zh": {
-        "title": "悟空想一起玩",
-        "description": "八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。"
-      }
-    },
-    "description": "八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。",
-    "description_en": "Pigsy, Rabbit and Ao Bing are rolling a ball in a circle. Wukong wants to play so much that he runs in and grabs it. Sandy shows him another way: look, ask, wait. Soon there is room in the circle for everyone.",
-    "keywords": "悟空 八戒 玉兔 敖丙 沙僧 滚球 一起玩 礼貌 轮流 等待 社交 Wukong Pigsy Rabbit Ao Bing Sandy ball game join in ask politely take turns wait social skills",
-    "languages": {
-      "en": {
-        "reading": "downloads/wukong-joins-the-game-v1.pdf",
-        "booklet": "downloads/wukong-joins-the-game-v1-booklet.pdf",
-        "cover": "covers/wukong-joins-the-game-v1.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-joins-the-game-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-joins-the-game-v1-zh-Hans.jpg"
-      }
-    }
-  },
-  {
-    "id": "wukong-learns-to-swim",
-    "title": "Wukong Learns to Swim",
-    "title_zh": "悟空的游泳课",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 22,
-    "core_pages": 20,
-    "booklet_pages": 24,
-    "sheets": 6,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v4",
-    "revision": "restore-established-bold-cover-typography",
-    "publication_status": "published",
-    "published": "2026-10-23",
-    "updated": "2026-10-26",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-booklet.pdf",
-    "cover": "covers/wukong-learns-to-swim-v4.jpg",
-    "translations": {
-      "en": {
-        "title": "Wukong Learns to Swim",
-        "description": "Wukong is curious about swimming, but the pool feels big. With Coach Otter nearby and Ao Bing cheering him on, he practices bubbles, floating, and kicks until he swims a little way on his own."
-      },
-      "zh": {
-        "title": "悟空的游泳课",
-        "description": "悟空想学游泳，却觉得泳池有点大。在教练陪伴和敖丙鼓励下，他练习吹泡泡、漂浮和踢腿，终于自己向前游了一小段。"
-      }
-    },
-    "description": "悟空想学游泳，却觉得泳池有点大。在教练陪伴和敖丙鼓励下，他练习吹泡泡、漂浮和踢腿，终于自己向前游了一小段。",
-    "description_en": "Wukong is curious about swimming, but the pool feels big. With Coach Otter nearby and Ao Bing cheering him on, he practices bubbles, floating, and kicks until he swims a little way on his own.",
-    "keywords": "悟空 游泳 学习 勇气 泡泡 踢腿 敖丙 Wukong swimming lessons pool courage practice friendship Ao Bing",
-    "languages": {
-      "en": {
-        "reading": "downloads/wukong-learns-to-swim-v4.pdf",
-        "booklet": "downloads/wukong-learns-to-swim-v4-booklet.pdf",
-        "cover": "covers/wukong-learns-to-swim-v4.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-learns-to-swim-v4-zh-Hans.jpg"
-      }
-    },
-    "language_reading_versions": {
-      "en": "wukong-learns-to-swim/v4/en",
-      "zh-Hans": "wukong-learns-to-swim/v4/zh-Hans"
-    },
-    "focus_vocabulary": [
-      "pool",
-      "coach",
-      "bubble",
-      "hold",
-      "float",
-      "kick"
-    ],
-    "target_age_months": 54
-  },
-  {
-    "id": "wukong-plays-in-the-sand",
-    "title": "Wukong Plays in the Sand",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 18,
-    "core_pages": 16,
-    "booklet_pages": 20,
-    "sheets": 5,
-    "blank_pages": 0,
-    "version": "v3",
-    "revision": "english-age-target-editorial-review",
-    "publication_status": "published",
-    "published": "2026-10-22",
-    "updated": "2026-10-26",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v3.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v3-booklet.pdf",
-    "cover": "covers/wukong-plays-in-the-sand-v2.jpg",
-    "translations": {
-      "en": {
-        "title": "Wukong Plays in the Sand",
-        "description": "Wukong and his friends try dry sand, then add too much water. They adjust the mix and build a sand tower together. At the end, Wukong finds a little mountain in his shoe."
-      },
-      "zh": {
-        "title": "悟空去海边玩沙",
-        "description": "悟空和朋友们先用干沙堆塔，沙子却散了；水加多了又成了沙汤。大家调整方法，终于一起堆起沙塔。最后，悟空发现鞋里也藏着一座小山。"
-      }
-    },
-    "description": "悟空和朋友们先用干沙堆塔，沙子却散了；水加多了又成了沙汤。大家调整方法，终于一起堆起沙塔。最后，悟空发现鞋里也藏着一座小山。",
-    "keywords": "悟空 沙滩 沙子 朋友 Wukong sand beach friends",
-    "description_en": "Wukong and his friends try dry sand, then add too much water. They adjust the mix and build a sand tower together. At the end, Wukong finds a little mountain in his shoe.",
-    "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-plays-in-the-sand-v2-zh-Hans.jpg"
-      },
-      "en": {
-        "reading": "downloads/wukong-plays-in-the-sand-v3.pdf",
-        "booklet": "downloads/wukong-plays-in-the-sand-v3-booklet.pdf",
-        "cover": "covers/wukong-plays-in-the-sand-v2.jpg"
-      }
-    },
-    "language_reading_versions": {
-      "en": "wukong-plays-in-the-sand/v3/en"
-    }
-  },
-  {
-    "id": "wukong-visits-the-aquarium",
-    "title": "Wukong Visits the Aquarium",
-    "title_zh": "悟空逛水族馆",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 22,
-    "core_pages": 20,
-    "booklet_pages": 24,
-    "sheets": 6,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v2",
-    "revision": "restore-established-bold-cover-typography",
-    "publication_status": "published",
-    "published": "2026-10-26",
-    "updated": "2026-10-26",
-    "level": "L2",
-    "target_age_months": 54,
-    "focus_vocabulary": [
-      "choose",
-      "kelp",
-      "hide",
-      "wait",
-      "float",
-      "otter"
-    ],
-    "language_reading_versions": {
-      "en": "wukong-visits-the-aquarium/v2/en",
-      "zh-Hans": "wukong-visits-the-aquarium/v2/zh-Hans"
-    },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-booklet.pdf",
-    "cover": "covers/wukong-visits-the-aquarium-v2.jpg",
-    "translations": {
-      "en": {
-        "title": "Wukong Visits the Aquarium",
-        "description": "Wukong visits an aquarium with Ao Bing and Sandy. He watches kelp, a hiding fish, jellyfish, and a sea otter, then draws three favorites on his card."
-      },
-      "zh": {
-        "title": "悟空逛水族馆",
-        "description": "悟空和敖丙、沙僧一起逛水族馆。他们看海带、躲藏的小鱼、水母和海獭，最后悟空把三样喜欢的东西画在卡片上。"
-      }
-    },
-    "description": "悟空和敖丙、沙僧一起逛水族馆。他们看海带、躲藏的小鱼、水母和海獭，最后悟空把三样喜欢的东西画在卡片上。",
-    "description_en": "Wukong visits an aquarium with Ao Bing and Sandy. He watches kelp, a hiding fish, jellyfish, and a sea otter, then draws three favorites on his card.",
-    "keywords": "水族馆 海带 小鱼 水母 海獭 明信片 悟空 敖丙 沙僧 aquarium kelp fish jellyfish sea otter postcard Wukong Ao Bing Sandy",
-    "languages": {
-      "en": {
-        "reading": "downloads/wukong-visits-the-aquarium-v2.pdf",
-        "booklet": "downloads/wukong-visits-the-aquarium-v2-booklet.pdf",
-        "cover": "covers/wukong-visits-the-aquarium-v2.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-visits-the-aquarium-v2-zh-Hans.jpg"
-      }
-    }
-  },
-  {
-    "id": "wukong-visits-the-pumpkin-patch",
-    "title": "Wukong Visits the Pumpkin Patch",
-    "title_zh": "悟空逛南瓜农场",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 18,
-    "core_pages": 16,
-    "booklet_pages": 20,
-    "sheets": 5,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "cp5-approved",
-    "publication_status": "published",
-    "published": "2026-10-29",
-    "updated": "2026-10-29",
-    "level": "L2",
-    "target_age_months": 54,
-    "focus_vocabulary": [
-      "left",
-      "right",
-      "straight",
-      "in front of",
-      "behind",
-      "between",
-      "next to"
-    ],
-    "language_reading_versions": {
-      "en": "wukong-visits-the-pumpkin-patch/v1/en",
-      "zh-Hans": "wukong-visits-the-pumpkin-patch/v1/zh-Hans"
-    },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
-    "cover": "covers/wukong-visits-the-pumpkin-patch-v1.jpg",
-    "translations": {
-      "en": {
-        "title": "Wukong Visits the Pumpkin Patch",
-        "description": "Wukong, Ao Bing and Nezha head into a corn maze on the way to the pumpkin field. Nezha dashes ahead and they pop out back at the start, so they look for clues: left at the scarecrow, right at the pumpkins, straight ahead — and a pumpkin each to take home."
-      },
-      "zh": {
-        "title": "悟空逛南瓜农场",
-        "description": "悟空、敖丙和哪吒走进通往南瓜田的玉米迷宫。哪吒冲在前面，结果又绕回了入口。大家改成找路上的标记：到了稻草人往左拐，到了南瓜堆往右拐，一直往前走，最后每人都挑到一个南瓜。"
-      }
-    },
-    "description": "悟空、敖丙和哪吒走进通往南瓜田的玉米迷宫。哪吒冲在前面，结果又绕回了入口。大家改成找路上的标记：到了稻草人往左拐，到了南瓜堆往右拐，一直往前走，最后每人都挑到一个南瓜。",
-    "description_en": "Wukong, Ao Bing and Nezha head into a corn maze on the way to the pumpkin field. Nezha dashes ahead and they pop out back at the start, so they look for clues: left at the scarecrow, right at the pumpkins, straight ahead — and a pumpkin each to take home.",
-    "keywords": "悟空 敖丙 哪吒 唐僧 南瓜农场 玉米迷宫 左右 前后 中间 旁边 方位 Wukong Ao Bing Nezha Tang Monk pumpkin patch corn maze left right straight in front of behind between next to directions",
-    "languages": {
-      "en": {
-        "reading": "downloads/wukong-visits-the-pumpkin-patch-v1.pdf",
-        "booklet": "downloads/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
-        "cover": "covers/wukong-visits-the-pumpkin-patch-v1.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-pumpkin-patch-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-visits-the-pumpkin-patch-v1-zh-Hans.jpg"
-      }
-    }
-  },
-  {
-    "id": "wukongs-brick-building-day",
-    "title": "Wukong’s Brick-Building Day",
-    "title_zh": "悟空的积木城堡",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 22,
-    "core_pages": 20,
-    "booklet_pages": 24,
-    "sheets": 6,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v3",
-    "revision": "p6-single-tail",
-    "publication_status": "published",
-    "published": "2026-10-26",
-    "updated": "2026-10-29",
-    "level": "L2",
-    "target_age_months": 54,
-    "focus_vocabulary": [
-      "build",
-      "brick",
-      "tall",
-      "wide",
-      "door",
-      "fit"
-    ],
-    "language_reading_versions": {
-      "en": "wukongs-brick-building-day/v3/en",
-      "zh-Hans": "wukongs-brick-building-day/v3/zh-Hans"
-    },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-booklet.pdf",
-    "cover": "covers/wukongs-brick-building-day-v3.jpg",
-    "translations": {
-      "en": {
-        "title": "Wukong’s Brick-Building Day",
-        "description": "Wukong and his friends build a brick castle together, solving a tricky doorway problem and making room for everyone."
-      },
-      "zh": {
-        "title": "悟空的积木城堡",
-        "description": "悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。"
-      }
-    },
-    "description": "悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。",
-    "description_en": "Wukong and his friends build a brick castle together, solving a tricky doorway problem and making room for everyone.",
-    "keywords": "积木 城堡 门 沙僧 八戒 悟空 敖丙 bricks castle doorway Pigsy Wukong Ao Bing Sandy",
-    "languages": {
-      "en": {
-        "reading": "downloads/wukongs-brick-building-day-v3.pdf",
-        "booklet": "downloads/wukongs-brick-building-day-v3-booklet.pdf",
-        "cover": "covers/wukongs-brick-building-day-v3.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-brick-building-day-v3-zh-Hans.jpg"
-      }
-    }
-  },
-  {
-    "id": "wukongs-first-ballet-class",
-    "title": "Jade Rabbit’s First Ballet Class",
-    "title_zh": "玉兔的第一堂芭蕾课",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 18,
-    "core_pages": 16,
-    "booklet_pages": 20,
-    "sheets": 5,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v5",
-    "revision": "restore-established-bold-cover-typography",
-    "publication_status": "published",
-    "published": "2026-10-23",
-    "updated": "2026-10-26",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-booklet.pdf",
-    "cover": "covers/wukongs-first-ballet-class-v5.jpg",
-    "translations": {
-      "en": {
-        "title": "Jade Rabbit’s First Ballet Class",
-        "description": "Jade Rabbit’s first ballet class is full of tiny steps, a playful turn, and wobbly ears. With Chang’e beside her, Jade finds the beat and takes a happy bow."
-      },
-      "zh": {
-        "title": "玉兔的第一堂芭蕾课",
-        "description": "玉兔第一次上芭蕾课，学小步、慢慢转身，还让耳朵跟着音乐跳舞。在嫦娥的陪伴下，她找到节奏，开心地行礼谢幕。"
-      }
-    },
-    "description": "玉兔第一次上芭蕾课，学小步、慢慢转身，还让耳朵跟着音乐跳舞。在嫦娥的陪伴下，她找到节奏，开心地行礼谢幕。",
-    "description_en": "Jade Rabbit’s first ballet class is full of tiny steps, a playful turn, and wobbly ears. With Chang’e beside her, Jade finds the beat and takes a happy bow.",
-    "keywords": "玉兔 芭蕾 嫦娥 舞蹈 音乐 朋友 Jade Rabbit ballet Chang’e dance music friendship Wukong and Friends",
-    "languages": {
-      "en": {
-        "reading": "downloads/wukongs-first-ballet-class-v5.pdf",
-        "booklet": "downloads/wukongs-first-ballet-class-v5-booklet.pdf",
-        "cover": "covers/wukongs-first-ballet-class-v5.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-first-ballet-class-v5-zh-Hans.jpg"
-      }
-    },
-    "language_reading_versions": {
-      "en": "wukongs-first-ballet-class/v5/en",
-      "zh-Hans": "wukongs-first-ballet-class/v5/zh-Hans"
-    },
-    "focus_vocabulary": [
-      "step",
-      "slow",
-      "turn",
-      "stop",
-      "dance"
-    ],
-    "target_age_months": 48,
-    "source_v1_preserved": true
-  },
-  {
-    "id": "wukongs-little-dinosaur-halloween",
-    "title": "Wukong’s Little Dinosaur Halloween",
-    "title_zh": "悟空的小恐龙万圣夜",
-    "series": "wukong",
-    "style": "Children’s crayon doodles",
-    "pages": 18,
-    "core_pages": 16,
-    "booklet_pages": 20,
-    "sheets": 5,
-    "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "cp5-approved",
-    "publication_status": "published",
-    "published": "2026-10-29",
-    "updated": "2026-10-29",
-    "level": "L2",
-    "target_age_months": 54,
-    "focus_vocabulary": [
-      "trick or treat",
-      "thank you",
-      "ring",
-      "one",
-      "softly",
-      "costume",
-      "scared"
-    ],
-    "language_reading_versions": {
-      "en": "wukongs-little-dinosaur-halloween/v1/en",
-      "zh-Hans": "wukongs-little-dinosaur-halloween/v1/zh-Hans"
-    },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-booklet.pdf",
-    "cover": "covers/wukongs-little-dinosaur-halloween-v1.jpg",
-    "translations": {
-      "en": {
-        "title": "Wukong’s Little Dinosaur Halloween",
-        "description": "Wukong has a brand-new dinosaur costume and a big, loud ROAR. But when a tiny hedgehog opens the first door, Wukong finds a softer way to say trick or treat. Ring the bell, take one, say thank you — and share with a friend."
-      },
-      "zh": {
-        "title": "悟空的小恐龙万圣夜",
-        "description": "悟空穿上新的恐龙装，练了一声大大的“嗷——呜！”。可第一家开门的是一只小小的刺猬，悟空换成小小声的“嗷呜”。按门铃、只拿一颗、说谢谢，回家还把糖分给陪他走了一路的沙僧。"
-      }
-    },
-    "description": "悟空穿上新的恐龙装，练了一声大大的“嗷——呜！”。可第一家开门的是一只小小的刺猬，悟空换成小小声的“嗷呜”。按门铃、只拿一颗、说谢谢，回家还把糖分给陪他走了一路的沙僧。",
-    "description_en": "Wukong has a brand-new dinosaur costume and a big, loud ROAR. But when a tiny hedgehog opens the first door, Wukong finds a softer way to say trick or treat. Ring the bell, take one, say thank you — and share with a friend.",
-    "keywords": "悟空 八戒 玉兔 沙僧 万圣节 恐龙装 不给糖就捣蛋 讨糖 礼貌 谢谢 分享 Wukong Pigsy Rabbit Sandy Halloween dinosaur costume trick or treat manners thank you sharing",
-    "languages": {
-      "en": {
-        "reading": "downloads/wukongs-little-dinosaur-halloween-v1.pdf",
-        "booklet": "downloads/wukongs-little-dinosaur-halloween-v1-booklet.pdf",
-        "cover": "covers/wukongs-little-dinosaur-halloween-v1.jpg"
-      },
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-little-dinosaur-halloween-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-little-dinosaur-halloween-v1-zh-Hans.jpg"
       }
     }
   },
@@ -972,8 +661,8 @@
     "keywords": "悟空 八戒 玉兔 敖丙 铁扇公主 野餐 杯子 数数 一共有几个 数学启蒙 Wukong Pigsy Rabbit Ao Bing Iron Fan picnic cups counting how many early math",
     "languages": {
       "en": {
-        "reading": "downloads/wukongs-missing-picnic-cup-v1.pdf",
-        "booklet": "downloads/wukongs-missing-picnic-cup-v1-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-booklet.pdf",
         "cover": "covers/wukongs-missing-picnic-cup-v1.jpg"
       },
       "zh-Hans": {
@@ -981,6 +670,291 @@
         "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-zh-Hans-booklet.pdf",
         "cover": "covers/wukongs-missing-picnic-cup-v1-zh-Hans.jpg"
       }
+    }
+  },
+  {
+    "id": "wukong-visits-the-aquarium",
+    "title": "Wukong Visits the Aquarium",
+    "title_zh": "悟空逛水族馆",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 22,
+    "core_pages": 20,
+    "booklet_pages": 24,
+    "sheets": 6,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v2",
+    "revision": "restore-established-bold-cover-typography",
+    "publication_status": "published",
+    "published": "2026-10-26",
+    "updated": "2026-10-26",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "choose",
+      "kelp",
+      "hide",
+      "wait",
+      "float",
+      "otter"
+    ],
+    "language_reading_versions": {
+      "en": "wukong-visits-the-aquarium/v2/en",
+      "zh-Hans": "wukong-visits-the-aquarium/v2/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-booklet.pdf",
+    "cover": "covers/wukong-visits-the-aquarium-v2.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Visits the Aquarium",
+        "description": "Wukong visits an aquarium with Ao Bing and Sandy. He watches kelp, a hiding fish, jellyfish, and a sea otter, then draws three favorites on his card."
+      },
+      "zh": {
+        "title": "悟空逛水族馆",
+        "description": "悟空和敖丙、沙僧一起逛水族馆。他们看海带、躲藏的小鱼、水母和海獭，最后悟空把三样喜欢的东西画在卡片上。"
+      }
+    },
+    "description": "悟空和敖丙、沙僧一起逛水族馆。他们看海带、躲藏的小鱼、水母和海獭，最后悟空把三样喜欢的东西画在卡片上。",
+    "description_en": "Wukong visits an aquarium with Ao Bing and Sandy. He watches kelp, a hiding fish, jellyfish, and a sea otter, then draws three favorites on his card.",
+    "keywords": "水族馆 海带 小鱼 水母 海獭 明信片 悟空 敖丙 沙僧 aquarium kelp fish jellyfish sea otter postcard Wukong Ao Bing Sandy",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-booklet.pdf",
+        "cover": "covers/wukong-visits-the-aquarium-v2.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-aquarium-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-visits-the-aquarium-v2-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukongs-brick-building-day",
+    "title": "Wukong’s Brick-Building Day",
+    "title_zh": "悟空的积木城堡",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 22,
+    "core_pages": 20,
+    "booklet_pages": 24,
+    "sheets": 6,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v3",
+    "revision": "p6-single-tail",
+    "publication_status": "published",
+    "published": "2026-10-26",
+    "updated": "2026-10-29",
+    "level": "L2",
+    "target_age_months": 54,
+    "focus_vocabulary": [
+      "build",
+      "brick",
+      "tall",
+      "wide",
+      "door",
+      "fit"
+    ],
+    "language_reading_versions": {
+      "en": "wukongs-brick-building-day/v3/en",
+      "zh-Hans": "wukongs-brick-building-day/v3/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-booklet.pdf",
+    "cover": "covers/wukongs-brick-building-day-v3.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Brick-Building Day",
+        "description": "Wukong and his friends build a brick castle together, solving a tricky doorway problem and making room for everyone."
+      },
+      "zh": {
+        "title": "悟空的积木城堡",
+        "description": "悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。"
+      }
+    },
+    "description": "悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。",
+    "description_en": "Wukong and his friends build a brick castle together, solving a tricky doorway problem and making room for everyone.",
+    "keywords": "积木 城堡 门 沙僧 八戒 悟空 敖丙 bricks castle doorway Pigsy Wukong Ao Bing Sandy",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-booklet.pdf",
+        "cover": "covers/wukongs-brick-building-day-v3.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-brick-building-day-v3-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukong-learns-to-swim",
+    "title": "Wukong Learns to Swim",
+    "title_zh": "悟空的游泳课",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 22,
+    "core_pages": 20,
+    "booklet_pages": 24,
+    "sheets": 6,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v4",
+    "revision": "restore-established-bold-cover-typography",
+    "publication_status": "published",
+    "published": "2026-10-23",
+    "updated": "2026-10-26",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-booklet.pdf",
+    "cover": "covers/wukong-learns-to-swim-v4.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Learns to Swim",
+        "description": "Wukong is curious about swimming, but the pool feels big. With Coach Otter nearby and Ao Bing cheering him on, he practices bubbles, floating, and kicks until he swims a little way on his own."
+      },
+      "zh": {
+        "title": "悟空的游泳课",
+        "description": "悟空想学游泳，却觉得泳池有点大。在教练陪伴和敖丙鼓励下，他练习吹泡泡、漂浮和踢腿，终于自己向前游了一小段。"
+      }
+    },
+    "description": "悟空想学游泳，却觉得泳池有点大。在教练陪伴和敖丙鼓励下，他练习吹泡泡、漂浮和踢腿，终于自己向前游了一小段。",
+    "description_en": "Wukong is curious about swimming, but the pool feels big. With Coach Otter nearby and Ao Bing cheering him on, he practices bubbles, floating, and kicks until he swims a little way on his own.",
+    "keywords": "悟空 游泳 学习 勇气 泡泡 踢腿 敖丙 Wukong swimming lessons pool courage practice friendship Ao Bing",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v4.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v4-zh-Hans.jpg"
+      }
+    },
+    "language_reading_versions": {
+      "en": "wukong-learns-to-swim/v4/en",
+      "zh-Hans": "wukong-learns-to-swim/v4/zh-Hans"
+    },
+    "focus_vocabulary": [
+      "pool",
+      "coach",
+      "bubble",
+      "hold",
+      "float",
+      "kick"
+    ],
+    "target_age_months": 54
+  },
+  {
+    "id": "wukongs-first-ballet-class",
+    "title": "Jade Rabbit’s First Ballet Class",
+    "title_zh": "玉兔的第一堂芭蕾课",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v5",
+    "revision": "restore-established-bold-cover-typography",
+    "publication_status": "published",
+    "published": "2026-10-23",
+    "updated": "2026-10-26",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-booklet.pdf",
+    "cover": "covers/wukongs-first-ballet-class-v5.jpg",
+    "translations": {
+      "en": {
+        "title": "Jade Rabbit’s First Ballet Class",
+        "description": "Jade Rabbit’s first ballet class is full of tiny steps, a playful turn, and wobbly ears. With Chang’e beside her, Jade finds the beat and takes a happy bow."
+      },
+      "zh": {
+        "title": "玉兔的第一堂芭蕾课",
+        "description": "玉兔第一次上芭蕾课，学小步、慢慢转身，还让耳朵跟着音乐跳舞。在嫦娥的陪伴下，她找到节奏，开心地行礼谢幕。"
+      }
+    },
+    "description": "玉兔第一次上芭蕾课，学小步、慢慢转身，还让耳朵跟着音乐跳舞。在嫦娥的陪伴下，她找到节奏，开心地行礼谢幕。",
+    "description_en": "Jade Rabbit’s first ballet class is full of tiny steps, a playful turn, and wobbly ears. With Chang’e beside her, Jade finds the beat and takes a happy bow.",
+    "keywords": "玉兔 芭蕾 嫦娥 舞蹈 音乐 朋友 Jade Rabbit ballet Chang’e dance music friendship Wukong and Friends",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-booklet.pdf",
+        "cover": "covers/wukongs-first-ballet-class-v5.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-first-ballet-class-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-first-ballet-class-v5-zh-Hans.jpg"
+      }
+    },
+    "language_reading_versions": {
+      "en": "wukongs-first-ballet-class/v5/en",
+      "zh-Hans": "wukongs-first-ballet-class/v5/zh-Hans"
+    },
+    "focus_vocabulary": [
+      "step",
+      "slow",
+      "turn",
+      "stop",
+      "dance"
+    ],
+    "target_age_months": 48,
+    "source_v1_preserved": true
+  },
+  {
+    "id": "wukong-plays-in-the-sand",
+    "title": "Wukong Plays in the Sand",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "version": "v3",
+    "revision": "english-age-target-editorial-review",
+    "publication_status": "published",
+    "published": "2026-10-22",
+    "updated": "2026-10-26",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v3.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v3-booklet.pdf",
+    "cover": "covers/wukong-plays-in-the-sand-v2.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Plays in the Sand",
+        "description": "Wukong and his friends try dry sand, then add too much water. They adjust the mix and build a sand tower together. At the end, Wukong finds a little mountain in his shoe."
+      },
+      "zh": {
+        "title": "悟空去海边玩沙",
+        "description": "悟空和朋友们先用干沙堆塔，沙子却散了；水加多了又成了沙汤。大家调整方法，终于一起堆起沙塔。最后，悟空发现鞋里也藏着一座小山。"
+      }
+    },
+    "description": "悟空和朋友们先用干沙堆塔，沙子却散了；水加多了又成了沙汤。大家调整方法，终于一起堆起沙塔。最后，悟空发现鞋里也藏着一座小山。",
+    "keywords": "悟空 沙滩 沙子 朋友 Wukong sand beach friends",
+    "description_en": "Wukong and his friends try dry sand, then add too much water. They adjust the mix and build a sand tower together. At the end, Wukong finds a little mountain in his shoe.",
+    "languages": {
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-plays-in-the-sand-v2-zh-Hans.jpg"
+      },
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v3.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-plays-in-the-sand-v3-booklet.pdf",
+        "cover": "covers/wukong-plays-in-the-sand-v2.jpg"
+      }
+    },
+    "language_reading_versions": {
+      "en": "wukong-plays-in-the-sand/v3/en"
     }
   },
   {
@@ -1021,8 +995,8 @@
         "cover": "covers/wukongs-painting-class-v2-zh-Hans.jpg"
       },
       "en": {
-        "reading": "downloads/wukongs-painting-class-v3.pdf",
-        "booklet": "downloads/wukongs-painting-class-v3-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-painting-class-v3.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-painting-class-v3-booklet.pdf",
         "cover": "covers/wukongs-painting-class-v2.jpg"
       }
     },
@@ -1031,66 +1005,92 @@
     }
   },
   {
-    "id": "wukongs-starry-stage",
-    "title": "Wukong’s Starry Stage",
-    "title_zh": "悟空的星星小剧场",
+    "id": "wukong-and-the-snowy-zigzags",
+    "title": "Wukong and the Snowy Zigzags",
     "series": "wukong",
+    "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。",
     "style": "Children’s crayon doodles",
+    "version": "v9",
+    "revision": "english-age-target-editorial-review",
+    "keywords": "悟空 铁扇公主 玉兔 滑雪 学滑雪 坚持 热可可 小鱼饼干 Wukong Iron Fan Jade Rabbit skiing ski cocoa",
     "pages": 18,
-    "core_pages": 16,
-    "booklet_pages": 20,
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v9.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v9-booklet.pdf",
+    "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8.jpg",
     "sheets": 5,
     "blank_pages": 0,
-    "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
-    "publication_status": "published",
-    "published": "2026-10-29",
-    "updated": "2026-10-29",
-    "level": "L3",
-    "target_age_months": 60,
-    "focus_vocabulary": [
-      "add",
-      "more",
-      "take away",
-      "left",
-      "altogether",
-      "stage",
-      "curtain",
-      "entrance"
-    ],
-    "math_plan_id": "M6",
-    "language_reading_versions": {
-      "en": "wukongs-starry-stage/v1/en",
-      "zh-Hans": "wukongs-starry-stage/v1/zh-Hans"
-    },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-booklet.pdf",
-    "cover": "covers/wukongs-starry-stage-v1.jpg",
     "translations": {
       "en": {
-        "title": "Wukong’s Starry Stage",
-        "description": "Wukong sets up a little stage for story night. Six paper stars, then two more from Rabbit — eight altogether. The entrance needs some too, so they take away three: five are left on the curtain, but still eight altogether. And Pigsy has an idea for the moon."
+        "title": "Wukong and the Snowy Zigzags",
+        "description": "Wukong and Princess Iron Fan learn to ski, one snowy zigzag at a time. Jade Rabbit cheers them on, and warm cocoa and fish crackers make a happy finish."
       },
       "zh": {
-        "title": "悟空的星星小剧场",
-        "description": "悟空要办故事会，在幕布上贴了六颗纸星星，玉兔又带来两颗，一共八颗。入口也想要星星，他们从幕布上拿走三颗：幕布上还剩五颗，合起来还是八颗。八戒还想用自己的圆肚子当月亮呢！"
+        "title": "悟空的雪地弯弯",
+        "description": "悟空和铁扇公主一起学滑雪，跌坐进软雪，再一点点练会转弯和停下。玉兔在旁加油，最后大家分享暖热可可和小鱼饼干。"
       }
     },
-    "description": "悟空要办故事会，在幕布上贴了六颗纸星星，玉兔又带来两颗，一共八颗。入口也想要星星，他们从幕布上拿走三颗：幕布上还剩五颗，合起来还是八颗。八戒还想用自己的圆肚子当月亮呢！",
-    "description_en": "Wukong sets up a little stage for story night. Six paper stars, then two more from Rabbit — eight altogether. The entrance needs some too, so they take away three: five are left on the curtain, but still eight altogether. And Pigsy has an idea for the moon.",
-    "keywords": "悟空 玉兔 八戒 星星 小舞台 故事会 加 减 还剩 一共 数学启蒙 Wukong Rabbit Pigsy stars stage story night add take away left altogether early math",
     "languages": {
-      "en": {
-        "reading": "downloads/wukongs-starry-stage-v1.pdf",
-        "booklet": "downloads/wukongs-starry-stage-v1-booklet.pdf",
-        "cover": "covers/wukongs-starry-stage-v1.jpg"
-      },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-starry-stage-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-starry-stage-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v8-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8-zh-Hans.jpg"
+      },
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v9.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-snowy-zigzags-v9-booklet.pdf",
+        "cover": "covers/wukong-and-the-snowy-zigzags-cover-v8.jpg"
       }
+    },
+    "booklet_pages": 20,
+    "published": "2026-10-20",
+    "updated": "2026-10-26",
+    "language_reading_versions": {
+      "en": "wukong-and-the-snowy-zigzags/v9/en"
+    }
+  },
+  {
+    "id": "wukong-and-the-tiny-tomatoes",
+    "title": "Wukong and the Tiny Tomatoes",
+    "series": "wukong",
+    "description": "悟空和敖丙一起种小番茄，浇水、等待，最后分享甜甜的收获。",
+    "style": "Children’s crayon doodles",
+    "version": "v8",
+    "revision": "courtyard-and-tomato-consistency",
+    "keywords": "悟空 敖丙 小番茄 种植 浇水 耐心 分享 Wukong Ao Bing tomatoes gardening patience friendship",
+    "pages": 18,
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-booklet.pdf",
+    "cover": "covers/wukong-and-the-tiny-tomatoes-v8.jpg",
+    "sheets": 5,
+    "blank_pages": 0,
+    "translations": {
+      "en": {
+        "title": "Wukong and the Tiny Tomatoes",
+        "description": "Wukong and Ao Bing plant tiny tomatoes, water them, and wait. A little rain magic helps; patience brings a sweet harvest to share."
+      },
+      "zh": {
+        "title": "悟空的小番茄",
+        "description": "悟空和敖丙一起种小番茄，浇水、耐心等待。敖丙的小雨云来帮忙，两位好朋友终于分享了甜甜的收获。"
+      }
+    },
+    "languages": {
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-tiny-tomatoes-v8-zh-Hans.jpg"
+      },
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-tiny-tomatoes-v8-booklet.pdf",
+        "cover": "covers/wukong-and-the-tiny-tomatoes-v8.jpg"
+      }
+    },
+    "booklet_pages": 20,
+    "published": "2026-10-20",
+    "updated": "2026-10-28",
+    "language_reading_versions": {
+      "en": "wukong-and-the-tiny-tomatoes/v8/en",
+      "zh-Hans": "wukong-and-the-tiny-tomatoes/v8/zh-Hans"
     }
   },
   {
@@ -1115,8 +1115,8 @@
         "cover": "covers/wukongs-slippy-slide-skates-v5-zh-Hans.jpg"
       },
       "en": {
-        "reading": "downloads/wukongs-slippy-slide-skates-v7.pdf",
-        "booklet": "downloads/wukongs-slippy-slide-skates-v7-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v7.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v7-booklet.pdf",
         "cover": "covers/wukongs-slippy-slide-skates-v5.jpg"
       }
     },
@@ -1159,8 +1159,8 @@
         "cover": "covers/wukong-and-the-big-red-truck-v5-zh-Hans.jpg"
       },
       "en": {
-        "reading": "downloads/wukong-and-the-big-red-truck-v7.pdf",
-        "booklet": "downloads/wukong-and-the-big-red-truck-v7-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v7.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v7-booklet.pdf",
         "cover": "covers/wukong-and-the-big-red-truck-v5.jpg"
       }
     },
@@ -1203,8 +1203,8 @@
         "cover": "covers/wukongs-wibble-wobble-ride-v5-zh-Hans.jpg"
       },
       "en": {
-        "reading": "downloads/wukongs-wibble-wobble-ride-v7.pdf",
-        "booklet": "downloads/wukongs-wibble-wobble-ride-v7-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v7.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v7-booklet.pdf",
         "cover": "covers/wukongs-wibble-wobble-ride-v5.jpg"
       }
     },
@@ -1258,8 +1258,8 @@
         "cover": "covers/wukongs-one-little-bite-v5-zh-Hans.jpg"
       },
       "en": {
-        "reading": "downloads/wukongs-one-little-bite-v9.pdf",
-        "booklet": "downloads/wukongs-one-little-bite-v9-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v9.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v9-booklet.pdf",
         "cover": "covers/wukongs-one-little-bite-v5.jpg"
       }
     },
@@ -1302,8 +1302,8 @@
         "cover": "covers/wukongs-noisy-nap-v5-zh-Hans.jpg"
       },
       "en": {
-        "reading": "downloads/wukongs-noisy-nap-v9.pdf",
-        "booklet": "downloads/wukongs-noisy-nap-v9-booklet.pdf",
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v9.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v9-booklet.pdf",
         "cover": "covers/wukongs-noisy-nap-v5.jpg"
       }
     },

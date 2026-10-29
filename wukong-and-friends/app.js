@@ -2,24 +2,29 @@ const messages = JSON.parse(document.querySelector('#ui-messages').textContent);
 const text = (key, values = {}) => messages[key].replace(/\{(\w+)\}/g, (match, name) => values[name] ?? match);
 const search = document.querySelector('#search');
 const parameters = new URLSearchParams(window.location.search);
-let series = ['all', 'wukong', 'bear'].includes(parameters.get('series')) ? parameters.get('series') : 'all';
+// Bookshelf selects: age, theme and friend. Each card lists its values in a
+// space-separated data attribute named after the select.
+const selects = [...document.querySelectorAll('select[data-filter]')];
 if (search) {
-  const buttons = [...document.querySelectorAll('[data-filter]')];
   search.value = parameters.get('q') || '';
+  selects.forEach(select => {
+    const value = parameters.get(select.dataset.filter);
+    if ([...select.options].some(option => option.value === value)) select.value = value;
+  });
   function filter() {
     const query = search.value.trim().toLocaleLowerCase();
     let visible = 0;
     document.querySelectorAll('[data-book]').forEach(card => {
-      const show = (series === 'all' || card.dataset.series === series) && card.dataset.search.toLocaleLowerCase().includes(query);
+      const show = selects.every(select => !select.value || card.dataset[select.dataset.filter].split(' ').includes(select.value))
+        && card.dataset.search.toLocaleLowerCase().includes(query);
       card.hidden = !show;
       if (show) visible++;
     });
-    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === series)));
     document.querySelector('#empty').hidden = visible > 0;
     document.querySelector('#count').textContent = text(visible === 1 ? 'count_one' : 'count_other', { count: visible });
   }
   search.addEventListener('input', filter);
-  buttons.forEach(button => button.addEventListener('click', () => { series = button.dataset.filter; filter(); }));
+  selects.forEach(select => select.addEventListener('change', filter));
   filter();
 }
 document.querySelectorAll('[data-language]').forEach(link => {
@@ -28,7 +33,7 @@ document.querySelectorAll('[data-language]').forEach(link => {
     destination.hash = window.location.hash;
     const query = search?.value.trim();
     if (query) destination.searchParams.set('q', query);
-    if (search && series !== 'all') destination.searchParams.set('series', series);
+    selects.forEach(select => { if (select.value) destination.searchParams.set(select.dataset.filter, select.value); });
     link.href = destination.href;
   });
 });
