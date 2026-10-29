@@ -164,9 +164,9 @@
         </p>
     </div>
 
-    <div class="section-heading">
-        <p class="section-heading__eyebrow">Latest writing</p>
-        <p class="proto-subheading"><a href="/writing/">All 22 pieces</a></p>
+    <div class="home-section-head">
+        <h2 class="section-heading__eyebrow">Latest writing</h2>
+        <a class="home-section-head__more" href="/writing/">All 22 pieces →</a>
     </div>
     
 <ul class="writing-list">
@@ -211,24 +211,60 @@
         <p class="writing-item__when">Oct 20, 2026</p>
     </li>
 </ul>
-
-
-    <div class="section-heading">
-        <p class="section-heading__eyebrow">Selected work</p>
-        <p class="proto-subheading"><a href="/projects/">All projects</a></p>
+<div class="home-section-head">
+        <h2 class="section-heading__eyebrow">Selected work</h2>
+        <a class="home-section-head__more" href="/projects/">All projects →</a>
     </div>
-    <ul class="demo-row">
-        <li><a class="button-link" href="/blog/programming/aos-agent-os/">AOS: Agent Operating System</a></li>
-        <li><a class="button-link" href="/blog/ai/jarvis-architecture/">Jarvis Voice Assistant</a></li>
-        <li><a class="button-link" href="/blog/ai/facial-keypoint-diffusion/">Generative Facial Keypoints</a></li>
-        <li><a class="button-link" href="/wukong-and-friends/">Wukong &amp; Friends</a></li>
-        <li><a class="button-link" href="/bread/">Bread</a></li>
-        <li><a class="button-link" href="/projects/raytracer/index.html">Ray tracer</a></li>
-        <li><a class="button-link" href="/projects/imageprocjs/index.html">ImageProcJS</a></li>
-        <li><a class="button-link" href="/projects/fractal/index.html">Fractal explorer</a></li>
-        <li><a class="button-link" href="/projects/minesweeper/index.html">MineSweeper</a></li>
-        <li><a class="button-link" href="https://phg1024.github.io/MultilinearReconstruction/">Multilinear Reconstruction</a></li>
+    <ul class="home-work">
+        <li class="card">
+            <a class="personal-project-image-link" href="/blog/programming/aos-agent-os/" tabindex="-1" aria-hidden="true">
+                <img class="card-img-top personal-project-image" src="/images/blog/aos-agent-os/aos-architecture-web.jpg" alt="" loading="lazy">
+            </a>
+            <div class="card-body">
+                <h3 class="card-title"><a href="/blog/programming/aos-agent-os/">AOS: Agent Operating System</a></h3>
+                <p class="card-text">A research prototype for agent collaboration through runtime primitives: artifacts, messaging, capabilities, and scheduling.</p>
+            </div>
+        </li>
+        <li class="card">
+            <a class="personal-project-image-link" href="/blog/ai/jarvis-architecture/" tabindex="-1" aria-hidden="true">
+                <img class="card-img-top personal-project-image" src="/images/blog/jarvis-architecture/demo-thumbnail.jpg" alt="" loading="lazy">
+            </a>
+            <div class="card-body">
+                <h3 class="card-title"><a href="/blog/ai/jarvis-architecture/">Jarvis Voice Assistant</a></h3>
+                <p class="card-text">An Android voice assistant with local Qwen inference, speech models, home-control tools, and a background update pipeline.</p>
+            </div>
+        </li>
+        <li class="card">
+            <a class="personal-project-image-link" href="/blog/ai/facial-keypoint-diffusion/" tabindex="-1" aria-hidden="true">
+                <img class="card-img-top personal-project-image" src="/images/blog/facial-keypoint-diffusion/dit-cropped-landmark-sampling.gif" alt="" loading="lazy">
+            </a>
+            <div class="card-body">
+                <h3 class="card-title"><a href="/blog/ai/facial-keypoint-diffusion/">Generative Facial Keypoints</a></h3>
+                <p class="card-text">Exploring image-conditioned diffusion and flow matching for facial landmarks with frozen DINO features and transformer coordinate models.</p>
+            </div>
+        </li>
+        <li class="card">
+            <a class="personal-project-image-link" href="/wukong-and-friends/" tabindex="-1" aria-hidden="true">
+                <img class="card-img-top personal-project-image" src="/images/story-garden/story-garden.jpg" alt="" loading="lazy">
+            </a>
+            <div class="card-body">
+                <h3 class="card-title"><a href="/wukong-and-friends/">Wukong &amp; Friends</a></h3>
+                <p class="card-text">Crayon-doodle bedtime picture books for young readers, with free reading and two-up booklet PDFs, published from a private repository against an Ed25519-signed manifest.</p>
+            </div>
+        </li>
+        <li class="card">
+            <a class="personal-project-image-link" href="/bread/" tabindex="-1" aria-hidden="true">
+                <img class="card-img-top personal-project-image" src="/images/blog/banana_bread/after-web.jpg" alt="" loading="lazy">
+            </a>
+            <div class="card-body">
+                <h3 class="card-title"><a href="/bread/">Bread</a></h3>
+                <p class="card-text">Six loaves, from a basic white bread to rye: recipes with before-and-after photos, in the order they were baked.</p>
+            </div>
+        </li>
     </ul>
+    <p class="home-demos">Also runs in your browser:
+        <a href="/projects/raytracer/index.html">Ray tracer</a> · <a href="/projects/imageprocjs/index.html">ImageProcJS</a> · <a href="/projects/fractal/index.html">Fractal explorer</a> · <a href="/projects/minesweeper/index.html">MineSweeper</a> · <a href="https://phg1024.github.io/MultilinearReconstruction/">Multilinear Reconstruction</a>
+    </p>
 </section>
 
  </main>

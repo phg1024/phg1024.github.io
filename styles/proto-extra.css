@@ -79,14 +79,68 @@
   color: var(--accent);
 }
 
-/* Projects: a plain list plus a compact row of browser demos */
-.demo-row {
+/* Home: each section is a small eyebrow with its "All … →" link on the right (the link
+   used to be set as a sub-heading, which read as the section's title). */
+.home-section-head {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 3rem 0 0.4rem;
+}
+.home-section-head .section-heading__eyebrow {
+  margin: 0;
+}
+.home-section-head__more {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Selected work: the Projects page's cards a size down, two across on every row. */
+.home-work {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0.8rem 0 0;
   padding: 0;
-  margin: 0.6rem 0 0;
   list-style: none;
+}
+.home-work .personal-project-image {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+@media (min-width: 560px) {
+  .home-work {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.home-work .card-body {
+  padding: 0.85rem 1rem 1rem;
+}
+.home-work .card-title {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.home-work .card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.home-work .card-title a:hover {
+  color: var(--accent);
+}
+.home-work .card-text {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.home-demos {
+  margin: 1.2rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 /* ── Two-column layout ─────────────────────────────────────────────────────────
