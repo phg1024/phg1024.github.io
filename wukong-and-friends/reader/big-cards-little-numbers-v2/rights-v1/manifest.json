@@ -3,8 +3,8 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/big-cards-little-numbers-v1.pdf",
-  "source_sha256": "f95ed7876ffb3bfb64106082c7cbec6517320b8168e45f19433d9ccb8097b71e",
+  "source_pdf": "downloads/big-cards-little-numbers-v2.pdf",
+  "source_sha256": "1e87e2da48d1250b704f953fdec8f447838c7de0469333d73a111f751757b6e9",
   "pixel_width": 1224,
   "pages": [
     {
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "eb684cd5de929b243a201a4d4e39640f3b0ed4ad5722657c453bef4036928de8",
+      "sha256": "82ec89f88cf0ffa8de92570d8176ab73ad30b1ed62a9b5b698afc77277b4b8cf",
       "text": "“But my card is so big!”\nNezha giggles.\n“A big card. A small number.”\n10",
       "links": []
     },

@@ -42,6 +42,36 @@
       "bytes": 8743732
     },
     {
+      "path": "docs/downloads/big-cards-little-numbers-v2-booklet.pdf",
+      "sha256": "4c98ffb8b834128b4eb2322fdbcbc4a8036fd7889d6d05aa5564d32d6d3a1815",
+      "bytes": 8740916
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v2-core-en.pdf",
+      "sha256": "de776c5cf499327938099a184ccdd03b4b7f61bf14dfbdc2d4bee33731577907",
+      "bytes": 8398930
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v2-core-zh-Hans.pdf",
+      "sha256": "9540018dd9151c26b23f12d84f08868c7fdc6595b1504aee58159b717383a8e6",
+      "bytes": 8432648
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v2-zh-Hans-booklet.pdf",
+      "sha256": "0341896fadbdef8e5b5ec5cc2d120bd059a2e28eca504eea984ec51c68c976c5",
+      "bytes": 8787582
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v2-zh-Hans.pdf",
+      "sha256": "8a8c1af8e5006c784196c0f3cc8c39a6089942c7acbfa03566979ecd639bfca3",
+      "bytes": 8777114
+    },
+    {
+      "path": "docs/downloads/big-cards-little-numbers-v2.pdf",
+      "sha256": "1e87e2da48d1250b704f953fdec8f447838c7de0469333d73a111f751757b6e9",
+      "bytes": 8721342
+    },
+    {
       "path": "docs/downloads/bumbles-big-bike-ride-v0-booklet.pdf",
       "sha256": "2873507faf08ebf3edc2617a029a01b81464bde9658996f21997db688ac57dd9",
       "bytes": 9667741
@@ -872,6 +902,36 @@
       "bytes": 24513544
     },
     {
+      "path": "docs/downloads/wukongs-brick-building-day-v3-booklet.pdf",
+      "sha256": "46f7f20d4f4fab67ce8bbdf46f4e334fb0beb84934614adc9d61a4bdd25c978e",
+      "bytes": 24533259
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v3-core-en.pdf",
+      "sha256": "3786f994b74f6c07925a27f703c626f53e39d2e688fbfef39b71433a45933ff0",
+      "bytes": 20574258
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v3-core-zh-Hans.pdf",
+      "sha256": "767481a94948c1165dab4c1f9daf5d3eed378b557ed577b78d0e0744648e5a52",
+      "bytes": 20671579
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v3-zh-Hans-booklet.pdf",
+      "sha256": "0c864e75ead0841eb29442e27dd3d839ef5b4da10a3e0400e03832966ced40c5",
+      "bytes": 24642291
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v3-zh-Hans.pdf",
+      "sha256": "842462045f5e01197a409806df429155c87cc51fe59248f62f157f622f1ff8ca",
+      "bytes": 24631944
+    },
+    {
+      "path": "docs/downloads/wukongs-brick-building-day-v3.pdf",
+      "sha256": "b549b0cff4bfcdadc77a61e91058cbff9df8e2751d6974282fa64805b32a258c",
+      "bytes": 24514191
+    },
+    {
       "path": "docs/downloads/wukongs-first-ballet-class-v1-booklet.pdf",
       "sha256": "f0eeddfedf0fa55ebe84c433bd8f4b1009dc850d77c3793daf8fc56bcd3752b7",
       "bytes": 21292251
@@ -1602,6 +1662,11 @@
       "bytes": 211161
     },
     {
+      "path": "stories/big-cards-little-numbers/editions/v2/prompts.txt",
+      "sha256": "afbf75466fc6a2dd5f000fe420f5725958e029d4c0530c85ccaab378911f5406",
+      "bytes": 213442
+    },
+    {
       "path": "stories/bumbles-big-bike-ride/editions/v0/prompts.txt",
       "sha256": "bc899950022594cc676ffeb5764dc5c7aa090a8a908302a69f48545880f0afdb",
       "bytes": 38921
@@ -1805,6 +1870,11 @@
       "path": "stories/wukongs-brick-building-day/editions/v2/prompts.txt",
       "sha256": "5d17e7fb8c00f7333321f468f6b6c4b2cd5ad9380f5cf498e3947a1d6efdef81",
       "bytes": 127595
+    },
+    {
+      "path": "stories/wukongs-brick-building-day/editions/v3/prompts.txt",
+      "sha256": "57305be13c5fc290ce90f260925248a22d1adc7d830342e2c8d2c56053f0cc55",
+      "bytes": 129814
     },
     {
       "path": "stories/wukongs-first-ballet-class/editions/v1/prompts.txt",

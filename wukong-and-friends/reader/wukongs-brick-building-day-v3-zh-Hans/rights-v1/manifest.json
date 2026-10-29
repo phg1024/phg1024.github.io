@@ -3,8 +3,8 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/wukongs-brick-building-day-v2-zh-Hans.pdf",
-  "source_sha256": "fd807bcb26a8664e4f2906d51108ccd6354ec0463952032b9e9e029dc5761d0e",
+  "source_pdf": "downloads/wukongs-brick-building-day-v3-zh-Hans.pdf",
+  "source_sha256": "842462045f5e01197a409806df429155c87cc51fe59248f62f157f622f1ff8ca",
   "pixel_width": 1224,
   "pages": [
     {
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "7eb3b5273348a48a20fa7d0dc8e7e9f78396d5b87acb78931735d57ae7444cda",
+      "sha256": "8d531bc5c27173a55acce6697a76eebeb9a5bffa623e0bf33645e6aa751dbe99",
       "text": "悟空用尾巴扶住这边，\n那边又晃起来了！\n6",
       "links": []
     },

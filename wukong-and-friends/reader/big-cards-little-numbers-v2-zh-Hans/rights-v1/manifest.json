@@ -3,8 +3,8 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/big-cards-little-numbers-v1-zh-Hans.pdf",
-  "source_sha256": "20ceec6ee3a41135b00b5cec2f98c82560aa2ec2b0262830a575bcc4571b43f4",
+  "source_pdf": "downloads/big-cards-little-numbers-v2-zh-Hans.pdf",
+  "source_sha256": "8a8c1af8e5006c784196c0f3cc8c39a6089942c7acbfa03566979ecd639bfca3",
   "pixel_width": 1224,
   "pages": [
     {
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "3408e61f93e415daf67fc4a9fedbfb34392231f1ce61f55bd4503cec4c8c219f",
+      "sha256": "3dd0dab917752f0fa65906b6af2af635f0bb4bdcdefc56f5d541b4392f3810ca",
       "text": "“可是我的卡片那么大呀！”\n哪吒咯咯笑：\n“卡片大，数字小。”\n10",
       "links": []
     },

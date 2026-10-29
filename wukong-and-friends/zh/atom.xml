@@ -28,12 +28,12 @@
     <atom:title type="text">大纸牌，小数字</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/big-cards-little-numbers/" rel="alternate" type="text/html" hreflang="zh-CN" />
     <atom:published>2026-10-28T00:00:00Z</atom:published>
-    <atom:updated>2026-10-28T00:00:00Z</atom:updated>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
     <atom:author>
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;哪吒画了一张写着3的大卡片和一张写着5的小卡片。悟空觉得大卡片一定赢，可玉兔用木珠一摆，五颗比三颗多。卡片大也好，小也好，数字告诉我们有几个。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/big-cards-little-numbers-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/big-cards-little-numbers-v1-zh-Hans.jpg" alt="大纸牌，小数字" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;哪吒画了一张写着3的大卡片和一张写着5的小卡片。悟空觉得大卡片一定赢，可玉兔用木珠一摆，五颗比三颗多。卡片大也好，小也好，数字告诉我们有几个。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/big-cards-little-numbers-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/big-cards-little-numbers-v2-zh-Hans.jpg" alt="大纸牌，小数字" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/iron-fans-ribbon-parade/</atom:id>
@@ -100,12 +100,12 @@
     <atom:title type="text">悟空的积木城堡</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukongs-brick-building-day/" rel="alternate" type="text/html" hreflang="zh-CN" />
     <atom:published>2026-10-26T00:00:00Z</atom:published>
-    <atom:updated>2026-10-26T00:00:00Z</atom:updated>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
     <atom:author>
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-brick-building-day-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-brick-building-day-v2-zh-Hans.jpg" alt="悟空的积木城堡" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;悟空和朋友们一起搭积木城堡。他们想办法解决门口太窄的问题，让大家都能进来。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-brick-building-day-v3-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-brick-building-day-v3-zh-Hans.jpg" alt="悟空的积木城堡" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-learns-to-swim/</atom:id>

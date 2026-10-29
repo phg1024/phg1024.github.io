@@ -11,11 +11,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
+    "version": "v2",
+    "revision": "p10-beads-with-holes",
     "publication_status": "published",
     "published": "2026-10-28",
-    "updated": "2026-10-28",
+    "updated": "2026-10-29",
     "level": "L2",
     "target_age_months": 54,
     "focus_vocabulary": [
@@ -27,12 +27,12 @@
     ],
     "math_plan_id": "M3",
     "language_reading_versions": {
-      "en": "big-cards-little-numbers/v1/en",
-      "zh-Hans": "big-cards-little-numbers/v1/zh-Hans"
+      "en": "big-cards-little-numbers/v2/en",
+      "zh-Hans": "big-cards-little-numbers/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v1-booklet.pdf",
-    "cover": "covers/big-cards-little-numbers-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v2-booklet.pdf",
+    "cover": "covers/big-cards-little-numbers-v2.jpg",
     "translations": {
       "en": {
         "title": "Big Cards, Little Numbers",
@@ -48,14 +48,14 @@
     "keywords": "悟空 哪吒 玉兔 数字卡片 木珠 数字 比大小 数学启蒙 Wukong Nezha Rabbit number cards beads numerals bigger number early math",
     "languages": {
       "en": {
-        "reading": "downloads/big-cards-little-numbers-v1.pdf",
-        "booklet": "downloads/big-cards-little-numbers-v1-booklet.pdf",
-        "cover": "covers/big-cards-little-numbers-v1.jpg"
+        "reading": "downloads/big-cards-little-numbers-v2.pdf",
+        "booklet": "downloads/big-cards-little-numbers-v2-booklet.pdf",
+        "cover": "covers/big-cards-little-numbers-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/big-cards-little-numbers-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/big-cards-little-numbers-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/big-cards-little-numbers-v2-zh-Hans.jpg"
       }
     }
   },
@@ -568,11 +568,11 @@
     "sheets": 6,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v2",
-    "revision": "restore-established-bold-cover-typography",
+    "version": "v3",
+    "revision": "p6-single-tail",
     "publication_status": "published",
     "published": "2026-10-26",
-    "updated": "2026-10-26",
+    "updated": "2026-10-29",
     "level": "L2",
     "target_age_months": 54,
     "focus_vocabulary": [
@@ -584,12 +584,12 @@
       "fit"
     ],
     "language_reading_versions": {
-      "en": "wukongs-brick-building-day/v2/en",
-      "zh-Hans": "wukongs-brick-building-day/v2/zh-Hans"
+      "en": "wukongs-brick-building-day/v3/en",
+      "zh-Hans": "wukongs-brick-building-day/v3/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v2.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v2-booklet.pdf",
-    "cover": "covers/wukongs-brick-building-day-v2.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-booklet.pdf",
+    "cover": "covers/wukongs-brick-building-day-v3.jpg",
     "translations": {
       "en": {
         "title": "Wukong’s Brick-Building Day",
@@ -605,14 +605,14 @@
     "keywords": "积木 城堡 门 沙僧 八戒 悟空 敖丙 bricks castle doorway Pigsy Wukong Ao Bing Sandy",
     "languages": {
       "en": {
-        "reading": "downloads/wukongs-brick-building-day-v2.pdf",
-        "booklet": "downloads/wukongs-brick-building-day-v2-booklet.pdf",
-        "cover": "covers/wukongs-brick-building-day-v2.jpg"
+        "reading": "downloads/wukongs-brick-building-day-v3.pdf",
+        "booklet": "downloads/wukongs-brick-building-day-v3-booklet.pdf",
+        "cover": "covers/wukongs-brick-building-day-v3.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-brick-building-day-v2-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-brick-building-day-v3-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-brick-building-day-v3-zh-Hans.jpg"
       }
     }
   },

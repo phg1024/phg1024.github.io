@@ -3,8 +3,8 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/wukongs-brick-building-day-v2.pdf",
-  "source_sha256": "f6ee3e46e3a8144da9746bfd344d6ae54fd8ff481d81ed59d800d1afca91b231",
+  "source_pdf": "downloads/wukongs-brick-building-day-v3.pdf",
+  "source_sha256": "b549b0cff4bfcdadc77a61e91058cbff9df8e2751d6974282fa64805b32a258c",
   "pixel_width": 1224,
   "pages": [
     {
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "ca94b517aec7aff5976346654d5ae130dc13e5be8ad8ad12731eb12eb5f93ad4",
+      "sha256": "c48c29232d012f8feb9edaf0bea94b2e3daefe2a5625120351ce3ece4a7a8d9b",
       "text": "Wukong holds one side with\nhis tail.\nBut the other side wobbles,\ntoo!\n6",
       "links": []
     },
