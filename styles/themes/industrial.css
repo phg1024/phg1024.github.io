@@ -21,6 +21,7 @@
 	--radius-md: 0.15rem;
 	--button-radius: 0.15rem;
 	--button-radius-tight: 0.12rem;
+	--measure: 32rem;
 	/* One type family, Barlow (drawn from road signs and equipment plates): the regular
 	   width for text and labels, the condensed width in capitals for headings. */
 	--sans: "Barlow", "Arial", sans-serif;

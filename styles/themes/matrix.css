@@ -21,6 +21,7 @@
      --radius-md: 0;
      --button-radius: 0;
      --button-radius-tight: 0;
+     --measure: 44rem;
      /* One face for everything, code included: IBM Plex Mono (Courier New was thin and grey
         at the small sizes the rail and dates use). */
      --sans: "IBM Plex Mono", "Courier New", monospace;

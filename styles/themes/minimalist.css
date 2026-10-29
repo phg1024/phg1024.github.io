@@ -361,3 +361,11 @@
   color: #6a7c8c;
   font-family: "JetBrains Mono", "SF Mono", monospace;
 }
+
+/* Form controls don't inherit the page font by default (the theme picker, the gallery tabs). */
+[data-theme="minimalist"] button,
+[data-theme="minimalist"] select,
+[data-theme="minimalist"] input,
+[data-theme="minimalist"] textarea {
+  font-family: inherit;
+}

@@ -679,6 +679,29 @@ html:not([data-theme="win31"]) .proto .about-panel:hover {
   }
 }
 
+/* Reading measure, every theme: post text ran about 90 characters a line at 16px in the
+   secondary text colour. Paragraphs, lists, quotes and section headings now stop at
+   --measure (about 65 characters: 38rem by default, wider for matrix's monospace, narrower
+   for industrial's Barlow), the text is a little larger and set closer to the theme's main
+   text colour. Images, code, tables and the footer keep the full column. */
+.proto .blog-content__inner > p:not(.blog-post__date),
+.proto .blog-content__inner > ul,
+.proto .blog-content__inner > ol,
+.proto .blog-content__inner > blockquote,
+.proto .blog-content__inner > h2,
+.proto .blog-content__inner > h3,
+.proto .blog-content__inner > h4 {
+  max-width: var(--measure, 38rem);
+}
+.proto .blog-content__inner > p:not(.blog-post__date),
+.proto .blog-content__inner > ul li,
+.proto .blog-content__inner > ol li,
+.proto .blog-content__inner > blockquote {
+  font-size: 1.07rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--text) 78%, var(--muted));
+}
+
 /* Post titles are left-aligned in every theme, so the date under them is too; centred, it
    floated under the middle of a left-aligned title. */
 .proto .blog-post__date {
