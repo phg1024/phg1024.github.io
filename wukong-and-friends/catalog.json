@@ -186,6 +186,65 @@
     }
   },
   {
+    "id": "wukong-visits-the-dentist",
+    "title": "Wukong Visits the Dentist",
+    "title_zh": "悟空看牙医",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "level": "L1",
+    "target_age_months": 48,
+    "focus_vocabulary": [
+      "look",
+      "open",
+      "stop",
+      "ready",
+      "mirror"
+    ],
+    "language_reading_versions": {
+      "en": "wukong-visits-the-dentist/v1/en",
+      "zh-Hans": "wukong-visits-the-dentist/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1-booklet.pdf",
+    "cover": "covers/wukong-visits-the-dentist-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong Visits the Dentist",
+        "description": "Wukong visits the dentist with Sandy. The chair goes up like a little cloud, but the bzzz sounds like a big bee! The dentist promises to stop whenever he raises his hand — and she does. Wukong asks, gets ready, and goes home with a new toothbrush."
+      },
+      "zh": {
+        "title": "悟空看牙医",
+        "description": "沙僧陪悟空去看牙医。牙椅像小云朵一样升起来，可是“嗡嗡”声好像大蜜蜂！牙医阿姨说，想停就举手，她真的停了下来。悟空问清楚、准备好，最后还带回一把新牙刷。"
+      }
+    },
+    "description": "沙僧陪悟空去看牙医。牙椅像小云朵一样升起来，可是“嗡嗡”声好像大蜜蜂！牙医阿姨说，想停就举手，她真的停了下来。悟空问清楚、准备好，最后还带回一把新牙刷。",
+    "description_en": "Wukong visits the dentist with Sandy. The chair goes up like a little cloud, but the bzzz sounds like a big bee! The dentist promises to stop whenever he raises his hand — and she does. Wukong asks, gets ready, and goes home with a new toothbrush.",
+    "keywords": "悟空 沙僧 八戒 看牙医 牙医 牙椅 举手 停一停 勇敢 刷牙 健康 Wukong Sandy Pigsy dentist check-up dental chair raise your hand stop ready toothbrush health",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1-booklet.pdf",
+        "cover": "covers/wukong-visits-the-dentist-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-visits-the-dentist-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "wukong-visits-the-pumpkin-patch",
     "title": "Wukong Visits the Pumpkin Patch",
     "title_zh": "悟空逛南瓜农场",

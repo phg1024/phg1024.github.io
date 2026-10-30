@@ -48,6 +48,18 @@
     <atom:summary type="html">&lt;p&gt;Pigsy, Rabbit and Ao Bing are rolling a ball in a circle. Wukong wants to play so much that he runs in and grabs it. Sandy shows him another way: look, ask, wait. Soon there is room in the circle for everyone.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1.jpg" alt="Wukong Wants to Play Too" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-dentist/</atom:id>
+    <atom:title type="text">Wukong Visits the Dentist</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-dentist/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-29T00:00:00Z</atom:published>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong visits the dentist with Sandy. The chair goes up like a little cloud, but the bzzz sounds like a big bee! The dentist promises to stop whenever he raises his hand — and she does. Wukong asks, gets ready, and goes home with a new toothbrush.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-visits-the-dentist-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-visits-the-dentist-v1.jpg" alt="Wukong Visits the Dentist" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-pumpkin-patch/</atom:id>
     <atom:title type="text">Wukong Visits the Pumpkin Patch</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-pumpkin-patch/" rel="alternate" type="text/html" hreflang="en" />

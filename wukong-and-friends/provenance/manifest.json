@@ -902,6 +902,36 @@
       "bytes": 29485354
     },
     {
+      "path": "docs/downloads/wukong-visits-the-dentist-v1-booklet.pdf",
+      "sha256": "1976ddbf293a1e133ce0651c4422cbc484f9448ee739256bafce5b107509f9ee",
+      "bytes": 8869231
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v1-core-en.pdf",
+      "sha256": "d89ad0caa803e1c9a388caa794bcf44a05f51166ed3cfcf0029b2d33f98ba064",
+      "bytes": 8563880
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v1-core-zh-Hans.pdf",
+      "sha256": "6f9329ed4d3e754b654bdd15aba754e29818bda47d0f96014dfca396879d8bd5",
+      "bytes": 8592827
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v1-zh-Hans-booklet.pdf",
+      "sha256": "c1eb6f80f02025df5d7038943b66234e6b16c73b1be4dac288b4aca8ea58a742",
+      "bytes": 8911020
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v1-zh-Hans.pdf",
+      "sha256": "5a97371f731efefe1a4c659f6b7361461ad55e78ce2e4dd67a4e71b4ecc7bfd9",
+      "bytes": 8901131
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v1.pdf",
+      "sha256": "6ec74cccfad7e0f5805de3b0a5b6b584644f0426a8c843d183250b004d0ed449",
+      "bytes": 8850209
+    },
+    {
       "path": "docs/downloads/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
       "sha256": "91ac9c249fc7c4921a3337d1f68158d2e4a38c9d006ac2a944f911955cae4c1f",
       "bytes": 10102597
@@ -2020,6 +2050,11 @@
       "path": "stories/wukong-visits-the-aquarium/editions/v2/prompts.txt",
       "sha256": "0757062d5a4e2c509114c212e4e65a765c21eba96ecfd7bce2344815e956fc8b",
       "bytes": 131732
+    },
+    {
+      "path": "stories/wukong-visits-the-dentist/editions/v1/prompts.txt",
+      "sha256": "2b81f3023b15dbf3a2aa44922ac1c713fef0eb198b68ef693651fbb4af513c17",
+      "bytes": 750539
     },
     {
       "path": "stories/wukong-visits-the-pumpkin-patch/editions/v1/prompts.txt",

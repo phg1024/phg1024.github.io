@@ -48,6 +48,18 @@
     <atom:summary type="html">&lt;p&gt;八戒、玉兔和敖丙围成一圈玩滚球。悟空太想一起玩，一下冲进去把球抱住了。沙僧教他换一种办法：看一看，问一问，等一等。很快，圆圈里就有了每个人的位置。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-joins-the-game-v1-zh-Hans.jpg" alt="悟空想一起玩" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-dentist/</atom:id>
+    <atom:title type="text">悟空看牙医</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukong-visits-the-dentist/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-10-29T00:00:00Z</atom:published>
+    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;沙僧陪悟空去看牙医。牙椅像小云朵一样升起来，可是“嗡嗡”声好像大蜜蜂！牙医阿姨说，想停就举手，她真的停了下来。悟空问清楚、准备好，最后还带回一把新牙刷。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukong-visits-the-dentist-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukong-visits-the-dentist-v1-zh-Hans.jpg" alt="悟空看牙医" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-visits-the-pumpkin-patch/</atom:id>
     <atom:title type="text">悟空逛南瓜农场</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukong-visits-the-pumpkin-patch/" rel="alternate" type="text/html" hreflang="zh-CN" />
