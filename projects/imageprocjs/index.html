@@ -5,7 +5,10 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <script>
                 (function () {
-                 var savedTheme = localStorage.getItem('site-theme') || 'cyberpunk';
+                 // Cyberpunk is switched off for now (themeNames in /js/main.js): anyone who had it
+                 // gets minimalist.
+                 var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+                 if (savedTheme === 'cyberpunk') savedTheme = 'minimalist';
                  document.documentElement.setAttribute('data-theme', savedTheme);
                 })();
             </script>
@@ -178,7 +181,6 @@
                             <span class="theme-toggle__label">Theme</span>
                             <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
                                 <option value="minimalist">Minimalist</option>
-                                <option value="cyberpunk">Cyberpunk</option>
                                 <option value="matrix">Matrix</option>
                                 <option value="industrial">Industrial</option>
                                 <option value="win31">Windows 3.1</option>

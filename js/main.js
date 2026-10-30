@@ -6,7 +6,10 @@
     const overlay = document.querySelector('.pointer-reactive-overlay');
     const themeToggle = document.getElementById('theme-toggle');
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const themeNames = ['minimalist', 'cyberpunk', 'matrix', 'industrial', 'win31'];
+    // Cyberpunk is switched off for now (2026-10-29): its styles and backdrop stay, but it is
+    // not offered and a saved choice of it falls back to minimalist. To bring it back, add it
+    // here, to the theme <select>s and to the restore scripts (base.njk, the four demos).
+    const themeNames = ['minimalist', 'matrix', 'industrial', 'win31'];
     const matrixGlyphs = '01<>[]{}/*+-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&';
     const MAX_PARTICLES = 80;
     const MAX_OVERLAY_FPS = 36;
@@ -48,6 +51,17 @@
     let lastAmbientPulse = 0;
     let cyberSkyline = [];
     let cyberGridOffset = 0;
+    let cyberFar = [];
+    let cyberArcology = null;
+    let cyberRain = [];
+    let cyberSpinners = [];
+    let cyberFlares = [];
+    let cyberBillboards = [];
+    let cyberGlass = null;
+    let cyberHud = null;
+    let cyberHudTimer = null;
+    let cyberGlitchTimer = null;
+    let cyberRings = [];
 
     // ── Idle detection ──
 
@@ -110,7 +124,7 @@
         if (theme === 'win31') {
             return { core: ['255, 255, 255', '0, 0, 128'], sparks: ['255, 255, 255', '0, 0, 0'] };
         }
-        return { core: ['46, 242, 255', '252, 238, 10'], sparks: ['252, 238, 10', '255, 59, 92'] };
+        return { core: ['46, 242, 255', '255, 174, 66'], sparks: ['255, 174, 66', '255, 42, 109'] };
     };
 
     const randomGlyph = function () {
@@ -140,6 +154,7 @@
             initializeCyberSkyline();
             queueBackdrop();
         }
+        syncCyberpunkChrome();
     };
 
     const applyPointerState = function () {
@@ -831,25 +846,412 @@
         backdropFrame = window.requestAnimationFrame(drawIndustrialBackdrop);
     };
 
-    // Cyberpunk backdrop: a city skyline on a horizon with a neon grid floor running toward
-    // the viewer. The vanishing point drifts with the pointer; windows flicker. With reduced
-    // motion it is drawn once, still.
+    // Cyberpunk backdrop: a rain-soaked megacity at night, Blade Runner by way of 2077.
+    // Sodium smog over the horizon; a far layer of megastructures and a stepped arcology in
+    // the haze; searchlights sweeping the cloud and flare stacks bursting now and then. The
+    // near towers rise highest beside the content column, so the page stands in a canyon of
+    // them, hung with neon (vertical plates, lightboxes, rooftop characters), each sign with
+    // a halo in the fog, a reflection in the wet floor and now and then a failing tube. In
+    // each clear margin a holographic billboard cycles its ads with a glitch. Spinners cross
+    // the sky; rain catches the light near the pointer; the view drifts with the pointer.
+    // With reduced motion it is drawn once, still.
+    const CYBER_SIGNS = ['ホテル', '酒場', 'ラーメン', '強力', '夢', '電気', '未来', '薬局', 'バー', '寿司', '東京', '愛', '質屋', '電脳'];
+    const CYBER_LIGHTBOXES = ['BAR', 'HOTEL', '24H', 'OPEN', 'NOODLE', 'CLINIC', 'カラオケ', '酒', '麺', 'PACHINKO', 'ラブ'];
+    const CYBER_ROOFS = ['電脳', '東亜', '新星', '龍宮', '大夢', '光'];
+    const CYBER_NEON = ['255, 42, 109', '46, 242, 255', '255, 174, 66', '255, 120, 210', '255, 90, 60'];
+    const CYBER_SIGN_FONT = '"Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif';
+
+    const cyberRgba = function (rgb, alpha) {
+        return 'rgba(' + rgb + ', ' + alpha + ')';
+    };
+
+    // Where the page's text sits, in viewport pixels: the rail's contents and the content
+    // column (full height, it scrolls). Signs and billboards stay out of the rail, rain too.
+    const cyberKeepOut = function () {
+        var rail = document.querySelector('.site-header__inner');
+        var column = document.querySelector('.site-main');
+        var r = rail && rail.getBoundingClientRect();
+        var c = column && column.getBoundingClientRect();
+        return {
+            rail: r && r.width ? { l: r.left - 14, r: r.right + 14, t: r.top - 14, b: r.bottom + 14 } : null,
+            column: c && c.width ? { l: c.left - 10, r: c.right + 10 } : null
+        };
+    };
+
+    // A sign is drawn once, lit and dark, onto canvases of its own; the lit one carries its
+    // halo, so a frame only copies images.
+    const renderCyberSign = function (sign) {
+        var pad = Math.round(sign.size * 2.2);
+        var make = function (on) {
+            var canvas = document.createElement('canvas');
+            canvas.width = Math.ceil(sign.w + pad * 2);
+            canvas.height = Math.ceil(sign.h + pad * 2);
+            var g = canvas.getContext('2d');
+            if (on) {
+                var reach = Math.max(canvas.width, canvas.height) / 2;
+                var halo = g.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, reach);
+                halo.addColorStop(0, cyberRgba(sign.rgb, 0.3));
+                halo.addColorStop(1, cyberRgba(sign.rgb, 0));
+                g.fillStyle = halo;
+                g.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            if (sign.kind !== 'roof') {
+                g.fillStyle = 'rgba(10, 8, 14, 0.95)';
+                g.fillRect(pad, pad, sign.w, sign.h);
+                g.strokeStyle = cyberRgba(sign.rgb, on ? 0.6 : 0.12);
+                g.lineWidth = 1;
+                g.strokeRect(pad + 0.5, pad + 0.5, sign.w - 1, sign.h - 1);
+            }
+            g.font = '600 ' + sign.size + 'px ' + CYBER_SIGN_FONT;
+            g.textAlign = 'center';
+            g.textBaseline = 'middle';
+            var write = function () {
+                if (sign.kind === 'v') {
+                    for (var c = 0; c < sign.text.length; c += 1) {
+                        g.fillText(sign.text.charAt(c), pad + sign.w / 2, pad + sign.size * 0.9 + c * sign.size * 1.15);
+                    }
+                } else {
+                    g.fillText(sign.text, pad + sign.w / 2, pad + sign.h / 2);
+                }
+            };
+            g.shadowBlur = on ? sign.size * 0.8 : 0;
+            g.shadowColor = cyberRgba(sign.rgb, 0.95);
+            g.fillStyle = cyberRgba(sign.rgb, on ? 0.97 : 0.16);
+            write();
+            if (on) {
+                // A white-hot core down the middle of the tube.
+                g.shadowBlur = 0;
+                g.fillStyle = 'rgba(255, 246, 240, 0.35)';
+                write();
+            }
+            return canvas;
+        };
+        sign.pad = pad;
+        sign.lit = make(true);
+        sign.dark = make(false);
+    };
+
+    const makeCyberSign = function (kind, rgb) {
+        var sign = { kind: kind, rgb: rgb || CYBER_NEON[Math.floor(Math.random() * CYBER_NEON.length)], offUntil: 0 };
+        var pick = function (list) { return list[Math.floor(Math.random() * list.length)]; };
+        if (kind === 'v') {
+            sign.text = pick(CYBER_SIGNS);
+            sign.size = 13 + Math.round(Math.random() * 7);
+            sign.w = sign.size * 1.5;
+            sign.h = sign.text.length * sign.size * 1.15 + sign.size * 0.6;
+        } else {
+            sign.text = pick(kind === 'roof' ? CYBER_ROOFS : CYBER_LIGHTBOXES);
+            sign.size = kind === 'roof' ? 18 + Math.round(Math.random() * 10) : 10 + Math.round(Math.random() * 3);
+            backdropContext.font = '600 ' + sign.size + 'px ' + CYBER_SIGN_FONT;
+            var textWidth = backdropContext.measureText(sign.text).width;
+            sign.w = textWidth + (kind === 'roof' ? 6 : sign.size * 1.2);
+            sign.h = sign.size * (kind === 'roof' ? 1.3 : 1.8);
+        }
+        return sign;
+    };
+
+    // Billboard ads, each drawn once onto its own canvas.
+    const renderCyberAds = function (w, h) {
+        var ads = [];
+        var make = function (paint) {
+            var canvas = document.createElement('canvas');
+            canvas.width = Math.round(w);
+            canvas.height = Math.round(h);
+            paint(canvas.getContext('2d'), canvas.width, canvas.height);
+            return canvas;
+        };
+        // Dream: a big character on magenta going to sodium orange.
+        ads.push({ rgb: '255, 60, 140', image: make(function (g, cw, ch) {
+            var bg = g.createLinearGradient(0, 0, 0, ch);
+            bg.addColorStop(0, 'rgb(70, 6, 52)');
+            bg.addColorStop(0.6, 'rgb(170, 20, 90)');
+            bg.addColorStop(1, 'rgb(255, 120, 50)');
+            g.fillStyle = bg;
+            g.fillRect(0, 0, cw, ch);
+            g.textAlign = 'center';
+            g.textBaseline = 'middle';
+            g.shadowBlur = cw * 0.08;
+            g.shadowColor = 'rgba(255, 200, 230, 0.9)';
+            g.fillStyle = 'rgba(255, 236, 246, 0.95)';
+            g.font = '700 ' + Math.round(cw * 0.6) + 'px ' + CYBER_SIGN_FONT;
+            g.fillText('夢', cw / 2, ch * 0.42);
+            g.shadowBlur = 0;
+            g.font = '600 ' + Math.round(cw * 0.11) + 'px ' + CYBER_SIGN_FONT;
+            g.fillText('ユメ・ドリーム', cw / 2, ch * 0.76);
+            g.fillStyle = 'rgba(46, 242, 255, 0.95)';
+            g.fillRect(cw * 0.12, ch * 0.08, cw * 0.28, ch * 0.05);
+            g.fillStyle = 'rgb(20, 4, 20)';
+            g.font = '700 ' + Math.round(cw * 0.07) + 'px ' + CYBER_SIGN_FONT;
+            g.fillText('NEW', cw * 0.26, ch * 0.105);
+        }) });
+        // An eye that watches the street.
+        ads.push({ rgb: '46, 242, 255', image: make(function (g, cw, ch) {
+            var bg = g.createLinearGradient(0, 0, 0, ch);
+            bg.addColorStop(0, 'rgb(0, 30, 44)');
+            bg.addColorStop(1, 'rgb(2, 8, 16)');
+            g.fillStyle = bg;
+            g.fillRect(0, 0, cw, ch);
+            var cx = cw / 2;
+            var cy = ch * 0.4;
+            var ew = cw * 0.4;
+            g.strokeStyle = 'rgba(46, 242, 255, 0.95)';
+            g.lineWidth = Math.max(2, cw * 0.02);
+            g.shadowBlur = cw * 0.06;
+            g.shadowColor = 'rgba(46, 242, 255, 0.9)';
+            g.beginPath();
+            g.moveTo(cx - ew, cy);
+            g.quadraticCurveTo(cx, cy - ew * 0.9, cx + ew, cy);
+            g.quadraticCurveTo(cx, cy + ew * 0.9, cx - ew, cy);
+            g.stroke();
+            var iris = g.createRadialGradient(cx, cy, 0, cx, cy, ew * 0.42);
+            iris.addColorStop(0, 'rgba(255, 174, 66, 1)');
+            iris.addColorStop(0.55, 'rgba(255, 42, 109, 0.9)');
+            iris.addColorStop(1, 'rgba(46, 242, 255, 0.4)');
+            g.fillStyle = iris;
+            g.beginPath();
+            g.arc(cx, cy, ew * 0.42, 0, Math.PI * 2);
+            g.fill();
+            g.shadowBlur = 0;
+            g.fillStyle = 'rgb(4, 6, 10)';
+            g.beginPath();
+            g.arc(cx, cy, ew * 0.16, 0, Math.PI * 2);
+            g.fill();
+            g.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            g.beginPath();
+            g.arc(cx - ew * 0.14, cy - ew * 0.14, ew * 0.06, 0, Math.PI * 2);
+            g.fill();
+            g.textAlign = 'center';
+            g.textBaseline = 'middle';
+            g.fillStyle = 'rgba(220, 252, 255, 0.95)';
+            g.font = '700 ' + Math.round(cw * 0.15) + 'px ' + CYBER_SIGN_FONT;
+            g.fillText('見ている', cx, ch * 0.74);
+            g.fillStyle = 'rgba(46, 242, 255, 0.8)';
+            g.font = '600 ' + Math.round(cw * 0.07) + 'px ' + CYBER_SIGN_FONT;
+            g.fillText('WE SEE YOU', cx, ch * 0.86);
+        }) });
+        // A drink, with stripes, a barcode and a price.
+        ads.push({ rgb: '255, 174, 66', image: make(function (g, cw, ch) {
+            g.fillStyle = 'rgb(16, 8, 24)';
+            g.fillRect(0, 0, cw, ch);
+            g.fillStyle = 'rgba(255, 174, 66, 0.16)';
+            for (var s = -ch; s < cw; s += cw * 0.16) {
+                g.beginPath();
+                g.moveTo(s, 0);
+                g.lineTo(s + cw * 0.07, 0);
+                g.lineTo(s + cw * 0.07 + ch, ch);
+                g.lineTo(s + ch, ch);
+                g.fill();
+            }
+            g.textAlign = 'center';
+            g.textBaseline = 'middle';
+            g.shadowBlur = cw * 0.06;
+            g.shadowColor = 'rgba(255, 174, 66, 0.9)';
+            g.fillStyle = 'rgba(255, 196, 110, 1)';
+            g.font = '800 ' + Math.round(cw * 0.3) + 'px ' + CYBER_SIGN_FONT;
+            g.fillText('強化', cw / 2, ch * 0.25);
+            g.fillText('酒', cw / 2, ch * 0.47);
+            g.shadowBlur = 0;
+            g.fillStyle = 'rgba(255, 42, 109, 1)';
+            g.font = '700 ' + Math.round(cw * 0.12) + 'px ' + CYBER_SIGN_FONT;
+            g.fillText('¥2,077', cw / 2, ch * 0.66);
+            g.fillStyle = 'rgba(240, 236, 230, 0.9)';
+            var x = cw * 0.2;
+            while (x < cw * 0.8) {
+                var bar = 1 + Math.floor(Math.random() * 3);
+                g.fillRect(x, ch * 0.76, bar, ch * 0.12);
+                x += bar + 1 + Math.floor(Math.random() * 3);
+            }
+        }) });
+        return ads;
+    };
+
     const initializeCyberSkyline = function () {
         cyberSkyline = [];
+        cyberFar = [];
+        cyberRain = [];
+        cyberSpinners = [];
+        cyberFlares = [];
+        cyberBillboards = [];
+        cyberArcology = null;
         if (!backdropContext || getTheme() !== 'cyberpunk') return;
-        var x = -20;
+        var horizon = backdropHeight * 0.62;
+        var keepOut = cyberKeepOut();
+        var column = keepOut.column;
+        var x = -60;
+        while (x < backdropWidth + 60) {
+            var farWidth = 40 + Math.random() * 90;
+            var farHeight = 70 + Math.random() * (Math.random() < 0.2 ? horizon * 0.55 : 160);
+            var farLights = [];
+            for (var fy = 10; fy < farHeight - 6; fy += 14) {
+                for (var fx = 6; fx < farWidth - 6; fx += 11) {
+                    if (Math.random() < 0.07) farLights.push({ x: fx, y: fy });
+                }
+            }
+            cyberFar.push({ x: x, w: farWidth, h: farHeight, lights: farLights, beacon: farHeight > 200 });
+            x += farWidth + Math.random() * 30;
+        }
+        // One stepped pyramid in the haze, in the wider of the two clear margins (left of the
+        // rail, right of the column).
+        cyberArcology = { x: backdropWidth * 0.82, w: Math.min(360, backdropWidth * 0.3), h: Math.min(190, horizon * 0.42) };
+        var leftRoom = column ? (keepOut.rail && keepOut.rail.r <= column.l + 20 ? keepOut.rail.l : column.l) : 0;
+        var rightRoom = column ? backdropWidth - column.r : 0;
+        if (column) cyberArcology.x = rightRoom >= leftRoom ? column.r + rightRoom * 0.55 : leftRoom * 0.45;
+
+        // Near towers: tall beside the column (up to nine tenths of the way to the top of the
+        // screen), lower behind it, where the glass panel blurs them.
+        x = -20;
         while (x < backdropWidth + 20) {
             var width = 26 + Math.random() * 70;
-            var height = 30 + Math.random() * (Math.random() < 0.18 ? 190 : 90);
+            var centre = x + width / 2;
+            var beside = column && (centre < column.l || centre > column.r);
+            var height = beside
+                ? horizon * (0.35 + Math.random() * 0.55)
+                : 40 + Math.random() * (Math.random() < 0.25 ? 220 : 100);
             var windows = [];
             for (var wy = 8; wy < height - 8; wy += 9) {
                 for (var wx = 5; wx < width - 5; wx += 8) {
                     if (Math.random() < 0.16) windows.push({ x: wx, y: wy, tone: Math.random() < 0.7 ? 0 : (Math.random() < 0.5 ? 1 : 2), on: Math.random() < 0.85 });
                 }
             }
-            cyberSkyline.push({ x: x, w: width, h: height, windows: windows, antenna: height > 120 && Math.random() < 0.6 });
+            cyberSkyline.push({ x: x, w: width, h: height, windows: windows, antenna: height > 120 && Math.random() < 0.5, signs: [] });
             x += width + (Math.random() < 0.3 ? 6 + Math.random() * 18 : 0);
         }
+
+        // Neon on most towers, top to bottom: maybe a rooftop sign, then plates and lightboxes
+        // down the face, never over the rail (allowing for the parallax drift).
+        var drift = backdropWidth * 0.012;
+        var clearOfRail = function (left, top, w, h) {
+            var rail = keepOut.rail;
+            return !rail || left + w + drift < rail.l || left - drift > rail.r || top + h < rail.t || top > rail.b;
+        };
+        cyberSkyline.forEach(function (tower) {
+            if (tower.w < 24 || tower.h < 70) return;
+            var top = horizon - tower.h;
+            if (tower.h > 160 && !tower.antenna && Math.random() < 0.45) {
+                var roof = makeCyberSign('roof');
+                roof.ox = (tower.w - roof.w) / 2;
+                roof.oy = -roof.h - 8;
+                if (clearOfRail(tower.x + roof.ox, top + roof.oy, roof.w, roof.h)) tower.signs.push(roof);
+            }
+            var cursor = 10 + Math.random() * 30;
+            while (cursor < tower.h - 40) {
+                if (Math.random() < 0.7) {
+                    var sign = makeCyberSign(Math.random() < 0.6 ? 'v' : 'h');
+                    if (cursor + sign.h > tower.h - 6) break;
+                    sign.ox = sign.kind === 'v'
+                        ? (Math.random() < 0.5 ? -sign.w * 0.4 : tower.w - sign.w * 0.6)
+                        : Math.max(-sign.w * 0.3, Math.min(tower.w - sign.w * 0.7, (tower.w - sign.w) / 2 + (Math.random() - 0.5) * 20));
+                    sign.oy = cursor;
+                    if (clearOfRail(tower.x + sign.ox, top + sign.oy, sign.w, sign.h)) tower.signs.push(sign);
+                    cursor += sign.h + 30 + Math.random() * 90;
+                } else {
+                    cursor += 50 + Math.random() * 80;
+                }
+            }
+            tower.signs.forEach(renderCyberSign);
+        });
+
+        // A billboard in each clear margin that is wide enough, high on its own pylon.
+        if (column) {
+            [[0, leftRoom], [column.r, backdropWidth]].forEach(function (span, i) {
+                var room = span[1] - span[0];
+                if (room < 110) return;
+                var bw = Math.round(Math.min(room * 0.72, 220));
+                var bh = Math.round(bw * 1.45);
+                var by = Math.max(horizon * 0.1, 40);
+                if (by + bh > horizon - 60) return;
+                cyberBillboards.push({
+                    x: span[0] + (room - bw) / 2,
+                    y: by,
+                    w: bw,
+                    h: bh,
+                    ads: renderCyberAds(bw, bh),
+                    period: 4200 + i * 900,
+                    // The second starts one ad along, so the two never show the same one at once
+                    // for long.
+                    offset: (i * 4200 + 1500) * (1 + Math.random() * 0.1)
+                });
+            });
+        }
+
+        var drops = Math.round(Math.min(260, (backdropWidth * backdropHeight) / 6500));
+        for (var d = 0; d < drops; d += 1) {
+            var near = Math.random() < 0.3;
+            cyberRain.push({
+                x: Math.random() * (backdropWidth + 120) - 60,
+                y: Math.random() * backdropHeight,
+                len: near ? 16 + Math.random() * 14 : 7 + Math.random() * 8,
+                speed: near ? 17 + Math.random() * 6 : 9 + Math.random() * 5,
+                near: near
+            });
+        }
+        for (var s = 0; s < 4; s += 1) {
+            cyberSpinners.push({
+                x: Math.random() * backdropWidth,
+                y: horizon * (0.12 + Math.random() * 0.5),
+                vx: (Math.random() < 0.5 ? -1 : 1) * (0.4 + Math.random() * 0.9),
+                phase: Math.random() * 1000
+            });
+        }
+    };
+
+    // A reflection in the wet floor below a light at x, broken up by ripples.
+    const drawCyberReflection = function (ctx, cx, halfWidth, rgb, strength, horizon, now) {
+        var floorDepth = (backdropHeight - horizon) * 0.7;
+        for (var ry = 3; ry < floorDepth; ry += 3) {
+            var fade = 1 - ry / floorDepth;
+            var ripple = Math.sin(ry * 0.21 + now / 240 + cx) * 0.5 + Math.sin(ry * 0.07 - now / 410) * 0.5;
+            var half = halfWidth * (0.6 + 0.4 * ripple + 0.6 * (1 - fade));
+            ctx.fillStyle = cyberRgba(rgb, (strength * fade * fade).toFixed(3));
+            ctx.fillRect(cx - half + ripple * 3, horizon + ry, half * 2, 1.6);
+        }
+    };
+
+    const drawCyberBillboard = function (ctx, board, left, horizon, now, still) {
+        var count = board.ads.length;
+        var clock = now + board.offset;
+        var index = Math.floor(clock / board.period) % count;
+        var into = clock % board.period;
+        var ad = board.ads[index];
+        // The pylon and the frame's struts.
+        ctx.fillStyle = 'rgba(6, 8, 13, 0.97)';
+        ctx.fillRect(left + board.w * 0.38, board.y + board.h, board.w * 0.24, horizon - board.y - board.h);
+        ctx.fillRect(left - 4, board.y - 4, board.w + 8, board.h + 8);
+        // The light it throws into the smog.
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        var cx = left + board.w / 2;
+        var cy = board.y + board.h / 2;
+        var glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, board.w * 1.3);
+        glow.addColorStop(0, cyberRgba(ad.rgb, 0.22));
+        glow.addColorStop(1, cyberRgba(ad.rgb, 0));
+        ctx.fillStyle = glow;
+        ctx.fillRect(cx - board.w * 1.3, cy - board.w * 1.3, board.w * 2.6, board.w * 2.6);
+        ctx.restore();
+        // The screen: steady with a slight shimmer, now and then a dropout, and a glitch as
+        // one ad hands over to the next.
+        ctx.globalAlpha = still ? 0.92 : (Math.random() < 0.012 ? 0.45 : 0.86 + Math.random() * 0.08);
+        if (!still && into < 320) {
+            var previous = board.ads[(index + count - 1) % count].image;
+            var strips = 9;
+            var stripH = board.h / strips;
+            for (var i = 0; i < strips; i += 1) {
+                var source = Math.random() < into / 320 ? ad.image : previous;
+                var dx = (Math.random() - 0.5) * board.w * 0.3;
+                ctx.drawImage(source, 0, i * stripH, board.w, stripH, left + dx, board.y + i * stripH, board.w, stripH);
+            }
+            ctx.globalCompositeOperation = 'lighter';
+            ctx.fillStyle = Math.random() < 0.5 ? 'rgba(46, 242, 255, 0.25)' : 'rgba(255, 42, 109, 0.25)';
+            ctx.fillRect(left, board.y + Math.random() * board.h, board.w, 3 + Math.random() * 10);
+            ctx.globalCompositeOperation = 'source-over';
+        } else {
+            ctx.drawImage(ad.image, left, board.y);
+        }
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = cyberRgba(ad.rgb, 0.6);
+        ctx.lineWidth = 1;
+        ctx.strokeRect(left + 0.5, board.y + 0.5, board.w - 1, board.h - 1);
+        drawCyberReflection(ctx, cx, board.w * 0.3, ad.rgb, 0.16, horizon, now);
     };
 
     const drawCyberpunkBackdrop = function (timestamp) {
@@ -863,72 +1265,494 @@
             return;
         }
         lastBackdropTimestamp = timestamp || 0;
+        var now = timestamp || 0;
+        var still = media.matches;
         var ctx = backdropContext;
         var horizon = backdropHeight * 0.62;
         var vanishX = (backdropWidth * 0.5) + ((currentX - (backdropWidth * 0.5)) * 0.12);
         ctx.clearRect(0, 0, backdropWidth, backdropHeight);
 
-        // Haze behind the city.
-        var haze = ctx.createLinearGradient(0, horizon - 220, 0, horizon);
-        haze.addColorStop(0, 'rgba(255, 59, 92, 0)');
-        haze.addColorStop(1, 'rgba(255, 59, 92, 0.16)');
-        ctx.fillStyle = haze;
-        ctx.fillRect(0, horizon - 220, backdropWidth, 220);
+        // Smog: dark blue overhead, sodium orange and a little magenta down at the horizon.
+        var smog = ctx.createLinearGradient(0, 0, 0, horizon);
+        smog.addColorStop(0, 'rgba(10, 16, 34, 0)');
+        smog.addColorStop(0.45, 'rgba(40, 30, 70, 0.16)');
+        smog.addColorStop(0.8, 'rgba(160, 70, 90, 0.24)');
+        smog.addColorStop(1, 'rgba(255, 140, 60, 0.36)');
+        ctx.fillStyle = smog;
+        ctx.fillRect(0, 0, backdropWidth, horizon);
 
-        // Skyline, with a slight parallax against the pointer.
+        // Searchlights from below the skyline, sweeping slowly through the cloud.
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        [0.3, 0.7].forEach(function (at, i) {
+            var baseX = backdropWidth * at;
+            var angle = Math.sin((still ? 0.9 : now / (5200 + i * 1700)) + i * 2.1) * 0.55;
+            var reach = horizon * 1.15;
+            var tipX = baseX + Math.sin(angle) * reach;
+            var tipY = horizon - Math.cos(angle) * reach;
+            var beam = ctx.createLinearGradient(baseX, horizon, tipX, tipY);
+            beam.addColorStop(0, 'rgba(200, 225, 255, 0.16)');
+            beam.addColorStop(1, 'rgba(200, 225, 255, 0)');
+            ctx.fillStyle = beam;
+            var spread = reach * 0.07;
+            ctx.beginPath();
+            ctx.moveTo(baseX - 3, horizon);
+            ctx.lineTo(tipX - Math.cos(angle) * spread, tipY - Math.sin(angle) * spread);
+            ctx.lineTo(tipX + Math.cos(angle) * spread, tipY + Math.sin(angle) * spread);
+            ctx.lineTo(baseX + 3, horizon);
+            ctx.closePath();
+            ctx.fill();
+        });
+        ctx.restore();
+
+        // Far layer: megastructures and the arcology, pale with distance.
+        var farShift = (currentX - (backdropWidth * 0.5)) * -0.008;
+        ctx.fillStyle = 'rgba(38, 30, 46, 0.92)';
+        cyberFar.forEach(function (tower) {
+            ctx.fillRect(tower.x + farShift, horizon - tower.h, tower.w, tower.h);
+        });
+        if (cyberArcology) {
+            var arc = cyberArcology;
+            var steps = 9;
+            for (var step = 0; step < steps; step += 1) {
+                var stepW = arc.w * (1 - step / steps);
+                var stepH = arc.h / steps;
+                var stepTop = horizon - (step + 1) * stepH;
+                ctx.fillStyle = 'rgba(34, 27, 40, 0.96)';
+                ctx.fillRect(arc.x + farShift - stepW / 2, stepTop, stepW, stepH + 0.5);
+                ctx.fillStyle = 'rgba(255, 190, 120, 0.4)';
+                for (var lx = -stepW / 2 + 6; lx < stepW / 2 - 6; lx += 7) {
+                    if (((lx * 13 + step * 7) | 0) % 5 !== 0) ctx.fillRect(arc.x + farShift + lx, stepTop + stepH * 0.45, 2, 1);
+                }
+            }
+        }
+        cyberFar.forEach(function (tower) {
+            var left = tower.x + farShift;
+            var top = horizon - tower.h;
+            ctx.fillStyle = 'rgba(255, 176, 102, 0.32)';
+            tower.lights.forEach(function (light) {
+                ctx.fillRect(left + light.x, top + light.y, 2, 2);
+            });
+            if (tower.beacon) {
+                ctx.fillStyle = 'rgba(255, 59, 92, ' + (Math.sin(now / 900 + tower.x) > 0.6 ? 0.9 : 0.25) + ')';
+                ctx.fillRect(left + tower.w / 2 - 1, top - 2, 3, 3);
+            }
+        });
+
+        // Ground fog over the foot of the far layer.
+        var fog = ctx.createLinearGradient(0, horizon - 170, 0, horizon);
+        fog.addColorStop(0, 'rgba(255, 140, 70, 0)');
+        fog.addColorStop(1, 'rgba(255, 140, 70, 0.26)');
+        ctx.fillStyle = fog;
+        ctx.fillRect(0, horizon - 170, backdropWidth, 170);
+
+        // Flare stacks: now and then a column of fire bursts behind the near skyline.
+        if (!still && Math.random() < 0.006 && cyberFlares.length < 2) {
+            cyberFlares.push({ x: Math.random() * backdropWidth, life: 1, height: 50 + Math.random() * 60 });
+        }
+        cyberFlares = cyberFlares.filter(function (flare) {
+            var glow = Math.sin(flare.life * Math.PI);
+            var fire = ctx.createRadialGradient(flare.x, horizon - 30, 0, flare.x, horizon - 30, flare.height * 1.6);
+            fire.addColorStop(0, 'rgba(255, 210, 120, ' + (0.6 * glow).toFixed(3) + ')');
+            fire.addColorStop(0.3, 'rgba(255, 120, 40, ' + (0.32 * glow).toFixed(3) + ')');
+            fire.addColorStop(1, 'rgba(255, 80, 30, 0)');
+            ctx.fillStyle = fire;
+            ctx.fillRect(flare.x - flare.height * 1.6, horizon - 30 - flare.height * 1.6, flare.height * 3.2, flare.height * 3.2);
+            ctx.fillStyle = 'rgba(255, 220, 150, ' + (0.7 * glow).toFixed(3) + ')';
+            ctx.fillRect(flare.x - 2, horizon - 20 - flare.height * glow, 4, flare.height * glow);
+            flare.life -= 0.022;
+            return flare.life > 0;
+        });
+
+        // Near skyline, with a slight parallax against the pointer.
         var shift = (currentX - (backdropWidth * 0.5)) * -0.02;
-        var tones = ['252, 238, 10', '46, 242, 255', '255, 59, 92'];
+        var tones = ['255, 174, 66', '46, 242, 255', '255, 42, 109'];
+        var lit = [];
         cyberSkyline.forEach(function (tower) {
             var left = tower.x + shift;
             var top = horizon - tower.h;
-            ctx.fillStyle = 'rgba(6, 8, 13, 0.96)';
+            ctx.fillStyle = 'rgba(6, 8, 13, 0.97)';
             ctx.fillRect(left, top, tower.w, tower.h);
-            ctx.fillStyle = 'rgba(46, 242, 255, 0.18)';
+            ctx.fillStyle = 'rgba(255, 150, 90, 0.16)';
             ctx.fillRect(left, top, tower.w, 1);
             if (tower.antenna) {
                 ctx.fillRect(left + (tower.w / 2), top - 24, 1, 24);
-                ctx.fillStyle = 'rgba(255, 59, 92, ' + (0.4 + (0.5 * Math.abs(Math.sin(((timestamp || 0) / 600) + tower.x)))).toFixed(3) + ')';
+                ctx.fillStyle = 'rgba(255, 59, 92, ' + (0.4 + (0.5 * Math.abs(Math.sin((now / 600) + tower.x)))).toFixed(3) + ')';
                 ctx.fillRect(left + (tower.w / 2) - 1, top - 26, 3, 3);
             }
             tower.windows.forEach(function (light) {
-                if (!media.matches && Math.random() < 0.004) light.on = !light.on;
+                if (!still && Math.random() < 0.004) light.on = !light.on;
                 if (!light.on) return;
-                ctx.fillStyle = 'rgba(' + tones[light.tone] + ', 0.55)';
+                ctx.fillStyle = 'rgba(' + tones[light.tone] + ', 0.5)';
                 ctx.fillRect(left + light.x, top + light.y, 3, 2);
+            });
+            tower.signs.forEach(function (sign) {
+                lit.push({ sign: sign, x: left + sign.ox, y: top + sign.oy, roofY: top });
             });
         });
 
+        // The signs; a tube fails now and then and buzzes back.
+        lit.forEach(function (item) {
+            var sign = item.sign;
+            if (!still && now > sign.offUntil && Math.random() < 0.0015) sign.offUntil = now + 80 + Math.random() * 900;
+            item.on = still || now > sign.offUntil || Math.random() < 0.15;
+            if (sign.kind === 'roof') {
+                ctx.fillStyle = 'rgba(30, 26, 36, 0.95)';
+                ctx.fillRect(item.x + sign.w * 0.2, item.y + sign.h, 1, item.roofY - item.y - sign.h);
+                ctx.fillRect(item.x + sign.w * 0.8, item.y + sign.h, 1, item.roofY - item.y - sign.h);
+            }
+            ctx.drawImage(item.on ? sign.lit : sign.dark, item.x - sign.pad, item.y - sign.pad);
+        });
+
+        // Billboards, on the near layer.
+        cyberBillboards.forEach(function (board) {
+            drawCyberBillboard(ctx, board, board.x + shift, horizon, now, still);
+        });
+
+        // Spinners: a white running light, a blinking red one, a short smear behind.
+        cyberSpinners.forEach(function (spinner) {
+            if (!still) {
+                spinner.x += spinner.vx;
+                if (spinner.x < -40 || spinner.x > backdropWidth + 40) {
+                    spinner.vx = (spinner.x < 0 ? 1 : -1) * (0.4 + Math.random() * 0.9);
+                    spinner.y = horizon * (0.12 + Math.random() * 0.5);
+                }
+            }
+            var trail = ctx.createLinearGradient(spinner.x, 0, spinner.x - spinner.vx * 26, 0);
+            trail.addColorStop(0, 'rgba(220, 235, 255, 0.35)');
+            trail.addColorStop(1, 'rgba(220, 235, 255, 0)');
+            ctx.fillStyle = trail;
+            ctx.fillRect(Math.min(spinner.x, spinner.x - spinner.vx * 26), spinner.y, Math.abs(spinner.vx * 26), 1);
+            ctx.fillStyle = 'rgba(235, 245, 255, 0.85)';
+            ctx.fillRect(spinner.x - 1, spinner.y - 1, 3, 2);
+            if (Math.sin((now + spinner.phase) / 260) > 0.5) {
+                ctx.fillStyle = 'rgba(255, 59, 92, 0.9)';
+                ctx.fillRect(spinner.x - spinner.vx * 4, spinner.y + 2, 2, 2);
+            }
+        });
+
         // Horizon line.
-        ctx.fillStyle = 'rgba(255, 59, 92, 0.7)';
+        ctx.fillStyle = 'rgba(255, 110, 90, 0.6)';
         ctx.fillRect(0, horizon, backdropWidth, 1.5);
 
+        // Wet floor: each lit sign smears down into it.
+        lit.forEach(function (item) {
+            if (!item.on) return;
+            drawCyberReflection(ctx, item.x + item.sign.w / 2, Math.min(item.sign.w * 0.35, 24), item.sign.rgb, 0.24, horizon, now);
+        });
+
         // Floor grid: rays from the vanishing point, and cross lines that run toward the
-        // viewer, spaced by perspective.
+        // viewer, spaced by perspective. Fainter than the neon; the rain is the weather here.
         ctx.lineWidth = 1;
         for (var ray = -24; ray <= 24; ray += 1) {
             var footX = vanishX + (ray * backdropWidth / 9);
             var rayGradient = ctx.createLinearGradient(0, horizon, 0, backdropHeight);
             rayGradient.addColorStop(0, 'rgba(46, 242, 255, 0)');
-            rayGradient.addColorStop(1, 'rgba(46, 242, 255, 0.5)');
+            rayGradient.addColorStop(1, 'rgba(46, 242, 255, 0.3)');
             ctx.strokeStyle = rayGradient;
             ctx.beginPath();
             ctx.moveTo(vanishX, horizon);
             ctx.lineTo(footX, backdropHeight);
             ctx.stroke();
         }
-        if (!media.matches) cyberGridOffset = (cyberGridOffset + 0.012) % 1;
+        if (!still) cyberGridOffset = (cyberGridOffset + 0.012) % 1;
         var depth = backdropHeight - horizon;
         for (var line = 0; line < 14; line += 1) {
             var t = (line + cyberGridOffset) / 14;
             var y = horizon + (depth * t * t);
-            ctx.strokeStyle = 'rgba(46, 242, 255, ' + (0.08 + (0.45 * t)).toFixed(3) + ')';
+            ctx.strokeStyle = 'rgba(46, 242, 255, ' + (0.05 + (0.28 * t)).toFixed(3) + ')';
             ctx.beginPath();
             ctx.moveTo(0, y);
             ctx.lineTo(backdropWidth, y);
             ctx.stroke();
         }
 
-        backdropFrame = media.matches ? null : window.requestAnimationFrame(drawCyberpunkBackdrop);
+        // Rain, slanting a little; drops near the pointer catch the light. None when still.
+        if (!still) {
+            var slant = 0.16;
+            var rail = cyberKeepOut().rail;
+            var far = new Path2D();
+            var close = new Path2D();
+            var bright = new Path2D();
+            cyberRain.forEach(function (drop) {
+                drop.y += drop.speed;
+                drop.x += drop.speed * slant;
+                if (drop.y - drop.len > backdropHeight) {
+                    drop.y = -drop.len - Math.random() * 60;
+                    drop.x = Math.random() * (backdropWidth + 120) - 60 - backdropHeight * slant;
+                }
+                if (rail && drop.x > rail.l && drop.x < rail.r && drop.y > rail.t && drop.y - drop.len < rail.b) return;
+                var near = Math.abs(drop.x - currentX) < 150 && Math.abs(drop.y - currentY) < 150 &&
+                    Math.hypot(drop.x - currentX, drop.y - currentY) < 150;
+                var path = near && pointerActive ? bright : (drop.near ? close : far);
+                path.moveTo(drop.x, drop.y);
+                path.lineTo(drop.x - drop.len * slant, drop.y - drop.len);
+            });
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'rgba(170, 195, 225, 0.16)';
+            ctx.stroke(far);
+            ctx.strokeStyle = 'rgba(190, 210, 235, 0.3)';
+            ctx.stroke(close);
+            ctx.lineWidth = 1.3;
+            ctx.strokeStyle = 'rgba(225, 240, 255, 0.7)';
+            ctx.stroke(bright);
+        }
+
+        drawCyberGlass(now, still);
+
+        backdropFrame = still ? null : window.requestAnimationFrame(drawCyberpunkBackdrop);
+    };
+
+    // Rain on the glass. The content panel is a pane of frosted glass (cyberpunk.css); this
+    // canvas sits inside it, over its background and under its text (z-index -1 in the
+    // panel's stacking context), one screen tall and kept in view as the page scrolls. Beads
+    // gather on the pane; now and then a heavy one runs down, swallowing the beads in its
+    // way and leaving a line of tiny ones behind.
+    const cyberPanel = function () {
+        return document.querySelector('.site-main > .content-page, .site-main > .blog-content');
+    };
+
+    const cyberBeadSprite = (function () {
+        var sprite = null;
+        return function () {
+            if (sprite) return sprite;
+            sprite = document.createElement('canvas');
+            sprite.width = 32;
+            sprite.height = 32;
+            var g = sprite.getContext('2d');
+            var body = g.createRadialGradient(16, 18, 2, 16, 16, 14);
+            body.addColorStop(0, 'rgba(255, 255, 255, 0.03)');
+            body.addColorStop(0.75, 'rgba(255, 255, 255, 0.1)');
+            body.addColorStop(1, 'rgba(255, 255, 255, 0.22)');
+            g.fillStyle = body;
+            g.beginPath();
+            g.arc(16, 16, 14, 0, Math.PI * 2);
+            g.fill();
+            g.strokeStyle = 'rgba(255, 190, 150, 0.55)';
+            g.lineWidth = 2;
+            g.beginPath();
+            g.arc(16, 16, 12.5, 0.15 * Math.PI, 0.85 * Math.PI);
+            g.stroke();
+            g.strokeStyle = 'rgba(0, 0, 0, 0.4)';
+            g.lineWidth = 1.5;
+            g.beginPath();
+            g.arc(16, 16, 13.5, 1.1 * Math.PI, 1.9 * Math.PI);
+            g.stroke();
+            g.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            g.beginPath();
+            g.arc(11, 10, 2.6, 0, Math.PI * 2);
+            g.fill();
+            return sprite;
+        };
+    }());
+
+    const newCyberBead = function (glass) {
+        return { x: Math.random() * glass.w, y: Math.random() * glass.h, r: 1.2 + Math.pow(Math.random(), 2.5) * 5 };
+    };
+
+    // Keep the pane's canvas over the part of the panel that is on screen.
+    const positionCyberGlass = function () {
+        var glass = cyberGlass;
+        if (!glass) return;
+        var rect = glass.panel.getBoundingClientRect();
+        var offset = Math.max(0, Math.min(-rect.top, rect.height - glass.h));
+        glass.canvas.style.transform = 'translateY(' + Math.round(offset) + 'px)';
+    };
+
+    const syncCyberGlass = function () {
+        var panel = cyberPanel();
+        // Not with reduced motion: the pane only makes sense with the rain running.
+        if (getTheme() !== 'cyberpunk' || !panel || media.matches) {
+            if (cyberGlass) {
+                cyberGlass.canvas.remove();
+                cyberGlass = null;
+            }
+            return;
+        }
+        if (!cyberGlass || cyberGlass.panel !== panel) {
+            if (cyberGlass) cyberGlass.canvas.remove();
+            var canvas = document.createElement('canvas');
+            canvas.className = 'cp-glass';
+            canvas.setAttribute('aria-hidden', 'true');
+            panel.appendChild(canvas);
+            cyberGlass = { panel: panel, canvas: canvas, ctx: canvas.getContext('2d'), w: 0, h: 0, beads: [], runs: [], trail: [] };
+        }
+        var glass = cyberGlass;
+        var w = glass.panel.clientWidth;
+        var h = Math.min(window.innerHeight, glass.panel.clientHeight);
+        if (w === glass.w && h === glass.h) return;
+        var ratio = Math.min(window.devicePixelRatio || 1, 2);
+        glass.w = w;
+        glass.h = h;
+        glass.canvas.width = Math.round(w * ratio);
+        glass.canvas.height = Math.round(h * ratio);
+        glass.canvas.style.width = w + 'px';
+        glass.canvas.style.height = h + 'px';
+        glass.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        glass.target = Math.round((w * h) / 5200);
+        glass.beads = [];
+        glass.runs = [];
+        glass.trail = [];
+        for (var i = 0; i < glass.target; i += 1) glass.beads.push(newCyberBead(glass));
+    };
+
+    const drawCyberGlass = function (now, still) {
+        var glass = cyberGlass;
+        if (!glass || !glass.panel.isConnected) return;
+        positionCyberGlass();
+        var ctx = glass.ctx;
+        var sprite = cyberBeadSprite();
+        ctx.clearRect(0, 0, glass.w, glass.h);
+        if (!still) {
+            if (glass.beads.length < glass.target && Math.random() < 0.5) glass.beads.push(newCyberBead(glass));
+            if (glass.runs.length < 4 && Math.random() < 0.035) {
+                var heavy = glass.beads.filter(function (bead) { return bead.r > 3.4; });
+                if (heavy.length) {
+                    var start = heavy[Math.floor(Math.random() * heavy.length)];
+                    glass.beads.splice(glass.beads.indexOf(start), 1);
+                    glass.runs.push({ x: start.x, y: start.y, r: start.r + 0.6, vy: 0.4, wob: Math.random() * 10, lastDrop: start.y });
+                }
+            }
+            glass.runs = glass.runs.filter(function (run) {
+                run.vy = Math.min(run.vy + 0.15, 2.2 + run.r);
+                run.y += run.vy;
+                run.x += Math.sin(run.y * 0.05 + run.wob) * 0.35;
+                glass.beads = glass.beads.filter(function (bead) {
+                    if (Math.abs(bead.x - run.x) > run.r + bead.r || Math.abs(bead.y - run.y) > run.r + bead.r) return true;
+                    run.r = Math.min(run.r + bead.r * 0.2, 7);
+                    return false;
+                });
+                if (run.y - run.lastDrop > 5) {
+                    glass.trail.push({ x: run.x + (Math.random() - 0.5), y: run.y - run.r, r: 0.8 + Math.random() * 1.2, born: now });
+                    run.lastDrop = run.y;
+                    run.r = Math.max(3, run.r - 0.02);
+                }
+                return run.y - run.r < glass.h;
+            });
+            glass.trail = glass.trail.filter(function (bead) { return now - bead.born < 4000; });
+        }
+        // The wet line a run leaves, then the beads, then the runs themselves.
+        glass.trail.forEach(function (bead) {
+            ctx.globalAlpha = 1 - (now - bead.born) / 4000;
+            ctx.drawImage(sprite, bead.x - bead.r, bead.y - bead.r, bead.r * 2, bead.r * 2);
+        });
+        ctx.globalAlpha = 1;
+        glass.beads.forEach(function (bead) {
+            ctx.drawImage(sprite, bead.x - bead.r, bead.y - bead.r, bead.r * 2, bead.r * 2);
+        });
+        glass.runs.forEach(function (run) {
+            ctx.drawImage(sprite, run.x - run.r, run.y - run.r * 1.25, run.r * 2, run.r * 2.5);
+        });
+    };
+
+    // The panel's readout strip (cyberpunk.css): a node number and coordinates taken from
+    // the page's path, and a clock with a signal meter.
+    const syncCyberHud = function () {
+        var panel = cyberPanel();
+        if (getTheme() !== 'cyberpunk' || !panel) {
+            if (cyberHud) {
+                cyberHud.remove();
+                cyberHud = null;
+            }
+            if (cyberHudTimer) {
+                window.clearInterval(cyberHudTimer);
+                cyberHudTimer = null;
+            }
+            return;
+        }
+        if (!cyberHud || cyberHud.parentNode !== panel) {
+            if (cyberHud) cyberHud.remove();
+            var hash = 0;
+            for (var i = 0; i < location.pathname.length; i += 1) hash = ((hash * 31) + location.pathname.charCodeAt(i)) >>> 0;
+            var node = ('0' + (hash % 97)).slice(-2);
+            var lat = (35.5 + (hash % 1000) / 2500).toFixed(4);
+            var lon = (139.5 + ((hash >>> 10) % 1000) / 2500).toFixed(4);
+            cyberHud = document.createElement('div');
+            cyberHud.className = 'cp-hud';
+            cyberHud.setAttribute('aria-hidden', 'true');
+            cyberHud.innerHTML = '<span>Node ' + node + '<span class="cp-hud__coords"> // ' + lat + 'N ' + lon + 'E</span></span><span class="cp-hud__clock"></span>';
+            panel.appendChild(cyberHud);
+        }
+        var clock = cyberHud.querySelector('.cp-hud__clock');
+        var tick = function () {
+            var time = new Date();
+            var pad = function (n) { return ('0' + n).slice(-2); };
+            var level = 2 + Math.floor(Math.random() * 3);
+            clock.textContent = pad(time.getHours()) + ':' + pad(time.getMinutes()) + ':' + pad(time.getSeconds()) +
+                ' // SIG ' + '▮▮▮▮'.slice(0, level) + '▯▯▯▯'.slice(0, 4 - level);
+        };
+        tick();
+        if (!cyberHudTimer) cyberHudTimer = window.setInterval(tick, 1000);
+    };
+
+    // Now and then (every 45-90 s) the page title replays the glitch it came in with
+    // (cp-glitch in cyberpunk.css). Not with reduced motion, and not in a hidden tab.
+    const scheduleCyberGlitch = function () {
+        if (cyberGlitchTimer) window.clearTimeout(cyberGlitchTimer);
+        cyberGlitchTimer = null;
+        if (getTheme() !== 'cyberpunk' || media.matches) return;
+        cyberGlitchTimer = window.setTimeout(function () {
+            var title = document.querySelector('.section-heading__title, .blog-content h1');
+            if (title && !document.hidden && getTheme() === 'cyberpunk') {
+                title.style.animation = 'none';
+                void title.offsetWidth;
+                title.style.animation = '';
+            }
+            scheduleCyberGlitch();
+        }, 45000 + Math.random() * 45000);
+    };
+
+    // Japanese under-titles for the section labels and the rail's links (shown by
+    // cyberpunk.css only).
+    const CYBER_JP = {
+        'Latest writing': '最新記録', 'Selected work': '作品選', 'Photography': '写真', 'Profile': '経歴',
+        'Legal': '規約', 'Projects': '作品', 'Runs in the browser': 'ブラウザ実行', 'Writing': '記録',
+        'Browse by area': '分野', 'Browse by topic': '話題', 'Area': '分野', 'Topic': '話題',
+        'Error 404': '接続失敗', 'Photos': '写真', 'About': '素性'
+    };
+    const labelCyberJapanese = function () {
+        document.querySelectorAll('.section-heading__eyebrow, .site-nav__link').forEach(function (el) {
+            var text = el.textContent.trim();
+            var jp = CYBER_JP[text] || (/^Loaf \d+$/.test(text) ? 'パン' : '');
+            if (jp) el.setAttribute('data-jp', jp);
+        });
+    };
+
+    const syncCyberpunkChrome = function () {
+        syncCyberGlass();
+        syncCyberHud();
+        scheduleCyberGlitch();
+    };
+
+    // Cyberpunk, over the page: a holographic scan ring where the pointer clicks.
+    const drawCyberOverlay = function (ctx, now) {
+        cyberRings = cyberRings.filter(function (ring) {
+            var age = (now - ring.born) / 650;
+            if (age >= 1) return false;
+            var ease = 1 - Math.pow(1 - age, 3);
+            var radius = 8 + 84 * ease;
+            var alpha = 1 - age;
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = 'rgba(46, 242, 255, ' + (0.85 * alpha).toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.arc(ring.x, ring.y, radius, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.strokeStyle = 'rgba(255, 42, 109, ' + (0.6 * alpha).toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.arc(ring.x + 2, ring.y, radius * 0.8, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.strokeStyle = 'rgba(46, 242, 255, ' + alpha.toFixed(3) + ')';
+            ctx.beginPath();
+            for (var k = 0; k < 4; k += 1) {
+                var angle = (k * Math.PI / 2) + ease * Math.PI / 2;
+                ctx.moveTo(ring.x + Math.cos(angle) * (radius + 3), ring.y + Math.sin(angle) * (radius + 3));
+                ctx.lineTo(ring.x + Math.cos(angle) * (radius + 11), ring.y + Math.sin(angle) * (radius + 11));
+            }
+            ctx.stroke();
+            ctx.fillStyle = 'rgba(255, 174, 66, ' + alpha.toFixed(3) + ')';
+            ctx.fillRect(ring.x - 1.5, ring.y - 1.5, 3, 3);
+            return true;
+        });
     };
 
     const drawOverlay = function (timestamp) {
@@ -1025,7 +1849,9 @@
             return true;
         });
         overlayContext.shadowBlur = 0;
-        if (particles.length > 0 || Math.abs(targetX - currentX) > 0.3 || Math.abs(targetY - currentY) > 0.3) {
+        if (theme === 'cyberpunk') drawCyberOverlay(overlayContext, timestamp || performance.now());
+        if (particles.length > 0 || cyberRings.length > 0 ||
+            Math.abs(targetX - currentX) > 0.3 || Math.abs(targetY - currentY) > 0.3) {
             overlayFrame = window.requestAnimationFrame(drawOverlay);
         } else {
             overlayFrame = null;
@@ -1093,6 +1919,11 @@
     };
 
     const handlePointerDown = function (event) {
+        if (getTheme() === 'cyberpunk') {
+            cyberRings.push({ x: event.clientX, y: event.clientY, born: performance.now() });
+            queueOverlay();
+            return;
+        }
         if (getTheme() !== 'industrial' || overCoveredArea(event.target)) return;
         burstIndustrialCircuit(event.clientX, event.clientY);
         resetIdleTimer();
@@ -1318,6 +2149,7 @@
     const init = function () {
         resizeOverlay();
         resizeBackdrop();
+        labelCyberJapanese();
         setTheme(getTheme());
         var startPrinting = printMatrixBlocks();
         typeMatrixTitle(function () { if (startPrinting) startPrinting(); });
@@ -1336,10 +2168,14 @@
             window.addEventListener('pointerdown', handlePointerDown, { passive: true });
             window.addEventListener('pointerleave', resetPointer);
             window.addEventListener('blur', resetPointer);
-            window.addEventListener('scroll', applyHeaderScrollState, { passive: true });
+            window.addEventListener('scroll', function () {
+                applyHeaderScrollState();
+                positionCyberGlass();
+            }, { passive: true });
             window.addEventListener('resize', function () {
                 resizeOverlay();
                 resizeBackdrop();
+                syncCyberGlass();
                 applyHeaderScrollState();
                 resetPointer();
             });

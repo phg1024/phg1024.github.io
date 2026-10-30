@@ -35,26 +35,27 @@
   outline: 1px solid #ff4fd8;
 }
 
-/* ── Night City (2077) ──────────────────────────────────────────────────────────────────
-   Yellow is the signal colour (name, page titles, the current page, keywords), cyan the
-   data colour (links, labels, strings, the grid), red the alarm colour (glitch split,
-   prefixes). Two faces: Chakra Petch for everything that is read (headings in capitals
-   with a red/cyan split, item titles, body text) and JetBrains Mono for every label, date
-   and readout. Panels with cut corners and a hairline edge. */
+/* ── Night City, in Blade Runner light ──────────────────────────────────────────────────
+   Sodium amber is the signal colour (name, page titles, the current page, keywords), cyan
+   the data colour (links, labels, strings, the grid), neon pink the alarm colour (glitch
+   split, prefixes): the colours of the city in the backdrop. Two faces: Chakra Petch for
+   everything that is read (headings in capitals with a pink/cyan split, item titles, body
+   text) and JetBrains Mono for every label, date and readout. Panels with cut corners and
+   a hairline edge. */
 [data-theme="cyberpunk"] {
-  --bg: #07080b;
-  --bg-accent: #0c1117;
-  --surface: rgba(9, 12, 18, 0.8);
-  --surface-strong: rgba(12, 16, 24, 0.94);
-  --border: rgba(46, 242, 255, 0.24);
-  --text: #f1f5f9;
-  --muted: #a9b4c4;
-  --soft: #8291a6;
-  --accent: #fcee0a;
+  --bg: #08070b;
+  --bg-accent: #100c14;
+  --surface: rgba(12, 9, 16, 0.8);
+  --surface-strong: rgba(15, 11, 20, 0.94);
+  --border: rgba(46, 242, 255, 0.22);
+  --text: #f3ede6;
+  --muted: #b8aeb2;
+  --soft: #8e8590;
+  --accent: #ffae42;
   --accent-secondary: #2ef2ff;
-  --accent-tertiary: #ff3b5c;
+  --accent-tertiary: #ff2a6d;
   --accent-glow: rgba(46, 242, 255, 0.35);
-  --accent-glow-pink: rgba(255, 59, 92, 0.3);
+  --accent-glow-pink: rgba(255, 42, 109, 0.3);
   --radius-lg: 0;
   --radius-md: 0;
   --button-radius: 0;
@@ -62,35 +63,37 @@
   --sans: "Chakra Petch", "Helvetica Neue", sans-serif;
   --serif: "Chakra Petch", "Helvetica Neue", sans-serif;
   --mono: "JetBrains Mono", "SF Mono", "Menlo", monospace;
-  --cp-yellow: #fcee0a;
+  --cp-amber: #ffae42;
   --cp-cyan: #2ef2ff;
-  --cp-red: #ff3b5c;
+  --cp-pink: #ff2a6d;
 }
 
+/* Behind the city (see drawCyberpunkBackdrop in main.js): a night sky going from deep blue
+   overhead to sodium orange and magenta smog low down, as in Blade Runner. */
 [data-theme="cyberpunk"] body {
   background:
-    linear-gradient(rgba(46, 242, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(46, 242, 255, 0.035) 1px, transparent 1px),
-    radial-gradient(circle at 10% 8%, rgba(255, 59, 92, 0.14), transparent 26%),
-    radial-gradient(circle at 88% 14%, rgba(46, 242, 255, 0.13), transparent 22%),
-    radial-gradient(circle at 50% 108%, rgba(252, 238, 10, 0.07), transparent 34%),
-    linear-gradient(180deg, #090b10 0%, var(--bg) 55%, #040507 100%);
+    linear-gradient(rgba(46, 242, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 242, 255, 0.025) 1px, transparent 1px),
+    radial-gradient(ellipse 70% 40% at 50% 64%, rgba(255, 130, 60, 0.16), transparent 70%),
+    radial-gradient(circle at 12% 40%, rgba(255, 59, 140, 0.1), transparent 30%),
+    radial-gradient(circle at 88% 30%, rgba(46, 242, 255, 0.08), transparent 26%),
+    linear-gradient(180deg, #05070f 0%, #0a0c18 45%, #120d16 62%, #040507 100%);
   background-size: 72px 72px, 72px 72px, auto, auto, auto, auto;
   background-attachment: fixed;
 }
 
 [data-theme="cyberpunk"] .theme-backdrop {
-  opacity: 0.7;
+  opacity: 0.95;
 }
 
-/* Headings: capitals, yellow for titles, a red/cyan split like a misregistered screen. */
+/* Headings: capitals, amber for titles, a pink/cyan split like a misregistered screen. */
 [data-theme="cyberpunk"] .section-heading__title,
 [data-theme="cyberpunk"] .blog-content h1 {
-  color: var(--cp-yellow);
+  color: var(--cp-amber);
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1;
-  text-shadow: -2px 0 rgba(255, 59, 92, 0.75), 2px 0 rgba(46, 242, 255, 0.7);
+  text-shadow: -2px 0 rgba(255, 42, 109, 0.75), 2px 0 rgba(46, 242, 255, 0.7);
 }
 [data-theme="cyberpunk"] .blog-content h2,
 [data-theme="cyberpunk"] .blog-content h3 {
@@ -99,18 +102,19 @@
   text-shadow: 0 0 14px rgba(46, 242, 255, 0.35);
 }
 [data-theme="cyberpunk"] .site-brand__name {
-  color: var(--cp-yellow);
+  color: var(--cp-amber);
   letter-spacing: 0.03em;
-  text-shadow: -1px 0 rgba(255, 59, 92, 0.6), 1px 0 rgba(46, 242, 255, 0.55);
+  text-shadow: -1px 0 rgba(255, 42, 109, 0.6), 1px 0 rgba(46, 242, 255, 0.55);
 }
 
-/* A short glitch as a page's title comes in; none with reduced motion. */
+/* A short glitch as a page's title comes in, replayed every minute or so (main.js); none
+   with reduced motion. */
 @keyframes cp-glitch {
-  0%   { transform: translate(-4px, 0) skewX(-10deg); clip-path: inset(0 0 62% 0); text-shadow: -6px 0 var(--cp-red), 6px 0 var(--cp-cyan); }
+  0%   { transform: translate(-4px, 0) skewX(-10deg); clip-path: inset(0 0 62% 0); text-shadow: -6px 0 var(--cp-pink), 6px 0 var(--cp-cyan); }
   12%  { transform: translate(4px, 1px); clip-path: inset(48% 0 12% 0); }
   24%  { transform: translate(-2px, -1px) skewX(6deg); clip-path: inset(18% 0 40% 0); }
-  36%  { transform: none; clip-path: none; text-shadow: -4px 0 var(--cp-red), 4px 0 var(--cp-cyan); }
-  52%  { transform: translate(2px, 0); text-shadow: -3px 0 var(--cp-red), 3px 0 var(--cp-cyan); }
+  36%  { transform: none; clip-path: none; text-shadow: -4px 0 var(--cp-pink), 4px 0 var(--cp-cyan); }
+  52%  { transform: translate(2px, 0); text-shadow: -3px 0 var(--cp-pink), 3px 0 var(--cp-cyan); }
   64%  { transform: none; }
   100% { transform: none; clip-path: none; }
 }
@@ -146,7 +150,7 @@
 }
 [data-theme="cyberpunk"] .section-heading__eyebrow::before {
   content: "// ";
-  color: var(--cp-red);
+  color: var(--cp-pink);
 }
 [data-theme="cyberpunk"] .post-meta .post-box .post-meta__label,
 [data-theme="cyberpunk"] .post-pager__label {
@@ -156,7 +160,7 @@
   color: var(--cp-cyan);
 }
 [data-theme="cyberpunk"] .home-section-head__more {
-  color: var(--cp-yellow);
+  color: var(--cp-amber);
 }
 
 /* Links: cyan with a little glow. */
@@ -171,16 +175,25 @@
 [data-theme="cyberpunk"] .card-title a:hover,
 [data-theme="cyberpunk"] .post-related a:hover,
 [data-theme="cyberpunk"] .post-pager a:hover {
-  color: var(--cp-yellow);
-  text-shadow: 0 0 10px rgba(252, 238, 10, 0.45);
+  color: var(--cp-amber);
+  text-shadow: 0 0 10px rgba(255, 174, 66, 0.45);
 }
 
-/* Panels with cut corners (top right, bottom left), a hairline cyan edge and the cut
-   itself drawn in. html + body.proto outranks proto-extra.css's plain-panel rule. */
+/* Panels: a pane of frosted glass the city shows through, with cut corners (top right,
+   bottom left) drawn in, targeting brackets on the other two, and a hairline cyan edge.
+   main.js puts rain on the pane (.cp-glass, between the glass and the text) and a readout
+   strip along its top (.cp-hud). html + body.proto outranks proto-extra.css's plain-panel
+   rule. */
 html[data-theme="cyberpunk"] body.proto .content-page,
 html[data-theme="cyberpunk"] body.proto .blog-content {
   position: relative;
-  background: linear-gradient(135deg, rgba(46, 242, 255, 0.06), transparent 32%), rgba(8, 10, 16, 0.82);
+  isolation: isolate;
+  background:
+    linear-gradient(135deg, rgba(46, 242, 255, 0.07), transparent 30%),
+    linear-gradient(0deg, rgba(255, 140, 60, 0.05), transparent 45%),
+    rgba(10, 8, 15, 0.62);
+  -webkit-backdrop-filter: blur(10px) saturate(1.5);
+  backdrop-filter: blur(10px) saturate(1.5);
   box-shadow: inset 0 0 0 1px rgba(46, 242, 255, 0.26);
   clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 26px 100%, 0 calc(100% - 26px));
 }
@@ -192,8 +205,57 @@ html[data-theme="cyberpunk"] body.proto .blog-content::after {
   pointer-events: none;
   background:
     linear-gradient(225deg, transparent 17.8px, var(--cp-cyan) 17.8px, var(--cp-cyan) 19.2px, transparent 19.2px) top right / 28px 28px no-repeat,
-    linear-gradient(45deg, transparent 17.8px, var(--cp-yellow) 17.8px, var(--cp-yellow) 19.2px, transparent 19.2px) bottom left / 28px 28px no-repeat;
+    linear-gradient(45deg, transparent 17.8px, var(--cp-amber) 17.8px, var(--cp-amber) 19.2px, transparent 19.2px) bottom left / 28px 28px no-repeat,
+    linear-gradient(var(--cp-cyan), var(--cp-cyan)) top 6px left 6px / 14px 1.5px no-repeat,
+    linear-gradient(var(--cp-cyan), var(--cp-cyan)) top 6px left 6px / 1.5px 14px no-repeat,
+    linear-gradient(var(--cp-pink), var(--cp-pink)) bottom 6px right 6px / 14px 1.5px no-repeat,
+    linear-gradient(var(--cp-pink), var(--cp-pink)) bottom 6px right 6px / 1.5px 14px no-repeat;
 }
+/* The rail is a smaller pane of the same glass, so its small type doesn't sit straight on
+   the lit windows. It reaches 1rem past the rail each side, keeping the text in place. */
+@media (min-width: 960px) {
+  html[data-theme="cyberpunk"] body.proto .site-header__inner {
+    margin: 0 -1rem;
+    padding: 1.1rem 1rem 1.2rem;
+    background: linear-gradient(135deg, rgba(46, 242, 255, 0.06), transparent 35%), rgba(10, 8, 15, 0.5);
+    -webkit-backdrop-filter: blur(8px) saturate(1.5);
+    backdrop-filter: blur(8px) saturate(1.5);
+    box-shadow: inset 0 0 0 1px rgba(46, 242, 255, 0.18);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  }
+}
+.cp-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.cp-hud {
+  position: absolute;
+  top: 0.55rem;
+  left: 1.75rem;
+  right: 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  font: 500 0.62rem/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(46, 242, 255, 0.6);
+}
+.cp-hud__clock {
+  color: rgba(255, 174, 66, 0.75);
+}
+@media (max-width: 559px) {
+  .cp-hud__coords {
+    display: none;
+  }
+}
+
 [data-theme="cyberpunk"] .card {
   clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
   border-color: rgba(46, 242, 255, 0.28);
@@ -204,4 +266,51 @@ html[data-theme="cyberpunk"] body.proto .blog-content::after {
 [data-theme="cyberpunk"] input,
 [data-theme="cyberpunk"] textarea {
   font-family: inherit;
+}
+
+/* Japanese under-titles (main.js sets data-jp): after each section label, and after the
+   rail's links where the rail is a column. Screen readers skip them (the "/ ''" alt text). */
+[data-theme="cyberpunk"] .section-heading__eyebrow[data-jp]::after {
+  content: attr(data-jp);
+  content: attr(data-jp) / "";
+  margin-left: 0.7em;
+  font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--cp-pink);
+}
+@media (min-width: 960px) {
+  [data-theme="cyberpunk"] .site-nav__link[data-jp] {
+    white-space: nowrap;
+  }
+  [data-theme="cyberpunk"] .site-nav__link[data-jp]::after {
+    content: attr(data-jp);
+    content: attr(data-jp) / "";
+    margin-left: 0.8em;
+    font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+    font-size: 0.68em;
+    letter-spacing: 0.15em;
+    color: rgba(255, 42, 109, 0.8);
+  }
+}
+
+/* Links glitch for a moment as the pointer lands on them; not with reduced motion. */
+@keyframes cp-link-glitch {
+  0%   { text-shadow: -2px 0 var(--cp-pink), 2px 0 var(--cp-cyan); }
+  25%  { text-shadow: 3px 0 var(--cp-pink), -2px 0 var(--cp-cyan); }
+  50%  { text-shadow: -1px 0 var(--cp-pink), 1px 0 var(--cp-cyan); }
+  100% { text-shadow: 0 0 10px rgba(255, 174, 66, 0.45); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="cyberpunk"] .blog-content p a:hover,
+  [data-theme="cyberpunk"] .blog-content li a:hover,
+  [data-theme="cyberpunk"] .writing-item__title a:hover,
+  [data-theme="cyberpunk"] .card-title a:hover,
+  [data-theme="cyberpunk"] .post-related a:hover,
+  [data-theme="cyberpunk"] .post-pager a:hover,
+  [data-theme="cyberpunk"] .site-nav__link:hover,
+  [data-theme="cyberpunk"] .proto-rail__tag:hover,
+  [data-theme="cyberpunk"] .home-section-head__more:hover {
+    animation: cp-link-glitch 0.3s steps(1, end) 1 both;
+  }
 }

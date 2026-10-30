@@ -318,10 +318,10 @@
 
 /* Cyberpunk theme caption */
 [data-theme="cyberpunk"] .carousel__caption {
-  background: rgba(78, 246, 255, 0.06);
-  color: #ff4fd8;
-  border: 1px solid rgba(78, 246, 255, 0.28);
-  box-shadow: 0 0 20px rgba(78, 246, 255, 0.12), 0 0 40px rgba(255, 79, 216, 0.08);
+  background: rgba(12, 9, 16, 0.55);
+  color: var(--text);
+  border: 1px solid rgba(46, 242, 255, 0.28);
+  box-shadow: 0 0 20px rgba(46, 242, 255, 0.1), 0 0 40px rgba(255, 42, 109, 0.08);
   backdrop-filter: blur(14px);
 }
 
