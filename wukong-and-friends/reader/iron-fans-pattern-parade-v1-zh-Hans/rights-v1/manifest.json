@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/iron-fans-pattern-parade-v1-zh-Hans.pdf",
+  "source_sha256": "3da025224b207ad8315d3e1997b6e7cd69235ca96d5ce78436dc16e020c6b38f",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d0f4922d6eec345e41e47ff009816661e0d05b8d738e7cfcc1eb2d493590f9d1",
+      "text": "铁扇公主的彩旗小麻烦",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "192637ba547ce48f7e1c93fe8365d15f75e3c654d5c8c477f6f9fd38017f6a1e",
+      "text": "铁扇公主要办一场小游行。\n院子里拉着一根长长的绳子。\n她说：“我们来挂彩旗吧！”\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "650b7d56d1d9b4f323c2be54c1b0312bdb4979fac07b53fac4042bac06d8caa9",
+      "text": "哪吒提来一篮彩旗，\n有红色的，也有金色的。\n悟空把彩旗挂到绳子上。\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "12d6bdec2d9ed90f26259c90677df3e83f9d1af844f2d5fd73d59954f8f4f516",
+      "text": "红、红、金。\n红、红、金。\n公主说：“这是一个规律，\n同样的一组一直重复。”\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f4b9364d2167cfeb569fe33c648215e6ad7e10aaa6a4eaa80fe6f9bd2b0bf5a0",
+      "text": "一阵小风吹来，\n彩旗轻轻地摆呀摆。\n悟空说：“游行马上要开始了，\n我得快一点！”\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d6abf021b9579315042ea52d39eff572cdf4f26b7e53b14ecbb334758dc2ae13",
+      "text": "悟空飞快地抓起彩旗：\n红……金……金！\n“挂好啦！”他大声说。\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f1ac856d56d1a4de94f05fdf294d4e2d1d99b28752462b5dc7ba9d7dd3d4f61f",
+      "text": "哪吒往篮子里看了看：\n“还剩一面红旗。\n它是不是也该挂上去？”\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ce5e2aea58b7605c3606d21d4ea68333a1ff7aa624a917cad58df1345f66bfc9",
+      "text": "公主说：“我们拍拍手来检查。\n红旗拍手，金旗跺脚。”\n拍、拍、跺！\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "049ae26ba215562461414ce092c3cf10cfa7aa89ef6fa317c55da1c63ac593f6",
+      "text": "大家沿着绳子拍：\n拍、拍、跺，拍、拍、跺，\n拍……跺、跺？\n悟空说：“怎么听起来怪怪的！”\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d9cdbf635529152f802d37d913d5934f967c5d7e518e48addc34e43d648dedae",
+      "text": "他们一组一组地对照：\n红、红、金，一样。\n红、红、金，一样。\n红、金、金，不一样！\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "5679877a581880e72b997e4b659ac4230017d1b29c42fd1059a9d1b48d04f5b5",
+      "text": "哪吒说：“中间这面应该是红旗。\n因为每一组都一样，\n红旗后面才轮到金旗。”\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "820ad8f13609441d3d76c8900206d9f7d2a99956d05be85b5fa207724a47b43a",
+      "text": "悟空把中间那面金旗\n换成了红旗，\n再把金旗放回篮子里。\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "bf183ec7df5288e8e9d3999850dde1decabb70274043387de6a29c8d855d733e",
+      "text": "拍、拍、跺！\n拍、拍、跺！\n拍、拍、跺！\n“现在一直重复到底啦！”\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d6c026226644b681ab6610ff9d296f878de53822ce9804787fc427a3eddeb761",
+      "text": "游行开始啦！\n公主挥着扇子走在前面，\n哪吒拍着节拍。\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "59ca4bfa9ec782e1c636163e4f0710726aa3e725c11413a4cfbf83de2380ec8a",
+      "text": "悟空在彩旗下面走：\n踏、踏、甩！\n踏、踏、甩！\n连尾巴也跟上了规律。\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "29fc74d4d247f97366bc181196e2fa64f9897fffd2035601e3ee0bdd5bfe23fd",
+      "text": "公主问：“下一个是什么？”\n踏、踏……\n大家一起喊：“甩！”\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d5fe2412537ab0ab9a468f8fb7e11a30b221231ff6b956d3c19f2625a27017f1",
+      "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n这些故事和插画由作者借助 AI 创作，并经过人工编辑。\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · 署名—非商业性使用—禁止演绎\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f2bb4264ca73d636633612e46455c7324728d2e45205143edfc183a36e7f1a21",
+      "text": "Wukong & Friends\n红、红、金，\n红、红、金，\n下一个是什么？\nphg1024.github.io/wukong-and-friends/zh",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

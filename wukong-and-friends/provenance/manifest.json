@@ -2,6 +2,36 @@
   "format": "story-garden-publication-v1",
   "files": [
     {
+      "path": "docs/downloads/ao-bings-little-boat-v1-booklet.pdf",
+      "sha256": "3eabbcfba01e71dd2d3949b7dc7dbd446b358d920970b243d5aa279bf90de80f",
+      "bytes": 9377828
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v1-core-en.pdf",
+      "sha256": "8b0582c42e3a621bacc6e2447b8886cd8b2391ff9ed1c3e19613fac9b2802baa",
+      "bytes": 9024489
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v1-core-zh-Hans.pdf",
+      "sha256": "1c3597ba8decb076be971b85874019276c7e38f7693f379968ca6dabbc9be0e7",
+      "bytes": 9058057
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v1-zh-Hans-booklet.pdf",
+      "sha256": "859216ad8bfdedd6a9d144b17c8fd0b8fea781f87afb03d2a1a116af20828824",
+      "bytes": 9425139
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v1-zh-Hans.pdf",
+      "sha256": "c025dd5b181bae909d822b4e5052ef0936231f9c9db751c5039139fab17b2bf9",
+      "bytes": 9415247
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v1.pdf",
+      "sha256": "4c0abe1722411e4cc3187183297aa65789836d9296b5d6b847dabd730caa8b19",
+      "bytes": 9358826
+    },
+    {
       "path": "docs/downloads/bears-wobbly-ride-v1-booklet.pdf",
       "sha256": "d13724b5909e5ef367ca0d6b9d619f26d76cd6defbecf80eae1bad792a80669d",
       "bytes": 10081368
@@ -92,6 +122,36 @@
       "bytes": 10156942
     },
     {
+      "path": "docs/downloads/iron-fans-pattern-parade-v1-booklet.pdf",
+      "sha256": "dac8b37650be7561319267b9593eadda0174c49cf323b969d7b16e398f0ac020",
+      "bytes": 8800463
+    },
+    {
+      "path": "docs/downloads/iron-fans-pattern-parade-v1-core-en.pdf",
+      "sha256": "5d11e7cc7910216538f691c9bc337995144502c47d284afdadbbeeeebedf321a",
+      "bytes": 8455690
+    },
+    {
+      "path": "docs/downloads/iron-fans-pattern-parade-v1-core-zh-Hans.pdf",
+      "sha256": "3015e9176c295f0bc3b07c707346a73bf4dbeade410e8ee71a44d278f47f58f4",
+      "bytes": 8486258
+    },
+    {
+      "path": "docs/downloads/iron-fans-pattern-parade-v1-zh-Hans-booklet.pdf",
+      "sha256": "3e9e078000a1b105e7e60b263462179309ddcc9c5be26ec2ef808adb9f1bd172",
+      "bytes": 8843146
+    },
+    {
+      "path": "docs/downloads/iron-fans-pattern-parade-v1-zh-Hans.pdf",
+      "sha256": "3da025224b207ad8315d3e1997b6e7cd69235ca96d5ce78436dc16e020c6b38f",
+      "bytes": 8833266
+    },
+    {
+      "path": "docs/downloads/iron-fans-pattern-parade-v1.pdf",
+      "sha256": "0d950f10067fc3f2752a0355c8b4782ab052e690adf6be45dd8885279a8ae457",
+      "bytes": 8781227
+    },
+    {
       "path": "docs/downloads/iron-fans-ribbon-parade-v1-booklet.pdf",
       "sha256": "578835d1da72d9b96a0992e51f06bcb41f212be9b1ac7e6ba608cafdc9d538c5",
       "bytes": 9353375
@@ -150,6 +210,36 @@
       "path": "docs/downloads/nezhas-shape-town-v1.pdf",
       "sha256": "c147ef41b1186a32f57bdbfd6e5c40fddfc5a9e672d19fd880ca18339e3d6306",
       "bytes": 8814281
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v1-booklet.pdf",
+      "sha256": "45e26dec4289ca025ba3637059512154339191031fd5f102b09b4357de64e0ce",
+      "bytes": 9241841
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v1-core-en.pdf",
+      "sha256": "19b8bb1518688f354e9895c95bb2fd9f1a8b01c1fbe0cfd1049b9868fcba958f",
+      "bytes": 8867866
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v1-core-zh-Hans.pdf",
+      "sha256": "cd7850fff2f2caef659009b3c1b353ed1d984882a60d00e04e8b935732ff1b09",
+      "bytes": 8888137
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v1-zh-Hans-booklet.pdf",
+      "sha256": "8799cbef33ac242c444ef20868eea7b3a394362a2f62b1992a2b01dc930b7047",
+      "bytes": 9275687
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v1-zh-Hans.pdf",
+      "sha256": "97aeced9bb7dd12ba3d05f65514d4df326b675c59b795e17d52c88f310f8ea9b",
+      "bytes": 9265798
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v1.pdf",
+      "sha256": "c7f0b73afcc13c5049bf127b9d3e3cc99e9d6b4b106ce3411f9434d0fdcd599a",
+      "bytes": 9222788
     },
     {
       "path": "docs/downloads/pigsys-peach-puzzle-v1-booklet.pdf",
@@ -1832,6 +1922,11 @@
       "bytes": 21874264
     },
     {
+      "path": "stories/ao-bings-little-boat/editions/v1/prompts.txt",
+      "sha256": "d2ce833d2341e74f8866b0a498bd02d9a84761a29a2741016538d89bdf6351c1",
+      "bytes": 2485986
+    },
+    {
       "path": "stories/bears-wobbly-ride/editions/v1/prompts.txt",
       "sha256": "bd444dd5febec44423c645813abb7942d1aa58328d10d737fa88743dea8d6e79",
       "bytes": 30907
@@ -1857,6 +1952,11 @@
       "bytes": 38921
     },
     {
+      "path": "stories/iron-fans-pattern-parade/editions/v1/prompts.txt",
+      "sha256": "ea18e09dc6a7abb102d8249a6048bd7b4a52d7879da84367b7621f317c23a652",
+      "bytes": 5279102
+    },
+    {
       "path": "stories/iron-fans-ribbon-parade/editions/v1/prompts.txt",
       "sha256": "42fb5584628e2262ebd4b181bdaa75b5e3c99a4b0ef5fd69aa723d22e9374048",
       "bytes": 185992
@@ -1865,6 +1965,11 @@
       "path": "stories/nezhas-shape-town/editions/v1/prompts.txt",
       "sha256": "12484266b2ccfbf9e9e71291db1e60ffbab155f210c9a3b12151653333141112",
       "bytes": 1077374
+    },
+    {
+      "path": "stories/pigsys-nine-little-cookies/editions/v1/prompts.txt",
+      "sha256": "c136228867c8828c6e890325439a3642ee61670f6408a154f76f988456d1747a",
+      "bytes": 2591524
     },
     {
       "path": "stories/pigsys-peach-puzzle/editions/v1/prompts.txt",

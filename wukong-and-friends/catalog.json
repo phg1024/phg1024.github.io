@@ -1,5 +1,195 @@
 [
   {
+    "id": "ao-bings-little-boat",
+    "title": "Ao Bing’s Little Boat",
+    "title_zh": "敖丙的小船，浮起来！",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "science-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-30",
+    "updated": "2026-10-30",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "float",
+      "sink",
+      "shape",
+      "clay",
+      "hollow",
+      "edge",
+      "test",
+      "change"
+    ],
+    "science_plan_id": "S2",
+    "language_reading_versions": {
+      "en": "ao-bings-little-boat/v1/en",
+      "zh-Hans": "ao-bings-little-boat/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1-booklet.pdf",
+    "cover": "covers/ao-bings-little-boat-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Ao Bing’s Little Boat",
+        "description": "Wukong and Ao Bing want to give a little leaf a boat ride, but their clay ball sinks. Plop! No dragon magic: they change its shape instead. A flat pancake sinks too, but pinch up the edges and the hollow boat floats! Same clay, new shape."
+      },
+      "zh": {
+        "title": "敖丙的小船，浮起来！",
+        "description": "悟空和敖丙想让小叶子坐船，可黏土球“咚”地沉了下去。不用龙的魔法，他们来改变形状：压扁的煎饼船也沉了，把边捏高、中间空空的小船却浮起来了！还是同一团黏土，只是换了形状。"
+      }
+    },
+    "description": "悟空和敖丙想让小叶子坐船，可黏土球“咚”地沉了下去。不用龙的魔法，他们来改变形状：压扁的煎饼船也沉了，把边捏高、中间空空的小船却浮起来了！还是同一团黏土，只是换了形状。",
+    "description_en": "Wukong and Ao Bing want to give a little leaf a boat ride, but their clay ball sinks. Plop! No dragon magic: they change its shape instead. A flat pancake sinks too, but pinch up the edges and the hollow boat floats! Same clay, new shape.",
+    "keywords": "敖丙 悟空 沙僧 沉 浮 浮起来 黏土 小船 形状 中空 试一试 科学启蒙 Ao Bing Wukong Sandy float sink clay boat shape hollow edges test early science",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1-booklet.pdf",
+        "cover": "covers/ao-bings-little-boat-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/ao-bings-little-boat-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "iron-fans-pattern-parade",
+    "title": "Princess Iron Fan’s Pattern Parade",
+    "title_zh": "铁扇公主的彩旗小麻烦",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-30",
+    "updated": "2026-10-30",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "pattern",
+      "repeat",
+      "next",
+      "group",
+      "flag",
+      "same",
+      "different",
+      "check"
+    ],
+    "math_plan_id": "M8",
+    "language_reading_versions": {
+      "en": "iron-fans-pattern-parade/v1/en",
+      "zh-Hans": "iron-fans-pattern-parade/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-pattern-parade-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-pattern-parade-v1-booklet.pdf",
+    "cover": "covers/iron-fans-pattern-parade-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Princess Iron Fan’s Pattern Parade",
+        "description": "Princess Iron Fan hangs flags for a little parade: red, red, gold, again and again. Wukong hurries, and one group comes out wrong! With claps and stomps, the friends check one group at a time, fix the pattern, and march: step, step, swish!"
+      },
+      "zh": {
+        "title": "铁扇公主的彩旗小麻烦",
+        "description": "铁扇公主要办小游行，彩旗按红、红、金一组一组地重复。悟空一着急，挂错了一面！大家拍手、跺脚，一组一组地检查，把规律修好，最后踏、踏、甩，一起去游行。"
+      }
+    },
+    "description": "铁扇公主要办小游行，彩旗按红、红、金一组一组地重复。悟空一着急，挂错了一面！大家拍手、跺脚，一组一组地检查，把规律修好，最后踏、踏、甩，一起去游行。",
+    "description_en": "Princess Iron Fan hangs flags for a little parade: red, red, gold, again and again. Wukong hurries, and one group comes out wrong! With claps and stomps, the friends check one group at a time, fix the pattern, and march: step, step, swish!",
+    "keywords": "铁扇公主 哪吒 悟空 规律 重复 一组 彩旗 游行 拍手 跺脚 下一个 数学启蒙 Princess Iron Fan Nezha Wukong pattern repeat group AAB flags parade clap stomp what comes next early math",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-pattern-parade-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-pattern-parade-v1-booklet.pdf",
+        "cover": "covers/iron-fans-pattern-parade-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-pattern-parade-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/iron-fans-pattern-parade-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/iron-fans-pattern-parade-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "pigsys-nine-little-cookies",
+    "title": "Pigsy’s Nine Little Cookies",
+    "title_zh": "八戒的九块小饼干",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-10-30",
+    "updated": "2026-10-30",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "share",
+      "each",
+      "equal",
+      "fair",
+      "same",
+      "plate",
+      "round",
+      "enough",
+      "count"
+    ],
+    "math_plan_id": "M9",
+    "language_reading_versions": {
+      "en": "pigsys-nine-little-cookies/v1/en",
+      "zh-Hans": "pigsys-nine-little-cookies/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1-booklet.pdf",
+    "cover": "covers/pigsys-nine-little-cookies-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Pigsy’s Nine Little Cookies",
+        "description": "Pigsy bakes nine little cookies to share with Wukong and Rabbit. Wukong deals them out four, three, two. Not fair! So they share in turns, one for each plate, round and round. After three rounds everyone has three, and three plates are enough."
+      },
+      "zh": {
+        "title": "八戒的九块小饼干",
+        "description": "八戒烤了九块小饼干，要和悟空、玉兔一起分。悟空分成四块、三块、两块——不公平！大家改成轮流分，每只盘子放一块，一轮一轮地分。分完三轮，每人三块，三只盘子刚刚好。"
+      }
+    },
+    "description": "八戒烤了九块小饼干，要和悟空、玉兔一起分。悟空分成四块、三块、两块——不公平！大家改成轮流分，每只盘子放一块，一轮一轮地分。分完三轮，每人三块，三只盘子刚刚好。",
+    "description_en": "Pigsy bakes nine little cookies to share with Wukong and Rabbit. Wukong deals them out four, three, two. Not fair! So they share in turns, one for each plate, round and round. After three rounds everyone has three, and three plates are enough.",
+    "keywords": "八戒 悟空 玉兔 饼干 分享 平均分 轮流 公平 一样多 每人 数一数 数学启蒙 Pigsy Wukong Rabbit cookies share equal fair turns each plate round count early math",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1-booklet.pdf",
+        "cover": "covers/pigsys-nine-little-cookies-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/pigsys-nine-little-cookies-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "nezhas-shape-town",
     "title": "Nezha’s Shape Town",
     "title_zh": "哪吒的形状小镇",

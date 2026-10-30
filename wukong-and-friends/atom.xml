@@ -10,7 +10,43 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+  <atom:updated>2026-10-30T00:00:00Z</atom:updated>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/ao-bings-little-boat/</atom:id>
+    <atom:title type="text">Ao Bing’s Little Boat</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/ao-bings-little-boat/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-30T00:00:00Z</atom:published>
+    <atom:updated>2026-10-30T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong and Ao Bing want to give a little leaf a boat ride, but their clay ball sinks. Plop! No dragon magic: they change its shape instead. A flat pancake sinks too, but pinch up the edges and the hollow boat floats! Same clay, new shape.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/ao-bings-little-boat-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/ao-bings-little-boat-v1.jpg" alt="Ao Bing’s Little Boat" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/iron-fans-pattern-parade/</atom:id>
+    <atom:title type="text">Princess Iron Fan’s Pattern Parade</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/iron-fans-pattern-parade/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-30T00:00:00Z</atom:published>
+    <atom:updated>2026-10-30T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Princess Iron Fan hangs flags for a little parade: red, red, gold, again and again. Wukong hurries, and one group comes out wrong! With claps and stomps, the friends check one group at a time, fix the pattern, and march: step, step, swish!&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/iron-fans-pattern-parade-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/iron-fans-pattern-parade-v1.jpg" alt="Princess Iron Fan’s Pattern Parade" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/pigsys-nine-little-cookies/</atom:id>
+    <atom:title type="text">Pigsy’s Nine Little Cookies</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/pigsys-nine-little-cookies/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-10-30T00:00:00Z</atom:published>
+    <atom:updated>2026-10-30T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Pigsy bakes nine little cookies to share with Wukong and Rabbit. Wukong deals them out four, three, two. Not fair! So they share in turns, one for each plate, round and round. After three rounds everyone has three, and three plates are enough.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/pigsys-nine-little-cookies-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/pigsys-nine-little-cookies-v1.jpg" alt="Pigsy’s Nine Little Cookies" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
   <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/</atom:id>
     <atom:title type="text">Nezha’s Shape Town</atom:title>
