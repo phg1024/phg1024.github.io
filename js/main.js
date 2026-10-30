@@ -1877,6 +1877,33 @@
         }
     };
 
+    // Paint the backdrop now instead of on the next animation frame. Called once as the page
+    // starts, so a new page is first shown with its backdrop already there: otherwise each
+    // page switch revealed it blank for a frame and then filled it in, a flash on every
+    // click. Matrix runs a dozen frames at once, since its rain builds up from trails.
+    const paintBackdropNow = function () {
+        if (!hasDynamicBackdrop() || (media.matches && getTheme() === 'matrix')) return;
+        if (backdropFrame) {
+            cancelAnimationFrame(backdropFrame);
+            backdropFrame = null;
+        }
+        var now = performance.now();
+        var theme = getTheme();
+        if (theme === 'industrial') {
+            drawIndustrialBackdrop(now);
+        } else if (theme === 'cyberpunk') {
+            drawCyberpunkBackdrop(now);
+        } else {
+            for (var step = 12; step >= 0; step -= 1) {
+                if (backdropFrame) {
+                    cancelAnimationFrame(backdropFrame);
+                    backdropFrame = null;
+                }
+                drawMatrixBackdrop(now - step * 50);
+            }
+        }
+    };
+
     const animate = function () {
         currentX += (targetX - currentX) * 0.08;
         currentY += (targetY - currentY) * 0.08;
@@ -2151,6 +2178,7 @@
         resizeBackdrop();
         labelCyberJapanese();
         setTheme(getTheme());
+        paintBackdropNow();
         var startPrinting = printMatrixBlocks();
         typeMatrixTitle(function () { if (startPrinting) startPrinting(); });
         applyPointerState();
@@ -2202,10 +2230,13 @@
         initFooterYear();
     };
 
-    // Boot
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
+    // Boot. Every page loads this at the end of <body>, after all of its markup, so start at
+    // once rather than on DOMContentLoaded: base.njk holds the first render until this script
+    // has run (rel="expect"), and a page switch then reveals the new page with its backdrop
+    // painted and its theme effects in place, instead of a frame without them (a flash).
+    if (document.body) {
         init();
+    } else {
+        document.addEventListener('DOMContentLoaded', init);
     }
 })();

@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
  <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="expect" href="#scripts-ready" blocking="render">
+ <style>
   @view-transition { navigation: auto; }
   @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
  </style>
  <script>
+  // The transition is for the hop into or out of the gallery, where the panel changes size
+  // (792px to 1148px wide); between two ordinary pages it is skipped, here on the way out.
   // Only start a transition towards a page that will accept it. The standalone demos under
   // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
   // transition inside the destination page, where nothing can catch it. Skip it here, on the
@@ -28,7 +31,10 @@
       var entry = event.activation && event.activation.entry;
       var to = entry && entry.url ? new URL(entry.url) : null;
       var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
-      if (!path || animated.indexOf(path) < 0) event.viewTransition.skipTransition();
+      var gallery = function (p) { return p.indexOf('/gallery/') === 0; };
+      if (!path || animated.indexOf(path) < 0 || gallery(path) === gallery(location.pathname)) {
+        event.viewTransition.skipTransition();
+      }
     });
     window.addEventListener('pagereveal', handled);
 
@@ -310,6 +316,7 @@
 
 
 <script src="/js/main.js"></script>
+<span id="scripts-ready" hidden></span>
 
 </body>
 </html>
