@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#3b4457"/>
+    </marker>
+    <marker id="arrG" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#1f9d6b"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="470" fill="#f7f8fb"/>
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">A print queue that fixes the color on the way through</text>
+  <text x="450" y="55" text-anchor="middle" font-size="12.5" fill="#5b6478">Print path in black, calibration loop in green</text>
+
+  <!-- clients -->
+  <rect x="24" y="96" width="150" height="74" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="99" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e2433">Mac · iPhone</text>
+  <text x="99" y="146" text-anchor="middle" font-size="11.5" fill="#5b6478">sees an AirPrint</text>
+  <text x="99" y="160" text-anchor="middle" font-size="11.5" fill="#5b6478">printer, sends PDF</text>
+
+  <line x1="174" y1="133" x2="214" y2="133" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- server box -->
+  <rect x="218" y="76" width="452" height="250" rx="12" fill="#eef2fa" stroke="#9fb0d0" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="444" y="98" text-anchor="middle" font-size="13" font-weight="600" fill="#2f4a7a">Linux home server · shared CUPS queue</text>
+
+  <rect x="238" y="112" width="128" height="58" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="302" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Render</text>
+  <text x="302" y="155" text-anchor="middle" font-size="11.5" fill="#5b6478">Ghostscript, 600 dpi</text>
+
+  <line x1="366" y1="141" x2="388" y2="141" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <rect x="392" y="112" width="128" height="58" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="456" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Gray page?</text>
+  <text x="456" y="155" text-anchor="middle" font-size="11.5" fill="#5b6478">every pixel R≈G≈B</text>
+
+  <line x1="520" y1="141" x2="542" y2="141" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="531" y="132" text-anchor="middle" font-size="10.5" fill="#5b6478">no</text>
+
+  <rect x="546" y="112" width="110" height="58" rx="8" fill="#fff8e6" stroke="#e0c675" stroke-width="1.5"/>
+  <text x="601" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Curves</text>
+  <text x="601" y="155" text-anchor="middle" font-size="11.5" fill="#5b6478">one per channel</text>
+
+  <line x1="456" y1="170" x2="456" y2="200" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="446" y="190" text-anchor="end" font-size="10.5" fill="#5b6478">yes</text>
+  <rect x="392" y="204" width="128" height="50" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="456" y="225" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">8-bit gray</text>
+  <text x="456" y="243" text-anchor="middle" font-size="11.5" fill="#5b6478">black toner only</text>
+
+  <line x1="601" y1="170" x2="601" y2="270" stroke="#3b4457" stroke-width="1.6"/>
+  <line x1="520" y1="229" x2="560" y2="229" stroke="#3b4457" stroke-width="1.6"/>
+  <line x1="560" y1="229" x2="560" y2="270" stroke="#3b4457" stroke-width="1.6"/>
+  <rect x="520" y="270" width="136" height="44" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="588" y="290" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Apple Raster</text>
+  <text x="588" y="306" text-anchor="middle" font-size="11.5" fill="#5b6478">over IPP</text>
+
+  <!-- curves file -->
+  <rect x="238" y="204" width="128" height="50" rx="8" fill="#fff8e6" stroke="#e0c675" stroke-width="1.5"/>
+  <text x="302" y="225" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">colorfix.conf</text>
+  <text x="302" y="243" text-anchor="middle" font-size="11.5" fill="#5b6478">read on every job</text>
+  <path d="M366,214 C470,190 520,190 546,165" fill="none" stroke="#b08a1c" stroke-width="1.4" stroke-dasharray="4 3"/>
+
+  <!-- printer -->
+  <line x1="656" y1="292" x2="726" y2="292" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="730" y="250" width="148" height="84" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="804" y="278" text-anchor="middle" font-size="14" font-weight="600" fill="#1e2433">Color laser MFP</text>
+  <text x="804" y="298" text-anchor="middle" font-size="11.5" fill="#5b6478">third-party toner,</text>
+  <text x="804" y="313" text-anchor="middle" font-size="11.5" fill="#5b6478">yellow runs heavy</text>
+
+  <!-- calibration loop -->
+  <rect x="730" y="370" width="148" height="62" rx="10" fill="#ffffff" stroke="#1f9d6b" stroke-width="1.5"/>
+  <text x="804" y="396" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Its own flatbed</text>
+  <text x="804" y="414" text-anchor="middle" font-size="11.5" fill="#5b6478">scanned over eSCL</text>
+  <line x1="804" y1="334" x2="804" y2="366" stroke="#1f9d6b" stroke-width="1.6" marker-end="url(#arrG)"/>
+  <text x="814" y="355" font-size="10.5" fill="#1f9d6b">test chart, face down</text>
+
+  <rect x="238" y="370" width="300" height="62" rx="10" fill="#ffffff" stroke="#1f9d6b" stroke-width="1.5"/>
+  <text x="388" y="396" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Calibration tool</text>
+  <text x="388" y="414" text-anchor="middle" font-size="11.5" fill="#5b6478">find the patches, L*a*b* per patch, fit the curves</text>
+  <line x1="730" y1="401" x2="542" y2="401" stroke="#1f9d6b" stroke-width="1.6" marker-end="url(#arrG)"/>
+  <line x1="302" y1="370" x2="302" y2="258" stroke="#1f9d6b" stroke-width="1.6" marker-end="url(#arrG)"/>
+
+  <text x="450" y="458" text-anchor="middle" font-size="11.5" fill="#5b6478">The scanner is not calibrated either, so every measurement is relative: one toner against another, one gray against another.</text>
+</svg>

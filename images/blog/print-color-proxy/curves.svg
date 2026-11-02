@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<rect width="900" height="470" fill="#f7f8fb"/>
+<text x="450.0" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">The final correction, per toner</text>
+<text x="450.0" y="55" text-anchor="middle" font-size="12.5" fill="#5b6478">Toner the proxy sends minus toner the document asks for, after the printer's own color calibration</text>
+<line x1="86" y1="396.0" x2="700" y2="396.0" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="400.0" text-anchor="end" font-size="12" fill="#5b6478">−10</text>
+<line x1="86" y1="364.2" x2="700" y2="364.2" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="368.2" text-anchor="end" font-size="12" fill="#5b6478">−8</text>
+<line x1="86" y1="332.4" x2="700" y2="332.4" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="336.4" text-anchor="end" font-size="12" fill="#5b6478">−6</text>
+<line x1="86" y1="300.6" x2="700" y2="300.6" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="304.6" text-anchor="end" font-size="12" fill="#5b6478">−4</text>
+<line x1="86" y1="268.8" x2="700" y2="268.8" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="272.8" text-anchor="end" font-size="12" fill="#5b6478">−2</text>
+<line x1="86" y1="237.0" x2="700" y2="237.0" stroke="#9aa3b5" stroke-width="1.4"/>
+<text x="76" y="241.0" text-anchor="end" font-size="12" fill="#5b6478">0</text>
+<line x1="86" y1="205.2" x2="700" y2="205.2" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="209.2" text-anchor="end" font-size="12" fill="#5b6478">+2</text>
+<line x1="86" y1="173.4" x2="700" y2="173.4" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="177.4" text-anchor="end" font-size="12" fill="#5b6478">+4</text>
+<line x1="86" y1="141.6" x2="700" y2="141.6" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="145.6" text-anchor="end" font-size="12" fill="#5b6478">+6</text>
+<line x1="86" y1="109.8" x2="700" y2="109.8" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="113.8" text-anchor="end" font-size="12" fill="#5b6478">+8</text>
+<line x1="86" y1="78.0" x2="700" y2="78.0" stroke="#e1e5ee" stroke-width="1"/>
+<text x="76" y="82.0" text-anchor="end" font-size="12" fill="#5b6478">+10</text>
+<line x1="86.0" y1="78" x2="86.0" y2="396" stroke="#eef0f5"/>
+<text x="86.0" y="416" text-anchor="middle" font-size="12" fill="#5b6478">0%</text>
+<line x1="147.4" y1="78" x2="147.4" y2="396" stroke="#eef0f5"/>
+<text x="147.4" y="416" text-anchor="middle" font-size="12" fill="#5b6478">10%</text>
+<line x1="208.8" y1="78" x2="208.8" y2="396" stroke="#eef0f5"/>
+<text x="208.8" y="416" text-anchor="middle" font-size="12" fill="#5b6478">20%</text>
+<line x1="270.2" y1="78" x2="270.2" y2="396" stroke="#eef0f5"/>
+<text x="270.2" y="416" text-anchor="middle" font-size="12" fill="#5b6478">30%</text>
+<line x1="331.6" y1="78" x2="331.6" y2="396" stroke="#eef0f5"/>
+<text x="331.6" y="416" text-anchor="middle" font-size="12" fill="#5b6478">40%</text>
+<line x1="393.0" y1="78" x2="393.0" y2="396" stroke="#eef0f5"/>
+<text x="393.0" y="416" text-anchor="middle" font-size="12" fill="#5b6478">50%</text>
+<line x1="454.4" y1="78" x2="454.4" y2="396" stroke="#eef0f5"/>
+<text x="454.4" y="416" text-anchor="middle" font-size="12" fill="#5b6478">60%</text>
+<line x1="515.8" y1="78" x2="515.8" y2="396" stroke="#eef0f5"/>
+<text x="515.8" y="416" text-anchor="middle" font-size="12" fill="#5b6478">70%</text>
+<line x1="577.2" y1="78" x2="577.2" y2="396" stroke="#eef0f5"/>
+<text x="577.2" y="416" text-anchor="middle" font-size="12" fill="#5b6478">80%</text>
+<line x1="638.6" y1="78" x2="638.6" y2="396" stroke="#eef0f5"/>
+<text x="638.6" y="416" text-anchor="middle" font-size="12" fill="#5b6478">90%</text>
+<line x1="700.0" y1="78" x2="700.0" y2="396" stroke="#eef0f5"/>
+<text x="700.0" y="416" text-anchor="middle" font-size="12" fill="#5b6478">100%</text>
+<text x="393.0" y="442" text-anchor="middle" font-size="13" fill="#1e2433">toner the document asks for</text>
+<text transform="translate(28 237.0) rotate(-90)" text-anchor="middle" font-size="13" fill="#1e2433">change, percentage points</text>
+<polyline points="86.0,237.0 95.6,212.1 105.3,193.4 114.9,187.1 124.5,187.1 134.2,187.1 143.8,187.1 153.4,193.4 163.1,199.6 172.7,205.8 182.3,205.8 191.9,205.8 201.6,205.8 211.2,205.8 220.8,205.8 230.5,199.6 240.1,199.6 249.7,193.4 259.4,193.4 269.0,187.1 278.6,187.1 288.3,180.9 297.9,180.9 307.5,180.9 317.2,180.9 326.8,174.6 336.4,174.6 346.0,168.4 355.7,162.2 365.3,149.7 374.9,143.5 384.6,137.2 394.2,137.2 403.8,137.2 413.5,131.0 423.1,131.0 432.7,131.0 442.4,137.2 452.0,137.2 461.6,137.2 471.3,143.5 480.9,143.5 490.5,149.7 500.1,155.9 509.8,155.9 519.4,162.2 529.0,168.4 538.7,180.9 548.3,187.1 557.9,199.6 567.6,205.8 577.2,218.3 586.8,224.5 596.5,230.8 606.1,237.0 615.7,237.0 625.4,243.2 635.0,243.2 644.6,243.2 654.3,243.2 663.9,243.2 673.5,237.0 683.1,237.0 692.8,237.0 700.0,237.0" fill="none" stroke="#1593b8" stroke-width="2.6" stroke-linejoin="round"/>
+<line x1="718" y1="98" x2="742" y2="98" stroke="#1593b8" stroke-width="3"/>
+<text x="748" y="102" font-size="12.5" fill="#1e2433">cyan</text>
+<text x="748" y="117" font-size="11" fill="#5b6478">(R channel)</text>
+<polyline points="86.0,237.0 95.6,237.0 105.3,237.0 114.9,237.0 124.5,237.0 134.2,237.0 143.8,237.0 153.4,237.0 163.1,237.0 172.7,237.0 182.3,237.0 191.9,237.0 201.6,237.0 211.2,237.0 220.8,237.0 230.5,237.0 240.1,237.0 249.7,237.0 259.4,237.0 269.0,237.0 278.6,237.0 288.3,237.0 297.9,237.0 307.5,237.0 317.2,237.0 326.8,237.0 336.4,237.0 346.0,237.0 355.7,237.0 365.3,237.0 374.9,237.0 384.6,237.0 394.2,237.0 403.8,237.0 413.5,237.0 423.1,237.0 432.7,237.0 442.4,237.0 452.0,237.0 461.6,237.0 471.3,237.0 480.9,237.0 490.5,237.0 500.1,237.0 509.8,237.0 519.4,237.0 529.0,237.0 538.7,237.0 548.3,237.0 557.9,237.0 567.6,237.0 577.2,237.0 586.8,237.0 596.5,237.0 606.1,237.0 615.7,237.0 625.4,237.0 635.0,237.0 644.6,237.0 654.3,237.0 663.9,237.0 673.5,237.0 683.1,237.0 692.8,237.0 700.0,237.0" fill="none" stroke="#c2337a" stroke-width="2.6" stroke-linejoin="round"/>
+<line x1="718" y1="144" x2="742" y2="144" stroke="#c2337a" stroke-width="3"/>
+<text x="748" y="148" font-size="12.5" fill="#1e2433">magenta</text>
+<text x="748" y="163" font-size="11" fill="#5b6478">(G channel)</text>
+<polyline points="86.0,237.0 95.6,237.0 105.3,237.0 114.9,237.0 124.5,237.0 134.2,237.0 143.8,237.0 153.4,237.0 163.1,237.0 172.7,237.0 182.3,237.0 191.9,237.0 201.6,237.0 211.2,237.0 220.8,237.0 230.5,237.0 240.1,237.0 249.7,237.0 259.4,237.0 269.0,237.0 278.6,237.0 288.3,237.0 297.9,237.0 307.5,237.0 317.2,237.0 326.8,237.0 336.4,237.0 346.0,237.0 355.7,237.0 365.3,237.0 374.9,237.0 384.6,237.0 394.2,237.0 403.8,237.0 413.5,237.0 423.1,237.0 432.7,237.0 442.4,237.0 452.0,237.0 461.6,237.0 471.3,237.0 480.9,237.0 490.5,237.0 500.1,237.0 509.8,237.0 519.4,237.0 529.0,237.0 538.7,237.0 548.3,237.0 557.9,237.0 567.6,237.0 577.2,237.0 586.8,237.0 596.5,237.0 606.1,237.0 615.7,237.0 625.4,237.0 635.0,237.0 644.6,237.0 654.3,237.0 663.9,237.0 673.5,237.0 683.1,237.0 692.8,237.0 700.0,237.0" fill="none" stroke="#c99a00" stroke-width="2.6" stroke-linejoin="round"/>
+<line x1="718" y1="190" x2="742" y2="190" stroke="#c99a00" stroke-width="3"/>
+<text x="748" y="194" font-size="12.5" fill="#1e2433">yellow</text>
+<text x="748" y="209" font-size="11" fill="#5b6478">(B channel)</text>
+<text x="718" y="252" font-size="11" fill="#5b6478">0% and 100%</text><text x="718" y="267" font-size="11" fill="#5b6478">never change</text>
+</svg>
