@@ -272,6 +272,36 @@
       "bytes": 8418067
     },
     {
+      "path": "docs/downloads/pigsys-peach-puzzle-v2-booklet.pdf",
+      "sha256": "600c36886e18e78513f4463d82d877524a49da804f0ca6753863248dfb0dcdfe",
+      "bytes": 8421706
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v2-core-en.pdf",
+      "sha256": "6a734fbe4d3f33bbd9841a3180bc046205fdc616ce1cad72d3c577a73dec956d",
+      "bytes": 8110283
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v2-core-zh-Hans.pdf",
+      "sha256": "4ebf703494f1490c3d107652d455b58baeeb9f1d97e755fc1e4097d940492cf3",
+      "bytes": 8153397
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v2-zh-Hans-booklet.pdf",
+      "sha256": "02c6a967d6aaa89ebcd181ac1e42e4ee705a8f691cadea17cf8d879012dd6f98",
+      "bytes": 8477243
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v2-zh-Hans.pdf",
+      "sha256": "8274e0f1e6f000590ee88cbc2bd8a569f9964d283176217a25737b79c87c86a0",
+      "bytes": 8466428
+    },
+    {
+      "path": "docs/downloads/pigsys-peach-puzzle-v2.pdf",
+      "sha256": "e95549bdd43d3358afe87b2a68f0ba50be11ad2e82b93c74b666e2812a95d693",
+      "bytes": 8401782
+    },
+    {
       "path": "docs/downloads/wukong-and-the-big-red-truck-v1-booklet.pdf",
       "sha256": "810c175a7fa49e85bbd40c2ec5e01e0075e160560681c7838c55aec7d83ff764",
       "bytes": 20308860
@@ -420,6 +450,36 @@
       "path": "docs/downloads/wukong-and-the-block-bridge-v1.pdf",
       "sha256": "7a1b494847a4f3e2fa21dd5a25758f085d9d0df89b1cffa2e817d02512a59a7f",
       "bytes": 8163200
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v2-booklet.pdf",
+      "sha256": "6ebcc858a81e51ef1945e010dce7050aff881db3b50f90ffaa0f4fe68973bc2e",
+      "bytes": 8149060
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v2-core-en.pdf",
+      "sha256": "4f3ecf6f5013623dc915355d3534fd14dd711879010953fd2c89a261f9b24dd1",
+      "bytes": 7811944
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v2-core-zh-Hans.pdf",
+      "sha256": "db245f466db8e3e3aa2f0595d85c058da5948c48241918bcefc71b4c647412e1",
+      "bytes": 7856121
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v2-zh-Hans-booklet.pdf",
+      "sha256": "3c5966f08319f86a479b18bc02e97969c25ff48c756dedc152ac4c1dc40166d8",
+      "bytes": 8206705
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v2-zh-Hans.pdf",
+      "sha256": "1bdc9159589f91cedf7b54b562811fb8bad154792668f02fe9ecf8ec15de8b9d",
+      "bytes": 8194727
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-block-bridge-v2.pdf",
+      "sha256": "cf6dc3e03de6d38db51363b7993f0b4f7e648262600c3d68ae37cfae9d4d6efd",
+      "bytes": 8127977
     },
     {
       "path": "docs/downloads/wukong-and-the-copycat-shadow-v1-booklet.pdf",
@@ -1337,6 +1397,36 @@
       "bytes": 9540764
     },
     {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v2-booklet.pdf",
+      "sha256": "f95299f24e24844d85d3a0f09cf49942478ee34a0c2aeeaa819a860e4f93e6df",
+      "bytes": 9560624
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v2-core-en.pdf",
+      "sha256": "235ea005dcffab0b52edbc2fcc9254ddaefc23c7377cf8816a1a77d14c707b89",
+      "bytes": 9173781
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v2-core-zh-Hans.pdf",
+      "sha256": "de36044ae21f6bad5db2ec7dbf4f383a62085664fd53671110a57fc10b25e036",
+      "bytes": 9222927
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v2-zh-Hans-booklet.pdf",
+      "sha256": "63465f24848fbe84b60e4dd47a8a054af6c5bf8cc7cd18e2e5ecd71943a40f5c",
+      "bytes": 9622701
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v2-zh-Hans.pdf",
+      "sha256": "567e0b1217f7fdc8e9812882d57324b94c8548bfd3fd33733c5c6a7e87e59f46",
+      "bytes": 9612205
+    },
+    {
+      "path": "docs/downloads/wukongs-missing-picnic-cup-v2.pdf",
+      "sha256": "ed52c7dceaf52c594adce463e5defbb070dfa87163e4f6a26cd8da623235c920",
+      "bytes": 9540919
+    },
+    {
       "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
       "sha256": "1731fcbd090f5810ada14a62d99821bdc3bd7226f3a39a8f3464801b255245f1",
       "bytes": 8981000
@@ -1977,6 +2067,11 @@
       "bytes": 160781
     },
     {
+      "path": "stories/pigsys-peach-puzzle/editions/v2/prompts.txt",
+      "sha256": "9dd60600d75eaab321c0a1f51204b99c249b7ef4d1ecab622955c016b9acc5a3",
+      "bytes": 164286
+    },
+    {
       "path": "stories/wukong-and-the-big-red-truck/editions/v1/prompts.txt",
       "sha256": "fd0bb89cbfd3c49f49708c53e04fe1f766beba79b47643c808a1f16b4396da39",
       "bytes": 46252
@@ -2015,6 +2110,11 @@
       "path": "stories/wukong-and-the-block-bridge/editions/v1/prompts.txt",
       "sha256": "00c6f3ccee2715ec507c8bfd9c898d2c1c8006358102a34dc8d42751f4c8bfdf",
       "bytes": 185967
+    },
+    {
+      "path": "stories/wukong-and-the-block-bridge/editions/v2/prompts.txt",
+      "sha256": "dae0a0b7026f2ed9401602733197a4de8ac1b9d2dca24fdbcc770b40db18c3ab",
+      "bytes": 226781
     },
     {
       "path": "stories/wukong-and-the-copycat-shadow/editions/v1/prompts.txt",
@@ -2215,6 +2315,11 @@
       "path": "stories/wukongs-missing-picnic-cup/editions/v1/prompts.txt",
       "sha256": "b7140f5a4070fed6c342e219b6345223b3f89967fa9f9b797a2757a8e7603763",
       "bytes": 167310
+    },
+    {
+      "path": "stories/wukongs-missing-picnic-cup/editions/v2/prompts.txt",
+      "sha256": "bc1b93d58c460f53284cfde4af80050f9a1d57c8402c3b180ccc99d63bbb0c59",
+      "bytes": 169860
     },
     {
       "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",

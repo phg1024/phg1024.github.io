@@ -751,11 +751,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
+    "version": "v2",
+    "revision": "p12-small-peach-leaf",
     "publication_status": "published",
     "published": "2026-10-28",
-    "updated": "2026-10-28",
+    "updated": "2026-11-01",
     "level": "L2",
     "target_age_months": 54,
     "focus_vocabulary": [
@@ -768,12 +768,12 @@
     ],
     "math_plan_id": "M2",
     "language_reading_versions": {
-      "en": "pigsys-peach-puzzle/v1/en",
-      "zh-Hans": "pigsys-peach-puzzle/v1/zh-Hans"
+      "en": "pigsys-peach-puzzle/v2/en",
+      "zh-Hans": "pigsys-peach-puzzle/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1-booklet.pdf",
-    "cover": "covers/pigsys-peach-puzzle-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v2-booklet.pdf",
+    "cover": "covers/pigsys-peach-puzzle-v2.jpg",
     "translations": {
       "en": {
         "title": "Pigsy’s Peach Puzzle",
@@ -789,14 +789,14 @@
     "keywords": "八戒 悟空 玉兔 唐僧 桃子 多少 配对 一样多 比较 数学启蒙 Pigsy Wukong Rabbit Tang Monk peaches more fewer pairs same compare early math",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1-booklet.pdf",
-        "cover": "covers/pigsys-peach-puzzle-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v2-booklet.pdf",
+        "cover": "covers/pigsys-peach-puzzle-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/pigsys-peach-puzzle-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-peach-puzzle-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/pigsys-peach-puzzle-v2-zh-Hans.jpg"
       }
     }
   },
@@ -812,11 +812,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
+    "version": "v2",
+    "revision": "four-blocks-bank-to-bank",
     "publication_status": "published",
     "published": "2026-10-28",
-    "updated": "2026-10-28",
+    "updated": "2026-11-01",
     "level": "L2",
     "target_age_months": 54,
     "focus_vocabulary": [
@@ -829,12 +829,12 @@
     ],
     "math_plan_id": "M5",
     "language_reading_versions": {
-      "en": "wukong-and-the-block-bridge/v1/en",
-      "zh-Hans": "wukong-and-the-block-bridge/v1/zh-Hans"
+      "en": "wukong-and-the-block-bridge/v2/en",
+      "zh-Hans": "wukong-and-the-block-bridge/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-booklet.pdf",
-    "cover": "covers/wukong-and-the-block-bridge-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v2-booklet.pdf",
+    "cover": "covers/wukong-and-the-block-bridge-v2.jpg",
     "translations": {
       "en": {
         "title": "Wukong and the Block Bridge",
@@ -850,14 +850,14 @@
     "keywords": "悟空 敖丙 八戒 积木 测量 长度 小火车 桥 数学启蒙 Wukong Ao Bing Pigsy blocks measure length same size train bridge early math",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-booklet.pdf",
-        "cover": "covers/wukong-and-the-block-bridge-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v2-booklet.pdf",
+        "cover": "covers/wukong-and-the-block-bridge-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-block-bridge-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-block-bridge-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-block-bridge-v2-zh-Hans.jpg"
       }
     }
   },
@@ -873,11 +873,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
+    "version": "v2",
+    "revision": "p7-hands-on-arms",
     "publication_status": "published",
     "published": "2026-10-28",
-    "updated": "2026-10-28",
+    "updated": "2026-11-01",
     "level": "L2",
     "target_age_months": 54,
     "focus_vocabulary": [
@@ -889,12 +889,12 @@
     ],
     "math_plan_id": "M1",
     "language_reading_versions": {
-      "en": "wukongs-missing-picnic-cup/v1/en",
-      "zh-Hans": "wukongs-missing-picnic-cup/v1/zh-Hans"
+      "en": "wukongs-missing-picnic-cup/v2/en",
+      "zh-Hans": "wukongs-missing-picnic-cup/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-booklet.pdf",
-    "cover": "covers/wukongs-missing-picnic-cup-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v2-booklet.pdf",
+    "cover": "covers/wukongs-missing-picnic-cup-v2.jpg",
     "translations": {
       "en": {
         "title": "Wukong’s Missing Picnic Cup",
@@ -910,14 +910,14 @@
     "keywords": "悟空 八戒 玉兔 敖丙 铁扇公主 野餐 杯子 数数 一共有几个 数学启蒙 Wukong Pigsy Rabbit Ao Bing Iron Fan picnic cups counting how many early math",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-booklet.pdf",
-        "cover": "covers/wukongs-missing-picnic-cup-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v2-booklet.pdf",
+        "cover": "covers/wukongs-missing-picnic-cup-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-missing-picnic-cup-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-missing-picnic-cup-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-missing-picnic-cup-v2-zh-Hans.jpg"
       }
     }
   },
