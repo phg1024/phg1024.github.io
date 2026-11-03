@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="expect" href="#scripts-ready" blocking="render">
+ <style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // The transition is for the hop into or out of the gallery, where the panel changes size
+  // (792px to 1148px wide); between two ordinary pages it is skipped, here on the way out.
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/bread/basic-bread/","/blog/ai/dreamfusion/","/bread/potato-bread/","/bread/banana-bread/","/bread/toast-bread/","/bread/rye-bread/","/bread/banana-bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/blog/programming/print-color-proxy/","/blog/programming/pynq-kvm/","/about/","/bread/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/graphics/","/tag/doodling/","/tag/web/","/tag/home-lab/","/tag/image-processing/","/tag/local-inference/","/tag/agents/","/tag/ml-research/","/tag/rendering/","/tag/hardware/","/tag/wukong-and-friends/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      var gallery = function (p) { return p.indexOf('/gallery/') === 0; };
+      if (!path || animated.indexOf(path) < 0 || gallery(path) === gallery(location.pathname)) {
+        event.viewTransition.skipTransition();
+      }
+    });
+    window.addEventListener('pagereveal', handled);
+
+    // One container that resizes (proto-extra.css). On both sides of the hop, give the panel's
+    // on-screen children their own nested groups; on the new page, hand the panel's look to
+    // the transition group, which draws the container while it changes size.
+    var nested = window.CSS && CSS.supports && CSS.supports('view-transition-group: nearest');
+    function panel() {
+      return document.querySelector('.site-main > .content-page, .site-main > .blog-content');
+    }
+    function markVisibleChildren(card) {
+      var marked = [];
+      var h = window.innerHeight;
+      Array.prototype.forEach.call(card.children, function (child) {
+        var r = child.getBoundingClientRect();
+        if (r.height > 0 && r.bottom > 0 && r.top < h) {
+          child.classList.add('vt-card-item');
+          marked.push(child);
+        }
+      });
+      return marked;
+    }
+    function lendPanelLook(card) {
+      var s = getComputedStyle(card);
+      var rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--vt-card-bg-color', s.backgroundColor);
+      rootStyle.setProperty('--vt-card-bg-image', s.backgroundImage);
+      rootStyle.setProperty('--vt-card-border', s.borderTopWidth + ' ' + s.borderTopStyle + ' ' + s.borderTopColor);
+      rootStyle.setProperty('--vt-card-radius', s.borderTopLeftRadius);
+      rootStyle.setProperty('--vt-card-shadow', s.boxShadow);
+      rootStyle.setProperty('--vt-card-backdrop', s.backdropFilter || 'none');
+    }
+    window.addEventListener('pageswap', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (card) markVisibleChildren(card);
+    });
+    window.addEventListener('pagereveal', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (!card) return;
+      var marked = markVisibleChildren(card);
+      lendPanelLook(card);
+      event.viewTransition.finished.finally(function () {
+        marked.forEach(function (el) { el.classList.remove('vt-card-item'); });
+      });
+    });
+  })();
+ </script>
+ <script>
+  (function () {
+     // Cyberpunk is switched off for now (themeNames in /js/main.js): anyone who had it
+     // gets minimalist.
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     if (savedTheme === 'cyberpunk') savedTheme = 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@600;700&amp;family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+ <title>A KVM From the Spare-Board Drawer | Peihong Guo</title>
+ <meta name="description" content="My home server has no monitor and no keyboard, and the one time it needed both, I was on the floor beside it. So I turned an FPGA board with an HDMI input…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/programming/pynq-kvm/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="A KVM From the Spare-Board Drawer | Peihong Guo">
+ <meta property="og:description" content="My home server has no monitor and no keyboard, and the one time it needed both, I was on the floor beside it. So I turned an FPGA board with an HDMI input…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/programming/pynq-kvm/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="A KVM From the Spare-Board Drawer | Peihong Guo">
+ <meta name="twitter:description" content="My home server has no monitor and no keyboard, and the one time it needed both, I was on the floor beside it. So I turned an FPGA board with an HDMI input…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-11-02T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/proto.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head><body class="proto">
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link is-active" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by area">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">11</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/graphics/">Graphics <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/doodling/">Doodling <span class="proto-rail__count">7</span></a></li>
+   </ul>
+   <ul class="proto-rail__tags proto-rail__tags--topics" aria-label="Browse by topic">
+    <li><a class="proto-rail__tag" href="/tag/web/">Web <span class="proto-rail__count">9</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/home-lab/">Home lab <span class="proto-rail__count">7</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/image-processing/">Image processing <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/local-inference/">Local inference <span class="proto-rail__count">4</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/agents/">Agents <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/ml-research/">ML research <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/rendering/">Rendering <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/hardware/">Hardware <span class="proto-rail__count">2</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/wukong-and-friends/">Wukong &amp; Friends <span class="proto-rail__count">2</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>A KVM From the Spare-Board Drawer</h1><p class="blog-post__date">Nov 2, 2026</p>
+<p>My home server lives under a desk with no monitor and no keyboard. That's fine until it won't boot. The night before this project, its system disk died. Fixing it meant dragging over a monitor and a keyboard and booting it from a USB stick, on the floor.</p>
+<p>A KVM fixes that: it captures the screen and fakes a keyboard and mouse, so you can work the console from another computer, BIOS included. You can buy one, or build a PiKVM. But I already had the parts in a drawer: a <strong>PYNQ-Z2</strong>, an FPGA board with an HDMI <em>input</em>, and a <strong>Pi Zero 2 W</strong>. The same day I'd 3D-printed cases for both, so they needed a job.</p>
+<p><img src="/images/blog/pynq-kvm/kvm-path.svg" alt="The KVM: the server's HDMI goes into the PYNQ-Z2, where the FPGA writes frames into RAM, the two CPU cores encode them as JPEG, and a small web server streams them to the browser. Keys and clicks from the browser go back to the PYNQ, over Wi-Fi to a Pi Zero 2 W, which acts as a USB keyboard and mouse on one cable into the server."></p>
+<h2>Seeing the screen</h2>
+<p>The PYNQ-Z2 pairs a Xilinx Zynq FPGA with two 650 MHz ARM cores running Linux and Python. Its stock &quot;base&quot; design already includes an HDMI receiver and a video DMA engine that writes every incoming frame into RAM. So the video side needed no FPGA work at all. One Python program, about 500 lines, does the rest:</p>
+<ol>
+<li>Load the base design, start HDMI capture (the board asks for 1280×720, so that's what the server sends).</li>
+<li>Copy each frame out of the DMA buffer and encode it as JPEG with OpenCV.</li>
+<li>Serve the JPEGs as an MJPEG stream behind a password, plus a snapshot and a status endpoint.</li>
+</ol>
+<p>The first version ran at about 10 frames a second and worked, for a minute or two. Then things started crashing: the KVM itself, random other programs, and once even my SSH session to the board.</p>
+<h2>The DMA that outlived its program</h2>
+<p>The cause was the video DMA. Once started, it writes a 2.7 MB frame 60 times a second into the buffers it was given, and nothing stops it but a register write. When the program crashed, or I restarted it, that write never happened. The DMA kept writing into memory that Linux had already freed and handed to other processes. Every crash corrupted something else, which caused the next crash.</p>
+<p>A second bug kept starting the chain. Calling the library's <code>freebuffer()</code> on a frame, as I had, returned that buffer twice: once by hand and once when Python cleaned up the frame object. The DMA and the program then shared one buffer. The library's own example notebook has that line commented out.</p>
+<p>The fixes:</p>
+<ul>
+<li>Copy each frame into the program's own array and drop the library's frame at once, with no manual free.</li>
+<li>Halt the DMA in three places: first thing at startup, on normal exit, and from systemd after any exit, crashes included. A 60-line script writes the halt bit straight through <code>/dev/mem</code>, but only if the base design is loaded; on any other design that address can hang the bus.</li>
+<li>Do all the FPGA setup in the main thread, before the web server's threads start. Doing it elsewhere crashed too.</li>
+</ul>
+<p>After a reboot to clear whatever had already been corrupted, it ran without a single crash.</p>
+<p>The picture was black, though: the pixels maxed out at 9. The server's login screen had blanked itself after a few idle minutes, the way it would on a real monitor. A few settings on the server turned that off and woke its HDMI output.</p>
+<h2>Faster, but not much faster</h2>
+<p>10 fps feels sluggish, and 1024×768 wouldn't help much: it's only 15% fewer pixels than 720p. Where the time went:</p>
+<ul>
+<li><strong>Reading the frame.</strong> DMA buffers are uncached by default, and copying 2.7 MB from uncached memory on these cores is slow. Marking the frame buffers cacheable fixed that.</li>
+<li><strong>JPEG encoding.</strong> About 80 ms per frame on one core. OpenCV releases Python's global lock while it encodes, so two encoder threads keep both cores busy.</li>
+</ul>
+<p>That brought it to about <strong>15 fps</strong>, and that's where it stays: the two CPU cores are the limit. Why not real video, then? The browser's <code>&lt;video&gt;</code> needs H.264 or similar, and this chip has no hardware video encoder. Software H.264 on these cores would be slower than JPEG. An encoder in the FPGA itself would be a project of its own. MJPEG also suits a KVM: every frame stands alone, so a dropped frame is just skipped. When nobody's watching, it encodes nothing.</p>
+<h2>Typing</h2>
+<p>The PYNQ's USB port can't act as a keyboard: it's a host port that supplies 5 V, and the board's Linux lacks the USB gadget keyboard driver. That's what the Pi Zero is for. Its USB controller can act as a USB <em>device</em>, so with a few lines of Linux configuration it becomes two:</p>
+<ul>
+<li><strong>A boot-protocol keyboard.</strong> That's the simple kind a BIOS understands, so it should work before any OS loads.</li>
+<li><strong>An absolute mouse.</strong> It reports positions, not movements, so a click on the picture in my browser lands on exactly the same pixel on the server. In testing, asking for a quarter of the way across and down put the pointer at (320, 180) on the 1280×720 screen.</li>
+</ul>
+<p>The browser sends keys and clicks to the PYNQ under the same login as the video. The PYNQ turns them into USB reports and forwards them over Wi-Fi to a small relay on the Pi. The relay accepts one address and a shared secret, and writes the reports to the USB gadget. One USB cable from the server to the Pi carries both the Pi's power and the keystrokes. The server sees a keyboard and mouse it has never met and just uses them.</p>
+<p>Setting up the Pi had its own snag. I wrote its first-boot configuration by hand instead of using the Raspberry Pi Imager, and Imager is what turns SSH on. The Pi came up on Wi-Fi with SSH refusing connections. An empty file named <code>ssh</code> on the boot partition fixed it.</p>
+<p><img src="/images/blog/pynq-kvm/first-login.jpg" alt="The server's desktop as seen through the KVM, right after the first login typed through it: an Ubuntu dialog says Ubuntu 22.04 has experienced an internal error and offers to send a problem report."></p>
+<p><em>The first login typed through the KVM. The server greeted it with a crash report.</em></p>
+<p>The first login also taught me what this thing is. Claude, the coding agent doing most of the legwork, was testing the keyboard at the same moment I was logging in from my browser, and some of its test keystrokes probably landed in my session. Nothing broke. But anything that can type into the server's console <em>is</em> the server's console, so the KVM sits behind a login, and the relay takes input from nowhere but the PYNQ.</p>
+<h2>Was it worth it?</h2>
+<p>It cost nothing but an evening. Two idle boards became a KVM, and I can now see and type into the server from any browser in the house. It's not fast: 720p at 15 frames a second is fine for a login screen and a terminal, not for anything that moves. A few things remain:</p>
+<ul>
+<li><strong>The BIOS is still untested.</strong> The Pi takes its power from the server's USB port, so if the server cuts USB power during a reboot, the Pi reboots too, about 30 seconds behind. That could miss the moment to press Del. The fix would be separate power for the Pi.</li>
+<li><strong>The server can still turn off its HDMI output</strong> when its display server restarts. Then the picture freezes on the last frame until something wakes it.</li>
+<li><strong>The FPGA does almost nothing.</strong> It moves pixels into memory, which the stock design already did. Encoding JPEG in the fabric would be the obvious next step, and the most fun one.</li>
+</ul>
+<p>The lesson I'd take: <strong>a DMA engine doesn't know your program died</strong>. Anything that starts one has to stop it at startup, at exit and after a crash.</p>
+
+      <footer class="post-meta">
+        <p class="post-box post-meta__tags">Filed under <a href="/tag/doodling/">Doodling</a> · <a href="/tag/home-lab/">Home lab</a> · <a href="/tag/hardware/">Hardware</a></p>
+        <div class="post-box post-meta__related">
+          <p class="post-meta__label">Related</p>
+          <ul class="post-related">
+            <li><a href="/blog/programming/home-automation/">A Local-Only Garage Door Opener for Apple Home</a><span class="post-related__when">Oct 18, 2026</span></li>
+            <li><a href="/blog/ai/qwen38-27b-arc-b70/">The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</a><span class="post-related__when">Oct 22, 2026</span></li>
+            <li><a href="/blog/ai/strata-b70-page-reclaim/">My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</a><span class="post-related__when">Oct 22, 2026</span></li>
+          </ul>
+        </div>
+        <nav class="post-box post-pager post-meta__chrono" aria-label="Older and newer posts"><a class="post-pager__prev" href="/blog/programming/print-color-proxy/"><span class="post-pager__label">← Older</span>You Get What You Pay For, Plus Extra Yellow</a>
+        </nav>
+      </footer></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/programming/pynq-kvm/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+<span id="scripts-ready" hidden></span>
+
+</body>
+</html>

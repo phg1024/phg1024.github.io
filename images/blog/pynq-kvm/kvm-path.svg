@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 510" width="900" height="510" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#3b4457"/>
+    </marker>
+    <marker id="arrG" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#1f9d6b"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="510" fill="#f7f8fb"/>
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">A KVM from two spare boards</text>
+  <text x="450" y="55" text-anchor="middle" font-size="12.5" fill="#5b6478">Picture in black, keyboard and mouse in green</text>
+
+  <!-- server -->
+  <rect x="24" y="120" width="150" height="180" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="99" y="200" text-anchor="middle" font-size="14" font-weight="600" fill="#1e2433">Home server</text>
+  <text x="99" y="219" text-anchor="middle" font-size="11.5" fill="#5b6478">no monitor,</text>
+  <text x="99" y="234" text-anchor="middle" font-size="11.5" fill="#5b6478">no keyboard</text>
+  <text x="166" y="141" text-anchor="end" font-size="10.5" fill="#5b6478">HDMI out</text>
+  <text x="99" y="290" text-anchor="middle" font-size="10.5" fill="#5b6478">USB port</text>
+
+  <line x1="174" y1="147" x2="236" y2="147" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="196" y="166" text-anchor="middle" font-size="10" fill="#5b6478">720p60</text>
+
+  <!-- PYNQ -->
+  <rect x="220" y="78" width="420" height="230" rx="12" fill="#eef2fa" stroke="#9fb0d0" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="430" y="100" text-anchor="middle" font-size="13" font-weight="600" fill="#2f4a7a">PYNQ-Z2 · FPGA + two ARM cores</text>
+
+  <rect x="240" y="118" width="120" height="58" rx="8" fill="#fff8e6" stroke="#e0c675" stroke-width="1.5"/>
+  <text x="300" y="142" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">HDMI in + DMA</text>
+  <text x="300" y="161" text-anchor="middle" font-size="11.5" fill="#5b6478">FPGA, into RAM</text>
+
+  <line x1="360" y1="147" x2="372" y2="147" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <rect x="376" y="118" width="110" height="58" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="431" y="142" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Copy frame</text>
+  <text x="431" y="161" text-anchor="middle" font-size="11.5" fill="#5b6478">out of DMA buffer</text>
+
+  <line x1="486" y1="147" x2="498" y2="147" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <rect x="502" y="118" width="122" height="58" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="563" y="142" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">JPEG × 2</text>
+  <text x="563" y="161" text-anchor="middle" font-size="11.5" fill="#5b6478">one per CPU core</text>
+
+  <line x1="563" y1="176" x2="563" y2="200" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <rect x="502" y="204" width="122" height="50" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="563" y="225" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Web server</text>
+  <text x="563" y="242" text-anchor="middle" font-size="11.5" fill="#5b6478">MJPEG, login</text>
+
+  <rect x="240" y="204" width="120" height="50" rx="8" fill="#ffffff" stroke="#1f9d6b" stroke-width="1.5"/>
+  <text x="300" y="225" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Input</text>
+  <text x="300" y="242" text-anchor="middle" font-size="11.5" fill="#5b6478">keys → USB reports</text>
+
+  <!-- browser -->
+  <rect x="700" y="196" width="176" height="94" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="788" y="230" text-anchor="middle" font-size="14" font-weight="600" fill="#1e2433">Browser</text>
+  <text x="788" y="250" text-anchor="middle" font-size="11.5" fill="#5b6478">about 15 fps;</text>
+  <text x="788" y="265" text-anchor="middle" font-size="11.5" fill="#5b6478">click and type on it</text>
+
+  <line x1="624" y1="229" x2="696" y2="229" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <path d="M700,282 H300 V258" fill="none" stroke="#1f9d6b" stroke-width="1.6" marker-end="url(#arrG)"/>
+  <text x="668" y="276" text-anchor="middle" font-size="10.5" fill="#1f9d6b">keys, clicks</text>
+
+  <!-- Pi -->
+  <rect x="240" y="360" width="220" height="72" rx="10" fill="#ffffff" stroke="#1f9d6b" stroke-width="1.5"/>
+  <text x="350" y="386" text-anchor="middle" font-size="14" font-weight="600" fill="#1e2433">Pi Zero 2 W</text>
+  <text x="350" y="405" text-anchor="middle" font-size="11.5" fill="#5b6478">pretends to be a USB keyboard</text>
+  <text x="350" y="420" text-anchor="middle" font-size="11.5" fill="#5b6478">and an absolute mouse</text>
+
+  <path d="M240,229 H205 V396 H236" fill="none" stroke="#1f9d6b" stroke-width="1.6" marker-end="url(#arrG)"/>
+  <text x="198" y="340" text-anchor="end" font-size="10.5" fill="#1f9d6b">Wi-Fi,</text>
+  <text x="198" y="354" text-anchor="end" font-size="10.5" fill="#1f9d6b">shared secret</text>
+
+  <path d="M350,432 V460 H99 V304" fill="none" stroke="#1f9d6b" stroke-width="1.6" marker-end="url(#arrG)"/>
+  <text x="225" y="478" text-anchor="middle" font-size="10.5" fill="#1f9d6b">one USB cable: power in, keystrokes out</text>
+
+  <text x="450" y="500" text-anchor="middle" font-size="11.5" fill="#5b6478">The FPGA only moves pixels; the JPEG encoding and everything else is software on the board's two CPU cores.</text>
+</svg>

@@ -117,6 +117,10 @@
     <lastmod>2026-11-01</lastmod>
   </url>
   <url>
+    <loc>https://phg1024.github.io/blog/programming/pynq-kvm/</loc>
+    <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
     <loc>https://phg1024.github.io/about/</loc>
   </url>
   <url>
@@ -175,6 +179,9 @@
   </url>
   <url>
     <loc>https://phg1024.github.io/tag/rendering/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/hardware/</loc>
   </url>
   <url>
     <loc>https://phg1024.github.io/tag/wukong-and-friends/</loc>
