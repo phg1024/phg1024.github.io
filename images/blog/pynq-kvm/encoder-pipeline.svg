@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="900" height="450" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#3b4457"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="450" fill="#f7f8fb"/>
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">The JPEG encoder in the FPGA</text>
+  <text x="450" y="55" text-anchor="middle" font-size="12.5" fill="#5b6478">Eight stages run at once, each handing its output to the next as it goes</text>
+
+  <!-- FPGA region -->
+  <rect x="188" y="74" width="684" height="244" rx="12" fill="#eef2fa" stroke="#9fb0d0" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="530" y="93" text-anchor="middle" font-size="12" font-weight="600" fill="#2f4a7a">FPGA fabric · two copies, 125 MHz</text>
+
+  <!-- row 1, left to right -->
+  <rect x="24" y="108" width="150" height="62" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="99" y="134" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Frame in RAM</text>
+  <text x="99" y="153" text-anchor="middle" font-size="11" fill="#5b6478">written by the video DMA</text>
+
+  <rect x="200" y="108" width="150" height="62" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="275" y="134" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Fetch</text>
+  <text x="275" y="153" text-anchor="middle" font-size="11" fill="#5b6478">whole lines, long bursts</text>
+
+  <rect x="370" y="108" width="150" height="62" rx="8" fill="#fff8e6" stroke="#e0c675" stroke-width="1.5"/>
+  <text x="445" y="134" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Color convert</text>
+  <text x="445" y="153" text-anchor="middle" font-size="11" fill="#5b6478">RGB → YCbCr, 4:2:0</text>
+
+  <rect x="540" y="108" width="150" height="62" rx="8" fill="#fff8e6" stroke="#e0c675" stroke-width="1.5"/>
+  <text x="615" y="134" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">DCT, rows</text>
+  <text x="615" y="153" text-anchor="middle" font-size="11" fill="#5b6478">8×8 blocks</text>
+
+  <rect x="710" y="108" width="150" height="62" rx="8" fill="#fff8e6" stroke="#e0c675" stroke-width="1.5"/>
+  <text x="785" y="134" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">DCT, columns</text>
+  <text x="785" y="153" text-anchor="middle" font-size="11" fill="#5b6478">quantize, zig-zag order</text>
+
+  <line x1="174" y1="139" x2="196" y2="139" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="350" y1="139" x2="366" y2="139" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="520" y1="139" x2="536" y2="139" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="690" y1="139" x2="706" y2="139" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="785" y1="170" x2="785" y2="214" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- row 2, right to left -->
+  <rect x="710" y="218" width="150" height="62" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="785" y="244" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Huffman</text>
+  <text x="785" y="263" text-anchor="middle" font-size="11" fill="#5b6478">one coefficient per clock</text>
+
+  <rect x="540" y="218" width="150" height="62" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="615" y="244" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Bit pack</text>
+  <text x="615" y="263" text-anchor="middle" font-size="11" fill="#5b6478">codes → 64-bit words</text>
+
+  <rect x="370" y="218" width="150" height="62" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="445" y="244" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Byte stuffing</text>
+  <text x="445" y="263" text-anchor="middle" font-size="11" fill="#5b6478">every 0xFF → 0xFF 0x00</text>
+
+  <rect x="200" y="218" width="150" height="62" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="275" y="244" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Write</text>
+  <text x="275" y="263" text-anchor="middle" font-size="11" fill="#5b6478">bursts back to RAM</text>
+
+  <rect x="24" y="218" width="150" height="62" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="99" y="244" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">JPEG body in RAM</text>
+  <text x="99" y="263" text-anchor="middle" font-size="11" fill="#5b6478">about 40 KB at 1080p</text>
+
+  <line x1="710" y1="249" x2="694" y2="249" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="540" y1="249" x2="524" y2="249" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="370" y1="249" x2="354" y2="249" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="200" y1="249" x2="178" y2="249" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- CPU -->
+  <line x1="99" y1="280" x2="99" y2="336" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="24" y="340" width="330" height="50" rx="8" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="189" y="361" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">CPU</text>
+  <text x="189" y="378" text-anchor="middle" font-size="11" fill="#5b6478">adds the JPEG header and sends it to the browser</text>
+
+  <text x="630" y="352" text-anchor="middle" font-size="12" fill="#1e2433">384 clock cycles per 16×16 block of pixels</text>
+  <text x="630" y="372" text-anchor="middle" font-size="12" fill="#1e2433">1080p: 8,160 blocks ≈ 3.1 M cycles</text>
+
+  <text x="630" y="392" text-anchor="middle" font-size="12" fill="#1e2433">Each copy encodes half the frame: ≈ 12.5 ms on paper</text>
+
+  <text x="450" y="430" text-anchor="middle" font-size="11.5" fill="#5b6478">Yellow stages do the arithmetic; white ones move bits. The CPU never touches a pixel.</text>
+</svg>

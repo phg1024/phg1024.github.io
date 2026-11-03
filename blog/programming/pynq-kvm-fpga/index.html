@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="expect" href="#scripts-ready" blocking="render">
+ <style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // The transition is for the hop into or out of the gallery, where the panel changes size
+  // (792px to 1148px wide); between two ordinary pages it is skipped, here on the way out.
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/bread/basic-bread/","/blog/ai/dreamfusion/","/bread/potato-bread/","/bread/banana-bread/","/bread/toast-bread/","/bread/rye-bread/","/bread/banana-bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/blog/programming/print-color-proxy/","/blog/programming/pynq-kvm/","/blog/programming/pynq-kvm-fpga/","/about/","/bread/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/graphics/","/tag/doodling/","/tag/web/","/tag/home-lab/","/tag/image-processing/","/tag/local-inference/","/tag/agents/","/tag/hardware/","/tag/ml-research/","/tag/rendering/","/tag/wukong-and-friends/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      var gallery = function (p) { return p.indexOf('/gallery/') === 0; };
+      if (!path || animated.indexOf(path) < 0 || gallery(path) === gallery(location.pathname)) {
+        event.viewTransition.skipTransition();
+      }
+    });
+    window.addEventListener('pagereveal', handled);
+
+    // One container that resizes (proto-extra.css). On both sides of the hop, give the panel's
+    // on-screen children their own nested groups; on the new page, hand the panel's look to
+    // the transition group, which draws the container while it changes size.
+    var nested = window.CSS && CSS.supports && CSS.supports('view-transition-group: nearest');
+    function panel() {
+      return document.querySelector('.site-main > .content-page, .site-main > .blog-content');
+    }
+    function markVisibleChildren(card) {
+      var marked = [];
+      var h = window.innerHeight;
+      Array.prototype.forEach.call(card.children, function (child) {
+        var r = child.getBoundingClientRect();
+        if (r.height > 0 && r.bottom > 0 && r.top < h) {
+          child.classList.add('vt-card-item');
+          marked.push(child);
+        }
+      });
+      return marked;
+    }
+    function lendPanelLook(card) {
+      var s = getComputedStyle(card);
+      var rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--vt-card-bg-color', s.backgroundColor);
+      rootStyle.setProperty('--vt-card-bg-image', s.backgroundImage);
+      rootStyle.setProperty('--vt-card-border', s.borderTopWidth + ' ' + s.borderTopStyle + ' ' + s.borderTopColor);
+      rootStyle.setProperty('--vt-card-radius', s.borderTopLeftRadius);
+      rootStyle.setProperty('--vt-card-shadow', s.boxShadow);
+      rootStyle.setProperty('--vt-card-backdrop', s.backdropFilter || 'none');
+    }
+    window.addEventListener('pageswap', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (card) markVisibleChildren(card);
+    });
+    window.addEventListener('pagereveal', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (!card) return;
+      var marked = markVisibleChildren(card);
+      lendPanelLook(card);
+      event.viewTransition.finished.finally(function () {
+        marked.forEach(function (el) { el.classList.remove('vt-card-item'); });
+      });
+    });
+  })();
+ </script>
+ <script>
+  (function () {
+     // Cyberpunk is switched off for now (themeNames in /js/main.js): anyone who had it
+     // gets minimalist.
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     if (savedTheme === 'cyberpunk') savedTheme = 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@600;700&amp;family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+ <title>The FPGA Finally Earns Its Keep | Peihong Guo</title>
+ <meta name="description" content="My home-built KVM ran at 15 fps because two small ARM cores were encoding JPEG in software. So I wrote a JPEG encoder in C++ for the FPGA sitting right…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/programming/pynq-kvm-fpga/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="The FPGA Finally Earns Its Keep | Peihong Guo">
+ <meta property="og:description" content="My home-built KVM ran at 15 fps because two small ARM cores were encoding JPEG in software. So I wrote a JPEG encoder in C++ for the FPGA sitting right…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/programming/pynq-kvm-fpga/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="The FPGA Finally Earns Its Keep | Peihong Guo">
+ <meta name="twitter:description" content="My home-built KVM ran at 15 fps because two small ARM cores were encoding JPEG in software. So I wrote a JPEG encoder in C++ for the FPGA sitting right…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-11-03T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/proto.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head><body class="proto">
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link is-active" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by area">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">11</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/graphics/">Graphics <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/doodling/">Doodling <span class="proto-rail__count">8</span></a></li>
+   </ul>
+   <ul class="proto-rail__tags proto-rail__tags--topics" aria-label="Browse by topic">
+    <li><a class="proto-rail__tag" href="/tag/web/">Web <span class="proto-rail__count">9</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/home-lab/">Home lab <span class="proto-rail__count">8</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/image-processing/">Image processing <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/local-inference/">Local inference <span class="proto-rail__count">4</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/agents/">Agents <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/hardware/">Hardware <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/ml-research/">ML research <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/rendering/">Rendering <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/wukong-and-friends/">Wukong &amp; Friends <span class="proto-rail__count">2</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>The FPGA Finally Earns Its Keep</h1><p class="blog-post__date">Nov 3, 2026</p>
+<p><a href="/blog/programming/pynq-kvm/">The first version of my KVM</a> worked, but it ended on an awkward note. It ran on a PYNQ-Z2, a board with an FPGA and two 650 MHz ARM cores, and the FPGA did almost nothing. It copied each HDMI frame into memory; the CPU then spent 80 ms per 720p frame encoding JPEG, and that capped the picture at 15 frames a second. At 1080p, software managed about 5.</p>
+<p>There was a cheaper fix: an HDMI-to-camera bridge on a Raspberry Pi, running PiKVM, would do 1080p at 30 for $20–30. But I had the FPGA right there, so I asked the obvious question: would JPEG be faster in the fabric? The estimate was &quot;much faster, and a few days of work&quot;. It took one evening. The target was 1080p. As with the first post, Claude did most of the legwork: it wrote the encoder, ran the builds and tested it on the board. I typed the passwords.</p>
+<h2>Why the FPGA can do it</h2>
+<p>The CPU encodes one pixel after another. An FPGA can lay the whole encoder out as a pipeline, where every stage works on a different part of the image in the same clock cycle. If the slowest stage handles one sample per clock, a 1080p frame takes about 3 million cycles. At 143 MHz that is 22 ms, fast enough for 45 frames a second.</p>
+<p>It also saves the copy. The video DMA already writes each frame into memory. The encoder can read it from there, at its physical address, and write back only the compressed result. The CPU never touches a pixel: it adds the JPEG header and sends about 40 KB per frame to the browser.</p>
+<h2>Writing a JPEG encoder in C++</h2>
+<p>The encoder is written in Vitis HLS, AMD's tool that turns C++ into hardware. It's a baseline JPEG encoder, the most common kind: color subsampled to quarter resolution (4:2:0), with the standard Huffman tables from the JPEG spec. About 500 lines, in eight stages:</p>
+<p><img src="/images/blog/pynq-kvm/encoder-pipeline.svg" alt="The encoder pipeline. Row one: the frame in RAM, fetch, color conversion to YCbCr with 4:2:0 subsampling, row DCT, column DCT with quantization in zig-zag order. Row two: Huffman coding at one coefficient per clock, bit packing into 64-bit words, byte stuffing, writing back to RAM. The CPU then adds the JPEG header. At 384 cycles per 16×16 block, a 1080p frame is about 3.1 million cycles; two copies of the pipeline at 125 MHz each encode half of it in about 12.5 ms on paper."></p>
+<p>The nice part of HLS is that the C++ runs on a normal computer too, so the encoder was tested long before any hardware existed. Its output was checked two ways:</p>
+<ul>
+<li><strong>Against libjpeg.</strong> For the same 1080p screenshot at the same quality, the files came out the same size (39.5 KB) and the same quality.</li>
+<li><strong>Bit for bit against a separate reference encoder</strong> written in Python, using the same tables and quantized coefficients.</li>
+</ul>
+<p>That caught one bug that wouldn't have happened on a CPU. In HLS, a 4-bit integer shifted left by 4 stays a 4-bit integer: the top bits just fall off. One Huffman table lookup built its index that way and read the wrong entry.</p>
+<h2>Making it fit the clock</h2>
+<p>Correct C++ isn't the same as fast hardware. HLS compiles every loop into a circuit, and the first synthesis said some stages couldn't keep up with a 7 ns clock: the byte-stuffing stage needed 11 ns per step. The problem is what hardware people call a loop-carried path: when the next step can't start until a long chain of logic from this step settles.</p>
+<p>The fix in each case was to restructure, not to tweak:</p>
+<ul>
+<li><strong>The bit packer</strong> shifted a 128-bit accumulator by a variable amount on every step. Now the shift depends only on a small running count, so the part that feeds back into the next step is just an OR.</li>
+<li><strong>Byte stuffing</strong> (JPEG reserves the byte 0xFF, so every 0xFF in the data needs a 0x00 after it) was split into two simpler stages.</li>
+<li><strong>The color stage</strong> first stored whole stripes of raw pixels. It now converts as pixels arrive and stores the converted samples instead. That cut on-chip memory from 158 blocks to 80, and multipliers from 129 to 51.</li>
+</ul>
+<p>After each change, the C++ test had to produce exactly the same output as before.</p>
+<h2>Making it fit the chip</h2>
+<p>The encoder sits inside PYNQ's stock &quot;base&quot; design, the one with the HDMI input, so the HDMI driver still works. Rebuilding that design needs Vivado, AMD's FPGA tool, and exactly the 2024.1 release, the one PYNQ 3.1 was built with. Vivado doesn't run on a Mac, so it went into an Ubuntu container on an x86 Linux box at home: a 13 GB download, installed with only the one chip family.</p>
+<p>The first build crashed. Vivado died with <code>realloc(): invalid pointer</code> deep inside libudev, which its license code calls to list the machine's hardware. In a container there's no hardware list to read. Mounting the host's udev data didn't help, and neither did preloading a library. What worked was a fake <code>libudev</code> that reports no devices at all, placed first in Vivado's library path.</p>
+<p>The second build failed at placement: the design needed 90% of the chip's logic. The encoder itself uses only about 16% of it. The biggest chunk, more than a third, was the base design's four small MicroBlaze processors that drive the board's Arduino, Raspberry Pi and Pmod headers, and the KVM uses none of them. Removing the two biggest freed enough room.</p>
+<p>The next build closed timing with 0.3 ns to spare, at 65% of the chip. Each build takes about 40 minutes, even after raising the parallel jobs from PYNQ's default of 4 to 16. A lot of that time is single-threaded.</p>
+<p>On the board, the first try gave a correct picture: 1,707 frames in a 60-second test without a single error, at about 29 frames a second. That was the cap I'd set, 30. Five times faster than software, with the CPU mostly idle. I could have stopped there.</p>
+<h2>From 29 to 60</h2>
+<p>The server sends 60 frames a second, though, and the encoder was supposed to manage 45. Three changes closed the gap.</p>
+<p><strong>Overlap the work.</strong> The loop still did one thing at a time: wait for a frame, encode it, wait for the next. Now it starts the encoder on one frame and fetches the next while the hardware runs. That alone gave 41 fps.</p>
+<p><strong>Two encoders, half a frame each.</strong> JPEG already has a way to split an image: restart markers. At each one, the decoder resets its running state and starts again on a byte boundary. My encoder already did exactly that at the start and end of every image. So the second copy encodes the bottom half as if it were a separate picture. The CPU adds one field to the header and puts the two-byte marker between the halves. In simulation, the stitched image came out pixel-for-pixel identical to encoding the whole frame at once. The encoder itself didn't change at all.</p>
+<p>Two encoders needed more room and more slack. Removing the other two MicroBlazes and some debug hardware brought the chip down to 58%. But at 143 MHz, the build missed timing by 0.4 ns. The slow path was in the memory interface HLS had generated, not in my code. The encoders now run on their own 125 MHz clock, which closes with 0.27 ns to spare. On paper each half takes 12.5 ms. Measured from the CPU, a frame takes about 15 ms from starting the encoders to having the JPEG in hand, still inside the 16.7 ms between frames. That gave 54 fps.</p>
+<p><strong>Remove the sleep.</strong> It should have been 60, so Claude added a timing breakdown of the loop to the status page. The CPU's own share of each frame came to about 3.3 ms; the encoders run alongside it. The rest went to a sleep. To cap the frame rate, the loop slept until 1/60 of a second after each frame arrived. Then fetching the next frame took another 1.2 ms on top. That set a ceiling of about 56, and some jitter cost the rest. At a cap of 60 there is nothing to limit: fetching a frame already waits for the next one from HDMI. With the sleep gone, it ran 1,800 frames in 30 seconds.</p>
+<h2>The result</h2>
+<table>
+<thead>
+<tr>
+<th>1080p</th>
+<th>Software JPEG</th>
+<th>One FPGA encoder</th>
+<th>Two FPGA encoders</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frame rate</td>
+<td>about 5 fps</td>
+<td>about 29 fps</td>
+<td><strong>60 fps</strong></td>
+</tr>
+<tr>
+<td>Encoding one frame</td>
+<td>240 ms, plus a 45 ms copy</td>
+<td>23 ms, no copy</td>
+<td>about 15 ms, both halves at once, no copy</td>
+</tr>
+<tr>
+<td>What limits it</td>
+<td>the two CPU cores</td>
+<td>a 30 fps cap; one step at a time</td>
+<td>the HDMI input, with the encoders close behind</td>
+</tr>
+</tbody>
+</table>
+<p>The encoders are busy for about 15 of the 16.7 ms between frames. Meanwhile the CPU has almost nothing to do: it spends about 14.5 ms of every frame waiting for the next one to arrive from HDMI, while the encoders work on the previous one. So 60 is the limit of the server's HDMI output, but the encoders aren't far behind: they have about 10% to spare. The page now feels like a screen rather than a slideshow, at the server's full resolution. If the bitstream is missing, the program falls back to software encoding on its own.</p>
+<p>It also asks for 1080p on its own now. An HDMI sink tells the source which modes it prefers, and PYNQ's base design asks for 720p, so at first I set the server to 1080p by hand. That setting would have been lost the next time its display server restarted. The new design tells the server it prefers 1080p, and <code>xrandr</code> on the server now marks 1920×1080 as both preferred and current.</p>
+<h2>What's left</h2>
+<ul>
+<li><strong>Booting at the same moment.</strong> When the PYNQ boots, it loads the stock 720p design for a few dozen seconds before the KVM swaps in its own. If the server boots at the same time, it can pick 720p. Replugging the cable fixes it; loading the KVM's design first would rule it out.</li>
+<li><strong>A still screen is still re-encoded 60 times a second.</strong> At about 40 KB a frame, that's around 19 Mbit/s on the home network for a login screen that isn't changing. Skipping unchanged frames would fix it.</li>
+<li><strong>The browser has a say.</strong> The board streams 60; what you see also depends on the network and how fast the browser decodes.</li>
+</ul>
+<p>The lesson I'd take: <strong>in HLS, the C++ is the easy part</strong>. A correct encoder came out of simulation in well under an hour. Fitting it to the clock, the chip and the toolchain took the rest of the evening, most of it waiting on 40-minute builds. And the last 10% of the frame rate wasn't in the hardware at all. It was one <code>sleep()</code> in Python, found only after measuring every stage of the loop.</p>
+
+      <footer class="post-meta">
+        <div class="post-box post-meta__series">
+          <p class="post-meta__label">Part 2 of 2 in <a href="/blog/programming/pynq-kvm/">A home-built KVM</a></p>
+          <nav class="post-pager" aria-label="Previous and next in A home-built KVM"><a class="post-pager__prev" href="/blog/programming/pynq-kvm/" rel="prev"><span class="post-pager__label">← Part 1</span>A KVM From the Spare-Board Drawer</a>
+          </nav>
+        </div>
+        <p class="post-box post-meta__tags">Filed under <a href="/tag/doodling/">Doodling</a> · <a href="/tag/hardware/">Hardware</a> · <a href="/tag/home-lab/">Home lab</a></p>
+        <div class="post-box post-meta__related">
+          <p class="post-meta__label">Related</p>
+          <ul class="post-related">
+            <li><a href="/blog/programming/home-automation/">A Local-Only Garage Door Opener for Apple Home</a><span class="post-related__when">Oct 18, 2026</span></li>
+            <li><a href="/blog/programming/print-color-proxy/">You Get What You Pay For, Plus Extra Yellow</a><span class="post-related__when">Nov 1, 2026</span></li>
+            <li><a href="/blog/ai/qwen38-27b-arc-b70/">The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</a><span class="post-related__when">Oct 22, 2026</span></li>
+          </ul>
+        </div>
+      </footer></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/programming/pynq-kvm-fpga/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+<span id="scripts-ready" hidden></span>
+
+</body>
+</html>
