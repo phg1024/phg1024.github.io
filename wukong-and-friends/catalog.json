@@ -1,5 +1,257 @@
 [
   {
+    "id": "pigsys-boing-boing-band",
+    "title": "Pigsy’s Boing-Boing Band",
+    "title_zh": "八戒的嗡嗡音乐会",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "science-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-07",
+    "updated": "2026-11-07",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "sound",
+      "vibrate",
+      "pluck",
+      "band",
+      "still",
+      "quiet",
+      "listen",
+      "gentle"
+    ],
+    "science_plan_id": "S4",
+    "language_reading_versions": {
+      "en": "pigsys-boing-boing-band/v1/en",
+      "zh-Hans": "pigsys-boing-boing-band/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1-booklet.pdf",
+    "cover": "covers/pigsys-boing-boing-band-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Pigsy’s Boing-Boing Band",
+        "description": "Pigsy makes a box frog with two rubber bands. Pluck! Boing! But when Wukong presses the band, the sound stops. Nezha says watch and listen: the band shakes so fast it looks blurry. It vibrates, and that makes the sound. Then they play a gentle little song."
+      },
+      "zh": {
+        "title": "八戒的嗡嗡音乐会",
+        "description": "八戒用纸盒做了一只青蛙，嘴上绷着两根橡皮筋。一拨，“嗡——”！可悟空一按住，声音就没了。哪吒说边看边听：橡皮筋抖得飞快，它在振动，声音就是这么来的。最后大家轻轻拨，开了一场小小的音乐会。"
+      }
+    },
+    "description": "八戒用纸盒做了一只青蛙，嘴上绷着两根橡皮筋。一拨，“嗡——”！可悟空一按住，声音就没了。哪吒说边看边听：橡皮筋抖得飞快，它在振动，声音就是这么来的。最后大家轻轻拨，开了一场小小的音乐会。",
+    "description_en": "Pigsy makes a box frog with two rubber bands. Pluck! Boing! But when Wukong presses the band, the sound stops. Nezha says watch and listen: the band shakes so fast it looks blurry. It vibrates, and that makes the sound. Then they play a gentle little song.",
+    "keywords": "八戒 悟空 哪吒 沙僧 声音 振动 橡皮筋 拨 按住 青蛙 纸盒 音乐会 科学启蒙 Pigsy Wukong Nezha Sandy sound vibrate rubber band pluck hold still frog box music early science",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1-booklet.pdf",
+        "cover": "covers/pigsys-boing-boing-band-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/pigsys-boing-boing-band-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukong-and-the-missing-ice-cube",
+    "title": "Wukong and the Missing Ice Cube",
+    "title_zh": "冰块失踪案",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "science-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-07",
+    "updated": "2026-11-07",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "ice",
+      "melt",
+      "freeze",
+      "liquid",
+      "solid",
+      "warm",
+      "cold",
+      "change"
+    ],
+    "science_plan_id": "S5",
+    "language_reading_versions": {
+      "en": "wukong-and-the-missing-ice-cube/v1/en",
+      "zh-Hans": "wukong-and-the-missing-ice-cube/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1-booklet.pdf",
+    "cover": "covers/wukong-and-the-missing-ice-cube-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong and the Missing Ice Cube",
+        "description": "Wukong leaves an ice cube on a tray while he and Ao Bing make it a flag. When he comes back, the ice cube is gone! Ao Bing explains: the kitchen is warm, so the ice melted into water. Sandy freezes the water in a fish mold, and by morning it is ice again."
+      },
+      "zh": {
+        "title": "冰块失踪案",
+        "description": "悟空把冰块放在托盘里，和敖丙去给它做小旗。回来一看，冰块不见了！敖丙说厨房暖和，冰化成了水：冰是固体，水是液体，会流动。沙僧把水倒进小鱼冰模放进冷冻室，第二天早上，水又变回了冰。"
+      }
+    },
+    "description": "悟空把冰块放在托盘里，和敖丙去给它做小旗。回来一看，冰块不见了！敖丙说厨房暖和，冰化成了水：冰是固体，水是液体，会流动。沙僧把水倒进小鱼冰模放进冷冻室，第二天早上，水又变回了冰。",
+    "description_en": "Wukong leaves an ice cube on a tray while he and Ao Bing make it a flag. When he comes back, the ice cube is gone! Ao Bing explains: the kitchen is warm, so the ice melted into water. Sandy freezes the water in a fish mold, and by morning it is ice again.",
+    "keywords": "悟空 敖丙 沙僧 冰 水 融化 结冰 固体 液体 冷冻室 冰模 放大镜 科学启蒙 Wukong Ao Bing Sandy ice water melt freeze solid liquid freezer mold magnifying glass early science",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1-booklet.pdf",
+        "cover": "covers/wukong-and-the-missing-ice-cube-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-missing-ice-cube-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukongs-no-touch-fish",
+    "title": "Wukong’s No-Touch Fish",
+    "title_zh": "悟空的隔空小鱼",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "science-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-07",
+    "updated": "2026-11-07",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "magnet",
+      "metal",
+      "steel",
+      "pull",
+      "through",
+      "underneath",
+      "test",
+      "material"
+    ],
+    "science_plan_id": "S3",
+    "language_reading_versions": {
+      "en": "wukongs-no-touch-fish/v1/en",
+      "zh-Hans": "wukongs-no-touch-fish/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1-booklet.pdf",
+    "cover": "covers/wukongs-no-touch-fish-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s No-Touch Fish",
+        "description": "A paper fish swims along a paper river, and nobody is touching it! Is Iron Fan blowing it? No: Sandy has a magnet under the board. The friends test wood, plastic, aluminum and steel. Only steel sticks, so Wukong’s fish needs a steel piece to swim too."
+      },
+      "zh": {
+        "title": "悟空的隔空小鱼",
+        "description": "纸做的小河里，红色纸鱼自己游了起来，谁也没碰它！是铁扇公主用扇子扇的吗？不是，沙僧在纸板底下拿着磁棒。大家试了木块、塑料片、铝片和钢片，只有钢片被吸住。悟空的小鱼放进钢片，也游起来了！"
+      }
+    },
+    "description": "纸做的小河里，红色纸鱼自己游了起来，谁也没碰它！是铁扇公主用扇子扇的吗？不是，沙僧在纸板底下拿着磁棒。大家试了木块、塑料片、铝片和钢片，只有钢片被吸住。悟空的小鱼放进钢片，也游起来了！",
+    "description_en": "A paper fish swims along a paper river, and nobody is touching it! Is Iron Fan blowing it? No: Sandy has a magnet under the board. The friends test wood, plastic, aluminum and steel. Only steel sticks, so Wukong’s fish needs a steel piece to swim too.",
+    "keywords": "悟空 铁扇公主 沙僧 磁铁 磁棒 吸住 钢片 铝片 木块 塑料 材料 试一试 纸鱼 科学启蒙 Wukong Iron Fan Sandy magnet steel aluminum wood plastic materials test paper fish early science",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1-booklet.pdf",
+        "cover": "covers/wukongs-no-touch-fish-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-no-touch-fish-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
+    "id": "wukongs-picnic-vote",
+    "title": "Wukong’s Picnic Vote",
+    "title_zh": "野餐玩什么？",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-07",
+    "updated": "2026-11-07",
+    "level": "L3",
+    "target_age_months": 60,
+    "focus_vocabulary": [
+      "choose",
+      "vote",
+      "chart",
+      "column",
+      "sticker",
+      "most",
+      "fewer",
+      "choice"
+    ],
+    "math_plan_id": "M10",
+    "language_reading_versions": {
+      "en": "wukongs-picnic-vote/v1/en",
+      "zh-Hans": "wukongs-picnic-vote/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-picnic-vote-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-picnic-vote-v1-booklet.pdf",
+    "cover": "covers/wukongs-picnic-vote-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Picnic Vote",
+        "description": "Six friends finish their picnic on the peach hill. Kite, bubbles or drawing first? Everyone shouts at once, and nobody can hear! Jade Rabbit draws a chart and gives each friend one star sticker. The tallest column wins: kite first, then bubbles and drawing."
+      },
+      "zh": {
+        "title": "野餐玩什么？",
+        "description": "六个好朋友在桃子草坡上野餐，先放风筝、吹泡泡还是画画？大家越喊越响，谁也听不见谁。玉兔画了一张三列的图表，每人一张星星贴纸投一票。最高的一列票最多：先放风筝，再吹泡泡、画画！"
+      }
+    },
+    "description": "六个好朋友在桃子草坡上野餐，先放风筝、吹泡泡还是画画？大家越喊越响，谁也听不见谁。玉兔画了一张三列的图表，每人一张星星贴纸投一票。最高的一列票最多：先放风筝，再吹泡泡、画画！",
+    "description_en": "Six friends finish their picnic on the peach hill. Kite, bubbles or drawing first? Everyone shouts at once, and nobody can hear! Jade Rabbit draws a chart and gives each friend one star sticker. The tallest column wins: kite first, then bubbles and drawing.",
+    "keywords": "悟空 八戒 玉兔 敖丙 哪吒 铁扇公主 野餐 投票 图表 贴纸 最多 更少 选择 数学启蒙 Wukong Pigsy Jade Rabbit Ao Bing Nezha Iron Fan picnic vote chart column sticker most fewer choice early math",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-picnic-vote-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-picnic-vote-v1-booklet.pdf",
+        "cover": "covers/wukongs-picnic-vote-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-picnic-vote-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-picnic-vote-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-picnic-vote-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "ao-bings-little-boat",
     "title": "Ao Bing’s Little Boat",
     "title_zh": "敖丙的小船，浮起来！",
@@ -264,11 +516,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "science-cp5-approved",
+    "version": "v2",
+    "revision": "solid-shadows-p05-p10-p15",
     "publication_status": "published",
     "published": "2026-10-29",
-    "updated": "2026-10-29",
+    "updated": "2026-11-07",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -283,12 +535,12 @@
     ],
     "science_plan_id": "S1",
     "language_reading_versions": {
-      "en": "wukong-and-the-copycat-shadow/v1/en",
-      "zh-Hans": "wukong-and-the-copycat-shadow/v1/zh-Hans"
+      "en": "wukong-and-the-copycat-shadow/v2/en",
+      "zh-Hans": "wukong-and-the-copycat-shadow/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-booklet.pdf",
-    "cover": "covers/wukong-and-the-copycat-shadow-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v2-booklet.pdf",
+    "cover": "covers/wukong-and-the-copycat-shadow-v2.jpg",
     "translations": {
       "en": {
         "title": "Wukong and the Copycat Shadow",
@@ -304,14 +556,14 @@
     "keywords": "悟空 玉兔 沙僧 八戒 影子 光 影子戏 纸偶 远近 变大 变小 科学启蒙 Wukong Rabbit Sandy Pigsy shadow light shadow show puppets nearer farther bigger smaller early science",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-booklet.pdf",
-        "cover": "covers/wukong-and-the-copycat-shadow-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v2-booklet.pdf",
+        "cover": "covers/wukong-and-the-copycat-shadow-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-copycat-shadow-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-copycat-shadow-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-copycat-shadow-v2-zh-Hans.jpg"
       }
     }
   },
@@ -387,11 +639,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "cp5-approved",
+    "version": "v2",
+    "revision": "new-clinic-all-pages",
     "publication_status": "published",
     "published": "2026-10-29",
-    "updated": "2026-10-29",
+    "updated": "2026-11-07",
     "level": "L1",
     "target_age_months": 48,
     "focus_vocabulary": [
@@ -402,12 +654,12 @@
       "mirror"
     ],
     "language_reading_versions": {
-      "en": "wukong-visits-the-dentist/v1/en",
-      "zh-Hans": "wukong-visits-the-dentist/v1/zh-Hans"
+      "en": "wukong-visits-the-dentist/v2/en",
+      "zh-Hans": "wukong-visits-the-dentist/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1-booklet.pdf",
-    "cover": "covers/wukong-visits-the-dentist-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2-booklet.pdf",
+    "cover": "covers/wukong-visits-the-dentist-v2.jpg",
     "translations": {
       "en": {
         "title": "Wukong Visits the Dentist",
@@ -423,14 +675,14 @@
     "keywords": "悟空 沙僧 八戒 看牙医 牙医 牙椅 举手 停一停 勇敢 刷牙 健康 Wukong Sandy Pigsy dentist check-up dental chair raise your hand stop ready toothbrush health",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1-booklet.pdf",
-        "cover": "covers/wukong-visits-the-dentist-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2-booklet.pdf",
+        "cover": "covers/wukong-visits-the-dentist-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-visits-the-dentist-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-visits-the-dentist-v2-zh-Hans.jpg"
       }
     }
   },

@@ -212,6 +212,36 @@
       "bytes": 8814281
     },
     {
+      "path": "docs/downloads/pigsys-boing-boing-band-v1-booklet.pdf",
+      "sha256": "b3c57223aca8538acf12624846811d2e7c1f347d8f287bcf2f6063622fbcaece",
+      "bytes": 7909441
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v1-core-en.pdf",
+      "sha256": "11afee33779324956109453e0ab6683f1a2c77edbc9428dfa1589565458875f2",
+      "bytes": 7546802
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v1-core-zh-Hans.pdf",
+      "sha256": "6a74aabf88a2dfcdb2869cb81c5242f124e4e54785925356a3400f62e52b5062",
+      "bytes": 7578897
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v1-zh-Hans-booklet.pdf",
+      "sha256": "db20090f3a1f660130918740735bb2b13c7a5400d65b36fa198a8883f65c43b5",
+      "bytes": 7955548
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v1-zh-Hans.pdf",
+      "sha256": "7d01786d5aa2e48b5a03e76cc525c690ef9627c8e2a0c50fc7a837d2f919028c",
+      "bytes": 7945664
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v1.pdf",
+      "sha256": "752b6da5dd7cadc41da490df0ae05893ef7c7ab834e5599a15edb4db8eb198e1",
+      "bytes": 7890395
+    },
+    {
       "path": "docs/downloads/pigsys-nine-little-cookies-v1-booklet.pdf",
       "sha256": "45e26dec4289ca025ba3637059512154339191031fd5f102b09b4357de64e0ce",
       "bytes": 9241841
@@ -510,6 +540,66 @@
       "path": "docs/downloads/wukong-and-the-copycat-shadow-v1.pdf",
       "sha256": "d1f4d8fe8ff1942db0d3805d9f61ae4ab234f919c1a7bb817ae69baca4e740bf",
       "bytes": 8450929
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v2-booklet.pdf",
+      "sha256": "8731ef9d3879b964a27010e848bc1e397460bda5c783b383e0f6dbcf112cf87e",
+      "bytes": 8449374
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v2-core-en.pdf",
+      "sha256": "809e98a7005bf54ac45a92951f64c953a771c65e4fa25817157f7b475df7b9b3",
+      "bytes": 8096460
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v2-core-zh-Hans.pdf",
+      "sha256": "f69533d188b8608108d25f2763248edd02c74d3e07df86898fe6dee0643c48f6",
+      "bytes": 8129813
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v2-zh-Hans-booklet.pdf",
+      "sha256": "e704ce4e3e56f34e60adc50cb4be0e45cec3d3076182e6766dce38d405786a6e",
+      "bytes": 8496663
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v2-zh-Hans.pdf",
+      "sha256": "2a156cf14a013cfe4719f5234aa7835ec6225a5caf4268eb3d3d6610af0875f2",
+      "bytes": 8486804
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-copycat-shadow-v2.pdf",
+      "sha256": "985c8b46d9d25aaa8bec1f39ddffd5b39ed148d5014d8c43b77637c01e202f73",
+      "bytes": 8430294
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-missing-ice-cube-v1-booklet.pdf",
+      "sha256": "e82301f3cb21b4d934c6ae5626f13b1e3f5e890b6ab9d44bca0a7a4ff1dfa3c2",
+      "bytes": 7432719
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-missing-ice-cube-v1-core-en.pdf",
+      "sha256": "037d88c4eeaf0b4019de72e7d37db23c33e2c20b88daf62c66e4b86f66426053",
+      "bytes": 7088316
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-missing-ice-cube-v1-core-zh-Hans.pdf",
+      "sha256": "9b6ff25d6035bd8156a04951db8fb4fbe110c63ad9311480e4ba6d5882c649ef",
+      "bytes": 7127631
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-missing-ice-cube-v1-zh-Hans-booklet.pdf",
+      "sha256": "f656302745b5f2bd378d28603788ba2afd73e82d03099665fb14cbb22d39ffe9",
+      "bytes": 7482798
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-missing-ice-cube-v1-zh-Hans.pdf",
+      "sha256": "2db6fa5981ac40c0c40619d46d4e899f582ac4c59e9bb38bb4f1ebbe99bebecb",
+      "bytes": 7472841
+    },
+    {
+      "path": "docs/downloads/wukong-and-the-missing-ice-cube-v1.pdf",
+      "sha256": "cb83dea8c790cebbceabe5695d404bf9423b869c88e852772c6847bbaadc59f4",
+      "bytes": 7413619
     },
     {
       "path": "docs/downloads/wukong-and-the-snowy-zigzags-v1-booklet.pdf",
@@ -1082,6 +1172,36 @@
       "bytes": 8850209
     },
     {
+      "path": "docs/downloads/wukong-visits-the-dentist-v2-booklet.pdf",
+      "sha256": "eda9500d991d501fcc88b8cfb3f0dfdaec2d3eb1efd626910a98e3a10fe20a22",
+      "bytes": 7950592
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v2-core-en.pdf",
+      "sha256": "e723cf68eb86d59f53c18b14130ce97f0c51d3bd429a713566eec163e30b837e",
+      "bytes": 7645183
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v2-core-zh-Hans.pdf",
+      "sha256": "42d04adb7639b3259946f564e87c1518aa20c5e2b02bafda01d9195f7d65faa8",
+      "bytes": 7674234
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v2-zh-Hans-booklet.pdf",
+      "sha256": "7a753eedb8064be271d7aeca6e02caef25929ada9481c3aabaa2b45720e1c0f0",
+      "bytes": 7992381
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v2-zh-Hans.pdf",
+      "sha256": "47d84e34f9f6dd36dedf1634979484eadd46f2e2bc624a80ca347383917b71ac",
+      "bytes": 7982492
+    },
+    {
+      "path": "docs/downloads/wukong-visits-the-dentist-v2.pdf",
+      "sha256": "53ca733e0845379ae96896ac0f99990be42afd4ed0224408dbfbf0e6b8abff74",
+      "bytes": 7931570
+    },
+    {
       "path": "docs/downloads/wukong-visits-the-pumpkin-patch-v1-booklet.pdf",
       "sha256": "91ac9c249fc7c4921a3337d1f68158d2e4a38c9d006ac2a944f911955cae4c1f",
       "bytes": 10102597
@@ -1427,6 +1547,36 @@
       "bytes": 9540919
     },
     {
+      "path": "docs/downloads/wukongs-no-touch-fish-v1-booklet.pdf",
+      "sha256": "2f24f5499991e09a9afc5d34ebff395a29fb1afb18748ea8b50cfc0499764c86",
+      "bytes": 7069443
+    },
+    {
+      "path": "docs/downloads/wukongs-no-touch-fish-v1-core-en.pdf",
+      "sha256": "a491323fafd613b8c8ae6b98d43b26c0149810320595d3693c902fbb7f430bdb",
+      "bytes": 6761212
+    },
+    {
+      "path": "docs/downloads/wukongs-no-touch-fish-v1-core-zh-Hans.pdf",
+      "sha256": "d12fac2d92d005828fbf12f5287eaba47960b11eb023138e13ec0306e230ad46",
+      "bytes": 6794328
+    },
+    {
+      "path": "docs/downloads/wukongs-no-touch-fish-v1-zh-Hans-booklet.pdf",
+      "sha256": "d2a952fcbed199dd084a0078d1466b9d0bb62ca0d239019e935e4c8ed04c4a85",
+      "bytes": 7115457
+    },
+    {
+      "path": "docs/downloads/wukongs-no-touch-fish-v1-zh-Hans.pdf",
+      "sha256": "0c488dad67a9c6c42bcd77f48804802d1ee546f1e28d09653ab6dd561495cc89",
+      "bytes": 7105584
+    },
+    {
+      "path": "docs/downloads/wukongs-no-touch-fish-v1.pdf",
+      "sha256": "3eee8bab471279f064f60269c16c094fabed7ed6adf4aff970b01ddecb992ff9",
+      "bytes": 7050423
+    },
+    {
       "path": "docs/downloads/wukongs-noisy-nap-v1-booklet.pdf",
       "sha256": "1731fcbd090f5810ada14a62d99821bdc3bd7226f3a39a8f3464801b255245f1",
       "bytes": 8981000
@@ -1740,6 +1890,36 @@
       "path": "docs/downloads/wukongs-painting-class-v3.pdf",
       "sha256": "59666d0caf9add18b9ca0bda0970b61b67f03886450b4500ad49ed00630d0a89",
       "bytes": 23243583
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v1-booklet.pdf",
+      "sha256": "7c3fea0adcc55880e89ac4e161e97b88911292ec70438860ddf8c39e3735a31c",
+      "bytes": 7634354
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v1-core-en.pdf",
+      "sha256": "f50f77b1171e4e30f7c04055a6138dda7a10fdc81c5d4440cb72dc7cce952ce9",
+      "bytes": 7305276
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v1-core-zh-Hans.pdf",
+      "sha256": "2384c901e5694b0b02a841378db9f85d89f5d809786414c1d47c9a18b4339a2e",
+      "bytes": 7343697
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v1-zh-Hans-booklet.pdf",
+      "sha256": "d7d7cd3a1ffb0d0dd09e7f2200788076e4ef0ec69dec0043f24804ddf1f5bf0d",
+      "bytes": 7685189
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v1-zh-Hans.pdf",
+      "sha256": "7369663220e8d98e2130a3792e72f11e0fba44aa0161d849a8eb59abf810a380",
+      "bytes": 7675206
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v1.pdf",
+      "sha256": "0d31a917e9d56a3e672f30ecd4248844985d971b8d47d5945f12b2af0343b4ee",
+      "bytes": 7615316
     },
     {
       "path": "docs/downloads/wukongs-slippy-slide-skates-v1-booklet.pdf",
@@ -2057,6 +2237,11 @@
       "bytes": 1077374
     },
     {
+      "path": "stories/pigsys-boing-boing-band/editions/v1/prompts.txt",
+      "sha256": "0688d3e04bbd06a866c6fc8f53141cf4514e11efb44e627eb7ed4ff187ce54ba",
+      "bytes": 37639870
+    },
+    {
       "path": "stories/pigsys-nine-little-cookies/editions/v1/prompts.txt",
       "sha256": "c136228867c8828c6e890325439a3642ee61670f6408a154f76f988456d1747a",
       "bytes": 2591524
@@ -2120,6 +2305,16 @@
       "path": "stories/wukong-and-the-copycat-shadow/editions/v1/prompts.txt",
       "sha256": "7a327c6c966ce4e792b0f602dc77efd30e969f24bb5008120dd88e628f7433b8",
       "bytes": 285742
+    },
+    {
+      "path": "stories/wukong-and-the-copycat-shadow/editions/v2/prompts.txt",
+      "sha256": "5343d03bdd74919b6f4e0aee46b596f2279c4a697d27a4c9e14f0ac138f5657e",
+      "bytes": 339061
+    },
+    {
+      "path": "stories/wukong-and-the-missing-ice-cube/editions/v1/prompts.txt",
+      "sha256": "40bc8eb9b0290f5d69519dae7cc9d1ddae5d1eaaddc5c61d706ed9c3a8e53443",
+      "bytes": 13941745
     },
     {
       "path": "stories/wukong-and-the-snowy-zigzags/editions/v1/prompts.txt",
@@ -2262,6 +2457,11 @@
       "bytes": 750539
     },
     {
+      "path": "stories/wukong-visits-the-dentist/editions/v2/prompts.txt",
+      "sha256": "ba8fa343d9adde2fd71e6bf9077fd6c2e535d2cf39536a55eb9946173274b063",
+      "bytes": 996491
+    },
+    {
       "path": "stories/wukong-visits-the-pumpkin-patch/editions/v1/prompts.txt",
       "sha256": "dcc20280ed533fddae01c46221c2a19a8cef4704ab80a1f9fface8bc1e0818c4",
       "bytes": 701754
@@ -2320,6 +2520,11 @@
       "path": "stories/wukongs-missing-picnic-cup/editions/v2/prompts.txt",
       "sha256": "bc1b93d58c460f53284cfde4af80050f9a1d57c8402c3b180ccc99d63bbb0c59",
       "bytes": 169860
+    },
+    {
+      "path": "stories/wukongs-no-touch-fish/editions/v1/prompts.txt",
+      "sha256": "e8cc64cdcdf51da227c0273fb34ad011c6e3d17d593d61e904f2b118070ae95e",
+      "bytes": 17074348
     },
     {
       "path": "stories/wukongs-noisy-nap/editions/v1/prompts.txt",
@@ -2425,6 +2630,11 @@
       "path": "stories/wukongs-painting-class/editions/v3/prompts.txt",
       "sha256": "224647221d080ba7a1534162ad492eeb7d6be9b69f6fa828b37d21689096354a",
       "bytes": 147361
+    },
+    {
+      "path": "stories/wukongs-picnic-vote/editions/v1/prompts.txt",
+      "sha256": "c72b0be84ef1b1dc90e9857ed5a8c4fee122eba23043aa3b7dffd787bcf9b25c",
+      "bytes": 21925955
     },
     {
       "path": "stories/wukongs-slippy-slide-skates/editions/v1/prompts.txt",
