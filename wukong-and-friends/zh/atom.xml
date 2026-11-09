@@ -12,6 +12,18 @@
   </atom:author>
   <atom:updated>2026-11-08T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</atom:id>
+    <atom:title type="text">机器人八戒</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/robot-pigsy/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-11-08T00:00:00Z</atom:published>
+    <atom:updated>2026-11-08T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;八戒扮机器人，悟空说什么，他就照着顺序做什么：先穿鞋再穿袜子，帽子还戴在了脚上！于是悟空和玉兔把每一步画在一张卡片上，再检查一遍顺序。这回八戒每一步都做对了，接着轮到悟空当机器人。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/robot-pigsy-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/robot-pigsy-v1-zh-Hans.jpg" alt="机器人八戒" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/pigsys-boing-boing-band/</atom:id>
     <atom:title type="text">八戒的嗡嗡音乐会</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/pigsys-boing-boing-band/" rel="alternate" type="text/html" hreflang="zh-CN" />

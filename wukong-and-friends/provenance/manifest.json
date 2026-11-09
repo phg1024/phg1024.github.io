@@ -362,6 +362,36 @@
       "bytes": 8401782
     },
     {
+      "path": "docs/downloads/robot-pigsy-v1-booklet.pdf",
+      "sha256": "a80bac8c7a0fa462ddf3a8daa3d309b9944cfda9f80a1d1a919e910c4ad4ae67",
+      "bytes": 8299512
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v1-core-en.pdf",
+      "sha256": "abee60cb2622f16b3b8d0404bd53959a83d7f778ad38356ca855ce68846b211b",
+      "bytes": 7851086
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v1-core-zh-Hans.pdf",
+      "sha256": "73b45c670f28341af3cebd0d2026cd7d30e5d92fbc90b4a1e5111d69119c7afa",
+      "bytes": 7906295
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v1-zh-Hans-booklet.pdf",
+      "sha256": "e97fb2c08e106fb4a0d057e628657a1bf704a92721dc178b8b995bdb2badd776",
+      "bytes": 8368805
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v1-zh-Hans.pdf",
+      "sha256": "da250d401f8c97b65636b5d0ca904dc49a9b19a5ae43acd9b93429d14afae08e",
+      "bytes": 8358677
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v1.pdf",
+      "sha256": "9fc03a8fccd4c594efd0aec1579a127566d502b735b47a4ebfc56c5fa4ca205b",
+      "bytes": 8280254
+    },
+    {
       "path": "docs/downloads/wukong-and-the-big-red-truck-v1-booklet.pdf",
       "sha256": "810c175a7fa49e85bbd40c2ec5e01e0075e160560681c7838c55aec7d83ff764",
       "bytes": 20308860
@@ -2290,6 +2320,11 @@
       "path": "stories/pigsys-peach-puzzle/editions/v2/prompts.txt",
       "sha256": "9dd60600d75eaab321c0a1f51204b99c249b7ef4d1ecab622955c016b9acc5a3",
       "bytes": 164286
+    },
+    {
+      "path": "stories/robot-pigsy/editions/v1/prompts.txt",
+      "sha256": "759c33d78dfc0143b508343b99f1a7b5289e8d04041ec13acdb58aba315f74c2",
+      "bytes": 4921882
     },
     {
       "path": "stories/wukong-and-the-big-red-truck/editions/v1/prompts.txt",

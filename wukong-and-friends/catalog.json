@@ -1,5 +1,70 @@
 [
   {
+    "id": "robot-pigsy",
+    "title": "Robot Pigsy",
+    "title_zh": "机器人八戒",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "computing-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-08",
+    "updated": "2026-11-08",
+    "level": "L4",
+    "target_age_months": 66,
+    "focus_vocabulary": [
+      "robot",
+      "step",
+      "first",
+      "next",
+      "then",
+      "last",
+      "order",
+      "card",
+      "follow",
+      "exactly"
+    ],
+    "computing_plan_id": "C1",
+    "language_reading_versions": {
+      "en": "robot-pigsy/v1/en",
+      "zh-Hans": "robot-pigsy/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/robot-pigsy-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/robot-pigsy-v1-booklet.pdf",
+    "cover": "covers/robot-pigsy-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Robot Pigsy",
+        "description": "Pigsy plays robot and does what Wukong says, in exactly that order: shoes before socks, and the hat on his foot! Wukong and Jade Rabbit draw one step on each card and check the order. Now Pigsy gets every step right, and Wukong takes a turn as the robot."
+      },
+      "zh": {
+        "title": "机器人八戒",
+        "description": "八戒扮机器人，悟空说什么，他就照着顺序做什么：先穿鞋再穿袜子，帽子还戴在了脚上！于是悟空和玉兔把每一步画在一张卡片上，再检查一遍顺序。这回八戒每一步都做对了，接着轮到悟空当机器人。"
+      }
+    },
+    "description": "八戒扮机器人，悟空说什么，他就照着顺序做什么：先穿鞋再穿袜子，帽子还戴在了脚上！于是悟空和玉兔把每一步画在一张卡片上，再检查一遍顺序。这回八戒每一步都做对了，接着轮到悟空当机器人。",
+    "description_en": "Pigsy plays robot and does what Wukong says, in exactly that order: shoes before socks, and the hat on his foot! Wukong and Jade Rabbit draw one step on each card and check the order. Now Pigsy gets every step right, and Wukong takes a turn as the robot.",
+    "keywords": "八戒 悟空 玉兔 机器人 步骤 顺序 指令 卡片 检查 改正 编程启蒙 公园 Pigsy Wukong Jade Rabbit robot steps order instructions cards check fix early coding park",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/robot-pigsy-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/robot-pigsy-v1-booklet.pdf",
+        "cover": "covers/robot-pigsy-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/robot-pigsy-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/robot-pigsy-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/robot-pigsy-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "pigsys-boing-boing-band",
     "title": "Pigsy’s Boing-Boing Band",
     "title_zh": "八戒的嗡嗡音乐会",

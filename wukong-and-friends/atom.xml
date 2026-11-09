@@ -12,6 +12,18 @@
   </atom:author>
   <atom:updated>2026-11-08T00:00:00Z</atom:updated>
   <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</atom:id>
+    <atom:title type="text">Robot Pigsy</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-11-08T00:00:00Z</atom:published>
+    <atom:updated>2026-11-08T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Pigsy plays robot and does what Wukong says, in exactly that order: shoes before socks, and the hat on his foot! Wukong and Jade Rabbit draw one step on each card and check the order. Now Pigsy gets every step right, and Wukong takes a turn as the robot.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/robot-pigsy-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/robot-pigsy-v1.jpg" alt="Robot Pigsy" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/pigsys-boing-boing-band/</atom:id>
     <atom:title type="text">Pigsy’s Boing-Boing Band</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/books/pigsys-boing-boing-band/" rel="alternate" type="text/html" hreflang="en" />
