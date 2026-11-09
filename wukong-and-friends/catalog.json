@@ -389,11 +389,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
+    "version": "v2",
+    "revision": "l3-upper-text",
     "publication_status": "published",
     "published": "2026-10-30",
-    "updated": "2026-10-30",
+    "updated": "2026-11-08",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -409,12 +409,12 @@
     ],
     "math_plan_id": "M9",
     "language_reading_versions": {
-      "en": "pigsys-nine-little-cookies/v1/en",
-      "zh-Hans": "pigsys-nine-little-cookies/v1/zh-Hans"
+      "en": "pigsys-nine-little-cookies/v2/en",
+      "zh-Hans": "pigsys-nine-little-cookies/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1-booklet.pdf",
-    "cover": "covers/pigsys-nine-little-cookies-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v2-booklet.pdf",
+    "cover": "covers/pigsys-nine-little-cookies-v2.jpg",
     "translations": {
       "en": {
         "title": "Pigsy’s Nine Little Cookies",
@@ -430,14 +430,14 @@
     "keywords": "八戒 悟空 玉兔 饼干 分享 平均分 轮流 公平 一样多 每人 数一数 数学启蒙 Pigsy Wukong Rabbit cookies share equal fair turns each plate round count early math",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1-booklet.pdf",
-        "cover": "covers/pigsys-nine-little-cookies-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v2-booklet.pdf",
+        "cover": "covers/pigsys-nine-little-cookies-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/pigsys-nine-little-cookies-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-nine-little-cookies-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/pigsys-nine-little-cookies-v2-zh-Hans.jpg"
       }
     }
   },

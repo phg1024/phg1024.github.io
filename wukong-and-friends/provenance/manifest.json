@@ -272,6 +272,36 @@
       "bytes": 9222788
     },
     {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v2-booklet.pdf",
+      "sha256": "56568b5d0b03915952fcb4a234e7ec66e8863011fc5bb2b7de670bc3bf558b49",
+      "bytes": 9242321
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v2-core-en.pdf",
+      "sha256": "9dd5a4383fa25c506a7a243492b7294385d786199675109a5477dc7174812e87",
+      "bytes": 8868295
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v2-core-zh-Hans.pdf",
+      "sha256": "077a57e4c0f1e373c1f94d04674e284562692d11449d338eb86003a0df10ddcf",
+      "bytes": 8896541
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v2-zh-Hans-booklet.pdf",
+      "sha256": "527934e877ebe190ff47cf2b9a4550d25bd935a518ec9a7faabe23c95b63619b",
+      "bytes": 9284042
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v2-zh-Hans.pdf",
+      "sha256": "b42783b9005e8fdfd14caa9c07ba555a1eabdcecf3b6456b358d271a054111ae",
+      "bytes": 9274196
+    },
+    {
+      "path": "docs/downloads/pigsys-nine-little-cookies-v2.pdf",
+      "sha256": "3d9abd35fa625215fba2369de499f9bcd612907a88f64969f95858b83b623cba",
+      "bytes": 9223269
+    },
+    {
       "path": "docs/downloads/pigsys-peach-puzzle-v1-booklet.pdf",
       "sha256": "f47a2869d280cf8ed35f4e1fa29d436d365bbffc086f8870cf0ba9faabcc3a88",
       "bytes": 8437121
@@ -2245,6 +2275,11 @@
       "path": "stories/pigsys-nine-little-cookies/editions/v1/prompts.txt",
       "sha256": "c136228867c8828c6e890325439a3642ee61670f6408a154f76f988456d1747a",
       "bytes": 2591524
+    },
+    {
+      "path": "stories/pigsys-nine-little-cookies/editions/v2/prompts.txt",
+      "sha256": "4c83688781fb0a8281827905a8d7867867cc49e1b52d96223f0697a930b95d97",
+      "bytes": 2591884
     },
     {
       "path": "stories/pigsys-peach-puzzle/editions/v1/prompts.txt",

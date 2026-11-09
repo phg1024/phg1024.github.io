@@ -10,7 +10,7 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-07T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-08T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/pigsys-boing-boing-band/</atom:id>
     <atom:title type="text">八戒的嗡嗡音乐会</atom:title>
@@ -88,12 +88,12 @@
     <atom:title type="text">八戒的九块小饼干</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/pigsys-nine-little-cookies/" rel="alternate" type="text/html" hreflang="zh-CN" />
     <atom:published>2026-10-30T00:00:00Z</atom:published>
-    <atom:updated>2026-10-30T00:00:00Z</atom:updated>
+    <atom:updated>2026-11-08T00:00:00Z</atom:updated>
     <atom:author>
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;八戒烤了九块小饼干，要和悟空、玉兔一起分。悟空分成四块、三块、两块——不公平！大家改成轮流分，每只盘子放一块，一轮一轮地分。分完三轮，每人三块，三只盘子刚刚好。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/pigsys-nine-little-cookies-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/pigsys-nine-little-cookies-v1-zh-Hans.jpg" alt="八戒的九块小饼干" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;八戒烤了九块小饼干，要和悟空、玉兔一起分。悟空分成四块、三块、两块——不公平！大家改成轮流分，每只盘子放一块，一轮一轮地分。分完三轮，每人三块，三只盘子刚刚好。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/pigsys-nine-little-cookies-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/pigsys-nine-little-cookies-v2-zh-Hans.jpg" alt="八戒的九块小饼干" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/</atom:id>

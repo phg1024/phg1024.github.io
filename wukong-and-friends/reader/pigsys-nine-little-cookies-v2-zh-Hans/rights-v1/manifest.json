@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/pigsys-nine-little-cookies-v2-zh-Hans.pdf",
+  "source_sha256": "b42783b9005e8fdfd14caa9c07ba555a1eabdcecf3b6456b358d271a054111ae",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d779904019c3860963d978a87efee54d0b5e24665980328c152ed7f77656349d",
+      "text": "八戒的九块小饼干",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2248f67deeaf7bc8e6cfd3b096e0de6001e10abad135fc1a785d036c2b4e1415",
+      "text": "八戒烤了九块小饼干，整整齐齐地\n摆在托盘上。他数了数：一、二、\n三、四、五、六、七、八、九！每\n一块饼干都一模一样。\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "266a5d299dcfd1c0aa7d54d6a9e2673e357cc66687d635b5f4355ad987e18c13",
+      "text": "悟空和玉兔来八戒家做客。八戒摆\n出三只盘子，每个好朋友一只。他\n说：“我们一起分饼干吧！”\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b67daf16ad592abbf3a2a855c3d38a29e5c034a2b646b8b3bd23ec3b88be8279",
+      "text": "悟空说：“我来分！”他给自己的盘子放\n了四块，玉兔三块，八戒只有两块。\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "e9811feab5d43016084d0b796b9ab17f4affba81c0816ce1b70cca667b834722",
+      "text": "八戒盯着自己的盘子看了好久。他\n说：“我的盘子空荡荡的，两块饼干都\n觉得孤单啦！”\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2311549be7cdc9b1cd83c6c2baff6e9351e4b2ea3afe2c607db900007a621aa8",
+      "text": "玉兔数了数每只盘子里的饼干：四\n块、三块、两块。她说：“这样不公\n平，每个人应该分到一样多。”\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "42336493a6a7481ab1cff287d0812aba6e2e9ac04d007506f3b0495f0bb491e6",
+      "text": "于是，大家把饼干都放回托盘上。\n他们又数了一遍，还是九块，一块\n也没有少。\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "36571f2f5db535f3fe5fcddea8aa7cfbce68e4c5c0a100e1b91dd2689b9967db",
+      "text": "玉兔说：“我们轮流来分吧。每只盘子\n放一块，放完一圈再来一圈。”\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "f614a22656e78de5e5e3ab0c1257d1546b9b47805fc8add5cd4689ac7c7245b0",
+      "text": "第一轮，玉兔在每只盘子里放一块。\n悟空一块，玉兔一块，八戒也一块。\n托盘上还剩六块。\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "69b5063a9119e8c692ad609bbc99967242f90fa8b1c1594189ce6464fa23fed7",
+      "text": "第二轮，每只盘子又放了一块。现\n在每只盘子都有两块，托盘上\n还剩三块。\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ade0ff228d5406fe6cc23fbd92d4a345d16a3a324fa30cd7e240c0246fb2d2b8",
+      "text": "第三轮，最后三块也放进了盘子里。\n托盘空啦！\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "88d84b493e9516c8e9d01d695ef5a0f089ccc8dbad143f5e56b521ee90514311",
+      "text": "大家都数了数自己盘子里的饼干。\n悟空三块，玉兔三块，八戒也是三\n块。玉兔说：“我们都一样多，这\n样才公平！”\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "95d122907bb18866a04202d1ee49055db4c5cd26f9729dc54fdf8e6a43f77327",
+      "text": "八戒把空托盘翻过来，往底下看了\n又看。他一本正经地说：“我在找第四\n只盘子，那是给我肚子用的！”\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "1af9e3958cf4b96d54c3eaa5d2fba8673781bf4f57990a4d8ff28e22def2f1af",
+      "text": "玉兔咯咯地笑：“八戒，没有第四只盘\n子。三个朋友，三只盘子刚刚好。”\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "90ce57c2171d877dc601f5c1bf52eacb0b5387f36af20f10225536d301a5fbbb",
+      "text": "现在可以吃啦，大家都咬了一大口。\n咔嚓！每个人分得一样多。\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "9e9c2bfa268ff67bcce5060b8b44fb1fc4547b184e2afd43136ad3fdbf321613",
+      "text": "没多久，三只盘子里只剩下一点饼\n干渣。八戒拍拍圆圆的肚子，笑着\n说：“每人三块，刚刚好！”\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d5fe2412537ab0ab9a468f8fb7e11a30b221231ff6b956d3c19f2625a27017f1",
+      "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n这些故事和插画由作者借助 AI 创作，并经过人工编辑。\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · 署名—非商业性使用—禁止演绎\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "cd8aed44e9348c88cf0f071f9ea8e09bbc633517b4f49cc0bf25148ffe763fff",
+      "text": "Wukong & Friends\n每只盘子放一块，\n一轮一轮地分，\n现在公平了吗？\nphg1024.github.io/wukong-and-friends/zh",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}
