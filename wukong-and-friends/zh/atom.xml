@@ -10,7 +10,7 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-08T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-09T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</atom:id>
     <atom:title type="text">机器人八戒</atom:title>
@@ -76,12 +76,12 @@
     <atom:title type="text">敖丙的小船，浮起来！</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/ao-bings-little-boat/" rel="alternate" type="text/html" hreflang="zh-CN" />
     <atom:published>2026-10-30T00:00:00Z</atom:published>
-    <atom:updated>2026-10-30T00:00:00Z</atom:updated>
+    <atom:updated>2026-11-09T00:00:00Z</atom:updated>
     <atom:author>
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;悟空和敖丙想让小叶子坐船，可黏土球“咚”地沉了下去。不用龙的魔法，他们来改变形状：压扁的煎饼船也沉了，把边捏高、中间空空的小船却浮起来了！还是同一团黏土，只是换了形状。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/ao-bings-little-boat-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/ao-bings-little-boat-v1-zh-Hans.jpg" alt="敖丙的小船，浮起来！" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;悟空和敖丙想让小叶子坐船，可黏土球“咚”地沉了下去。不用龙的魔法，他们来改变形状：压扁的煎饼船也沉了，把边捏高、中间空空的小船却浮起来了！还是同一团黏土，只是换了形状。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/ao-bings-little-boat-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/ao-bings-little-boat-v2-zh-Hans.jpg" alt="敖丙的小船，浮起来！" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/iron-fans-pattern-parade/</atom:id>

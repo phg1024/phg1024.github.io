@@ -32,6 +32,36 @@
       "bytes": 9358826
     },
     {
+      "path": "docs/downloads/ao-bings-little-boat-v2-booklet.pdf",
+      "sha256": "81f9572a467a758ef0af52c12ee0615ebd6f12e4f7ff6833e0e4de11aea152a9",
+      "bytes": 9379914
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v2-core-en.pdf",
+      "sha256": "08a17c4bac851d30822e2683ae25aff08db6bc6e5876cbd677d72c18dc595bb5",
+      "bytes": 9026538
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v2-core-zh-Hans.pdf",
+      "sha256": "601349b8422bb2e0cfc95c87874d431e04cbdf958ac3a0e3983c2266e3144dc6",
+      "bytes": 9080275
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v2-zh-Hans-booklet.pdf",
+      "sha256": "868ea681d957e18d7e9f6c5a03a114540e401289bc8d399e71c9f6fd414820aa",
+      "bytes": 9447414
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v2-zh-Hans.pdf",
+      "sha256": "281b8f02edd7012c5e2f5c054ffd8a36746965e71151a206e779cb1dbbd75b87",
+      "bytes": 9437441
+    },
+    {
+      "path": "docs/downloads/ao-bings-little-boat-v2.pdf",
+      "sha256": "4188893cc66954fe0e7296bac1d131deec25dcbc5f7988e01ee855670ffc017e",
+      "bytes": 9360823
+    },
+    {
       "path": "docs/downloads/bears-wobbly-ride-v1-booklet.pdf",
       "sha256": "d13724b5909e5ef367ca0d6b9d619f26d76cd6defbecf80eae1bad792a80669d",
       "bytes": 10081368
@@ -2255,6 +2285,11 @@
       "path": "stories/ao-bings-little-boat/editions/v1/prompts.txt",
       "sha256": "d2ce833d2341e74f8866b0a498bd02d9a84761a29a2741016538d89bdf6351c1",
       "bytes": 2485986
+    },
+    {
+      "path": "stories/ao-bings-little-boat/editions/v2/prompts.txt",
+      "sha256": "ea5682088dad290d6ecc91183014f8f81b2bf19006c62b8a283db9326fcee302",
+      "bytes": 2486420
     },
     {
       "path": "stories/bears-wobbly-ride/editions/v1/prompts.txt",

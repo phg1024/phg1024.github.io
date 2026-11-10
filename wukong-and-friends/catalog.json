@@ -328,11 +328,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "science-cp5-approved",
+    "version": "v2",
+    "revision": "l4-text",
     "publication_status": "published",
     "published": "2026-10-30",
-    "updated": "2026-10-30",
+    "updated": "2026-11-09",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -347,12 +347,12 @@
     ],
     "science_plan_id": "S2",
     "language_reading_versions": {
-      "en": "ao-bings-little-boat/v1/en",
-      "zh-Hans": "ao-bings-little-boat/v1/zh-Hans"
+      "en": "ao-bings-little-boat/v2/en",
+      "zh-Hans": "ao-bings-little-boat/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1-booklet.pdf",
-    "cover": "covers/ao-bings-little-boat-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v2-booklet.pdf",
+    "cover": "covers/ao-bings-little-boat-v2.jpg",
     "translations": {
       "en": {
         "title": "Ao Bing’s Little Boat",
@@ -368,16 +368,17 @@
     "keywords": "敖丙 悟空 沙僧 沉 浮 浮起来 黏土 小船 形状 中空 试一试 科学启蒙 Ao Bing Wukong Sandy float sink clay boat shape hollow edges test early science",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1-booklet.pdf",
-        "cover": "covers/ao-bings-little-boat-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v2-booklet.pdf",
+        "cover": "covers/ao-bings-little-boat-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/ao-bings-little-boat-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/ao-bings-little-boat-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/ao-bings-little-boat-v2-zh-Hans.jpg"
       }
-    }
+    },
+    "text_level": "L4"
   },
   {
     "id": "iron-fans-pattern-parade",
