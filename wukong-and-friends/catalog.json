@@ -1371,14 +1371,14 @@
     "sheets": 6,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v4",
-    "revision": "restore-established-bold-cover-typography",
+    "version": "v5",
+    "revision": "paper-standard",
     "publication_status": "published",
     "published": "2026-10-23",
-    "updated": "2026-10-26",
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-booklet.pdf",
-    "cover": "covers/wukong-learns-to-swim-v4.jpg",
+    "updated": "2026-11-09",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v5.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v5-booklet.pdf",
+    "cover": "covers/wukong-learns-to-swim-v5.jpg",
     "translations": {
       "en": {
         "title": "Wukong Learns to Swim",
@@ -1394,19 +1394,19 @@
     "keywords": "悟空 游泳 学习 勇气 泡泡 踢腿 敖丙 Wukong swimming lessons pool courage practice friendship Ao Bing",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-booklet.pdf",
-        "cover": "covers/wukong-learns-to-swim-v4.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v5.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v5-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v5.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v4-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-learns-to-swim-v4-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v5-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-learns-to-swim-v5-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-learns-to-swim-v5-zh-Hans.jpg"
       }
     },
     "language_reading_versions": {
-      "en": "wukong-learns-to-swim/v4/en",
-      "zh-Hans": "wukong-learns-to-swim/v4/zh-Hans"
+      "en": "wukong-learns-to-swim/v5/en",
+      "zh-Hans": "wukong-learns-to-swim/v5/zh-Hans"
     },
     "focus_vocabulary": [
       "pool",
@@ -1711,25 +1711,25 @@
     "series": "wukong",
     "description": "跟着消防员 Ben，走近一辆很酷的大红消防车。",
     "style": "Children’s crayon doodles",
-    "version": "v7",
-    "revision": "english-age-target-editorial-review",
+    "version": "v8",
+    "revision": "paper-standard",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v7.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v7-booklet.pdf",
-    "cover": "covers/wukong-and-the-big-red-truck-v5.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v8.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v8-booklet.pdf",
+    "cover": "covers/wukong-and-the-big-red-truck-v8.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v6-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v6-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-big-red-truck-v5-zh-Hans.jpg"
-      },
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v7.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v7-booklet.pdf",
-        "cover": "covers/wukong-and-the-big-red-truck-v5.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v8.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v8-booklet.pdf",
+        "cover": "covers/wukong-and-the-big-red-truck-v8.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-big-red-truck-v8-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-big-red-truck-v8-zh-Hans.jpg"
       }
     },
     "booklet_pages": 20,
@@ -1744,9 +1744,10 @@
         "description": "跟着消防员 Ben，走近一辆很酷的大红消防车。"
       }
     },
-    "updated": "2026-10-26",
+    "updated": "2026-11-09",
     "language_reading_versions": {
-      "en": "wukong-and-the-big-red-truck/v7/en"
+      "en": "wukong-and-the-big-red-truck/v8/en",
+      "zh-Hans": "wukong-and-the-big-red-truck/v8/zh-Hans"
     }
   },
   {
@@ -1755,25 +1756,25 @@
     "series": "wukong",
     "description": "酷酷的自行车骑起来，却有些摇摇晃晃！",
     "style": "Children’s crayon doodles",
-    "version": "v7",
-    "revision": "english-age-target-editorial-review",
+    "version": "v8",
+    "revision": "paper-standard",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v7.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v7-booklet.pdf",
-    "cover": "covers/wukongs-wibble-wobble-ride-v5.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v8.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v8-booklet.pdf",
+    "cover": "covers/wukongs-wibble-wobble-ride-v8.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v6-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v6-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-wibble-wobble-ride-v5-zh-Hans.jpg"
-      },
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v7.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v7-booklet.pdf",
-        "cover": "covers/wukongs-wibble-wobble-ride-v5.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v8.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v8-booklet.pdf",
+        "cover": "covers/wukongs-wibble-wobble-ride-v8.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-wibble-wobble-ride-v8-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-wibble-wobble-ride-v8-zh-Hans.jpg"
       }
     },
     "booklet_pages": 20,
@@ -1788,9 +1789,10 @@
         "description": "酷酷的自行车骑起来，却有些摇摇晃晃！"
       }
     },
-    "updated": "2026-10-26",
+    "updated": "2026-11-09",
     "language_reading_versions": {
-      "en": "wukongs-wibble-wobble-ride/v7/en"
+      "en": "wukongs-wibble-wobble-ride/v8/en",
+      "zh-Hans": "wukongs-wibble-wobble-ride/v8/zh-Hans"
     }
   },
   {
@@ -1799,14 +1801,14 @@
     "series": "wukong",
     "description": "从一小口新味道，到一顿暖暖的晚餐。",
     "style": "Children’s crayon doodles",
-    "version": "v9",
-    "revision": "english-age-target-editorial-review",
+    "version": "v10",
+    "revision": "paper-standard",
     "published": "2026-10-19",
     "keywords": "悟空 八戒 沙僧 不挑食 尝试 食物 晚餐 food dinner vegetables",
     "pages": 12,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v9.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v9-booklet.pdf",
-    "cover": "covers/wukongs-one-little-bite-v5.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v10.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v10-booklet.pdf",
+    "cover": "covers/wukongs-one-little-bite-v10.jpg",
     "sheets": 4,
     "blank_pages": 2,
     "translations": {
@@ -1820,21 +1822,22 @@
       }
     },
     "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v8-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v8-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-one-little-bite-v5-zh-Hans.jpg"
-      },
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v9.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v9-booklet.pdf",
-        "cover": "covers/wukongs-one-little-bite-v5.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v10.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v10-booklet.pdf",
+        "cover": "covers/wukongs-one-little-bite-v10.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v10-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-one-little-bite-v10-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-one-little-bite-v10-zh-Hans.jpg"
       }
     },
     "booklet_pages": 16,
-    "updated": "2026-10-26",
+    "updated": "2026-11-09",
     "language_reading_versions": {
-      "en": "wukongs-one-little-bite/v9/en"
+      "en": "wukongs-one-little-bite/v10/en",
+      "zh-Hans": "wukongs-one-little-bite/v10/zh-Hans"
     }
   },
   {
@@ -1843,14 +1846,14 @@
     "series": "wukong",
     "description": "悟空想睡午觉，可朋友们的好意有一点点吵。",
     "style": "Children’s crayon doodles",
-    "version": "v9",
-    "revision": "english-age-target-editorial-review",
+    "version": "v10",
+    "revision": "paper-standard",
     "published": "2026-10-19",
     "keywords": "悟空 八戒 沙僧 午睡 睡午觉 nap sleep",
     "pages": 12,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v9.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v9-booklet.pdf",
-    "cover": "covers/wukongs-noisy-nap-v5.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v10.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v10-booklet.pdf",
+    "cover": "covers/wukongs-noisy-nap-v10.jpg",
     "sheets": 4,
     "blank_pages": 2,
     "translations": {
@@ -1864,21 +1867,22 @@
       }
     },
     "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v8-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v8-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-noisy-nap-v5-zh-Hans.jpg"
-      },
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v9.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v9-booklet.pdf",
-        "cover": "covers/wukongs-noisy-nap-v5.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v10.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v10-booklet.pdf",
+        "cover": "covers/wukongs-noisy-nap-v10.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v10-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-noisy-nap-v10-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-noisy-nap-v10-zh-Hans.jpg"
       }
     },
     "booklet_pages": 16,
-    "updated": "2026-10-26",
+    "updated": "2026-11-09",
     "language_reading_versions": {
-      "en": "wukongs-noisy-nap/v9/en"
+      "en": "wukongs-noisy-nap/v10/en",
+      "zh-Hans": "wukongs-noisy-nap/v10/zh-Hans"
     }
   }
 ]
