@@ -76,11 +76,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "science-cp5-approved",
+    "version": "v2",
+    "revision": "paper-standard",
     "publication_status": "published",
     "published": "2026-11-07",
-    "updated": "2026-11-07",
+    "updated": "2026-11-09",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -95,12 +95,12 @@
     ],
     "science_plan_id": "S4",
     "language_reading_versions": {
-      "en": "pigsys-boing-boing-band/v1/en",
-      "zh-Hans": "pigsys-boing-boing-band/v1/zh-Hans"
+      "en": "pigsys-boing-boing-band/v2/en",
+      "zh-Hans": "pigsys-boing-boing-band/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1-booklet.pdf",
-    "cover": "covers/pigsys-boing-boing-band-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v2-booklet.pdf",
+    "cover": "covers/pigsys-boing-boing-band-v2.jpg",
     "translations": {
       "en": {
         "title": "Pigsy’s Boing-Boing Band",
@@ -116,14 +116,14 @@
     "keywords": "八戒 悟空 哪吒 沙僧 声音 振动 橡皮筋 拨 按住 青蛙 纸盒 音乐会 科学启蒙 Pigsy Wukong Nezha Sandy sound vibrate rubber band pluck hold still frog box music early science",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1-booklet.pdf",
-        "cover": "covers/pigsys-boing-boing-band-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v2-booklet.pdf",
+        "cover": "covers/pigsys-boing-boing-band-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/pigsys-boing-boing-band-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/pigsys-boing-boing-band-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/pigsys-boing-boing-band-v2-zh-Hans.jpg"
       }
     }
   },
@@ -139,11 +139,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "science-cp5-approved",
+    "version": "v2",
+    "revision": "paper-standard",
     "publication_status": "published",
     "published": "2026-11-07",
-    "updated": "2026-11-07",
+    "updated": "2026-11-09",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -158,12 +158,12 @@
     ],
     "science_plan_id": "S5",
     "language_reading_versions": {
-      "en": "wukong-and-the-missing-ice-cube/v1/en",
-      "zh-Hans": "wukong-and-the-missing-ice-cube/v1/zh-Hans"
+      "en": "wukong-and-the-missing-ice-cube/v2/en",
+      "zh-Hans": "wukong-and-the-missing-ice-cube/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1-booklet.pdf",
-    "cover": "covers/wukong-and-the-missing-ice-cube-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v2-booklet.pdf",
+    "cover": "covers/wukong-and-the-missing-ice-cube-v2.jpg",
     "translations": {
       "en": {
         "title": "Wukong and the Missing Ice Cube",
@@ -179,14 +179,14 @@
     "keywords": "悟空 敖丙 沙僧 冰 水 融化 结冰 固体 液体 冷冻室 冰模 放大镜 科学启蒙 Wukong Ao Bing Sandy ice water melt freeze solid liquid freezer mold magnifying glass early science",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1-booklet.pdf",
-        "cover": "covers/wukong-and-the-missing-ice-cube-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v2-booklet.pdf",
+        "cover": "covers/wukong-and-the-missing-ice-cube-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-and-the-missing-ice-cube-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-and-the-missing-ice-cube-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-and-the-missing-ice-cube-v2-zh-Hans.jpg"
       }
     }
   },
@@ -202,11 +202,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "science-cp5-approved",
+    "version": "v2",
+    "revision": "paper-standard",
     "publication_status": "published",
     "published": "2026-11-07",
-    "updated": "2026-11-07",
+    "updated": "2026-11-09",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -221,12 +221,12 @@
     ],
     "science_plan_id": "S3",
     "language_reading_versions": {
-      "en": "wukongs-no-touch-fish/v1/en",
-      "zh-Hans": "wukongs-no-touch-fish/v1/zh-Hans"
+      "en": "wukongs-no-touch-fish/v2/en",
+      "zh-Hans": "wukongs-no-touch-fish/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1-booklet.pdf",
-    "cover": "covers/wukongs-no-touch-fish-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v2-booklet.pdf",
+    "cover": "covers/wukongs-no-touch-fish-v2.jpg",
     "translations": {
       "en": {
         "title": "Wukong’s No-Touch Fish",
@@ -242,14 +242,14 @@
     "keywords": "悟空 铁扇公主 沙僧 磁铁 磁棒 吸住 钢片 铝片 木块 塑料 材料 试一试 纸鱼 科学启蒙 Wukong Iron Fan Sandy magnet steel aluminum wood plastic materials test paper fish early science",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1-booklet.pdf",
-        "cover": "covers/wukongs-no-touch-fish-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v2-booklet.pdf",
+        "cover": "covers/wukongs-no-touch-fish-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-no-touch-fish-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-no-touch-fish-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-no-touch-fish-v2-zh-Hans.jpg"
       }
     }
   },
@@ -705,11 +705,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v2",
-    "revision": "new-clinic-all-pages",
+    "version": "v3",
+    "revision": "paper-standard",
     "publication_status": "published",
     "published": "2026-10-29",
-    "updated": "2026-11-07",
+    "updated": "2026-11-09",
     "level": "L1",
     "target_age_months": 48,
     "focus_vocabulary": [
@@ -720,12 +720,12 @@
       "mirror"
     ],
     "language_reading_versions": {
-      "en": "wukong-visits-the-dentist/v2/en",
-      "zh-Hans": "wukong-visits-the-dentist/v2/zh-Hans"
+      "en": "wukong-visits-the-dentist/v3/en",
+      "zh-Hans": "wukong-visits-the-dentist/v3/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2-booklet.pdf",
-    "cover": "covers/wukong-visits-the-dentist-v2.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v3.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v3-booklet.pdf",
+    "cover": "covers/wukong-visits-the-dentist-v3.jpg",
     "translations": {
       "en": {
         "title": "Wukong Visits the Dentist",
@@ -741,14 +741,14 @@
     "keywords": "悟空 沙僧 八戒 看牙医 牙医 牙椅 举手 停一停 勇敢 刷牙 健康 Wukong Sandy Pigsy dentist check-up dental chair raise your hand stop ready toothbrush health",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2-booklet.pdf",
-        "cover": "covers/wukong-visits-the-dentist-v2.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v3.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v3-booklet.pdf",
+        "cover": "covers/wukong-visits-the-dentist-v3.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/wukong-visits-the-dentist-v2-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v3-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukong-visits-the-dentist-v3-zh-Hans-booklet.pdf",
+        "cover": "covers/wukong-visits-the-dentist-v3-zh-Hans.jpg"
       }
     }
   },
@@ -1666,25 +1666,25 @@
     "series": "wukong",
     "description": "小脚像坐上小雪橇。摔一跤，再试一次！",
     "style": "Children’s crayon doodles",
-    "version": "v7",
-    "revision": "english-age-target-editorial-review",
+    "version": "v8",
+    "revision": "paper-standard",
     "published": "2026-10-19",
     "pages": 18,
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v7.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v7-booklet.pdf",
-    "cover": "covers/wukongs-slippy-slide-skates-v5.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v8.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v8-booklet.pdf",
+    "cover": "covers/wukongs-slippy-slide-skates-v8.jpg",
     "sheets": 5,
     "blank_pages": 0,
     "languages": {
-      "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v6-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v6-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-slippy-slide-skates-v5-zh-Hans.jpg"
-      },
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v7.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v7-booklet.pdf",
-        "cover": "covers/wukongs-slippy-slide-skates-v5.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v8.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v8-booklet.pdf",
+        "cover": "covers/wukongs-slippy-slide-skates-v8.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v8-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pdf-library-v1/wukongs-slippy-slide-skates-v8-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-slippy-slide-skates-v8-zh-Hans.jpg"
       }
     },
     "booklet_pages": 20,
@@ -1699,9 +1699,10 @@
         "description": "小脚像坐上小雪橇。摔一跤，再试一次！"
       }
     },
-    "updated": "2026-10-26",
+    "updated": "2026-11-09",
     "language_reading_versions": {
-      "en": "wukongs-slippy-slide-skates/v7/en"
+      "en": "wukongs-slippy-slide-skates/v8/en",
+      "zh-Hans": "wukongs-slippy-slide-skates/v8/zh-Hans"
     }
   },
   {
