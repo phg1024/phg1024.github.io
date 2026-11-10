@@ -886,11 +886,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
+    "version": "v2",
+    "revision": "p11-layout-from-guide",
     "publication_status": "published",
     "published": "2026-10-29",
-    "updated": "2026-10-29",
+    "updated": "2026-11-10",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -905,12 +905,12 @@
     ],
     "math_plan_id": "M6",
     "language_reading_versions": {
-      "en": "wukongs-starry-stage/v1/en",
-      "zh-Hans": "wukongs-starry-stage/v1/zh-Hans"
+      "en": "wukongs-starry-stage/v2/en",
+      "zh-Hans": "wukongs-starry-stage/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v1/wukongs-starry-stage-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v1/wukongs-starry-stage-v1-booklet.pdf",
-    "cover": "covers/wukongs-starry-stage-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v2/wukongs-starry-stage-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v2/wukongs-starry-stage-v2-booklet.pdf",
+    "cover": "covers/wukongs-starry-stage-v2.jpg",
     "translations": {
       "en": {
         "title": "Wukong’s Starry Stage",
@@ -926,14 +926,14 @@
     "keywords": "悟空 玉兔 八戒 星星 小舞台 故事会 加 减 还剩 一共 数学启蒙 Wukong Rabbit Pigsy stars stage story night add take away left altogether early math",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v1/wukongs-starry-stage-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v1/wukongs-starry-stage-v1-booklet.pdf",
-        "cover": "covers/wukongs-starry-stage-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v2/wukongs-starry-stage-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v2/wukongs-starry-stage-v2-booklet.pdf",
+        "cover": "covers/wukongs-starry-stage-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v1/wukongs-starry-stage-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v1/wukongs-starry-stage-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-starry-stage-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v2/wukongs-starry-stage-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-starry-stage-v2/wukongs-starry-stage-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-starry-stage-v2-zh-Hans.jpg"
       }
     }
   },

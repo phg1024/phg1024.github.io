@@ -3,15 +3,15 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/wukongs-starry-stage-v1.pdf",
-  "source_sha256": "bf3c057a4bce5bbf1a62264a168afd93e9a74dcff5a7a729e21aacb05de80d24",
+  "source_pdf": "downloads/wukongs-starry-stage-v2.pdf",
+  "source_sha256": "284e9e9532e894fdaae3259eec16dbdf2b2194a900956c3487dfd7bd80f63355",
   "pixel_width": 1224,
   "pages": [
     {
       "image": "page-01.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5adf3b299ead25f638b4580267a98cf818d363619c4aafd436e261832450e8b3",
+      "sha256": "b0986be438441e48414effebfe5d289da3f593915cc7dc9c9ee365db9ad56d7d",
       "text": "Wukong’s\nStarry Stage",
       "links": []
     },
@@ -19,7 +19,7 @@
       "image": "page-02.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "8aada1d9abfd84952e78dca8d5ce5f10c649880f8dfb30b55cabb3b191097927",
+      "sha256": "aede307aa82b1392620584111e42893f0c6a8ad6fcaeda6726a7c56f2fd67cdd",
       "text": "Tonight is story night!\nWukong builds a little stage.\nA blue curtain hangs at\nthe back.\n2",
       "links": []
     },
@@ -27,7 +27,7 @@
       "image": "page-03.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "f864ba4728f48573699ada984efecda2f5156f0af01876a7b8f8b373c120e60a",
+      "sha256": "2905c82856079a442c35e2d9fe1fa7b6ba666c370e694a7ba0c0cc9b25d712f7",
       "text": "Wukong sticks paper stars on\nthe curtain.\nOne, two, three, four,\nfive, six.\nSix stars shine on the stage.\n3",
       "links": []
     },
@@ -35,7 +35,7 @@
       "image": "page-04.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "40b81229047ebc2f431888f5fb30d23e61caa8f1d080d1c8ece7630897710459",
+      "sha256": "35333d1259a21c6f753b1e6cefc18229e7cfc42ba88b58d2ba50a8119260a397",
       "text": "Rabbit hops in with two\nmore stars.\n“Can I add these?” she asks.\n“Yes, please!” says Wukong.\n4",
       "links": []
     },
@@ -43,7 +43,7 @@
       "image": "page-05.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "58a75804b46442787e6b35264d611dd796811ba9a7f8cb5acc910a9931b666b2",
+      "sha256": "903cd644d3b487f00705cd791370cedd5758ddc7f085649f60398c9f2890bd34",
       "text": "Rabbit adds two stars to\nthe curtain.\nSix and two more make eight.\n“Eight stars altogether!”\n5",
       "links": []
     },
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "06fdd07a1fa6115b6a9bbc97e2bd4aa6774f84eccbeeb2527eea5be940552dd4",
+      "sha256": "91a7e20ed5928d284f4d559a45be6e267b8c49e60c724ba0ee582218a0581e2a",
       "text": "Pigsy comes with\nthe storybook.\nHe stops at the entrance.\nThere is only a plain\nlittle sign.\n“Is story night in here?”\n6",
       "links": []
     },
@@ -59,7 +59,7 @@
       "image": "page-07.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "0f75d6bc731a09073a1d6ae15956ba38de90324a0b9e0e9942f134d2830c5b7b",
+      "sha256": "4edf26ab56c7933e97234e9f32a121a81f9c68cd6829fa00a216066a1c410b01",
       "text": "“The entrance needs stars\ntoo,” says Rabbit.\n“But we have no more stars,”\nsays Wukong.\n7",
       "links": []
     },
@@ -67,7 +67,7 @@
       "image": "page-08.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "9645c9bbf27ccdf5393a715f0a0d917ffc7e78ffcab97fc8c64a75e39b2a6606",
+      "sha256": "9fa30ebe39f4071b01df085dc99e4e9d6dabac63fca545ee97c870975efd0d33",
       "text": "Wukong has an idea.\n“Let’s take away three stars\nfrom the curtain.”\nOff come one, two, three!\n8",
       "links": []
     },
@@ -75,7 +75,7 @@
       "image": "page-09.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "ea14f69dee9daa2fb3f201821c78ea8de14162cbe7bbeb73a3c686ac7acc892d",
+      "sha256": "c140cde38f77aafa82a2cdff583713d806868abb7ea3e319275a4571bb328cc4",
       "text": "How many are left on\nthe curtain?\nOne, two, three, four, five.\nTake away three, and five\nare left.\n9",
       "links": []
     },
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "fa02b7e65295666b7864ac877c23e1e3a5af441087a6c071bef1fb0817d7f439",
+      "sha256": "5a95b0da0ea3130778fbcbd5378d4e159e1aebbae0ec5b8761b164996f8a80ad",
       "text": "They stick three stars on the\nlittle sign.\nNow the entrance shines too!\n10",
       "links": []
     },
@@ -91,7 +91,7 @@
       "image": "page-11.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "674162f080153eb224e530128821e03fd79b87a2beaf2bb946107b15ab094d99",
+      "sha256": "78d28212d08bafc6744c3eaa8d1acf6587298108ab8187dfc8de84fdc4ec55c2",
       "text": "Pigsy looks worried.\n“Did we lose three stars?”\n“No,” says Rabbit.\n“We moved them because the\nentrance needed some.”\n11",
       "links": []
     },
@@ -99,7 +99,7 @@
       "image": "page-12.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "b9a34c62ac9adc9204c15e2b354f32f78412c3078f121971ebc3c12520ab7e64",
+      "sha256": "63a392158a54ec44959c726a3082f3ff3a0adf9247207ba36a318fc91ecbec40",
       "text": "Wukong counts them all.\nFive left on the curtain.\nThree at the entrance.\n“Still eight stars altogether!”\n12",
       "links": []
     },
@@ -107,7 +107,7 @@
       "image": "page-13.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "253c32d27452afa704e8b3cb085fb8ee21e45c9fe9a9bd8748ba56fc65bdd048",
+      "sha256": "8b9be36a214e4e528b3343e14d22a5324623b928a7ac473bf9804850b0b6ef60",
       "text": "Pigsy pats his round tummy.\n“Can my tummy be the moon?”\nEveryone laughs.\n13",
       "links": []
     },
@@ -115,7 +115,7 @@
       "image": "page-14.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "76ff9c787e3016842c88fab114282fdf8b756e11ba3f7d1255e9b4e37fe6d2ea",
+      "sha256": "81904003b9b702a93a3be9f37101584d166a0aa7a04e82f700ef9cdbaccc04a8",
       "text": "“A moon is not a star,”\nsays Wukong.\n“So we still have eight stars.”\n“And one tummy moon!”\nsays Rabbit.\n14",
       "links": []
     },
@@ -123,7 +123,7 @@
       "image": "page-15.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "49b7cbe2da5d8418786e76ec3f6e17d3f99e13990f09efdfd0d881320d669676",
+      "sha256": "ee6ff488fed599d4769b51c067c700bc7a56abe86bb1727baea5f943ad37b13e",
       "text": "The stage is ready.\nRabbit and Wukong sit on\nsoft cushions.\nPigsy opens the book.\n“Once upon a time…”\n15",
       "links": []
     },
@@ -131,7 +131,7 @@
       "image": "page-16.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "f601a47c2b17e0d9debf367bc08f22eebcdef8aa8d210164dbbd282799ddd336",
+      "sha256": "b80dc050bf21e0f468c328ac7937cf53f4b7237a84f205477c60e9f7bcbbed37",
       "text": "When the story ends,\nWukong looks up.\nReal stars twinkle in the sky.\n“More stars!” he whispers.\nToo many to count!\n16",
       "links": []
     },

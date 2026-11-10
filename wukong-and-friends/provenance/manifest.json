@@ -2522,6 +2522,36 @@
       "bytes": 9409327
     },
     {
+      "path": "docs/downloads/wukongs-starry-stage-v2-booklet.pdf",
+      "sha256": "1d51b02976e4f2cdaa08c4e04e9ea944b411703adf6d2b0aef618633e12b385f",
+      "bytes": 9515263
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v2-core-en.pdf",
+      "sha256": "1053baef8e6bcd0eb764521262c177eb2ff97b525a45f401607a0948c74ccda2",
+      "bytes": 9187904
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v2-core-zh-Hans.pdf",
+      "sha256": "9cc8c1b5144662f7d4d1240b5bb5217e61e34339819d92f23e7a85dcc4f91ecb",
+      "bytes": 9218128
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v2-zh-Hans-booklet.pdf",
+      "sha256": "5e53834caf2ad1de9996b59e1ee7c62403cb29e49b74acc4fcb986710a158398",
+      "bytes": 9559524
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v2-zh-Hans.pdf",
+      "sha256": "9488f675cd007f4620369ab69109e899e1b1d016386aae90d9b8f678035cec6d",
+      "bytes": 9549653
+    },
+    {
+      "path": "docs/downloads/wukongs-starry-stage-v2.pdf",
+      "sha256": "284e9e9532e894fdaae3259eec16dbdf2b2194a900956c3487dfd7bd80f63355",
+      "bytes": 9496214
+    },
+    {
       "path": "docs/downloads/wukongs-wibble-wobble-ride-v1-booklet.pdf",
       "sha256": "06520fe4eff78c8f0e47fba99b4501a029b32e1eb7f2221f6b95eb5469a000f9",
       "bytes": 19153804
@@ -3230,6 +3260,11 @@
       "path": "stories/wukongs-starry-stage/editions/v1/prompts.txt",
       "sha256": "9958f2565e799c8a9f8b1aea3fb6f6d26a5852cf3e94d729a793e7fa49ec76db",
       "bytes": 1145237
+    },
+    {
+      "path": "stories/wukongs-starry-stage/editions/v2/prompts.txt",
+      "sha256": "e457db80b4f89ee0b2692a88382387bedde8fbba9c7787aef8b01cb5ac43d79d",
+      "bytes": 1150861
     },
     {
       "path": "stories/wukongs-wibble-wobble-ride/editions/v1/prompts.txt",

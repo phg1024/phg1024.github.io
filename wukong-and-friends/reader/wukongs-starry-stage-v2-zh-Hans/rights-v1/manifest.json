@@ -3,15 +3,15 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/wukongs-starry-stage-v1-zh-Hans.pdf",
-  "source_sha256": "88cc873ea275e3a70209d5fb6d42b9b2d4a070c4d9c10c0187251a12fdf612e4",
+  "source_pdf": "downloads/wukongs-starry-stage-v2-zh-Hans.pdf",
+  "source_sha256": "9488f675cd007f4620369ab69109e899e1b1d016386aae90d9b8f678035cec6d",
   "pixel_width": 1224,
   "pages": [
     {
       "image": "page-01.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "d832392fc1f3d4eabbc2c4acf92c421bb12af853847a16b9db07f6290f772c5b",
+      "sha256": "31d7e44f7c0afd1220ee7a46e57b7f98579a867573596831fc4db0494009a1ad",
       "text": "悟空的星星小剧场",
       "links": []
     },
@@ -19,7 +19,7 @@
       "image": "page-02.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "12c2083cc1121d4a15eb6f39f3511d6587c2362a64fb3c2947adea5e6b5c5990",
+      "sha256": "adea336b192bbd19f50369f47752bf9d86745b695e2c36a776e53eed59724b59",
       "text": "今晚有故事会！\n悟空搭了一个小舞台，\n后面挂着一块蓝色幕布。\n2",
       "links": []
     },
@@ -27,7 +27,7 @@
       "image": "page-03.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "30b70dd2425c6378243713970c906e2213478000e56876ee9af31b24c492f723",
+      "sha256": "e7db02e622143b4b551919cb3eef0838a7c35d7b6c471e0ae48d2ebc4a00ddf9",
       "text": "悟空把纸星星贴到幕布上：\n一、二、三、四、五、六。\n舞台上亮着六颗星星。\n3",
       "links": []
     },
@@ -35,7 +35,7 @@
       "image": "page-04.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "f1af0ab2729c318a50cd26f4f5fba2e12707c1c955c2ae824c61f0d8d116249c",
+      "sha256": "416f7f92e2dd0270ed7278f96b39c7c6fb885c45c5ba8a8c3031faa3547a64dd",
       "text": "玉兔蹦蹦跳跳地来了，\n手里拿着两颗星星：\n“我可以把它们加上去吗？”\n悟空说：“好呀！”\n4",
       "links": []
     },
@@ -43,7 +43,7 @@
       "image": "page-05.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "1db512696507abe33344df398266d46deda5cb28d5ab279b99a4e7db1b3e6803",
+      "sha256": "61eeb94e5f9233e91ac61f1d3df19c2c20b46b02b31c6a4c2122ac2ae78d60ec",
       "text": "玉兔又贴上两颗星星。\n六颗再加两颗，\n一共八颗！\n5",
       "links": []
     },
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "43e426cd5d1d9f7fec75a191dfb8d2c8432fc260b3b7602770cc7696ce81f46a",
+      "sha256": "d17e3d430e0579ba3b72a32ec8545455ba3c0baddc0c964ade7df48733c78f93",
       "text": "八戒抱着故事书来了。\n他在入口停下来，\n那里只有一块光秃秃的小牌子。\n“故事会是在这里吗？”\n6",
       "links": []
     },
@@ -59,7 +59,7 @@
       "image": "page-07.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "eac7616d11fce4378fdac8d93523420bb52aef0c2387f7bdf4b98d550b003962",
+      "sha256": "2628ee66563f9e0c3bc2f363aa1bd288bfaee9babe7118c4d8e9806a1fc6034a",
       "text": "玉兔说：“入口也需要星星。”\n悟空说：“可是星星都用完了。”\n7",
       "links": []
     },
@@ -67,7 +67,7 @@
       "image": "page-08.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5272a6ed5b502d02cf66e1d938122a7e7923dd7ea653e61e811ddc03b8091e8d",
+      "sha256": "3209e7a7a098265618bec086afd96bee1001715b50c9d7812c6d02b2a27b0084",
       "text": "悟空想到一个办法：\n“我们从幕布上拿下三颗吧。”\n一、二、三，拿下来啦！\n8",
       "links": []
     },
@@ -75,7 +75,7 @@
       "image": "page-09.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "97f0cbff6084b357e2f7ffa0be8d3776aa85ade6280ccf793523e2aea65366c7",
+      "sha256": "99a833cf17bdebfc23059f88e2796e3fcc6c2b7f77140b02d984010a3f6f5501",
       "text": "幕布上还剩几颗？\n一、二、三、四、五。\n拿走三颗，还剩五颗。\n9",
       "links": []
     },
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "c428945c085e951cb350db7b271e6d0d8e9170bd4408a735c8435ebd121215e4",
+      "sha256": "085ba6833faf6ba0af7dd5b79f277994c81886bd5c7c9343cd8a023d9dc63472",
       "text": "他们把三颗星星贴到小牌子上，\n入口也亮起来啦！\n10",
       "links": []
     },
@@ -91,7 +91,7 @@
       "image": "page-11.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "05644a9bb1f9a8c92dd1a0db72bb992a20243d692c58113f473da7daf7ea73a2",
+      "sha256": "ef1ab4cc6ea0ddce97830670b70c6a81e3d9f1a6185bb329924869db688b8038",
       "text": "八戒有点担心：\n“我们是不是弄丢了三颗？”\n玉兔说：“没有呀，\n入口需要星星，\n我们只是给它们搬了个家。”\n11",
       "links": []
     },
@@ -99,7 +99,7 @@
       "image": "page-12.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "698cbdad6afae9186d49c0523daba35f179a23597f6fcba9496b9419e76e6701",
+      "sha256": "3b50211d4de1b1efd10348ac8593d64fbbf18da1658ee06149d492809bf898e2",
       "text": "悟空把星星都数了一遍：\n幕布上还剩五颗，\n入口有三颗，\n“还是一共八颗！”\n12",
       "links": []
     },
@@ -107,7 +107,7 @@
       "image": "page-13.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "16eaa33fe218c6776021d11049fd8444693f5cfce90339a7996add906e3f92fc",
+      "sha256": "ffcbd9a15317e485a7de1917965a7dde0199d2da944b856860ddd3cff0c28251",
       "text": "八戒拍拍圆圆的肚子：\n“我的肚子能当月亮吗？”\n大家都笑了。\n13",
       "links": []
     },
@@ -115,7 +115,7 @@
       "image": "page-14.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "d6100e42cdb042d76608847f3303eae66cd9b233655e1865f00251130384d75a",
+      "sha256": "a12bf3159e18024bb6138be61334dc22a6a6209b51ae65161dbcd9501f6af280",
       "text": "悟空说：“月亮不是星星，\n所以还是八颗星星。”\n玉兔说：“还有一个肚子月亮！”\n14",
       "links": []
     },
@@ -123,7 +123,7 @@
       "image": "page-15.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "7c2b53faa26d0cb7faff55ef6ed920c7b699d538f3380414e1b95ae8bd0a9795",
+      "sha256": "39862e6d01e53e47bd45ac61ad23b43035470e3ac31c8f2bda332ca44b51c705",
       "text": "舞台布置好了。\n玉兔和悟空坐到软垫上，\n八戒翻开故事书：\n“很久很久以前……”\n15",
       "links": []
     },
@@ -131,7 +131,7 @@
       "image": "page-16.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "dc255b56042fe28a2becb7389ce7e3c1ac74334a0d68ccb4c4691b7cffa695e4",
+      "sha256": "0973f39cfb27b481d1a9308d097071b1d9f993c09d2a76e39e8a7ce7057d3915",
       "text": "故事讲完了，悟空抬头一看：\n天上亮起了真的星星。\n他小声说：“好多星星！”\n多得数也数不清！\n16",
       "links": []
     },

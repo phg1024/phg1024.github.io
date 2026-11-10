@@ -10,7 +10,7 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-09T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-10T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</atom:id>
     <atom:title type="text">机器人八戒</atom:title>
@@ -184,12 +184,12 @@
     <atom:title type="text">悟空的星星小剧场</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukongs-starry-stage/" rel="alternate" type="text/html" hreflang="zh-CN" />
     <atom:published>2026-10-29T00:00:00Z</atom:published>
-    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:updated>2026-11-10T00:00:00Z</atom:updated>
     <atom:author>
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;悟空要办故事会，在幕布上贴了六颗纸星星，玉兔又带来两颗，一共八颗。入口也想要星星，他们从幕布上拿走三颗：幕布上还剩五颗，合起来还是八颗。八戒还想用自己的圆肚子当月亮呢！&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-starry-stage-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-starry-stage-v1-zh-Hans.jpg" alt="悟空的星星小剧场" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;悟空要办故事会，在幕布上贴了六颗纸星星，玉兔又带来两颗，一共八颗。入口也想要星星，他们从幕布上拿走三颗：幕布上还剩五颗，合起来还是八颗。八戒还想用自己的圆肚子当月亮呢！&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-starry-stage-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-starry-stage-v2-zh-Hans.jpg" alt="悟空的星星小剧场" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/big-cards-little-numbers/</atom:id>
