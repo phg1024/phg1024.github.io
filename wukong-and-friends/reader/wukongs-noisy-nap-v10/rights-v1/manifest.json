@@ -1,0 +1,163 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/wukongs-noisy-nap-v10.pdf",
+  "source_sha256": "75798d9ecbb1dd13a354f7e4df0a98584f95536747b69a0e642954a3797355fc",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "045da11cebfa69b636c841b046656e9c34f19fe12ee5ec98f66aaba3fefd94d1",
+      "text": "Sun Wukong’s\nNoisy Nap",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "15855a6286accfd3b242f8e59ada4d57e9da6aebeefb290549b3545f813491ba",
+      "text": "Sun Wukong yawned.\n“Time for a nap!”\nHe found a shady peach tree.",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "fd0dc7857080c5239bbf553819402af91e1cfac70584b58ce5cc861aea64f843",
+      "text": "Pigsy brought a pillow.\n“Soft as a cloud!”\nThen his tummy went\nRUMBLE.",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "5f3de9ae6aee036ed695e54c89e722ed4f1759ec3fab2a8a5169cbf13a011a3f",
+      "text": "“A snack first,” said Wukong.\nMunch, munch.\nPigsy’s tummy was quiet.",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "dd2ef64899e142fd229c6ae94b41f1a6b475d538f1be510a99876922716354dc",
+      "text": "Sandy waved a leaf fan.\nA leaf tickled Wukong’s nose.\n“Ah… ah… ACHOO!”",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "bbda48a114a90a610dad779e805550daa4b170d26b87b9ec9d81bcf836770f85",
+      "text": "A little bird sang a song.\n“TWEET! TWEET!”\nWukong sat up.\n“A little softer, please!”",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "e20362a3881ef2af78488ff50707113ffbe63ffb8c91aa9e636a985300dd47a8",
+      "text": "Pigsy chewed softly.\nSandy fanned slowly.\nThe bird sang, “Twee…\ntwee…”\nWukong smiled.",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "392177c304738b14d27e46c94f908474a3eae361014c719bfa56f5b295e98a64",
+      "text": "Wukong blew one tiny puff.\nA cloud curled around his\nfeet.\n“Just right,” he whispered.",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "9bb982876929a0ed329930cc0e0e19dadfe443256b589b45f572ba8d6199d567",
+      "text": "Soon, his friends were sleepy\ntoo.\nPigsy snored. “Snrrr…”\nWukong gave one last giggle.",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "923e8b508e27983e0274991e6b2aac86c8e0ccbffc7af04123b16e538d967bf1",
+      "text": "Under the tree, everyone\nslept.\nThe leaves went hush.\nThe clouds went slowly by.\nEven heroes need a nap.",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d22637ab6fc3dba430ef0766620f48df979b60ce1dd6eb422e5d1b92cb88016b",
+      "text": "Wukong & Friends\nThank you for reading!\nWe hope you and your little reader\nenjoyed this little adventure.\nMore free stories\nphg1024.github.io/wukong-and-friends\nRead, download and print - always free.\nRead more free stories\nIf you enjoyed our stories, you are welcome\nto help the next one grow. Support is optional.\nBuy Me a Coffee\nGitHub Sponsors\nCreated by Peihong Guo\nStories and illustrations made with AI assistance and human editing.\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · Attribution · NonCommercial · NoDerivatives\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "904d61d0a310e2bfcfcb68cf5dba7d7fa03f9ad2819832ed7aea61151f2a3cf4",
+      "text": "Wukong & Friends\nA little hush.\nA little kindness.\nA cozy rest.\nphg1024.github.io/wukong-and-friends",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}
