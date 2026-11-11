@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="expect" href="#scripts-ready" blocking="render">
+ <style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // The transition is for the hop into or out of the gallery, where the panel changes size
+  // (792px to 1148px wide); between two ordinary pages it is skipped, here on the way out.
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/bread/basic-bread/","/blog/ai/dreamfusion/","/bread/potato-bread/","/bread/banana-bread/","/bread/toast-bread/","/bread/rye-bread/","/bread/banana-bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/blog/programming/print-color-proxy/","/blog/programming/pynq-kvm/","/blog/programming/pynq-kvm-fpga/","/blog/ai/mywisper/","/about/","/bread/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/graphics/","/tag/doodling/","/tag/web/","/tag/home-lab/","/tag/image-processing/","/tag/local-inference/","/tag/agents/","/tag/hardware/","/tag/ml-research/","/tag/rendering/","/tag/wukong-and-friends/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      var gallery = function (p) { return p.indexOf('/gallery/') === 0; };
+      if (!path || animated.indexOf(path) < 0 || gallery(path) === gallery(location.pathname)) {
+        event.viewTransition.skipTransition();
+      }
+    });
+    window.addEventListener('pagereveal', handled);
+
+    // One container that resizes (proto-extra.css). On both sides of the hop, give the panel's
+    // on-screen children their own nested groups; on the new page, hand the panel's look to
+    // the transition group, which draws the container while it changes size.
+    var nested = window.CSS && CSS.supports && CSS.supports('view-transition-group: nearest');
+    function panel() {
+      return document.querySelector('.site-main > .content-page, .site-main > .blog-content');
+    }
+    function markVisibleChildren(card) {
+      var marked = [];
+      var h = window.innerHeight;
+      Array.prototype.forEach.call(card.children, function (child) {
+        var r = child.getBoundingClientRect();
+        if (r.height > 0 && r.bottom > 0 && r.top < h) {
+          child.classList.add('vt-card-item');
+          marked.push(child);
+        }
+      });
+      return marked;
+    }
+    function lendPanelLook(card) {
+      var s = getComputedStyle(card);
+      var rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--vt-card-bg-color', s.backgroundColor);
+      rootStyle.setProperty('--vt-card-bg-image', s.backgroundImage);
+      rootStyle.setProperty('--vt-card-border', s.borderTopWidth + ' ' + s.borderTopStyle + ' ' + s.borderTopColor);
+      rootStyle.setProperty('--vt-card-radius', s.borderTopLeftRadius);
+      rootStyle.setProperty('--vt-card-shadow', s.boxShadow);
+      rootStyle.setProperty('--vt-card-backdrop', s.backdropFilter || 'none');
+    }
+    window.addEventListener('pageswap', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (card) markVisibleChildren(card);
+    });
+    window.addEventListener('pagereveal', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (!card) return;
+      var marked = markVisibleChildren(card);
+      lendPanelLook(card);
+      event.viewTransition.finished.finally(function () {
+        marked.forEach(function (el) { el.classList.remove('vt-card-item'); });
+      });
+    });
+  })();
+ </script>
+ <script>
+  (function () {
+     // Cyberpunk is switched off for now (themeNames in /js/main.js): anyone who had it
+     // gets minimalist.
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     if (savedTheme === 'cyberpunk') savedTheme = 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@600;700&amp;family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+ <title>Dictation That Stays on My Mac | Peihong Guo</title>
+ <meta name="description" content="Hold a key, talk, let go, and the words appear wherever the cursor is. My first version, a Python app Gemini wrote, didn&#39;t quite work: its menu bar icon…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/ai/mywisper/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="Dictation That Stays on My Mac | Peihong Guo">
+ <meta property="og:description" content="Hold a key, talk, let go, and the words appear wherever the cursor is. My first version, a Python app Gemini wrote, didn&#39;t quite work: its menu bar icon…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/ai/mywisper/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Dictation That Stays on My Mac | Peihong Guo">
+ <meta name="twitter:description" content="Hold a key, talk, let go, and the words appear wherever the cursor is. My first version, a Python app Gemini wrote, didn&#39;t quite work: its menu bar icon…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-11-10T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/proto.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head><body class="proto">
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link is-active" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by area">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">12</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/graphics/">Graphics <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/doodling/">Doodling <span class="proto-rail__count">8</span></a></li>
+   </ul>
+   <ul class="proto-rail__tags proto-rail__tags--topics" aria-label="Browse by topic">
+    <li><a class="proto-rail__tag" href="/tag/web/">Web <span class="proto-rail__count">9</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/home-lab/">Home lab <span class="proto-rail__count">8</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/image-processing/">Image processing <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/local-inference/">Local inference <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/agents/">Agents <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/hardware/">Hardware <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/ml-research/">ML research <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/rendering/">Rendering <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/wukong-and-friends/">Wukong &amp; Friends <span class="proto-rail__count">2</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Dictation That Stays on My Mac</h1><p class="blog-post__date">Nov 10, 2026</p>
+<p>Dictation apps like Wispr Flow work the same way: hold a key, talk, let go, and the text lands wherever the cursor is. That's a nice way to write a long message, and I wanted it without sending my voice to anyone's server.</p>
+<p>My first attempt was a Python app called MyWisper, which I had Gemini write. It didn't quite work. It uses <strong>SenseVoice-Small</strong>, a small open speech recognition model that handles Mandarin, English, Cantonese, Japanese and Korean. Quantized to 8 bits, it's about 230 MB and runs on the CPU through sherpa-onnx. The model was never the problem: it transcribes a sentence in 30 to 50 ms. Everything around it was.</p>
+<p>For the second attempt I handed it to Claude, as with my other recent projects. It reviewed the Python version, rewrote it as a native app, and fixed what I ran into using it. All of that happened on one day.</p>
+<h2>What was wrong with the Python version</h2>
+<p>Claude's review found four real bugs:</p>
+<ul>
+<li><strong>The menu bar icon never appeared.</strong> On startup the app cleared its &quot;recent history&quot; submenu before the submenu existed. That threw an error, the app caught it, and quietly fell back to running in a terminal window. Every time.</li>
+<li><strong>The language menu did nothing.</strong> Picking Chinese or English saved the choice to a config file, and that was all.</li>
+<li><strong>The hotkey lost track of the state.</strong> It kept its own idea of whether it was recording. Stop from the menu, and the next press of the hotkey did nothing; you had to press it twice.</li>
+<li><strong>Any web page could use it.</strong> The app ran a small HTTP server on localhost with no password and a header that allows every website to read the responses. Any page I had open could fetch my last 20 dictations, or start the microphone. The transcript would then be pasted wherever my cursor was.</li>
+</ul>
+<p>Each fix was small. But I'd also wanted a proper interface, so I asked for a native app instead.</p>
+<h2>The native version</h2>
+<p>It's a Swift menu bar app. The pieces:</p>
+<ul>
+<li><strong>The model:</strong> the same SenseVoice model, called through sherpa-onnx's C library. The library files come straight from the Python package, and the model ships inside the app.</li>
+<li><strong>The hotkey:</strong> a system-wide keyboard listener that watches one modifier key, by default right Option.</li>
+<li><strong>The audio:</strong> the system's audio engine, converted to the 16 kHz mono the model expects. Recordings stay in memory and are dropped after transcription.</li>
+<li><strong>The typing:</strong> the text goes on the clipboard, the app sends a ⌘V, and then puts back whatever was on the clipboard before.</li>
+</ul>
+<p><img src="/images/blog/mywisper/architecture.svg" alt="Two columns. The first version, in Python: a hotkey listener that keeps its own recording flag, a controller that locks while transcribing, the microphone, SenseVoice-Small through sherpa-onnx's Python bindings, and a paste through pbcopy and AppleScript; around it a menu bar that crashes at launch and an HTTP API with no password. The native version: a system event tap, one state machine, AVAudioEngine, SenseVoice-Small through the C library with the model inside the app, and a paste that stays on this Mac; around it a SwiftUI menu bar popup and recording bar, and no network code at all."></p>
+<p>Loading the model takes 0.35 seconds at startup. After that, five seconds of speech take about 50 ms to transcribe. Letting go of the key and seeing the text feels instant.</p>
+<p><img src="/images/blog/mywisper/menu.png" alt="The MyWisper menu: a large &quot;start dictation&quot; button showing the hotkey, right Option, and the three most recent dictations below it, in Chinese and English, each with its age and length."></p>
+<p><em>The menu bar popup, rendered by the app itself with sample text. Clicking an entry copies it.</em></p>
+<p>While you talk, a small bar at the bottom of the screen shows a live waveform and the time. It never takes focus, so the text still goes into the window you were typing in.</p>
+<p><img src="/images/blog/mywisper/hud-recording.png" alt="A black capsule at the bottom of the screen: a red recording dot, a waveform, 0:04, and the hint &quot;release to finish, esc to cancel&quot; in Chinese."></p>
+<p>The hotkey had to be careful, because Option and Control are also parts of normal shortcuts:</p>
+<ul>
+<li><strong>Hold or tap.</strong> Hold the key to talk and let go to finish, or tap once to start and again to stop.</li>
+<li><strong>Combinations cancel.</strong> If another key is pressed while the hotkey is held, say ⌥E or ⌃C, that was a shortcut, not dictation, so the recording is dropped silently.</li>
+<li><strong>A short delay.</strong> The microphone only starts 0.12 s after the key goes down, so quick shortcuts never touch it.</li>
+<li><strong>Esc cancels</strong>, and a recording that's too short or too quiet is thrown away rather than sent to the model.</li>
+</ul>
+<p>One thing behaved differently from what I expected. Forcing the language barely changes the result: SenseVoice detects the language on its own, and telling it &quot;this is English&quot; didn't change the output for Chinese audio, in either the Python or the C interface. So the Python version's broken language menu hadn't cost me anything. In the new app it's a &quot;language hint&quot; in the settings.</p>
+<h2>Permissions are the hard part</h2>
+<p>Two problems came up when I actually used it, and neither was in the code that does the work.</p>
+<p><strong>I pressed the wrong key.</strong> I tried Control; the default was right Option, and left Control wasn't even an option. Now the settings have a &quot;press the key you want&quot; button, which also proves the app can see that key.</p>
+<p><strong>Then it only worked while the app was in front.</strong> A Mac app needs the Accessibility permission to watch the keyboard system-wide and send the ⌘V. Without it, macOS still lets the app create the keyboard listener, but only hands it the keys meant for the app itself. No error, just a hotkey that works in exactly one place.</p>
+<p>It had no permission because of how it was signed. Without a developer certificate, the app was signed ad hoc, and macOS ties each permission to the signature. Every rebuild looked like a new program, so the permission I'd granted belonged to an older build. On top of that, the app set up its listener once at launch, so granting permission later didn't help until a restart.</p>
+<p>The fixes: the build now signs with a self-signed certificate made once on this Mac, so rebuilds keep their permissions. And the app checks for the permission every second, setting up the listener as soon as it's granted.</p>
+<h2>Does it send anything anywhere?</h2>
+<p>The whole point was to keep my voice on my machine, so I asked Claude to prove it rather than assume it. The checks:</p>
+<ul>
+<li><strong>The code</strong> has no network calls.</li>
+<li><strong>The compiled app and its two libraries</strong> don't import any networking functions: no sockets, no DNS, no URL loading. A program that can't call them can't open a connection.</li>
+<li><strong>The running app</strong> has no network connections open.</li>
+<li><strong>With the network blocked</strong> for the process, transcription in all five languages gave exactly the same results.</li>
+</ul>
+<p>The review found one leak I wouldn't have thought of. The app puts the text on the clipboard to paste it, and macOS's Universal Clipboard syncs the clipboard to my iPhone and other Macs. Now the app marks its clipboard writes as local to this Mac, so they don't sync.</p>
+<p>What stays on the Mac is a history file that only my account can read, which can be turned off or cleared in the settings.</p>
+<p>The lesson I'd take: <strong>on a Mac, the model is the easy part</strong>. SenseVoice was fast and accurate from the first test. The day went into keys, permissions, signing and the clipboard: everything between my voice and the cursor.</p>
+
+      <footer class="post-meta">
+        <p class="post-box post-meta__tags">Filed under <a href="/tag/ai/">AI</a> · <a href="/tag/local-inference/">Local inference</a></p>
+        <div class="post-box post-meta__related">
+          <p class="post-meta__label">Related</p>
+          <ul class="post-related">
+            <li><a href="/blog/ai/qwen38-27b-arc-b70/">The Better Model That Wouldn&#39;t Fit: Qwen 3.8 27B on a 32 GB Arc Pro B70</a><span class="post-related__when">Oct 22, 2026</span></li>
+            <li><a href="/blog/ai/strata-b70-page-reclaim/">My Qwen 3.8 Flash Next on Strata Got 40% Slower Overnight, and It Wasn&#39;t the GPU</a><span class="post-related__when">Oct 22, 2026</span></li>
+            <li><a href="/blog/ai/jarvis-architecture/">Building Jarvis: A Local Voice Assistant with Android and Hermes</a><span class="post-related__when">Oct 6, 2026</span></li>
+          </ul>
+        </div>
+        <nav class="post-box post-pager post-meta__chrono" aria-label="Older and newer posts"><a class="post-pager__prev" href="/blog/programming/pynq-kvm-fpga/"><span class="post-pager__label">← Older</span>The FPGA Finally Earns Its Keep</a>
+        </nav>
+      </footer></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/mywisper/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+<span id="scripts-ready" hidden></span>
+
+</body>
+</html>
