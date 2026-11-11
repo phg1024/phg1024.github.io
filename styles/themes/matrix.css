@@ -368,6 +368,16 @@
   content: "~/";
   opacity: 0.6;
 }
+/* Hovering the name (main.js): a cursor after it that blinks, solid while the name is being
+   typed. The negative margin takes back the cursor's width, so nothing in the header moves. */
+[data-theme="matrix"] .site-brand__cursor {
+  margin-right: -0.67em;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="matrix"] .site-brand__name.is-prompt:not(.is-typing) .site-brand__cursor {
+    animation: matrix-blink 1.06s steps(1, end) infinite;
+  }
+}
 [data-theme="matrix"] .section-heading__eyebrow::before {
   content: "> ";
 }

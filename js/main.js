@@ -2128,6 +2128,80 @@
         window.requestAnimationFrame(step);
     };
 
+    // ── Matrix: the name in the header is a prompt while the pointer is on it ──
+    // A blinking block cursor after the name, and every few seconds the name is typed out
+    // again. The untyped rest stays in the line, hidden, so the header never changes width;
+    // screen readers keep the whole name in a visually hidden copy. With reduced motion the
+    // cursor shows but doesn't blink and nothing is retyped.
+    const initMatrixBrand = function () {
+        var link = document.querySelector('.site-brand');
+        var name = link && link.querySelector('.site-brand__name');
+        if (!name) return;
+        var text = name.textContent.trim();
+        var typed = null;
+        var rest = null;
+        var timer = null;
+        var active = false;
+
+        var setTyped = function (count) {
+            typed.textContent = text.slice(0, count);
+            rest.textContent = text.slice(count);
+        };
+        var typeOut = function () {
+            var count = 0;
+            name.classList.add('is-typing');
+            setTyped(0);
+            var key = function () {
+                if (!active) return;
+                setTyped(++count);
+                if (count < text.length) {
+                    timer = window.setTimeout(key, 55 + Math.random() * 75);
+                    return;
+                }
+                name.classList.remove('is-typing');
+                timer = window.setTimeout(typeOut, 3200);
+            };
+            timer = window.setTimeout(key, 260);
+        };
+        var start = function () {
+            if (active || getTheme() !== 'matrix') return;
+            active = true;
+            var label = document.createElement('span');
+            var cursor = document.createElement('span');
+            label.className = 'sr-only';
+            label.textContent = text;
+            typed = document.createElement('span');
+            rest = document.createElement('span');
+            cursor.className = 'matrix-cursor site-brand__cursor';
+            [typed, cursor, rest].forEach(function (part) { part.setAttribute('aria-hidden', 'true'); });
+            rest.style.visibility = 'hidden';
+            name.textContent = '';
+            name.append(label, typed, cursor, rest);
+            setTyped(text.length);
+            name.classList.add('is-prompt');
+            if (!media.matches) timer = window.setTimeout(typeOut, 700);
+        };
+        var stop = function () {
+            if (!active) return;
+            active = false;
+            window.clearTimeout(timer);
+            name.classList.remove('is-prompt', 'is-typing');
+            name.textContent = text;
+        };
+
+        link.addEventListener('mouseenter', start);
+        link.addEventListener('mouseleave', function () {
+            if (document.activeElement !== link) stop();
+        });
+        link.addEventListener('focus', function () {
+            if (link.matches(':focus-visible')) start();
+        });
+        link.addEventListener('blur', function () {
+            if (!link.matches(':hover')) stop();
+        });
+        if (themeToggle) themeToggle.addEventListener('change', stop);
+    };
+
     // ── Matrix: a post prints block by block ──
     // After the title, each block of the post (paragraph, heading, list, code, table, figure,
     // the footer) appears whole, one after another, as it comes into view: those on screen
@@ -2181,6 +2255,7 @@
         paintBackdropNow();
         var startPrinting = printMatrixBlocks();
         typeMatrixTitle(function () { if (startPrinting) startPrinting(); });
+        initMatrixBrand();
         applyPointerState();
         applyHeaderScrollState();
 
