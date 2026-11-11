@@ -244,15 +244,8 @@
 <p>The review found one leak I wouldn't have thought of. The app puts the text on the clipboard to paste it, and macOS's Universal Clipboard syncs the clipboard to my iPhone and other Macs. Now the app marks its clipboard writes as local to this Mac, so they don't sync.</p>
 <p>What stays on the Mac is a history file that only my account can read, which can be turned off or cleared in the settings.</p>
 <h2>Giving it away</h2>
-<p>Late that night I decided to put it on GitHub for anyone to use. A few more pieces came first:</p>
-<ul>
-<li><strong>An English interface.</strong> All of it was in Chinese. Now there are about 120 strings in both languages, following the system language unless you pick one in the settings. It only changes the interface: recognition handles both languages either way.</li>
-<li><strong>A release build.</strong> Signing the app with the same self-signed certificate means later versions keep the permissions people have already granted, so that certificate needs a backup now. The build also stopped embedding a library path that contained my home folder.</li>
-<li><strong>The licenses.</strong> The app is MIT. The model, sherpa-onnx and ONNX Runtime each have their own license, and their notices ship inside the app.</li>
-<li><strong>A last check.</strong> Before the repository went public, Claude scanned every file and the whole git history for private information like internal addresses or passwords.</li>
-</ul>
-<p>What I skipped was Apple's $99-a-year Developer ID. Without it, macOS can't verify the app and blocks the first launch; you allow it once under Privacy &amp; Security. The release script will notarize it if I ever get one.</p>
-<p><a href="https://github.com/phg1024/MyWisper">MyWisper is on GitHub</a>, with a download of about 180 MB (the model is most of it) for Apple silicon Macs on macOS 15 or later. The About page has links to GitHub Sponsors and Buy Me a Coffee. They open in the browser only when clicked, so the app itself still has no network code.</p>
+<p>Late that night I put it on GitHub. It got an English interface first, and a last scan of the files and git history for anything private. I skipped Apple's $99-a-year Developer ID, so macOS blocks the first launch until you allow it once under Privacy &amp; Security.</p>
+<p><a href="https://github.com/phg1024/MyWisper">MyWisper is on GitHub</a>, free under the MIT license, for Apple silicon Macs on macOS 15 or later.</p>
 <p>The lesson I'd take: <strong>on a Mac, the model is the easy part</strong>. SenseVoice was fast and accurate from the first test. The day went into keys, permissions, signing and the clipboard: everything between my voice and the cursor.</p>
 
       <footer class="post-meta">
