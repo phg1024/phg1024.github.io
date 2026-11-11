@@ -195,7 +195,7 @@
       <div class="blog-content__inner"><h1>Dictation That Stays on My Mac</h1><p class="blog-post__date">Nov 10, 2026</p>
 <p>Dictation apps like Wispr Flow work the same way: hold a key, talk, let go, and the text lands wherever the cursor is. That's a nice way to write a long message, and I wanted it without sending my voice to anyone's server.</p>
 <p>My first attempt was a Python app called MyWisper, which I had Gemini write. It didn't quite work. It uses <strong>SenseVoice-Small</strong>, a small open speech recognition model that handles Mandarin, English, Cantonese, Japanese and Korean. Quantized to 8 bits, it's about 230 MB and runs on the CPU through sherpa-onnx. The model was never the problem: it transcribes a sentence in 30 to 50 ms. Everything around it was.</p>
-<p>For the second attempt I handed it to Claude, as with my other recent projects. It reviewed the Python version, rewrote it as a native app, and fixed what I ran into using it. All of that happened on one day.</p>
+<p>For the second attempt I handed it to Claude, as with my other recent projects. It reviewed the Python version, rewrote it as a native app, and fixed what I ran into using it. By just after midnight, it was a public release. All in one long day.</p>
 <h2>What was wrong with the Python version</h2>
 <p>Claude's review found four real bugs:</p>
 <ul>
@@ -215,10 +215,10 @@
 </ul>
 <p><img src="/images/blog/mywisper/architecture.svg" alt="Two columns. The first version, in Python: a hotkey listener that keeps its own recording flag, a controller that locks while transcribing, the microphone, SenseVoice-Small through sherpa-onnx's Python bindings, and a paste through pbcopy and AppleScript; around it a menu bar that crashes at launch and an HTTP API with no password. The native version: a system event tap, one state machine, AVAudioEngine, SenseVoice-Small through the C library with the model inside the app, and a paste that stays on this Mac; around it a SwiftUI menu bar popup and recording bar, and no network code at all."></p>
 <p>Loading the model takes 0.35 seconds at startup. After that, five seconds of speech take about 50 ms to transcribe. Letting go of the key and seeing the text feels instant.</p>
-<p><img src="/images/blog/mywisper/menu.png" alt="The MyWisper menu: a large &quot;start dictation&quot; button showing the hotkey, right Option, and the three most recent dictations below it, in Chinese and English, each with its age and length."></p>
+<p><img src="/images/blog/mywisper/menu.png" alt="The MyWisper menu: a large &quot;Start dictation&quot; button showing the hotkey, right Option, and the three most recent dictations below it, in Chinese and English, each with its age and length."></p>
 <p><em>The menu bar popup, rendered by the app itself with sample text. Clicking an entry copies it.</em></p>
 <p>While you talk, a small bar at the bottom of the screen shows a live waveform and the time. It never takes focus, so the text still goes into the window you were typing in.</p>
-<p><img src="/images/blog/mywisper/hud-recording.png" alt="A black capsule at the bottom of the screen: a red recording dot, a waveform, 0:04, and the hint &quot;release to finish, esc to cancel&quot; in Chinese."></p>
+<p><img src="/images/blog/mywisper/hud-recording.png" alt="A black capsule at the bottom of the screen: a red recording dot, a waveform, 0:04, and the hint &quot;Release to finish, esc to cancel&quot;."></p>
 <p>The hotkey had to be careful, because Option and Control are also parts of normal shortcuts:</p>
 <ul>
 <li><strong>Hold or tap.</strong> Hold the key to talk and let go to finish, or tap once to start and again to stop.</li>
@@ -243,6 +243,16 @@
 </ul>
 <p>The review found one leak I wouldn't have thought of. The app puts the text on the clipboard to paste it, and macOS's Universal Clipboard syncs the clipboard to my iPhone and other Macs. Now the app marks its clipboard writes as local to this Mac, so they don't sync.</p>
 <p>What stays on the Mac is a history file that only my account can read, which can be turned off or cleared in the settings.</p>
+<h2>Giving it away</h2>
+<p>Late that night I decided to put it on GitHub for anyone to use. A few more pieces came first:</p>
+<ul>
+<li><strong>An English interface.</strong> All of it was in Chinese. Now there are about 120 strings in both languages, following the system language unless you pick one in the settings. It only changes the interface: recognition handles both languages either way.</li>
+<li><strong>A release build.</strong> Signing the app with the same self-signed certificate means later versions keep the permissions people have already granted, so that certificate needs a backup now. The build also stopped embedding a library path that contained my home folder.</li>
+<li><strong>The licenses.</strong> The app is MIT. The model, sherpa-onnx and ONNX Runtime each have their own license, and their notices ship inside the app.</li>
+<li><strong>A last check.</strong> Before the repository went public, Claude scanned every file and the whole git history for private information like internal addresses or passwords.</li>
+</ul>
+<p>What I skipped was Apple's $99-a-year Developer ID. Without it, macOS can't verify the app and blocks the first launch; you allow it once under Privacy &amp; Security. The release script will notarize it if I ever get one.</p>
+<p><a href="https://github.com/phg1024/MyWisper">MyWisper is on GitHub</a>, with a download of about 180 MB (the model is most of it) for Apple silicon Macs on macOS 15 or later. The About page has links to GitHub Sponsors and Buy Me a Coffee. They open in the browser only when clicked, so the app itself still has no network code.</p>
 <p>The lesson I'd take: <strong>on a Mac, the model is the easy part</strong>. SenseVoice was fast and accurate from the first test. The day went into keys, permissions, signing and the clipboard: everything between my voice and the cursor.</p>
 
       <footer class="post-meta">
