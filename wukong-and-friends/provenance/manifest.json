@@ -272,6 +272,36 @@
       "bytes": 8814281
     },
     {
+      "path": "docs/downloads/nezhas-shape-town-v2-booklet.pdf",
+      "sha256": "79e53c752621d177861bd95938819df15ab50160c2a24d04fc9041edef615f48",
+      "bytes": 8606650
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v2-core-en.pdf",
+      "sha256": "6d82d2c8f089efa3478e340ed1358c07a6f9dc804d0ee2391bad3053daee584e",
+      "bytes": 8290780
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v2-core-zh-Hans.pdf",
+      "sha256": "ff1b94714fb86fd8a64a8fba3e0945dc6d1c1564fa545dcd7ffd4adbfb7afe92",
+      "bytes": 8321451
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v2-zh-Hans-booklet.pdf",
+      "sha256": "093a64694c447476f23a03b719ce0b6df533c954450756c7c9a4229af7481009",
+      "bytes": 8649509
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v2-zh-Hans.pdf",
+      "sha256": "e4c78af37663984fec6299cdb51feec5cec4f6c7c0a6aaeb60b4a5f63d591f8c",
+      "bytes": 8639650
+    },
+    {
+      "path": "docs/downloads/nezhas-shape-town-v2.pdf",
+      "sha256": "563057fea946cfc36b8e08974408a092a1baec410964b8eb5ca0dc445b440cc3",
+      "bytes": 8587628
+    },
+    {
       "path": "docs/downloads/pigsys-boing-boing-band-v1-booklet.pdf",
       "sha256": "b3c57223aca8538acf12624846811d2e7c1f347d8f287bcf2f6063622fbcaece",
       "bytes": 7909441
@@ -2755,6 +2785,11 @@
       "path": "stories/nezhas-shape-town/editions/v1/prompts.txt",
       "sha256": "12484266b2ccfbf9e9e71291db1e60ffbab155f210c9a3b12151653333141112",
       "bytes": 1077374
+    },
+    {
+      "path": "stories/nezhas-shape-town/editions/v2/prompts.txt",
+      "sha256": "5dea00f2eb88b14b3e33a88d57bbb521c7c139ddb85eff74411fb3e2d30ae024",
+      "bytes": 1142390
     },
     {
       "path": "stories/pigsys-boing-boing-band/editions/v1/prompts.txt",

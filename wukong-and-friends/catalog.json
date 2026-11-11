@@ -519,11 +519,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "math-cp5-approved",
+    "version": "v2",
+    "revision": "scale-from-scene",
     "publication_status": "published",
     "published": "2026-10-29",
-    "updated": "2026-10-29",
+    "updated": "2026-11-11",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -538,12 +538,12 @@
     ],
     "math_plan_id": "M7",
     "language_reading_versions": {
-      "en": "nezhas-shape-town/v1/en",
-      "zh-Hans": "nezhas-shape-town/v1/zh-Hans"
+      "en": "nezhas-shape-town/v2/en",
+      "zh-Hans": "nezhas-shape-town/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v1/nezhas-shape-town-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v1/nezhas-shape-town-v1-booklet.pdf",
-    "cover": "covers/nezhas-shape-town-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v2/nezhas-shape-town-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v2/nezhas-shape-town-v2-booklet.pdf",
+    "cover": "covers/nezhas-shape-town-v2.jpg",
     "translations": {
       "en": {
         "title": "Nezha’s Shape Town",
@@ -559,14 +559,14 @@
     "keywords": "哪吒 悟空 玉兔 形状 三角形 正方形 拼一拼 转一转 角 边 数学启蒙 Nezha Wukong Rabbit shapes triangle square turn fit corners sides early math",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v1/nezhas-shape-town-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v1/nezhas-shape-town-v1-booklet.pdf",
-        "cover": "covers/nezhas-shape-town-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v2/nezhas-shape-town-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v2/nezhas-shape-town-v2-booklet.pdf",
+        "cover": "covers/nezhas-shape-town-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v1/nezhas-shape-town-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v1/nezhas-shape-town-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/nezhas-shape-town-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v2/nezhas-shape-town-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/nezhas-shape-town-v2/nezhas-shape-town-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/nezhas-shape-town-v2-zh-Hans.jpg"
       }
     }
   },

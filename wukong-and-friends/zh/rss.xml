@@ -9,7 +9,7 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Tue, 10 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 GMT</lastBuildDate>
     <item>
       <title>机器人八戒</title>
       <link>https://phg1024.github.io/wukong-and-friends/zh/books/robot-pigsy/</link>
@@ -77,7 +77,7 @@
     <item>
       <title>哪吒的形状小镇</title>
       <link>https://phg1024.github.io/wukong-and-friends/zh/books/nezhas-shape-town/</link>
-      <description>&lt;p&gt;哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1-zh-Hans.jpg" alt="哪吒的形状小镇" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;哪吒的纸小镇还缺一扇方窗户，盒子里却只剩两块蓝色三角形。悟空先把它们当成尖尖的帽子，玉兔教大家转一转，长边一对上就拼成了方块！同样两块还能拼成一个大三角形。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v2-zh-Hans.jpg" alt="哪吒的形状小镇" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
       <dc:creator>Peihong Guo</dc:creator>
       <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/</guid>
       <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>

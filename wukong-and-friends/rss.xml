@@ -9,7 +9,7 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Tue, 10 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 GMT</lastBuildDate>
     <item>
       <title>Robot Pigsy</title>
       <link>https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</link>
@@ -77,7 +77,7 @@
     <item>
       <title>Nezha’s Shape Town</title>
       <link>https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/</link>
-      <description>&lt;p&gt;Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1.jpg" alt="Nezha’s Shape Town" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v2.jpg" alt="Nezha’s Shape Town" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
       <dc:creator>Peihong Guo</dc:creator>
       <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/</guid>
       <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>

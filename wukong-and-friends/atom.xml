@@ -10,7 +10,7 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-10T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-11T00:00:00Z</atom:updated>
   <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</atom:id>
     <atom:title type="text">Robot Pigsy</atom:title>
@@ -112,12 +112,12 @@
     <atom:title type="text">Nezha’s Shape Town</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/books/nezhas-shape-town/" rel="alternate" type="text/html" hreflang="en" />
     <atom:published>2026-10-29T00:00:00Z</atom:published>
-    <atom:updated>2026-10-29T00:00:00Z</atom:updated>
+    <atom:updated>2026-11-11T00:00:00Z</atom:updated>
     <atom:author>
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v1.jpg" alt="Nezha’s Shape Town" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;Nezha’s paper town needs one more square window, but only two blue triangles are left. Wukong wears them as a pointy hat, then Rabbit shows how turning them makes the long sides fit — a square! The same two pieces make a big triangle too.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v2.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/nezhas-shape-town-v2.jpg" alt="Nezha’s Shape Town" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-copycat-shadow/</atom:id>
