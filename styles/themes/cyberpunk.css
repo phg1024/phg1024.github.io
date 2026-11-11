@@ -82,8 +82,11 @@
   background-attachment: fixed;
 }
 
+/* The city stays in the background: dimmed and a little desaturated, so the neon reads as
+   distance and not as a second page. */
 [data-theme="cyberpunk"] .theme-backdrop {
-  opacity: 0.95;
+  opacity: 0.5;
+  filter: saturate(0.7);
 }
 
 /* Headings: capitals, amber for titles, a pink/cyan split like a misregistered screen. */
