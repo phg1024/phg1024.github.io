@@ -84,10 +84,7 @@
  </script>
  <script>
   (function () {
-     // Cyberpunk is switched off for now (themeNames in /js/main.js): anyone who had it
-     // gets minimalist.
      var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
-     if (savedTheme === 'cyberpunk') savedTheme = 'minimalist';
      document.documentElement.setAttribute('data-theme', savedTheme);
   })();
  </script>
@@ -150,6 +147,7 @@
        <span class="theme-toggle__label">Theme</span>
        <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
      <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
      <option value="matrix">Matrix</option>
      <option value="industrial">Industrial</option>
      <option value="win31">Windows 3.1</option>
@@ -215,7 +213,7 @@
 </ul>
 <p><img src="/images/blog/mywisper/architecture.svg" alt="Two columns. The first version, in Python: a hotkey listener that keeps its own recording flag, a controller that locks while transcribing, the microphone, SenseVoice-Small through sherpa-onnx's Python bindings, and a paste through pbcopy and AppleScript; around it a menu bar that crashes at launch and an HTTP API with no password. The native version: a system event tap, one state machine, AVAudioEngine, SenseVoice-Small through the C library with the model inside the app, and a paste that stays on this Mac; around it a SwiftUI menu bar popup and recording bar, and no network code at all."></p>
 <p>Loading the model takes 0.35 seconds at startup. After that, five seconds of speech take about 50 ms to transcribe. Letting go of the key and seeing the text feels instant.</p>
-<p><img src="/images/blog/mywisper/menu.png" alt="The MyWisper menu: a large &quot;Start dictation&quot; button showing the hotkey, right Option, and the three most recent dictations below it, in Chinese and English, each with its age and length."></p>
+<img src="/images/blog/mywisper/menu.png" width="680" height="740" style="display:block;width:100%;max-width:420px;height:auto;margin:1.5rem auto" alt="The MyWisper menu: a large Start dictation button showing the hotkey, right Option, and the three most recent dictations below it, in Chinese and English, each with its age and length.">
 <p><em>The menu bar popup, rendered by the app itself with sample text. Clicking an entry copies it.</em></p>
 <p>While you talk, a small bar at the bottom of the screen shows a live waveform and the time. It never takes focus, so the text still goes into the window you were typing in.</p>
 <p><img src="/images/blog/mywisper/hud-recording.png" alt="A black capsule at the bottom of the screen: a red recording dot, a waveform, 0:04, and the hint &quot;Release to finish, esc to cancel&quot;."></p>

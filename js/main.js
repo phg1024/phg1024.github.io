@@ -6,10 +6,7 @@
     const overlay = document.querySelector('.pointer-reactive-overlay');
     const themeToggle = document.getElementById('theme-toggle');
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    // Cyberpunk is switched off for now (2026-10-29): its styles and backdrop stay, but it is
-    // not offered and a saved choice of it falls back to minimalist. To bring it back, add it
-    // here, to the theme <select>s and to the restore scripts (base.njk, the four demos).
-    const themeNames = ['minimalist', 'matrix', 'industrial', 'win31'];
+    const themeNames = ['minimalist', 'cyberpunk', 'matrix', 'industrial', 'win31'];
     const matrixGlyphs = '01<>[]{}/*+-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&';
     const MAX_PARTICLES = 80;
     const MAX_OVERLAY_FPS = 36;
