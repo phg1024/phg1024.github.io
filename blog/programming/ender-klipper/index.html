@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="expect" href="#scripts-ready" blocking="render">
+ <style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // The transition is for the hop into or out of the gallery, where the panel changes size
+  // (792px to 1148px wide); between two ordinary pages it is skipped, here on the way out.
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/bread/basic-bread/","/blog/ai/dreamfusion/","/bread/potato-bread/","/bread/banana-bread/","/bread/toast-bread/","/bread/rye-bread/","/bread/banana-bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/blog/programming/print-color-proxy/","/blog/programming/pynq-kvm/","/blog/programming/pynq-kvm-fpga/","/blog/ai/mywisper/","/blog/programming/ender-klipper/","/about/","/bread/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/graphics/","/tag/doodling/","/tag/home-lab/","/tag/web/","/tag/image-processing/","/tag/local-inference/","/tag/hardware/","/tag/agents/","/tag/ml-research/","/tag/rendering/","/tag/wukong-and-friends/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      var gallery = function (p) { return p.indexOf('/gallery/') === 0; };
+      if (!path || animated.indexOf(path) < 0 || gallery(path) === gallery(location.pathname)) {
+        event.viewTransition.skipTransition();
+      }
+    });
+    window.addEventListener('pagereveal', handled);
+
+    // One container that resizes (proto-extra.css). On both sides of the hop, give the panel's
+    // on-screen children their own nested groups; on the new page, hand the panel's look to
+    // the transition group, which draws the container while it changes size.
+    var nested = window.CSS && CSS.supports && CSS.supports('view-transition-group: nearest');
+    function panel() {
+      return document.querySelector('.site-main > .content-page, .site-main > .blog-content');
+    }
+    function markVisibleChildren(card) {
+      var marked = [];
+      var h = window.innerHeight;
+      Array.prototype.forEach.call(card.children, function (child) {
+        var r = child.getBoundingClientRect();
+        if (r.height > 0 && r.bottom > 0 && r.top < h) {
+          child.classList.add('vt-card-item');
+          marked.push(child);
+        }
+      });
+      return marked;
+    }
+    function lendPanelLook(card) {
+      var s = getComputedStyle(card);
+      var rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--vt-card-bg-color', s.backgroundColor);
+      rootStyle.setProperty('--vt-card-bg-image', s.backgroundImage);
+      rootStyle.setProperty('--vt-card-border', s.borderTopWidth + ' ' + s.borderTopStyle + ' ' + s.borderTopColor);
+      rootStyle.setProperty('--vt-card-radius', s.borderTopLeftRadius);
+      rootStyle.setProperty('--vt-card-shadow', s.boxShadow);
+      rootStyle.setProperty('--vt-card-backdrop', s.backdropFilter || 'none');
+    }
+    window.addEventListener('pageswap', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (card) markVisibleChildren(card);
+    });
+    window.addEventListener('pagereveal', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (!card) return;
+      var marked = markVisibleChildren(card);
+      lendPanelLook(card);
+      event.viewTransition.finished.finally(function () {
+        marked.forEach(function (el) { el.classList.remove('vt-card-item'); });
+      });
+    });
+  })();
+ </script>
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@600;700&amp;family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+ <title>Teaching an Old Ender 3 New Speeds | Peihong Guo</title>
+ <meta name="description" content="My Ender 3 V2 took almost three hours for a part the new printer makes in eighty minutes. One evening I moved it from its stock firmware to Klipper: a…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/programming/ender-klipper/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="Teaching an Old Ender 3 New Speeds | Peihong Guo">
+ <meta property="og:description" content="My Ender 3 V2 took almost three hours for a part the new printer makes in eighty minutes. One evening I moved it from its stock firmware to Klipper: a…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/programming/ender-klipper/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Teaching an Old Ender 3 New Speeds | Peihong Guo">
+ <meta name="twitter:description" content="My Ender 3 V2 took almost three hours for a part the new printer makes in eighty minutes. One evening I moved it from its stock firmware to Klipper: a…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-11-12T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/proto.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head><body class="proto">
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link is-active" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by area">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">12</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/graphics/">Graphics <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/doodling/">Doodling <span class="proto-rail__count">9</span></a></li>
+   </ul>
+   <ul class="proto-rail__tags proto-rail__tags--topics" aria-label="Browse by topic">
+    <li><a class="proto-rail__tag" href="/tag/home-lab/">Home lab <span class="proto-rail__count">9</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/web/">Web <span class="proto-rail__count">9</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/image-processing/">Image processing <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/local-inference/">Local inference <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/hardware/">Hardware <span class="proto-rail__count">4</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/agents/">Agents <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/ml-research/">ML research <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/rendering/">Rendering <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/wukong-and-friends/">Wukong &amp; Friends <span class="proto-rail__count">2</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>Teaching an Old Ender 3 New Speeds</h1><p class="blog-post__date">Nov 12, 2026</p>
+<p>My first 3D printer is an Ender 3 V2. Since a Bambu P2S arrived, the Ender has been the slow second printer: it makes the parts the P2S doesn't have time for, at about half the speed. A month ago I looked at moving it to <a href="https://www.klipper3d.org/">Klipper</a>, decided to sort out its leveling and extrusion first, then bought the P2S and forgot about it. This week I finally did it, in one evening, with a Claude Code session writing the scripts and configuration and me doing everything that needed sudo or hands.</p>
+<h2>Why it was slow</h2>
+<p>The Ender ran Creality's stock Marlin firmware, and the slicer profile was just as cautious: 500 mm/s² acceleration and outer walls at 25 mm/s. Most of a print is short moves, and at that acceleration the print head never gets near its top speed.</p>
+<p>Before touching anything, I sliced the same two parts three ways in Bambu Studio. For the current profile, the estimate matched the real print time.</p>
+<table>
+<thead>
+<tr>
+<th>Setup</th>
+<th>Watch charger module</th>
+<th>Two cable holders</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Today: stock profile, 500 mm/s², walls 25–40 mm/s</td>
+<td>2 h 50 min</td>
+<td>2 h 08 min</td>
+</tr>
+<tr>
+<td>Same firmware, faster profile: 1000 mm/s², walls 40–60</td>
+<td>2 h 05 min</td>
+<td>1 h 32 min</td>
+</tr>
+<tr>
+<td>Klipper with resonance compensation: 3000 mm/s², walls 80–120</td>
+<td>1 h 25 min</td>
+<td>1 h 02 min</td>
+</tr>
+</tbody>
+</table>
+<p>The P2S prints the same watch module in 1 h 19 min. The last row runs into the hot end's limit, about 12 mm³/s of plastic, so it's close to as fast as this machine can go.</p>
+<p>A faster profile alone would help, but pushing acceleration on stock firmware just makes ringing worse: the frame shakes after every corner and leaves ripples on the walls. Klipper fixes that with <strong>input shaping</strong>: it measures the frame's resonance and shapes each move so it doesn't excite it. That's the part worth the trouble.</p>
+<p>One thing had to come first. The Ender had been extruding thin lines for weeks, and it turned out the plastic extruder arm had cracked. With a metal one in, the extrusion was fine, so the speed was the only problem left.</p>
+<h2>The plan: keep OctoPrint</h2>
+<p>Klipper splits the firmware in two. The printer's board runs a small program that only steps motors and reads sensors, and a Python program on a computer next to it does all the planning. The Ender already has a Raspberry Pi 4 running OctoPrint, and a lot hangs off OctoPrint: a status page, alerts when a print finishes, and a failure detector that watches the camera. All of them talk to OctoPrint's API.</p>
+<p>So the plan kept OctoPrint exactly as it was. Klipper's host program runs on the same Pi and exposes a virtual serial port, and OctoPrint connects to that instead of to the printer's USB port. Everything downstream keeps working, because OctoPrint still sends the G-code.</p>
+<h2>First, a new Pi system</h2>
+<p>The Pi's system was older than I thought: OctoPi 0.18 on Raspbian buster, with Python 3.7, and buster's package mirror has been shut down, so <code>apt-get update</code> failed. Klipper could have been forced onto it, but I had a spare 128 GB card, so the first job became a fresh OctoPi 1.1.0, on Debian bookworm with Python 3.11.</p>
+<p>The session listed everything worth carrying over: OctoPrint's own backup (without 2.2 GB of timelapse videos), the status page and its two cron lines, and the camera. The new OctoPi uses a different camera streamer, so we checked that the stream and snapshot URLs the monitors rely on still answered. Two and a half hours after the decision, the Ender was printing from the new card as before.</p>
+<h2>Flashing the board</h2>
+<p>The firmware build depends on the board, so I turned the printer on its side and opened the bottom: a v4.2.2 board with an STM32 chip, the combination Klipper's own Ender 3 V2 config is written for. The session built the firmware on my Mac in a Debian container, with the settings from the top of that config file, and gave it a name the board had never seen. The board's bootloader skips a file whose name it has already flashed, which catches a lot of people.</p>
+<p>The old Pi card, formatted as FAT32, became the flashing card, and the board took the firmware on the first try. The stock screen now stays dark: Klipper doesn't drive it, so from here on everything happens in the browser.</p>
+<p>On the Pi, the session set up Klipper's host program at the same commit as the firmware, as a service that starts at boot. The printer config started from Klipper's official Ender 3 V2 file, with acceleration capped at 1000 for now. Then OctoPrint was pointed at Klipper's port, and the temperatures came back.</p>
+<p>One annoyance stays: every time Klipper restarts, for example after saving a setting, OctoPrint drops to &quot;Offline&quot; and has to be reconnected by hand.</p>
+<h2>Checking the basics</h2>
+<p>Each step that heats or moves the printer started only after I confirmed I was standing next to it.</p>
+<ul>
+<li><strong>Homing.</strong> Each axis moved the right way and stopped at its switch. The config homes Z only after lifting the nozzle 10 mm, so it can't drag across the bed.</li>
+<li><strong>PID tuning.</strong> Klipper ran its heater test for the nozzle at 205 °C and the bed at 60 °C, and saved the results.</li>
+<li><strong>Extrusion.</strong> I marked the filament, the printer fed 100 mm at 1 mm/s, and I measured exactly 100 mm. The new metal extruder arm needed no correction.</li>
+</ul>
+<p>Then a 20 mm test cube, at the old speed for the first layers and 150% after that: about 26 minutes, and the &quot;print done&quot; alert arrived as before. The top had a ring of small holes and the corners bulged a little, the typical look of a printer without <strong>pressure advance</strong>, which comes later.</p>
+<h2>Measuring the shake</h2>
+<p>Input shaping needs the frame's resonant frequencies. I had a GY-521 board in a drawer, an MPU-6050 accelerometer that Klipper supports, and wired it to the Pi's I2C pins with four jumper wires. On the first try I swapped power and ground, and the chip got hot. It survived.</p>
+<p>The Pi then runs as a second Klipper &quot;board&quot; that reads the sensor. Klipper sweeps each axis through a range of frequencies and records how hard the sensor shakes:</p>
+<ul>
+<li><strong>X:</strong> the sensor sits on the print head. Before trusting any numbers, we moved each axis back and forth and checked which sensor axis responded, since the board was mounted upright. One more surprise: with the sensor on the head, homing failed a few times because the board got in the way of the switch, and a failed homing makes OctoPrint send an emergency stop. We disconnected OctoPrint during the tests.</li>
+<li><strong>Y:</strong> the sensor lies on the bed, with the nozzle raised out of its way.</li>
+</ul>
+<p><img src="/images/blog/ender-klipper/shaper-x.png" alt="Klipper's frequency response chart for the X axis: one tall peak near 37 Hz, with the response curves of five candidate shapers overlaid and EI at 40 Hz recommended."></p>
+<p><em>X axis: one clear resonance just under 40 Hz. Klipper recommends the EI shaper at 40 Hz, which leaves 0.1% of the vibration, at up to 2,900 mm/s².</em></p>
+<p>The first Y measurement showed a single peak around 33 Hz, but recommended a shaper tuned to 51 Hz. That didn't look right to me, so we ran it again. The peak was in the same place, and this time the recommendation matched it: MZV at 32.6 Hz.</p>
+<p><img src="/images/blog/ender-klipper/shaper-y.png" alt="Klipper's frequency response chart for the Y axis: one sharp peak near 33 Hz, with MZV at 32.6 Hz recommended."></p>
+<p><em>Y axis, second run: one sharp peak at 33 Hz. MZV at 32.6 Hz leaves 0.5% of the vibration, at up to 3,100 mm/s². The bed is the heavier moving part, which is probably why it resonates lower than the head.</em></p>
+<p>One acceleration setting covers both axes, so it has to respect X's lower limit: the printer's maximum went from 1000 to 2,800 mm/s², close to six times the old profile's 500.</p>
+<h2>What's left</h2>
+<ul>
+<li><strong>Pressure advance.</strong> Klipper's tuning tower prints a square tower and raises the pressure advance setting a little with every millimeter of height. You read the setting off the height where the corners look sharpest. That's the next print.</li>
+<li><strong>A new slicer profile.</strong> It has to call Klipper's start macro, use the new speeds and accelerations, and keep the layer-change markers that the status page counts.</li>
+<li><strong>The real test.</strong> I'll print the watch charger module from the table at the new speeds and see whether 2 h 50 min really becomes about 1 h 25 min.</li>
+</ul>
+<p>There's no easy way back to the old system: the old Pi card became the flashing card. That was a deliberate choice. The configuration is saved separately, and Creality's stock firmware is one SD card away if Klipper ever has to go.</p>
+
+      <footer class="post-meta">
+        <p class="post-box post-meta__tags">Filed under <a href="/tag/doodling/">Doodling</a> · <a href="/tag/home-lab/">Home lab</a> · <a href="/tag/hardware/">Hardware</a></p>
+        <div class="post-box post-meta__related">
+          <p class="post-meta__label">Related</p>
+          <ul class="post-related">
+            <li><a href="/blog/programming/pynq-kvm-fpga/">The FPGA Finally Earns Its Keep</a><span class="post-related__when">Nov 3, 2026</span></li>
+            <li><a href="/blog/programming/pynq-kvm/">A KVM From the Spare-Board Drawer</a><span class="post-related__when">Nov 2, 2026</span></li>
+            <li><a href="/blog/programming/home-automation/">A Local-Only Garage Door Opener for Apple Home</a><span class="post-related__when">Oct 18, 2026</span></li>
+          </ul>
+        </div>
+        <nav class="post-box post-pager post-meta__chrono" aria-label="Older and newer posts"><a class="post-pager__prev" href="/blog/ai/mywisper/"><span class="post-pager__label">← Older</span>Dictation That Stays on My Mac</a>
+        </nav>
+      </footer></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/programming/ender-klipper/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+<span id="scripts-ready" hidden></span>
+
+</body>
+</html>
