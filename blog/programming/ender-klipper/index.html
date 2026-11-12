@@ -256,9 +256,12 @@
 <p><img src="/images/blog/ender-klipper/shaper-y.png" alt="Klipper's frequency response chart for the Y axis: one sharp peak near 33 Hz, with MZV at 32.6 Hz recommended."></p>
 <p><em>Y axis, second run: one sharp peak at 33 Hz. MZV at 32.6 Hz leaves 0.5% of the vibration, at up to 3,100 mm/s². The bed is the heavier moving part, which is probably why it resonates lower than the head.</em></p>
 <p>One acceleration setting covers both axes, so it has to respect X's lower limit: the printer's maximum went from 1000 to 2,800 mm/s², close to six times the old profile's 500.</p>
+<h2>Pressure advance</h2>
+<p>The holes and bulges on the test cube have the same cause. The Ender pushes filament through a long Bowden tube to the hot end, so the pressure in the nozzle lags behind the extruder motor. When the head slows down for a corner, the nozzle keeps oozing and the corner bulges; when it speeds up again, it comes out short. Pressure advance makes the extruder push a little extra while the head accelerates and back off while it slows down, in proportion to how fast the speed changes.</p>
+<p>The right amount depends on the machine, so Klipper measures it with a tuning tower: a hollow square, 66 by 66 mm and 50 mm tall, with two walls, no infill and no top, printed at 100 mm/s. For the test, acceleration drops to 500 and corners are taken almost at a stop, so the only thing changing up the tower is the pressure advance setting. It starts at 0 at the bed and rises by 0.02 per millimeter, reaching 1.0 at the top. You then look for the height where the corners are sharpest without the walls next to them going thin.</p>
+<p>The best corners were at 32 mm, so pressure advance is now <strong>0.64</strong>, in the usual 0.4 to 0.8 range for a Bowden printer. A restart afterwards cleared the test limits.</p>
 <h2>What's left</h2>
 <ul>
-<li><strong>Pressure advance.</strong> Klipper's tuning tower prints a square tower and raises the pressure advance setting a little with every millimeter of height. You read the setting off the height where the corners look sharpest. That's the next print.</li>
 <li><strong>A new slicer profile.</strong> It has to call Klipper's start macro, use the new speeds and accelerations, and keep the layer-change markers that the status page counts.</li>
 <li><strong>The real test.</strong> I'll print the watch charger module from the table at the new speeds and see whether 2 h 50 min really becomes about 1 h 25 min.</li>
 </ul>
