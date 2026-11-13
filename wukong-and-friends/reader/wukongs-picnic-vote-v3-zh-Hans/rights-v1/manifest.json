@@ -3,15 +3,15 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/wukongs-picnic-vote-v2-zh-Hans.pdf",
-  "source_sha256": "d6a5ecd06cbb18151ebb4bdcfbb8db278cb140ded0b574cf9aa2d681cbae29ab",
+  "source_pdf": "downloads/wukongs-picnic-vote-v3-zh-Hans.pdf",
+  "source_sha256": "c9e0d1ef9fe3b30d570cda94b6d8e71002e2825220ef4e26b925ec51f262509d",
   "pixel_width": 1224,
   "pages": [
     {
       "image": "page-01.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "d6b4c7f6de50302a9e886359f9efc1f645281df91b1824e3d295951f7797eb2d",
+      "sha256": "c737bad5bac19f20ed2d52b6f6c558c6093f0e3fec02a1d8f43151beea56cc85",
       "text": "野餐玩什么？",
       "links": []
     },
@@ -19,7 +19,7 @@
       "image": "page-02.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "a9a33f725a23c8eec6de1bc6e8feb80c47c6b0cc4be1fa4e700a5926059269b2",
+      "sha256": "2a7d0e0a5e04afb2aa16ce7dbaa4ac9991acd0a37cbfa8265678b717290c13ed",
       "text": "六个好朋友在桃子草坡上野餐。\n午饭吃得精光。\n悟空说：“该玩游戏啦！”\n2",
       "links": []
     },
@@ -27,7 +27,7 @@
       "image": "page-03.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "c31b4dda74723b06eea1cccab19bf29bda0b74b78f0ec3a40b992d94c6232caf",
+      "sha256": "8f1acd85854d7a661d417832507bbc6abb846ed5ed3f690067fcf7466e369425",
       "text": "铁扇公主带了风筝，\n哪吒带了泡泡水，\n玉兔带了蜡笔。\n三个好选择！先玩哪个呢？\n3",
       "links": []
     },
@@ -35,7 +35,7 @@
       "image": "page-04.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5d828c84dbec832749ab7d1b2d8df70a3c85a630567fa3c595937f70f95af7d3",
+      "sha256": "0e3915a9321c92748810da65e67e45ac1fa6fd666fe9789852e15ff77989c063",
       "text": "“放风筝！”“吹泡泡！”“画画！”\n大家七嘴八舌，一起嚷嚷。\n4",
       "links": []
     },
@@ -43,7 +43,7 @@
       "image": "page-05.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "6f100eae39acf0c9eabf86b9cb1bdcfde408e43c9f58926571df801125b40b62",
+      "sha256": "58ef450676657b35592de49c657cb10749dba499c2b6a74ebf06428c3968a691",
       "text": "悟空喊得最响：\n“风筝！风筝！风筝！”\n“谁的声音大，就听谁的！”\n5",
       "links": []
     },
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "8603960962b37841f8d6e8f058b8f2209c1a7252794e9eb12f575f654effe8a4",
+      "sha256": "79ee812c51755177e69c3cb1f3a3af909148259d4bce428715e24564ae31b5ea",
       "text": "结果大家喊得更响了。\n这下谁也听不见谁！\n八戒赶紧捂住耳朵。\n6",
       "links": []
     },
@@ -59,7 +59,7 @@
       "image": "page-07.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "9917225f03462ffb4d1dfe52c6cf92780419b0f80a836672bb9152adb84e8060",
+      "sha256": "c2ccbee210591cc84c80f9b3f04a0b1792beb0cfdf1f30f55644755cc03835f9",
       "text": "玉兔拿出一张纸，\n画了一张分成三列的图表。\n每一列是一个选择。\n7",
       "links": []
     },
@@ -67,7 +67,7 @@
       "image": "page-08.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "9fb3be247dc5064668eb615a73ff87b59a41037f1c8a80970225d51fc929e3a5",
+      "sha256": "55458e20f6cce936992d75d21dda9054fa2633bb5290e0861d0171e32a1b40f3",
       "text": "她给每人发一张星星贴纸。\n玉兔说：“一人一张贴纸，\n这就是你的一票。”\n8",
       "links": []
     },
@@ -75,7 +75,7 @@
       "image": "page-09.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "69ddbc14d1dcc0e6aad14e1a771c621c74419f9ae69135042e1a82ff23386bcc",
+      "sha256": "bdd230ac1628ee59482be471ee30e5c2686e12b13025aceb3fcd821e1a7c3dbc",
       "text": "玉兔说：“贴纸从最下面贴起，\n中间不留空。”\n悟空把贴纸贴在风筝那一列。\n9",
       "links": []
     },
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "1d2d611b3198f08977c8f01f8ef9eb721d0b189478fa9d52a955f3f52b1ae8d2",
+      "sha256": "ec673cc497fe66bce9d910a48931c0cc3d972beea4665364a4a7fa7a79828a03",
       "text": "敖丙也选了风筝。\n八戒选了泡泡：\n“我最爱戳泡泡啦！”\n10",
       "links": []
     },
@@ -91,7 +91,7 @@
       "image": "page-11.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "0cbdbefa11e2b260508599efe23a0a37956553f5ac8158a39f17e45287bddf32",
+      "sha256": "c8d1fdedf07c32d1ebb69b6f98789decfeee4adf0713dfc9c6d1d60080f8ab2c",
       "text": "哪吒也选了泡泡。\n铁扇公主选了风筝：\n“这个坡上的风最好啦！”\n11",
       "links": []
     },
@@ -99,7 +99,7 @@
       "image": "page-12.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "48ba621c98c432558822593e97fe805dd536ddb71e8bff88f63253e8f6388bed",
+      "sha256": "bcbdec4f1f4ea3edad3483b7562bcb0c719a3b072b7e06bc617e8abe3f199f78",
       "text": "玉兔把贴纸贴在画画那一列。\n六个朋友，六张贴纸，\n大家都投好票了！\n12",
       "links": []
     },
@@ -107,7 +107,7 @@
       "image": "page-13.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "40a5ab0779c59cf862097cc8483db82d65bd137e74535e6519b50251796aec49",
+      "sha256": "4181b2d205755206d9e7dc49ef1bfd61a1534da4baaed07f26125519a200a5ae",
       "text": "风筝三票，\n泡泡两票，\n画画一票。\n哪一列最高，哪一个的票\n就最多！\n13",
       "links": []
     },
@@ -115,7 +115,7 @@
       "image": "page-14.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "c99fa1d9a6b4a73728652d30577214e0260708caa4322c365a84583d83530601",
+      "sha256": "023c112d398d0ab664decf23e60c7e8d9e23d4477b0a0109c01f258c15b1817f",
       "text": "图表上看得清清楚楚：\n风筝的票最多，\n泡泡和画画少一些。\n铁扇公主说：“先放风筝，\n再吹泡泡、画画！”\n14",
       "links": []
     },
@@ -123,7 +123,7 @@
       "image": "page-15.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "af23559e6fdcd01307942360cbed460947c9ddffaf5df2e00967c6b64b20f4ab",
+      "sha256": "01ebd4ed08eca1ca33fb9ae368244c69120915161d2c36c801a752e8093cd82f",
       "text": "八戒问：“能不能加第四列？\n‘再吃一回点心’！”\n大家都笑了。\n玉兔把它记在新的一页上，下次\n野餐用。\n15",
       "links": []
     },
@@ -131,7 +131,7 @@
       "image": "page-16.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "8186fa16073befbf287de0833383b4e94e33b0a4c774716a7dec3648c08ec7b2",
+      "sha256": "f77392f7cbf9edc8dc11db952c4439d04c79aecb8de439080389c9152d28a560",
       "text": "风筝飞呀飞，飞上了天！\n接着大家吹泡泡，\n最后玉兔给每个人画了像。\n谁也不用扯着嗓子喊啦。\n16",
       "links": []
     },
@@ -139,7 +139,7 @@
       "image": "page-17.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "d5fe2412537ab0ab9a468f8fb7e11a30b221231ff6b956d3c19f2625a27017f1",
+      "sha256": "ec4df2cb93b7c9510e763d90f22b8a350c71d1d514885ba4d4c68e844fdb41c9",
       "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n这些故事和插画由作者借助 AI 创作，并经过人工编辑。\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · 署名—非商业性使用—禁止演绎\ncreativecommons.org/licenses/by-nc-nd/4.0/",
       "links": [
         {

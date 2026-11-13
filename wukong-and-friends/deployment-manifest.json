@@ -5,7 +5,7 @@
     "about.html": "22a3adf43ed045775adb2d3739d5a402f76fdf9ba512b848aa8f1669654afb35",
     "app.js": "59b53a296ff26c5c4c34efc77b15e649ac31d751a1fbcc74c939c58e7069e988",
     "apple-touch-icon.png": "4286b09cf668fd24d3d3266c4705375f33637a39006fa260d6c5c96ed2d30c03",
-    "atom.xml": "71dd40d2eafb5824e699a5710072bff57c5bc23541596fe1508776ce98354289",
+    "atom.xml": "9325f7fb2a3f28fae9fe166250a2a3afae7cc0c930c05b58ef5a20e8d6fcb95f",
     "banner-loop-poster.jpg": "4ec7bb8fc059e10c910afb19ac412cef66030bed2eaeab0202dade0ad0ef3534",
     "banner-loop.mp4": "37b8dde4f1833ade03fce8889f7b071e914e5511aade3be9f1674c495c830edc",
     "banner-skating-poster.jpg": "ffed204d676647f27e680e462e5eaf153cd697115aaf03a6bec765993fc57c4c",
@@ -45,11 +45,11 @@
     "books/wukongs-noisy-nap/index.html": "38abbe74f6f02895c011228ad73f295c4d4a2190a4290362c1c2545600a0967c",
     "books/wukongs-one-little-bite/index.html": "799ae36a506e5beacb4c2d67ab2283c30cd6c72429903b213362e229909cff02",
     "books/wukongs-painting-class/index.html": "e4c4ff3d6087253d08e532e4212757448426d016f90f11b35c31cfadcee46a89",
-    "books/wukongs-picnic-vote/index.html": "9f0481bcd85e3a5f456dfc8167d8737471fca82b74c38b56f2942f5830b4880f",
+    "books/wukongs-picnic-vote/index.html": "bc3aad9c80ad941f036de690f34a3dae2237ab4401bb57951b29e66003292d6e",
     "books/wukongs-slippy-slide-skates/index.html": "cccc56da22bce736fe5a2739be9953f97eabe03cf90d915002ce3dab3ed17b79",
     "books/wukongs-starry-stage/index.html": "877e9b788f738a73226abebf540255891a3c44aff6b5ff7d0e2f64016d6fed61",
     "books/wukongs-wibble-wobble-ride/index.html": "1a81621e3c39cafc97e0b19f5a9aaa32f00197d9507e97907b5e232bce46f4d8",
-    "catalog.json": "7fa4a2ba42943e38c13fd9872307e3206ab8342fdc043904e8d6ce3ec90eedf5",
+    "catalog.json": "bf7a75d701522d28fffb8eadf7198b8dae5445c86f4c5b9fd479e258fba14a9a",
     "characters/index.html": "890f96209b33a720a02d9f344d693df8b9cd2ef15580514f14cffd602dc010c3",
     "characters/portraits/rights-v1/ao-bing.jpg": "f3b7ab41b1055df2a34bbf24b14b05fcd194f9045cc5280500c685541dcac6b3",
     "characters/portraits/rights-v1/bull-king.jpg": "304f1d712bc82f343298d521db3a628ea7e27f79fa44116743020a6dd1934183",
@@ -120,8 +120,8 @@
     "covers/wukongs-one-little-bite-v10.jpg": "d25d9f8577a0c961b9c8950b887344d2c5bfef53429014fef17d111ab1658caf",
     "covers/wukongs-painting-class-v2-zh-Hans.jpg": "5844a8f97bda011ff9444dafb3c6eaf99c415c88899e24af71964facf1413a3c",
     "covers/wukongs-painting-class-v2.jpg": "56dd326769dc633a85b1475d9d69d1f5fc31793c886b1f994a991ec910b7817a",
-    "covers/wukongs-picnic-vote-v2-zh-Hans.jpg": "27f30915a6bb4259e8753551e9d4b9b610183b8f32153133e51245a05ce39133",
-    "covers/wukongs-picnic-vote-v2.jpg": "fc83a274cce54f5f553fb48b04af68e3bd22b67b4b1618370b122e1b6fd934be",
+    "covers/wukongs-picnic-vote-v3-zh-Hans.jpg": "c40234d4bc3e8bf8b751cc634100086faeeb28833bfc500bcd83d6786cf725da",
+    "covers/wukongs-picnic-vote-v3.jpg": "6a428d37033ad64b8e993e358598e460d989deb363a5917f50c49def6cf7fba1",
     "covers/wukongs-slippy-slide-skates-v8-zh-Hans.jpg": "ce82e92ed177b32fb3e459659a75dfdafab8cf8bba794ba9da4789b700f771ed",
     "covers/wukongs-slippy-slide-skates-v8.jpg": "09e45b1bc4b06756b4495c8d6b75384d04692b939faaaf28cd7472ce39e82c07",
     "covers/wukongs-starry-stage-v2-zh-Hans.jpg": "59c88943bb1295ef23bc01abaf5a33d3faf06483d938adaa886fd2b12b049df8",
@@ -132,14 +132,14 @@
     "favicon-32.png": "c86c359b268013bf4827b2f7d4d0a0e0508f5c8cc62765334ab7d951bfd9ddee",
     "favicon.svg": "1ebb16bdf9a11d8282a59f4665dbd4e17cd08bd09c39d08b08f2a10776298187",
     "icon-512.png": "c217bb0044f85904c718bedf2a80d8b672152b0bdb1a6dee4f95a4338d339eac",
-    "index.html": "e75494c980adfb2edf063afb24bbed92518b4afbf67f75aa44e2731ccb8bb80d",
+    "index.html": "f2fd71f877b169ede407aa679bae98081bcdd2dfc96968c656ba0bba8a52618d",
     "license.html": "44b018d6bf42d57b2308393b7f7fc124bd072948f3fd7f39b8e43646a00df74f",
     "licenses/CC-BY-NC-ND-4.0.txt": "f7f28b8c7a1af76b9874ca6d040e8b1eb6768fd1043106c9d315090ea96754e7",
     "licenses/MIT.txt": "1baa8c93005463abb00e78e336cc6416e2e423352e8d11fe3825b5ea96f01b97",
     "og-image.jpg": "ccc6bb6488de45cadf36c2d739f2fcbfb0e5af1ea596bd777986577e3263c9da",
-    "provenance/manifest.json": "879a72b6c85dbe068da4f77bc2c1b39f233158ff95392b36c654bfdb1dc06041",
+    "provenance/manifest.json": "dfacb71c8efc59c1d03d6de9b61dbddc9ef48fa6d9902bfc481fcfbef8ef5dcf",
     "provenance/public-key.pem": "e3a01c706417deb7dc40e36a3af4fecee306646d7c8e18a58a6cb8290495716f",
-    "provenance/signature.json": "c38a4c69fc66413846029cac9e1d70b13e47285a6d3724ad4633fc1136f477b4",
+    "provenance/signature.json": "7fbc5d50c162c6087ae5c7d4fa91efd790a91ad8d6a8279e57afc3ad871f0894",
     "reader/ao-bings-little-boat-v2/rights-v1/manifest.json": "2fc7e5316c7c90956367c4d9c0fbcf3c7c467b24756e88578fb4eca5b2686d07",
     "reader/ao-bings-little-boat-v2-zh-Hans/rights-v1/manifest.json": "8ca6830bf272c50d642f2def0b7d9373255c3cf436e652a257393a22d3654697",
     "reader/big-cards-little-numbers-v2/rights-v1/manifest.json": "92f4dc9c081d497685d22746ed82c1d517b32eba712cc864137ffa855007940b",
@@ -198,8 +198,8 @@
     "reader/wukongs-one-little-bite-v10-zh-Hans/rights-v1/manifest.json": "5e27e1fae3c3de7926ca9e296f371464cb14017c5f7119c6d75991486b27a640",
     "reader/wukongs-painting-class-v2-zh-Hans/rights-v1/manifest.json": "1336b9e6fd540f865edde44f6a8d44c70f5fb9fe8d8e1da03800bb01812c2fa9",
     "reader/wukongs-painting-class-v3/rights-v1/manifest.json": "0b5ba1b3a8151dceef727cdeff66a313b8abaec098f4c52eccc63cccf56a8b82",
-    "reader/wukongs-picnic-vote-v2/rights-v1/manifest.json": "237db6217404ff6430f72a8d14ae9f0eb865fa87bfdc18da9270613fe1408645",
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/manifest.json": "2757e08327f0de1eb3f946334ece759eccf618e59543fdb17a35f612f465c623",
+    "reader/wukongs-picnic-vote-v3/rights-v1/manifest.json": "7204a7c579837882cffa937afb1b5873d551d4e958902b1cc7d02a844f6152f7",
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/manifest.json": "17996be62610e20762139f7240dff00b5eb580c8cb88dc8735faa13959fa816c",
     "reader/wukongs-slippy-slide-skates-v8/rights-v1/manifest.json": "9625aa03bedf04207cdab4c2ae6dbafe41dd0e0d611dfecb6ef5263f70df44b2",
     "reader/wukongs-slippy-slide-skates-v8-zh-Hans/rights-v1/manifest.json": "5dc555054e53f8750a799ad339e85a2e76e3f9820f441a29e26fbb92bdee0a8f",
     "reader/wukongs-starry-stage-v2/rights-v1/manifest.json": "940d925b493f0dbb78b7f868cc4f76695813bc4838a48a9e05780bf1607d808a",
@@ -208,8 +208,8 @@
     "reader/wukongs-wibble-wobble-ride-v8-zh-Hans/rights-v1/manifest.json": "97d7ab33c52cbd17d33b5a7964a996096b58f0d393e401c49c5c4a667724d2e9",
     "reader.js": "08990e135c401fcb312af6d52bce8ddaca969c7b3483310c0b9a589b7480c7ac",
     "robots.txt": "888b72b6d088bf4ddf94f7fcc4be39b180c793bf7f0be485e5591a8a4e6ce9e7",
-    "rss.xml": "3555ccdc49a213c9e229428444ab6811d8809ffb3ce8a00e43d87bf4c0277cd5",
-    "sitemap.xml": "abaaca471c16a2b5118cd80a3bf252e67f109115d897cbea05d7b6b1097228a6",
+    "rss.xml": "fec4e206ef25f146aa351f713ce3c554fca98452d733635566c1879fd2cc0d36",
+    "sitemap.xml": "e515143e463d19db6d9cce75d02115d2c7196e3dd9ec0d53a6bd113d7d98dd45",
     "social/ao-bings-little-boat-zh-Hans.jpg": "20c98b6ca96ab48b8a1501fa3d6188fcfdfff4402a1a7400f912c4b213bb9770",
     "social/ao-bings-little-boat.jpg": "1758c7c45bcddad359367dd09e7cbf63bf6e5e9f59fd257171c56a1cab4274e1",
     "social/big-cards-little-numbers-zh-Hans.jpg": "c3d5c0de1a2689298ae37db240f707b9912e45f2b0c5a81fadf8b8d3c96a949e",
@@ -268,8 +268,8 @@
     "social/wukongs-one-little-bite.jpg": "e1408f661f70056d03e673aa5c26d7775eb280990e6c76e5a6e044c1dc13d4e9",
     "social/wukongs-painting-class-zh-Hans.jpg": "f50844131767a237952e913e74b9e62e529a7454cac0c0806f219259ee5bf9f4",
     "social/wukongs-painting-class.jpg": "65cbd74e32575ea9b96c0c24f83ce49d293e4a2cb58ea817037ee5705a177cad",
-    "social/wukongs-picnic-vote-zh-Hans.jpg": "6bbd475da0155c69891a8fb2cdabdf141b243f22707c881bcccf5765541cefe7",
-    "social/wukongs-picnic-vote.jpg": "47dc47d5fccbe34064280d6cc9e0a87c2df00c69fb9c12223440c5bd2fc90b2a",
+    "social/wukongs-picnic-vote-zh-Hans.jpg": "cad706da756a83ae35c421dc6558a385788766ff0b5e728de5cc91050da11b35",
+    "social/wukongs-picnic-vote.jpg": "60d0dbc6fc52084123939815681ee0b393251abe62bf18e5e9a71cac29e485f0",
     "social/wukongs-slippy-slide-skates-zh-Hans.jpg": "9885993b276bc4e9512a5baf171125b4d5c41386f8fa4a61ccb762e04abf06e2",
     "social/wukongs-slippy-slide-skates.jpg": "cefa93e3c2369f537353850ac5d320625edeae13943f9844d55b1fa053aca38c",
     "social/wukongs-starry-stage-zh-Hans.jpg": "fbd16ae629098725c8631e24194ca71254b057a4935bb84b2fef44089f048d6c",
@@ -614,14 +614,18 @@
     "support/wukongs-painting-class-v2.html": "4735bbd7f46d02c0ca9fae3b9ce6c863ccd821fbbb7d8830fed4af344c8a11af",
     "support/wukongs-painting-class-v3-booklet.html": "7e28835e25defbba5c972324df4019b53a5bedb8e431082e3c7b1f8cac6b631e",
     "support/wukongs-painting-class-v3.html": "91aa39fe21cc6e929543b1871ac15f25bd10897df21db9309318a3a1f62fb5f3",
-    "support/wukongs-picnic-vote-v1-booklet.html": "5c915901c6166272855b872862a85c17c9966e275157330724b7d126990ee6bb",
-    "support/wukongs-picnic-vote-v1-zh-Hans-booklet.html": "09430d7d57b11e14c217338d72a8ddd75e60f7278b6c173354a4ef688cb3b2d4",
-    "support/wukongs-picnic-vote-v1-zh-Hans.html": "11db59c705d743c56416f85e9cc5d026f7fc76173d722bfd2b5200b37da0d947",
-    "support/wukongs-picnic-vote-v1.html": "cfe0db75aef8ae4b217599cf50f633e43b047a32c03c7367697ef2e75d544af5",
-    "support/wukongs-picnic-vote-v2-booklet.html": "f2497b2fba721624c7eb10a228ade17f552c96e694aa9ae8d79e260b71c1d83f",
-    "support/wukongs-picnic-vote-v2-zh-Hans-booklet.html": "8d3c32990916e11c23b8202e74d6c9b85ae3c1175c16b63bccf73b8bae6b9df9",
-    "support/wukongs-picnic-vote-v2-zh-Hans.html": "4c96ddd1f154548c425a42165058aac9287e861377b28448dc6ab74df12b8428",
-    "support/wukongs-picnic-vote-v2.html": "e6863e979ca4b2279b42f2b9c60cb52d0b9eee789dda5299d744b279dc280d71",
+    "support/wukongs-picnic-vote-v1-booklet.html": "99b08818f32a8f953ea76b716f34692fb5dc44ebeb74da3364895c80b405aabb",
+    "support/wukongs-picnic-vote-v1-zh-Hans-booklet.html": "655f22c322ba205da340711721cf5ae45be360d394741076a02824ec699b6d6c",
+    "support/wukongs-picnic-vote-v1-zh-Hans.html": "c38657c721ea185aae41c1482843a6c93beccb6d9fe6b9a17f802e948ac09f0b",
+    "support/wukongs-picnic-vote-v1.html": "716ca26ddb2b91e4d2731464524d494022d82909315f0c551a9567f04d5cbd4e",
+    "support/wukongs-picnic-vote-v2-booklet.html": "59ecf881ae26a743281525ef41cb9b9b4538638db71bb295276d7c48a389f979",
+    "support/wukongs-picnic-vote-v2-zh-Hans-booklet.html": "8d42fa385740ad06bc05779d007bce7bfc55ad319b4be6f9ee1559c77d85ac99",
+    "support/wukongs-picnic-vote-v2-zh-Hans.html": "3a0cef181590dd6334f53687d81b5b6b8245d2d94257ca16e79bf61cd5067298",
+    "support/wukongs-picnic-vote-v2.html": "ef5fc0c801d889fba60087c38f22349758fadb7f329299bb4a46dbc64058d08e",
+    "support/wukongs-picnic-vote-v3-booklet.html": "66bf88e1b1e1b7a2b5b0d18537c00c7acb5a8d8ab91c25a97804fac24d6c3178",
+    "support/wukongs-picnic-vote-v3-zh-Hans-booklet.html": "25adf0b53d5e179cbdbd67f3a1e0de131675ed6d8f069818bd28c21713a36501",
+    "support/wukongs-picnic-vote-v3-zh-Hans.html": "7b9927b6650900207559efe110119b2980480e61417a264881d9223eded8ff41",
+    "support/wukongs-picnic-vote-v3.html": "479a7f87b692ded74c6179485257c2170178f20419f4c1fcf9c1f5f8bbee092d",
     "support/wukongs-slippy-slide-skates-v1-booklet.html": "2448ca997b187de96de6ed47c43760578fc76202a2c1c018ae4d2bb02a4deaac",
     "support/wukongs-slippy-slide-skates-v1-zh-Hans-booklet.html": "3388f1d90aafba3a85cd60736558555f34911dbca8f16c74e27f6da96d2416cb",
     "support/wukongs-slippy-slide-skates-v1-zh-Hans.html": "0120c9c21be945a8fa6b03f2bf85509459b3cb1cf6d68316d220929908cb98de",
@@ -680,7 +684,7 @@
     "support/wukongs-wibble-wobble-ride-v8.html": "eeac7b9c3d8d91a2b60f6c3dc9f127373c0f15fea38ba3b7502408ce2370f078",
     "verify.html": "60221656b26f57898d2a0e608542ec6400ecd7e1fc97438d2a54e9e9aa597c10",
     "zh/about.html": "ef34dfc1828def828568064ec4f814322910ad30aaada2be20ba277dc087bfc7",
-    "zh/atom.xml": "624ec2185df796acc59f4c5d0c925479665097da5a5b9bce367de82601ef5551",
+    "zh/atom.xml": "4c5501a6874595bd41379208b1c2533e98bd32c7299c6e3ed2fb83876cb049dd",
     "zh/books/ao-bings-little-boat/index.html": "9700dbf6d68dd5ea571a436fa67ba2886a0978774ebe8a54ace5a2fe2dfb62fd",
     "zh/books/bears-wobbly-ride/index.html": "7b8f8365e9bef452dfe37af53e35aab35484f1efca792e94dc33168d44d04aa3",
     "zh/books/big-cards-little-numbers/index.html": "334c9c5ac96b6e77f8c7d6bd1a72a1506383352f52263acb7bd8bc675e2ef9ce",
@@ -712,14 +716,14 @@
     "zh/books/wukongs-noisy-nap/index.html": "b60594e4e7fef28d678dafed21c79c8edd0acefa77fe5fccb29c435af22f56b7",
     "zh/books/wukongs-one-little-bite/index.html": "c519b942bd23407920dfd8e8b22196b18abcea3a3258c3a816dff6cd1a9b3a54",
     "zh/books/wukongs-painting-class/index.html": "14864062f12f89d5b001eabe94d5af12225825b98a097787f1b6541d80148c8b",
-    "zh/books/wukongs-picnic-vote/index.html": "2e3da82917913ab4a456fcc82151d550f8a7a8c844ee66f03065e8a8c89b6d21",
+    "zh/books/wukongs-picnic-vote/index.html": "90c5771d9583ed9743695c21d50cb279ee7174b83424d5409d2147b9aecc1cf7",
     "zh/books/wukongs-slippy-slide-skates/index.html": "048ca7a0757686b6332addae26531357be6bbbfe71313553d4ae3190a81e81ee",
     "zh/books/wukongs-starry-stage/index.html": "4785baecbd83a0afb7f88fafff1176b820b929eaea3140a8ccee5f6f9f5e0373",
     "zh/books/wukongs-wibble-wobble-ride/index.html": "1c91285d79d50a79516d2acdfea84ed13dc7fa40102ee0ff07fc3cdf3aacc352",
     "zh/characters/index.html": "2ae094193580a4790d4345876d9b3cad5e2cc80e5e42bbcdb2e862acef72ccab",
-    "zh/index.html": "bdd937c95f1152f94082e15e667da5c77d367a6f9ac58c7ae849bc71ee55ede9",
+    "zh/index.html": "67d4539e042dd8aaf25d712284b85ad0a924112a4b1a7931ea8ab12b3a21947d",
     "zh/license.html": "8a086ca62794877f978f44dda0e3746ecf324b64d2b6293ca622abec830114df",
-    "zh/rss.xml": "eec1f3d337091d94a1f5ca4339c41949d95ebdcfe8563f33e25f38082c288199",
+    "zh/rss.xml": "9c35681ca0fce72a4f3802af08c46bc69d2ce98e6dc3e72c0a3b647d1e859a0c",
     "zh/subscribe.html": "cbffcfcfbe10435526f4e468c7df1d0642290569ceb77e3000aa60645fca5258",
     "zh/support/ao-bings-little-boat-v1-booklet.html": "884babd0d275f074efb62b874266ac194c6556be2e928938c8257686c02c1027",
     "zh/support/ao-bings-little-boat-v1-zh-Hans-booklet.html": "b6a7ea6e95b8d40cc4ce53f872b7d914f3ffdf56b9a0d067f8ccea45ef039db3",
@@ -1057,14 +1061,18 @@
     "zh/support/wukongs-painting-class-v2.html": "e00285d574713f05296ae42b4da45822336fe368797b2ec7fe27b604c272c69d",
     "zh/support/wukongs-painting-class-v3-booklet.html": "f5de6b6bf3a9da28b73db63894880c20f425e831152c5f0946e1a9bc0de0b7a3",
     "zh/support/wukongs-painting-class-v3.html": "5465dd1ded621a4c08991c7fd51f222b6420f280752e49d67e15dd97ac2487a3",
-    "zh/support/wukongs-picnic-vote-v1-booklet.html": "312d7415888ea1d4dc0cb3b0f26bcc24847f68bbcada53957ff2e54019d152f5",
-    "zh/support/wukongs-picnic-vote-v1-zh-Hans-booklet.html": "5ce7909fa15fa9664d7cd56e1820da27d8c9dad331c375f5b4c812ba0823aaef",
-    "zh/support/wukongs-picnic-vote-v1-zh-Hans.html": "d4a7ca5eb04255750e0de656da01864a20cc468de6abbea11bcfd33aa383c2e1",
-    "zh/support/wukongs-picnic-vote-v1.html": "417a6beeb00250c0e254d30dde1d4a6afe26b818b0e2ba55371d41e9fb8d31e2",
-    "zh/support/wukongs-picnic-vote-v2-booklet.html": "4b2400f4b674eb92f83228688c73c7dc2ea93f30fe5d29a4b405b85f7e6e0fe9",
-    "zh/support/wukongs-picnic-vote-v2-zh-Hans-booklet.html": "ace42fa3aea91b4a3dbe2b8385586677c9743a357fb086642052eeabfc77f286",
-    "zh/support/wukongs-picnic-vote-v2-zh-Hans.html": "865a78d1484ea8bf2fd0c524d8c1137a25a7e4fe2c198b771921b7b46fd15d77",
-    "zh/support/wukongs-picnic-vote-v2.html": "b27d2651689c938512d6474b4a241bc5d59a104efe8f28af412519ae810c9774",
+    "zh/support/wukongs-picnic-vote-v1-booklet.html": "abaa11387d73066ac910f5aecc0ea71d8f00b6db69e860fa96bb032cc1965ec1",
+    "zh/support/wukongs-picnic-vote-v1-zh-Hans-booklet.html": "b2835aff5d77954e5bd1b0df4d7e8ad66d760b7db90b3488bb1cbc2bc89c3909",
+    "zh/support/wukongs-picnic-vote-v1-zh-Hans.html": "142ca530043019ca2e8ffe608d9d7acd7fc218fb8ff587efe3b2cff6fe8ef40e",
+    "zh/support/wukongs-picnic-vote-v1.html": "465fcb6c4803d594368c24558d96d735701a781f43410189023d097f5af37d98",
+    "zh/support/wukongs-picnic-vote-v2-booklet.html": "89f05e425bc2d29fe1bce1a34782b5b1a4d5206e69bd731b5319989747f7a5ad",
+    "zh/support/wukongs-picnic-vote-v2-zh-Hans-booklet.html": "1b95a650027af0137bd4368f8a9e13deabf3c15661d7cedf1a311318d11182d8",
+    "zh/support/wukongs-picnic-vote-v2-zh-Hans.html": "e44a07fb110e3d2822001e327b1ad81d4cc3a4dfe1d720763d22b441e93f74b0",
+    "zh/support/wukongs-picnic-vote-v2.html": "613ee7a73e6e18ead94192c254fe8f0cc338900ddbf5f9513cab67ea3f54856c",
+    "zh/support/wukongs-picnic-vote-v3-booklet.html": "793abaab18edbba9b86fb05c1835c46ee7d65ab036fd657b9457cbae1af67f15",
+    "zh/support/wukongs-picnic-vote-v3-zh-Hans-booklet.html": "aaf1836f68da71b890e812a3a32c59aaf966ba45bfa8c13a447bb77770eb46f4",
+    "zh/support/wukongs-picnic-vote-v3-zh-Hans.html": "4fbc81d57b7c70bae1aed8a2e17c0b9cf8c414b16bf2bc59568607ada6a0941b",
+    "zh/support/wukongs-picnic-vote-v3.html": "4de04aca463879105ea4cf02501e69f82b5f30b4aa4822290430e776e1d0d2ff",
     "zh/support/wukongs-slippy-slide-skates-v1-booklet.html": "1cd6e33f21fddfa8dcc57af1d7b4b6eef3e90ef581ebbc20a4b93c1228c288cb",
     "zh/support/wukongs-slippy-slide-skates-v1-zh-Hans-booklet.html": "1d31732cb5bd0073cb55004b42b78bb3d7f5ee9e29fed2e7199b55fcc2dbdf45",
     "zh/support/wukongs-slippy-slide-skates-v1-zh-Hans.html": "14ba037c5963ad5ce46a6cad6e1059759b94a94dba1fa3638d32c887ea4ae86c",
@@ -1168,11 +1176,11 @@
     "books/wukongs-noisy-nap/index.html": 21302,
     "books/wukongs-one-little-bite/index.html": 21682,
     "books/wukongs-painting-class/index.html": 21108,
-    "books/wukongs-picnic-vote/index.html": 21964,
+    "books/wukongs-picnic-vote/index.html": 22301,
     "books/wukongs-slippy-slide-skates/index.html": 22751,
     "books/wukongs-starry-stage/index.html": 22126,
     "books/wukongs-wibble-wobble-ride/index.html": 22643,
-    "catalog.json": 102874,
+    "catalog.json": 102876,
     "characters/index.html": 14970,
     "characters/portraits/rights-v1/ao-bing.jpg": 230950,
     "characters/portraits/rights-v1/bull-king.jpg": 237829,
@@ -1243,8 +1251,8 @@
     "covers/wukongs-one-little-bite-v10.jpg": 311675,
     "covers/wukongs-painting-class-v2-zh-Hans.jpg": 430128,
     "covers/wukongs-painting-class-v2.jpg": 432022,
-    "covers/wukongs-picnic-vote-v2-zh-Hans.jpg": 88343,
-    "covers/wukongs-picnic-vote-v2.jpg": 89138,
+    "covers/wukongs-picnic-vote-v3-zh-Hans.jpg": 88346,
+    "covers/wukongs-picnic-vote-v3.jpg": 89136,
     "covers/wukongs-slippy-slide-skates-v8-zh-Hans.jpg": 176090,
     "covers/wukongs-slippy-slide-skates-v8.jpg": 182744,
     "covers/wukongs-starry-stage-v2-zh-Hans.jpg": 120647,
@@ -1260,7 +1268,7 @@
     "licenses/CC-BY-NC-ND-4.0.txt": 19126,
     "licenses/MIT.txt": 1085,
     "og-image.jpg": 144770,
-    "provenance/manifest.json": 130372,
+    "provenance/manifest.json": 131689,
     "provenance/public-key.pem": 113,
     "provenance/signature.json": 509,
     "reader/ao-bings-little-boat-v2/rights-v1/manifest.json": 8768,
@@ -1321,8 +1329,8 @@
     "reader/wukongs-one-little-bite-v10-zh-Hans/rights-v1/manifest.json": 5774,
     "reader/wukongs-painting-class-v2-zh-Hans/rights-v1/manifest.json": 7213,
     "reader/wukongs-painting-class-v3/rights-v1/manifest.json": 6895,
-    "reader/wukongs-picnic-vote-v2/rights-v1/manifest.json": 7648,
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/manifest.json": 7708,
+    "reader/wukongs-picnic-vote-v3/rights-v1/manifest.json": 7648,
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/manifest.json": 7708,
     "reader/wukongs-slippy-slide-skates-v8/rights-v1/manifest.json": 7334,
     "reader/wukongs-slippy-slide-skates-v8-zh-Hans/rights-v1/manifest.json": 7546,
     "reader/wukongs-starry-stage-v2/rights-v1/manifest.json": 7714,
@@ -1391,8 +1399,8 @@
     "social/wukongs-one-little-bite.jpg": 84014,
     "social/wukongs-painting-class-zh-Hans.jpg": 95032,
     "social/wukongs-painting-class.jpg": 95515,
-    "social/wukongs-picnic-vote-zh-Hans.jpg": 62287,
-    "social/wukongs-picnic-vote.jpg": 62822,
+    "social/wukongs-picnic-vote-zh-Hans.jpg": 62293,
+    "social/wukongs-picnic-vote.jpg": 62818,
     "social/wukongs-slippy-slide-skates-zh-Hans.jpg": 68122,
     "social/wukongs-slippy-slide-skates.jpg": 71535,
     "social/wukongs-starry-stage-zh-Hans.jpg": 84093,
@@ -1745,6 +1753,10 @@
     "support/wukongs-picnic-vote-v2-zh-Hans-booklet.html": 6887,
     "support/wukongs-picnic-vote-v2-zh-Hans.html": 6807,
     "support/wukongs-picnic-vote-v2.html": 6751,
+    "support/wukongs-picnic-vote-v3-booklet.html": 6831,
+    "support/wukongs-picnic-vote-v3-zh-Hans-booklet.html": 6887,
+    "support/wukongs-picnic-vote-v3-zh-Hans.html": 6807,
+    "support/wukongs-picnic-vote-v3.html": 6751,
     "support/wukongs-slippy-slide-skates-v1-booklet.html": 6959,
     "support/wukongs-slippy-slide-skates-v1-zh-Hans-booklet.html": 7015,
     "support/wukongs-slippy-slide-skates-v1-zh-Hans.html": 6935,
@@ -1835,7 +1847,7 @@
     "zh/books/wukongs-noisy-nap/index.html": 21682,
     "zh/books/wukongs-one-little-bite/index.html": 21883,
     "zh/books/wukongs-painting-class/index.html": 21723,
-    "zh/books/wukongs-picnic-vote/index.html": 22473,
+    "zh/books/wukongs-picnic-vote/index.html": 22801,
     "zh/books/wukongs-slippy-slide-skates/index.html": 23113,
     "zh/books/wukongs-starry-stage/index.html": 22615,
     "zh/books/wukongs-wibble-wobble-ride/index.html": 23208,
@@ -2188,6 +2200,10 @@
     "zh/support/wukongs-picnic-vote-v2-zh-Hans-booklet.html": 6923,
     "zh/support/wukongs-picnic-vote-v2-zh-Hans.html": 6843,
     "zh/support/wukongs-picnic-vote-v2.html": 6787,
+    "zh/support/wukongs-picnic-vote-v3-booklet.html": 6867,
+    "zh/support/wukongs-picnic-vote-v3-zh-Hans-booklet.html": 6923,
+    "zh/support/wukongs-picnic-vote-v3-zh-Hans.html": 6843,
+    "zh/support/wukongs-picnic-vote-v3.html": 6787,
     "zh/support/wukongs-slippy-slide-skates-v1-booklet.html": 6989,
     "zh/support/wukongs-slippy-slide-skates-v1-zh-Hans-booklet.html": 7045,
     "zh/support/wukongs-slippy-slide-skates-v1-zh-Hans.html": 6965,
@@ -2247,11 +2263,11 @@
     "zh/verify.html": 5614
   },
   "summary": {
-    "file_count": 1121,
+    "file_count": 1129,
     "current_pdf_count": 0,
     "reader_count": 66,
-    "source_bytes": 9802778113,
-    "export_bytes": 34880428,
+    "source_bytes": 9859415756,
+    "export_bytes": 34937111,
     "external_media_count": 1188,
     "external_pdf_count": 132
   },
@@ -7476,182 +7492,182 @@
       "bytes": 303150,
       "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/39f29366dcd43dc1.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-01.webp": {
-      "sha256": "d6b4c7f6de50302a9e886359f9efc1f645281df91b1824e3d295951f7797eb2d",
-      "bytes": 271562,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/d6b4c7f6de50302a.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-01.webp": {
+      "sha256": "c737bad5bac19f20ed2d52b6f6c558c6093f0e3fec02a1d8f43151beea56cc85",
+      "bytes": 271564,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c737bad5bac19f20.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-02.webp": {
-      "sha256": "a9a33f725a23c8eec6de1bc6e8feb80c47c6b0cc4be1fa4e700a5926059269b2",
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-02.webp": {
+      "sha256": "2a7d0e0a5e04afb2aa16ce7dbaa4ac9991acd0a37cbfa8265678b717290c13ed",
       "bytes": 288932,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a9a33f725a23c8ee.webp"
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/2a7d0e0a5e04afb2.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-03.webp": {
-      "sha256": "c31b4dda74723b06eea1cccab19bf29bda0b74b78f0ec3a40b992d94c6232caf",
-      "bytes": 328726,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c31b4dda74723b06.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-03.webp": {
+      "sha256": "8f1acd85854d7a661d417832507bbc6abb846ed5ed3f690067fcf7466e369425",
+      "bytes": 328722,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/8f1acd85854d7a66.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-04.webp": {
-      "sha256": "5d828c84dbec832749ab7d1b2d8df70a3c85a630567fa3c595937f70f95af7d3",
-      "bytes": 412382,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/5d828c84dbec8327.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-04.webp": {
+      "sha256": "0e3915a9321c92748810da65e67e45ac1fa6fd666fe9789852e15ff77989c063",
+      "bytes": 412380,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/0e3915a9321c9274.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-05.webp": {
-      "sha256": "6f100eae39acf0c9eabf86b9cb1bdcfde408e43c9f58926571df801125b40b62",
-      "bytes": 353110,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/6f100eae39acf0c9.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-05.webp": {
+      "sha256": "58ef450676657b35592de49c657cb10749dba499c2b6a74ebf06428c3968a691",
+      "bytes": 353108,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/58ef450676657b35.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-06.webp": {
-      "sha256": "8603960962b37841f8d6e8f058b8f2209c1a7252794e9eb12f575f654effe8a4",
-      "bytes": 339412,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/8603960962b37841.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-06.webp": {
+      "sha256": "79ee812c51755177e69c3cb1f3a3af909148259d4bce428715e24564ae31b5ea",
+      "bytes": 339408,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/79ee812c51755177.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-07.webp": {
-      "sha256": "9917225f03462ffb4d1dfe52c6cf92780419b0f80a836672bb9152adb84e8060",
-      "bytes": 387246,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/9917225f03462ffb.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-07.webp": {
+      "sha256": "c2ccbee210591cc84c80f9b3f04a0b1792beb0cfdf1f30f55644755cc03835f9",
+      "bytes": 382968,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c2ccbee210591cc8.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-08.webp": {
-      "sha256": "9fb3be247dc5064668eb615a73ff87b59a41037f1c8a80970225d51fc929e3a5",
-      "bytes": 313858,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/9fb3be247dc50646.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-08.webp": {
+      "sha256": "55458e20f6cce936992d75d21dda9054fa2633bb5290e0861d0171e32a1b40f3",
+      "bytes": 308722,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/55458e20f6cce936.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-09.webp": {
-      "sha256": "69ddbc14d1dcc0e6aad14e1a771c621c74419f9ae69135042e1a82ff23386bcc",
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-09.webp": {
+      "sha256": "bdd230ac1628ee59482be471ee30e5c2686e12b13025aceb3fcd821e1a7c3dbc",
       "bytes": 344276,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/69ddbc14d1dcc0e6.webp"
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/bdd230ac1628ee59.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-10.webp": {
-      "sha256": "1d2d611b3198f08977c8f01f8ef9eb721d0b189478fa9d52a955f3f52b1ae8d2",
-      "bytes": 361222,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/1d2d611b3198f089.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-10.webp": {
+      "sha256": "ec673cc497fe66bce9d910a48931c0cc3d972beea4665364a4a7fa7a79828a03",
+      "bytes": 354988,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ec673cc497fe66bc.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-11.webp": {
-      "sha256": "0cbdbefa11e2b260508599efe23a0a37956553f5ac8158a39f17e45287bddf32",
-      "bytes": 375548,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/0cbdbefa11e2b260.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-11.webp": {
+      "sha256": "c8d1fdedf07c32d1ebb69b6f98789decfeee4adf0713dfc9c6d1d60080f8ab2c",
+      "bytes": 358394,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c8d1fdedf07c32d1.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-12.webp": {
-      "sha256": "48ba621c98c432558822593e97fe805dd536ddb71e8bff88f63253e8f6388bed",
-      "bytes": 289934,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/48ba621c98c43255.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-12.webp": {
+      "sha256": "bcbdec4f1f4ea3edad3483b7562bcb0c719a3b072b7e06bc617e8abe3f199f78",
+      "bytes": 288278,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/bcbdec4f1f4ea3ed.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-13.webp": {
-      "sha256": "40a5ab0779c59cf862097cc8483db82d65bd137e74535e6519b50251796aec49",
-      "bytes": 355818,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/40a5ab0779c59cf8.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-13.webp": {
+      "sha256": "4181b2d205755206d9e7dc49ef1bfd61a1534da4baaed07f26125519a200a5ae",
+      "bytes": 355822,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/4181b2d205755206.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-14.webp": {
-      "sha256": "c99fa1d9a6b4a73728652d30577214e0260708caa4322c365a84583d83530601",
-      "bytes": 307572,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c99fa1d9a6b4a737.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-14.webp": {
+      "sha256": "023c112d398d0ab664decf23e60c7e8d9e23d4477b0a0109c01f258c15b1817f",
+      "bytes": 307578,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/023c112d398d0ab6.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-15.webp": {
-      "sha256": "af23559e6fdcd01307942360cbed460947c9ddffaf5df2e00967c6b64b20f4ab",
-      "bytes": 367020,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/af23559e6fdcd013.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-15.webp": {
+      "sha256": "01ebd4ed08eca1ca33fb9ae368244c69120915161d2c36c801a752e8093cd82f",
+      "bytes": 367014,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/01ebd4ed08eca1ca.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-16.webp": {
-      "sha256": "8186fa16073befbf287de0833383b4e94e33b0a4c774716a7dec3648c08ec7b2",
-      "bytes": 298328,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/8186fa16073befbf.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-16.webp": {
+      "sha256": "f77392f7cbf9edc8dc11db952c4439d04c79aecb8de439080389c9152d28a560",
+      "bytes": 298330,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/f77392f7cbf9edc8.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-17.webp": {
-      "sha256": "d5fe2412537ab0ab9a468f8fb7e11a30b221231ff6b956d3c19f2625a27017f1",
-      "bytes": 68482,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/d5fe2412537ab0ab.webp"
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-17.webp": {
+      "sha256": "ec4df2cb93b7c9510e763d90f22b8a350c71d1d514885ba4d4c68e844fdb41c9",
+      "bytes": 67418,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ec4df2cb93b7c951.webp"
     },
-    "reader/wukongs-picnic-vote-v2-zh-Hans/rights-v1/page-18.webp": {
+    "reader/wukongs-picnic-vote-v3-zh-Hans/rights-v1/page-18.webp": {
       "sha256": "875c3e0b5642fca54664ee031a6bb56dadf4c75ea4847878bd07868aa2052a92",
       "bytes": 128328,
       "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/875c3e0b5642fca5.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-01.webp": {
-      "sha256": "01e77a9cb6d6779e4ef101d880e5a468cd5273da368487cc868386d80488c017",
-      "bytes": 272076,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/01e77a9cb6d6779e.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-01.webp": {
+      "sha256": "44183df653e6fea36235cbc6d8b9b09b1c91a782f0a3f533e3beda472256536d",
+      "bytes": 272090,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/44183df653e6fea3.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-02.webp": {
-      "sha256": "d27f64f1477ec8fa1d9d6dc98d75e27b6dd72150b49e2c1ab4dec9888215eb7b",
-      "bytes": 285628,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/d27f64f1477ec8fa.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-02.webp": {
+      "sha256": "c79f45145651ae647ac307cdf96c6245a7038a67dc281b77d682dc5efcf503f0",
+      "bytes": 285630,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c79f45145651ae64.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-03.webp": {
-      "sha256": "346fcddaf3769b79a0f5c66b2cc5fe8ce7978459c4897dc05a8a3aa163a2eadd",
-      "bytes": 327696,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/346fcddaf3769b79.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-03.webp": {
+      "sha256": "34791612c82ddeebc804d2adbcbac084fef09ca4fb717e028a50c58fd4f0b8c1",
+      "bytes": 327706,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/34791612c82ddeeb.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-04.webp": {
-      "sha256": "9449923774596ef53b0f6dada4a26d9f3aa0fa541229acd5589a49e658cc9166",
-      "bytes": 406798,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/9449923774596ef5.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-04.webp": {
+      "sha256": "20251e1cacc7ec7876cef264077cfc379857efd6c9975d5346f300a6e4227665",
+      "bytes": 406802,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/20251e1cacc7ec78.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-05.webp": {
-      "sha256": "c457021f9b109f8b40e9f335a6bd9a26c561873f1298ab1fe56a0468757f1a90",
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-05.webp": {
+      "sha256": "a901126f6f96696e05410c08f27805c5b9cdebd68330408f3cbfab436be225e2",
       "bytes": 349126,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c457021f9b109f8b.webp"
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a901126f6f96696e.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-06.webp": {
-      "sha256": "6896062c3cd8f38bca4933ccfc5b04d1741931d26a19f7ccc44d1e944df1d095",
-      "bytes": 337272,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/6896062c3cd8f38b.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-06.webp": {
+      "sha256": "70db8775b1794dbf07683a8a73829a3b4bcf6a9de544347add0331c2bdd330a8",
+      "bytes": 337270,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/70db8775b1794dbf.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-07.webp": {
-      "sha256": "90af22851375d19ab9b58d5a7cc9cc97b48724d91d3cf0aaf2aae5f8f40608b7",
-      "bytes": 397472,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/90af22851375d19a.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-07.webp": {
+      "sha256": "4cbb64a01ce8db3aea28dfd1e593cf478e38dc584e3309b1faddcf386ade9c06",
+      "bytes": 389742,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/4cbb64a01ce8db3a.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-08.webp": {
-      "sha256": "992872e009fc104bdb055ec829b0871ac9e369518b0d866d63b0b89fa515bca8",
-      "bytes": 327110,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/992872e009fc104b.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-08.webp": {
+      "sha256": "cc50d06dcdd6b42baa2b6e78cd6350ac91d2ecce19b3b98ce1239c56ccdc8d84",
+      "bytes": 322206,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/cc50d06dcdd6b42b.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-09.webp": {
-      "sha256": "a16ed9ea76c2af9c957277ebe7406080995ba8763a5c8f5f083c596bc92aad58",
-      "bytes": 343806,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a16ed9ea76c2af9c.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-09.webp": {
+      "sha256": "65af6557905170d0d6c050c7e08b1719f3736e01edec4579b5e8b2d14eb757a2",
+      "bytes": 343802,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/65af6557905170d0.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-10.webp": {
-      "sha256": "b193e22fa73aa54cce184566d05edf6d5457065da620ccbe559b926b1507a543",
-      "bytes": 359716,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/b193e22fa73aa54c.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-10.webp": {
+      "sha256": "4487066aa0db67a63c92c860dd71fa416337e33e4cfc0bd241213145f24d2f77",
+      "bytes": 353988,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/4487066aa0db67a6.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-11.webp": {
-      "sha256": "60ea5c39807eacd4a47b9feff9c970f6e264410d28d5b8ffc1d0e7eac03248ad",
-      "bytes": 375374,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/60ea5c39807eacd4.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-11.webp": {
+      "sha256": "b7ed396891846c231ac68de9b40f5c58654d6b3b45181cd366004d1a3be1f2f5",
+      "bytes": 354252,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/b7ed396891846c23.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-12.webp": {
-      "sha256": "e49340827ef045993930acd813fbe728f233b94972212f3de30a2184e7fee618",
-      "bytes": 287944,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/e49340827ef04599.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-12.webp": {
+      "sha256": "c7e793a1f68046f8821e54226edf3ae75538d9ef95b2f896c23690f23acd418a",
+      "bytes": 286580,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c7e793a1f68046f8.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-13.webp": {
-      "sha256": "b42e2a04cb84f93bf8e590d98c62d191d14b1907930a11cebfbf676a88f74b12",
-      "bytes": 354004,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/b42e2a04cb84f93b.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-13.webp": {
+      "sha256": "db5c687585cdcda75990a298d9bd14fd2278db8c39745da0dc6a4820c9552e56",
+      "bytes": 354002,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/db5c687585cdcda7.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-14.webp": {
-      "sha256": "67c77707c72e19d423a6abb30bb014f282e414b696d24760321bd44f43da303f",
-      "bytes": 299740,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/67c77707c72e19d4.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-14.webp": {
+      "sha256": "52e80dce5ad5b1769a9bbfa2e7ea2130e33930e395c5c94109098e77a1700975",
+      "bytes": 299738,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/52e80dce5ad5b176.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-15.webp": {
-      "sha256": "82179c64400fb4164b6ce49b91761c8648ce19fc39f24934bf6cc02e457e82ac",
-      "bytes": 364774,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/82179c64400fb416.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-15.webp": {
+      "sha256": "2886ea1eae7f019f61297dee17718e8c0c9fd818d96b236ea0477d83efcf680a",
+      "bytes": 364772,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/2886ea1eae7f019f.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-16.webp": {
-      "sha256": "c2810c212115bb5d1ae8a509e668ee903315020b3b27cab341fa0c0361f75b8b",
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-16.webp": {
+      "sha256": "fb90e5b3b86f83e37dae288cddf7bbb6b7f815ba76f3cf0ff6825a71920be02d",
       "bytes": 290262,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c2810c212115bb5d.webp"
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/fb90e5b3b86f83e3.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-17.webp": {
-      "sha256": "d22637ab6fc3dba430ef0766620f48df979b60ce1dd6eb422e5d1b92cb88016b",
-      "bytes": 70614,
-      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/d22637ab6fc3dba4.webp"
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-17.webp": {
+      "sha256": "cc57f9806e9e3bcd4ddbc32e908cb2e12b574361756d6b487aac96bfbe18d08e",
+      "bytes": 69602,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/cc57f9806e9e3bcd.webp"
     },
-    "reader/wukongs-picnic-vote-v2/rights-v1/page-18.webp": {
+    "reader/wukongs-picnic-vote-v3/rights-v1/page-18.webp": {
       "sha256": "80bbc8947e65b5bf7c1a8ddad4153245800309cbefe48911c94c18cfd11a3a50",
       "bytes": 127632,
       "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/80bbc8947e65b5bf.webp"

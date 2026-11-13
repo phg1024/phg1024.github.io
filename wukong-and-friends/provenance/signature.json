@@ -2,7 +2,7 @@
   "algorithm": "Ed25519",
   "key_id": "sha256:f867d441f80dbae327f44c8392513a8a7d2a56fa3a6d73e7d8ab3defd4d5f850",
   "public_key_base64": "c7nwNdqiiurgra9AZwvA5VBpaRL7t0HsYFnaMdgOZWI=",
-  "signature_base64": "CQM6kVoImXyvGcviiRR2dNPNVn7Ih0/9ns06Q8SnqvZPAHDc/jhFq2vVu9l8/6DBGHDFrPPwQXHdPAj/0YVYCw==",
-  "manifest_sha256": "879a72b6c85dbe068da4f77bc2c1b39f233158ff95392b36c654bfdb1dc06041",
+  "signature_base64": "fpuU1wHEuWIYg8KtVQsEUUphmsrxbSLOqtTvh84iLxp26Uot92Q9TrTRmx/HWjt0pinwYrakDIWYuhCkd4BLBw==",
+  "manifest_sha256": "dfacb71c8efc59c1d03d6de9b61dbddc9ef48fa6d9902bfc481fcfbef8ef5dcf",
   "note": "Project provenance signature; not a certificate-based PDF signature or third-party identity verification."
 }

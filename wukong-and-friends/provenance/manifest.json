@@ -2402,6 +2402,36 @@
       "bytes": 7663354
     },
     {
+      "path": "docs/downloads/wukongs-picnic-vote-v3-booklet.pdf",
+      "sha256": "b0504d90c0cace7b540408cfdfc9ef6fde5064bc6ea3341fc1c776689a8345d4",
+      "bytes": 7641295
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v3-core-en.pdf",
+      "sha256": "7f650e4fdcc3e81dfd7603a7abeb28d3e61e9588c033e7650ad698067eeab953",
+      "bytes": 7311222
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v3-core-zh-Hans.pdf",
+      "sha256": "f4dd72aabbbb34c011194ec83f50a42e8ebbd9ff73ebc11540d15cc8a3511c10",
+      "bytes": 7349627
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v3-zh-Hans-booklet.pdf",
+      "sha256": "ee58438981a4b7c9a3ed4e296759f491d575201f2ff192383279f9aad7b694a8",
+      "bytes": 7692130
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v3-zh-Hans.pdf",
+      "sha256": "c9e0d1ef9fe3b30d570cda94b6d8e71002e2825220ef4e26b925ec51f262509d",
+      "bytes": 7682132
+    },
+    {
+      "path": "docs/downloads/wukongs-picnic-vote-v3.pdf",
+      "sha256": "6eff22493cad79f3df694bbad3c2ae9c574d1a9baaacb57d37be5e25bc89ce90",
+      "bytes": 7622241
+    },
+    {
       "path": "docs/downloads/wukongs-slippy-slide-skates-v1-booklet.pdf",
       "sha256": "1412d4324d3467c470cfc7366897efb23b0086cff3038e12ad28da2a7b0fb644",
       "bytes": 19871813
@@ -3285,6 +3315,11 @@
       "path": "stories/wukongs-picnic-vote/editions/v2/prompts.txt",
       "sha256": "ca6de77353cdab0f9e7c4817f945ebeaa817cddb37db2135d9d86aea1d0c2ce8",
       "bytes": 21926431
+    },
+    {
+      "path": "stories/wukongs-picnic-vote/editions/v3/prompts.txt",
+      "sha256": "24b38bebe5f5ea9fa6dbaafdbc48042cb549b8000c6fa3ae55cd534e5dbd60d9",
+      "bytes": 21948845
     },
     {
       "path": "stories/wukongs-slippy-slide-skates/editions/v1/prompts.txt",

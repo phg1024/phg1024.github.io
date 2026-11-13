@@ -265,11 +265,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v2",
-    "revision": "paper-standard",
+    "version": "v3",
+    "revision": "arms-match-sheet",
     "publication_status": "published",
     "published": "2026-11-07",
-    "updated": "2026-11-09",
+    "updated": "2026-11-12",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -284,12 +284,12 @@
     ],
     "math_plan_id": "M10",
     "language_reading_versions": {
-      "en": "wukongs-picnic-vote/v2/en",
-      "zh-Hans": "wukongs-picnic-vote/v2/zh-Hans"
+      "en": "wukongs-picnic-vote/v3/en",
+      "zh-Hans": "wukongs-picnic-vote/v3/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v2/wukongs-picnic-vote-v2.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v2/wukongs-picnic-vote-v2-booklet.pdf",
-    "cover": "covers/wukongs-picnic-vote-v2.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v3/wukongs-picnic-vote-v3.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v3/wukongs-picnic-vote-v3-booklet.pdf",
+    "cover": "covers/wukongs-picnic-vote-v3.jpg",
     "translations": {
       "en": {
         "title": "Wukong’s Picnic Vote",
@@ -305,14 +305,14 @@
     "keywords": "悟空 八戒 玉兔 敖丙 哪吒 铁扇公主 野餐 投票 图表 贴纸 最多 更少 选择 数学启蒙 Wukong Pigsy Jade Rabbit Ao Bing Nezha Iron Fan picnic vote chart column sticker most fewer choice early math",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v2/wukongs-picnic-vote-v2.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v2/wukongs-picnic-vote-v2-booklet.pdf",
-        "cover": "covers/wukongs-picnic-vote-v2.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v3/wukongs-picnic-vote-v3.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v3/wukongs-picnic-vote-v3-booklet.pdf",
+        "cover": "covers/wukongs-picnic-vote-v3.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v2/wukongs-picnic-vote-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v2/wukongs-picnic-vote-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/wukongs-picnic-vote-v2-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v3/wukongs-picnic-vote-v3-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-picnic-vote-v3/wukongs-picnic-vote-v3-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-picnic-vote-v3-zh-Hans.jpg"
       }
     }
   },
