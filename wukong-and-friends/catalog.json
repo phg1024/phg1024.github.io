@@ -1,5 +1,70 @@
 [
   {
+    "id": "pigsys-ten-spot-steamer",
+    "title": "Pigsy’s Ten-Spot Steamer",
+    "title_zh": "八戒的十格蒸屉",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-13",
+    "updated": "2026-11-13",
+    "level": "L4",
+    "target_age_months": 66,
+    "focus_vocabulary": [
+      "ten",
+      "row",
+      "empty",
+      "full",
+      "more",
+      "make ten",
+      "left",
+      "altogether",
+      "steamer",
+      "dumpling"
+    ],
+    "math_plan_id": "M11",
+    "language_reading_versions": {
+      "en": "pigsys-ten-spot-steamer/v1/en",
+      "zh-Hans": "pigsys-ten-spot-steamer/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-ten-spot-steamer-v1/pigsys-ten-spot-steamer-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-ten-spot-steamer-v1/pigsys-ten-spot-steamer-v1-booklet.pdf",
+    "cover": "covers/pigsys-ten-spot-steamer-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Pigsy’s Ten-Spot Steamer",
+        "description": "Pigsy and Sandy make dumplings, ten in each steamer, in two rows of five. Wukong keeps losing count until Sandy says, “Look at the empty papers.” Soon he sees how many more make ten, and even works out eight and five. The last three go in Pigsy’s bowl."
+      },
+      "zh": {
+        "title": "八戒的十格蒸屉",
+        "description": "八戒和沙僧在包饺子，每一屉蒸屉放十个，两排，每排五个。悟空数着数着就忘了数到哪儿，沙僧说：“看看空着的油纸。”悟空很快就看出还差几个才凑成十，还算出了八和五是多少。剩下的三个饺子，就放进八戒的小碗里。"
+      }
+    },
+    "description": "八戒和沙僧在包饺子，每一屉蒸屉放十个，两排，每排五个。悟空数着数着就忘了数到哪儿，沙僧说：“看看空着的油纸。”悟空很快就看出还差几个才凑成十，还算出了八和五是多少。剩下的三个饺子，就放进八戒的小碗里。",
+    "description_en": "Pigsy and Sandy make dumplings, ten in each steamer, in two rows of five. Wukong keeps losing count until Sandy says, “Look at the empty papers.” Soon he sees how many more make ten, and even works out eight and five. The last three go in Pigsy’s bowl.",
+    "keywords": "八戒 悟空 沙僧 饺子 蒸屉 十格 凑十 空格 还差几个 加法 八加五 数学启蒙 厨房 Pigsy Wukong Sandy dumplings steamer ten frame make ten empty spaces how many more addition eight plus five early math kitchen",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-ten-spot-steamer-v1/pigsys-ten-spot-steamer-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-ten-spot-steamer-v1/pigsys-ten-spot-steamer-v1-booklet.pdf",
+        "cover": "covers/pigsys-ten-spot-steamer-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-ten-spot-steamer-v1/pigsys-ten-spot-steamer-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-ten-spot-steamer-v1/pigsys-ten-spot-steamer-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/pigsys-ten-spot-steamer-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "robot-pigsy",
     "title": "Robot Pigsy",
     "title_zh": "机器人八戒",

@@ -9,7 +9,15 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>八戒的十格蒸屉</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/pigsys-ten-spot-steamer/</link>
+      <description>&lt;p&gt;八戒和沙僧在包饺子，每一屉蒸屉放十个，两排，每排五个。悟空数着数着就忘了数到哪儿，沙僧说：“看看空着的油纸。”悟空很快就看出还差几个才凑成十，还算出了八和五是多少。剩下的三个饺子，就放进八戒的小碗里。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/pigsys-ten-spot-steamer-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/pigsys-ten-spot-steamer-v1-zh-Hans.jpg" alt="八戒的十格蒸屉" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/pigsys-ten-spot-steamer/</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>机器人八戒</title>
       <link>https://phg1024.github.io/wukong-and-friends/zh/books/robot-pigsy/</link>

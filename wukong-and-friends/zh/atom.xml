@@ -10,7 +10,19 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-12T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-13T00:00:00Z</atom:updated>
+  <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/pigsys-ten-spot-steamer/</atom:id>
+    <atom:title type="text">八戒的十格蒸屉</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/pigsys-ten-spot-steamer/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-11-13T00:00:00Z</atom:published>
+    <atom:updated>2026-11-13T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;八戒和沙僧在包饺子，每一屉蒸屉放十个，两排，每排五个。悟空数着数着就忘了数到哪儿，沙僧说：“看看空着的油纸。”悟空很快就看出还差几个才凑成十，还算出了八和五是多少。剩下的三个饺子，就放进八戒的小碗里。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/pigsys-ten-spot-steamer-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/pigsys-ten-spot-steamer-v1-zh-Hans.jpg" alt="八戒的十格蒸屉" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</atom:id>
     <atom:title type="text">机器人八戒</atom:title>

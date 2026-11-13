@@ -512,6 +512,36 @@
       "bytes": 8401782
     },
     {
+      "path": "docs/downloads/pigsys-ten-spot-steamer-v1-booklet.pdf",
+      "sha256": "84d5e153f5f1f2f494a0f1b1e5cbca64a76d396f18ac989796a89518f2972a23",
+      "bytes": 8705056
+    },
+    {
+      "path": "docs/downloads/pigsys-ten-spot-steamer-v1-core-en.pdf",
+      "sha256": "74bb823e3d397ee38e6d0979ae1c844838737c81157e9432a9db4fcab66863df",
+      "bytes": 8139007
+    },
+    {
+      "path": "docs/downloads/pigsys-ten-spot-steamer-v1-core-zh-Hans.pdf",
+      "sha256": "1c1271b74b9971c42b666286899e2a8bada4340774e51965374e09ece0bfcbb8",
+      "bytes": 8189271
+    },
+    {
+      "path": "docs/downloads/pigsys-ten-spot-steamer-v1-zh-Hans-booklet.pdf",
+      "sha256": "3681b27ced12678bc6a28edccefbaa67ace3215395865acf86130b52f467b25d",
+      "bytes": 8769272
+    },
+    {
+      "path": "docs/downloads/pigsys-ten-spot-steamer-v1-zh-Hans.pdf",
+      "sha256": "56293454c23aa05247222148b8a15e0e22be74d9587763a5dd94e88938b13a08",
+      "bytes": 8759365
+    },
+    {
+      "path": "docs/downloads/pigsys-ten-spot-steamer-v1.pdf",
+      "sha256": "50f6576c96b7c9b18856d52690021990b3f454b63849e5038730fcc61fbfb7e8",
+      "bytes": 8685905
+    },
+    {
       "path": "docs/downloads/robot-pigsy-v1-booklet.pdf",
       "sha256": "a80bac8c7a0fa462ddf3a8daa3d309b9944cfda9f80a1d1a919e910c4ad4ae67",
       "bytes": 8299512
@@ -2885,6 +2915,11 @@
       "path": "stories/pigsys-peach-puzzle/editions/v2/prompts.txt",
       "sha256": "9dd60600d75eaab321c0a1f51204b99c249b7ef4d1ecab622955c016b9acc5a3",
       "bytes": 164286
+    },
+    {
+      "path": "stories/pigsys-ten-spot-steamer/editions/v1/prompts.txt",
+      "sha256": "b47dfc5892255b88f15c010c239afd40863ebc7fe4d6fe1a1c18dcb73bee3166",
+      "bytes": 2642822
     },
     {
       "path": "stories/robot-pigsy/editions/v1/prompts.txt",
