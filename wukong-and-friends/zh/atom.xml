@@ -10,7 +10,7 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-11T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-12T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</atom:id>
     <atom:title type="text">机器人八戒</atom:title>
@@ -28,12 +28,12 @@
     <atom:title type="text">八戒的嗡嗡音乐会</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/pigsys-boing-boing-band/" rel="alternate" type="text/html" hreflang="zh-CN" />
     <atom:published>2026-11-07T00:00:00Z</atom:published>
-    <atom:updated>2026-11-09T00:00:00Z</atom:updated>
+    <atom:updated>2026-11-12T00:00:00Z</atom:updated>
     <atom:author>
       <atom:name>Peihong Guo</atom:name>
       <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
     </atom:author>
-    <atom:summary type="html">&lt;p&gt;八戒用纸盒做了一只青蛙，嘴上绷着两根橡皮筋。一拨，“嗡——”！可悟空一按住，声音就没了。哪吒说边看边听：橡皮筋抖得飞快，它在振动，声音就是这么来的。最后大家轻轻拨，开了一场小小的音乐会。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/pigsys-boing-boing-band-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/pigsys-boing-boing-band-v2-zh-Hans.jpg" alt="八戒的嗡嗡音乐会" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+    <atom:summary type="html">&lt;p&gt;八戒用纸盒做了一只青蛙，嘴上绷着两根橡皮筋。一拨，“嗡——”！可悟空一按住，声音就没了。哪吒说边看边听：橡皮筋抖得飞快，它在振动，声音就是这么来的。最后大家轻轻拨，开了一场小小的音乐会。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/pigsys-boing-boing-band-v3-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/pigsys-boing-boing-band-v3-zh-Hans.jpg" alt="八戒的嗡嗡音乐会" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
   </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukong-and-the-missing-ice-cube/</atom:id>

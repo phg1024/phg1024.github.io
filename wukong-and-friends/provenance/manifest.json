@@ -362,6 +362,36 @@
       "bytes": 7915216
     },
     {
+      "path": "docs/downloads/pigsys-boing-boing-band-v3-booklet.pdf",
+      "sha256": "31c1d25e71c05a1bd02bc0800972b60f51df695ceb1d61416f83055b6b884f61",
+      "bytes": 7923076
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v3-core-en.pdf",
+      "sha256": "546d4e857c24faeceab1b597f744c0d5664aee2620afa57c01a38024fc15b7cc",
+      "bytes": 7561314
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v3-core-zh-Hans.pdf",
+      "sha256": "6b35d3101074ea43da2b6a167b0a04633329656c8c20ecfc3966abc943cfcd60",
+      "bytes": 7593415
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v3-zh-Hans-booklet.pdf",
+      "sha256": "cbe88d0aa0e772326b037ae03050bc5548c30c6a80f5ed060bbfb7cd58e529f5",
+      "bytes": 7969183
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v3-zh-Hans.pdf",
+      "sha256": "7f325c35fff91cadf97e61be5aec593fbf90a736b3e0f7e6b79b2de646c50e5c",
+      "bytes": 7959284
+    },
+    {
+      "path": "docs/downloads/pigsys-boing-boing-band-v3.pdf",
+      "sha256": "ed84744880ff65f0890fcccda6d428487bc0f5f5e1c90bdc9afce926c24a6929",
+      "bytes": 7904016
+    },
+    {
       "path": "docs/downloads/pigsys-nine-little-cookies-v1-booklet.pdf",
       "sha256": "45e26dec4289ca025ba3637059512154339191031fd5f102b09b4357de64e0ce",
       "bytes": 9241841
@@ -2800,6 +2830,11 @@
       "path": "stories/pigsys-boing-boing-band/editions/v2/prompts.txt",
       "sha256": "eaaef132c075ccd88a941b45d72ff57c23256a57d1c5c52ca467f65b8d8c626e",
       "bytes": 37640346
+    },
+    {
+      "path": "stories/pigsys-boing-boing-band/editions/v3/prompts.txt",
+      "sha256": "34ad686c2f37e1e574cad174cf00199e7633e4ef75b73629bc182e3771295bd0",
+      "bytes": 37652841
     },
     {
       "path": "stories/pigsys-nine-little-cookies/editions/v1/prompts.txt",

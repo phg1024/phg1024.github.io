@@ -76,11 +76,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v2",
-    "revision": "paper-standard",
+    "version": "v3",
+    "revision": "nezha-arm",
     "publication_status": "published",
     "published": "2026-11-07",
-    "updated": "2026-11-09",
+    "updated": "2026-11-12",
     "level": "L3",
     "target_age_months": 60,
     "focus_vocabulary": [
@@ -95,12 +95,12 @@
     ],
     "science_plan_id": "S4",
     "language_reading_versions": {
-      "en": "pigsys-boing-boing-band/v2/en",
-      "zh-Hans": "pigsys-boing-boing-band/v2/zh-Hans"
+      "en": "pigsys-boing-boing-band/v3/en",
+      "zh-Hans": "pigsys-boing-boing-band/v3/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v2/pigsys-boing-boing-band-v2.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v2/pigsys-boing-boing-band-v2-booklet.pdf",
-    "cover": "covers/pigsys-boing-boing-band-v2.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v3/pigsys-boing-boing-band-v3.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v3/pigsys-boing-boing-band-v3-booklet.pdf",
+    "cover": "covers/pigsys-boing-boing-band-v3.jpg",
     "translations": {
       "en": {
         "title": "Pigsy’s Boing-Boing Band",
@@ -116,14 +116,14 @@
     "keywords": "八戒 悟空 哪吒 沙僧 声音 振动 橡皮筋 拨 按住 青蛙 纸盒 音乐会 科学启蒙 Pigsy Wukong Nezha Sandy sound vibrate rubber band pluck hold still frog box music early science",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v2/pigsys-boing-boing-band-v2.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v2/pigsys-boing-boing-band-v2-booklet.pdf",
-        "cover": "covers/pigsys-boing-boing-band-v2.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v3/pigsys-boing-boing-band-v3.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v3/pigsys-boing-boing-band-v3-booklet.pdf",
+        "cover": "covers/pigsys-boing-boing-band-v3.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v2/pigsys-boing-boing-band-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v2/pigsys-boing-boing-band-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/pigsys-boing-boing-band-v2-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v3/pigsys-boing-boing-band-v3-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/pigsys-boing-boing-band-v3/pigsys-boing-boing-band-v3-zh-Hans-booklet.pdf",
+        "cover": "covers/pigsys-boing-boing-band-v3-zh-Hans.jpg"
       }
     }
   },
