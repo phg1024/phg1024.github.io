@@ -129,6 +129,10 @@
     <lastmod>2026-11-10</lastmod>
   </url>
   <url>
+    <loc>https://phg1024.github.io/blog/ai/mywisper-correction/</loc>
+    <lastmod>2026-11-12</lastmod>
+  </url>
+  <url>
     <loc>https://phg1024.github.io/blog/programming/ender-klipper/</loc>
     <lastmod>2026-11-12</lastmod>
   </url>
@@ -178,10 +182,10 @@
     <loc>https://phg1024.github.io/tag/web/</loc>
   </url>
   <url>
-    <loc>https://phg1024.github.io/tag/image-processing/</loc>
+    <loc>https://phg1024.github.io/tag/local-inference/</loc>
   </url>
   <url>
-    <loc>https://phg1024.github.io/tag/local-inference/</loc>
+    <loc>https://phg1024.github.io/tag/image-processing/</loc>
   </url>
   <url>
     <loc>https://phg1024.github.io/tag/hardware/</loc>
