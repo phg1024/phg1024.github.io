@@ -10,7 +10,19 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-13T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-14T00:00:00Z</atom:updated>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/the-little-robots-wrong-turn/</atom:id>
+    <atom:title type="text">The Little Robot’s Wrong Turn</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/the-little-robots-wrong-turn/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-11-14T00:00:00Z</atom:published>
+    <atom:updated>2026-11-14T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Nezha’s little robot, Little Bean, must carry a cookie across the square mat to Ao Bing. One wrong turn sends it crashing into Wukong’s tower! Instead of starting over, the friends check one card at a time, find the wrong card and fix just that one.&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/the-little-robots-wrong-turn-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/the-little-robots-wrong-turn-v1.jpg" alt="The Little Robot’s Wrong Turn" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
   <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/pigsys-ten-spot-steamer/</atom:id>
     <atom:title type="text">Pigsy’s Ten-Spot Steamer</atom:title>

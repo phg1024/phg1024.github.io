@@ -1,5 +1,70 @@
 [
   {
+    "id": "the-little-robots-wrong-turn",
+    "title": "The Little Robot’s Wrong Turn",
+    "title_zh": "小豆机器人走错了",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "computing-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-14",
+    "updated": "2026-11-14",
+    "level": "L4",
+    "target_age_months": 66,
+    "focus_vocabulary": [
+      "robot",
+      "card",
+      "turn left",
+      "turn right",
+      "forward",
+      "mistake",
+      "check",
+      "fix",
+      "one at a time",
+      "program"
+    ],
+    "computing_plan_id": "C2",
+    "language_reading_versions": {
+      "en": "the-little-robots-wrong-turn/v1/en",
+      "zh-Hans": "the-little-robots-wrong-turn/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1-booklet.pdf",
+    "cover": "covers/the-little-robots-wrong-turn-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "The Little Robot’s Wrong Turn",
+        "description": "Nezha’s little robot, Little Bean, must carry a cookie across the square mat to Ao Bing. One wrong turn sends it crashing into Wukong’s tower! Instead of starting over, the friends check one card at a time, find the wrong card and fix just that one."
+      },
+      "zh": {
+        "title": "小豆机器人走错了",
+        "description": "哪吒的小机器人小豆要背着一块饼干，走过方格地垫，送到敖丙那里。可是一个转弯走错了，它一头撞倒了悟空的积木塔！朋友们没有全部重来，而是一张一张地查卡片，找到错的那一张，只把它改对。"
+      }
+    },
+    "description": "哪吒的小机器人小豆要背着一块饼干，走过方格地垫，送到敖丙那里。可是一个转弯走错了，它一头撞倒了悟空的积木塔！朋友们没有全部重来，而是一张一张地查卡片，找到错的那一张，只把它改对。",
+    "description_en": "Nezha’s little robot, Little Bean, must carry a cookie across the square mat to Ao Bing. One wrong turn sends it crashing into Wukong’s tower! Instead of starting over, the friends check one card at a time, find the wrong card and fix just that one.",
+    "keywords": "哪吒 敖丙 悟空 小机器人 小豆 箭头卡 程序 编程启蒙 一张一张地查 找错 改错 前进 左转 右转 方格地垫 积木塔 Nezha Ao Bing Wukong little robot Little Bean arrow cards program coding debugging check one card at a time find the mistake fix it forward turn left turn right grid mat block tower",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1-booklet.pdf",
+        "cover": "covers/the-little-robots-wrong-turn-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/the-little-robots-wrong-turn-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "pigsys-ten-spot-steamer",
     "title": "Pigsy’s Ten-Spot Steamer",
     "title_zh": "八戒的十格蒸屉",

@@ -9,7 +9,15 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Fri, 13 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>小豆机器人走错了</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/the-little-robots-wrong-turn/</link>
+      <description>&lt;p&gt;哪吒的小机器人小豆要背着一块饼干，走过方格地垫，送到敖丙那里。可是一个转弯走错了，它一头撞倒了悟空的积木塔！朋友们没有全部重来，而是一张一张地查卡片，找到错的那一张，只把它改对。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/the-little-robots-wrong-turn-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/the-little-robots-wrong-turn-v1-zh-Hans.jpg" alt="小豆机器人走错了" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/the-little-robots-wrong-turn/</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>八戒的十格蒸屉</title>
       <link>https://phg1024.github.io/wukong-and-friends/zh/books/pigsys-ten-spot-steamer/</link>

@@ -602,6 +602,36 @@
       "bytes": 8320368
     },
     {
+      "path": "docs/downloads/the-little-robots-wrong-turn-v1-booklet.pdf",
+      "sha256": "b9a44105487b8919d9ecad93c07587cde49c8890ffd8f79886cae87f6e5ab83d",
+      "bytes": 7500447
+    },
+    {
+      "path": "docs/downloads/the-little-robots-wrong-turn-v1-core-en.pdf",
+      "sha256": "da2758d411900c1ace1e1c29d2c56a5e61228c42b3dee4973cba4c73905fdc82",
+      "bytes": 7086151
+    },
+    {
+      "path": "docs/downloads/the-little-robots-wrong-turn-v1-core-zh-Hans.pdf",
+      "sha256": "4703e8c5f21fd54c711c0710781975a6fc799e293056d315b63ce9d47dbf75d5",
+      "bytes": 7142167
+    },
+    {
+      "path": "docs/downloads/the-little-robots-wrong-turn-v1-zh-Hans-booklet.pdf",
+      "sha256": "db046a73f8ad99f773f56b083f2c8d3d3832fce3835b7208c477bf4e3b93fec8",
+      "bytes": 7569794
+    },
+    {
+      "path": "docs/downloads/the-little-robots-wrong-turn-v1-zh-Hans.pdf",
+      "sha256": "8cd0225dfcfef539d023eb9325c3a54e5c5916119950740dd80fe080ec75bbd9",
+      "bytes": 7559788
+    },
+    {
+      "path": "docs/downloads/the-little-robots-wrong-turn-v1.pdf",
+      "sha256": "256820ae65c2dd53cb11b3a4a2986357d8d1bb08ca8019f5c0fb7788e5890623",
+      "bytes": 7481266
+    },
+    {
       "path": "docs/downloads/wukong-and-the-big-red-truck-v1-booklet.pdf",
       "sha256": "810c175a7fa49e85bbd40c2ec5e01e0075e160560681c7838c55aec7d83ff764",
       "bytes": 20308860
@@ -2930,6 +2960,11 @@
       "path": "stories/robot-pigsy/editions/v2/prompts.txt",
       "sha256": "ebe8bf04fabd29ce029b990bb53d9b50bbbb3170feac28de8450be898752200c",
       "bytes": 4922357
+    },
+    {
+      "path": "stories/the-little-robots-wrong-turn/editions/v1/prompts.txt",
+      "sha256": "ffd27c1c7674fc57e528afb316b19b9efedea01f543e77cb0adb79e898592cec",
+      "bytes": 1637448
     },
     {
       "path": "stories/wukong-and-the-big-red-truck/editions/v1/prompts.txt",

@@ -10,7 +10,19 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-13T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-14T00:00:00Z</atom:updated>
+  <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/the-little-robots-wrong-turn/</atom:id>
+    <atom:title type="text">小豆机器人走错了</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/the-little-robots-wrong-turn/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-11-14T00:00:00Z</atom:published>
+    <atom:updated>2026-11-14T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;哪吒的小机器人小豆要背着一块饼干，走过方格地垫，送到敖丙那里。可是一个转弯走错了，它一头撞倒了悟空的积木塔！朋友们没有全部重来，而是一张一张地查卡片，找到错的那一张，只把它改对。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/the-little-robots-wrong-turn-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/the-little-robots-wrong-turn-v1-zh-Hans.jpg" alt="小豆机器人走错了" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
   <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/pigsys-ten-spot-steamer/</atom:id>
     <atom:title type="text">八戒的十格蒸屉</atom:title>

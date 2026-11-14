@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/the-little-robots-wrong-turn-v1-zh-Hans.pdf",
+  "source_sha256": "8cd0225dfcfef539d023eb9325c3a54e5c5916119950740dd80fe080ec75bbd9",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "d965c2a05e7e881f07d0655ebf2b1b51034a67ba900b4ca3f0d3410d942add28",
+      "text": "小豆机器人\n走错了",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "71e2eec4f16d211009238f5ee27f1efd167c72647a0960afd2f1ca0cebaf439d",
+      "text": "哪吒有一台小机器人，叫小豆。\n它圆圆的，比鞋盒还小。\n它背上有五个按钮：前进、后退、左转、\n右转和开始。\n它每前进一次，就正好走一格。\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "b05b4628cfff0ddff383b4689c2a90d3af68df1efc0c75cbe72d87c687f1685f",
+      "text": "今天，小豆有个任务。\n它要把一块饼干送过方格地垫，交\n给敖丙。\n哪吒把它放在左下角，脸朝上。\n地垫旁边，悟空正在搭一座高高的\n积木塔。\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "5bedb64ec99e59ae2ccc952849f232496ea42caab888c7415e9bda921ad7837f",
+      "text": "哪吒排好五张箭头卡：前进、前进、左\n转、前进、前进。\n他照着卡片的顺序按好按钮。\n“这就是我们的程序。”他说。\n他按下开始，小豆走了起来。\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c5ac1217ed594018cc78a308fe322e7a221020bafbd7e07f5f138ebcc3297a15",
+      "text": "小豆往前走了一格，又走了一格。\n接着它往左一转，直直地撞上了悟空\n的积木塔。\n哗啦！\n积木倒了，饼干也从机器人身上掉\n了下来。\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "93e57f32486c2696d768d91bd10d1ff3ac1f37e27ed73c80d9907e7bc61b439f",
+      "text": "“哎呀，我的塔！”悟空说。\n哪吒把五张卡一下子推成一堆。\n“这个程序错了，”他说，\n“我们全部扔掉，从头再来！”\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "5628811b04d71d16ee6cf59060d4805bed9e6fc3af7b023f3fbc4efca2b6e23d",
+      "text": "“等等，先别重来，”敖丙说，“大部分卡片可\n能是对的。\n我们一张一张地查，就能找到错的\n那一张。”\n哪吒想了想，又把卡片排回一排。\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "951512f5e5694a553590d2eda0a0e5bc34530c7cea3ccc7b550f88c73675c05c",
+      "text": "他们把小豆放回左下角，脸朝上。\n这一次，它一次只走一张卡。\n第一张是前进，它往前走了一格。\n“这张对。”敖丙说，哪吒点点头。\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "a293575ac5b06d2c78c3d7762c055470a649d7d3aad2d0828a6177cd9bed7648",
+      "text": "第二张也是前进，小豆又走了一格。\n它还在地垫上，所以还在往敖丙那边走。\n“这张也对。”哪吒说。\n两张卡查完了。\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "5d6cc657134734c8dbb1f66c2b034177d90bf640ca8711b7aec92ecd8eade699",
+      "text": "第三张是左转，小豆往左一转。\n现在它对着悟空的积木，不是对着敖丙。\n敖丙把手指按在第三张卡上：\n“错就错在这张。应该是右转。”\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "22bd3d18da799528e53944d77bfcf010ebf05f30cc6f1beb5f9f25e326c76739",
+      "text": "哪吒来改程序。\n他拿走左转卡，换上一张右转卡。\n另外四张卡他都没动，因为它们本来\n就是对的。\n现在的程序是：前进、前进、右转、前\n进、前进。\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "865e413ddbbee9a7464eecb72e55f4610579c409c848b17765cc96aa42c2e2c2",
+      "text": "悟空把饼干放回小豆身上。\n哪吒照着新的卡片重新按好按钮，再\n按下开始。\n机器人往前走两格，向右一转，\n又往前走两格，正好停在敖丙面前。\n饼干送到啦！\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "dc60e5116c31f639c4f8551ab9b43fbb62904a9b792f46588320e2b93187793f",
+      "text": "敖丙接过饼干，掰成三块，一人一块。\n悟空也想试试。\n他觉得转弯最好玩，所以排了一大串\n转弯卡。\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "c806413edaa4a936aa75df3a5c4958beaaf6fc7fae8ed1a4dcbe1b4c6bb6af8e",
+      "text": "小豆右转，又右转，再右转。\n它在同一格里转了一圈又一圈，一步也没\n往前走。\n悟空咯咯笑，哪吒也笑了。\n“我们一张一张地查！”哪吒说。\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "bd8a47383ce7dfc9917f91c927a7d1b39022ae66bc8c0de2579139fb8a3437f2",
+      "text": "然后，三个好朋友一起把悟空的积木塔重\n新搭起来。\n敖丙扶稳底下，哪吒和悟空一块一块\n地往上加。\n这一次，他们把塔搭在离小豆的路远远的\n地方，这样就不会再被撞倒了。\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "8f30f9354fc7738b369fee7f2716ef6a41361dfd8c43c16a4f5fd0422bdc473e",
+      "text": "新的积木塔比原来还高。\n哪吒把五张箭头卡整整齐齐地排在地\n垫旁边。\n“下次再出错，”他说，“我先一张一张地查。”\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ec4df2cb93b7c9510e763d90f22b8a350c71d1d514885ba4d4c68e844fdb41c9",
+      "text": "Wukong & Friends\n谢谢你们一起读故事！\n希望你和孩子\n喜欢这次小小的冒险。\n更多免费故事\nphg1024.github.io/wukong-and-friends/zh\n免费阅读、下载和打印。\n阅读更多免费故事\n如果你和孩子喜欢这些故事，\n欢迎支持我继续创作。支持完全自愿。\nBuy Me a Coffee\nGitHub Sponsors\nPeihong Guo 创作\n这些故事和插画由作者借助 AI 创作，并经过人工编辑。\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · 署名—非商业性使用—禁止演绎\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "2154daf21d67f3bd11d69767f78cd70dafab51002b737a30d3cb78a90521f4dc",
+      "text": "Wukong & Friends\n前进，前进，左转……\n哎呀！有一张卡错了。\n一张一张地查。\nphg1024.github.io/wukong-and-friends/zh",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/zh/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}

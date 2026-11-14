@@ -5,7 +5,7 @@
     "about.html": "22a3adf43ed045775adb2d3739d5a402f76fdf9ba512b848aa8f1669654afb35",
     "app.js": "59b53a296ff26c5c4c34efc77b15e649ac31d751a1fbcc74c939c58e7069e988",
     "apple-touch-icon.png": "4286b09cf668fd24d3d3266c4705375f33637a39006fa260d6c5c96ed2d30c03",
-    "atom.xml": "708dd30087bcd47a213932a61e282759d7591ec71b27a59e9cdafa5c767a0ab5",
+    "atom.xml": "629846f72a9dffd56aec71d6e9780e85625b2b828cb54909c410eeb2ddf151fb",
     "banner-loop-poster.jpg": "4ec7bb8fc059e10c910afb19ac412cef66030bed2eaeab0202dade0ad0ef3534",
     "banner-loop.mp4": "37b8dde4f1833ade03fce8889f7b071e914e5511aade3be9f1674c495c830edc",
     "banner-skating-poster.jpg": "ffed204d676647f27e680e462e5eaf153cd697115aaf03a6bec765993fc57c4c",
@@ -26,6 +26,7 @@
     "books/pigsys-peach-puzzle/index.html": "3fafb6d1eb74dad4fecdfc6c39cde85cca0757f173fe9f75140e381c029a199a",
     "books/pigsys-ten-spot-steamer/index.html": "af7902026e0ad0f97ab878f88b8ece4581896677dc8b632824fdd82575ef203f",
     "books/robot-pigsy/index.html": "ae33bd88edf9829d6b615916c3e3c2a5cd8ba22283603520392bdae877ebce8f",
+    "books/the-little-robots-wrong-turn/index.html": "d724233432585f78445648f459adae162dc6cae2cf39a874b7aeb148e1944b09",
     "books/wukong-and-the-big-red-truck/index.html": "260008b81389caa3335c2ad46dc8d83989d9efec4e7a24eed479000b279f776e",
     "books/wukong-and-the-block-bridge/index.html": "677ce919399e0a81ddf8df29df66452bc63992abfbe470a3828f29c489e0dffa",
     "books/wukong-and-the-copycat-shadow/index.html": "16f78514c10cae6bc0f4cef96c99b6f4ff158c78f2f5781088e8d078d6d61dfb",
@@ -50,7 +51,7 @@
     "books/wukongs-slippy-slide-skates/index.html": "cccc56da22bce736fe5a2739be9953f97eabe03cf90d915002ce3dab3ed17b79",
     "books/wukongs-starry-stage/index.html": "877e9b788f738a73226abebf540255891a3c44aff6b5ff7d0e2f64016d6fed61",
     "books/wukongs-wibble-wobble-ride/index.html": "1a81621e3c39cafc97e0b19f5a9aaa32f00197d9507e97907b5e232bce46f4d8",
-    "catalog.json": "9132bec3af6a6de845fd5c507efcec836a36f1cce8e78789e70f24975b28c576",
+    "catalog.json": "b4aec6bee2c47040661965e646db413b1c264d3051e0d375e6c94d9182ea52cf",
     "characters/index.html": "890f96209b33a720a02d9f344d693df8b9cd2ef15580514f14cffd602dc010c3",
     "characters/portraits/rights-v1/ao-bing.jpg": "f3b7ab41b1055df2a34bbf24b14b05fcd194f9045cc5280500c685541dcac6b3",
     "characters/portraits/rights-v1/bull-king.jpg": "304f1d712bc82f343298d521db3a628ea7e27f79fa44116743020a6dd1934183",
@@ -83,6 +84,8 @@
     "covers/pigsys-ten-spot-steamer-v1.jpg": "5eda00ff188ee1892a121333b3e82701fbe1a67a26db0bca7323a3aac7aa8654",
     "covers/robot-pigsy-v2-zh-Hans.jpg": "90a6dec61b89deb6339fc8465b5f379e43e20a44a6a717e65c5ad6083a22df40",
     "covers/robot-pigsy-v2.jpg": "c11ec55fd152f5cb24319f65ddfecc0f6edac2f971b54976e24194d3cafc8f03",
+    "covers/the-little-robots-wrong-turn-v1-zh-Hans.jpg": "81c67e4d4927f94b2eb495fb596b40a8ee531f7979163e3e149a3939ba2b63f5",
+    "covers/the-little-robots-wrong-turn-v1.jpg": "9d49667e0c7b41b1b63789d1be0f20263cad9376422883ec1e5a9108c72d05fd",
     "covers/wukong-and-the-big-red-truck-v8-zh-Hans.jpg": "735e67bcb3b64e79c9057e824e361434a5ac83e5e5f2b8f8c0a325be2cd134c7",
     "covers/wukong-and-the-big-red-truck-v8.jpg": "62c866beb70174e35c9e84b48809992f016d5c7e3c1bef61423ca223fbb374fa",
     "covers/wukong-and-the-block-bridge-v2-zh-Hans.jpg": "91ac809fc3e0044e2d388159694f9605b9124f57cd7698fedc9f9176617ff23c",
@@ -135,14 +138,14 @@
     "favicon-32.png": "c86c359b268013bf4827b2f7d4d0a0e0508f5c8cc62765334ab7d951bfd9ddee",
     "favicon.svg": "1ebb16bdf9a11d8282a59f4665dbd4e17cd08bd09c39d08b08f2a10776298187",
     "icon-512.png": "c217bb0044f85904c718bedf2a80d8b672152b0bdb1a6dee4f95a4338d339eac",
-    "index.html": "19bd845c1a5b597c11228e3247e3bd7c4d9c1255287088aba55893aaff53c57b",
+    "index.html": "6ff97787f9c6cb7c25be2ad5925d5da2557f931b7db09b2942f2bc31690718c0",
     "license.html": "44b018d6bf42d57b2308393b7f7fc124bd072948f3fd7f39b8e43646a00df74f",
     "licenses/CC-BY-NC-ND-4.0.txt": "f7f28b8c7a1af76b9874ca6d040e8b1eb6768fd1043106c9d315090ea96754e7",
     "licenses/MIT.txt": "1baa8c93005463abb00e78e336cc6416e2e423352e8d11fe3825b5ea96f01b97",
     "og-image.jpg": "ccc6bb6488de45cadf36c2d739f2fcbfb0e5af1ea596bd777986577e3263c9da",
-    "provenance/manifest.json": "de730243295158eec76e669253be8f113e3f12a8a9ff2a748556069993b717a0",
+    "provenance/manifest.json": "add7085e27afa80d15263fc0583c02247e72de20299140a234a5e3b27ab755e2",
     "provenance/public-key.pem": "e3a01c706417deb7dc40e36a3af4fecee306646d7c8e18a58a6cb8290495716f",
-    "provenance/signature.json": "2bf81eb6de3d4f904395f205b4f1f6d1b95b35181c34a6b4ab9cde9852393d9d",
+    "provenance/signature.json": "61b904f6d2c6622504cea39f7ce04a41e42688f475b096755e874c20138c0f6b",
     "reader/ao-bings-little-boat-v2/rights-v1/manifest.json": "2fc7e5316c7c90956367c4d9c0fbcf3c7c467b24756e88578fb4eca5b2686d07",
     "reader/ao-bings-little-boat-v2-zh-Hans/rights-v1/manifest.json": "8ca6830bf272c50d642f2def0b7d9373255c3cf436e652a257393a22d3654697",
     "reader/big-cards-little-numbers-v2/rights-v1/manifest.json": "92f4dc9c081d497685d22746ed82c1d517b32eba712cc864137ffa855007940b",
@@ -163,6 +166,8 @@
     "reader/pigsys-ten-spot-steamer-v1-zh-Hans/rights-v1/manifest.json": "4801cc904961ede18865cc637d1dd6b10dfaf2fea9427fa0f433543a579280ff",
     "reader/robot-pigsy-v2/rights-v1/manifest.json": "4e0069f9a50fff004b0881200b0dc7bcdb57de36b054b5d5506ec157da01c96a",
     "reader/robot-pigsy-v2-zh-Hans/rights-v1/manifest.json": "1fbd11bbf11f87c3665c80c2131d2929d5eaca2d3c064b7cbaf0e51c9ec82772",
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/manifest.json": "cd9c951adb1cf20140b181e2d17ee59854e2af241e50595e08eb094e9ec33d2c",
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/manifest.json": "6084ef3d1f3d40c9b2c8062e4db6b715d2691ad774a45a459149b5dc13bf2714",
     "reader/wukong-and-the-big-red-truck-v8/rights-v1/manifest.json": "c8f5ead53148360aafcaec7b8e3b21eda95916ed0cfde105692be6c57c7b1ec8",
     "reader/wukong-and-the-big-red-truck-v8-zh-Hans/rights-v1/manifest.json": "edea41d0865656ca0690a1d378f7075904a693c8984cf280f80896cf7f982873",
     "reader/wukong-and-the-block-bridge-v2/rights-v1/manifest.json": "afb526e6c7031906248471e9f1c17cb60ce59ba308ad89189243d9ba1127fee2",
@@ -213,8 +218,8 @@
     "reader/wukongs-wibble-wobble-ride-v8-zh-Hans/rights-v1/manifest.json": "97d7ab33c52cbd17d33b5a7964a996096b58f0d393e401c49c5c4a667724d2e9",
     "reader.js": "08990e135c401fcb312af6d52bce8ddaca969c7b3483310c0b9a589b7480c7ac",
     "robots.txt": "888b72b6d088bf4ddf94f7fcc4be39b180c793bf7f0be485e5591a8a4e6ce9e7",
-    "rss.xml": "46bc6f72d6dcc569dcb1af53a573f019ddef3da451b2a114f20637141ec4d789",
-    "sitemap.xml": "4b740d78014980ad67f2745c07d38986a86cace7a037046f1f9fad2dabd1448c",
+    "rss.xml": "b77df8198f2418d07c3695862740dfd1b99b2bfbe5b888e113b3a0d28c594377",
+    "sitemap.xml": "95c0901491bc7f0c4a1640fb1015f9091cc393d32af343516a7eb22e4f09adc2",
     "social/ao-bings-little-boat-zh-Hans.jpg": "20c98b6ca96ab48b8a1501fa3d6188fcfdfff4402a1a7400f912c4b213bb9770",
     "social/ao-bings-little-boat.jpg": "1758c7c45bcddad359367dd09e7cbf63bf6e5e9f59fd257171c56a1cab4274e1",
     "social/big-cards-little-numbers-zh-Hans.jpg": "c3d5c0de1a2689298ae37db240f707b9912e45f2b0c5a81fadf8b8d3c96a949e",
@@ -235,6 +240,8 @@
     "social/pigsys-ten-spot-steamer.jpg": "1a50f95a265bb3de32836973da07dce4f22c6859c9f2b9403ceb1f13f2200e02",
     "social/robot-pigsy-zh-Hans.jpg": "a6f3305387ce42b174b7f7458f5700e61d384689bf29b11faff2b31fef8f9669",
     "social/robot-pigsy.jpg": "9330d5509c777451511735a913956bf86f055b683e98afb1b44316a2ad09fb83",
+    "social/the-little-robots-wrong-turn-zh-Hans.jpg": "d6a774e46e7c295a5da4656c9204d1de6bdc7bc286dfd7a9c230f0fd682092b3",
+    "social/the-little-robots-wrong-turn.jpg": "2893476ed361bf6bfa50b0d1c09eed3583f9a9e8b4d577b24c8de2c6a49cf8a0",
     "social/wukong-and-the-big-red-truck-zh-Hans.jpg": "5dbdc6edefe2f64affb821ca1eea289db0ba952b8ad29dcdc9ad2d74272b8640",
     "social/wukong-and-the-big-red-truck.jpg": "3d595fbbe89fa9c51dfa4a4ad76cf8c8fa1a03b7ad6b48d12beabec91bc16a03",
     "social/wukong-and-the-block-bridge-zh-Hans.jpg": "5e90718b3cfd9931dc17c6a9048cd3648351744e2f307aa1c9db78d7ff21cc5e",
@@ -361,6 +368,10 @@
     "support/robot-pigsy-v2-zh-Hans-booklet.html": "87969cbebbfce5ef4d29b0b3f3417db217da0183f964e8db4c7d2e66abf5bbca",
     "support/robot-pigsy-v2-zh-Hans.html": "5196b141728fa0042ee30ac198b9c5ce9e808b67754027a2aa538e471ebeeaf1",
     "support/robot-pigsy-v2.html": "4500b5d1b389c2828be000e18879094dd532e3b246d63f6f3bf16ab0b3b7ea94",
+    "support/the-little-robots-wrong-turn-v1-booklet.html": "1c94f370d158eecb9211935b8e00dd08282f67f55b366429b2024f866a9bfdbb",
+    "support/the-little-robots-wrong-turn-v1-zh-Hans-booklet.html": "57ac5dc5e4cdae40726a2c7239b130e0782acf4b2f3409cd1a4310b001361b41",
+    "support/the-little-robots-wrong-turn-v1-zh-Hans.html": "5da132348dd87cb880c7c2e86d7e9b3a3dfa951dba6f02eab68adbd6eb84c9e6",
+    "support/the-little-robots-wrong-turn-v1.html": "307f7efb61237ba1a76c8e01d3c82324f7d27e49b85cfe7372caa446366b11f6",
     "support/wukong-and-the-big-red-truck-v1-booklet.html": "f381d67e446359c36ad3f6145e3959b0e69f813c3e764f6cc07af9fec03e8d3c",
     "support/wukong-and-the-big-red-truck-v1-zh-Hans-booklet.html": "7a5d457d64b5a5f9861d55cee5f2b2f8ac6f4b2a91038f57814a555ce87c3e59",
     "support/wukong-and-the-big-red-truck-v1-zh-Hans.html": "97b34afbe4a14b381c1e468db141b37a05c35ac6a735cd3a5d9244155c72b7c4",
@@ -695,7 +706,7 @@
     "support/wukongs-wibble-wobble-ride-v8.html": "eeac7b9c3d8d91a2b60f6c3dc9f127373c0f15fea38ba3b7502408ce2370f078",
     "verify.html": "60221656b26f57898d2a0e608542ec6400ecd7e1fc97438d2a54e9e9aa597c10",
     "zh/about.html": "ef34dfc1828def828568064ec4f814322910ad30aaada2be20ba277dc087bfc7",
-    "zh/atom.xml": "c453de81bf2ce9623f6fab9709c62a081c7549fb5e16e1a71e62adb0bb6c897f",
+    "zh/atom.xml": "61ba1d1ea35bc1f0500cfdd76149ed88a20e9df1a6d0c2f738a4cd6baec61174",
     "zh/books/ao-bings-little-boat/index.html": "9700dbf6d68dd5ea571a436fa67ba2886a0978774ebe8a54ace5a2fe2dfb62fd",
     "zh/books/bears-wobbly-ride/index.html": "7b8f8365e9bef452dfe37af53e35aab35484f1efca792e94dc33168d44d04aa3",
     "zh/books/big-cards-little-numbers/index.html": "334c9c5ac96b6e77f8c7d6bd1a72a1506383352f52263acb7bd8bc675e2ef9ce",
@@ -708,6 +719,7 @@
     "zh/books/pigsys-peach-puzzle/index.html": "02e2954be89cda2494e958609e85cda469ac6ee199dfd1d2ea7173ac8fb448e8",
     "zh/books/pigsys-ten-spot-steamer/index.html": "bb84bbdaf842810b491366755859997435659c23509870456e499efda81412b3",
     "zh/books/robot-pigsy/index.html": "f53c0bd5ecb430fbbc8cb3782dfc6802059004fb080b85a4cf29bbf25eae2870",
+    "zh/books/the-little-robots-wrong-turn/index.html": "310fbdcc61bdc4bf221e23edb3f68c79764ac7a1e1b52337ca45be5e70276be3",
     "zh/books/wukong-and-the-big-red-truck/index.html": "e60161602c7cef5929dc3c056d5baed8aef0947db49f76be701d10f53ca274c1",
     "zh/books/wukong-and-the-block-bridge/index.html": "8856038c2fd25ab751e7635f10e6602354397984fd8f58eeea5575e5e8c00864",
     "zh/books/wukong-and-the-copycat-shadow/index.html": "015b696c501023455d34dd23c300b1e93e3f192c70251a5495b1badd49ded1bc",
@@ -733,9 +745,9 @@
     "zh/books/wukongs-starry-stage/index.html": "4785baecbd83a0afb7f88fafff1176b820b929eaea3140a8ccee5f6f9f5e0373",
     "zh/books/wukongs-wibble-wobble-ride/index.html": "1c91285d79d50a79516d2acdfea84ed13dc7fa40102ee0ff07fc3cdf3aacc352",
     "zh/characters/index.html": "2ae094193580a4790d4345876d9b3cad5e2cc80e5e42bbcdb2e862acef72ccab",
-    "zh/index.html": "9177e97bd4f9a075d9480b5229ebf016eb02d62ef2e7ec61ffdaabec5ee1c6d4",
+    "zh/index.html": "09940ca789432d538a018051fe205467c158adb51729b06b745ebe319419c90a",
     "zh/license.html": "8a086ca62794877f978f44dda0e3746ecf324b64d2b6293ca622abec830114df",
-    "zh/rss.xml": "a6dd3868c2df4f8857f623d3c6f24e0fa7c06f4850d8bb0be0c327377f62ce12",
+    "zh/rss.xml": "dca5ed088dadf3e2d5b0c407fc37d3da518be99cce8f114fb53d42cda4b6e4d9",
     "zh/subscribe.html": "cbffcfcfbe10435526f4e468c7df1d0642290569ceb77e3000aa60645fca5258",
     "zh/support/ao-bings-little-boat-v1-booklet.html": "884babd0d275f074efb62b874266ac194c6556be2e928938c8257686c02c1027",
     "zh/support/ao-bings-little-boat-v1-zh-Hans-booklet.html": "b6a7ea6e95b8d40cc4ce53f872b7d914f3ffdf56b9a0d067f8ccea45ef039db3",
@@ -813,6 +825,10 @@
     "zh/support/robot-pigsy-v2-zh-Hans-booklet.html": "2c9d5ff75e652ca156694bba56d270616ba6bd5019ea97075edf216ccf40f2e8",
     "zh/support/robot-pigsy-v2-zh-Hans.html": "e15d161e4f2cbc1e3100f402eaf61447d91c3c08cd1f9b7a33243d48e5a1ca5e",
     "zh/support/robot-pigsy-v2.html": "a3e94746f7e89134e24425075d0af1dd7557ea2583436a3f686f1565004760e6",
+    "zh/support/the-little-robots-wrong-turn-v1-booklet.html": "a98addebd8fdf45ee5c67d7a41f14347b63371a1c524dc150ecbcf620ec101d6",
+    "zh/support/the-little-robots-wrong-turn-v1-zh-Hans-booklet.html": "51757cad6e5ca0ef335186d0f1fcc9f0e029e72caebd4f2a2128b34cc7b9c1f0",
+    "zh/support/the-little-robots-wrong-turn-v1-zh-Hans.html": "8cd183caa91ec3fbbd4ecde0e9af466e3ead4273db0fb2fa6866a859e1858c52",
+    "zh/support/the-little-robots-wrong-turn-v1.html": "71081298fe609fd87fde039896086cb281904d4af68322c4b5b5abc830d56a18",
     "zh/support/wukong-and-the-big-red-truck-v1-booklet.html": "7cc25ad33080e383caaef12205bc641a9a2996e7955540aea1cd320bb99a0985",
     "zh/support/wukong-and-the-big-red-truck-v1-zh-Hans-booklet.html": "65d9590dc4532fa0c2ff71fe004106ed4f44bbd9ef269e71a7b0715040e6de22",
     "zh/support/wukong-and-the-big-red-truck-v1-zh-Hans.html": "a17fa6aaf408716bf25502de1f5bf09cfb4c5b9972240517e3fb36052ad908fe",
@@ -1152,7 +1168,7 @@
     "about.html": 6756,
     "app.js": 4924,
     "apple-touch-icon.png": 59283,
-    "atom.xml": 39929,
+    "atom.xml": 41163,
     "banner-loop-poster.jpg": 151991,
     "banner-loop.mp4": 1547059,
     "banner-skating-poster.jpg": 101121,
@@ -1173,6 +1189,7 @@
     "books/pigsys-peach-puzzle/index.html": 21320,
     "books/pigsys-ten-spot-steamer/index.html": 23563,
     "books/robot-pigsy/index.html": 23102,
+    "books/the-little-robots-wrong-turn/index.html": 23691,
     "books/wukong-and-the-big-red-truck/index.html": 22767,
     "books/wukong-and-the-block-bridge/index.html": 21719,
     "books/wukong-and-the-copycat-shadow/index.html": 22196,
@@ -1197,7 +1214,7 @@
     "books/wukongs-slippy-slide-skates/index.html": 22751,
     "books/wukongs-starry-stage/index.html": 22126,
     "books/wukongs-wibble-wobble-ride/index.html": 22643,
-    "catalog.json": 106600,
+    "catalog.json": 110474,
     "characters/index.html": 14970,
     "characters/portraits/rights-v1/ao-bing.jpg": 230950,
     "characters/portraits/rights-v1/bull-king.jpg": 237829,
@@ -1230,6 +1247,8 @@
     "covers/pigsys-ten-spot-steamer-v1.jpg": 104864,
     "covers/robot-pigsy-v2-zh-Hans.jpg": 104605,
     "covers/robot-pigsy-v2.jpg": 104316,
+    "covers/the-little-robots-wrong-turn-v1-zh-Hans.jpg": 92326,
+    "covers/the-little-robots-wrong-turn-v1.jpg": 93618,
     "covers/wukong-and-the-big-red-truck-v8-zh-Hans.jpg": 218076,
     "covers/wukong-and-the-big-red-truck-v8.jpg": 219727,
     "covers/wukong-and-the-block-bridge-v2-zh-Hans.jpg": 95061,
@@ -1282,12 +1301,12 @@
     "favicon-32.png": 2402,
     "favicon.svg": 307,
     "icon-512.png": 437545,
-    "index.html": 64306,
+    "index.html": 66364,
     "license.html": 7774,
     "licenses/CC-BY-NC-ND-4.0.txt": 19126,
     "licenses/MIT.txt": 1085,
     "og-image.jpg": 144770,
-    "provenance/manifest.json": 133033,
+    "provenance/manifest.json": 134412,
     "provenance/public-key.pem": 113,
     "provenance/signature.json": 509,
     "reader/ao-bings-little-boat-v2/rights-v1/manifest.json": 8768,
@@ -1310,6 +1329,8 @@
     "reader/pigsys-ten-spot-steamer-v1-zh-Hans/rights-v1/manifest.json": 9159,
     "reader/robot-pigsy-v2/rights-v1/manifest.json": 9195,
     "reader/robot-pigsy-v2-zh-Hans/rights-v1/manifest.json": 9049,
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/manifest.json": 9262,
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/manifest.json": 8987,
     "reader/wukong-and-the-big-red-truck-v8/rights-v1/manifest.json": 7380,
     "reader/wukong-and-the-big-red-truck-v8-zh-Hans/rights-v1/manifest.json": 7800,
     "reader/wukong-and-the-block-bridge-v2/rights-v1/manifest.json": 7253,
@@ -1360,8 +1381,8 @@
     "reader/wukongs-wibble-wobble-ride-v8-zh-Hans/rights-v1/manifest.json": 7511,
     "reader.js": 8865,
     "robots.txt": 90,
-    "rss.xml": 31154,
-    "sitemap.xml": 41001,
+    "rss.xml": 32132,
+    "sitemap.xml": 42080,
     "social/ao-bings-little-boat-zh-Hans.jpg": 75813,
     "social/ao-bings-little-boat.jpg": 74340,
     "social/big-cards-little-numbers-zh-Hans.jpg": 84338,
@@ -1382,6 +1403,8 @@
     "social/pigsys-ten-spot-steamer.jpg": 74947,
     "social/robot-pigsy-zh-Hans.jpg": 74367,
     "social/robot-pigsy.jpg": 73833,
+    "social/the-little-robots-wrong-turn-zh-Hans.jpg": 67583,
+    "social/the-little-robots-wrong-turn.jpg": 68252,
     "social/wukong-and-the-big-red-truck-zh-Hans.jpg": 83949,
     "social/wukong-and-the-big-red-truck.jpg": 84579,
     "social/wukong-and-the-block-bridge-zh-Hans.jpg": 68281,
@@ -1508,6 +1531,10 @@
     "support/robot-pigsy-v2-zh-Hans-booklet.html": 6753,
     "support/robot-pigsy-v2-zh-Hans.html": 6673,
     "support/robot-pigsy-v2.html": 6617,
+    "support/the-little-robots-wrong-turn-v1-booklet.html": 6975,
+    "support/the-little-robots-wrong-turn-v1-zh-Hans-booklet.html": 7031,
+    "support/the-little-robots-wrong-turn-v1-zh-Hans.html": 6951,
+    "support/the-little-robots-wrong-turn-v1.html": 6895,
     "support/wukong-and-the-big-red-truck-v1-booklet.html": 6969,
     "support/wukong-and-the-big-red-truck-v1-zh-Hans-booklet.html": 7025,
     "support/wukong-and-the-big-red-truck-v1-zh-Hans.html": 6945,
@@ -1842,7 +1869,7 @@
     "support/wukongs-wibble-wobble-ride-v8.html": 6863,
     "verify.html": 5587,
     "zh/about.html": 6624,
-    "zh/atom.xml": 40497,
+    "zh/atom.xml": 41756,
     "zh/books/ao-bings-little-boat/index.html": 23493,
     "zh/books/bears-wobbly-ride/index.html": 5423,
     "zh/books/big-cards-little-numbers/index.html": 22155,
@@ -1855,6 +1882,7 @@
     "zh/books/pigsys-peach-puzzle/index.html": 21942,
     "zh/books/pigsys-ten-spot-steamer/index.html": 24063,
     "zh/books/robot-pigsy/index.html": 23516,
+    "zh/books/the-little-robots-wrong-turn/index.html": 23947,
     "zh/books/wukong-and-the-big-red-truck/index.html": 23532,
     "zh/books/wukong-and-the-block-bridge/index.html": 22389,
     "zh/books/wukong-and-the-copycat-shadow/index.html": 22693,
@@ -1880,9 +1908,9 @@
     "zh/books/wukongs-starry-stage/index.html": 22615,
     "zh/books/wukongs-wibble-wobble-ride/index.html": 23208,
     "zh/characters/index.html": 15018,
-    "zh/index.html": 70362,
+    "zh/index.html": 72615,
     "zh/license.html": 7524,
-    "zh/rss.xml": 31509,
+    "zh/rss.xml": 32506,
     "zh/subscribe.html": 6092,
     "zh/support/ao-bings-little-boat-v1-booklet.html": 6907,
     "zh/support/ao-bings-little-boat-v1-zh-Hans-booklet.html": 6963,
@@ -1960,6 +1988,10 @@
     "zh/support/robot-pigsy-v2-zh-Hans-booklet.html": 6783,
     "zh/support/robot-pigsy-v2-zh-Hans.html": 6703,
     "zh/support/robot-pigsy-v2.html": 6647,
+    "zh/support/the-little-robots-wrong-turn-v1-booklet.html": 7023,
+    "zh/support/the-little-robots-wrong-turn-v1-zh-Hans-booklet.html": 7079,
+    "zh/support/the-little-robots-wrong-turn-v1-zh-Hans.html": 6999,
+    "zh/support/the-little-robots-wrong-turn-v1.html": 6943,
     "zh/support/wukong-and-the-big-red-truck-v1-booklet.html": 7017,
     "zh/support/wukong-and-the-big-red-truck-v1-zh-Hans-booklet.html": 7073,
     "zh/support/wukong-and-the-big-red-truck-v1-zh-Hans.html": 6993,
@@ -2295,13 +2327,13 @@
     "zh/verify.html": 5614
   },
   "summary": {
-    "file_count": 1145,
+    "file_count": 1161,
     "current_pdf_count": 0,
-    "reader_count": 68,
-    "source_bytes": 9924777962,
-    "export_bytes": 35431862,
-    "external_media_count": 1224,
-    "external_pdf_count": 136
+    "reader_count": 70,
+    "source_bytes": 9980828358,
+    "export_bytes": 35890535,
+    "external_media_count": 1260,
+    "external_pdf_count": 140
   },
   "external_media": {
     "reader/ao-bings-little-boat-v2-zh-Hans/rights-v1/page-01.webp": {
@@ -4103,6 +4135,186 @@
       "sha256": "857f79b53387273e6c1deea16314fae3906e861ef84faab38c6d10dd8f3d76ff",
       "bytes": 232744,
       "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/857f79b53387273e.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-01.webp": {
+      "sha256": "d965c2a05e7e881f07d0655ebf2b1b51034a67ba900b4ca3f0d3410d942add28",
+      "bytes": 339422,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/d965c2a05e7e881f.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-02.webp": {
+      "sha256": "71e2eec4f16d211009238f5ee27f1efd167c72647a0960afd2f1ca0cebaf439d",
+      "bytes": 317434,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/71e2eec4f16d2110.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-03.webp": {
+      "sha256": "b05b4628cfff0ddff383b4689c2a90d3af68df1efc0c75cbe72d87c687f1685f",
+      "bytes": 372032,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/b05b4628cfff0ddf.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-04.webp": {
+      "sha256": "5bedb64ec99e59ae2ccc952849f232496ea42caab888c7415e9bda921ad7837f",
+      "bytes": 304866,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/5bedb64ec99e59ae.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-05.webp": {
+      "sha256": "c5ac1217ed594018cc78a308fe322e7a221020bafbd7e07f5f138ebcc3297a15",
+      "bytes": 345452,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c5ac1217ed594018.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-06.webp": {
+      "sha256": "93e57f32486c2696d768d91bd10d1ff3ac1f37e27ed73c80d9907e7bc61b439f",
+      "bytes": 348766,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/93e57f32486c2696.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-07.webp": {
+      "sha256": "5628811b04d71d16ee6cf59060d4805bed9e6fc3af7b023f3fbc4efca2b6e23d",
+      "bytes": 336528,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/5628811b04d71d16.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-08.webp": {
+      "sha256": "951512f5e5694a553590d2eda0a0e5bc34530c7cea3ccc7b550f88c73675c05c",
+      "bytes": 325130,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/951512f5e5694a55.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-09.webp": {
+      "sha256": "a293575ac5b06d2c78c3d7762c055470a649d7d3aad2d0828a6177cd9bed7648",
+      "bytes": 318304,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a293575ac5b06d2c.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-10.webp": {
+      "sha256": "5d6cc657134734c8dbb1f66c2b034177d90bf640ca8711b7aec92ecd8eade699",
+      "bytes": 362000,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/5d6cc657134734c8.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-11.webp": {
+      "sha256": "22bd3d18da799528e53944d77bfcf010ebf05f30cc6f1beb5f9f25e326c76739",
+      "bytes": 350370,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/22bd3d18da799528.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-12.webp": {
+      "sha256": "865e413ddbbee9a7464eecb72e55f4610579c409c848b17765cc96aa42c2e2c2",
+      "bytes": 346616,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/865e413ddbbee9a7.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-13.webp": {
+      "sha256": "dc60e5116c31f639c4f8551ab9b43fbb62904a9b792f46588320e2b93187793f",
+      "bytes": 327060,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/dc60e5116c31f639.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-14.webp": {
+      "sha256": "c806413edaa4a936aa75df3a5c4958beaaf6fc7fae8ed1a4dcbe1b4c6bb6af8e",
+      "bytes": 320634,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c806413edaa4a936.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-15.webp": {
+      "sha256": "bd8a47383ce7dfc9917f91c927a7d1b39022ae66bc8c0de2579139fb8a3437f2",
+      "bytes": 320362,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/bd8a47383ce7dfc9.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-16.webp": {
+      "sha256": "8f30f9354fc7738b369fee7f2716ef6a41361dfd8c43c16a4f5fd0422bdc473e",
+      "bytes": 308660,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/8f30f9354fc7738b.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-17.webp": {
+      "sha256": "ec4df2cb93b7c9510e763d90f22b8a350c71d1d514885ba4d4c68e844fdb41c9",
+      "bytes": 67418,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ec4df2cb93b7c951.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1-zh-Hans/rights-v1/page-18.webp": {
+      "sha256": "2154daf21d67f3bd11d69767f78cd70dafab51002b737a30d3cb78a90521f4dc",
+      "bytes": 204450,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/2154daf21d67f3bd.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-01.webp": {
+      "sha256": "5efb8063c8eac55d29237a4e7c6722aa4626663fc5631f892a31dd77e4f58fa6",
+      "bytes": 339562,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/5efb8063c8eac55d.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-02.webp": {
+      "sha256": "055e7f8b7d129bb5985e12bbb8f574534e615f364582766833163cf9c8e88589",
+      "bytes": 315914,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/055e7f8b7d129bb5.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-03.webp": {
+      "sha256": "839da86daa530dc6ebaffdb4f36c881bfbea8e05b88f6b5e198294e2c3d8eff7",
+      "bytes": 370314,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/839da86daa530dc6.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-04.webp": {
+      "sha256": "a66f67b1aa1e6cf218967cae0809ab46986f09854303a46c273f7d82f4feb8a9",
+      "bytes": 308658,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a66f67b1aa1e6cf2.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-05.webp": {
+      "sha256": "52a4fe330af79c80070092724cc1b707b466db457db7991249670551c16798f4",
+      "bytes": 347380,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/52a4fe330af79c80.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-06.webp": {
+      "sha256": "eb2dac1f6491b26ee98c4f7813d88b5100a1ef72176992e377714f61ace850ae",
+      "bytes": 350888,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/eb2dac1f6491b26e.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-07.webp": {
+      "sha256": "be7f8a17963966662539c8b9ca7cb0a80309adc4960aef6060a2b4a5c5ca2cdb",
+      "bytes": 339042,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/be7f8a1796396666.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-08.webp": {
+      "sha256": "0f22480ea7d903845e9d45405d94b8f8c9786e19caf01b89fcc3be8d6d6c3699",
+      "bytes": 329534,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/0f22480ea7d90384.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-09.webp": {
+      "sha256": "10e25ae727ac2883b360be4b5d07c33ef15ddadd23e6af3edc131fdf24e9dae4",
+      "bytes": 327574,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/10e25ae727ac2883.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-10.webp": {
+      "sha256": "77edb0409d5a816371ac86d7458adf976cbf79731da66fad61bc5dbdede2c205",
+      "bytes": 363704,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/77edb0409d5a8163.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-11.webp": {
+      "sha256": "175d7578f01854e9904df1858d01a5654cc487cbd7327d05f75868984d62716c",
+      "bytes": 350500,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/175d7578f01854e9.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-12.webp": {
+      "sha256": "ca63ae86cede7ba1fc95c5437d15ba7d64631b02541fb782d93937255aa7757f",
+      "bytes": 347616,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ca63ae86cede7ba1.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-13.webp": {
+      "sha256": "6eafc73c6f9f0ac5d51a237bffe452eae0e5be082c8f97c87a9048ae2b78db73",
+      "bytes": 335690,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/6eafc73c6f9f0ac5.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-14.webp": {
+      "sha256": "660aaef6b90ab2241b0aeaa9878c7233b7f77af886d35adc602b5582b9d6ffdf",
+      "bytes": 324296,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/660aaef6b90ab224.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-15.webp": {
+      "sha256": "ee62ecb52888bd3403c4d2fcdb8db36f266594670abf05296288460aa7bf4818",
+      "bytes": 301056,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ee62ecb52888bd34.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-16.webp": {
+      "sha256": "6489bf3721e02cd3c52b10cdc90ae281c00ea66afbb984c71e5bd065711ad051",
+      "bytes": 312544,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/6489bf3721e02cd3.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-17.webp": {
+      "sha256": "cc57f9806e9e3bcd4ddbc32e908cb2e12b574361756d6b487aac96bfbe18d08e",
+      "bytes": 69602,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/cc57f9806e9e3bcd.webp"
+    },
+    "reader/the-little-robots-wrong-turn-v1/rights-v1/page-18.webp": {
+      "sha256": "40df5e3f506fc16d798309438d6b507b025db53afbf71c343790182a18377291",
+      "bytes": 206730,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/40df5e3f506fc16d.webp"
     },
     "reader/wukong-and-the-big-red-truck-v8-zh-Hans/rights-v1/page-01.webp": {
       "sha256": "7ba85d303e86e31eeec9728a5ad8bf5a76fa26049bf41ff22d6158d192864664",

@@ -1,0 +1,211 @@
+{
+  "format": "story-pages-v2",
+  "derivative_version": "rights-v1",
+  "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "source_pdf": "downloads/the-little-robots-wrong-turn-v1.pdf",
+  "source_sha256": "256820ae65c2dd53cb11b3a4a2986357d8d1bb08ca8019f5c0fb7788e5890623",
+  "pixel_width": 1224,
+  "pages": [
+    {
+      "image": "page-01.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "5efb8063c8eac55d29237a4e7c6722aa4626663fc5631f892a31dd77e4f58fa6",
+      "text": "The Little Robot’s\nWrong Turn",
+      "links": []
+    },
+    {
+      "image": "page-02.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "055e7f8b7d129bb5985e12bbb8f574534e615f364582766833163cf9c8e88589",
+      "text": "Nezha has a little robot called\nLittle Bean.\nIt is round and smaller than a shoebox.\nIt has five buttons: forward, back, turn\nleft, turn right and go.\nEach forward step is exactly one square.\n2",
+      "links": []
+    },
+    {
+      "image": "page-03.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "839da86daa530dc6ebaffdb4f36c881bfbea8e05b88f6b5e198294e2c3d8eff7",
+      "text": "Today, Little Bean has a job.\nIt must carry a cookie across the square\nmat to Ao Bing.\nNezha puts the robot in the bottom\ncorner, facing up.\nNext to the mat, Wukong is building a tall\nblock tower.\n3",
+      "links": []
+    },
+    {
+      "image": "page-04.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "a66f67b1aa1e6cf218967cae0809ab46986f09854303a46c273f7d82f4feb8a9",
+      "text": "Nezha lines up five arrow cards: forward,\nforward, turn left, forward, forward.\nHe presses the buttons in the same order.\n“This is our program,” he says.\nThen he presses go, and Little Bean starts\nto roll.\n4",
+      "links": []
+    },
+    {
+      "image": "page-05.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "52a4fe330af79c80070092724cc1b707b466db457db7991249670551c16798f4",
+      "text": "Little Bean goes forward one square, and\nthen one more square.\nThen it turns left and rolls straight into\nWukong’s tower.\nCrash!\nThe blocks fall down, and the cookie falls\noff the robot.\n5",
+      "links": []
+    },
+    {
+      "image": "page-06.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "eb2dac1f6491b26ee98c4f7813d88b5100a1ef72176992e377714f61ace850ae",
+      "text": "“Oh no, my tower!” says Wukong.\nNezha pushes all five cards into a big,\nmessy pile.\n“This program is wrong,” he says, “so let’s\nthrow it away and start again!”\n6",
+      "links": []
+    },
+    {
+      "image": "page-07.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "be7f8a17963966662539c8b9ca7cb0a80309adc4960aef6060a2b4a5c5ca2cdb",
+      "text": "“Wait, let’s not start over yet,” says Ao\nBing. “Most of the cards might be right.\nIf we check one card at a time, we can\nfind the mistake.”\nNezha thinks for a moment and puts the\ncards back in a row.\n7",
+      "links": []
+    },
+    {
+      "image": "page-08.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "0f22480ea7d903845e9d45405d94b8f8c9786e19caf01b89fcc3be8d6d6c3699",
+      "text": "They put Little Bean back in the corner,\nfacing up.\nThis time, it does only one card at a time.\nThe first card shows forward, and it rolls\none square.\n“That card is right,” says Ao Bing, and\nNezha nods.\n8",
+      "links": []
+    },
+    {
+      "image": "page-09.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "10e25ae727ac2883b360be4b5d07c33ef15ddadd23e6af3edc131fdf24e9dae4",
+      "text": "The second card shows forward, too, and\nLittle Bean rolls one more square.\nIt is still on the mat, so it is still on the\nway to Ao Bing.\n“That one is right as well,” says Nezha.\nTwo cards are checked.\n9",
+      "links": []
+    },
+    {
+      "image": "page-10.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "77edb0409d5a816371ac86d7458adf976cbf79731da66fad61bc5dbdede2c205",
+      "text": "The third card shows turn left, so Little\nBean turns to the left.\nNow it is facing Wukong’s blocks, not\nAo Bing.\nAo Bing puts his finger on the third card.\n“This is the mistake,” he says. “It should\nbe turn right.”\n10",
+      "links": []
+    },
+    {
+      "image": "page-11.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "175d7578f01854e9904df1858d01a5654cc487cbd7327d05f75868984d62716c",
+      "text": "Nezha fixes the program.\nHe swaps the turn left card for a turn\nright card.\nHe keeps the other four cards, because\nthey were already right.\nNow the program is forward, forward,\nturn right, forward, forward.\n11",
+      "links": []
+    },
+    {
+      "image": "page-12.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ca63ae86cede7ba1fc95c5437d15ba7d64631b02541fb782d93937255aa7757f",
+      "text": "Wukong puts the cookie back on\nLittle Bean.\nNezha presses the buttons in the new\norder, then presses go.\nThe robot rolls two squares, turns right\nand rolls two more.\nIt stops right in front of Ao Bing, and the\ncookie arrives safely!\n12",
+      "links": []
+    },
+    {
+      "image": "page-13.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "6eafc73c6f9f0ac5d51a237bffe452eae0e5be082c8f97c87a9048ae2b78db73",
+      "text": "Ao Bing takes the cookie and breaks it\ninto three pieces, one for each friend.\nThen Wukong wants to try.\nHe makes his own program with lots of\nturn cards, because turning looks like fun.\n13",
+      "links": []
+    },
+    {
+      "image": "page-14.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "660aaef6b90ab2241b0aeaa9878c7233b7f77af886d35adc602b5582b9d6ffdf",
+      "text": "Little Bean turns right, then right again,\nthen right again.\nIt spins round and round in one square and\nnever moves forward.\nWukong and Nezha both giggle.\n“Let’s check one card at a time!”\nsays Nezha.\n14",
+      "links": []
+    },
+    {
+      "image": "page-15.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "ee62ecb52888bd3403c4d2fcdb8db36f266594670abf05296288460aa7bf4818",
+      "text": "Then the three friends build the tower\nagain, block by block.\nAo Bing holds the bottom while Nezha and\nWukong add more blocks.\nThey build it far from Little Bean’s path,\nso it will not fall again.\n15",
+      "links": []
+    },
+    {
+      "image": "page-16.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "6489bf3721e02cd3c52b10cdc90ae281c00ea66afbb984c71e5bd065711ad051",
+      "text": "The new tower is even taller than before.\nNezha puts the five arrow cards in a neat\nrow beside the mat.\n“Next time something goes wrong,” he\nsays, “I will check one card at a\ntime first.”\n16",
+      "links": []
+    },
+    {
+      "image": "page-17.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "cc57f9806e9e3bcd4ddbc32e908cb2e12b574361756d6b487aac96bfbe18d08e",
+      "text": "Wukong & Friends\nThank you for reading!\nWe hope you and your little reader\nenjoyed this little adventure.\nMore free stories\nphg1024.github.io/wukong-and-friends\nRead, download and print - always free.\nRead more free stories\nIf you enjoyed our stories, you are welcome\nto help the next one grow. Support is optional.\nBuy Me a Coffee\nGitHub Sponsors\nCreated by Peihong Guo\nStories and illustrations made with AI assistance and human editing.\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · Attribution · NonCommercial · NoDerivatives\ncreativecommons.org/licenses/by-nc-nd/4.0/",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.073529,
+            0.342172,
+            0.926471,
+            0.383838
+          ]
+        },
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.183007,
+            0.459596,
+            0.816993,
+            0.525253
+          ]
+        },
+        {
+          "url": "https://buymeacoffee.com/phg1024",
+          "rect": [
+            0.083333,
+            0.698232,
+            0.406863,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://github.com/sponsors/phg1024",
+          "rect": [
+            0.47549,
+            0.698232,
+            0.79902,
+            0.751263
+          ]
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "rect": [
+            0.098039,
+            0.925505,
+            0.901961,
+            0.964646
+          ]
+        }
+      ]
+    },
+    {
+      "image": "page-18.webp",
+      "width": 1224,
+      "height": 1584,
+      "sha256": "40df5e3f506fc16d798309438d6b507b025db53afbf71c343790182a18377291",
+      "text": "Wukong & Friends\nForward, forward, turn left…\nOops! One card is wrong.\nCheck one card at a time.\nphg1024.github.io/wukong-and-friends",
+      "links": [
+        {
+          "url": "https://phg1024.github.io/wukong-and-friends/",
+          "rect": [
+            0.065359,
+            0.901515,
+            0.934641,
+            0.939394
+          ]
+        }
+      ]
+    }
+  ]
+}
