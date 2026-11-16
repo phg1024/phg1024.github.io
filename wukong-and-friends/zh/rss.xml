@@ -9,7 +9,7 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Sat, 14 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 00:00:00 GMT</lastBuildDate>
     <item>
       <title>小豆机器人走错了</title>
       <link>https://phg1024.github.io/wukong-and-friends/zh/books/the-little-robots-wrong-turn/</link>
@@ -29,7 +29,7 @@
     <item>
       <title>机器人八戒</title>
       <link>https://phg1024.github.io/wukong-and-friends/zh/books/robot-pigsy/</link>
-      <description>&lt;p&gt;八戒扮机器人，悟空说什么，他就照着顺序做什么：先穿鞋再穿袜子，帽子还戴在了脚上！于是悟空和玉兔把每一步画在一张卡片上，再检查一遍顺序。这回八戒每一步都做对了，接着轮到悟空当机器人。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/robot-pigsy-v2-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/robot-pigsy-v2-zh-Hans.jpg" alt="机器人八戒" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;八戒扮机器人，悟空说什么，他就照着顺序做什么：先穿鞋再穿袜子，帽子还戴在了脚上！于是悟空和玉兔把每一步画在一张卡片上，再检查一遍顺序。这回八戒每一步都做对了，接着轮到悟空当机器人。&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/robot-pigsy-v3-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/robot-pigsy-v3-zh-Hans.jpg" alt="机器人八戒" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
       <dc:creator>Peihong Guo</dc:creator>
       <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/robot-pigsy/</guid>
       <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>

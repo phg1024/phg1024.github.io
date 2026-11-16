@@ -141,11 +141,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v2",
-    "revision": "paper-standard",
+    "version": "v3",
+    "revision": "hands-match-sheet",
     "publication_status": "published",
     "published": "2026-11-08",
-    "updated": "2026-11-09",
+    "updated": "2026-11-15",
     "level": "L4",
     "target_age_months": 66,
     "focus_vocabulary": [
@@ -162,12 +162,12 @@
     ],
     "computing_plan_id": "C1",
     "language_reading_versions": {
-      "en": "robot-pigsy/v2/en",
-      "zh-Hans": "robot-pigsy/v2/zh-Hans"
+      "en": "robot-pigsy/v3/en",
+      "zh-Hans": "robot-pigsy/v3/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v2/robot-pigsy-v2.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v2/robot-pigsy-v2-booklet.pdf",
-    "cover": "covers/robot-pigsy-v2.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v3/robot-pigsy-v3.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v3/robot-pigsy-v3-booklet.pdf",
+    "cover": "covers/robot-pigsy-v3.jpg",
     "translations": {
       "en": {
         "title": "Robot Pigsy",
@@ -183,14 +183,14 @@
     "keywords": "八戒 悟空 玉兔 机器人 步骤 顺序 指令 卡片 检查 改正 编程启蒙 公园 Pigsy Wukong Jade Rabbit robot steps order instructions cards check fix early coding park",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v2/robot-pigsy-v2.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v2/robot-pigsy-v2-booklet.pdf",
-        "cover": "covers/robot-pigsy-v2.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v3/robot-pigsy-v3.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v3/robot-pigsy-v3-booklet.pdf",
+        "cover": "covers/robot-pigsy-v3.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v2/robot-pigsy-v2-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v2/robot-pigsy-v2-zh-Hans-booklet.pdf",
-        "cover": "covers/robot-pigsy-v2-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v3/robot-pigsy-v3-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/robot-pigsy-v3/robot-pigsy-v3-zh-Hans-booklet.pdf",
+        "cover": "covers/robot-pigsy-v3-zh-Hans.jpg"
       }
     }
   },

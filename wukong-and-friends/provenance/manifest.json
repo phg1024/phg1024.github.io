@@ -602,6 +602,36 @@
       "bytes": 8320368
     },
     {
+      "path": "docs/downloads/robot-pigsy-v3-booklet.pdf",
+      "sha256": "60c13355f2a6d095f20c4dde87a15d7b4e34b1568669cdcd2b158f5d07f2efbb",
+      "bytes": 8361249
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v3-core-en.pdf",
+      "sha256": "f495ab6edb8623a0b5f4c3c35fd43415a60ed11f8e71e610505b3b5de152775a",
+      "bytes": 7912764
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v3-core-zh-Hans.pdf",
+      "sha256": "6bc59a84fdc513dcf1083bd79f5a5e75c5136fb96beef369c270296f73f39368",
+      "bytes": 7967897
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v3-zh-Hans-booklet.pdf",
+      "sha256": "ac68dffade6503fffda635e4bd7a178c3af07aa3f004e3c6577d179e66da62f0",
+      "bytes": 8430542
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v3-zh-Hans.pdf",
+      "sha256": "7b5e9d2680e894811d4da7a110fe819f7d70c40fae640bfc13620169170abe38",
+      "bytes": 8420394
+    },
+    {
+      "path": "docs/downloads/robot-pigsy-v3.pdf",
+      "sha256": "7731b6c39ac86f530dbf5eedcaad1eb284358720ed7d11dc33f73597b61aa5d7",
+      "bytes": 8341971
+    },
+    {
       "path": "docs/downloads/the-little-robots-wrong-turn-v1-booklet.pdf",
       "sha256": "b9a44105487b8919d9ecad93c07587cde49c8890ffd8f79886cae87f6e5ab83d",
       "bytes": 7500447
@@ -2960,6 +2990,11 @@
       "path": "stories/robot-pigsy/editions/v2/prompts.txt",
       "sha256": "ebe8bf04fabd29ce029b990bb53d9b50bbbb3170feac28de8450be898752200c",
       "bytes": 4922357
+    },
+    {
+      "path": "stories/robot-pigsy/editions/v3/prompts.txt",
+      "sha256": "1672b9b08428ba6e44470f751ed902b9aa5b945db73db2a95c019859cffaa44b",
+      "bytes": 4966962
     },
     {
       "path": "stories/the-little-robots-wrong-turn/editions/v1/prompts.txt",

@@ -3,15 +3,15 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/robot-pigsy-v2.pdf",
-  "source_sha256": "b36411b742e97d21ed40768be38794943ca4582e0aaf37f006607ee23dfa0f7a",
+  "source_pdf": "downloads/robot-pigsy-v3.pdf",
+  "source_sha256": "7731b6c39ac86f530dbf5eedcaad1eb284358720ed7d11dc33f73597b61aa5d7",
   "pixel_width": 1224,
   "pages": [
     {
       "image": "page-01.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "003e35c509f6dc6b51e572e35dd34a61b01f906e028db6c2946366d69a997e35",
+      "sha256": "49ac12758e6354a5c514c6d30aa4e9c9697280dbeb49d5f55404017b7cc87bd7",
       "text": "Robot Pigsy",
       "links": []
     },
@@ -19,7 +19,7 @@
       "image": "page-02.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "282de278b82b8c6fcb68edcdc25a4e3bef96417e2e4cb6142ae1510338b2cb11",
+      "sha256": "3de7b2d81a09361c71e2d9ea7165f0057ed32c1edfb3dd9d779da25edfd32abf",
       "text": "Wukong, Pigsy and Jade Rabbit are going\nto the park.\nPigsy stands up very straight and\nstops blinking.\n“Today I am Robot Pigsy,” he says in a\nbeepy voice.\n“I will do exactly what you tell me, in\nexactly that order.”\n2",
       "links": []
     },
@@ -27,7 +27,7 @@
       "image": "page-03.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "d976b04589b3d954ba8009781f513a42453778ee3fc1366f1f9ba9344f294513",
+      "sha256": "e2eb19744733f658d47b650a0a4a969097603b3eebd68e96ee98929910c9734d",
       "text": "Wukong is in a hurry, so he says the\nsteps very fast.\n“Put on your shoes. Put on your socks.\nPut on your hat. Put on your backpack.\nGo out the door!”\nRobot Pigsy beeps and starts with the\nfirst step.\n3",
       "links": []
     },
@@ -35,7 +35,7 @@
       "image": "page-04.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "1e4196f7685cb571d2d0e0cb47250957555adb1d30c37527e1d465dbe7b52218",
+      "sha256": "90646267c54f218e8ea414a361b18eb0e73d9a136ff995e7f6a05972e32deecf",
       "text": "First, Robot Pigsy puts on his shoes.\nNext, he pulls his socks on over his shoes!\n“Wait, socks go first!” shouts Wukong.\nRobot Pigsy says, “Beep. You said\nshoes first.”\n4",
       "links": []
     },
@@ -43,7 +43,7 @@
       "image": "page-05.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "64bfa9695c3239645c2e5ba3e7e680de4f6f8972ace549564f643094b970aeac",
+      "sha256": "cc7a0581322b4bdfd6774f6463646a20d70b9e7bfe0308ab0a4cfb3dc0d2c5f6",
       "text": "Then Wukong says, “Put on your hat,” and\nRobot Pigsy puts the hat on his foot.\nHe does that because Wukong did not say\nwhere the hat goes.\nWukong laughs so hard that he rolls on\nthe floor.\n5",
       "links": []
     },
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "3c46265c13d895325eb66999c0bee3e7965521313045fa82aca38e99b9cb6fda",
+      "sha256": "789ec9d1eba0b584e1d8988b27b43d0999f0bf45667188f7ded423bd49ae6d14",
       "text": "Robot Pigsy puts on his backpack and\nclomps to the door in his socky shoes.\nThe hat wobbles on his foot.\nJade Rabbit giggles and says, “He did\nevery step you said, Wukong.\nThe steps just need to be clearer.”\n6",
       "links": []
     },
@@ -59,7 +59,7 @@
       "image": "page-07.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "44417df31400fdf148a99c6f21e0c8adbc17251c705c55020ef490bbc71f923a",
+      "sha256": "2da4a17769a6ae85430ae544f453e792e9c7abdab5c1c3833aef3be686a7792b",
       "text": "Jade Rabbit brings some blank cards\nand crayons.\n“Let’s draw one step on each card,” she\nsays. “Then we put the cards in a row.\nThe robot follows them from left to right,\none card at a time.”\n7",
       "links": []
     },
@@ -67,7 +67,7 @@
       "image": "page-08.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "23b227b5967a78807885eafe499101d52286f74e3729d81213fdcb07c7d71e22",
+      "sha256": "c9fbef522f876e4b9d00b22397e6941543fb5a80708bb06b2cbf3b084a4d657d",
       "text": "Wukong draws five cards: socks, shoes, a\nhat, a backpack and the door.\nOn the hat card, he draws the hat on top\nof a head.\nWhen Robot Pigsy sees this card, he will\nknow exactly where the hat goes.\n8",
       "links": []
     },
@@ -75,7 +75,7 @@
       "image": "page-09.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5b58823a5a011a7a917e60c4e67c584d152771ae0e0fb0038d860727adda08f1",
+      "sha256": "1c2345c751a8ba344619ca3c13da352b4eb11b1e027c23104b5d8e1d1dfe02f7",
       "text": "Wukong puts the shoes card first, but\nJade Rabbit points at it.\n“Can you put on shoes before socks?”\nshe asks.\nWukong looks down at his own feet.\nThen he moves the socks card to the\nvery front.\n9",
       "links": []
     },
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "690b24aea6f2483057878530df803bb64c74864dc627404fb68af7c3d6a9db1b",
+      "sha256": "b16d1d2756563d3dbc0ebadbcf0548ddac6832a698b88d288fd2dfb85eca9333",
       "text": "Now the row shows socks, shoes, hat,\nbackpack and door.\nWukong checks the cards one by one with\nhis finger.\nSocks come before shoes, and the hat\ngoes on a head.\n“This order works, so let’s try it!”\nsays Wukong.\n10",
       "links": []
     },
@@ -91,7 +91,7 @@
       "image": "page-11.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "8cfbf24e9a05d86a12ad42140b5630b3ab36c4be9e37427caa3944ae02794187",
+      "sha256": "963d701a92be77e028cb4148183f40e030889004ff8f0cc3ad362c222afa028e",
       "text": "Robot Pigsy takes off his hat, his socks\nand his shoes, so he can start again.\nHe looks at the first card and puts on\nhis socks.\nThen he looks at the second card and puts\non his shoes.\nBeep, beep!\n11",
       "links": []
     },
@@ -99,7 +99,7 @@
       "image": "page-12.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "b0e4b09bb0e4c745bc68a2ef6579cae9b7ba2ed99513e6c0327694ce990304ee",
+      "sha256": "9dcc3ff8f824231a441e5ef7c4372f60970fe12fe75c18ee3a60082d3f0897e5",
       "text": "The third card shows a hat on a head, so\nthe hat goes on his head this time.\nThen he puts on his backpack.\nLast, he walks out the door.\nWukong and Jade Rabbit cheer, because\nevery step is in the right order.\n12",
       "links": []
     },
@@ -107,7 +107,7 @@
       "image": "page-13.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "9d40299eaae07f01224f3ac8b22b70115e59db31a4c2c66f68296c9c5bec231a",
+      "sha256": "013cb0c04142d9d2ad9bab1ae0e5943935588dc2137db5dbbba197d4242273e2",
       "text": "At the park, Pigsy is not a robot anymore.\nHe grins and takes a peach and the\ncrayons from his backpack.\n“Now you can be the robot, Wukong!”\nhe says.\nPigsy draws three cards: sit down, eat a\npeach and hug Pigsy.\n13",
       "links": []
     },
@@ -115,7 +115,7 @@
       "image": "page-14.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "b5a7b4b7361c08b2b2b36e51bb8fe238005503a94bc6e533b97c1022ac7f37f5",
+      "sha256": "952177459cbfaae581a83750c69261eacb3e5a43754151f368c8576b73015355",
       "text": "Robot Wukong stands very straight and\nlooks at the first card.\nHe sits down on the grass with a bump.\nWhen he looks at the second card, he\neats the juicy peach in four big bites.\n14",
       "links": []
     },
@@ -123,7 +123,7 @@
       "image": "page-15.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "ed1487db347229a322da2464cc9299b7783c6f2dc19f443bd453e86f1e4a55a2",
+      "sha256": "74e2742a4d9b0e6323b97158c81e95e3dbe86b64342a30504106ad85682a9751",
       "text": "The third card shows a hug for Pigsy.\nRobot Wukong walks over stiffly and gives\nPigsy a big, tight hug.\n“Beep. That is the best step,” says\nRobot Wukong.\nPigsy laughs and hugs him back.\n15",
       "links": []
     },
@@ -131,7 +131,7 @@
       "image": "page-16.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "89c7ecec3e2a3b89dc4578251138a1985cf6aa94b132aee203d65c25f43a6971",
+      "sha256": "7d51c9c467f567f22d3e8fcee96f2ebf677ed9631242f4d193f1091ed1708b76",
       "text": "Jade Rabbit lines up all the cards on\nthe bench.\n“Who wants to be the robot next?”\nshe asks.\nWukong and Pigsy both put up\ntheir hands.\n“I do!” they shout together, and they\nstart to draw new cards.\n16",
       "links": []
     },
@@ -139,7 +139,7 @@
       "image": "page-17.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "d22637ab6fc3dba430ef0766620f48df979b60ce1dd6eb422e5d1b92cb88016b",
+      "sha256": "cc57f9806e9e3bcd4ddbc32e908cb2e12b574361756d6b487aac96bfbe18d08e",
       "text": "Wukong & Friends\nThank you for reading!\nWe hope you and your little reader\nenjoyed this little adventure.\nMore free stories\nphg1024.github.io/wukong-and-friends\nRead, download and print - always free.\nRead more free stories\nIf you enjoyed our stories, you are welcome\nto help the next one grow. Support is optional.\nBuy Me a Coffee\nGitHub Sponsors\nCreated by Peihong Guo\nStories and illustrations made with AI assistance and human editing.\n© 2026 Peihong Guo\nCC BY-NC-ND 4.0 · Attribution · NonCommercial · NoDerivatives\ncreativecommons.org/licenses/by-nc-nd/4.0/",
       "links": [
         {
@@ -193,7 +193,7 @@
       "image": "page-18.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "857f79b53387273e6c1deea16314fae3906e861ef84faab38c6d10dd8f3d76ff",
+      "sha256": "0ba914037721f11e32ade764f97cdf60b15dd427ae64489ff490dc3bc57e6ecb",
       "text": "Wukong & Friends\nSocks first, then shoes.\nOne card, one step.\nWhat will your robot do?\nphg1024.github.io/wukong-and-friends",
       "links": [
         {
