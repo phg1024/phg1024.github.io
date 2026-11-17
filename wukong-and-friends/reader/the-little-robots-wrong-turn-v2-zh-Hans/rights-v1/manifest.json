@@ -3,15 +3,15 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/the-little-robots-wrong-turn-v1-zh-Hans.pdf",
-  "source_sha256": "8cd0225dfcfef539d023eb9325c3a54e5c5916119950740dd80fe080ec75bbd9",
+  "source_pdf": "downloads/the-little-robots-wrong-turn-v2-zh-Hans.pdf",
+  "source_sha256": "f15096d6b2f65665b458a5d16437caf51af134bd024504bc0b6d368b337ed08a",
   "pixel_width": 1224,
   "pages": [
     {
       "image": "page-01.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "d965c2a05e7e881f07d0655ebf2b1b51034a67ba900b4ca3f0d3410d942add28",
+      "sha256": "3f9741622556325c1f6b64ade806007cafa9b086f57a048b458e6766efdc64ee",
       "text": "小豆机器人\n走错了",
       "links": []
     },
@@ -19,7 +19,7 @@
       "image": "page-02.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "71e2eec4f16d211009238f5ee27f1efd167c72647a0960afd2f1ca0cebaf439d",
+      "sha256": "fdf421f099b33e7608f0a9f3e082f6f7f9d522cfd0af9cd75fde46e9be17669a",
       "text": "哪吒有一台小机器人，叫小豆。\n它圆圆的，比鞋盒还小。\n它背上有五个按钮：前进、后退、左转、\n右转和开始。\n它每前进一次，就正好走一格。\n2",
       "links": []
     },
@@ -27,7 +27,7 @@
       "image": "page-03.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "b05b4628cfff0ddff383b4689c2a90d3af68df1efc0c75cbe72d87c687f1685f",
+      "sha256": "740b091ec1cc3c42b520b4691441f366d049ff8a7643c6e1e75e3882b777733f",
       "text": "今天，小豆有个任务。\n它要把一块饼干送过方格地垫，交\n给敖丙。\n哪吒把它放在左下角，脸朝上。\n地垫旁边，悟空正在搭一座高高的\n积木塔。\n3",
       "links": []
     },
@@ -35,7 +35,7 @@
       "image": "page-04.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5bedb64ec99e59ae2ccc952849f232496ea42caab888c7415e9bda921ad7837f",
+      "sha256": "912b22cb70980411ef420d44301d34c67a071544f2ba98007c5c6de19c8e89da",
       "text": "哪吒排好五张箭头卡：前进、前进、左\n转、前进、前进。\n他照着卡片的顺序按好按钮。\n“这就是我们的程序。”他说。\n他按下开始，小豆走了起来。\n4",
       "links": []
     },
@@ -43,7 +43,7 @@
       "image": "page-05.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "c5ac1217ed594018cc78a308fe322e7a221020bafbd7e07f5f138ebcc3297a15",
+      "sha256": "3dad725acb6f06642cddac9e70137bbc252488258bcbe216dd6714daafd361ab",
       "text": "小豆往前走了一格，又走了一格。\n接着它往左一转，直直地撞上了悟空\n的积木塔。\n哗啦！\n积木倒了，饼干也从机器人身上掉\n了下来。\n5",
       "links": []
     },
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "93e57f32486c2696d768d91bd10d1ff3ac1f37e27ed73c80d9907e7bc61b439f",
+      "sha256": "709abf6430650d9757a17ac4a9d471f349910c937f51ff1075c539cfe46c09f5",
       "text": "“哎呀，我的塔！”悟空说。\n哪吒把五张卡一下子推成一堆。\n“这个程序错了，”他说，\n“我们全部扔掉，从头再来！”\n6",
       "links": []
     },
@@ -59,7 +59,7 @@
       "image": "page-07.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5628811b04d71d16ee6cf59060d4805bed9e6fc3af7b023f3fbc4efca2b6e23d",
+      "sha256": "839b3c637f754a65efe704de010d4a4f490df35fdd5f67f766e403d18ff3c139",
       "text": "“等等，先别重来，”敖丙说，“大部分卡片可\n能是对的。\n我们一张一张地查，就能找到错的\n那一张。”\n哪吒想了想，又把卡片排回一排。\n7",
       "links": []
     },
@@ -67,7 +67,7 @@
       "image": "page-08.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "951512f5e5694a553590d2eda0a0e5bc34530c7cea3ccc7b550f88c73675c05c",
+      "sha256": "73b44792076db9e0ef26bd8da26bfd391e885f8f53a57308d2e6e72efc915ee2",
       "text": "他们把小豆放回左下角，脸朝上。\n这一次，它一次只走一张卡。\n第一张是前进，它往前走了一格。\n“这张对。”敖丙说，哪吒点点头。\n8",
       "links": []
     },
@@ -75,7 +75,7 @@
       "image": "page-09.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "a293575ac5b06d2c78c3d7762c055470a649d7d3aad2d0828a6177cd9bed7648",
+      "sha256": "edf413dc95f37e69eb56215523b09b454fadd45577481ff1ef6d712dfa7064d9",
       "text": "第二张也是前进，小豆又走了一格。\n它还在地垫上，所以还在往敖丙那边走。\n“这张也对。”哪吒说。\n两张卡查完了。\n9",
       "links": []
     },
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5d6cc657134734c8dbb1f66c2b034177d90bf640ca8711b7aec92ecd8eade699",
+      "sha256": "0f1518726c06eab3a622b6e8abc347d05b897f9bf5a701f41d8ab0579c265394",
       "text": "第三张是左转，小豆往左一转。\n现在它对着悟空的积木，不是对着敖丙。\n敖丙把手指按在第三张卡上：\n“错就错在这张。应该是右转。”\n10",
       "links": []
     },
@@ -91,7 +91,7 @@
       "image": "page-11.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "22bd3d18da799528e53944d77bfcf010ebf05f30cc6f1beb5f9f25e326c76739",
+      "sha256": "1e2652c8c66402fc75ca9d6b8eee226bfbd5d5b0b957ae09cbf24f79d5107c4f",
       "text": "哪吒来改程序。\n他拿走左转卡，换上一张右转卡。\n另外四张卡他都没动，因为它们本来\n就是对的。\n现在的程序是：前进、前进、右转、前\n进、前进。\n11",
       "links": []
     },
@@ -99,7 +99,7 @@
       "image": "page-12.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "865e413ddbbee9a7464eecb72e55f4610579c409c848b17765cc96aa42c2e2c2",
+      "sha256": "fdf2b7585d6dd62ce282fdfe76b844788a7444320afe8743adf8b274750a1c71",
       "text": "悟空把饼干放回小豆身上。\n哪吒照着新的卡片重新按好按钮，再\n按下开始。\n机器人往前走两格，向右一转，\n又往前走两格，正好停在敖丙面前。\n饼干送到啦！\n12",
       "links": []
     },
@@ -107,7 +107,7 @@
       "image": "page-13.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "dc60e5116c31f639c4f8551ab9b43fbb62904a9b792f46588320e2b93187793f",
+      "sha256": "9a673175f44e7230f48e5a0aa4021f4189c4575d110d114e24bef60d9cb1be85",
       "text": "敖丙接过饼干，掰成三块，一人一块。\n悟空也想试试。\n他觉得转弯最好玩，所以排了一大串\n转弯卡。\n13",
       "links": []
     },
@@ -115,7 +115,7 @@
       "image": "page-14.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "c806413edaa4a936aa75df3a5c4958beaaf6fc7fae8ed1a4dcbe1b4c6bb6af8e",
+      "sha256": "f2c85fa57ae5aae848958c8850343ccad0aa57b5a40ff5f405a3c5f53b77632b",
       "text": "小豆右转，又右转，再右转。\n它在同一格里转了一圈又一圈，一步也没\n往前走。\n悟空咯咯笑，哪吒也笑了。\n“我们一张一张地查！”哪吒说。\n14",
       "links": []
     },
@@ -123,7 +123,7 @@
       "image": "page-15.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "bd8a47383ce7dfc9917f91c927a7d1b39022ae66bc8c0de2579139fb8a3437f2",
+      "sha256": "661c140ca768e280415835bbe0a293787cc16fa1165d428ddf5b67c98fd0c09d",
       "text": "然后，三个好朋友一起把悟空的积木塔重\n新搭起来。\n敖丙扶稳底下，哪吒和悟空一块一块\n地往上加。\n这一次，他们把塔搭在离小豆的路远远的\n地方，这样就不会再被撞倒了。\n15",
       "links": []
     },
@@ -131,7 +131,7 @@
       "image": "page-16.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "8f30f9354fc7738b369fee7f2716ef6a41361dfd8c43c16a4f5fd0422bdc473e",
+      "sha256": "74e4f6ab18bb4d2dacb96e109dc7a1ecb5fa14a2bddc050e4b6f0a1d9a1a2c97",
       "text": "新的积木塔比原来还高。\n哪吒把五张箭头卡整整齐齐地排在地\n垫旁边。\n“下次再出错，”他说，“我先一张一张地查。”\n16",
       "links": []
     },

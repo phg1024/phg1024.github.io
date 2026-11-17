@@ -3,15 +3,15 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/the-little-robots-wrong-turn-v1.pdf",
-  "source_sha256": "256820ae65c2dd53cb11b3a4a2986357d8d1bb08ca8019f5c0fb7788e5890623",
+  "source_pdf": "downloads/the-little-robots-wrong-turn-v2.pdf",
+  "source_sha256": "31d75144ce3df851fa51da905ed4563b1b6160c5aa0dfb7991a58014954648c3",
   "pixel_width": 1224,
   "pages": [
     {
       "image": "page-01.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5efb8063c8eac55d29237a4e7c6722aa4626663fc5631f892a31dd77e4f58fa6",
+      "sha256": "2d03ae6752ab4061f6396df89aa131769eaedc878ac675b4cd4554d012389f7a",
       "text": "The Little Robot’s\nWrong Turn",
       "links": []
     },
@@ -19,7 +19,7 @@
       "image": "page-02.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "055e7f8b7d129bb5985e12bbb8f574534e615f364582766833163cf9c8e88589",
+      "sha256": "d407ac00989ef9dbeb39fe9268c20fe1961f54626b95db0d0296c7d8fa0ce594",
       "text": "Nezha has a little robot called\nLittle Bean.\nIt is round and smaller than a shoebox.\nIt has five buttons: forward, back, turn\nleft, turn right and go.\nEach forward step is exactly one square.\n2",
       "links": []
     },
@@ -27,7 +27,7 @@
       "image": "page-03.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "839da86daa530dc6ebaffdb4f36c881bfbea8e05b88f6b5e198294e2c3d8eff7",
+      "sha256": "e5f990c393af312bd526ef70883097682a26005e49288b00707816909735d867",
       "text": "Today, Little Bean has a job.\nIt must carry a cookie across the square\nmat to Ao Bing.\nNezha puts the robot in the bottom\ncorner, facing up.\nNext to the mat, Wukong is building a tall\nblock tower.\n3",
       "links": []
     },
@@ -35,7 +35,7 @@
       "image": "page-04.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "a66f67b1aa1e6cf218967cae0809ab46986f09854303a46c273f7d82f4feb8a9",
+      "sha256": "84042a38b2e976374e165bc8a84fe1aee1d91523701ab97dc1016e860eb0cfe4",
       "text": "Nezha lines up five arrow cards: forward,\nforward, turn left, forward, forward.\nHe presses the buttons in the same order.\n“This is our program,” he says.\nThen he presses go, and Little Bean starts\nto roll.\n4",
       "links": []
     },
@@ -43,7 +43,7 @@
       "image": "page-05.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "52a4fe330af79c80070092724cc1b707b466db457db7991249670551c16798f4",
+      "sha256": "38d7a3e2842c00a205410cd19aec6820f7f2e084b8104202b799f48cd97e0902",
       "text": "Little Bean goes forward one square, and\nthen one more square.\nThen it turns left and rolls straight into\nWukong’s tower.\nCrash!\nThe blocks fall down, and the cookie falls\noff the robot.\n5",
       "links": []
     },
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "eb2dac1f6491b26ee98c4f7813d88b5100a1ef72176992e377714f61ace850ae",
+      "sha256": "be61eebd3e490c8018652b6935850dc136974b88479ad5050b5ffcd713a2383e",
       "text": "“Oh no, my tower!” says Wukong.\nNezha pushes all five cards into a big,\nmessy pile.\n“This program is wrong,” he says, “so let’s\nthrow it away and start again!”\n6",
       "links": []
     },
@@ -59,7 +59,7 @@
       "image": "page-07.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "be7f8a17963966662539c8b9ca7cb0a80309adc4960aef6060a2b4a5c5ca2cdb",
+      "sha256": "5513635b16479b4034620624f04707a9d0585c19f10d403d4ec5f8a75a436f9f",
       "text": "“Wait, let’s not start over yet,” says Ao\nBing. “Most of the cards might be right.\nIf we check one card at a time, we can\nfind the mistake.”\nNezha thinks for a moment and puts the\ncards back in a row.\n7",
       "links": []
     },
@@ -67,7 +67,7 @@
       "image": "page-08.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "0f22480ea7d903845e9d45405d94b8f8c9786e19caf01b89fcc3be8d6d6c3699",
+      "sha256": "d1b7387e9034945f65334f5bb183f188109480da014d3b161a15516484946cb4",
       "text": "They put Little Bean back in the corner,\nfacing up.\nThis time, it does only one card at a time.\nThe first card shows forward, and it rolls\none square.\n“That card is right,” says Ao Bing, and\nNezha nods.\n8",
       "links": []
     },
@@ -75,7 +75,7 @@
       "image": "page-09.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "10e25ae727ac2883b360be4b5d07c33ef15ddadd23e6af3edc131fdf24e9dae4",
+      "sha256": "c0e68479b6a78a06d5b778acbd73215ce09238f23d201e36d548ed1234173d77",
       "text": "The second card shows forward, too, and\nLittle Bean rolls one more square.\nIt is still on the mat, so it is still on the\nway to Ao Bing.\n“That one is right as well,” says Nezha.\nTwo cards are checked.\n9",
       "links": []
     },
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "77edb0409d5a816371ac86d7458adf976cbf79731da66fad61bc5dbdede2c205",
+      "sha256": "6af564ca3dc81eea75d80dd47eeb730b20d9c91efaff84bc39ac4f1586f2be12",
       "text": "The third card shows turn left, so Little\nBean turns to the left.\nNow it is facing Wukong’s blocks, not\nAo Bing.\nAo Bing puts his finger on the third card.\n“This is the mistake,” he says. “It should\nbe turn right.”\n10",
       "links": []
     },
@@ -91,7 +91,7 @@
       "image": "page-11.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "175d7578f01854e9904df1858d01a5654cc487cbd7327d05f75868984d62716c",
+      "sha256": "894ab1eb0ffbfca675f9097e3baed1f7490b7d451f1c97512ab9d4fe9fac4900",
       "text": "Nezha fixes the program.\nHe swaps the turn left card for a turn\nright card.\nHe keeps the other four cards, because\nthey were already right.\nNow the program is forward, forward,\nturn right, forward, forward.\n11",
       "links": []
     },
@@ -99,7 +99,7 @@
       "image": "page-12.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "ca63ae86cede7ba1fc95c5437d15ba7d64631b02541fb782d93937255aa7757f",
+      "sha256": "71f410e25131d9d9b75bf429561b94dbf6fbada7278a804eef957c1d8a73cc39",
       "text": "Wukong puts the cookie back on\nLittle Bean.\nNezha presses the buttons in the new\norder, then presses go.\nThe robot rolls two squares, turns right\nand rolls two more.\nIt stops right in front of Ao Bing, and the\ncookie arrives safely!\n12",
       "links": []
     },
@@ -107,7 +107,7 @@
       "image": "page-13.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "6eafc73c6f9f0ac5d51a237bffe452eae0e5be082c8f97c87a9048ae2b78db73",
+      "sha256": "ca5df60f72a70cd9a9360c9d56701f221fc5e05f35e399dd0ae78dad43d74418",
       "text": "Ao Bing takes the cookie and breaks it\ninto three pieces, one for each friend.\nThen Wukong wants to try.\nHe makes his own program with lots of\nturn cards, because turning looks like fun.\n13",
       "links": []
     },
@@ -115,7 +115,7 @@
       "image": "page-14.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "660aaef6b90ab2241b0aeaa9878c7233b7f77af886d35adc602b5582b9d6ffdf",
+      "sha256": "7e22da35af0ec463cdca25c84988ead339e8c9af68b5549c830cc12d2c843be4",
       "text": "Little Bean turns right, then right again,\nthen right again.\nIt spins round and round in one square and\nnever moves forward.\nWukong and Nezha both giggle.\n“Let’s check one card at a time!”\nsays Nezha.\n14",
       "links": []
     },
@@ -123,7 +123,7 @@
       "image": "page-15.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "ee62ecb52888bd3403c4d2fcdb8db36f266594670abf05296288460aa7bf4818",
+      "sha256": "088c6312b8387efa29cd65919c069fb3c5aa77e715df520aa3c4f08cbcaaabb8",
       "text": "Then the three friends build the tower\nagain, block by block.\nAo Bing holds the bottom while Nezha and\nWukong add more blocks.\nThey build it far from Little Bean’s path,\nso it will not fall again.\n15",
       "links": []
     },
@@ -131,7 +131,7 @@
       "image": "page-16.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "6489bf3721e02cd3c52b10cdc90ae281c00ea66afbb984c71e5bd065711ad051",
+      "sha256": "ac8db8b715cb82b3cdf70992f398b30e6a9208b3570f707f546108cee68e780a",
       "text": "The new tower is even taller than before.\nNezha puts the five arrow cards in a neat\nrow beside the mat.\n“Next time something goes wrong,” he\nsays, “I will check one card at a\ntime first.”\n16",
       "links": []
     },

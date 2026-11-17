@@ -11,11 +11,11 @@
     "sheets": 5,
     "blank_pages": 0,
     "author": "Peihong Guo",
-    "version": "v1",
-    "revision": "computing-cp5-approved",
+    "version": "v2",
+    "revision": "p13-cookie-to-mouth",
     "publication_status": "published",
     "published": "2026-11-14",
-    "updated": "2026-11-14",
+    "updated": "2026-11-17",
     "level": "L4",
     "target_age_months": 66,
     "focus_vocabulary": [
@@ -32,12 +32,12 @@
     ],
     "computing_plan_id": "C2",
     "language_reading_versions": {
-      "en": "the-little-robots-wrong-turn/v1/en",
-      "zh-Hans": "the-little-robots-wrong-turn/v1/zh-Hans"
+      "en": "the-little-robots-wrong-turn/v2/en",
+      "zh-Hans": "the-little-robots-wrong-turn/v2/zh-Hans"
     },
-    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1.pdf",
-    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1-booklet.pdf",
-    "cover": "covers/the-little-robots-wrong-turn-v1.jpg",
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v2/the-little-robots-wrong-turn-v2.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v2/the-little-robots-wrong-turn-v2-booklet.pdf",
+    "cover": "covers/the-little-robots-wrong-turn-v2.jpg",
     "translations": {
       "en": {
         "title": "The Little Robot’s Wrong Turn",
@@ -53,14 +53,14 @@
     "keywords": "哪吒 敖丙 悟空 小机器人 小豆 箭头卡 程序 编程启蒙 一张一张地查 找错 改错 前进 左转 右转 方格地垫 积木塔 Nezha Ao Bing Wukong little robot Little Bean arrow cards program coding debugging check one card at a time find the mistake fix it forward turn left turn right grid mat block tower",
     "languages": {
       "en": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1-booklet.pdf",
-        "cover": "covers/the-little-robots-wrong-turn-v1.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v2/the-little-robots-wrong-turn-v2.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v2/the-little-robots-wrong-turn-v2-booklet.pdf",
+        "cover": "covers/the-little-robots-wrong-turn-v2.jpg"
       },
       "zh-Hans": {
-        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1-zh-Hans.pdf",
-        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v1/the-little-robots-wrong-turn-v1-zh-Hans-booklet.pdf",
-        "cover": "covers/the-little-robots-wrong-turn-v1-zh-Hans.jpg"
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v2/the-little-robots-wrong-turn-v2-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/the-little-robots-wrong-turn-v2/the-little-robots-wrong-turn-v2-zh-Hans-booklet.pdf",
+        "cover": "covers/the-little-robots-wrong-turn-v2-zh-Hans.jpg"
       }
     }
   },
