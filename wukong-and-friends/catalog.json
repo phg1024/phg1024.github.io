@@ -1,5 +1,70 @@
 [
   {
+    "id": "repeat-four-times",
+    "title": "Repeat Four Times",
+    "title_zh": "重复四次",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "computing-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-18",
+    "updated": "2026-11-18",
+    "level": "L4",
+    "target_age_months": 66,
+    "focus_vocabulary": [
+      "repeat",
+      "again",
+      "four times",
+      "loop",
+      "card",
+      "around",
+      "corner",
+      "same",
+      "steps",
+      "dance"
+    ],
+    "computing_plan_id": "C3",
+    "language_reading_versions": {
+      "en": "repeat-four-times/v1/en",
+      "zh-Hans": "repeat-four-times/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/repeat-four-times-v1/repeat-four-times-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/repeat-four-times-v1/repeat-four-times-v1-booklet.pdf",
+    "cover": "covers/repeat-four-times-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Repeat Four Times",
+        "description": "Princess Iron Fan wants a parade around her new flower box. Wukong lays out arrow cards for Little Bean again and again until the forward cards run out. Chang’e sees the same four cards come back and draws one repeat card. Five cards do the job of sixteen!"
+      },
+      "zh": {
+        "title": "重复四次",
+        "description": "铁扇公主想给新花箱办一场小游行。悟空给小机器人小豆排箭头卡，一遍又一遍，排到前进卡都用完了。嫦娥发现同样的四张卡一次次出现，就画了一张重复卡。这下五张卡就够了，不用十六张！"
+      }
+    },
+    "description": "铁扇公主想给新花箱办一场小游行。悟空给小机器人小豆排箭头卡，一遍又一遍，排到前进卡都用完了。嫦娥发现同样的四张卡一次次出现，就画了一张重复卡。这下五张卡就够了，不用十六张！",
+    "description_en": "Princess Iron Fan wants a parade around her new flower box. Wukong lays out arrow cards for Little Bean again and again until the forward cards run out. Chang’e sees the same four cards come back and draws one repeat card. Five cards do the job of sixteen!",
+    "keywords": "铁扇公主 悟空 嫦娥 小机器人 小豆 箭头卡 重复卡 重复 循环 程序 编程启蒙 找规律 前进 右转 方格地垫 花箱 机器人舞 Princess Iron Fan Wukong Chang’e little robot Little Bean arrow cards repeat card repeat loop program coding pattern forward turn right grid mat flower box robot dance",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/repeat-four-times-v1/repeat-four-times-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/repeat-four-times-v1/repeat-four-times-v1-booklet.pdf",
+        "cover": "covers/repeat-four-times-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/repeat-four-times-v1/repeat-four-times-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/repeat-four-times-v1/repeat-four-times-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/repeat-four-times-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "the-little-robots-wrong-turn",
     "title": "The Little Robot’s Wrong Turn",
     "title_zh": "小豆机器人走错了",

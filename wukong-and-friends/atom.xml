@@ -10,7 +10,19 @@
     <atom:name>Peihong Guo</atom:name>
     <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
   </atom:author>
-  <atom:updated>2026-11-17T00:00:00Z</atom:updated>
+  <atom:updated>2026-11-18T00:00:00Z</atom:updated>
+  <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/repeat-four-times/</atom:id>
+    <atom:title type="text">Repeat Four Times</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/repeat-four-times/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-11-18T00:00:00Z</atom:published>
+    <atom:updated>2026-11-18T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Princess Iron Fan wants a parade around her new flower box. Wukong lays out arrow cards for Little Bean again and again until the forward cards run out. Chang’e sees the same four cards come back and draws one repeat card. Five cards do the job of sixteen!&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/repeat-four-times-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/repeat-four-times-v1.jpg" alt="Repeat Four Times" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
   <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/the-little-robots-wrong-turn/</atom:id>
     <atom:title type="text">The Little Robot’s Wrong Turn</atom:title>

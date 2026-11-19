@@ -9,7 +9,15 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Tue, 17 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Repeat Four Times</title>
+      <link>https://phg1024.github.io/wukong-and-friends/books/repeat-four-times/</link>
+      <description>&lt;p&gt;Princess Iron Fan wants a parade around her new flower box. Wukong lays out arrow cards for Little Bean again and again until the forward cards run out. Chang’e sees the same four cards come back and draws one repeat card. Five cards do the job of sixteen!&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/repeat-four-times-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/repeat-four-times-v1.jpg" alt="Repeat Four Times" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/repeat-four-times/</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>The Little Robot’s Wrong Turn</title>
       <link>https://phg1024.github.io/wukong-and-friends/books/the-little-robots-wrong-turn/</link>

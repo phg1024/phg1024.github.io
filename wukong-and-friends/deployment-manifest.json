@@ -5,7 +5,7 @@
     "about.html": "22a3adf43ed045775adb2d3739d5a402f76fdf9ba512b848aa8f1669654afb35",
     "app.js": "59b53a296ff26c5c4c34efc77b15e649ac31d751a1fbcc74c939c58e7069e988",
     "apple-touch-icon.png": "4286b09cf668fd24d3d3266c4705375f33637a39006fa260d6c5c96ed2d30c03",
-    "atom.xml": "2f4a9549bf9d7dd98b5f39a30fa4186b2a878cfafe2c25bf32687570fb7f84f2",
+    "atom.xml": "501610f535797f730be9360154451c4ee13a9045cf151ca8cf625665f3ee8813",
     "banner-loop-poster.jpg": "4ec7bb8fc059e10c910afb19ac412cef66030bed2eaeab0202dade0ad0ef3534",
     "banner-loop.mp4": "37b8dde4f1833ade03fce8889f7b071e914e5511aade3be9f1674c495c830edc",
     "banner-skating-poster.jpg": "ffed204d676647f27e680e462e5eaf153cd697115aaf03a6bec765993fc57c4c",
@@ -25,6 +25,7 @@
     "books/pigsys-nine-little-cookies/index.html": "4294e44fc3bf1ee3674bfec72aa97c70e414cb6852c4dd24c9110ddb2c25111d",
     "books/pigsys-peach-puzzle/index.html": "3fafb6d1eb74dad4fecdfc6c39cde85cca0757f173fe9f75140e381c029a199a",
     "books/pigsys-ten-spot-steamer/index.html": "af7902026e0ad0f97ab878f88b8ece4581896677dc8b632824fdd82575ef203f",
+    "books/repeat-four-times/index.html": "57951fbf72fec86dc1b60b310a5ad71984d2f69ff8d67ec3ab4a4bd73a1fedbb",
     "books/robot-pigsy/index.html": "9cac467aec92572eb4d51f33982b247ab858b750d349a1a81d669ae8a1525681",
     "books/the-little-robots-wrong-turn/index.html": "510b9847577ef408e678bcda09268a85850386fbd5ed00ed6477407f6e28492e",
     "books/wukong-and-the-big-red-truck/index.html": "260008b81389caa3335c2ad46dc8d83989d9efec4e7a24eed479000b279f776e",
@@ -51,7 +52,7 @@
     "books/wukongs-slippy-slide-skates/index.html": "cccc56da22bce736fe5a2739be9953f97eabe03cf90d915002ce3dab3ed17b79",
     "books/wukongs-starry-stage/index.html": "877e9b788f738a73226abebf540255891a3c44aff6b5ff7d0e2f64016d6fed61",
     "books/wukongs-wibble-wobble-ride/index.html": "1a81621e3c39cafc97e0b19f5a9aaa32f00197d9507e97907b5e232bce46f4d8",
-    "catalog.json": "caa795a9333fba3fe26a6c7e2ab61fee417c0a3ffb9c38ab5d3c1db07d7b7988",
+    "catalog.json": "25eae8befd44cc6b51465340ed6df4f0c5585de42a53a9841fe971ef4ce8cc12",
     "characters/index.html": "890f96209b33a720a02d9f344d693df8b9cd2ef15580514f14cffd602dc010c3",
     "characters/portraits/rights-v1/ao-bing.jpg": "f3b7ab41b1055df2a34bbf24b14b05fcd194f9045cc5280500c685541dcac6b3",
     "characters/portraits/rights-v1/bull-king.jpg": "304f1d712bc82f343298d521db3a628ea7e27f79fa44116743020a6dd1934183",
@@ -82,6 +83,8 @@
     "covers/pigsys-peach-puzzle-v2.jpg": "577ec6fa184a7ccdd4161e9c85a6ac9c981d4a118229d95d1460c7e0d1d15997",
     "covers/pigsys-ten-spot-steamer-v1-zh-Hans.jpg": "6d8c44d4d2fab4d943f84f91876ae79278cf923261cfb41a1b0df4ca710592c4",
     "covers/pigsys-ten-spot-steamer-v1.jpg": "5eda00ff188ee1892a121333b3e82701fbe1a67a26db0bca7323a3aac7aa8654",
+    "covers/repeat-four-times-v1-zh-Hans.jpg": "905791521ba04263bd41a9eb431ac643a7a6e78fc27c9f763d8875ba00b74d37",
+    "covers/repeat-four-times-v1.jpg": "944f6838d315634312c738523fd44799b0d908a8924b7e0c6e6ec9a287766357",
     "covers/robot-pigsy-v3-zh-Hans.jpg": "d8486ec5f3a82926858830e0e3c1f499b16a6384307d9a568d932e5fc02467fa",
     "covers/robot-pigsy-v3.jpg": "24c3de1b37bc6ed8d54b3bffaba93103c01324f8b32327caac5393163f3d996e",
     "covers/the-little-robots-wrong-turn-v2-zh-Hans.jpg": "71e8b31a2fccc3698bb333b56c3b04821c0925e9e119c37d651c7c3a3c107ffb",
@@ -138,14 +141,14 @@
     "favicon-32.png": "c86c359b268013bf4827b2f7d4d0a0e0508f5c8cc62765334ab7d951bfd9ddee",
     "favicon.svg": "1ebb16bdf9a11d8282a59f4665dbd4e17cd08bd09c39d08b08f2a10776298187",
     "icon-512.png": "c217bb0044f85904c718bedf2a80d8b672152b0bdb1a6dee4f95a4338d339eac",
-    "index.html": "8b8423c4204b214f6252632ea9d94c0914473a68ffae65596797c196af1ae370",
+    "index.html": "62024e938cac678a6cb63e00bbb2587d2c202c3633a91bef24178ccc365822ff",
     "license.html": "44b018d6bf42d57b2308393b7f7fc124bd072948f3fd7f39b8e43646a00df74f",
     "licenses/CC-BY-NC-ND-4.0.txt": "f7f28b8c7a1af76b9874ca6d040e8b1eb6768fd1043106c9d315090ea96754e7",
     "licenses/MIT.txt": "1baa8c93005463abb00e78e336cc6416e2e423352e8d11fe3825b5ea96f01b97",
     "og-image.jpg": "ccc6bb6488de45cadf36c2d739f2fcbfb0e5af1ea596bd777986577e3263c9da",
-    "provenance/manifest.json": "6238ac931eb09e8ef884c1330eef15ea056257c41e6b50ff95c2da6efc26de37",
+    "provenance/manifest.json": "eba3443f23c55af5da59911f0e4bc209e46ad09d6ae1aad18ebd653713fd780b",
     "provenance/public-key.pem": "e3a01c706417deb7dc40e36a3af4fecee306646d7c8e18a58a6cb8290495716f",
-    "provenance/signature.json": "0ab8acf112279620530e51cd9b40551cb841359d199ac3a6a898eb71e62ff9e6",
+    "provenance/signature.json": "397fa847ccafc63f56d1015be7521d492cf9b2310893faf1ca1edf7baaaf13c7",
     "reader/ao-bings-little-boat-v2/rights-v1/manifest.json": "2fc7e5316c7c90956367c4d9c0fbcf3c7c467b24756e88578fb4eca5b2686d07",
     "reader/ao-bings-little-boat-v2-zh-Hans/rights-v1/manifest.json": "8ca6830bf272c50d642f2def0b7d9373255c3cf436e652a257393a22d3654697",
     "reader/big-cards-little-numbers-v2/rights-v1/manifest.json": "92f4dc9c081d497685d22746ed82c1d517b32eba712cc864137ffa855007940b",
@@ -164,6 +167,8 @@
     "reader/pigsys-peach-puzzle-v2-zh-Hans/rights-v1/manifest.json": "d29d79b26006baae4dc438f714788e31c976eaebc8088e6a67295ba754c7850e",
     "reader/pigsys-ten-spot-steamer-v1/rights-v1/manifest.json": "cc4cc1c83a00c71336b2e2b7bd65164aa5b7886393672b6459c233ca0346a42f",
     "reader/pigsys-ten-spot-steamer-v1-zh-Hans/rights-v1/manifest.json": "4801cc904961ede18865cc637d1dd6b10dfaf2fea9427fa0f433543a579280ff",
+    "reader/repeat-four-times-v1/rights-v1/manifest.json": "67c6f69f9ff72763e7c41f402110de1fbe92d07caa29a8d4716d68006ff2cfad",
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/manifest.json": "e8d5881479c7036d1ec611fcd4f3aa3da0f7e355325fb6fb55aeedd192ffc79a",
     "reader/robot-pigsy-v3/rights-v1/manifest.json": "79ece2465c04448cf93050cb5a48e89b5202ca9e4ac26033f9cabecccab8576f",
     "reader/robot-pigsy-v3-zh-Hans/rights-v1/manifest.json": "f872c6ff6adb80851166daa913c3633103123329dd59c7c20c27d58c65d846ce",
     "reader/the-little-robots-wrong-turn-v2/rights-v1/manifest.json": "6f83dca0c3b5ef93e72dee17b3eca44f71a4ab519c3d5219f6b4e6b5d3d6edd3",
@@ -218,8 +223,8 @@
     "reader/wukongs-wibble-wobble-ride-v8-zh-Hans/rights-v1/manifest.json": "97d7ab33c52cbd17d33b5a7964a996096b58f0d393e401c49c5c4a667724d2e9",
     "reader.js": "08990e135c401fcb312af6d52bce8ddaca969c7b3483310c0b9a589b7480c7ac",
     "robots.txt": "888b72b6d088bf4ddf94f7fcc4be39b180c793bf7f0be485e5591a8a4e6ce9e7",
-    "rss.xml": "2563d09c9286aee150a8256dfa06dda5b79a5d76d5587dc92d48367dd37a2019",
-    "sitemap.xml": "702fd2e870612aa3f1af55a9cdb67c8f7e65c826db746700cdd42031e7020c26",
+    "rss.xml": "12f6151c2ec25f05e57613b13f90d4e3a36ffb29fb8046840682d6b9552ab73e",
+    "sitemap.xml": "745f69a176dd6280a90d56ea9b5309a1dc379d797c7028cacf02359fcfabf899",
     "social/ao-bings-little-boat-zh-Hans.jpg": "20c98b6ca96ab48b8a1501fa3d6188fcfdfff4402a1a7400f912c4b213bb9770",
     "social/ao-bings-little-boat.jpg": "1758c7c45bcddad359367dd09e7cbf63bf6e5e9f59fd257171c56a1cab4274e1",
     "social/big-cards-little-numbers-zh-Hans.jpg": "c3d5c0de1a2689298ae37db240f707b9912e45f2b0c5a81fadf8b8d3c96a949e",
@@ -238,6 +243,8 @@
     "social/pigsys-peach-puzzle.jpg": "020433d3c470a5fdcf3f42e0c1c0eaaf11b04227859d2edd16cc29f117b77efd",
     "social/pigsys-ten-spot-steamer-zh-Hans.jpg": "ff34f3e71286bc376a392b4548b29209175262347c13eacceb880445b8cf6dfa",
     "social/pigsys-ten-spot-steamer.jpg": "1a50f95a265bb3de32836973da07dce4f22c6859c9f2b9403ceb1f13f2200e02",
+    "social/repeat-four-times-zh-Hans.jpg": "2c3fd3848059b288d44c7a245ae69ff4a5835e41e9843392608f591b46bbde7e",
+    "social/repeat-four-times.jpg": "2bbd91dbbcee1325432ac3fda60c84cc55f1695d2e08248164b41955a0a3842b",
     "social/robot-pigsy-zh-Hans.jpg": "aaea181dbed7d3de2a591617f13dffeedb5825c5e85918ae31905e687114b467",
     "social/robot-pigsy.jpg": "e17e9ea56df4730b0925ab42db2fb0028da2e984d89752dcbd221bd6eb478d8c",
     "social/the-little-robots-wrong-turn-zh-Hans.jpg": "b81cdd4c2a4688656f598066217f2ba76878bdcf113d1e575473116056c20505",
@@ -360,6 +367,10 @@
     "support/pigsys-ten-spot-steamer-v1-zh-Hans-booklet.html": "98691b96df0e3bead72c051809a9340b8388a9c40f555ad9ff96385e8ee5524b",
     "support/pigsys-ten-spot-steamer-v1-zh-Hans.html": "79ef4f571663a0238b1fbb0e8ff5ac8056c23d85665fe19e3e74007b5f28dce2",
     "support/pigsys-ten-spot-steamer-v1.html": "37c7a39b60c7e0c3aac833d6fdff6fc6eb7ab581e720e6d5b60849e60529e60d",
+    "support/repeat-four-times-v1-booklet.html": "1f0605a65b0784206b88b0d87b8ef387b3d7282dd7b707da1834fd1c25d83d89",
+    "support/repeat-four-times-v1-zh-Hans-booklet.html": "9d61ca94216198e75d732ec74b68c21a92874709d8975660058e1a058e381720",
+    "support/repeat-four-times-v1-zh-Hans.html": "f832f49325116985628d52dac63a654797eb5fb82c201a7a2ec066c422840af8",
+    "support/repeat-four-times-v1.html": "679cbaa876aecc0238c135337acbff0787db2dd4ba69e853f6c631d75deb2436",
     "support/robot-pigsy-v1-booklet.html": "21e7ac644db159ac59f433e5d0df0df1c55bc3ab262a2f5e40711a765f44ede4",
     "support/robot-pigsy-v1-zh-Hans-booklet.html": "1a7413b6370e2019b36088a04dfaef659122b956ef0fdce354b4370bfedf7f94",
     "support/robot-pigsy-v1-zh-Hans.html": "60b4c0cbc7d4bfeca6c11825702f4cef9da74283ab05def6b0f7eb79b8d7f7b6",
@@ -714,7 +725,7 @@
     "support/wukongs-wibble-wobble-ride-v8.html": "eeac7b9c3d8d91a2b60f6c3dc9f127373c0f15fea38ba3b7502408ce2370f078",
     "verify.html": "60221656b26f57898d2a0e608542ec6400ecd7e1fc97438d2a54e9e9aa597c10",
     "zh/about.html": "ef34dfc1828def828568064ec4f814322910ad30aaada2be20ba277dc087bfc7",
-    "zh/atom.xml": "0a43f89515408ee181d18fd4e8a2af6298198175c1c12d0811ae6c1808bc6791",
+    "zh/atom.xml": "5ef8f51f7c2e660d6d5f0d36ec17a44626859c2918863e3ea8d8fa96218b3fb9",
     "zh/books/ao-bings-little-boat/index.html": "9700dbf6d68dd5ea571a436fa67ba2886a0978774ebe8a54ace5a2fe2dfb62fd",
     "zh/books/bears-wobbly-ride/index.html": "7b8f8365e9bef452dfe37af53e35aab35484f1efca792e94dc33168d44d04aa3",
     "zh/books/big-cards-little-numbers/index.html": "334c9c5ac96b6e77f8c7d6bd1a72a1506383352f52263acb7bd8bc675e2ef9ce",
@@ -726,6 +737,7 @@
     "zh/books/pigsys-nine-little-cookies/index.html": "12c23af1ff93efb3c9e5816edaec7c7d504d875a32316bb68d31c519c7c4d919",
     "zh/books/pigsys-peach-puzzle/index.html": "02e2954be89cda2494e958609e85cda469ac6ee199dfd1d2ea7173ac8fb448e8",
     "zh/books/pigsys-ten-spot-steamer/index.html": "bb84bbdaf842810b491366755859997435659c23509870456e499efda81412b3",
+    "zh/books/repeat-four-times/index.html": "ddb3f869234c8151dd072124a5e449c37068a5e9d3ad97d4358f78de0ba77c5b",
     "zh/books/robot-pigsy/index.html": "38cb542859f1a9bc0e7aa0ce190c3ce42a5c6ae3871d4c2ef9d6f18a92c02fcd",
     "zh/books/the-little-robots-wrong-turn/index.html": "9ea9359a126b713e2d82bab85e93c16364a897884384079728d3b8b9dd7feb0b",
     "zh/books/wukong-and-the-big-red-truck/index.html": "e60161602c7cef5929dc3c056d5baed8aef0947db49f76be701d10f53ca274c1",
@@ -753,9 +765,9 @@
     "zh/books/wukongs-starry-stage/index.html": "4785baecbd83a0afb7f88fafff1176b820b929eaea3140a8ccee5f6f9f5e0373",
     "zh/books/wukongs-wibble-wobble-ride/index.html": "1c91285d79d50a79516d2acdfea84ed13dc7fa40102ee0ff07fc3cdf3aacc352",
     "zh/characters/index.html": "2ae094193580a4790d4345876d9b3cad5e2cc80e5e42bbcdb2e862acef72ccab",
-    "zh/index.html": "535ff3dfc9b15ba94443f96ef7f200de65a7b7c0edfdcaaed2e9f048cb59a21d",
+    "zh/index.html": "622f1b679e0f0479521cb52fb5d0350ecea5ed1c128fae883c7cb04ba2bbe7a1",
     "zh/license.html": "8a086ca62794877f978f44dda0e3746ecf324b64d2b6293ca622abec830114df",
-    "zh/rss.xml": "9d4b9fae3b6b1a96b724374c85fef6173fdee2d3b1d22794a73ed9775241ee5b",
+    "zh/rss.xml": "d4ec30c9cdd104d56de50b504f828cfec3dc34781eae5bd95b9fe558197c5f25",
     "zh/subscribe.html": "cbffcfcfbe10435526f4e468c7df1d0642290569ceb77e3000aa60645fca5258",
     "zh/support/ao-bings-little-boat-v1-booklet.html": "884babd0d275f074efb62b874266ac194c6556be2e928938c8257686c02c1027",
     "zh/support/ao-bings-little-boat-v1-zh-Hans-booklet.html": "b6a7ea6e95b8d40cc4ce53f872b7d914f3ffdf56b9a0d067f8ccea45ef039db3",
@@ -825,6 +837,10 @@
     "zh/support/pigsys-ten-spot-steamer-v1-zh-Hans-booklet.html": "60a4648f34d815f735cb4ff81a410c2cb92dae412bc3010a6fad66a7dc624c8a",
     "zh/support/pigsys-ten-spot-steamer-v1-zh-Hans.html": "37e28b910f2fb5e0c81b290e64509a48dda8005e0de5bff1b2f170c640cb37e8",
     "zh/support/pigsys-ten-spot-steamer-v1.html": "3435a65195a79c1f3d1c7acc3ab87dc7c6b0441cf1bc4f28e186ef60d351f95f",
+    "zh/support/repeat-four-times-v1-booklet.html": "ef4be35adb639a6398a3ab53e332e44894bcab11834b0ee640656fb0cdda85aa",
+    "zh/support/repeat-four-times-v1-zh-Hans-booklet.html": "ce74b2fa79ad042bd11c42b84df4fbc9fab90d3ea08f020e068eab47e6e2f4d2",
+    "zh/support/repeat-four-times-v1-zh-Hans.html": "465d65b74ef88e9e153d460b3a7a9e13bcd863047152ce4d421f3b459b82a1c2",
+    "zh/support/repeat-four-times-v1.html": "4b9641d77001dffd7a0d24aa987acffeca70bd3951c0f586021aceac14e34095",
     "zh/support/robot-pigsy-v1-booklet.html": "c53fa442b1482578f8feb2659bad3a23aa019de0b62ed0c8d5255b4b81fd271e",
     "zh/support/robot-pigsy-v1-zh-Hans-booklet.html": "80ca6ab9245273f86367f883a03bbd5e5844de943408de723fd835f8c3e838ee",
     "zh/support/robot-pigsy-v1-zh-Hans.html": "7c5ef1f162e95a13dd27b824474f13e9bd768f0411e5b7799986de9a7d714074",
@@ -1184,7 +1200,7 @@
     "about.html": 6756,
     "app.js": 4924,
     "apple-touch-icon.png": 59283,
-    "atom.xml": 41163,
+    "atom.xml": 42330,
     "banner-loop-poster.jpg": 151991,
     "banner-loop.mp4": 1547059,
     "banner-skating-poster.jpg": 101121,
@@ -1204,6 +1220,7 @@
     "books/pigsys-nine-little-cookies/index.html": 22509,
     "books/pigsys-peach-puzzle/index.html": 21320,
     "books/pigsys-ten-spot-steamer/index.html": 23563,
+    "books/repeat-four-times/index.html": 23589,
     "books/robot-pigsy/index.html": 23441,
     "books/the-little-robots-wrong-turn/index.html": 23945,
     "books/wukong-and-the-big-red-truck/index.html": 22767,
@@ -1230,7 +1247,7 @@
     "books/wukongs-slippy-slide-skates/index.html": 22751,
     "books/wukongs-starry-stage/index.html": 22126,
     "books/wukongs-wibble-wobble-ride/index.html": 22643,
-    "catalog.json": 110474,
+    "catalog.json": 114073,
     "characters/index.html": 14970,
     "characters/portraits/rights-v1/ao-bing.jpg": 230950,
     "characters/portraits/rights-v1/bull-king.jpg": 237829,
@@ -1261,6 +1278,8 @@
     "covers/pigsys-peach-puzzle-v2.jpg": 116817,
     "covers/pigsys-ten-spot-steamer-v1-zh-Hans.jpg": 104497,
     "covers/pigsys-ten-spot-steamer-v1.jpg": 104864,
+    "covers/repeat-four-times-v1-zh-Hans.jpg": 103640,
+    "covers/repeat-four-times-v1.jpg": 104861,
     "covers/robot-pigsy-v3-zh-Hans.jpg": 104554,
     "covers/robot-pigsy-v3.jpg": 104358,
     "covers/the-little-robots-wrong-turn-v2-zh-Hans.jpg": 92329,
@@ -1317,12 +1336,12 @@
     "favicon-32.png": 2402,
     "favicon.svg": 307,
     "icon-512.png": 437545,
-    "index.html": 66364,
+    "index.html": 68285,
     "license.html": 7774,
     "licenses/CC-BY-NC-ND-4.0.txt": 19126,
     "licenses/MIT.txt": 1085,
     "og-image.jpg": 144770,
-    "provenance/manifest.json": 137051,
+    "provenance/manifest.json": 138353,
     "provenance/public-key.pem": 113,
     "provenance/signature.json": 509,
     "reader/ao-bings-little-boat-v2/rights-v1/manifest.json": 8768,
@@ -1343,6 +1362,8 @@
     "reader/pigsys-peach-puzzle-v2-zh-Hans/rights-v1/manifest.json": 7557,
     "reader/pigsys-ten-spot-steamer-v1/rights-v1/manifest.json": 9329,
     "reader/pigsys-ten-spot-steamer-v1-zh-Hans/rights-v1/manifest.json": 9159,
+    "reader/repeat-four-times-v1/rights-v1/manifest.json": 9655,
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/manifest.json": 9472,
     "reader/robot-pigsy-v3/rights-v1/manifest.json": 9195,
     "reader/robot-pigsy-v3-zh-Hans/rights-v1/manifest.json": 9049,
     "reader/the-little-robots-wrong-turn-v2/rights-v1/manifest.json": 9262,
@@ -1397,8 +1418,8 @@
     "reader/wukongs-wibble-wobble-ride-v8-zh-Hans/rights-v1/manifest.json": 7511,
     "reader.js": 8865,
     "robots.txt": 90,
-    "rss.xml": 32132,
-    "sitemap.xml": 42080,
+    "rss.xml": 33043,
+    "sitemap.xml": 43071,
     "social/ao-bings-little-boat-zh-Hans.jpg": 75813,
     "social/ao-bings-little-boat.jpg": 74340,
     "social/big-cards-little-numbers-zh-Hans.jpg": 84338,
@@ -1417,6 +1438,8 @@
     "social/pigsys-peach-puzzle.jpg": 83284,
     "social/pigsys-ten-spot-steamer-zh-Hans.jpg": 74372,
     "social/pigsys-ten-spot-steamer.jpg": 74947,
+    "social/repeat-four-times-zh-Hans.jpg": 73935,
+    "social/repeat-four-times.jpg": 74642,
     "social/robot-pigsy-zh-Hans.jpg": 74387,
     "social/robot-pigsy.jpg": 73857,
     "social/the-little-robots-wrong-turn-zh-Hans.jpg": 67579,
@@ -1539,6 +1562,10 @@
     "support/pigsys-ten-spot-steamer-v1-zh-Hans-booklet.html": 6951,
     "support/pigsys-ten-spot-steamer-v1-zh-Hans.html": 6871,
     "support/pigsys-ten-spot-steamer-v1.html": 6815,
+    "support/repeat-four-times-v1-booklet.html": 6793,
+    "support/repeat-four-times-v1-zh-Hans-booklet.html": 6849,
+    "support/repeat-four-times-v1-zh-Hans.html": 6769,
+    "support/repeat-four-times-v1.html": 6713,
     "support/robot-pigsy-v1-booklet.html": 6697,
     "support/robot-pigsy-v1-zh-Hans-booklet.html": 6753,
     "support/robot-pigsy-v1-zh-Hans.html": 6673,
@@ -1893,7 +1920,7 @@
     "support/wukongs-wibble-wobble-ride-v8.html": 6863,
     "verify.html": 5587,
     "zh/about.html": 6624,
-    "zh/atom.xml": 41756,
+    "zh/atom.xml": 42938,
     "zh/books/ao-bings-little-boat/index.html": 23493,
     "zh/books/bears-wobbly-ride/index.html": 5423,
     "zh/books/big-cards-little-numbers/index.html": 22155,
@@ -1905,6 +1932,7 @@
     "zh/books/pigsys-nine-little-cookies/index.html": 22933,
     "zh/books/pigsys-peach-puzzle/index.html": 21942,
     "zh/books/pigsys-ten-spot-steamer/index.html": 24063,
+    "zh/books/repeat-four-times/index.html": 23829,
     "zh/books/robot-pigsy/index.html": 23839,
     "zh/books/the-little-robots-wrong-turn/index.html": 24219,
     "zh/books/wukong-and-the-big-red-truck/index.html": 23532,
@@ -1932,9 +1960,9 @@
     "zh/books/wukongs-starry-stage/index.html": 22615,
     "zh/books/wukongs-wibble-wobble-ride/index.html": 23208,
     "zh/characters/index.html": 15018,
-    "zh/index.html": 72615,
+    "zh/index.html": 74700,
     "zh/license.html": 7524,
-    "zh/rss.xml": 32506,
+    "zh/rss.xml": 33426,
     "zh/subscribe.html": 6092,
     "zh/support/ao-bings-little-boat-v1-booklet.html": 6907,
     "zh/support/ao-bings-little-boat-v1-zh-Hans-booklet.html": 6963,
@@ -2004,6 +2032,10 @@
     "zh/support/pigsys-ten-spot-steamer-v1-zh-Hans-booklet.html": 6993,
     "zh/support/pigsys-ten-spot-steamer-v1-zh-Hans.html": 6913,
     "zh/support/pigsys-ten-spot-steamer-v1.html": 6857,
+    "zh/support/repeat-four-times-v1-booklet.html": 6817,
+    "zh/support/repeat-four-times-v1-zh-Hans-booklet.html": 6873,
+    "zh/support/repeat-four-times-v1-zh-Hans.html": 6793,
+    "zh/support/repeat-four-times-v1.html": 6737,
     "zh/support/robot-pigsy-v1-booklet.html": 6727,
     "zh/support/robot-pigsy-v1-zh-Hans-booklet.html": 6783,
     "zh/support/robot-pigsy-v1-zh-Hans.html": 6703,
@@ -2359,13 +2391,13 @@
     "zh/verify.html": 5614
   },
   "summary": {
-    "file_count": 1177,
+    "file_count": 1193,
     "current_pdf_count": 0,
-    "reader_count": 70,
-    "source_bytes": 10099936868,
-    "export_bytes": 36003893,
-    "external_media_count": 1260,
-    "external_pdf_count": 140
+    "reader_count": 72,
+    "source_bytes": 10161455322,
+    "export_bytes": 36495938,
+    "external_media_count": 1296,
+    "external_pdf_count": 144
   },
   "external_media": {
     "reader/ao-bings-little-boat-v2-zh-Hans/rights-v1/page-01.webp": {
@@ -3987,6 +4019,186 @@
       "sha256": "4d8536cb766351e1dc6b4e8ed37dddeff0dd240009a3457f46ff34bc6142dcff",
       "bytes": 358722,
       "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/4d8536cb766351e1.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-01.webp": {
+      "sha256": "bb58b25b4055ee7aa1167b51447b0d5272b9cd2703bcfe487a80e9a3f6a57e61",
+      "bytes": 402418,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/bb58b25b4055ee7a.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-02.webp": {
+      "sha256": "56ececdedeb35e476147111c37e816058eeebd62a95f0501451c931641b8fc46",
+      "bytes": 360918,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/56ececdedeb35e47.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-03.webp": {
+      "sha256": "622c198bab6994640d3bd03f2c47bd102255dfd33b1358da364777022b6f0f52",
+      "bytes": 393340,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/622c198bab699464.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-04.webp": {
+      "sha256": "150f05e93ea7aa40e6119ce555c6fa7ca5e1fba5acc1264d53040f364b8e42d5",
+      "bytes": 356414,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/150f05e93ea7aa40.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-05.webp": {
+      "sha256": "c01ae205156eb62cde979e62fd50f7452bb46ea80c82d81d32faf000c413fa45",
+      "bytes": 401164,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c01ae205156eb62c.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-06.webp": {
+      "sha256": "0a690f1b3db6bbbc1a83ef8f8b7126648a92a8a347b90ccfccd7d89b8befd921",
+      "bytes": 332646,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/0a690f1b3db6bbbc.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-07.webp": {
+      "sha256": "da08805b3be8daf808496e8f1f0327d729775834d24995053805925fcd59d75d",
+      "bytes": 373374,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/da08805b3be8daf8.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-08.webp": {
+      "sha256": "06d5a9064e4d618dafd7f4026480297f234fb973f2599635de9732e340fe808d",
+      "bytes": 379450,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/06d5a9064e4d618d.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-09.webp": {
+      "sha256": "02f2a07595b9d8192349efcd6c1df4c06947d74d01f945db34613fbea4e9652f",
+      "bytes": 423128,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/02f2a07595b9d819.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-10.webp": {
+      "sha256": "83279b11d2b1e660ad5c0a3acfd9bdd72d86d9b153a526410427f90f37a240f6",
+      "bytes": 374908,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/83279b11d2b1e660.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-11.webp": {
+      "sha256": "3356016f2396dbd1f48c7610d96931a7f7675db666fef400215c876fdc2d6f8b",
+      "bytes": 381832,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/3356016f2396dbd1.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-12.webp": {
+      "sha256": "88bebee57bd60bf07fae70455b543c876a3aa81f6e6a661535288f7e01e20a4a",
+      "bytes": 344220,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/88bebee57bd60bf0.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-13.webp": {
+      "sha256": "78f701fc0efe0c647bd34bbd535adc6b3848fd7ff75f8ee93370295842a14aa4",
+      "bytes": 344534,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/78f701fc0efe0c64.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-14.webp": {
+      "sha256": "c9915bc59a44e54e644445b4babb066dae070644ee2f8797c2133c634807bfb1",
+      "bytes": 326280,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c9915bc59a44e54e.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-15.webp": {
+      "sha256": "c0bc3eabd4a86e3d52a349f5a85e55ab205c601a77b6f8e24b607a98f4ca02fb",
+      "bytes": 321876,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c0bc3eabd4a86e3d.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-16.webp": {
+      "sha256": "d13dadc61f5b0489c463e0fb8da3f3af733b24e30f5dd94fd616d23142f08836",
+      "bytes": 407560,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/d13dadc61f5b0489.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-17.webp": {
+      "sha256": "ec4df2cb93b7c9510e763d90f22b8a350c71d1d514885ba4d4c68e844fdb41c9",
+      "bytes": 67418,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ec4df2cb93b7c951.webp"
+    },
+    "reader/repeat-four-times-v1-zh-Hans/rights-v1/page-18.webp": {
+      "sha256": "5a6e5b541655b1aeece1236ea76d8b8de068511b744f847aeb7d3535cf9229b7",
+      "bytes": 363956,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/5a6e5b541655b1ae.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-01.webp": {
+      "sha256": "e8a3dd2c1fb6458a6bbe44c769c34469930096510eeb41939e5bdd95dd4f50f9",
+      "bytes": 407774,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/e8a3dd2c1fb6458a.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-02.webp": {
+      "sha256": "e353f5e14ea1e9044ab36a279da1eb0906160b209490883e4396267c3242fc8d",
+      "bytes": 358164,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/e353f5e14ea1e904.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-03.webp": {
+      "sha256": "9f83a4787993a4a59b057eb2a8f59e467f2ae1ab7db095ec2ba1e8f1d54dcf2c",
+      "bytes": 392482,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/9f83a4787993a4a5.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-04.webp": {
+      "sha256": "6173caeb30ae874699036c4e00f7c558d5a72d7a49b8854be7a8d438464594e6",
+      "bytes": 358382,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/6173caeb30ae8746.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-05.webp": {
+      "sha256": "a37b116281f2824648f2b8bc71241957d672fbeb09c48adf0741d11bcc6d2cd0",
+      "bytes": 403706,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a37b116281f28246.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-06.webp": {
+      "sha256": "de1c0caddada228f6f10e4cf1d07603fde15038ca383b50ed24bb9b0a035f8c8",
+      "bytes": 333214,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/de1c0caddada228f.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-07.webp": {
+      "sha256": "f65d9dfe7ea1c216bc18507c469b45d80e935093bb76a380b2e6e742541cf752",
+      "bytes": 379086,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/f65d9dfe7ea1c216.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-08.webp": {
+      "sha256": "1a74861fcfa169288b0293cac4f73978934bf444b2a60567fb84467507e32b88",
+      "bytes": 373850,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/1a74861fcfa16928.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-09.webp": {
+      "sha256": "26538aa6aaaa74798a9da101efad05e3ba852475d17ca74ab8e8189bb07f5ef2",
+      "bytes": 433148,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/26538aa6aaaa7479.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-10.webp": {
+      "sha256": "807d358dd2156b61b16dd68d15a70f2b5f1f89e0112173e267fe047e231b78d6",
+      "bytes": 381748,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/807d358dd2156b61.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-11.webp": {
+      "sha256": "b9111ca58e88adc67d245ef79a87291a146c593ff9be05697ae6850e37aae503",
+      "bytes": 380244,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/b9111ca58e88adc6.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-12.webp": {
+      "sha256": "d2319dd5a57c3f9ec6b1e59b8605114fa03b28d1022d64bcd78f3e08d602d163",
+      "bytes": 341224,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/d2319dd5a57c3f9e.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-13.webp": {
+      "sha256": "e3f7f2372e97cdd3d56b5e2376295bca5407bc310960e3e56a231b3a809a1556",
+      "bytes": 344564,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/e3f7f2372e97cdd3.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-14.webp": {
+      "sha256": "8d82fa95b26592abc98627b6bf10032f3319c23ad2c138381f95d9b66e697b05",
+      "bytes": 335086,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/8d82fa95b26592ab.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-15.webp": {
+      "sha256": "901db3524e59471b080d7b607ded697edda43737bf51ee3fbd95451ecc85efbc",
+      "bytes": 329508,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/901db3524e59471b.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-16.webp": {
+      "sha256": "93f0dd6c6f30c0bc4080e7e6377d7c4126b2cd9c4f020b2b56ed21457bb024dc",
+      "bytes": 426692,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/93f0dd6c6f30c0bc.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-17.webp": {
+      "sha256": "cc57f9806e9e3bcd4ddbc32e908cb2e12b574361756d6b487aac96bfbe18d08e",
+      "bytes": 69602,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/cc57f9806e9e3bcd.webp"
+    },
+    "reader/repeat-four-times-v1/rights-v1/page-18.webp": {
+      "sha256": "47df4890030baf58b34b1a1e6c17c73b0ffa06a24ce80c845775f186679d977e",
+      "bytes": 360132,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/47df4890030baf58.webp"
     },
     "reader/robot-pigsy-v3-zh-Hans/rights-v1/page-01.webp": {
       "sha256": "db521cc8327d8e5f77b57f6f3fc93a353ccb99d3d74d675f9b0b61d8c4630698",

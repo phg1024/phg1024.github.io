@@ -542,6 +542,36 @@
       "bytes": 8685905
     },
     {
+      "path": "docs/downloads/repeat-four-times-v1-booklet.pdf",
+      "sha256": "f9cf47cd7083ff6f72113d2f33dafc989deeaf95e89d912cf1c1db5325ed8d62",
+      "bytes": 8208722
+    },
+    {
+      "path": "docs/downloads/repeat-four-times-v1-core-en.pdf",
+      "sha256": "e6b680a946a7f458319c03941f07c0389d87ecb5180c8604bfdba2e16528a987",
+      "bytes": 7627600
+    },
+    {
+      "path": "docs/downloads/repeat-four-times-v1-core-zh-Hans.pdf",
+      "sha256": "cd1e3b3e69eb92d3a5a3f74820b4053f984cfde00ccb5a31ba2f9faf5883a759",
+      "bytes": 7687267
+    },
+    {
+      "path": "docs/downloads/repeat-four-times-v1-zh-Hans-booklet.pdf",
+      "sha256": "747b83c76794ea99aab94e71da294005f0ddb79bf9d3a632d05fc1059c1125d1",
+      "bytes": 8281507
+    },
+    {
+      "path": "docs/downloads/repeat-four-times-v1-zh-Hans.pdf",
+      "sha256": "c2f50db0f4f73e6b787cf5ef4855f652ac1b9fa570acdd377db105425842497b",
+      "bytes": 8271360
+    },
+    {
+      "path": "docs/downloads/repeat-four-times-v1.pdf",
+      "sha256": "a87913a247343602536356444e2466008e15488579d3d3506602204f1b042c0a",
+      "bytes": 8189370
+    },
+    {
       "path": "docs/downloads/robot-pigsy-v1-booklet.pdf",
       "sha256": "a80bac8c7a0fa462ddf3a8daa3d309b9944cfda9f80a1d1a919e910c4ad4ae67",
       "bytes": 8299512
@@ -3010,6 +3040,11 @@
       "path": "stories/pigsys-ten-spot-steamer/editions/v1/prompts.txt",
       "sha256": "b47dfc5892255b88f15c010c239afd40863ebc7fe4d6fe1a1c18dcb73bee3166",
       "bytes": 2642822
+    },
+    {
+      "path": "stories/repeat-four-times/editions/v1/prompts.txt",
+      "sha256": "6fe1989f554bec104a6fec32d83df3a8cb58ade3f0376fe685b407e5bbda35a4",
+      "bytes": 2883262
     },
     {
       "path": "stories/robot-pigsy/editions/v1/prompts.txt",

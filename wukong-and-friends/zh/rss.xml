@@ -9,7 +9,15 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/rss.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/atom.xml" rel="alternate" type="application/atom+xml" />
-    <lastBuildDate>Tue, 17 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>重复四次</title>
+      <link>https://phg1024.github.io/wukong-and-friends/zh/books/repeat-four-times/</link>
+      <description>&lt;p&gt;铁扇公主想给新花箱办一场小游行。悟空给小机器人小豆排箭头卡，一遍又一遍，排到前进卡都用完了。嫦娥发现同样的四张卡一次次出现，就画了一张重复卡。这下五张卡就够了，不用十六张！&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/repeat-four-times-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/repeat-four-times-v1-zh-Hans.jpg" alt="重复四次" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <dc:creator>Peihong Guo</dc:creator>
+      <guid isPermaLink="false">https://phg1024.github.io/wukong-and-friends/books/repeat-four-times/</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>小豆机器人走错了</title>
       <link>https://phg1024.github.io/wukong-and-friends/zh/books/the-little-robots-wrong-turn/</link>
