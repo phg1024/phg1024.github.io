@@ -3,15 +3,15 @@
   "derivative_version": "rights-v1",
   "copyright_notice": "© 2026 Peihong Guo · CC BY-NC-ND 4.0",
   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "source_pdf": "downloads/pigsys-ten-spot-steamer-v1.pdf",
-  "source_sha256": "50f6576c96b7c9b18856d52690021990b3f454b63849e5038730fcc61fbfb7e8",
+  "source_pdf": "downloads/pigsys-ten-spot-steamer-v2.pdf",
+  "source_sha256": "a6265eb552ff9f3c879c79593a6217a697a866962a754c5d9774746b2cf67eb9",
   "pixel_width": 1224,
   "pages": [
     {
       "image": "page-01.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "1806a6cc8999cebb9fefe43991d3a2361b4f3e688267cf01b28f01674efcda51",
+      "sha256": "2bdb4f8ab09da28c37ee6a5e73e04fe8f8044a9d3c3b3aca797ed8424c070304",
       "text": "Pigsy’s\nTen-Spot Steamer",
       "links": []
     },
@@ -19,7 +19,7 @@
       "image": "page-02.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "4d97e7f8b6cb3262e602dacb442734df74ab4645618c540d001029c0df5ac40f",
+      "sha256": "b16942271a403aafff8146ff7a527fb4c939463bef75aba265c34fe30960d8d9",
       "text": "Pigsy and Sandy are making dumplings.\nPigsy puts a rectangular bamboo steamer\non the table.\nIt has ten papers in two rows of five. One\ndumpling sits on each paper.\nWhen the steamer is full, it goes on\nthe stove.\n2",
       "links": []
     },
@@ -27,7 +27,7 @@
       "image": "page-03.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "166f595f883cea796381249eb4ff922c1f5a13f6b46f7ce79e7f754f1cd9b4f0",
+      "sha256": "4f68002375626ab9281afb0cdd13ae2b1b5712f10b6e063a11a40448786c0e02",
       "text": "Wukong’s job is to carry dumplings from\nthe cutting board.\nPigsy has already put some in the\nfirst steamer.\n“How many more do we need?” asks Pigsy.\nWukong counts from one, but he loses his\nplace and starts again.\n3",
       "links": []
     },
@@ -35,7 +35,7 @@
       "image": "page-04.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "9e5c7e9b8edbd3d14c86444c446857bda0657ab2d8fd84dd2cec57ef34cdf105",
+      "sha256": "610d3a6e1b9a08cb2525108683506d4214762ff06518dbc5bec0e9e27fbf1bf0",
       "text": "“Don’t count the dumplings,” says Sandy.\n“Look at the empty papers.”\nWukong looks at the two rows and sees\nthree empty papers.\n“Three are empty, so we need three\nmore!” he says.\nSeven and three make ten.\n4",
       "links": []
     },
@@ -43,7 +43,7 @@
       "image": "page-05.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "6e832385e6a876e521fe0cb385660df9421b550af3474788f8c05bf7d8fee929",
+      "sha256": "52b95e1c5282756f5509af63fda7316a328dc6a2309f7b44573b53240c99f838",
       "text": "Wukong carries three dumplings from the\nboard, one at a time.\nNow every paper has a dumpling, and the\nsteamer is full.\nSandy lifts it onto the pot on the stove.\nTen dumplings are cooking, and ten more\nwait on the board.\n5",
       "links": []
     },
@@ -51,7 +51,7 @@
       "image": "page-06.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "0f93cc060736f705d199e7f4d1f52b135d302680e8bf4eeb4037e2ef2135167b",
+      "sha256": "4ffc12469c81579350610337916525641fb33b53caa504fb01f30d78b741701e",
       "text": "Pigsy brings the second steamer with six\ndumplings inside.\nThis time, Wukong does not count\nfrom one.\nHe looks at the empty papers and\nsees four.\n“Six and four make ten,” he says, and he\nbrings four more.\n6",
       "links": []
     },
@@ -59,7 +59,7 @@
       "image": "page-07.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "2abbe86d6d47510035c5fc61af3f74fb10364dc3acf86c01163b8e0c6d5c1d6f",
+      "sha256": "d83043a5730711fecf082f3d1f17a451e437f5cabde8a4783fbe89278b61417c",
       "text": "Sandy puts the second steamer on top of\nthe first one.\nThen Pigsy brings the third steamer, and\nit looks almost full.\nWukong sees only one empty paper\nright away.\n“Nine and one make ten!” he says, and he\nadds one dumpling.\n7",
       "links": []
     },
@@ -67,7 +67,7 @@
       "image": "page-08.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "5ee17b1378b9e5544e3bfa3d7728e953b6ba1d200385b9e37db581728f8d7b3b",
+      "sha256": "47ebb311d213d67a8759dede218b37a2e3e55ec8df1633f47a30f21ac889fa1f",
       "text": "Sandy puts the third steamer on\nthe stack.\nWukong feels quick and proud.\n“I don’t need to count from one anymore,”\nhe says.\n“The empty papers tell me how many\nmore we need.”\n8",
       "links": []
     },
@@ -75,7 +75,7 @@
       "image": "page-09.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "fe5d6898f0e2bbf1433faf2086ab8ef6e7250faa5ffe994ed78bf0a608766818",
+      "sha256": "451d4f34db7802caa17e016a4016f7cd9864993ed688883912cfc185fdc35f22",
       "text": "Pigsy brings the last steamer with eight\ndumplings inside.\nFive dumplings are left on the board.\n“How many is that altogether?”\nasks Pigsy.\nEight and five do not make ten, so this\none is harder.\n9",
       "links": []
     },
@@ -83,7 +83,7 @@
       "image": "page-10.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "f81618571f39c96ac709e049bab58612ed48c66f7f33fd600636ef7d523b0b9d",
+      "sha256": "355a11e279db797d49238abe1024c9c6e7e9b4d7a3c3d5a223afc8cf9d2101c2",
       "text": "Wukong starts to count from one again,\nand then he stops.\nHe looks at the steamer, because the\nempty papers helped him before.\nTwo papers are empty.\n“If I move two dumplings, this steamer\nwill be full,” he says.\n10",
       "links": []
     },
@@ -91,7 +91,7 @@
       "image": "page-11.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "634de11bd9feea1f831669931525748505ac357d01ca03b1aa89d4383cc5de82",
+      "sha256": "a080584fe9344fd4baa859c12859161d469e978ff76b4ceecdc19f7657fc9282",
       "text": "Wukong moves two dumplings from the\nboard into the steamer.\nNow the steamer has ten, and the board\nhas three.\nWukong smiles, because no dumplings\nwent away.\nThey only moved to a new place.\n11",
       "links": []
     },
@@ -99,7 +99,7 @@
       "image": "page-12.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "c3ea3a05792e4b3839028b357c052b9a0951baf9cabee30650701144cba2ba03",
+      "sha256": "8c9ed6c70f763af743fe4f49505a4a4d74347045bda46326d1438ff117cdb22a",
       "text": "“Ten and three make thirteen!”\nsays Wukong.\n“So eight and five make thirteen, too.”\nPigsy counts them all from one, just to\nbe sure.\nHe gets thirteen as well, and he claps\nhis hands.\n12",
       "links": []
     },
@@ -107,7 +107,7 @@
       "image": "page-13.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "d7077e04f042a1f2f7516380586f9aca925b7c34cacf25789bcf6e15ee1f20da",
+      "sha256": "441c75ab6f5fb7d489e4eaf7d8b3a6b16a4ba4cc43b0eff69cc86ae9d9396b9d",
       "text": "Sandy puts the last steamer on the stack,\nbut three dumplings are still on\nthe board.\nThree dumplings cannot fill a steamer.\nPigsy puts them in his little bowl and\nsays, “This is my three-spot steamer!”\n13",
       "links": []
     },
@@ -115,7 +115,7 @@
       "image": "page-14.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "44de4dcd55b2e77a1b8d5fa9e0a57608fe615d9a3dc5bf9c0d7323e2741776c3",
+      "sha256": "2142fa1407cf7512316538894866f6b03c1e3a13a183bb64edcffdcbe8157db4",
       "text": "Sandy sets Pigsy’s bowl in an empty\nsteamer on top and puts on the lid.\nSoon, warm steam rises from the stack.\nIt smells so good that Pigsy cannot\nsit still.\n“We have to wait,” says Sandy.\n14",
       "links": []
     },
@@ -123,7 +123,7 @@
       "image": "page-15.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "a5614319d43bef8568ecc0567ec949674bc7f4bd2107ee00e701180d90dc98e9",
+      "sha256": "0b91189c94c80052aa2b32cb4588d17de5f17d37888c4c3279030ba6dc0069af",
       "text": "At last, Sandy lifts the lid, and the\ndumplings are ready.\nEveryone blows on them first, because\nthey are very hot.\nWukong eats a dumpling from the first\nsteamer he filled.\nPigsy eats from his three-spot steamer.\n15",
       "links": []
     },
@@ -131,7 +131,7 @@
       "image": "page-16.webp",
       "width": 1224,
       "height": 1584,
-      "sha256": "f50a6cf0c2b05628d6d12bfc419363cf73d58e8b9a944312ffd27d10ae16a6d5",
+      "sha256": "04318af34b0e30d5c2e6f21bbaf76c0045252fc2110b8321743ac0eddd208227",
       "text": "After lunch, all the papers are empty\nagain. Wukong looks at a steamer\nand laughs.\n“Ten empty papers, so we need ten more!”\nhe says.\nPigsy holds up his bowl and says, “And\nthree for my three-spot steamer!”\n16",
       "links": []
     },
