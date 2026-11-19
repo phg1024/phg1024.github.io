@@ -191,6 +191,7 @@
          }
       </style>
       <div class="blog-content__inner"><h1>My Dictation App Now Fixes What It Mishears</h1><p class="blog-post__date">Nov 12, 2026</p>
+<p><em>Update, November 18: MyWisper is now called <strong>Cadabra</strong>. It lives at <a href="https://phg1024.github.io/Cadabra/">phg1024.github.io/Cadabra</a>, with the code at <a href="https://github.com/phg1024/Cadabra">github.com/phg1024/Cadabra</a>.</em></p>
 <p>Two days ago I released <a href="/blog/ai/mywisper/">MyWisper</a>, a Mac dictation app that runs a small speech model, SenseVoice, entirely on the machine. Using it for everything I type, mostly Chinese with English mixed in, turned up a bug and a bigger limit: it gets sounds right but names wrong.</p>
 <p>One afternoon with Claude produced two releases. The second adds a step I hadn't planned: a local language model that reads what SenseVoice heard and fixes the mistakes from context.</p>
 <p><img src="/images/blog/mywisper/pipeline.svg" alt="The MyWisper 1.1 pipeline, top to bottom: hold the key and talk; SenseVoice-Small turns sound into text; spelling repair fixes repeated word endings; the optional correction step runs Qwen3.5 in the app with llama.cpp, using the vocabulary list; the text is pasted at the cursor; recordings are optionally saved. A dashed path skips correction when it's off, too slow or answers with the wrong length. Beside it, one passage on its way through: 想去大道 … 好像叫kiowway becomes 想去大岛 … 好像叫Kilauea. A separate orange box is the one-time model download from Hugging Face, the only network code."></p>
@@ -229,7 +230,7 @@
 <p>The promise from the first version stands: <strong>MyWisper never uploads anything.</strong> Not the audio, not the text, not the vocabulary list, not the saved recordings, and no usage data. Recognition and correction both run on the Mac.</p>
 <p>There is now exactly one network request in the code: downloading the model file from a fixed Hugging Face address, and only after you click Download. It sends nothing of yours and only brings a file in. With correction off, the app never touches the network at all.</p>
 <p>Building the release also turned up my home folder's path inside the app, left there by llama.cpp's source paths and by Swift's debug symbols. Both are now stripped, and the release script refuses to build a disk image if the path comes back.</p>
-<p><a href="https://github.com/phg1024/MyWisper/releases/tag/v1.1.0">MyWisper 1.1.0 is on GitHub</a>, with correction marked experimental.</p>
+<p><a href="https://github.com/phg1024/Cadabra/releases/tag/v1.1.0">MyWisper 1.1.0 is on GitHub</a>, with correction marked experimental.</p>
 <p>The lesson from this round: <strong>the speech model hears sounds, and a language model reads meaning.</strong> On a Mac with enough memory, adding the second costs a third of a second.</p>
 
       <footer class="post-meta">

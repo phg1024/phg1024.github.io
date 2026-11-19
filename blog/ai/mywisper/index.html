@@ -191,6 +191,7 @@
          }
       </style>
       <div class="blog-content__inner"><h1>Dictation That Stays on My Mac</h1><p class="blog-post__date">Nov 10, 2026</p>
+<p><em>Update, November 18: MyWisper is now called <strong>Cadabra</strong>. It lives at <a href="https://phg1024.github.io/Cadabra/">phg1024.github.io/Cadabra</a>, with the code at <a href="https://github.com/phg1024/Cadabra">github.com/phg1024/Cadabra</a>.</em></p>
 <p>Dictation apps like Wispr Flow work the same way: hold a key, talk, let go, and the text lands wherever the cursor is. That's a nice way to write a long message, and I wanted it without sending my voice to anyone's server.</p>
 <p>My first attempt was a Python app called MyWisper, which I had Gemini write. It didn't quite work. It uses <strong>SenseVoice-Small</strong>, a small open speech recognition model that handles Mandarin, English, Cantonese, Japanese and Korean. Quantized to 8 bits, it's about 230 MB and runs on the CPU through sherpa-onnx. The model was never the problem: it transcribes a sentence in 30 to 50 ms. Everything around it was.</p>
 <p>For the second attempt I handed it to Claude, as with my other recent projects. It reviewed the Python version, rewrote it as a native app, and fixed what I ran into using it. By just after midnight, it was a public release. All in one long day.</p>
@@ -243,7 +244,7 @@
 <p>What stays on the Mac is a history file that only my account can read, which can be turned off or cleared in the settings.</p>
 <h2>Giving it away</h2>
 <p>Late that night I put it on GitHub. It got an English interface first, and a last scan of the files and git history for anything private. I skipped Apple's $99-a-year Developer ID, so macOS blocks the first launch until you allow it once under Privacy &amp; Security.</p>
-<p><a href="https://github.com/phg1024/MyWisper">MyWisper is on GitHub</a>, free under the MIT license, for Apple silicon Macs on macOS 15 or later.</p>
+<p><a href="https://github.com/phg1024/Cadabra">MyWisper, now Cadabra, is on GitHub</a>, free under the MIT license, for Apple silicon Macs on macOS 15 or later.</p>
 <p>The lesson I'd take: <strong>on a Mac, the model is the easy part</strong>. SenseVoice was fast and accurate from the first test. The day went into keys, permissions, signing and the clipboard: everything between my voice and the cursor.</p>
 
       <footer class="post-meta">
