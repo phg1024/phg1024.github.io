@@ -12,6 +12,18 @@
   </atom:author>
   <atom:updated>2026-11-19T00:00:00Z</atom:updated>
   <atom:entry xml:lang="zh-CN">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-bags-of-ten/</atom:id>
+    <atom:title type="text">十个装一袋</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/wukongs-bags-of-ten/" rel="alternate" type="text/html" hreflang="zh-CN" />
+    <atom:published>2026-11-19T00:00:00Z</atom:published>
+    <atom:updated>2026-11-19T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;悟空摘了一大堆桃子要分给邻居，可是每次数出来都不一样，牛魔王一把一把地抓，也是有多有少。沙僧拿来一样大的纸袋，一袋只装十个。三袋还剩四个，就是三十四！&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-bags-of-ten-v1-zh-Hans.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-bags-of-ten-v1-zh-Hans.jpg" alt="十个装一袋" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="zh-CN">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/repeat-four-times/</atom:id>
     <atom:title type="text">重复四次</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/zh/books/repeat-four-times/" rel="alternate" type="text/html" hreflang="zh-CN" />

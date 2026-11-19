@@ -1772,6 +1772,36 @@
       "bytes": 10083506
     },
     {
+      "path": "docs/downloads/wukongs-bags-of-ten-v1-booklet.pdf",
+      "sha256": "53b930b22e7eca3c7323773033c80503f6161220482e72f8020f7b9265a020ca",
+      "bytes": 8965828
+    },
+    {
+      "path": "docs/downloads/wukongs-bags-of-ten-v1-core-en.pdf",
+      "sha256": "3e938ca456de515142377ecad11795ff2d216762eca13ac62996a94e10c994c6",
+      "bytes": 8327344
+    },
+    {
+      "path": "docs/downloads/wukongs-bags-of-ten-v1-core-zh-Hans.pdf",
+      "sha256": "b28061ee81a76637f40d9d2e39dd01319b8b0f92fe3a7cce6b9ba3f3e1db1746",
+      "bytes": 8394381
+    },
+    {
+      "path": "docs/downloads/wukongs-bags-of-ten-v1-zh-Hans-booklet.pdf",
+      "sha256": "d20fb965134ac15d69b22c744136ed89c33d03f95951d6ff5faafd1aa3c50137",
+      "bytes": 9045902
+    },
+    {
+      "path": "docs/downloads/wukongs-bags-of-ten-v1-zh-Hans.pdf",
+      "sha256": "5f3ff3d4c96e651c92ab02c6e27499324004107c779d4d480bdbdf2a1d48ce5a",
+      "bytes": 9035720
+    },
+    {
+      "path": "docs/downloads/wukongs-bags-of-ten-v1.pdf",
+      "sha256": "cc780a467a28f33187c5f54b5798087d60cfff2f775158da6d769b973fcc718c",
+      "bytes": 8946488
+    },
+    {
       "path": "docs/downloads/wukongs-brick-building-day-v1-booklet.pdf",
       "sha256": "d207f638d7281d99ea0354892e50aa941e1b80f3c0db2cfa8bfbab3af4892de3",
       "bytes": 24495445
@@ -3335,6 +3365,11 @@
       "path": "stories/wukong-visits-the-pumpkin-patch/editions/v1/prompts.txt",
       "sha256": "dcc20280ed533fddae01c46221c2a19a8cef4704ab80a1f9fface8bc1e0818c4",
       "bytes": 701754
+    },
+    {
+      "path": "stories/wukongs-bags-of-ten/editions/v1/prompts.txt",
+      "sha256": "20c2eed6458d809f80941aa5bf6fcdb2c8f0083b2de20e47303988cc43d53629",
+      "bytes": 4501553
     },
     {
       "path": "stories/wukongs-brick-building-day/editions/v1/prompts.txt",

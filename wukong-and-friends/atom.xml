@@ -12,6 +12,18 @@
   </atom:author>
   <atom:updated>2026-11-19T00:00:00Z</atom:updated>
   <atom:entry xml:lang="en">
+    <atom:id>https://phg1024.github.io/wukong-and-friends/books/wukongs-bags-of-ten/</atom:id>
+    <atom:title type="text">Wukong’s Bags of Ten</atom:title>
+    <atom:link href="https://phg1024.github.io/wukong-and-friends/books/wukongs-bags-of-ten/" rel="alternate" type="text/html" hreflang="en" />
+    <atom:published>2026-11-19T00:00:00Z</atom:published>
+    <atom:updated>2026-11-19T00:00:00Z</atom:updated>
+    <atom:author>
+      <atom:name>Peihong Guo</atom:name>
+      <atom:uri>https://phg1024.github.io/wukong-and-friends/</atom:uri>
+    </atom:author>
+    <atom:summary type="html">&lt;p&gt;Wukong has a hill of peaches to share, but every count comes out different, and Bull King’s handfuls are big and small. Then Sandy brings paper bags that each hold just ten. Three full bags and four left over: that makes 34!&lt;/p&gt;&lt;p&gt;&lt;a href="https://phg1024.github.io/wukong-and-friends/covers/wukongs-bags-of-ten-v1.jpg"&gt;&lt;img src="https://phg1024.github.io/wukong-and-friends/covers/wukongs-bags-of-ten-v1.jpg" alt="Wukong’s Bags of Ten" /&gt;&lt;/a&gt;&lt;/p&gt;</atom:summary>
+  </atom:entry>
+  <atom:entry xml:lang="en">
     <atom:id>https://phg1024.github.io/wukong-and-friends/books/repeat-four-times/</atom:id>
     <atom:title type="text">Repeat Four Times</atom:title>
     <atom:link href="https://phg1024.github.io/wukong-and-friends/books/repeat-four-times/" rel="alternate" type="text/html" hreflang="en" />

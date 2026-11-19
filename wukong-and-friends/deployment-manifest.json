@@ -5,7 +5,7 @@
     "about.html": "22a3adf43ed045775adb2d3739d5a402f76fdf9ba512b848aa8f1669654afb35",
     "app.js": "59b53a296ff26c5c4c34efc77b15e649ac31d751a1fbcc74c939c58e7069e988",
     "apple-touch-icon.png": "4286b09cf668fd24d3d3266c4705375f33637a39006fa260d6c5c96ed2d30c03",
-    "atom.xml": "4f27996e9670c34a35b8bc8129c537bfb18f0e52177a32cb61fe8ff8f7b035fa",
+    "atom.xml": "74be9a3ad616e0246c6277268c7ac5bcd6a48ee9afa8234a22eb5295a1f0bbae",
     "banner-loop-poster.jpg": "4ec7bb8fc059e10c910afb19ac412cef66030bed2eaeab0202dade0ad0ef3534",
     "banner-loop.mp4": "37b8dde4f1833ade03fce8889f7b071e914e5511aade3be9f1674c495c830edc",
     "banner-skating-poster.jpg": "ffed204d676647f27e680e462e5eaf153cd697115aaf03a6bec765993fc57c4c",
@@ -40,6 +40,7 @@
     "books/wukong-visits-the-aquarium/index.html": "1d9392a0beea0c7767cb12264487ce725af001fac943b6822e1e6f5138e96cf3",
     "books/wukong-visits-the-dentist/index.html": "35afe3f8762c986ce416a2331e866533d17376fc411a7c9366ee56491f28b50b",
     "books/wukong-visits-the-pumpkin-patch/index.html": "867f8f096ea62828be3e04ac244df22fff075a9011cf7eb2a9ac928d7abedc78",
+    "books/wukongs-bags-of-ten/index.html": "8125675a202b7848ae81c5e850955f536e31b4f362d26018793af2c8804b3ead",
     "books/wukongs-brick-building-day/index.html": "f7159cc935b1e7efa56edb901475a637752101fa3cf38bc993c439f4dbac123b",
     "books/wukongs-first-ballet-class/index.html": "48f6bc499a4316a11cb8a999d1206ba275bb97db4c4caf79e308db8b2db1ea03",
     "books/wukongs-little-dinosaur-halloween/index.html": "986ee9ec8106ab7ed18cb92f5e23226d7530265de7d56e5708f7633cd34a7772",
@@ -52,8 +53,8 @@
     "books/wukongs-slippy-slide-skates/index.html": "cccc56da22bce736fe5a2739be9953f97eabe03cf90d915002ce3dab3ed17b79",
     "books/wukongs-starry-stage/index.html": "877e9b788f738a73226abebf540255891a3c44aff6b5ff7d0e2f64016d6fed61",
     "books/wukongs-wibble-wobble-ride/index.html": "1a81621e3c39cafc97e0b19f5a9aaa32f00197d9507e97907b5e232bce46f4d8",
-    "catalog.json": "4a90bab8fdd4929f4d3c6c34ff8c6682162e218642073d8aaabf9dd2c6b0c397",
-    "characters/index.html": "890f96209b33a720a02d9f344d693df8b9cd2ef15580514f14cffd602dc010c3",
+    "catalog.json": "657c858e6d8e54cde7ab3ce6fd4005a75a789527c37829393cd6bd821439fee6",
+    "characters/index.html": "2f2b9c2e7175b839e725ee7295e2f0bb94a8633889be41fe6f16f23302b4cb0c",
     "characters/portraits/rights-v1/ao-bing.jpg": "f3b7ab41b1055df2a34bbf24b14b05fcd194f9045cc5280500c685541dcac6b3",
     "characters/portraits/rights-v1/bull-king.jpg": "304f1d712bc82f343298d521db3a628ea7e27f79fa44116743020a6dd1934183",
     "characters/portraits/rights-v1/chang-e.jpg": "f4ceaf31617db1346d5c4ea10b009d64501263dd7562ffed6538375b4904ada3",
@@ -113,6 +114,8 @@
     "covers/wukong-visits-the-dentist-v3.jpg": "8274ad1dda26354d56ecc7861a6b27907fc92fce6b5e94b57888563028a40f06",
     "covers/wukong-visits-the-pumpkin-patch-v1-zh-Hans.jpg": "94360f26d771c8e61e5dabf7db3a772393dffb26f3157bd4ae65389e138d81d1",
     "covers/wukong-visits-the-pumpkin-patch-v1.jpg": "06aa4f6a6ecd8a3c0e3af899799492717442e5a32ab3cb6b3ffd29957f5960e3",
+    "covers/wukongs-bags-of-ten-v1-zh-Hans.jpg": "c1794008694174f81f42339eca9b60e64a67077edfc594eaf01322505bf23356",
+    "covers/wukongs-bags-of-ten-v1.jpg": "cfbc60a98371976b27a695316763d4cb363a45613cd1a0ed341a70de5211857b",
     "covers/wukongs-brick-building-day-v3-zh-Hans.jpg": "687d0c29a34327f4e6a9413752757a12f5ca04556b847c3d6c3670de64db756e",
     "covers/wukongs-brick-building-day-v3.jpg": "9edbe3aa3e740249f4bbbd9eac82c760fe769a9e07b987d983cc8efbfc75535e",
     "covers/wukongs-first-ballet-class-v5-zh-Hans.jpg": "c57bafc95191cf4cde064aa11bda96af07e8e704b1e3a011c591246b91184dcb",
@@ -141,14 +144,14 @@
     "favicon-32.png": "c86c359b268013bf4827b2f7d4d0a0e0508f5c8cc62765334ab7d951bfd9ddee",
     "favicon.svg": "1ebb16bdf9a11d8282a59f4665dbd4e17cd08bd09c39d08b08f2a10776298187",
     "icon-512.png": "c217bb0044f85904c718bedf2a80d8b672152b0bdb1a6dee4f95a4338d339eac",
-    "index.html": "20f44f5e9d74dfed2089082604f8eb2c7e4156a86e4154a37546f74e05f2900b",
+    "index.html": "5ca3ccb7a2c6e0cd5fd9e6e10478da45b7bc6e4b5262158336908caed9fd701d",
     "license.html": "44b018d6bf42d57b2308393b7f7fc124bd072948f3fd7f39b8e43646a00df74f",
     "licenses/CC-BY-NC-ND-4.0.txt": "f7f28b8c7a1af76b9874ca6d040e8b1eb6768fd1043106c9d315090ea96754e7",
     "licenses/MIT.txt": "1baa8c93005463abb00e78e336cc6416e2e423352e8d11fe3825b5ea96f01b97",
     "og-image.jpg": "ccc6bb6488de45cadf36c2d739f2fcbfb0e5af1ea596bd777986577e3263c9da",
-    "provenance/manifest.json": "6f6d7d5c95a72a0c4891d081dcc7b1a83fdca2efc9bbbbbd1028a65826af9c38",
+    "provenance/manifest.json": "7560e57f436978bf900eae4cc5d5b420eadf08c231a71f267d125b776686f039",
     "provenance/public-key.pem": "e3a01c706417deb7dc40e36a3af4fecee306646d7c8e18a58a6cb8290495716f",
-    "provenance/signature.json": "5f43a17cf789a77e65b0728baf8f9785239832f089fefff8e1361d60d4f64e68",
+    "provenance/signature.json": "2fdff535a322aa43f0607d33d47c7885d25a1b22d00462e33f171027e520c183",
     "reader/ao-bings-little-boat-v2/rights-v1/manifest.json": "2fc7e5316c7c90956367c4d9c0fbcf3c7c467b24756e88578fb4eca5b2686d07",
     "reader/ao-bings-little-boat-v2-zh-Hans/rights-v1/manifest.json": "8ca6830bf272c50d642f2def0b7d9373255c3cf436e652a257393a22d3654697",
     "reader/big-cards-little-numbers-v2/rights-v1/manifest.json": "92f4dc9c081d497685d22746ed82c1d517b32eba712cc864137ffa855007940b",
@@ -197,6 +200,8 @@
     "reader/wukong-visits-the-dentist-v3-zh-Hans/rights-v1/manifest.json": "aa9517de9e310ddbe6db6e1e5da7bc3dd7bc2ed222049d914e98cf47af12c6ec",
     "reader/wukong-visits-the-pumpkin-patch-v1/rights-v1/manifest.json": "a58832db5fbf1e4076cdcb661d19293b2c948f819325e5ec21eecca2e058be8a",
     "reader/wukong-visits-the-pumpkin-patch-v1-zh-Hans/rights-v1/manifest.json": "06bcc88cb5356bd5112cc4c050c77c75ca6ca22b38d1fd677d7f3019700592e6",
+    "reader/wukongs-bags-of-ten-v1/rights-v1/manifest.json": "2e0b870d5fd091696d5d13931b371f35afe01c91092da2e6ecbbd0e9961781a5",
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/manifest.json": "a08d235e4f47dac64ab753ec0e46364d9de24089b2c86c653adf9feb563bdb44",
     "reader/wukongs-brick-building-day-v3/rights-v1/manifest.json": "b6a6051d2ef8b0a2a1a62de2897b0be05b1256d12d5f40cac105a0bb052fa0c8",
     "reader/wukongs-brick-building-day-v3-zh-Hans/rights-v1/manifest.json": "f0a45f07ffa4c697d40103c07d47155f09be544fdddd6178b330ba028d74d024",
     "reader/wukongs-first-ballet-class-v5/rights-v1/manifest.json": "1a50402b1fde15a9244b324d63d5b9749d1136ab3faef36def79f680ea41a98d",
@@ -223,8 +228,8 @@
     "reader/wukongs-wibble-wobble-ride-v8-zh-Hans/rights-v1/manifest.json": "97d7ab33c52cbd17d33b5a7964a996096b58f0d393e401c49c5c4a667724d2e9",
     "reader.js": "08990e135c401fcb312af6d52bce8ddaca969c7b3483310c0b9a589b7480c7ac",
     "robots.txt": "888b72b6d088bf4ddf94f7fcc4be39b180c793bf7f0be485e5591a8a4e6ce9e7",
-    "rss.xml": "cbfeb861cb95c694054f10d98dfb9915b1f08f4d19e3a40766c508c41b3e555f",
-    "sitemap.xml": "dcbea5c3480d616696ee3c706fc097c74200c6e176dd08df1ec75755a3d525e0",
+    "rss.xml": "f78ea97b8cfc899096b7e4c0e8568cb055c720268991d901e66573486163c81a",
+    "sitemap.xml": "6a26a467bc30916e817944a5bff684b0f6025576192ddd8ef2806bbef54fd185",
     "social/ao-bings-little-boat-zh-Hans.jpg": "20c98b6ca96ab48b8a1501fa3d6188fcfdfff4402a1a7400f912c4b213bb9770",
     "social/ao-bings-little-boat.jpg": "1758c7c45bcddad359367dd09e7cbf63bf6e5e9f59fd257171c56a1cab4274e1",
     "social/big-cards-little-numbers-zh-Hans.jpg": "c3d5c0de1a2689298ae37db240f707b9912e45f2b0c5a81fadf8b8d3c96a949e",
@@ -273,6 +278,8 @@
     "social/wukong-visits-the-dentist.jpg": "637f6f4f608f2df370e94c514e1dd512ee4715ca840a1dc26aaa7dac4db2d2cf",
     "social/wukong-visits-the-pumpkin-patch-zh-Hans.jpg": "3bb3bc78a65b2e90fcfbe79c8b7ca39f433da9224f4b03e8af97960bcd124956",
     "social/wukong-visits-the-pumpkin-patch.jpg": "88f8d503ecbaa978bc6deeb5de0931b57252bcc750d9a485cc47ae52aff65f90",
+    "social/wukongs-bags-of-ten-zh-Hans.jpg": "2801d91cf0940c8fbf4326c82c8765b492421fe070d14a8c987d7283e4778666",
+    "social/wukongs-bags-of-ten.jpg": "bef0bf4f147b6f2741455ae8426075ab58fe7078622cf0fdd09321a78fcf7d7a",
     "social/wukongs-brick-building-day-zh-Hans.jpg": "e034a348a572f4f384bc2710dd8091745e7bbca5dd74f82670323affc465a8e1",
     "social/wukongs-brick-building-day.jpg": "d5704d481aa8504bfa0008d376fbc8af9aca9ce20dd0f464154d8ba3c3d1f6f8",
     "social/wukongs-first-ballet-class-zh-Hans.jpg": "0ef6bdc61ddf1c436f720e5fb0d4351726691a9094f91bbb6a236639a0b1fb94",
@@ -545,6 +552,10 @@
     "support/wukong-visits-the-pumpkin-patch-v1-zh-Hans-booklet.html": "62234ff87cd06b3a09f3240e7e08ff952033351dc60a5cdd994d8b08c0df41d3",
     "support/wukong-visits-the-pumpkin-patch-v1-zh-Hans.html": "b3b9b1f944f6a960025b21e38b9a1337f07301a837588235d42b64f191c12a51",
     "support/wukong-visits-the-pumpkin-patch-v1.html": "c8b047cc764a63b6e8eb932da303c815f4dc1aca30835b5496743e8604439ff9",
+    "support/wukongs-bags-of-ten-v1-booklet.html": "ee31ed9ed93161327affe1bf5962a87e74d48ffd872462bc5c07d0f0a020694b",
+    "support/wukongs-bags-of-ten-v1-zh-Hans-booklet.html": "7c7fa065d0da6758ecd3685204900bf0da910038505724c9582970a959e7ea16",
+    "support/wukongs-bags-of-ten-v1-zh-Hans.html": "36e6352ebce2db8d83564135baa10682242b743817b21c4457e6de0c544a2ced",
+    "support/wukongs-bags-of-ten-v1.html": "986b431f45611d3bb46e9ff41acddfd8e82a9f0d799770c0d13443950434a3f0",
     "support/wukongs-brick-building-day-v1-booklet.html": "7b8a633bb3af74af32a5eed0e96e7f25c80aaaeeef99cbc61648446173f0bfc7",
     "support/wukongs-brick-building-day-v1-zh-Hans-booklet.html": "b865f78f7975aca7075efb4048a1997a2d24e70ad77b2dbc38ca8eec129118f6",
     "support/wukongs-brick-building-day-v1-zh-Hans.html": "f466bb85a88e8a3aac638e664598079d402aae7a3d8f149c1825b996790d2083",
@@ -729,7 +740,7 @@
     "support/wukongs-wibble-wobble-ride-v8.html": "eeac7b9c3d8d91a2b60f6c3dc9f127373c0f15fea38ba3b7502408ce2370f078",
     "verify.html": "60221656b26f57898d2a0e608542ec6400ecd7e1fc97438d2a54e9e9aa597c10",
     "zh/about.html": "ef34dfc1828def828568064ec4f814322910ad30aaada2be20ba277dc087bfc7",
-    "zh/atom.xml": "b4f66c7a2296792852166f47aae8cdefdec0bd14b5b91365ee010960a41e3efb",
+    "zh/atom.xml": "6a4fa81b020dc316c16f664798184c91edecab4cc6a5413b8a0629d0496e642d",
     "zh/books/ao-bings-little-boat/index.html": "9700dbf6d68dd5ea571a436fa67ba2886a0978774ebe8a54ace5a2fe2dfb62fd",
     "zh/books/bears-wobbly-ride/index.html": "7b8f8365e9bef452dfe37af53e35aab35484f1efca792e94dc33168d44d04aa3",
     "zh/books/big-cards-little-numbers/index.html": "334c9c5ac96b6e77f8c7d6bd1a72a1506383352f52263acb7bd8bc675e2ef9ce",
@@ -756,6 +767,7 @@
     "zh/books/wukong-visits-the-aquarium/index.html": "f3a77500c75e0c25acb0ef70b1afeff7a33591ce70f138e8309ed2723b8f6f34",
     "zh/books/wukong-visits-the-dentist/index.html": "94d14382b20d952de296fa2711b3c6e52241535ab299b808e01909482836822f",
     "zh/books/wukong-visits-the-pumpkin-patch/index.html": "f6e55896bc5e1e21af10e78918769fd155a4b730993c73474d572b0ac40ac94d",
+    "zh/books/wukongs-bags-of-ten/index.html": "11cc1fb49d6c6d87165150d1393b41500ef96fe59a221422b464992f6fc044cc",
     "zh/books/wukongs-brick-building-day/index.html": "87b1557be6b8c795521f9f4eeb19809576d645dc2718801d40a76492099ccebe",
     "zh/books/wukongs-first-ballet-class/index.html": "ab6ce7cb3bdb0b9858d1b338458d58045e4994138fd28fc3bdf1662813881750",
     "zh/books/wukongs-little-dinosaur-halloween/index.html": "c9b49fc4ddb2c3357782c3a48c5c14890546e810d6c170fe6e4d742b42716c1c",
@@ -768,10 +780,10 @@
     "zh/books/wukongs-slippy-slide-skates/index.html": "048ca7a0757686b6332addae26531357be6bbbfe71313553d4ae3190a81e81ee",
     "zh/books/wukongs-starry-stage/index.html": "4785baecbd83a0afb7f88fafff1176b820b929eaea3140a8ccee5f6f9f5e0373",
     "zh/books/wukongs-wibble-wobble-ride/index.html": "1c91285d79d50a79516d2acdfea84ed13dc7fa40102ee0ff07fc3cdf3aacc352",
-    "zh/characters/index.html": "2ae094193580a4790d4345876d9b3cad5e2cc80e5e42bbcdb2e862acef72ccab",
-    "zh/index.html": "a811bfc915fb73b11c4adc4d911232df29bdc7164554602671becfdc05d6496d",
+    "zh/characters/index.html": "fb45bbef0cbe70a546ead5352080c79ef9eb426853d859e9fb04fbe98ba94564",
+    "zh/index.html": "5aa110b1a72cf4b2f0238e97ad9b36b0afcdf9923f99e4dae2e4d1cd9d220a86",
     "zh/license.html": "8a086ca62794877f978f44dda0e3746ecf324b64d2b6293ca622abec830114df",
-    "zh/rss.xml": "f8a62b47c9fdfdf1c409a3b6fec07b1a7d40305accfcead0bb54649fa0a5f4a2",
+    "zh/rss.xml": "7c93727acadbccc05b20c307e0558eabd3a749eb3df956bee5b8734d080b8df0",
     "zh/subscribe.html": "cbffcfcfbe10435526f4e468c7df1d0642290569ceb77e3000aa60645fca5258",
     "zh/support/ao-bings-little-boat-v1-booklet.html": "884babd0d275f074efb62b874266ac194c6556be2e928938c8257686c02c1027",
     "zh/support/ao-bings-little-boat-v1-zh-Hans-booklet.html": "b6a7ea6e95b8d40cc4ce53f872b7d914f3ffdf56b9a0d067f8ccea45ef039db3",
@@ -1019,6 +1031,10 @@
     "zh/support/wukong-visits-the-pumpkin-patch-v1-zh-Hans-booklet.html": "ca84f36d5a09b9cef6d0e23b949ca6bf90d5db54be4e601d32fcd30f5b82b38f",
     "zh/support/wukong-visits-the-pumpkin-patch-v1-zh-Hans.html": "6dcef302577d11d4ae91100d69cde44a614b6421b4d01e0be1336c9a9229701d",
     "zh/support/wukong-visits-the-pumpkin-patch-v1.html": "73a07499824dc2598306a3ffcfce9966131f3b50de5311246980c534c69cc7dd",
+    "zh/support/wukongs-bags-of-ten-v1-booklet.html": "ac8047d983d6919a9d88f9ea39d83c74c316e7ed1658ce72d7d9bbe8f6334987",
+    "zh/support/wukongs-bags-of-ten-v1-zh-Hans-booklet.html": "a4dc4b22dca279b4850b9762a0416637bc99bbe600ebed7fb990fefebe3fe803",
+    "zh/support/wukongs-bags-of-ten-v1-zh-Hans.html": "78121133417489c49f67e24a18b6a216d4eb40eb9db449d3be0babb064a127c2",
+    "zh/support/wukongs-bags-of-ten-v1.html": "17fa81c0abecf7e8f5beb9844c73f67700e815bedb317e641711899fea210ee3",
     "zh/support/wukongs-brick-building-day-v1-booklet.html": "80fdbaefbbce609216165a9696460c0922335ebe0e0599b48dfa99600b47c3a7",
     "zh/support/wukongs-brick-building-day-v1-zh-Hans-booklet.html": "f172db0d690d8db72b314d0d2c96c807e6c17889caddd9beca7ebaf7704ec403",
     "zh/support/wukongs-brick-building-day-v1-zh-Hans.html": "6a4be935330a4f503fafa244246b5e872546a5b3038275cba05cb008f3bd9b45",
@@ -1208,7 +1224,7 @@
     "about.html": 6756,
     "app.js": 4924,
     "apple-touch-icon.png": 59283,
-    "atom.xml": 42330,
+    "atom.xml": 43483,
     "banner-loop-poster.jpg": 151991,
     "banner-loop.mp4": 1547059,
     "banner-skating-poster.jpg": 101121,
@@ -1243,6 +1259,7 @@
     "books/wukong-visits-the-aquarium/index.html": 22283,
     "books/wukong-visits-the-dentist/index.html": 22130,
     "books/wukong-visits-the-pumpkin-patch/index.html": 22174,
+    "books/wukongs-bags-of-ten/index.html": 23458,
     "books/wukongs-brick-building-day/index.html": 22441,
     "books/wukongs-first-ballet-class/index.html": 21969,
     "books/wukongs-little-dinosaur-halloween/index.html": 21916,
@@ -1255,8 +1272,8 @@
     "books/wukongs-slippy-slide-skates/index.html": 22751,
     "books/wukongs-starry-stage/index.html": 22126,
     "books/wukongs-wibble-wobble-ride/index.html": 22643,
-    "catalog.json": 114075,
-    "characters/index.html": 14970,
+    "catalog.json": 117548,
+    "characters/index.html": 14927,
     "characters/portraits/rights-v1/ao-bing.jpg": 230950,
     "characters/portraits/rights-v1/bull-king.jpg": 237829,
     "characters/portraits/rights-v1/chang-e.jpg": 221977,
@@ -1316,6 +1333,8 @@
     "covers/wukong-visits-the-dentist-v3.jpg": 94584,
     "covers/wukong-visits-the-pumpkin-patch-v1-zh-Hans.jpg": 133365,
     "covers/wukong-visits-the-pumpkin-patch-v1.jpg": 135313,
+    "covers/wukongs-bags-of-ten-v1-zh-Hans.jpg": 110182,
+    "covers/wukongs-bags-of-ten-v1.jpg": 111999,
     "covers/wukongs-brick-building-day-v3-zh-Hans.jpg": 192349,
     "covers/wukongs-brick-building-day-v3.jpg": 193771,
     "covers/wukongs-first-ballet-class-v5-zh-Hans.jpg": 162203,
@@ -1344,12 +1363,12 @@
     "favicon-32.png": 2402,
     "favicon.svg": 307,
     "icon-512.png": 437545,
-    "index.html": 68285,
+    "index.html": 70125,
     "license.html": 7774,
     "licenses/CC-BY-NC-ND-4.0.txt": 19126,
     "licenses/MIT.txt": 1085,
     "og-image.jpg": 144770,
-    "provenance/manifest.json": 139697,
+    "provenance/manifest.json": 141013,
     "provenance/public-key.pem": 113,
     "provenance/signature.json": 509,
     "reader/ao-bings-little-boat-v2/rights-v1/manifest.json": 8768,
@@ -1400,6 +1419,8 @@
     "reader/wukong-visits-the-dentist-v3-zh-Hans/rights-v1/manifest.json": 7459,
     "reader/wukong-visits-the-pumpkin-patch-v1/rights-v1/manifest.json": 7629,
     "reader/wukong-visits-the-pumpkin-patch-v1-zh-Hans/rights-v1/manifest.json": 7727,
+    "reader/wukongs-bags-of-ten-v1/rights-v1/manifest.json": 9560,
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/manifest.json": 9338,
     "reader/wukongs-brick-building-day-v3/rights-v1/manifest.json": 8321,
     "reader/wukongs-brick-building-day-v3-zh-Hans/rights-v1/manifest.json": 8382,
     "reader/wukongs-first-ballet-class-v5/rights-v1/manifest.json": 6886,
@@ -1426,8 +1447,8 @@
     "reader/wukongs-wibble-wobble-ride-v8-zh-Hans/rights-v1/manifest.json": 7511,
     "reader.js": 8865,
     "robots.txt": 90,
-    "rss.xml": 33043,
-    "sitemap.xml": 43071,
+    "rss.xml": 33940,
+    "sitemap.xml": 44078,
     "social/ao-bings-little-boat-zh-Hans.jpg": 75813,
     "social/ao-bings-little-boat.jpg": 74340,
     "social/big-cards-little-numbers-zh-Hans.jpg": 84338,
@@ -1476,6 +1497,8 @@
     "social/wukong-visits-the-dentist.jpg": 68952,
     "social/wukong-visits-the-pumpkin-patch-zh-Hans.jpg": 92111,
     "social/wukong-visits-the-pumpkin-patch.jpg": 93552,
+    "social/wukongs-bags-of-ten-zh-Hans.jpg": 74643,
+    "social/wukongs-bags-of-ten.jpg": 76209,
     "social/wukongs-brick-building-day-zh-Hans.jpg": 75171,
     "social/wukongs-brick-building-day.jpg": 75585,
     "social/wukongs-first-ballet-class-zh-Hans.jpg": 68625,
@@ -1748,6 +1771,10 @@
     "support/wukong-visits-the-pumpkin-patch-v1-zh-Hans-booklet.html": 7073,
     "support/wukong-visits-the-pumpkin-patch-v1-zh-Hans.html": 6993,
     "support/wukong-visits-the-pumpkin-patch-v1.html": 6937,
+    "support/wukongs-bags-of-ten-v1-booklet.html": 6831,
+    "support/wukongs-bags-of-ten-v1-zh-Hans-booklet.html": 6887,
+    "support/wukongs-bags-of-ten-v1-zh-Hans.html": 6807,
+    "support/wukongs-bags-of-ten-v1.html": 6751,
     "support/wukongs-brick-building-day-v1-booklet.html": 6943,
     "support/wukongs-brick-building-day-v1-zh-Hans-booklet.html": 6999,
     "support/wukongs-brick-building-day-v1-zh-Hans.html": 6919,
@@ -1932,7 +1959,7 @@
     "support/wukongs-wibble-wobble-ride-v8.html": 6863,
     "verify.html": 5587,
     "zh/about.html": 6624,
-    "zh/atom.xml": 42938,
+    "zh/atom.xml": 44101,
     "zh/books/ao-bings-little-boat/index.html": 23493,
     "zh/books/bears-wobbly-ride/index.html": 5423,
     "zh/books/big-cards-little-numbers/index.html": 22155,
@@ -1959,6 +1986,7 @@
     "zh/books/wukong-visits-the-aquarium/index.html": 22856,
     "zh/books/wukong-visits-the-dentist/index.html": 22518,
     "zh/books/wukong-visits-the-pumpkin-patch/index.html": 22680,
+    "zh/books/wukongs-bags-of-ten/index.html": 23646,
     "zh/books/wukongs-brick-building-day/index.html": 22880,
     "zh/books/wukongs-first-ballet-class/index.html": 22504,
     "zh/books/wukongs-little-dinosaur-halloween/index.html": 22693,
@@ -1971,10 +1999,10 @@
     "zh/books/wukongs-slippy-slide-skates/index.html": 23113,
     "zh/books/wukongs-starry-stage/index.html": 22615,
     "zh/books/wukongs-wibble-wobble-ride/index.html": 23208,
-    "zh/characters/index.html": 15018,
-    "zh/index.html": 74700,
+    "zh/characters/index.html": 14972,
+    "zh/index.html": 76702,
     "zh/license.html": 7524,
-    "zh/rss.xml": 33426,
+    "zh/rss.xml": 34327,
     "zh/subscribe.html": 6092,
     "zh/support/ao-bings-little-boat-v1-booklet.html": 6907,
     "zh/support/ao-bings-little-boat-v1-zh-Hans-booklet.html": 6963,
@@ -2222,6 +2250,10 @@
     "zh/support/wukong-visits-the-pumpkin-patch-v1-zh-Hans-booklet.html": 7115,
     "zh/support/wukong-visits-the-pumpkin-patch-v1-zh-Hans.html": 7035,
     "zh/support/wukong-visits-the-pumpkin-patch-v1.html": 6979,
+    "zh/support/wukongs-bags-of-ten-v1-booklet.html": 6861,
+    "zh/support/wukongs-bags-of-ten-v1-zh-Hans-booklet.html": 6917,
+    "zh/support/wukongs-bags-of-ten-v1-zh-Hans.html": 6837,
+    "zh/support/wukongs-bags-of-ten-v1.html": 6781,
     "zh/support/wukongs-brick-building-day-v1-booklet.html": 6985,
     "zh/support/wukongs-brick-building-day-v1-zh-Hans-booklet.html": 7041,
     "zh/support/wukongs-brick-building-day-v1-zh-Hans.html": 6961,
@@ -2407,13 +2439,13 @@
     "zh/verify.html": 5614
   },
   "summary": {
-    "file_count": 1201,
+    "file_count": 1217,
     "current_pdf_count": 0,
-    "reader_count": 72,
-    "source_bytes": 10226472878,
-    "export_bytes": 36565989,
-    "external_media_count": 1296,
-    "external_pdf_count": 144
+    "reader_count": 74,
+    "source_bytes": 10293938688,
+    "export_bytes": 37073359,
+    "external_media_count": 1332,
+    "external_pdf_count": 148
   },
   "external_media": {
     "reader/ao-bings-little-boat-v2-zh-Hans/rights-v1/page-01.webp": {
@@ -6815,6 +6847,186 @@
       "sha256": "f7318e565a2833c0d464ae9def6e58c4260501182b0c19787807e620c90a92ae",
       "bytes": 128616,
       "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/f7318e565a2833c0.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-01.webp": {
+      "sha256": "f563a0611e1f085b1cb8992df24781b2f9195e5845d49d4ce18e28119ef89e69",
+      "bytes": 418662,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/f563a0611e1f085b.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-02.webp": {
+      "sha256": "ebd4be236e07db9d5a9bd670c0a44ec681c3adb905d574a20d7ed85376aa0bfe",
+      "bytes": 357056,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ebd4be236e07db9d.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-03.webp": {
+      "sha256": "b1b0029d6c69ae1b041dc600abd169c9144ce7511ad2affda8dc4fa61b60429b",
+      "bytes": 468730,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/b1b0029d6c69ae1b.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-04.webp": {
+      "sha256": "6d206e68ab6836d306af922cb039621bfea8ed02e1df1a168d7752a629a4d581",
+      "bytes": 455226,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/6d206e68ab6836d3.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-05.webp": {
+      "sha256": "5a5990ef7aee0c45ed490a2f6c217fb4c89eb875afd888d16e294ccf49dd7b85",
+      "bytes": 433570,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/5a5990ef7aee0c45.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-06.webp": {
+      "sha256": "ad3f6003853352cf14bbaf6893871d8ff56ba43c4f37ccb9f08b0b2bdeb218f4",
+      "bytes": 417004,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ad3f6003853352cf.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-07.webp": {
+      "sha256": "a418a3a3f2231ad5cc7a979420e6013e212a133ec70ae6ff9d09c74c11d0bfa1",
+      "bytes": 444526,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a418a3a3f2231ad5.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-08.webp": {
+      "sha256": "a87b63084b5b7193453e869be6371a63e173dc9c43f43794373a8f1e361587f5",
+      "bytes": 425910,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a87b63084b5b7193.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-09.webp": {
+      "sha256": "30f95e87a207300fab3440a2ffe8d69633a7c639f3053a06b0f2bc261b9aba1a",
+      "bytes": 457596,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/30f95e87a207300f.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-10.webp": {
+      "sha256": "4d2afd5f1290ff5d4de4d111182b00b2cab1c6220695f4e09b2f21f35fdacf58",
+      "bytes": 460926,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/4d2afd5f1290ff5d.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-11.webp": {
+      "sha256": "68d6b71c18288db839a522badb27acff4c3e5b46661d6040df510c9ca2f94cb9",
+      "bytes": 372208,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/68d6b71c18288db8.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-12.webp": {
+      "sha256": "2b1f9f4b4b9cee0a86da0e0b7ec52e2fedc11072b29992a00a8f1b217887ca54",
+      "bytes": 402148,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/2b1f9f4b4b9cee0a.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-13.webp": {
+      "sha256": "ee1be008f7fa68a0f648fc5e89b2fcc7163e40d1512f74371270465860311dc8",
+      "bytes": 366196,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ee1be008f7fa68a0.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-14.webp": {
+      "sha256": "94d11bda4b5db623c4e1f8ef19b08bbd37d2e85f9ad20889609bddb67a67f6af",
+      "bytes": 425680,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/94d11bda4b5db623.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-15.webp": {
+      "sha256": "ccd2df87abd7d523e778c7b6a837caed90624dea7e07f493aa3bd6bc559072b7",
+      "bytes": 398692,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ccd2df87abd7d523.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-16.webp": {
+      "sha256": "6e992ba99660fefc1f5f47599aa20cb0f634278b7b2ef57da7195e2dc1c51b38",
+      "bytes": 321292,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/6e992ba99660fefc.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-17.webp": {
+      "sha256": "ec4df2cb93b7c9510e763d90f22b8a350c71d1d514885ba4d4c68e844fdb41c9",
+      "bytes": 67418,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ec4df2cb93b7c951.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1-zh-Hans/rights-v1/page-18.webp": {
+      "sha256": "f4ef2fbbc60d420249854af93c628955ad8fe84af23cd225e255bd15cd32982b",
+      "bytes": 402596,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/f4ef2fbbc60d4202.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-01.webp": {
+      "sha256": "107a9a51ecabe4974996b710f070cfb024c0f81a89a8657693f846f30c8a61ed",
+      "bytes": 421132,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/107a9a51ecabe497.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-02.webp": {
+      "sha256": "71938e47c70fb9a5746d3c29b3445f6a8373721f357b9c8c9c0599902841d1f8",
+      "bytes": 357418,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/71938e47c70fb9a5.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-03.webp": {
+      "sha256": "afcc7b03da81db793f870c8acd15d106b0f4453514d09fba6956049efff9e405",
+      "bytes": 463826,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/afcc7b03da81db79.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-04.webp": {
+      "sha256": "4f635daf778e6620772f7ff8d03883d9a4946967b328c7cc1fc6607af7367804",
+      "bytes": 454388,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/4f635daf778e6620.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-05.webp": {
+      "sha256": "b55994494672f131d277a35b4c819f2767096d9abbbc73a0100ce37db14d32f7",
+      "bytes": 435624,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/b55994494672f131.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-06.webp": {
+      "sha256": "4cc2a8a986f647568f6811bf879b1e4c6cc90150a83161152c460e89f6074356",
+      "bytes": 418228,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/4cc2a8a986f64756.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-07.webp": {
+      "sha256": "a7de8317886856605b8aa898f0a224937aebb2abb6758795666a6fd8e9bbb260",
+      "bytes": 441424,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a7de831788685660.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-08.webp": {
+      "sha256": "132e4ea28f42103ead0c64374ef04f5c1d27404c00bad907cb0f8bf12cbb9099",
+      "bytes": 433706,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/132e4ea28f42103e.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-09.webp": {
+      "sha256": "4f6d3d456e2a23ba508b253a0f21c915416ae4c1ce5bb503ede2e9764065f256",
+      "bytes": 454350,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/4f6d3d456e2a23ba.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-10.webp": {
+      "sha256": "a1649e928dd38a9a017ae47adbe0c0a7344596fa982a273b9ed98371326f4eb3",
+      "bytes": 454920,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a1649e928dd38a9a.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-11.webp": {
+      "sha256": "ae53d369d5d77ea5e4192ac37ac3c4b6a967fb0ee676edec7154e78d4e5a3644",
+      "bytes": 386184,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/ae53d369d5d77ea5.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-12.webp": {
+      "sha256": "c1a3e16e275b4c49b6445424f92649dda929f16f0231cd2c856305064493e782",
+      "bytes": 417084,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c1a3e16e275b4c49.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-13.webp": {
+      "sha256": "d517794523e1c23a7cf0f9404dbb0beef1ac15a0f965ddd67e818f1fdef92b90",
+      "bytes": 373680,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/d517794523e1c23a.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-14.webp": {
+      "sha256": "a820f7ecab3f83e131e5fc2c91b948c46aa87eb68fd7150e9566c8f4870173f1",
+      "bytes": 428166,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/a820f7ecab3f83e1.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-15.webp": {
+      "sha256": "c70450b65b426be76199e58b736074b185ffb4bac0af2f2c5f255e5bdd3c597f",
+      "bytes": 401772,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/c70450b65b426be7.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-16.webp": {
+      "sha256": "151e5f61a429dfff99cf8a4b652059bdc97e56257b2369a9f8ac3fc19c4e714d",
+      "bytes": 327512,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/151e5f61a429dfff.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-17.webp": {
+      "sha256": "cc57f9806e9e3bcd4ddbc32e908cb2e12b574361756d6b487aac96bfbe18d08e",
+      "bytes": 69602,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/cc57f9806e9e3bcd.webp"
+    },
+    "reader/wukongs-bags-of-ten-v1/rights-v1/page-18.webp": {
+      "sha256": "801d02290b732dc1adf946fd6a8046bc1096bf62a71b421010d3f9071f84399f",
+      "bytes": 411882,
+      "url": "https://phg1024.github.io/wukong-and-friends-releases/reader/801d02290b732dc1.webp"
     },
     "reader/wukongs-brick-building-day-v3-zh-Hans/rights-v1/page-01.webp": {
       "sha256": "acce40b433113be05cfcbd6b43c9aeea8795a7650d2749f8826fb4194a4b8f78",

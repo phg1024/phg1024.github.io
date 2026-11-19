@@ -1,5 +1,70 @@
 [
   {
+    "id": "wukongs-bags-of-ten",
+    "title": "Wukong’s Bags of Ten",
+    "title_zh": "十个装一袋",
+    "series": "wukong",
+    "style": "Children’s crayon doodles",
+    "pages": 18,
+    "core_pages": 16,
+    "booklet_pages": 20,
+    "sheets": 5,
+    "blank_pages": 0,
+    "author": "Peihong Guo",
+    "version": "v1",
+    "revision": "math-cp5-approved",
+    "publication_status": "published",
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "level": "L4",
+    "target_age_months": 66,
+    "focus_vocabulary": [
+      "ten",
+      "bag",
+      "tens",
+      "ones",
+      "thirty",
+      "forty",
+      "left over",
+      "count by tens",
+      "pile",
+      "full"
+    ],
+    "math_plan_id": "M12",
+    "language_reading_versions": {
+      "en": "wukongs-bags-of-ten/v1/en",
+      "zh-Hans": "wukongs-bags-of-ten/v1/zh-Hans"
+    },
+    "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-bags-of-ten-v1/wukongs-bags-of-ten-v1.pdf",
+    "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-bags-of-ten-v1/wukongs-bags-of-ten-v1-booklet.pdf",
+    "cover": "covers/wukongs-bags-of-ten-v1.jpg",
+    "translations": {
+      "en": {
+        "title": "Wukong’s Bags of Ten",
+        "description": "Wukong has a hill of peaches to share, but every count comes out different, and Bull King’s handfuls are big and small. Then Sandy brings paper bags that each hold just ten. Three full bags and four left over: that makes 34!"
+      },
+      "zh": {
+        "title": "十个装一袋",
+        "description": "悟空摘了一大堆桃子要分给邻居，可是每次数出来都不一样，牛魔王一把一把地抓，也是有多有少。沙僧拿来一样大的纸袋，一袋只装十个。三袋还剩四个，就是三十四！"
+      }
+    },
+    "description": "悟空摘了一大堆桃子要分给邻居，可是每次数出来都不一样，牛魔王一把一把地抓，也是有多有少。沙僧拿来一样大的纸袋，一袋只装十个。三袋还剩四个，就是三十四！",
+    "description_en": "Wukong has a hill of peaches to share, but every count comes out different, and Bull King’s handfuls are big and small. Then Sandy brings paper bags that each hold just ten. Three full bags and four left over: that makes 34!",
+    "keywords": "悟空 牛魔王 沙僧 八戒 桃子 纸袋 十个一袋 十个十个地数 几个十和几个一 三十四 四十 数数 数位 分享 邻居 Wukong Bull King Sandy Pigsy peaches paper bags bags of ten count by tens tens and ones place value thirty-four forty counting sharing neighbors",
+    "languages": {
+      "en": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-bags-of-ten-v1/wukongs-bags-of-ten-v1.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-bags-of-ten-v1/wukongs-bags-of-ten-v1-booklet.pdf",
+        "cover": "covers/wukongs-bags-of-ten-v1.jpg"
+      },
+      "zh-Hans": {
+        "reading": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-bags-of-ten-v1/wukongs-bags-of-ten-v1-zh-Hans.pdf",
+        "booklet": "https://github.com/phg1024/wukong-and-friends-releases/releases/download/wukongs-bags-of-ten-v1/wukongs-bags-of-ten-v1-zh-Hans-booklet.pdf",
+        "cover": "covers/wukongs-bags-of-ten-v1-zh-Hans.jpg"
+      }
+    }
+  },
+  {
     "id": "repeat-four-times",
     "title": "Repeat Four Times",
     "title_zh": "重复四次",
