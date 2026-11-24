@@ -145,6 +145,10 @@
     <lastmod>2026-11-19</lastmod>
   </url>
   <url>
+    <loc>https://phg1024.github.io/blog/ai/agent-keypad/</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
     <loc>https://phg1024.github.io/about/</loc>
   </url>
   <url>
@@ -193,13 +197,13 @@
     <loc>https://phg1024.github.io/tag/local-inference/</loc>
   </url>
   <url>
-    <loc>https://phg1024.github.io/tag/image-processing/</loc>
-  </url>
-  <url>
     <loc>https://phg1024.github.io/tag/agents/</loc>
   </url>
   <url>
     <loc>https://phg1024.github.io/tag/hardware/</loc>
+  </url>
+  <url>
+    <loc>https://phg1024.github.io/tag/image-processing/</loc>
   </url>
   <url>
     <loc>https://phg1024.github.io/tag/ml-research/</loc>

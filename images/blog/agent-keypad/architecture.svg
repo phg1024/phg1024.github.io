@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#3b4457"/>
+    </marker>
+    <marker id="arrO" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9 z" fill="#c98a1b"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="470" fill="#f7f8fb"/>
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1e2433">From a permission prompt to a key press</text>
+  <text x="450" y="55" text-anchor="middle" font-size="12.5" fill="#5b6478">Everything right of the hooks works today; the hooks themselves aren't installed yet</text>
+
+  <!-- the Mac -->
+  <rect x="232" y="72" width="434" height="232" rx="12" fill="#eef2fa" stroke="#9fb0d0" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="246" y="91" font-size="12" font-weight="600" fill="#2f4a7a">The Mac</text>
+
+  <!-- Claude Code -->
+  <rect x="20" y="100" width="160" height="190" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="100" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#1e2433">Claude Code</text>
+  <text x="100" y="142" text-anchor="middle" font-size="11.5" fill="#5b6478">a dozen sessions</text>
+  <rect x="32" y="156" width="136" height="54" rx="8" fill="#f7f8fb" stroke="#d8dfeb"/>
+  <text x="100" y="178" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Desktop app</text>
+  <text x="100" y="196" text-anchor="middle" font-size="11" fill="#5b6478">its dialog stays up too</text>
+  <rect x="32" y="222" width="136" height="54" rx="8" fill="#f7f8fb" stroke="#d8dfeb"/>
+  <text x="100" y="244" text-anchor="middle" font-size="13" font-weight="600" fill="#1e2433">Terminal</text>
+  <text x="100" y="262" text-anchor="middle" font-size="11" fill="#5b6478">shown, never answered</text>
+
+  <!-- hooks: not installed -->
+  <text x="205" y="176" text-anchor="middle" font-size="11" font-weight="600" fill="#a66d0c">hooks</text>
+  <line x1="182" y1="190" x2="236" y2="190" stroke="#c98a1b" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrO)"/>
+  <text x="205" y="208" text-anchor="middle" font-size="10" fill="#a66d0c">not yet</text>
+  <text x="205" y="220" text-anchor="middle" font-size="10" fill="#a66d0c">installed</text>
+
+  <!-- hook script -->
+  <rect x="240" y="100" width="150" height="190" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="315" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#1e2433">agentdeck-hook</text>
+  <text x="315" y="142" text-anchor="middle" font-size="11.5" fill="#5b6478">runs on every event</text>
+  <text x="315" y="176" text-anchor="middle" font-size="11.5" fill="#1e2433">forwards the event</text>
+  <text x="315" y="200" text-anchor="middle" font-size="11.5" fill="#1e2433">waits on a</text>
+  <text x="315" y="215" text-anchor="middle" font-size="11.5" fill="#1e2433">permission request</text>
+  <text x="315" y="248" text-anchor="middle" font-size="11.5" fill="#5b6478">daemon down: exits</text>
+  <text x="315" y="263" text-anchor="middle" font-size="11.5" fill="#5b6478">silently, nothing lost</text>
+
+  <!-- hook -> daemon -->
+  <text x="425" y="176" text-anchor="middle" font-size="11" font-weight="600" fill="#1e2433">HTTP</text>
+  <line x1="392" y1="190" x2="456" y2="190" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="425" y="208" text-anchor="middle" font-size="10" fill="#5b6478">localhost,</text>
+  <text x="425" y="220" text-anchor="middle" font-size="10" fill="#5b6478">shared secret</text>
+
+  <!-- daemon -->
+  <rect x="460" y="100" width="200" height="190" rx="10" fill="#ffffff" stroke="#c9d2e3" stroke-width="1.5"/>
+  <text x="560" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#1e2433">agentdeck daemon</text>
+  <text x="560" y="142" text-anchor="middle" font-size="11.5" fill="#5b6478">Python, standard library only</text>
+  <rect x="470" y="156" width="180" height="38" rx="8" fill="#f7f8fb" stroke="#d8dfeb"/>
+  <text x="560" y="180" text-anchor="middle" font-size="12" fill="#1e2433">each session's state, slots 1–8</text>
+  <rect x="470" y="200" width="180" height="38" rx="8" fill="#f7f8fb" stroke="#d8dfeb"/>
+  <text x="560" y="224" text-anchor="middle" font-size="12" fill="#1e2433">holds a request up to 110 s</text>
+  <rect x="470" y="244" width="180" height="38" rx="8" fill="#f7f8fb" stroke="#d8dfeb"/>
+  <text x="560" y="268" text-anchor="middle" font-size="12" fill="#1e2433">writes only after a hello</text>
+
+  <!-- daemon <-> keypad -->
+  <text x="697" y="150" text-anchor="middle" font-size="11" font-weight="600" fill="#1e2433">state</text>
+  <line x1="664" y1="162" x2="724" y2="162" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="697" y="186" text-anchor="middle" font-size="9.5" fill="#5b6478">USB serial,</text>
+  <text x="697" y="198" text-anchor="middle" font-size="9.5" fill="#5b6478">JSON lines</text>
+  <line x1="726" y1="222" x2="666" y2="222" stroke="#3b4457" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="697" y="242" text-anchor="middle" font-size="11" font-weight="600" fill="#1e2433">keys</text>
+  <text x="697" y="255" text-anchor="middle" font-size="9.5" fill="#5b6478">+ request id</text>
+
+  <!-- keypad -->
+  <rect x="730" y="100" width="150" height="190" rx="10" fill="#fff8e6" stroke="#e0c675" stroke-width="1.5"/>
+  <text x="805" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#1e2433">Keypad</text>
+  <text x="805" y="142" text-anchor="middle" font-size="11.5" fill="#5b6478">Raspberry Pi Pico</text>
+  <rect x="740" y="156" width="130" height="38" rx="8" fill="#ffffff" stroke="#ecd9a2"/>
+  <text x="805" y="180" text-anchor="middle" font-size="12" fill="#1e2433">3.5" touch screen</text>
+  <rect x="740" y="200" width="130" height="38" rx="8" fill="#ffffff" stroke="#ecd9a2"/>
+  <text x="805" y="224" text-anchor="middle" font-size="12" fill="#1e2433">an RGB LED per key</text>
+  <rect x="740" y="244" width="130" height="38" rx="8" fill="#ffffff" stroke="#ecd9a2"/>
+  <text x="805" y="268" text-anchor="middle" font-size="12" fill="#1e2433">keys and a knob</text>
+
+  <!-- the rule -->
+  <rect x="20" y="326" width="860" height="124" rx="10" fill="#eaf7f1" stroke="#9fd6bd" stroke-width="1.5"/>
+  <text x="40" y="354" font-size="14" font-weight="700" fill="#1f7a55">Only a key press says yes</text>
+  <text x="40" y="380" font-size="12.5" fill="#1e2433">• Approve counts only with the request id on the keypad's screen, and only once it has been there for 0.6 s.</text>
+  <text x="40" y="404" font-size="12.5" fill="#1e2433">• No keypad, no daemon, a terminal session, or 110 s without a press: no answer, and Claude Code's own dialog decides.</text>
+  <text x="40" y="428" font-size="12.5" fill="#1e2433">• No "approve all" key, and nothing here changes a session's permission mode.</text>
+</svg>
