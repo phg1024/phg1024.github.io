@@ -518,8 +518,14 @@ function updateCanvas(x1, x2, y1, y2, buffer) {
 
 export function saveImage() {
     canvas.toBlob(function (blob) {
-        saveAs(blob, "renderedImage.png");
-    });
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "renderedImage.png";
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 0);
+    }, "image/png");
 }
 
 // Bind to window for inline HTML onclick handlers
