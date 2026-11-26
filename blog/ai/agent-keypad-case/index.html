@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="expect" href="#scripts-ready" blocking="render">
+ <style>
+  @view-transition { navigation: auto; }
+  @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+ </style>
+ <script>
+  // The transition is for the hop into or out of the gallery, where the panel changes size
+  // (792px to 1148px wide); between two ordinary pages it is skipped, here on the way out.
+  // Only start a transition towards a page that will accept it. The standalone demos under
+  // /projects/<demo>/ and the redirect shims have no opt-in, and Chrome then rejects the
+  // transition inside the destination page, where nothing can catch it. Skip it here, on the
+  // way out, unless the destination is one of the pages built from this layout (the list is
+  // generated at build time). Any other cancellation (a navigation interrupting a running
+  // transition) rejects promises nobody awaits; mark those handled on both sides.
+  (function () {
+    var animated = ["/test/2013/12/04/Migrating.html","/image/processing/2014/01/04/ImageProcJS1.html","/image/processing/2014/01/05/ImageProcJS2.html","/image/processing/2014/02/24/ImageProcJS3.html","/image/processing/2014/02/26/ImageProcJS4.html","/boost/2015/11/05/BoostGraph.html","/bread/basic-bread/","/blog/ai/dreamfusion/","/bread/potato-bread/","/bread/banana-bread/","/bread/toast-bread/","/bread/rye-bread/","/bread/banana-bun/","/blog/programming/async/","/blog/ai/3d_gaussian_splitting/","/blog/ai/facial-keypoint-diffusion/","/programming/2026/04/22/site-redesign.html","/blog/programming/aos-agent-os/","/blog/programming/raytracer-refactor/","/blog/programming/raytracer-caustics/","/blog/ai/jarvis-architecture/","/blog/ai/qwen-intel-arc-vllm/","/blog/programming/home-automation/","/blog/ai/wukong-and-friends/","/blog/ai/qwen38-27b-arc-b70/","/blog/ai/strata-b70-page-reclaim/","/blog/ai/wukong-and-friends-update/","/blog/ai/quota-float/","/blog/programming/print-color-proxy/","/blog/programming/pynq-kvm/","/blog/programming/pynq-kvm-fpga/","/blog/ai/mywisper/","/blog/ai/mywisper-correction/","/blog/programming/ender-klipper/","/blog/ai/cadabra/","/blog/ai/cadabra-jarvis/","/blog/ai/agent-keypad/","/blog/ai/agent-keypad-case/","/about/","/bread/","/gallery/","/gallery/alaska/","/gallery/california/","/gallery/texas/","/gallery/uk/","/","/privacy/","/projects/","/tag/ai/","/tag/graphics/","/tag/doodling/","/tag/home-lab/","/tag/web/","/tag/local-inference/","/tag/agents/","/tag/hardware/","/tag/image-processing/","/tag/ml-research/","/tag/rendering/","/tag/wukong-and-friends/","/writing/","/"];
+    function handled(event) {
+      var vt = event.viewTransition;
+      if (!vt) return;
+      [vt.ready, vt.updateCallbackDone, vt.finished].forEach(function (p) {
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    window.addEventListener('pageswap', function (event) {
+      handled(event);
+      if (!event.viewTransition) return;
+      var entry = event.activation && event.activation.entry;
+      var to = entry && entry.url ? new URL(entry.url) : null;
+      var path = to && to.origin === location.origin ? to.pathname.replace(/index\.html$/, '') : null;
+      var gallery = function (p) { return p.indexOf('/gallery/') === 0; };
+      if (!path || animated.indexOf(path) < 0 || gallery(path) === gallery(location.pathname)) {
+        event.viewTransition.skipTransition();
+      }
+    });
+    window.addEventListener('pagereveal', handled);
+
+    // One container that resizes (proto-extra.css). On both sides of the hop, give the panel's
+    // on-screen children their own nested groups; on the new page, hand the panel's look to
+    // the transition group, which draws the container while it changes size.
+    var nested = window.CSS && CSS.supports && CSS.supports('view-transition-group: nearest');
+    function panel() {
+      return document.querySelector('.site-main > .content-page, .site-main > .blog-content');
+    }
+    function markVisibleChildren(card) {
+      var marked = [];
+      var h = window.innerHeight;
+      Array.prototype.forEach.call(card.children, function (child) {
+        var r = child.getBoundingClientRect();
+        if (r.height > 0 && r.bottom > 0 && r.top < h) {
+          child.classList.add('vt-card-item');
+          marked.push(child);
+        }
+      });
+      return marked;
+    }
+    function lendPanelLook(card) {
+      var s = getComputedStyle(card);
+      var rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--vt-card-bg-color', s.backgroundColor);
+      rootStyle.setProperty('--vt-card-bg-image', s.backgroundImage);
+      rootStyle.setProperty('--vt-card-border', s.borderTopWidth + ' ' + s.borderTopStyle + ' ' + s.borderTopColor);
+      rootStyle.setProperty('--vt-card-radius', s.borderTopLeftRadius);
+      rootStyle.setProperty('--vt-card-shadow', s.boxShadow);
+      rootStyle.setProperty('--vt-card-backdrop', s.backdropFilter || 'none');
+    }
+    window.addEventListener('pageswap', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (card) markVisibleChildren(card);
+    });
+    window.addEventListener('pagereveal', function (event) {
+      var card = nested && event.viewTransition && panel();
+      if (!card) return;
+      var marked = markVisibleChildren(card);
+      lendPanelLook(card);
+      event.viewTransition.finished.finally(function () {
+        marked.forEach(function (el) { el.classList.remove('vt-card-item'); });
+      });
+    });
+  })();
+ </script>
+ <script>
+  (function () {
+     var savedTheme = localStorage.getItem('site-theme') || 'minimalist';
+     document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@600;700&amp;family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+ <title>The Keypad Gets a Case | Peihong Guo</title>
+ <meta name="description" content="Two days after the breadboard, the agent keypad has a printed case, a printed Talk key in two parts, a new screen layout that handles Chinese, and a…">
+ <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
+ <link rel="canonical" href="https://phg1024.github.io/blog/ai/agent-keypad-case/">
+ <meta property="og:site_name" content="Peihong Guo">
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="The Keypad Gets a Case | Peihong Guo">
+ <meta property="og:description" content="Two days after the breadboard, the agent keypad has a printed case, a printed Talk key in two parts, a new screen layout that handles Chinese, and a…">
+ <meta property="og:url" content="https://phg1024.github.io/blog/ai/agent-keypad-case/">
+ <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="The Keypad Gets a Case | Peihong Guo">
+ <meta name="twitter:description" content="Two days after the breadboard, the agent keypad has a printed case, a printed Talk key in two parts, a new screen layout that handles Chinese, and a…">
+ <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
+ <meta property="article:published_time" content="2026-11-25T00:00:00.000Z">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="stylesheet" href="/styles/proto.css">
+ 
+<script async src="/js/ga.js" data-ga-id="G-D20F5RT2LN"></script>
+
+</head><body class="proto">
+<canvas class="theme-backdrop" aria-hidden="true"></canvas>
+<canvas class="pointer-reactive-overlay" aria-hidden="true"></canvas>
+<a class="skip-to-content" href="#main-content">Skip to content</a>
+<div class="site-shell">
+ <header class="site-header">
+  <div class="site-header__inner">
+   <a class="site-brand" href="/">
+    <span class="site-brand__name">Peihong Guo</span>
+    <span class="site-brand__tag">AI · Graphics · Doodling</span>
+   </a>
+   <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__link is-active" href="/writing/">Writing</a>
+    <a class="site-nav__link" href="/projects/">Projects</a>
+    <a class="site-nav__link" href="/gallery/">Photos</a>
+    <a class="site-nav__link" href="/about/">About</a>
+   </nav><ul class="proto-rail__tags" aria-label="Browse by area">
+    <li><a class="proto-rail__tag" href="/tag/ai/">AI <span class="proto-rail__count">17</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/graphics/">Graphics <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/doodling/">Doodling <span class="proto-rail__count">9</span></a></li>
+   </ul>
+   <ul class="proto-rail__tags proto-rail__tags--topics" aria-label="Browse by topic">
+    <li><a class="proto-rail__tag" href="/tag/home-lab/">Home lab <span class="proto-rail__count">10</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/web/">Web <span class="proto-rail__count">9</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/local-inference/">Local inference <span class="proto-rail__count">8</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/agents/">Agents <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/hardware/">Hardware <span class="proto-rail__count">6</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/image-processing/">Image processing <span class="proto-rail__count">5</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/ml-research/">ML research <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/rendering/">Rendering <span class="proto-rail__count">3</span></a></li>
+    <li><a class="proto-rail__tag" href="/tag/wukong-and-friends/">Wukong &amp; Friends <span class="proto-rail__count">2</span></a></li>
+   </ul><div class="proto-rail__theme">
+     <label class="theme-toggle" for="theme-toggle">
+       <span class="theme-toggle__label">Theme</span>
+       <select class="theme-toggle__select" id="theme-toggle" aria-label="Choose theme">
+     <option value="minimalist">Minimalist</option>
+     <option value="cyberpunk">Cyberpunk</option>
+     <option value="matrix">Matrix</option>
+     <option value="industrial">Industrial</option>
+     <option value="win31">Windows 3.1</option>
+     </select>
+     </label>
+   </div>
+  </div>
+ </header>
+
+ <main class="site-main" id="main-content" role="main">
+  
+<div class="blog-content">
+      <style>
+         .comparison-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+         }
+         .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+         }
+         .comparison-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+         }
+         .comparison-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+         }
+         @media (max-width: 767px) {
+            .comparison-container {
+               flex-direction: column;
+            }
+         }
+      </style>
+      <div class="blog-content__inner"><h1>The Keypad Gets a Case</h1><p class="blog-post__date">Nov 25, 2026</p>
+<p><a href="/blog/ai/agent-keypad/">Two days ago</a> the keypad was a breadboard and a render. Tonight it's in its case on my desk:</p>
+<p><a href="/images/blog/agent-keypad/case.jpg"><img src="/images/blog/agent-keypad/case-web.jpg" alt="The keypad in its case: a white top plate with a 3.5-inch screen showing tabs 1 to 6 and session 4's last reply, two rows of three clear keys with a brushed metal knob to their right, and a bottom row with a white double-width key printed with a black microphone and three more clear keys."></a></p>
+<p><em>Only the screen is wired so far, and the sessions on it are made up. The white key with the microphone is the one I printed.</em></p>
+<p>Getting here took about a dozen prints, a lot of measuring, and more conversations about one knob than I'd like to admit.</p>
+<h2>Where the knob goes</h2>
+<p>The layout kept changing until I had the parts in my hands. The knob started at the top right, moved into the key grid in place of a key, and ended up beside the session keys, to the right of 1–6. There it sat too close to the keys below, so it moved up, and then right to balance it, which looked lopsided. I tried 2, 4, 5 and 6 mm, then asked Claude to work out the offset from the grid's visual centre of weight. The answer was 3.75 mm, and that's where it is.</p>
+<p>The bottom row lost Interrupt and gained a spare: Talk (the double-width key), Approve, Deny, and a custom key. Interrupt moved to the knob: turning it picks a session, a press jumps to the next session waiting for me, and holding it interrupts.</p>
+<p>Even the screen needed a small correction: its lit area isn't centred on its glass (3 mm of border on the left, 8 on the right), so the screen sits 2.5 mm off centre to put the window in the middle of the case. That came from the ruler, not the datasheet. To check it, I printed a 1:1 paper template, laid it on the screen, and asked for the screen to light pure red. The window lined up exactly.</p>
+<p><img src="/images/blog/agent-keypad/exploded-web.jpg" alt="An exploded render of the case: a black tray at the bottom with the Pico inside, a mint LED tray holding round LED boards, a row of switches, the white top plate with its screen window, and translucent keycaps and the knob on top."></p>
+<p><em>The layers, from the bottom: the tray with the Pico, the LED tray, the switches, the top plate, the keycaps. The labels are placeholders.</em></p>
+<h2>What the printer found</h2>
+<p>Every print turned up something the renders hadn't:</p>
+<ul>
+<li><strong>The first top plate came out mirrored.</strong> Its screw bosses were on the wrong side. The export turned the part over with a mirror instead of a rotation, which looks the same on screen until the holes don't meet.</li>
+<li><strong>The stabilizer's wire had no room.</strong> The double-width key has a steel wire underneath that swings as the key goes down, and a 3 mm plate stopped it. I didn't want the whole plate thinner, only a strip where the wire moves, dug 1.8 mm deep and reaching 1.5 mm past the switch hole. That version is next in the printer's queue.</li>
+<li><strong>The LED tray went floppy</strong> once it had slots for the wires running under the LED boards. Instead of thickening it, nine little bridges hold it together.</li>
+<li><strong>A render showed a diagonal line</strong> across the tray: a zero-thickness sliver where two faces of the model met exactly. The tray was already printing, so Claude asked the printing session to check its print file for a skin across the opening. There wasn't one.</li>
+</ul>
+<p>The screws come in from underneath, so the top is clean.</p>
+<h2>A key in two parts</h2>
+<p>Nothing I could buy fit the double-width Talk key, so it's printed: white, with a black microphone inlaid flush. A finer later try, with thinner layers and an ironed top, came out worse than the first. The cross-shaped socket inside, which grips the switch, was rough, while a test piece with five sockets printed open side up had come out clean.</p>
+<p>So I asked for two parts: the shell printed upright the way the first one was, and a small plate with three sockets printed exactly like the test piece, which snaps into the shell on four 0.75 mm bumps. The third of the five test sizes fit best, and that's the one it uses.</p>
+<h2>A new screen</h2>
+<p>The tile grid from the breadboard became one page per session, with a tab strip on top and a swipe to move between them. There can be up to twelve sessions, sorted so that the ones waiting for me come first, and keys 1–6 are always the first six. Commands show in a monospace font, so I can read exactly what I'm approving.</p>
+<p>Some of my sessions have Chinese names, so the fonts took a few rounds, judged on the real screen from preview pictures. The first Chinese font was ugly, and Noto Sans for the English text didn't survive a look on the panel, so English stayed in a Helvetica-like sans. Chinese is now Source Han Sans, the same design as Noto Sans SC, turned into 1-bit bitmaps: 7,454 characters at two sizes. The screen is drawn from an 8-bit frame to fit in the Pico's memory, so the characters can't have smooth edges; a Pico 2, with twice the memory, could do it.</p>
+<h2>A hang and a watchdog</h2>
+<p>On the breadboard, the keypad froze twice: once after 77 minutes, once after under two. Its free memory had stayed flat at about 90 KB, so it wasn't a leak. It now has a hardware watchdog: if the main loop goes four seconds without checking in, the chip restarts and reconnects to the Mac on its own. Before restarting, it leaves a note in registers that survive the restart, saying which step was running and what I'd last pressed. It hasn't frozen since, so the note hasn't been needed yet.</p>
+<h2>Wired by hand</h2>
+<p>There's no circuit board of my own inside. Each of the ten switches gets its own wire to its own Pico pin, so there are no diodes and no key matrix; the knob takes three more, and the ten LEDs share one data wire, each passing the rest of the colours on to the next. I looked at hot-swap sockets, which let switches pull out without solder, but without a board to hold them they would only move the soldering somewhere else.</p>
+<p>Claude redrew the wiring diagram for the case, in straight lines and right angles, with a little arc wherever two wires cross. It also drew a soldering guide seen from underneath, in the order to do it. Two parts from the breadboard come along:</p>
+<ul>
+<li><strong>The level shifter.</strong> The Pico's pins put out 3.3 V, and LEDs powered at 5 V want about 3.5 V to see a &quot;1&quot;. The same small 74AHCT125 chip as on the breadboard sits on a scrap of perfboard on the case floor, in front of the Pico.</li>
+<li><strong>A 100 µF capacitor</strong> across the LEDs' power, next to the first one. The LED tray has a capacitor symbol engraved on it, marking the spot.</li>
+</ul>
+<p>The screen went in first. After soldering it, I flashed the firmware: it came up the right way round, in the right colours, and tapping a tab switched to that session. The keys, the knob and the LEDs are next, one at a time like on the breadboard, each checked in the log before the next.</p>
+<h2>What's next</h2>
+<ul>
+<li><strong>Finish the wiring:</strong> the keys, the knob, then the LEDs.</li>
+<li><strong>Then the hooks</strong>, so the screen shows my real sessions instead of made-up ones.</li>
+<li><strong>Then Talk and Interrupt</strong>, which still don't do anything.</li>
+</ul>
+<p>The same three sessions as before did the work: one designing, one running the 3D printer, one running the paper printer. I approved a lot of prints in other windows this week, which is exactly the problem this keypad is meant to solve.</p>
+
+      <footer class="post-meta">
+        <div class="post-box post-meta__series">
+          <p class="post-meta__label">Part 2 of 2 in <a href="/blog/ai/agent-keypad/">The agent keypad</a></p>
+          <nav class="post-pager" aria-label="Previous and next in The agent keypad"><a class="post-pager__prev" href="/blog/ai/agent-keypad/" rel="prev"><span class="post-pager__label">← Part 1</span>A Keypad for a Dozen Claude Code Sessions</a>
+          </nav>
+        </div>
+        <p class="post-box post-meta__tags">Filed under <a href="/tag/ai/">AI</a> · <a href="/tag/agents/">Agents</a> · <a href="/tag/hardware/">Hardware</a></p>
+        <div class="post-box post-meta__related">
+          <p class="post-meta__label">Related</p>
+          <ul class="post-related">
+            <li><a href="/blog/ai/cadabra-jarvis/">Hold a Key and Talk to Jarvis</a><span class="post-related__when">Nov 19, 2026</span></li>
+            <li><a href="/blog/ai/quota-float/">I Got Tired of Checking My Token Quota, So I Made It Impossible Not to See</a><span class="post-related__when">Oct 27, 2026</span></li>
+            <li><a href="/blog/ai/jarvis-architecture/">Building Jarvis: A Local Voice Assistant with Android and Hermes</a><span class="post-related__when">Oct 6, 2026</span></li>
+          </ul>
+        </div>
+      </footer></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+     var disqus_config = function () {
+        this.page.identifier = "/blog/ai/agent-keypad-case/";
+      };
+
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pgh1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+      })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+     </a>
+</noscript>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+         },
+        svg: {
+            fontCache: 'global'
+         }
+     };
+</script>
+
+ </main>
+
+ <footer class="site-footer">
+  <div class="site-footer__inner">
+   <p class="site-footer__copy">&copy; 2009<span id="footer-year"> &ndash; 2026</span> Peihong Guo</p>
+   <nav class="site-footer__links" aria-label="Footer navigation">
+    <a class="site-footer__link" href="mailto:admin@phg1024.net">admin@phg1024.net</a>
+    <a class="site-footer__link" href="/privacy/">Privacy</a>
+   </nav>
+  </div>
+ </footer>
+</div>
+
+
+<script src="/js/main.js"></script>
+<span id="scripts-ready" hidden></span>
+
+</body>
+</html>
