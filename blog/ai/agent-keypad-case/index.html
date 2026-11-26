@@ -92,18 +92,18 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@600;700&amp;family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
  <title>The Keypad Gets a Case | Peihong Guo</title>
- <meta name="description" content="Two days after the breadboard, the agent keypad has a printed case, a printed Talk key in two parts, a new screen layout that handles Chinese, and a…">
+ <meta name="description" content="Two days ago the agent keypad was a breadboard and a flawless render. Now it&#39;s in a printed case, and almost everything that went wrong on the way went…">
  <meta name="google-site-verification" content="3k8_xv-LO6SEP4WByxUQi_u4AAJXbmzHqbrOnKQ-xg4">
  <link rel="canonical" href="https://phg1024.github.io/blog/ai/agent-keypad-case/">
  <meta property="og:site_name" content="Peihong Guo">
  <meta property="og:type" content="article">
  <meta property="og:title" content="The Keypad Gets a Case | Peihong Guo">
- <meta property="og:description" content="Two days after the breadboard, the agent keypad has a printed case, a printed Talk key in two parts, a new screen layout that handles Chinese, and a…">
+ <meta property="og:description" content="Two days ago the agent keypad was a breadboard and a flawless render. Now it&#39;s in a printed case, and almost everything that went wrong on the way went…">
  <meta property="og:url" content="https://phg1024.github.io/blog/ai/agent-keypad-case/">
  <meta property="og:image" content="https://phg1024.github.io/images/profile.jpg">
  <meta name="twitter:card" content="summary_large_image">
  <meta name="twitter:title" content="The Keypad Gets a Case | Peihong Guo">
- <meta name="twitter:description" content="Two days after the breadboard, the agent keypad has a printed case, a printed Talk key in two parts, a new screen layout that handles Chinese, and a…">
+ <meta name="twitter:description" content="Two days ago the agent keypad was a breadboard and a flawless render. Now it&#39;s in a printed case, and almost everything that went wrong on the way went…">
  <meta name="twitter:image" content="https://phg1024.github.io/images/profile.jpg">
  <meta property="article:published_time" content="2026-11-25T00:00:00.000Z">
  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -191,48 +191,37 @@
          }
       </style>
       <div class="blog-content__inner"><h1>The Keypad Gets a Case</h1><p class="blog-post__date">Nov 25, 2026</p>
-<p><a href="/blog/ai/agent-keypad/">Two days ago</a> the keypad was a breadboard and a render. Tonight it's in its case on my desk:</p>
+<p>The first session my keypad showed from inside its case doesn't exist. It's tab 4, &quot;车库灯 garage-light&quot;, reporting that the garage light now comes on when the door opens. The story is borrowed, almost: three days earlier, a real session taught that light to come on when the door from the house opens, and flashed it over Wi-Fi. The keypad isn't connected to my real sessions yet, so it plays back made-up ones. But there it was, behind a white printed plate, next to a brushed metal knob.</p>
 <p><a href="/images/blog/agent-keypad/case.jpg"><img src="/images/blog/agent-keypad/case-web.jpg" alt="The keypad in its case: a white top plate with a 3.5-inch screen showing tabs 1 to 6 and session 4's last reply, two rows of three clear keys with a brushed metal knob to their right, and a bottom row with a white double-width key printed with a black microphone and three more clear keys."></a></p>
-<p><em>Only the screen is wired so far, and the sessions on it are made up. The white key with the microphone is the one I printed.</em></p>
-<p>Getting here took about a dozen prints, a lot of measuring, and more conversations about one knob than I'd like to admit.</p>
-<h2>Where the knob goes</h2>
-<p>The layout kept changing until I had the parts in my hands. The knob started at the top right, moved into the key grid in place of a key, and ended up beside the session keys, to the right of 1–6. There it sat too close to the keys below, so it moved up, and then right to balance it, which looked lopsided. I tried 2, 4, 5 and 6 mm, then asked Claude to work out the offset from the grid's visual centre of weight. The answer was 3.75 mm, and that's where it is.</p>
-<p>The bottom row lost Interrupt and gained a spare: Talk (the double-width key), Approve, Deny, and a custom key. Interrupt moved to the knob: turning it picks a session, a press jumps to the next session waiting for me, and holding it interrupts.</p>
-<p>Even the screen needed a small correction: its lit area isn't centred on its glass (3 mm of border on the left, 8 on the right), so the screen sits 2.5 mm off centre to put the window in the middle of the case. That came from the ruler, not the datasheet. To check it, I printed a 1:1 paper template, laid it on the screen, and asked for the screen to light pure red. The window lined up exactly.</p>
+<p><em>Only the screen is wired so far. The white key with the microphone is printed.</em></p>
+<p><a href="/blog/ai/agent-keypad/">Two days ago</a> it was a breadboard and a render. The render was flawless; renders always are. Getting from it to this meant crossing the gap between a picture and a thing, and nearly every surprise this week lived in that gap. What closed it each time wasn't a better picture. It was something real to hold the picture against: a ruler, a sheet of paper, a test print, the actual screen.</p>
+<h2>On paper</h2>
+<p>The layout got settled before any plastic, on 1:1 paper templates. The knob moved more than anything else. It started in the top right corner, took the place of a key inside the grid, and settled to the right of the session keys. There it sat too close to the keys below, so it went up, and then right to balance that, and then it looked like it was drifting away. I tried 2 mm, then 4, 5 and 6, and each looked wrong in its own way. So I asked Claude to stop guessing and find the visual centre of weight of the whole key grid. The answer was 3.75 mm: an odd number to get back from a question about taste, but it looks right.</p>
+<p>The knob picked up a job along the way. Turning it picks a session, pressing it jumps to the next one waiting for me, and holding it interrupts, which freed the Interrupt key. The bottom row is now Talk, Approve, Deny and a spare.</p>
+<p>The screen was the first place the picture was wrong. On the drawing, the picture sits in the middle of the glass. With a ruler, it doesn't: there's 3 mm of border on one side and 8 on the other. So the whole screen shifts 2.5 mm to put the picture in the middle of the case. To check, I laid the paper template over the screen and asked for it to light up pure red. The red lined up with the window exactly.</p>
 <p><img src="/images/blog/agent-keypad/exploded-web.jpg" alt="An exploded render of the case: a black tray at the bottom with the Pico inside, a mint LED tray holding round LED boards, a row of switches, the white top plate with its screen window, and translucent keycaps and the knob on top."></p>
-<p><em>The layers, from the bottom: the tray with the Pico, the LED tray, the switches, the top plate, the keycaps. The labels are placeholders.</em></p>
-<h2>What the printer found</h2>
-<p>Every print turned up something the renders hadn't:</p>
+<p><em>The layers: the tray with the Pico, the LED tray, the switches, the top plate, the keycaps. The labels are placeholders.</em></p>
+<h2>In plastic</h2>
+<p>Paper is flat, and it can't tell you which way a part faces. The first printed top plate looked perfect until I turned it over: the screw bosses were on the wrong side. The export had flipped the part with a mirror instead of a rotation. On screen the two look the same. In your hand, one of them has its screw holes facing the ceiling.</p>
+<p>Paper can't show you anything that moves, either. Under the double-width Talk key is a stabilizer, with a steel wire that swings as the key goes down, and the 3 mm plate left it nowhere to go. I photographed the plate from underneath and circled where the wire needed room. Not a thinner plate, just a channel for the wire, 1.8 mm deep and reaching 1.5 mm past the switch hole. That version is next in the printer's queue.</p>
+<p>Once, the gap ran the other way and the render caught the model lying. A faint diagonal line showed up across the bottom tray where there was no edge: a sliver of zero thickness, left where two faces of the model met exactly. The tray was already printing, so Claude asked the printing session to read the print file for a skin across the opening. There wasn't one, and the print carried on.</p>
+<h2>The test piece wins</h2>
+<p>Nothing I could buy fits a double-width key here, so the Talk key is printed: white, with a black microphone inlaid flush. The first one was a little rough on top, so we tried harder, with thinner layers and an ironed top. It came out worse. The top wasn't smoother, and the cross-shaped socket underneath, the part that grips the switch, was rough.</p>
+<p>The answer was already on my desk: a test piece from the day before, five sockets in five sizes, printed open side up, every one of them clean. So the key became two parts. A shell is printed upright, like the first try, and a small plate with three sockets is printed exactly like the test piece and snaps into the shell on four 0.75 mm bumps. The sockets are size three, the one that fit best. The best print of the week was the throwaway.</p>
+<h2>On the real screen</h2>
+<p>The screen's software had its own version of the gap. On the breadboard it showed sessions as eight tiles. In the case it's one session per page, with tabs along the top and a swipe between them, like a phone: up to twelve sessions, the ones waiting for me first, keys 1 to 6 always the first six. Commands are in a monospace font, so I can read exactly what I'm approving.</p>
+<p>Some of my sessions have Chinese names, and the first Chinese font was, in the word I used at the time, ugly. Claude rendered the candidates as pictures and I chose from those, which brought the same lesson at a smaller scale: Noto Sans for the English text looked fine as a picture on my Mac and wrong on the panel, so English went back to what it was. Chinese is now Source Han Sans, 7,454 characters at two sizes, flattened to 1-bit because the Pico draws the screen from an 8-bit frame. Smoother letters will need a Pico 2, with twice the memory. I had to ask which Pico I have. It's the first one.</p>
+<h2>The one with no picture at all</h2>
+<p>One problem never showed up in any picture, because it only exists on the running chip. On the breadboard, the keypad froze twice: once after 77 minutes, once after less than two. The screen stuck, the keys went dead, and it ignored the Mac's command to restart. Free memory had sat flat at 90 KB the whole time, so it wasn't a leak. That night I gave up and unplugged it.</p>
+<p>If a problem can only be caught on the real thing, the real thing has to keep notes. So the keypad now runs the chip's own watchdog. If the main loop goes four seconds without checking in, the chip restarts itself and reconnects to the Mac. Just before it does, it writes down which step was running and what I last pressed, in registers that survive the restart. The freeze hasn't happened since, which is either good news or a very patient bug.</p>
+<h2>Wire by wire</h2>
+<p>Inside, it's wires, with no circuit board of my own. Each of the ten switches gets its own wire to its own Pico pin, so it needs no diodes and no key matrix. The knob takes three more. The ten LEDs share a single data wire: each keeps its own colour and passes the rest down the line. Two parts come along from the breadboard:</p>
 <ul>
-<li><strong>The first top plate came out mirrored.</strong> Its screw bosses were on the wrong side. The export turned the part over with a mirror instead of a rotation, which looks the same on screen until the holes don't meet.</li>
-<li><strong>The stabilizer's wire had no room.</strong> The double-width key has a steel wire underneath that swings as the key goes down, and a 3 mm plate stopped it. I didn't want the whole plate thinner, only a strip where the wire moves, dug 1.8 mm deep and reaching 1.5 mm past the switch hole. That version is next in the printer's queue.</li>
-<li><strong>The LED tray went floppy</strong> once it had slots for the wires running under the LED boards. Instead of thickening it, nine little bridges hold it together.</li>
-<li><strong>A render showed a diagonal line</strong> across the tray: a zero-thickness sliver where two faces of the model met exactly. The tray was already printing, so Claude asked the printing session to check its print file for a skin across the opening. There wasn't one.</li>
+<li>a 74AHCT125 chip on a scrap of perfboard, lifting the Pico's 3.3 V signal to what LEDs on 5 V want;</li>
+<li>a 100 µF capacitor beside the first LED, on a spot the LED tray marks with an engraved capacitor symbol.</li>
 </ul>
-<p>The screws come in from underneath, so the top is clean.</p>
-<h2>A key in two parts</h2>
-<p>Nothing I could buy fit the double-width Talk key, so it's printed: white, with a black microphone inlaid flush. A finer later try, with thinner layers and an ironed top, came out worse than the first. The cross-shaped socket inside, which grips the switch, was rough, while a test piece with five sockets printed open side up had come out clean.</p>
-<p>So I asked for two parts: the shell printed upright the way the first one was, and a small plate with three sockets printed exactly like the test piece, which snaps into the shell on four 0.75 mm bumps. The third of the five test sizes fit best, and that's the one it uses.</p>
-<h2>A new screen</h2>
-<p>The tile grid from the breadboard became one page per session, with a tab strip on top and a swipe to move between them. There can be up to twelve sessions, sorted so that the ones waiting for me come first, and keys 1–6 are always the first six. Commands show in a monospace font, so I can read exactly what I'm approving.</p>
-<p>Some of my sessions have Chinese names, so the fonts took a few rounds, judged on the real screen from preview pictures. The first Chinese font was ugly, and Noto Sans for the English text didn't survive a look on the panel, so English stayed in a Helvetica-like sans. Chinese is now Source Han Sans, the same design as Noto Sans SC, turned into 1-bit bitmaps: 7,454 characters at two sizes. The screen is drawn from an 8-bit frame to fit in the Pico's memory, so the characters can't have smooth edges; a Pico 2, with twice the memory, could do it.</p>
-<h2>A hang and a watchdog</h2>
-<p>On the breadboard, the keypad froze twice: once after 77 minutes, once after under two. Its free memory had stayed flat at about 90 KB, so it wasn't a leak. It now has a hardware watchdog: if the main loop goes four seconds without checking in, the chip restarts and reconnects to the Mac on its own. Before restarting, it leaves a note in registers that survive the restart, saying which step was running and what I'd last pressed. It hasn't frozen since, so the note hasn't been needed yet.</p>
-<h2>Wired by hand</h2>
-<p>There's no circuit board of my own inside. Each of the ten switches gets its own wire to its own Pico pin, so there are no diodes and no key matrix; the knob takes three more, and the ten LEDs share one data wire, each passing the rest of the colours on to the next. I looked at hot-swap sockets, which let switches pull out without solder, but without a board to hold them they would only move the soldering somewhere else.</p>
-<p>Claude redrew the wiring diagram for the case, in straight lines and right angles, with a little arc wherever two wires cross. It also drew a soldering guide seen from underneath, in the order to do it. Two parts from the breadboard come along:</p>
-<ul>
-<li><strong>The level shifter.</strong> The Pico's pins put out 3.3 V, and LEDs powered at 5 V want about 3.5 V to see a &quot;1&quot;. The same small 74AHCT125 chip as on the breadboard sits on a scrap of perfboard on the case floor, in front of the Pico.</li>
-<li><strong>A 100 µF capacitor</strong> across the LEDs' power, next to the first one. The LED tray has a capacitor symbol engraved on it, marking the spot.</li>
-</ul>
-<p>The screen went in first. After soldering it, I flashed the firmware: it came up the right way round, in the right colours, and tapping a tab switched to that session. The keys, the knob and the LEDs are next, one at a time like on the breadboard, each checked in the log before the next.</p>
-<h2>What's next</h2>
-<ul>
-<li><strong>Finish the wiring:</strong> the keys, the knob, then the LEDs.</li>
-<li><strong>Then the hooks</strong>, so the screen shows my real sessions instead of made-up ones.</li>
-<li><strong>Then Talk and Interrupt</strong>, which still don't do anything.</li>
-</ul>
-<p>The same three sessions as before did the work: one designing, one running the 3D printer, one running the paper printer. I approved a lot of prints in other windows this week, which is exactly the problem this keypad is meant to solve.</p>
+<p>The screen went in first. After flashing, it came up the right way round, in the right colours, and tapping a tab switched sessions. The keys, the knob and the lights are still dead. They come next, one at a time, the way the breadboard went.</p>
+<p>Then the hooks, and the last gap closes: the one between made-up sessions and real ones. The garage light that isn't there can retire, and the keypad can start showing me the sessions I've actually been ignoring.</p>
 
       <footer class="post-meta">
         <div class="post-box post-meta__series">
